@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace TrashSoup
 {
     class Singleton <T> where T : new()
     {
+        #region Variables
+
         private static T m_instance;
         private static object locker = new object();
+
+        #endregion
+
+        #region Properties
 
         public static T Instance
         {
@@ -28,5 +35,7 @@ namespace TrashSoup
                 return m_instance;
             }
         }
+
+        #endregion
     }
 }
