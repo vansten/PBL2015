@@ -31,6 +31,9 @@ namespace TrashSoup
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            AudioManager.Instance.LoadContent();
+            AudioManager.Instance.PlayCue(0);
         }
 
         protected override void UnloadContent()
@@ -50,6 +53,7 @@ namespace TrashSoup
             //because of the fact that they don't want to be a game component
             InputManager.Instance.Update(gameTime);
             GUIManager.Instance.Update(gameTime);
+            AudioManager.Instance.Update();
         }
 
         protected override void Draw(GameTime gameTime)
