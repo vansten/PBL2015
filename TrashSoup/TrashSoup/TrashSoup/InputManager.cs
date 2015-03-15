@@ -87,6 +87,36 @@ namespace TrashSoup
 
             return gamePad.IsButtonDown(Buttons.RightTrigger) || (mouse.LeftButton == ButtonState.Pressed);
         }
+
+
+        /// <summary>
+        /// 
+        /// Returns current mouse position
+        /// </summary>
+        public Vector2 GetMousePosition()
+        {
+            MouseState mouse = Mouse.GetState();
+
+            return new Vector2(mouse.X, mouse.Y);
+        }
+
+        /// <summary>
+        /// 
+        /// Returns true if LMB is pressed
+        /// </summary>
+        public bool IsLeftMouseButtonDown()
+        {
+            return Mouse.GetState().LeftButton == ButtonState.Pressed;
+        }
+
+        /// <summary>
+        /// 
+        /// Returns true if LMB is released
+        /// </summary>
+        public bool IsLeftMouseButtonUp()
+        {
+            return Mouse.GetState().LeftButton == ButtonState.Released;
+        }
         
         #endregion
     }
