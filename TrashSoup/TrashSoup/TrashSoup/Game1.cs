@@ -32,8 +32,7 @@ namespace TrashSoup
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            AudioManager.Instance.LoadContent();
-            AudioManager.Instance.PlayCue(AudioManager.Instance.SoundBank.GetCue("Track1")); //default music from tutorial, just to check that everything works xD
+            ResourceManager.Instance.LoadContent();
         }
 
         protected override void UnloadContent()

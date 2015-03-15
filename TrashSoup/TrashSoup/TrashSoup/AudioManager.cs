@@ -45,10 +45,45 @@ namespace TrashSoup
         /// 
         /// Audio is played by identifying and playing cues that we created in our XACT project.
         /// </summary>
-        /// <param name="cue"></param> Cue from our cue list placed in ResourceManager class
+        /// <param name="cue">
+        /// 
+        /// Cue from our cue list placed in ResourceManager class
+        /// </param> 
         public void PlayCue(Cue cue)
         {
             cue.Play();
+        }
+
+        public void PauseCue(Cue cue)
+        {
+            cue.Pause();
+        }
+
+        public void ResumeCue(Cue cue)
+        {
+            cue.Resume();
+        }
+
+        public void StopCue(Cue cue)
+        {
+            cue.Stop(AudioStopOptions.Immediate);
+        }
+
+        /// <summary>
+        /// 
+        /// Just to make access to soundbank more comfortable
+        /// </summary>
+        /// <param name="name">
+        /// 
+        /// Name of cue
+        /// </param>
+        /// <returns>
+        /// 
+        /// Just like the original method of Sound Bank class, it returns the cue.
+        /// </returns>
+        public Cue GetCue(String name)
+        {
+            return soundBank.GetCue(name);
         }
         #endregion
 
