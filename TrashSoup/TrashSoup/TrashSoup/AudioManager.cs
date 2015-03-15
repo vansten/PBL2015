@@ -22,7 +22,7 @@ namespace TrashSoup
 
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             audioEngine.Update();
         }
