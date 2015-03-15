@@ -12,7 +12,8 @@ namespace TrashSoup
         private AudioEngine audioEngine;
         private WaveBank waveBank;
         private SoundBank soundBank;
-        private List<Cue> trackCues = new List<Cue>();
+
+        public SoundBank SoundBank { get { return soundBank; } }
         #endregion
 
         #region Methods
@@ -38,29 +39,16 @@ namespace TrashSoup
             audioEngine = new AudioEngine(@"Content\Audio\GameAudio.xgs");
             waveBank = new WaveBank(audioEngine, @"Content\Audio\Wave Bank.xwb");
             soundBank = new SoundBank(audioEngine, @"Content\Audio\Sound Bank.xsb");
-
-            AudioManager.Instance.AddCue("Track1"); //default music from tutorial, just to check that everything works xD
         }
-
-        /// <summary>
-        /// 
-        /// Adds new cue to our cue list. Use only in LoadContent method
-        /// </summary>
-        /// <param name="name"></param> Name of cue that was made by adding .wav file to the sound bank
-        public void AddCue(string name)
-        {
-            trackCues.Add(soundBank.GetCue(name));
-        }
-
 
         /// <summary>
         /// 
         /// Audio is played by identifying and playing cues that we created in our XACT project.
         /// </summary>
-        /// <param name="number"></param> Index number of cue in our cue list that was added using AddCue() method
-        public void PlayCue(int number)
+        /// <param name="cue"></param> Cue from our cue list placed in ResourceManager class
+        public void PlayCue(Cue cue)
         {
-            trackCues.ElementAt(number).Play();
+            cue.Play();
         }
         #endregion
 
