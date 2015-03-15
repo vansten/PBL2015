@@ -8,6 +8,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace TrashSoup
 {
+    class SingleRandom : Singleton<SingleRandom>
+    {
+        public Random rnd = new Random();
+    }
+
     class ResourceManager : Singleton<ResourceManager>
     {
         #region Variables
