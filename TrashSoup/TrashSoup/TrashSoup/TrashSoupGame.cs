@@ -45,7 +45,7 @@ namespace TrashSoup
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            ResourceManager.Instance.LoadContent();
+            ResourceManager.Instance.LoadContent(this);
 
             //Just for GUIButton testing
             //Will be removed after everyone sees it

@@ -200,7 +200,31 @@ namespace TrashSoup
             }
         }
 
-        public virtual void Draw() { }
+        public virtual void Draw(Camera camera) 
+        {
+            graphicsDevice.SetVertexBuffer(particleVertexBuffer);
+
+            //Only draw if there are live particles
+            if(endOfLiveParticlesIndex - endOfDeadParticlesIndex > 0)
+            {
+                for(int i = endOfDeadParticlesIndex; i < endOfLiveParticlesIndex; ++i)
+                {
+                    particleEffect.Parameters["WorldViewProjection"].SetValue(
+                        camera.ViewMatrix * camera.ProjectionMatrix);
+                    particleEffect.Parameters["particleColor"].SetValue(
+                        vertexColorArray[i].ToVector4());
+
+                    //Draw particles
+                    foreach(EffectPass pass in particleEffect.CurrentTechnique.Passes)
+                    {
+                        pass.Apply();
+
+                        graphicsDevice.DrawUserPrimitives<VertexPositionTexture>(
+                            PrimitiveType.TriangleStrip, vertices, i * 4, 2);
+                    }
+                }
+            }
+        }
         #endregion
     }
 }

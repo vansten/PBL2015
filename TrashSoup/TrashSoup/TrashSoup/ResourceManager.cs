@@ -23,6 +23,7 @@ namespace TrashSoup
         public List<Effect> Effects = new List<Effect>();
         //place for materials
         public List<Cue> Sounds = new List<Cue>();
+        public List<Particle> Particles = new List<Particle>();
         #endregion
 
         #region Methods
@@ -31,8 +32,9 @@ namespace TrashSoup
 
         }
 
-        public void LoadContent()
+        public void LoadContent(Game game)
         {
+            LoadEffects(game);
             AudioManager.Instance.LoadContent();
             LoadCues();
 
@@ -60,6 +62,12 @@ namespace TrashSoup
         {
             
             Sounds.Add(AudioManager.Instance.GetCue("Track1"));
+        }
+
+
+        private void LoadEffects(Game game)
+        {
+            Effects.Add(game.Content.Load<Effect>(@"Effects\Particle"));
         }
         #endregion
     }
