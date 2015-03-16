@@ -96,7 +96,7 @@ namespace TrashSoup
             this.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView
             (
                 this.FOV,
-                Game1.WindowWidth / Game1.WindowHeight,
+                TrashSoupGame.WindowWidth / TrashSoupGame.WindowHeight,
                 this.Near,
                 this.Far
             );

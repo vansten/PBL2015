@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace TrashSoup
 {
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class TrashSoupGame : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -26,13 +26,13 @@ namespace TrashSoup
         private GUIButton myButton;
         private Texture2D buttonNormalTexture;
 
-        public Game1()
+        public TrashSoupGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
-            Game1.WindowWidth = (float)this.Window.ClientBounds.Width;
-            Game1.WindowHeight = (float)this.Window.ClientBounds.Height;
+            TrashSoupGame.WindowWidth = (float)this.Window.ClientBounds.Width;
+            TrashSoupGame.WindowHeight = (float)this.Window.ClientBounds.Height;
         }
 
         
