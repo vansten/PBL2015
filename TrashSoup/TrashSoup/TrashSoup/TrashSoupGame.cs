@@ -20,11 +20,14 @@ namespace TrashSoup
         public static float WindowWidth { get; protected set; }
         public static float WindowHeight { get; protected set; }
 
-        //Just for GUIButton testing
-        //Will be removed after everyone sees it
+        #region Teting GUI
+
         private bool disabled = false;
-        private GUIButton myButton;
+        private List<GUIButton> myButtons = new List<GUIButton>();
         private Texture2D buttonNormalTexture;
+        private int currButton = 0;
+
+        #endregion
 
         public TrashSoupGame()
         {
@@ -47,10 +50,13 @@ namespace TrashSoup
 
             ResourceManager.Instance.LoadContent(this);
 
-            //Just for GUIButton testing
-            //Will be removed after everyone sees it
+            #region Teting GUI
+
             this.buttonNormalTexture = this.Content.Load<Texture2D>("Textures/GUITest/ButtonNormal");
-            this.myButton = new GUIButton(this.buttonNormalTexture, this.Content.Load<Texture2D>("Textures/GUITest/ButtonHover"), this.Content.Load<Texture2D>("Textures/GUITest/ButtonPressed"), this.Content.Load<Texture2D>("Textures/GUITest/ButtonDisabled"), this.ButtonPressedCallback, Vector2.Zero, this.buttonNormalTexture.Width, this.buttonNormalTexture.Height);
+            this.myButtons.Add(new GUIButton(this.buttonNormalTexture, this.Content.Load<Texture2D>("Textures/GUITest/ButtonHover"), this.Content.Load<Texture2D>("Textures/GUITest/ButtonPressed"), this.Content.Load<Texture2D>("Textures/GUITest/ButtonDisabled"), this.ButtonPressedCallback, new Vector2(0.1f, 0.0f), 0.25f, 0.1f));
+            this.myButtons.Add(new GUIButton(this.buttonNormalTexture, this.Content.Load<Texture2D>("Textures/GUITest/ButtonHover"), this.Content.Load<Texture2D>("Textures/GUITest/ButtonPressed"), this.Content.Load<Texture2D>("Textures/GUITest/ButtonDisabled"), this.Button2PressedCallback, new Vector2(0.1f, 0.4f), 0.25f, 0.1f));
+
+            #endregion
         }
 
         protected override void UnloadContent()
@@ -65,20 +71,52 @@ namespace TrashSoup
 
             base.Update(gameTime);
 
+            #region Teting GUI for game pad
+
             //Just for GUIButton testing
             //Will be removed after everyone sees it
             if(!this.disabled)
             {
-                GUIManager.Instance.DrawButton(this.myButton);
+                if(InputManager.Instance.GetGamePadButtonDown(Buttons.DPadDown))
+                {
+                    this.currButton = this.currButton - 1;
+                    if (this.currButton < 0)
+                    {
+                        this.currButton = this.myButtons.Count - 1;
+                    }
+                }
+                else if (InputManager.Instance.GetGamePadButtonDown(Buttons.DPadUp))
+                {
+                    this.currButton = this.currButton + 1;
+                    if (this.currButton > this.myButtons.Count - 1)
+                    {
+                        this.currButton = 0;
+                    }
+                }
+
+                this.myButtons[currButton].ChangeState(GUIButtonState.HOVER);
+                foreach (GUIButton button in this.myButtons)
+                {
+                    if(button != this.myButtons[currButton])
+                    {
+                        button.ChangeState(GUIButtonState.NORMAL);
+                    }
+                }
+
+                GUIManager.Instance.DrawButton(this.myButtons[0]);
+                GUIManager.Instance.DrawButton(this.myButtons[1]);
             }
             else
             {
-                if(Keyboard.GetState().IsKeyDown(Keys.Space))
+                if(InputManager.Instance.GetGamePadButtonDown(Buttons.B))
                 {
                     this.disabled = false;
-                    this.myButton.Enable();
+                    this.myButtons[0].Enable();
+                    this.myButtons[1].Enable();
                 }
             }
+
+            #endregion
 
             //Updating input manager and GUI manager 
             //because of the fact that they don't want to be a game component
@@ -96,19 +134,38 @@ namespace TrashSoup
             GUIManager.Instance.Render(this.spriteBatch);
         }
 
-        //Just for GUIButton testing
-        //Will be removed after everyone sees it
+        #region Functions for teting GUI
+
         private void ButtonPressedCallback()
         {
             if(this.disabled)
             {
-                this.myButton.Enable();
+                this.myButtons[0].Enable();
+                this.myButtons[1].Enable();
             }
             else
             {
-                this.myButton.Disable();
+                this.myButtons[0].Disable();
+                this.myButtons[1].Disable();
             }
             this.disabled = !this.disabled;
         }
+
+        private void Button2PressedCallback()
+        {
+            if (this.disabled)
+            {
+                this.myButtons[0].Enable();
+                this.myButtons[1].Enable();
+            }
+            else
+            {
+                this.myButtons[0].Disable();
+                this.myButtons[1].Disable();
+            }
+            this.disabled = !this.disabled;
+        }
+
+        #endregion
     }
 }

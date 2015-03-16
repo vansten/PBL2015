@@ -11,8 +11,9 @@ namespace TrashSoup
     {
         #region Variables
 
-        private Vector2 deltaMousePosition;
-        private Vector2 prevMousePosition;
+        private GamePadState currentGamePadState;
+        private GamePadState temporaryGamePadState;
+        private GamePadState previousGamePadState;
 
         #endregion
 
@@ -20,15 +21,14 @@ namespace TrashSoup
 
         public InputManager()
         {
-            this.prevMousePosition = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
-            this.deltaMousePosition = Vector2.Zero;
+            this.currentGamePadState = GamePad.GetState(PlayerIndex.One);
         }
 
         public void Update(GameTime gameTime)
         {
-            MouseState mouse = Mouse.GetState();
-            this.deltaMousePosition = new Vector2(mouse.X, mouse.Y) - this.prevMousePosition;
-            this.prevMousePosition = new Vector2(mouse.X, mouse.Y);
+            this.currentGamePadState = GamePad.GetState(PlayerIndex.One);
+            this.previousGamePadState = this.temporaryGamePadState;
+            this.temporaryGamePadState = this.currentGamePadState;
         }
 
         /// <summary>
@@ -37,19 +37,11 @@ namespace TrashSoup
         /// </summary>
         public Vector2 GetLeftStickValue()
         {
-            KeyboardState keyboardState = Keyboard.GetState();
-            GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
-
             float x = 0.0f;
             float y = 0.0f;
 
-            if (keyboardState.IsKeyDown(Keys.W)) y += 1.0f;
-            if (keyboardState.IsKeyDown(Keys.S)) y -= 1.0f;
-            if (keyboardState.IsKeyDown(Keys.A)) x -= 1.0f;
-            if (keyboardState.IsKeyDown(Keys.D)) x += 1.0f;
-
-            x += gamePadState.ThumbSticks.Left.X;
-            y += gamePadState.ThumbSticks.Left.Y;
+            x += this.currentGamePadState.ThumbSticks.Left.X;
+            y += this.currentGamePadState.ThumbSticks.Left.Y;
 
             return new Vector2(x, y);
         }
@@ -63,15 +55,8 @@ namespace TrashSoup
             float x = 0.0f;
             float y = 0.0f;
 
-            x += this.deltaMousePosition.X;
-            y += this.deltaMousePosition.Y;
-
-            x /= 40.0f;
-            y /= 40.0f;
-
-            GamePadState gamePad = GamePad.GetState(PlayerIndex.One);
-            x += gamePad.ThumbSticks.Right.X;
-            y += gamePad.ThumbSticks.Right.Y;
+            x += this.currentGamePadState.ThumbSticks.Right.X;
+            y += this.currentGamePadState.ThumbSticks.Right.Y;
 
             return new Vector2(x, y);
         }
@@ -82,40 +67,36 @@ namespace TrashSoup
         /// </summary>
         public bool IsAttacking()
         {
-            GamePadState gamePad = GamePad.GetState(PlayerIndex.One);
-            MouseState mouse = Mouse.GetState();
-
-            return gamePad.IsButtonDown(Buttons.RightTrigger) || (mouse.LeftButton == ButtonState.Pressed);
-        }
-
-
-        /// <summary>
-        /// 
-        /// Returns current mouse position
-        /// </summary>
-        public Vector2 GetMousePosition()
-        {
-            MouseState mouse = Mouse.GetState();
-
-            return new Vector2(mouse.X, mouse.Y);
+            return this.currentGamePadState.IsButtonDown(Buttons.RightTrigger);
         }
 
         /// <summary>
         /// 
-        /// Returns true if LMB is pressed
+        /// Returns true if button passed is pressed once
         /// </summary>
-        public bool IsLeftMouseButtonDown()
+        public bool GetGamePadButtonDown(Buttons button)
         {
-            return Mouse.GetState().LeftButton == ButtonState.Pressed;
+            bool condition = this.currentGamePadState.IsButtonDown(button) && this.previousGamePadState.IsButtonUp(button);
+            return condition;
         }
 
         /// <summary>
         /// 
-        /// Returns true if LMB is released
+        /// Returns true if button passed is not pressed
         /// </summary>
-        public bool IsLeftMouseButtonUp()
+        public bool GetGamePadButtonUp(Buttons button)
         {
-            return Mouse.GetState().LeftButton == ButtonState.Released;
+            bool condition = this.currentGamePadState.IsButtonUp(button) && this.previousGamePadState.IsButtonDown(button);
+            return condition;
+        }
+
+        /// <summary>
+        /// 
+        /// Returns true if button pass is being pressed
+        /// </summary>
+        public bool GetGamePadButton(Buttons button)
+        {
+            return this.currentGamePadState.IsButtonDown(button);
         }
         
         #endregion

@@ -39,15 +39,19 @@ namespace TrashSoup
         protected float width;
         protected float height;
 
+        protected Rectangle myRectangle;
+
         #endregion
 
         #region Methods
 
         public GUIElement(Vector2 pos, float width, float height)
         {
-            this.position = pos;
+            this.position = new Vector2(pos.X * TrashSoupGame.WindowWidth, pos.Y * TrashSoupGame.WindowHeight);
             this.width = width;
             this.height = height;
+
+            this.myRectangle = new Rectangle((int)this.position.X, (int)this.position.Y, (int)(this.width * TrashSoupGame.WindowWidth), (int)(this.height * TrashSoupGame.WindowHeight));
         }
 
         public GUIElement(Rectangle rect)
@@ -55,6 +59,8 @@ namespace TrashSoup
             this.position = new Vector2(rect.X, rect.Y);
             this.width = rect.Width;
             this.height = rect.Height;
+
+            this.myRectangle = rect;
         }
 
         #endregion
@@ -88,19 +94,22 @@ namespace TrashSoup
 
         #region Methods
 
-        public GUITexture(Texture2D texture, Rectangle rect) : base(rect)
+        public GUITexture(Texture2D texture, Rectangle rect)
+            : base(rect)
         {
             this.texture = texture;
         }
 
-        public GUITexture(Texture2D texture, Vector2 position, float width, float height) : base(position, width, height)
+        public GUITexture(Texture2D texture, Vector2 position, float width, float height)
+            : base(position, width, height)
         {
             this.texture = texture;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.texture, this.position, Color.White);
+            //spriteBatch.Draw(this.texture, this.position, Color.White);
+            spriteBatch.Draw(this.texture, this.myRectangle, Color.White);
             base.Draw(spriteBatch);
         }
 
@@ -167,7 +176,8 @@ namespace TrashSoup
         /// Constructor of GUIButton
         /// </summary>
         /// <param name="callbackEvent">Function that will be called when button is pressed</param>
-        public GUIButton(Texture2D normal, Texture2D hover, Texture2D pressed, Texture2D disabled, ButtonPressedCallback callbackEvent, Vector2 position, float width, float height) : base(position, width, height)
+        public GUIButton(Texture2D normal, Texture2D hover, Texture2D pressed, Texture2D disabled, ButtonPressedCallback callbackEvent, Vector2 position, float width, float height)
+            : base(position, width, height)
         {
             this.normalTexture = normal;
             this.hoverTexture = hover;
@@ -184,7 +194,8 @@ namespace TrashSoup
         /// Constructor of GUIButton
         /// </summary>
         /// <param name="callbackEvent">Function that will be called when button is pressed</param>
-        public GUIButton(Texture2D normal, Texture2D hover, Texture2D pressed, Texture2D disabled, ButtonPressedCallback callbackEvent, Rectangle rect) : base(rect)
+        public GUIButton(Texture2D normal, Texture2D hover, Texture2D pressed, Texture2D disabled, ButtonPressedCallback callbackEvent, Rectangle rect)
+            : base(rect)
         {
             this.normalTexture = normal;
             this.hoverTexture = hover;
@@ -201,7 +212,8 @@ namespace TrashSoup
         /// Constructor of GUIButton
         /// </summary>
         /// <param name="callbackEvent">Function that will be called when button is pressed</param>
-        public GUIButton(Texture2D normal, Texture2D hover, Texture2D pressed, Texture2D disabled, ButtonPressedCallback callbackEvent, GUIButtonState startState, Vector2 position, float width, float height) : base(position, width, height)
+        public GUIButton(Texture2D normal, Texture2D hover, Texture2D pressed, Texture2D disabled, ButtonPressedCallback callbackEvent, GUIButtonState startState, Vector2 position, float width, float height)
+            : base(position, width, height)
         {
             this.normalTexture = normal;
             this.hoverTexture = hover;
@@ -234,7 +246,8 @@ namespace TrashSoup
         /// Constructor of GUIButton
         /// </summary>
         /// <param name="callbackEvent">Function that will be called when button is pressed</param>
-        public GUIButton(Texture2D normal, Texture2D hover, Texture2D pressed, Texture2D disabled, ButtonPressedCallback callbackEvent, GUIButtonState startState, Rectangle rect) : base(rect)
+        public GUIButton(Texture2D normal, Texture2D hover, Texture2D pressed, Texture2D disabled, ButtonPressedCallback callbackEvent, GUIButtonState startState, Rectangle rect)
+            : base(rect)
         {
             this.normalTexture = normal;
             this.hoverTexture = hover;
@@ -280,48 +293,31 @@ namespace TrashSoup
             this.ChangeState(GUIButtonState.NORMAL);
         }
 
-
         /// <summary>
         /// 
         /// Updates GUIButton state
         /// </summary>
         public override void Update(GameTime gameTime)
         {
-            Vector2 mousePosition = InputManager.Instance.GetMousePosition();
-
             switch(this.myState)
             {
                 case GUIButtonState.DISABLED:
                     return;
                 case GUIButtonState.HOVER:
-                    if(InputManager.Instance.IsLeftMouseButtonDown())
+                    if(InputManager.Instance.GetGamePadButtonDown(Microsoft.Xna.Framework.Input.Buttons.A))
                     {
                         this.ChangeState(GUIButtonState.PRESSED);
                     }
-
-                    if (!(mousePosition.X > this.position.X && mousePosition.X < (this.position.X + this.width) && mousePosition.Y > this.position.Y && mousePosition.Y < (this.position.Y + this.height)))
-                    {
-                        this.ChangeState(GUIButtonState.NORMAL);
-                    }
                     break;
                 case GUIButtonState.NORMAL:
-                    if (mousePosition.X > this.position.X && mousePosition.X < (this.position.X + this.width) && mousePosition.Y > this.position.Y && mousePosition.Y < (this.position.Y + this.height))
-                    {
-                        this.ChangeState(GUIButtonState.HOVER);
-                    }
                     break;
                 case GUIButtonState.PRESSED:
-                    if(InputManager.Instance.IsLeftMouseButtonUp())
+                    if (InputManager.Instance.GetGamePadButtonUp(Microsoft.Xna.Framework.Input.Buttons.A))
                     {
                         if(this.callbackEvent != null)
                         {
                             callbackEvent();
                         }
-                    }
-
-                    if (!(mousePosition.X > this.position.X && mousePosition.X < (this.position.X + this.width) && mousePosition.Y > this.position.Y && mousePosition.Y < (this.position.Y + this.height)))
-                    {
-                        this.ChangeState(GUIButtonState.NORMAL);
                     }
                     break;
             }
@@ -331,8 +327,9 @@ namespace TrashSoup
         /// 
         /// Changes GUIButton state to passed in params
         /// </summary>
-        private void ChangeState(GUIButtonState newState)
+        public void ChangeState(GUIButtonState newState)
         {
+            if (this.myState == GUIButtonState.PRESSED && newState == GUIButtonState.HOVER) return;
             this.myState = newState;
             this.currentTexture = null;
 
@@ -373,7 +370,7 @@ namespace TrashSoup
         {
             if(this.currentTexture != null)
             {
-                spriteBatch.Draw(this.currentTexture, this.position, Color.White);
+                spriteBatch.Draw(this.currentTexture, this.myRectangle, Color.White);
             }
 
             base.Draw(spriteBatch);
