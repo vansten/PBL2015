@@ -15,6 +15,10 @@ namespace TrashSoup
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        
+        //camera needs it
+        public static float WindowWidth { get; protected set; }
+        public static float WindowHeight { get; protected set; }
 
         //Just for GUIButton testing
         //Will be removed after everyone sees it
@@ -27,6 +31,8 @@ namespace TrashSoup
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
+            Game1.WindowWidth = (float)this.Window.ClientBounds.Width;
+            Game1.WindowHeight = (float)this.Window.ClientBounds.Height;
         }
 
         

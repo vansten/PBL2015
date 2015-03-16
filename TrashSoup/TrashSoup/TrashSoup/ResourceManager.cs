@@ -36,7 +36,8 @@ namespace TrashSoup
             AudioManager.Instance.LoadContent();
             LoadCues();
 
-            AudioManager.Instance.PlayCue(GetCueFromCueList("Track1")); //default music from tutorial, just to check that everything works xD
+            // because it pisses me off - Mav
+            //AudioManager.Instance.PlayCue(GetCueFromCueList("Track1")); //default music from tutorial, just to check that everything works xD
             
         }
 
@@ -57,6 +58,7 @@ namespace TrashSoup
         /// </summary>
         private void LoadCues()
         {
+            
             Sounds.Add(AudioManager.Instance.GetCue("Track1"));
         }
         #endregion
