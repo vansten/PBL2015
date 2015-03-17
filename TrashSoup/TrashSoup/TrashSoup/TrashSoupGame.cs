@@ -35,6 +35,7 @@ namespace TrashSoup
             Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
             Instance = this;
+            Debug.Log("Engine start");
         }
 
         
