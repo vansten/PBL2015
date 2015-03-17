@@ -105,7 +105,7 @@ namespace TrashSoup.Engine
         /// </summary>
         public void AddForce(Vector3 force)
         {
-            this.acceleration = force / this.Mass;
+            this.acceleration += force / this.Mass;
         }
 
         public override void Update(GameTime gameTime)
