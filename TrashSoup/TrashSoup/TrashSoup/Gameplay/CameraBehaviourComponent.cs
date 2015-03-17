@@ -9,14 +9,20 @@ namespace TrashSoup.Gameplay
 {
     public class CameraBehaviourComponent : ObjectComponent
     {
+        #region constants
+
+        protected const float CAM_YAW_SENSITIVITY = MathHelper.PiOver4 / 30.0f;
+        protected const float CAM_PITCH_SENSITIVITY = MathHelper.PiOver4 / 30.0f;
+        protected const float CAM_TOTAL_PITCH = MathHelper.PiOver2;
+        protected const float CAM_DISTANCE = 60.0f;
+
+        #endregion
+
         #region variables
 
         protected Camera cam;
 
-        protected float totalYaw = MathHelper.PiOver2 - 0.01f;
-        protected float currentYaw = 0.0f;
         protected float tempYaw;
-        protected float totalPitch = MathHelper.PiOver2 - 1.0f;
         protected float currentPitch = 0.0f;
         protected float tempPitch;
 
@@ -31,23 +37,21 @@ namespace TrashSoup.Gameplay
 
         public override void Update(GameTime gameTime)
         {
-            tempYaw = -MathHelper.PiOver4 / 45.0f * (InputManager.Instance.GetRightStickValue().X);
-            tempPitch = MathHelper.PiOver4 / 135.0f * (InputManager.Instance.GetRightStickValue().Y);
+            tempYaw = CAM_YAW_SENSITIVITY * (InputManager.Instance.GetRightStickValue().X);
+            tempPitch = -CAM_PITCH_SENSITIVITY * (InputManager.Instance.GetRightStickValue().Y);
             cam.Right = Vector3.Cross(cam.Direction, cam.Up);
 
-            if (Math.Abs(currentPitch + tempPitch) < totalPitch)
+            if (Math.Abs(currentPitch + tempPitch) < CAM_TOTAL_PITCH)
             {
                 currentPitch += tempPitch;
-                cam.Direction = Vector3.Transform(cam.Direction,
+                cam.Position = cam.Position / cam.Position.Length();
+                cam.Position = CAM_DISTANCE * cam.Position;
+                cam.Position = Vector3.Transform(cam.Position,
                     Matrix.CreateFromAxisAngle(cam.Right, tempPitch));
             }
 
-            if (Math.Abs(currentYaw + tempYaw) < totalYaw)
-            {
-                currentYaw += tempYaw;
-                cam.Direction = Vector3.Transform(cam.Direction,
+            cam.Position = Vector3.Transform(cam.Position,
                     Matrix.CreateFromAxisAngle(cam.Up, tempYaw));
-            }
         }
 
         public override void Draw(GameTime gameTime)

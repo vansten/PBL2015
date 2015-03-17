@@ -29,6 +29,7 @@ namespace TrashSoup.Engine
 
         public Vector3 Position { get; set; }
         public Vector3 Direction { get; set; }
+        public Vector3 Target { get; set; }
         public Vector3 Up { get; set; }
         public Vector3 Right { get; set; }
         public float Speed { get; set; }
@@ -45,8 +46,10 @@ namespace TrashSoup.Engine
         {
             this.Position = pos;
             this.Direction = target - pos;
+            this.Target = target;
             this.Direction.Normalize();
             this.Up = up;
+            this.Up.Normalize();
             this.Right = Vector3.Cross(this.Direction, this.Up);
             this.FOV = fov;
             this.Near = near;
@@ -61,7 +64,10 @@ namespace TrashSoup.Engine
         {
             base.Update(gameTime);
 
-            Direction.Normalize();
+            this.Direction = this.Target - this.Position;
+            this.Direction = this.Direction / this.Direction.Length();
+            this.Up.Normalize();
+            this.Direction.Normalize();
 
             CreateLookAt();
         }
@@ -79,9 +85,9 @@ namespace TrashSoup.Engine
             );
         }
 
-        private void CreateLookAt()
+        protected void CreateLookAt()
         {
-            this.ViewMatrix = Matrix.CreateLookAt(Position, Position + Direction, Up);
+            this.ViewMatrix = Matrix.CreateLookAt(Position, Target, Up);
         }
         #endregion
     }
