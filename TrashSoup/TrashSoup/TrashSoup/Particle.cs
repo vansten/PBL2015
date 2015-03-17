@@ -83,7 +83,9 @@ namespace TrashSoup
         //Array indices
         protected int endOfLiveParticlesIndex = 0;
         protected int endOfDeadParticlesIndex = 0;
+        #endregion
 
+        #region Properties
         public bool IsDead { get { return endOfDeadParticlesIndex == particleSettings.maxParticles; } }
         #endregion
 
