@@ -68,8 +68,6 @@ namespace TrashSoup
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
-            base.Update(gameTime);
-
             #region Teting GUI for game pad
 
             //Just for GUIButton testing
@@ -123,24 +121,28 @@ namespace TrashSoup
             GUIManager.Instance.Update(gameTime);
             AudioManager.Instance.Update(gameTime);
 
+            ResourceManager.Instance.CurrentScene.Cam.Update(gameTime);
             //Updating scene, only for testing?
-            foreach(GameObject obj in ResourceManager.Instance.CurrentScene.ObjectsList)
+            ResourceManager.Instance.CurrentScene.Cam.Update(gameTime);
+            foreach(GameObject obj in ResourceManager.Instance.CurrentScene.ObjectsDictionary.Values)
             {
                 obj.Update(gameTime);
             }
+
+            base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            base.Draw(gameTime);
-
             //Drawing scene, only for testing?
-            foreach (GameObject obj in ResourceManager.Instance.CurrentScene.ObjectsList)
+            foreach (GameObject obj in ResourceManager.Instance.CurrentScene.ObjectsDictionary.Values)
             {
                 obj.Draw(gameTime);
             }
+
+            base.Draw(gameTime);
 
             GUIManager.Instance.Render(this.spriteBatch);
         }

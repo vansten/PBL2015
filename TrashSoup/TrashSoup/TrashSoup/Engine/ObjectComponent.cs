@@ -9,13 +9,24 @@ namespace TrashSoup.Engine
     public abstract class ObjectComponent
     {
         #region variables
+
         protected GameObject myObject;
+
+        #endregion
+
+        #region properties
+
+        public bool Enabled { get; set; }
+        public bool Visible { get; set; }
+
         #endregion
 
         #region methods
         public ObjectComponent(GameObject myObj)
         {
             this.myObject = myObj;
+            this.Enabled = true;
+            this.Visible = true;
         }
 
         public abstract void Update(GameTime gameTime);

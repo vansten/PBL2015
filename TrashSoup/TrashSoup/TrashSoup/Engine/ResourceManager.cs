@@ -42,9 +42,24 @@ namespace TrashSoup.Engine
 
             // because it pisses me off - Mav
             //AudioManager.Instance.PlayCue(GetCueFromCueList("Track1")); //default music from tutorial, just to check that everything works xD
+
+            // FOR TETIN
+            Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\cargo"));
+            Models.Add(game.Content.Load<Model>(@"Models\Test\TestBox"));
+
             CurrentScene = new Scene(new SceneParams(0, "test"));
-            Camera cam = new Camera(1, "playerCam", new Vector3(0.0f, 0.0f, -5.0f), new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.PiOver4, 0.01f, 2000.0f);
+            Camera cam = new Camera(1, "playerCam", new Vector3(25.0f, 25.0f, 25.0f), new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.PiOver4, 0.01f, 2000.0f);
             cam.Components.Add(new CameraBehaviourComponent(cam));
+
+            GameObject testBox = new GameObject(1, "testBox");
+            List<Material> matList = new List<Material>();
+            matList.Add(new Material(Textures[0], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
+            testBox.MyTransform = new Transform(testBox);
+            //testBox.MyTransform.Scale = 0.1f;
+            testBox.Components.Add(new CustomModel(testBox, new Model[] { Models[0], null, null }, 3, matList));
+
+            CurrentScene.Cam = cam;
+            CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);
         }
 
         /// <summary>

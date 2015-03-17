@@ -73,7 +73,7 @@ namespace TrashSoup.Engine
             this.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView
             (
                 this.FOV,
-                TrashSoupGame.Instance.Window.ClientBounds.Width / TrashSoupGame.Instance.Window.ClientBounds.Height,
+                (float)TrashSoupGame.Instance.Window.ClientBounds.Width / (float)TrashSoupGame.Instance.Window.ClientBounds.Height,
                 this.Near,
                 this.Far
             );

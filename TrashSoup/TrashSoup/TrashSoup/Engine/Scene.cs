@@ -32,7 +32,7 @@ namespace TrashSoup.Engine
         public SceneParams Params { get; set; }
         public Camera Cam { get; set; }
 
-        public List<GameObject> ObjectsList { get; protected set; }
+        public Dictionary<uint, GameObject> ObjectsDictionary { get; protected set; }
         public QuadTree<GameObject> ObjectsQT { get; protected set; }
         // place for bounding sphere tree
 
@@ -43,7 +43,7 @@ namespace TrashSoup.Engine
         {
             this.Params = par;
 
-            ObjectsList = new List<GameObject>();
+            ObjectsDictionary = new Dictionary<uint, GameObject>();
             ObjectsQT = new QuadTree<GameObject>();
         }
 

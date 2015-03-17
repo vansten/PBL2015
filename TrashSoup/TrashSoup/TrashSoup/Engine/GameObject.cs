@@ -11,18 +11,9 @@ namespace TrashSoup.Engine
     [Serializable]
     public class GameObject
     {
-        #region staticVariables
-        public enum LODStateEnum
-        {
-            HI,
-            MED,
-            LO
-        }
-        #endregion
-
         #region variables
 
-        protected GraphicsDeviceManager graphicsManager;
+       
 
         #endregion
 
@@ -30,9 +21,12 @@ namespace TrashSoup.Engine
         public uint UniqueID { get; protected set; }
         public string Name { get; protected set; }
         public List<string> Tags { get; set; }
+        public bool Enabled { get; set; }
+        public bool Visible { get; set; }
 
-        public LODStateEnum LODState { get; set; }   // <-- I think this will go to the CustomModel class
+        public Transform MyTransform { get; set; }
         public List<ObjectComponent> Components { get; set; }
+        public GraphicsDeviceManager GraphicsManager { get; protected set; }
 
         #endregion
 
@@ -42,24 +36,32 @@ namespace TrashSoup.Engine
             this.UniqueID = uniqueID;
             this.Name = name;
 
-            Components = new List<ObjectComponent>();
-            graphicsManager = TrashSoupGame.Instance.GraphicsManager;
-            LODState = LODStateEnum.HI;
+            this.Components = new List<ObjectComponent>();
+            this.GraphicsManager = TrashSoupGame.Instance.GraphicsManager;
+
+            this.Enabled = true;
+            this.Visible = true;
         }
 
         public virtual void Update(GameTime gameTime)
         {
-            foreach(ObjectComponent obj in Components)
+            if(this.Enabled)
             {
-                obj.Update(gameTime);
+                foreach (ObjectComponent obj in Components)
+                {
+                    obj.Update(gameTime);
+                }
             }
         }
 
         public virtual void Draw(GameTime gameTime)
         {
-            foreach (ObjectComponent obj in Components)
+            if(this.Visible)
             {
-                obj.Draw(gameTime);
+                foreach (ObjectComponent obj in Components)
+                {
+                    obj.Draw(gameTime);
+                }
             }
         }
         #endregion
