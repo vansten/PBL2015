@@ -124,10 +124,33 @@ namespace TrashSoup
 
             ResourceManager.Instance.CurrentScene.Cam.Update(gameTime);
             //Updating scene, only for testing?
+            //[vansten] Of course it's only for testing, this should be in Scene update method
+            //[vansten] Added testing code for physics simulation
             ResourceManager.Instance.CurrentScene.Cam.Update(gameTime);
             foreach(GameObject obj in ResourceManager.Instance.CurrentScene.ObjectsDictionary.Values)
             {
                 obj.Update(gameTime);
+                if(gameTime.TotalGameTime.Seconds > 8)  //time to turn off physics
+                {
+                    if(obj.MyPhysicalObject != null)
+                    {
+                        obj.MyPhysicalObject = null;
+                    }
+                }
+                else if(gameTime.TotalGameTime.Seconds > 4) //time to awake
+                {
+                    if(obj.MyPhysicalObject != null && obj.MyPhysicalObject.Sleeping)
+                    {
+                        obj.MyPhysicalObject.Awake();
+                    }
+                }
+                else if(gameTime.TotalGameTime.Seconds > 2) //time to go sleep for a while
+                {
+                    if (obj.MyPhysicalObject != null && !obj.MyPhysicalObject.Sleeping)
+                    {
+                        obj.MyPhysicalObject.Sleep();
+                    }
+                }
             }
 
             base.Update(gameTime);

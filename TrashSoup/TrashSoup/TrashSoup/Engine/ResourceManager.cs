@@ -58,6 +58,10 @@ namespace TrashSoup.Engine
             //testBox.MyTransform.Scale = 0.1f;
             testBox.Components.Add(new CustomModel(testBox, new Model[] { Models[0], null, null }, 3, matList));
 
+            //Physics teting, the box just should jump a little and then fall
+            testBox.MyPhysicalObject = new PhysicalObject(testBox, 1.0f, 0.05f, true);
+            testBox.MyPhysicalObject.AddForce(new Vector3(0.0f, 20.0f, 50.0f));
+
             CurrentScene.Cam = cam;
             CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);
         }
