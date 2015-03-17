@@ -48,7 +48,8 @@ namespace TrashSoup.Engine
             Models.Add(game.Content.Load<Model>(@"Models\Test\TestBox"));
 
             CurrentScene = new Scene(new SceneParams(0, "test"));
-            Camera cam = new Camera(1, "playerCam", new Vector3(25.0f, 25.0f, 25.0f), new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.PiOver4, 0.01f, 2000.0f);
+            Camera cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 10.0f, 1.0f), Matrix.CreateRotationX(MathHelper.PiOver4)), 
+                new Vector3(0.0f, 10.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.PiOver4, 0.01f, 2000.0f);
             cam.Components.Add(new CameraBehaviourComponent(cam));
 
             GameObject testBox = new GameObject(1, "testBox");
