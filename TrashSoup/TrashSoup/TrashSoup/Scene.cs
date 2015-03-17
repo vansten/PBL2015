@@ -10,10 +10,11 @@ namespace TrashSoup
     [Serializable]
     public class SceneParams
     {
-        #region variables
+        #region properties
         public uint UniqueID { get; set; }
         public string Name { get; set; }
         #endregion
+
         #region methods
         public SceneParams(uint uniqueID, string name)
         {
@@ -26,14 +27,15 @@ namespace TrashSoup
     [Serializable]
     public class Scene
     {
-        #region variables
-        public SceneParams Params { get; set; }
+        #region properties
 
+        public SceneParams Params { get; set; }
         public Camera Cam { get; set; }
 
-        protected List<GameObject> objectsList;
-        protected QuadTree<GameObject> objectsQT;
+        public List<GameObject> ObjectsList { get; protected set; }
+        public QuadTree<GameObject> ObjectsQT { get; protected set; }
         // place for bounding sphere tree
+
         #endregion
 
         #region methods
@@ -41,8 +43,8 @@ namespace TrashSoup
         {
             this.Params = par;
 
-            objectsList = new List<GameObject>();
-            objectsQT = new QuadTree<GameObject>();
+            ObjectsList = new List<GameObject>();
+            ObjectsQT = new QuadTree<GameObject>();
         }
 
         public void AddObject(GameObject obj)

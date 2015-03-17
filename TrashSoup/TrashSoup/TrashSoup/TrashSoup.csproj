@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="AudioManager.cs" />
     <Compile Include="Camera.cs" />
+    <Compile Include="CameraBehaviourComponent.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="GUIManager.cs" />
     <Compile Include="InputManager.cs" />

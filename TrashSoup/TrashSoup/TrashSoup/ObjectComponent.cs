@@ -9,8 +9,9 @@ namespace TrashSoup
     public abstract class ObjectComponent
     {
         #region variables
-        GameObject myObject;
+        protected GameObject myObject;
         #endregion
+
         #region methods
         public ObjectComponent(GameObject myObj)
         {

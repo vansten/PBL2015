@@ -8,12 +8,20 @@ namespace TrashSoup
 {
     public class QuadTreeNode<T>
     {
-        #region variables
+        #region properties
+
         public T Parent { get; set; }
         public T Me { get; set; }
         public Rectangle MyRect { get; set; }
-        public T[] Children = new T[4];
+        
         #endregion
+
+        #region variables
+
+        public T[] Children = new T[4];
+
+        #endregion
+
         #region methods
         public QuadTreeNode(T parent, T me, Rectangle rect)
         {

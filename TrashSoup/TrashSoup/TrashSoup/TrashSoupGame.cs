@@ -13,12 +13,10 @@ namespace TrashSoup
 {
     public class TrashSoupGame : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
+        public static TrashSoupGame Instance { get; protected set; }
+
+        public GraphicsDeviceManager GraphicsManager { get; protected set; }
         SpriteBatch spriteBatch;
-        
-        //camera needs it
-        public static float WindowWidth { get; protected set; }
-        public static float WindowHeight { get; protected set; }
 
         #region Teting GUI
 
@@ -31,11 +29,10 @@ namespace TrashSoup
 
         public TrashSoupGame()
         {
-            graphics = new GraphicsDeviceManager(this);
+            GraphicsManager = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
-            TrashSoupGame.WindowWidth = (float)this.Window.ClientBounds.Width;
-            TrashSoupGame.WindowHeight = (float)this.Window.ClientBounds.Height;
+            Instance = this;
         }
 
         
@@ -123,6 +120,12 @@ namespace TrashSoup
             InputManager.Instance.Update(gameTime);
             GUIManager.Instance.Update(gameTime);
             AudioManager.Instance.Update(gameTime);
+
+            //Updating scene, only for testing?
+            foreach(GameObject obj in ResourceManager.Instance.CurrentScene.ObjectsList)
+            {
+                obj.Update(gameTime);
+            }
         }
 
         protected override void Draw(GameTime gameTime)
@@ -130,6 +133,12 @@ namespace TrashSoup
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             base.Draw(gameTime);
+
+            //Drawing scene, only for testing?
+            foreach (GameObject obj in ResourceManager.Instance.CurrentScene.ObjectsList)
+            {
+                obj.Draw(gameTime);
+            }
 
             GUIManager.Instance.Render(this.spriteBatch);
         }

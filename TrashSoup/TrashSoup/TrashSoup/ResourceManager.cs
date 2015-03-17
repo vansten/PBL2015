@@ -16,7 +16,7 @@ namespace TrashSoup
     class ResourceManager : Singleton<ResourceManager>
     {
         #region Variables
-        //place for scene
+        public Scene CurrentScene;
         public List<Model> Models = new List<Model>();
         public List<Texture2D> Textures = new List<Texture2D>();
         public List<SpriteFont> Fonts = new List<SpriteFont>();
@@ -40,7 +40,9 @@ namespace TrashSoup
 
             // because it pisses me off - Mav
             //AudioManager.Instance.PlayCue(GetCueFromCueList("Track1")); //default music from tutorial, just to check that everything works xD
-            
+            CurrentScene = new Scene(new SceneParams(0, "test"));
+            Camera cam = new Camera(1, "playerCam", new Vector3(0.0f, 0.0f, -5.0f), new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.PiOver4, 0.01f, 2000.0f);
+            cam.Components.Add(new CameraBehaviourComponent(cam));
         }
 
         /// <summary>

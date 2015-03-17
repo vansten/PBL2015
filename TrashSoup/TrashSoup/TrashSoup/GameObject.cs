@@ -19,26 +19,35 @@ namespace TrashSoup
             LO
         }
         #endregion
-        #region variables
-        public readonly uint UniqueID;
-        public readonly string Name;
-        public List<string> Tags;
 
-        public LODStateEnum LODState;   // <-- I think this will go to the CustomModel class
+        #region variables
+
+        protected GraphicsDeviceManager graphicsManager;
+
+        #endregion
+
+        #region properties
+        public uint UniqueID { get; protected set; }
+        public string Name { get; protected set; }
+        public List<string> Tags { get; set; }
+
+        public LODStateEnum LODState { get; set; }   // <-- I think this will go to the CustomModel class
         public List<ObjectComponent> Components { get; set; }
 
-        public GraphicsDeviceManager graphicsDevice;
         #endregion
+
         #region methods
         public GameObject(uint uniqueID, string name)
         {
             this.UniqueID = uniqueID;
             this.Name = name;
 
+            Components = new List<ObjectComponent>();
+            graphicsManager = TrashSoupGame.Instance.GraphicsManager;
             LODState = LODStateEnum.HI;
         }
 
-        public void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime)
         {
             foreach(ObjectComponent obj in Components)
             {
@@ -46,7 +55,7 @@ namespace TrashSoup
             }
         }
 
-        public void Draw(GameTime gameTime)
+        public virtual void Draw(GameTime gameTime)
         {
             foreach (ObjectComponent obj in Components)
             {

@@ -47,11 +47,12 @@ namespace TrashSoup
 
         public GUIElement(Vector2 pos, float width, float height)
         {
-            this.position = new Vector2(pos.X * TrashSoupGame.WindowWidth, pos.Y * TrashSoupGame.WindowHeight);
+            this.position = new Vector2(pos.X * TrashSoupGame.Instance.Window.ClientBounds.Width, pos.Y * TrashSoupGame.Instance.Window.ClientBounds.Height);
             this.width = width;
             this.height = height;
 
-            this.myRectangle = new Rectangle((int)this.position.X, (int)this.position.Y, (int)(this.width * TrashSoupGame.WindowWidth), (int)(this.height * TrashSoupGame.WindowHeight));
+            this.myRectangle = new Rectangle((int)this.position.X, (int)this.position.Y, (int)(this.width * TrashSoupGame.Instance.Window.ClientBounds.Width),
+                (int)(this.height * TrashSoupGame.Instance.Window.ClientBounds.Width));
         }
 
         public GUIElement(Rectangle rect)
