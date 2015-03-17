@@ -84,6 +84,8 @@
     <Compile Include="Engine\CustomModel.cs" />
     <Compile Include="Engine\Debug.cs" />
     <Compile Include="Engine\Material.cs" />
+    <Compile Include="Engine\PhysicalObject.cs" />
+    <Compile Include="Engine\PhysicsManager.cs" />
     <Compile Include="Engine\Transform.cs" />
     <Compile Include="Gameplay\CameraBehaviourComponent.cs" />
     <Compile Include="Engine\GameObject.cs" />

@@ -13,7 +13,7 @@ namespace TrashSoup.Engine
     {
         #region variables
 
-       
+        private PhysicalObject myPhisicalObject;
 
         #endregion
 
@@ -25,6 +25,28 @@ namespace TrashSoup.Engine
         public bool Visible { get; set; }
 
         public Transform MyTransform { get; set; }
+
+        public PhysicalObject MyPhysicalObject 
+        {
+            get
+            {
+                return this.myPhisicalObject;
+            }
+            set
+            {
+                if(value == null)
+                {
+                    PhysicsManager.Instance.RemovePhysicalObject(this);
+                }
+                else
+                {
+                    PhysicsManager.Instance.AddPhysicalObject(this);
+                }
+
+                this.myPhisicalObject = value;
+            }
+        }
+
         public List<ObjectComponent> Components { get; set; }
         public GraphicsDeviceManager GraphicsManager { get; protected set; }
 
@@ -47,6 +69,11 @@ namespace TrashSoup.Engine
         {
             if(this.Enabled)
             {
+                if(this.MyPhysicalObject != null)
+                {
+                    this.MyPhysicalObject.Update(gameTime);
+                }
+
                 foreach (ObjectComponent obj in Components)
                 {
                     obj.Update(gameTime);

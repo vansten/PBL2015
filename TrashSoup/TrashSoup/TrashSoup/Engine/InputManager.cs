@@ -12,7 +12,6 @@ namespace TrashSoup.Engine
         #region Variables
 
         private GamePadState currentGamePadState;
-        private GamePadState temporaryGamePadState;
         private GamePadState previousGamePadState;
 
         #endregion
@@ -26,9 +25,8 @@ namespace TrashSoup.Engine
 
         public void Update(GameTime gameTime)
         {
+            this.previousGamePadState = this.currentGamePadState;
             this.currentGamePadState = GamePad.GetState(PlayerIndex.One);
-            this.previousGamePadState = this.temporaryGamePadState;
-            this.temporaryGamePadState = this.currentGamePadState;
         }
 
         /// <summary>
@@ -37,11 +35,8 @@ namespace TrashSoup.Engine
         /// </summary>
         public Vector2 GetLeftStickValue()
         {
-            float x = 0.0f;
-            float y = 0.0f;
-
-            x += this.currentGamePadState.ThumbSticks.Left.X;
-            y += this.currentGamePadState.ThumbSticks.Left.Y;
+            float x = this.currentGamePadState.ThumbSticks.Left.X;
+            float y = this.currentGamePadState.ThumbSticks.Left.Y;
 
             return new Vector2(x, y);
         }
@@ -52,22 +47,10 @@ namespace TrashSoup.Engine
         /// </summary>
         public Vector2 GetRightStickValue()
         {
-            float x = 0.0f;
-            float y = 0.0f;
-
-            x += this.currentGamePadState.ThumbSticks.Right.X;
-            y += this.currentGamePadState.ThumbSticks.Right.Y;
+            float x = this.currentGamePadState.ThumbSticks.Right.X;
+            float y = this.currentGamePadState.ThumbSticks.Right.Y;
 
             return new Vector2(x, y);
-        }
-
-        /// <summary>
-        /// 
-        /// Returns flag that tell you if the player is attacking (clicks Left Mouse Button or gamepad attack button)
-        /// </summary>
-        public bool IsAttacking()
-        {
-            return this.currentGamePadState.IsButtonDown(Buttons.RightTrigger);
         }
 
         /// <summary>
