@@ -45,21 +45,31 @@ namespace TrashSoup.Engine
 
             // FOR TETIN
             Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\cargo"));
+            Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\metal01_d"));
             Models.Add(game.Content.Load<Model>(@"Models\Test\TestBox"));
+            Models.Add(game.Content.Load<Model>(@"Models\Test\TestTerrain"));
 
             CurrentScene = new Scene(new SceneParams(0, "test"));
             Camera cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 10.0f, 1.0f), Matrix.CreateRotationX(MathHelper.PiOver4)), 
-                new Vector3(0.0f, 10.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.PiOver4, 0.01f, 2000.0f);
+                 new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 10.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.PiOver4, 0.01f, 2000.0f);
             cam.Components.Add(new CameraBehaviourComponent(cam));
 
             GameObject testBox = new GameObject(1, "testBox");
             List<Material> matList = new List<Material>();
             matList.Add(new Material(Textures[0], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
             testBox.MyTransform = new Transform(testBox);
-            //testBox.MyTransform.Scale = 0.1f;
             testBox.Components.Add(new CustomModel(testBox, new Model[] { Models[0], null, null }, 3, matList));
 
+            GameObject testTer = new GameObject(2, "testTer");
+            List<Material> matList2 = new List<Material>();
+            matList2.Add(new Material(Textures[1], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
+            testTer.MyTransform = new Transform(testTer);
+            testTer.MyTransform.Scale = 5.0f;
+            //testTer.MyTransform.Rotation = new Vector3(MathHelper.PiOver2, 0.0f, 0.0f);
+            testTer.Components.Add(new CustomModel(testTer, new Model[] { Models[1], null, null }, 3, matList2));
+
             CurrentScene.Cam = cam;
+            CurrentScene.ObjectsDictionary.Add(testTer.UniqueID, testTer);
             CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);
         }
 

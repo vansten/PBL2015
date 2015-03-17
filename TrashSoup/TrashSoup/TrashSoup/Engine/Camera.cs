@@ -28,6 +28,7 @@ namespace TrashSoup.Engine
         }
 
         public Vector3 Position { get; set; }
+        public Vector3 Translation { get; set; }
         public Vector3 Direction { get; set; }
         public Vector3 Target { get; set; }
         public Vector3 Up { get; set; }
@@ -41,10 +42,11 @@ namespace TrashSoup.Engine
         #endregion
 
         #region methods
-        public Camera(uint uniqueID, string name, Vector3 pos, Vector3 target, Vector3 up, float fov, float near, float far) 
+        public Camera(uint uniqueID, string name, Vector3 pos, Vector3 translation, Vector3 target, Vector3 up, float fov, float near, float far) 
             : base(uniqueID, name)
         {
             this.Position = pos;
+            this.Translation = translation;
             this.Direction = target - pos;
             this.Target = target;
             this.Direction.Normalize();
@@ -87,7 +89,7 @@ namespace TrashSoup.Engine
 
         protected void CreateLookAt()
         {
-            this.ViewMatrix = Matrix.CreateLookAt(Position, Target, Up);
+            this.ViewMatrix = Matrix.CreateLookAt(Position + Translation, Target + Translation, Up);
         }
         #endregion
     }
