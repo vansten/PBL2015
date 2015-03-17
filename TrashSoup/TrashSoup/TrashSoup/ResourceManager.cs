@@ -66,7 +66,11 @@ namespace TrashSoup
             Sounds.Add(AudioManager.Instance.GetCue("Track1"));
         }
 
-
+        /// <summary>
+        /// 
+        /// Load every effect to effect list.
+        /// </summary>
+        /// <param name="game"></param>
         private void LoadEffects(Game game)
         {
             Effects.Add(game.Content.Load<Effect>(@"Effects\Particle"));

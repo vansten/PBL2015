@@ -12,7 +12,9 @@ namespace TrashSoup
         private AudioEngine audioEngine;
         private WaveBank waveBank;
         private SoundBank soundBank;
+        #endregion
 
+        #region Properties
         public SoundBank SoundBank { get { return soundBank; } }
         #endregion
 
