@@ -41,6 +41,12 @@ namespace TrashSoup
         
         protected override void Initialize()
         {
+            GraphicsDevice.BlendState = BlendState.Opaque;
+            DepthStencilState state = new DepthStencilState();
+            state.DepthBufferEnable = true;
+            state.DepthBufferFunction = CompareFunction.Less;
+            GraphicsDevice.DepthStencilState = state;
+
             base.Initialize();
         }
 
@@ -168,7 +174,7 @@ namespace TrashSoup
 
             base.Draw(gameTime);
 
-            GUIManager.Instance.Render(this.spriteBatch);
+            //GUIManager.Instance.Render(this.spriteBatch);
         }
 
         #region Functions for teting GUI

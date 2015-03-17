@@ -80,7 +80,7 @@ namespace TrashSoup.Engine
                         {
                             be.Projection = camera.ProjectionMatrix;
                             be.View = camera.ViewMatrix;
-                            be.World = transform.GetWorldMatrix() /** mm.ParentBone.Transform*/;  // no parentBone transform yet!
+                            be.World = transform.GetWorldMatrix() *  mm.ParentBone.Transform;
                             be.TextureEnabled = true;
                             be.EnableDefaultLighting();
                             be.Texture = Mat[0].Diffuse;
