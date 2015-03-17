@@ -144,7 +144,7 @@ namespace TrashSoup
                         obj.MyPhysicalObject.Awake();
                     }
                 }
-                else if(gameTime.TotalGameTime.Seconds > 2) //time to go sleep for a while
+                else if(gameTime.TotalGameTime.Seconds > 3) //time to go sleep for a while
                 {
                     if (obj.MyPhysicalObject != null && !obj.MyPhysicalObject.Sleeping)
                     {
