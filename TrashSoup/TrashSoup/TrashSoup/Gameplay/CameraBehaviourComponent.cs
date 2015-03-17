@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using TrashSoup.Engine;
 
-namespace TrashSoup
+namespace TrashSoup.Gameplay
 {
     public class CameraBehaviourComponent : ObjectComponent
     {

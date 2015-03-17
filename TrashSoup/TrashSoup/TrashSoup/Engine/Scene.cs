@@ -5,7 +5,7 @@ using System.Text;
 using System.Runtime.Serialization;
 using Microsoft.Xna.Framework;
 
-namespace TrashSoup
+namespace TrashSoup.Engine
 {
     [Serializable]
     public class SceneParams

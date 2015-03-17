@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace TrashSoup
+namespace TrashSoup.Engine
 {
     class Singleton <T> where T : new()
     {

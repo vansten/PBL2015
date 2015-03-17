@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 
-namespace TrashSoup
+namespace TrashSoup.Engine
 {
     class AudioManager : Singleton<AudioManager>
     {

@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Runtime.Serialization;
 
-namespace TrashSoup
+namespace TrashSoup.Engine
 {
     [Serializable]
     public class GameObject

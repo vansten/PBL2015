@@ -5,8 +5,10 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
+using TrashSoup;
+using TrashSoup.Gameplay;
 
-namespace TrashSoup
+namespace TrashSoup.Engine
 {
     class SingleRandom : Singleton<SingleRandom>
     {
