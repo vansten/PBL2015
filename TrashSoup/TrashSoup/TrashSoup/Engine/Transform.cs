@@ -71,8 +71,6 @@ namespace TrashSoup.Engine
             }
         }
 
-        public Camera TransformableCamera { get; set; }
-
         #endregion
 
         #region methods
@@ -83,7 +81,6 @@ namespace TrashSoup.Engine
             this.Rotation = new Vector3(0.0f, 0.0f, 0.0f);
             this.Scale = 1.0f;
             this.preRotation = Matrix.CreateRotationX(-MathHelper.PiOver2);
-            this.TransformableCamera = null;
         }
 
         public Transform(GameObject obj, Vector3 position, Vector3 forward, Vector3 rotation, float scale)
@@ -121,11 +118,6 @@ namespace TrashSoup.Engine
             translation = Matrix.CreateTranslation(new Vector3(this.Position.X, -this.Position.Y, this.Position.Z));
             rotation = Matrix.CreateFromYawPitchRoll(Rotation.Y, Rotation.X, Rotation.Z);
             scale = Matrix.CreateScale(this.Scale);
-
-            if(this.TransformableCamera != null)
-            {
-                TransformableCamera.Translation = new Vector3(this.Position.X, this.Position.Y, -this.Position.Z);
-            }
 
             this.worldMatrix = rotation *translation *scale * preRotation;
         }

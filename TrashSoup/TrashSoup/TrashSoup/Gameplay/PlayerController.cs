@@ -39,11 +39,12 @@ namespace TrashSoup.Gameplay
                 (InputManager.Instance.GetGamePadButton(Buttons.RightTrigger) ? 1.0f : 0.0f) - (InputManager.Instance.GetGamePadButton(Buttons.LeftTrigger) ? 1.0f : 0.0f),
                 InputManager.Instance.GetLeftStickValue().Y);
 
-            if(tempMove.Length() > 0.0f)
+            if(tempMove.Length() > 0.0f &&
+                ResourceManager.Instance.CurrentScene.Cam != null)
             {
                 // now to rotate that damn vector as camera direction is rotated
-                rotation = (float)Math.Atan2(myObject.MyTransform.TransformableCamera.Direction.X,
-                    -myObject.MyTransform.TransformableCamera.Direction.Z);
+                rotation = (float)Math.Atan2(ResourceManager.Instance.CurrentScene.Cam.Direction.X,
+                    -ResourceManager.Instance.CurrentScene.Cam.Direction.Z);
                 tempMoveRotated = Vector3.Transform(tempMove, Matrix.CreateRotationY(rotation));
                 myObject.MyTransform.Forward = tempMoveRotated;
 
