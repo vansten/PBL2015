@@ -19,8 +19,6 @@ namespace TrashSoup.Gameplay
 
         #region variables
 
-        protected Camera playerCam;
-
         protected Vector3 tempMove;
         protected Vector3 tempMoveRotated;
         protected float sprint;
@@ -44,7 +42,8 @@ namespace TrashSoup.Gameplay
             if(tempMove.Length() > 0.0f)
             {
                 // now to rotate that damn vector as camera direction is rotated
-                rotation = (float)Math.Atan2(playerCam.Direction.X, -playerCam.Direction.Z);
+                rotation = (float)Math.Atan2(myObject.MyTransform.TransformableCamera.Direction.X,
+                    -myObject.MyTransform.TransformableCamera.Direction.Z);
                 tempMoveRotated = Vector3.Transform(tempMove, Matrix.CreateRotationY(rotation));
                 myObject.MyTransform.Forward = tempMoveRotated;
 
@@ -64,9 +63,7 @@ namespace TrashSoup.Gameplay
 
         protected override void Start()
         {
-            // Player Camera is automatically controlled by transform
-            playerCam = ResourceManager.Instance.CurrentScene.Cam;
-            if (playerCam == null) Debug.Log("ERROR: No player camera in scene!\n");
+
         }
 
         #endregion
