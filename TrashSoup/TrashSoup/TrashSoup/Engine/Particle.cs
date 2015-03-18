@@ -65,6 +65,7 @@ namespace TrashSoup.Engine
         /// How much life is left before particles start being deleted. 
         /// </summary>
         protected int lifeLeft;
+        protected int life;
 
         //Rounds and particle counts
         protected int numParticlesPerRound;
@@ -98,6 +99,7 @@ namespace TrashSoup.Engine
             this.graphicsDevice = graphicsDevice;
             this.position = position;
             this.lifeLeft = lifeLeft;
+            this.life = lifeLeft;
             this.roundTime = roundTime;
             this.numParticlesPerRound = numParticlesPerRound;
             this.particleColorsTexture = particleColorsTexture;
@@ -226,6 +228,14 @@ namespace TrashSoup.Engine
                     }
                 }
             }
+        }
+
+        public void SetEnabled()
+        {
+            InitializeParticleVertices();
+            lifeLeft = life;
+            endOfDeadParticlesIndex = 0;
+            endOfLiveParticlesIndex = 0;
         }
         #endregion
     }

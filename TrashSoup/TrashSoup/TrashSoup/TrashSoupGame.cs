@@ -155,6 +155,14 @@ namespace TrashSoup
                 }
             }
 
+            //TESTING PARTICLES
+            for (int i = 0; i < ResourceManager.Instance.Particles.Count; ++i )
+            {
+                ResourceManager.Instance.Particles[i].Update(gameTime);
+                if (ResourceManager.Instance.Particles[i].IsDead)
+                    ResourceManager.Instance.Particles[i].SetEnabled();
+            }
+
             base.Update(gameTime);
         }
 
@@ -168,6 +176,10 @@ namespace TrashSoup
             {
                 obj.Draw(gameTime);
             }
+
+            //TESTING PARTICLES
+            foreach(Particle p in ResourceManager.Instance.Particles)
+                p.Draw(ResourceManager.Instance.CurrentScene.Cam);
 
             base.Draw(gameTime);
 
@@ -207,5 +219,6 @@ namespace TrashSoup
         }
 
         #endregion
+
     }
 }

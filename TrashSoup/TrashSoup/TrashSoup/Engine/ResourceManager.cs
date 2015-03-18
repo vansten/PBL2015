@@ -84,6 +84,15 @@ namespace TrashSoup.Engine
             CurrentScene.ObjectsDictionary.Add(testTer.UniqueID, testTer);
             CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);
             CurrentScene.ObjectsDictionary.Add(testBox2.UniqueID, testBox2);
+
+            //TESTING PARTICLES
+            ParticleSettings testSettings = new ParticleSettings(2, 1000, 2000, 100, 600, 16, 50, 2000, 3000);
+            Particles.Add(new Particle(game.GraphicsDevice, new Vector3(0.0f, 10.0f, -10.0f),
+                SingleRandom.Instance.rnd.Next(testSettings.minLife, testSettings.maxLife),
+                SingleRandom.Instance.rnd.Next(testSettings.minRoundTime, testSettings.maxRoundTime),
+                SingleRandom.Instance.rnd.Next(testSettings.minParticlesPerRound, testSettings.maxParticlesPerRound),
+                game.Content.Load<Texture2D>(@"Textures\ParticleTest\ParticleColors"),
+                testSettings, Effects.ElementAt(0)));
         }
 
         /// <summary>
@@ -115,6 +124,8 @@ namespace TrashSoup.Engine
         private void LoadEffects(Game game)
         {
             Effects.Add(game.Content.Load<Effect>(@"Effects\Particle"));
+            Effects.ElementAt(0).CurrentTechnique = Effects.ElementAt(0).Techniques["Technique1"];
+            Effects.ElementAt(0).Parameters["theTexture"].SetValue(game.Content.Load<Texture2D>(@"Textures\ParticleTest\Particle"));
         }
         #endregion
     }
