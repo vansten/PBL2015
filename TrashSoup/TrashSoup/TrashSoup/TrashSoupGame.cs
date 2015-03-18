@@ -41,11 +41,6 @@ namespace TrashSoup
         
         protected override void Initialize()
         {
-            GraphicsDevice.BlendState = BlendState.Opaque;
-            DepthStencilState state = new DepthStencilState();
-            state.DepthBufferEnable = true;
-            state.DepthBufferFunction = CompareFunction.Less;
-            GraphicsDevice.DepthStencilState = state;
 
             base.Initialize();
         }
@@ -128,7 +123,8 @@ namespace TrashSoup
             GUIManager.Instance.Update(gameTime);
             AudioManager.Instance.Update(gameTime);
 
-            ResourceManager.Instance.CurrentScene.Cam.Update(gameTime);
+            //Why do you call this twice?
+            //[vansten: Commenting] ResourceManager.Instance.CurrentScene.Cam.Update(gameTime);
             //Updating scene, only for testing?
             //[vansten] Of course it's only for testing, this should be in Scene update method
             //[vansten] Added testing code for physics simulation
@@ -164,6 +160,7 @@ namespace TrashSoup
 
         protected override void Draw(GameTime gameTime)
         {
+            this.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             //Drawing scene, only for testing?
@@ -174,7 +171,7 @@ namespace TrashSoup
 
             base.Draw(gameTime);
 
-            //GUIManager.Instance.Render(this.spriteBatch);
+            GUIManager.Instance.Render(this.spriteBatch);
         }
 
         #region Functions for teting GUI
