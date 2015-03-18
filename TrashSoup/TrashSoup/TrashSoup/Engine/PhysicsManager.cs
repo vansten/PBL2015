@@ -27,7 +27,7 @@ namespace TrashSoup.Engine
         public PhysicsManager()
         {
             this.physicalObjects = new List<GameObject>();
-            this.Gravity = new Vector3(0.0f, 0.0f, -9.81f);
+            this.Gravity = new Vector3(0.0f, -9.81f, 0.0f);
         }
 
         /// <summary>

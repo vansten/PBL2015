@@ -51,7 +51,7 @@ namespace TrashSoup.Engine
 
             CurrentScene = new Scene(new SceneParams(0, "test"));
             Camera cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -1.0f), Matrix.CreateRotationX(MathHelper.PiOver4*1.5f)), 
-                 new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 10.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.PiOver4, 0.1f, 2000.0f);
+                 new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 10.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
             cam.Components.Add(new CameraBehaviourComponent(cam));
             CurrentScene.Cam = cam;
 
@@ -72,8 +72,18 @@ namespace TrashSoup.Engine
             //testBox.MyPhysicalObject = new PhysicalObject(testBox, 1.0f, 0.05f, true);
             //testBox.MyPhysicalObject.AddForce(new Vector3(0.0f, 20.0f, 50.0f));
 
+            GameObject testBox2 = new GameObject(3, "testBox2");
+            List<Material> matList3 = new List<Material>();
+            matList3.Add(new Material(Textures[1], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
+            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 10.0f, 30.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), null, 1.0f);
+            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models[0], null, null }, 3, matList3));
+            testBox2.MyPhysicalObject = new PhysicalObject(testBox2, 1.0f, 0.05f, true);
+            testBox2.MyPhysicalObject.AddForce(new Vector3(0.0f, 100.0f, 20.0f));
+
+
             CurrentScene.ObjectsDictionary.Add(testTer.UniqueID, testTer);
             CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);
+            CurrentScene.ObjectsDictionary.Add(testBox2.UniqueID, testBox2);
         }
 
         /// <summary>
