@@ -68,8 +68,8 @@ namespace TrashSoup.Engine
 
             this.Direction = this.Target - this.Position;
             this.Direction = this.Direction / this.Direction.Length();
-            this.Up.Normalize();
-            this.Direction.Normalize();
+            this.Right = Vector3.Cross(this.Direction, this.Up);
+            this.Right = this.Right / this.Right.Length();
 
             CreateLookAt();
         }

@@ -58,19 +58,19 @@ namespace TrashSoup.Engine
             GameObject testBox = new GameObject(1, "testBox");
             List<Material> matList = new List<Material>();
             matList.Add(new Material(Textures[0], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
-            testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), cam, 1.0f);
+            testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), cam, 1.0f);
             testBox.Components.Add(new CustomModel(testBox, new Model[] { Models[0], null, null }, 3, matList));
             testBox.Components.Add(new PlayerController(testBox));
 
             GameObject testTer = new GameObject(2, "testTer");
             List<Material> matList2 = new List<Material>();
             matList2.Add(new Material(Textures[1], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
-            testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 2.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
+            testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 2.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
             testTer.Components.Add(new CustomModel(testTer, new Model[] { Models[1], null, null }, 3, matList2));
 
             //Physics teting, the box just should jump a little and then fall
-            testBox.MyPhysicalObject = new PhysicalObject(testBox, 1.0f, 0.05f, true);
-            testBox.MyPhysicalObject.AddForce(new Vector3(0.0f, 20.0f, 50.0f));
+            //testBox.MyPhysicalObject = new PhysicalObject(testBox, 1.0f, 0.05f, true);
+            //testBox.MyPhysicalObject.AddForce(new Vector3(0.0f, 20.0f, 50.0f));
 
             CurrentScene.ObjectsDictionary.Add(testTer.UniqueID, testTer);
             CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);

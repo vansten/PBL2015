@@ -20,10 +20,11 @@ namespace TrashSoup.Gameplay
         #region variables
 
         protected Camera playerCam;
-        protected float tempMoveForward;
-        protected float tempMoveSide;
-        protected float tempMoveVertical;
-        protected Vector3 movement;
+
+        protected Vector3 tempMove;
+        protected Vector3 tempMoveRotated;
+        protected float sprint;
+        protected float rotation;
 
         #endregion
 
@@ -36,14 +37,22 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            tempMoveForward = InputManager.Instance.GetLeftStickValue().Y;
-            tempMoveSide = InputManager.Instance.GetLeftStickValue().X;
-            tempMoveVertical = (InputManager.Instance.GetGamePadButton(Buttons.RightTrigger) ? 1.0f : 0.0f) - (InputManager.Instance.GetGamePadButton(Buttons.LeftTrigger) ? 1.0f : 0.0f);
+            tempMove = new Vector3(InputManager.Instance.GetLeftStickValue().X,
+                (InputManager.Instance.GetGamePadButton(Buttons.RightTrigger) ? 1.0f : 0.0f) - (InputManager.Instance.GetGamePadButton(Buttons.LeftTrigger) ? 1.0f : 0.0f),
+                InputManager.Instance.GetLeftStickValue().Y);
 
-            float sprint = (InputManager.Instance.GetGamePadButton(Buttons.B)) ? SPRINT_MULTIPLIER : 1.0f;
-            this.movement = new Vector3(PLAYER_SPEED * sprint * tempMoveSide, tempMoveVertical, PLAYER_SPEED * sprint * tempMoveForward);
-            myObject.MyTransform.Position += movement;
+            if(tempMove.Length() > 0.0f)
+            {
+                // now to rotate that damn vector as camera direction is rotated
+                rotation = (float)Math.Atan2(playerCam.Direction.X, -playerCam.Direction.Z);
+                tempMoveRotated = Vector3.Transform(tempMove, Matrix.CreateRotationY(rotation));
+                myObject.MyTransform.Forward = tempMoveRotated;
 
+                sprint = (InputManager.Instance.GetGamePadButton(Buttons.B)) ? SPRINT_MULTIPLIER : 1.0f;
+
+                myObject.MyTransform.Position += (myObject.MyTransform.Forward * PLAYER_SPEED * sprint);
+                // object rotation to forward vector is automatically controlled by transform
+            }
             // Player Camera is automatically controlled by transform
             //if(playerCam != null) playerCam.Translation += new Vector3(movement.X, movement.Y, -movement.Z);
         }
