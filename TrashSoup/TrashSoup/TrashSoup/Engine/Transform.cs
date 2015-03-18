@@ -17,8 +17,6 @@ namespace TrashSoup.Engine
         protected float scale;
         protected Matrix preRotation;
 
-        protected Camera transformableCamera;
-
         #endregion
 
         #region properties
@@ -73,6 +71,8 @@ namespace TrashSoup.Engine
             }
         }
 
+        public Camera TransformableCamera { get; set; }
+
         #endregion
 
         #region methods
@@ -83,8 +83,7 @@ namespace TrashSoup.Engine
             this.Rotation = new Vector3(0.0f, 0.0f, 0.0f);
             this.Scale = 1.0f;
             this.preRotation = Matrix.CreateRotationX(-MathHelper.PiOver2);
-            this.transformableCamera = null;
-            CalculateWorldMatrix();
+            this.TransformableCamera = null;
         }
 
         public Transform(GameObject obj, Vector3 position, Vector3 forward, Vector3 rotation, float scale)
@@ -94,14 +93,6 @@ namespace TrashSoup.Engine
             this.Rotation = rotation;
             this.Scale = scale;
             this.Forward = forward;
-            //RotateAsForward();
-            //CalculateWorldMatrix();
-        }
-
-        public Transform(GameObject obj, Vector3 position, Vector3 forward, Vector3 rotation, Camera camera, float scale)
-            : this(obj, position, forward, rotation, scale)
-        {
-            this.transformableCamera = camera;
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
@@ -131,9 +122,9 @@ namespace TrashSoup.Engine
             rotation = Matrix.CreateFromYawPitchRoll(Rotation.Y, Rotation.X, Rotation.Z);
             scale = Matrix.CreateScale(this.Scale);
 
-            if(this.transformableCamera != null)
+            if(this.TransformableCamera != null)
             {
-                transformableCamera.Translation = new Vector3(this.Position.X, this.Position.Y, -this.Position.Z);
+                TransformableCamera.Translation = new Vector3(this.Position.X, this.Position.Y, -this.Position.Z);
             }
 
             this.worldMatrix = rotation *translation *scale * preRotation;

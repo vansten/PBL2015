@@ -10,9 +10,9 @@ namespace TrashSoup.Engine
     public class Camera : GameObject
     {
         #region variables
-        
+        protected GameObject toFollow;
         #endregion
-
+       
         #region properties
 
         public Matrix ViewMatrix
@@ -25,6 +25,20 @@ namespace TrashSoup.Engine
         {
             get;
             protected set;
+        }
+
+        public GameObject ToFollow
+        {
+            get
+            {
+                return toFollow;
+            }
+            set
+            {
+                if(toFollow != null) toFollow.MyTransform.TransformableCamera = null;
+                toFollow = value;
+                toFollow.MyTransform.TransformableCamera = this;
+            }
         }
 
         public Vector3 Position { get; set; }
@@ -60,6 +74,12 @@ namespace TrashSoup.Engine
             CreateLookAt();
 
             CreateProjection(fov, near, far);
+        }
+
+        public Camera(uint uniqueID, string name, Vector3 pos, Vector3 translation, Vector3 target, Vector3 up, float fov, float near, float far, GameObject toFollow)
+            : this(uniqueID, name, pos, translation, target, up, fov, near, far)
+        {
+            this.ToFollow = toFollow;
         }
 
         public override void Update(GameTime gameTime)

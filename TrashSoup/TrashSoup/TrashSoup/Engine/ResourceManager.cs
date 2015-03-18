@@ -49,16 +49,10 @@ namespace TrashSoup.Engine
             Models.Add(game.Content.Load<Model>(@"Models\Test\TestBox"));
             Models.Add(game.Content.Load<Model>(@"Models\Test\TestTerrain"));
 
-            CurrentScene = new Scene(new SceneParams(0, "test"));
-            Camera cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -1.0f), Matrix.CreateRotationX(MathHelper.PiOver4*1.5f)), 
-                 new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 10.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
-            cam.Components.Add(new CameraBehaviourComponent(cam));
-            CurrentScene.Cam = cam;
-
             GameObject testBox = new GameObject(1, "testBox");
             List<Material> matList = new List<Material>();
             matList.Add(new Material(Textures[0], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
-            testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), cam, 1.0f);
+            testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
             testBox.Components.Add(new CustomModel(testBox, new Model[] { Models[0], null, null }, 3, matList));
             testBox.Components.Add(new PlayerController(testBox));
 
@@ -75,10 +69,16 @@ namespace TrashSoup.Engine
             GameObject testBox2 = new GameObject(3, "testBox2");
             List<Material> matList3 = new List<Material>();
             matList3.Add(new Material(Textures[1], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
-            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 10.0f, 30.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), null, 1.0f);
+            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 10.0f, 30.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
             testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models[0], null, null }, 3, matList3));
             testBox2.MyPhysicalObject = new PhysicalObject(testBox2, 1.0f, 0.05f, true);
             testBox2.MyPhysicalObject.AddForce(new Vector3(0.0f, 100.0f, 20.0f));
+
+            CurrentScene = new Scene(new SceneParams(0, "test"));
+            Camera cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -1.0f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)),
+                 new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 10.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f, testBox);
+            cam.Components.Add(new CameraBehaviourComponent(cam));
+            CurrentScene.Cam = cam;
 
 
             CurrentScene.ObjectsDictionary.Add(testTer.UniqueID, testTer);
