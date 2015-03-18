@@ -38,7 +38,7 @@ namespace TrashSoup.Gameplay
         public override void Update(GameTime gameTime)
         {
             tempYaw = -CAM_YAW_SENSITIVITY * (InputManager.Instance.GetRightStickValue().X);
-            tempPitch = -CAM_PITCH_SENSITIVITY * (InputManager.Instance.GetRightStickValue().Y);
+            tempPitch = CAM_PITCH_SENSITIVITY * (InputManager.Instance.GetRightStickValue().Y);
 
             // TODO: secure this differently, probably counting up actual pitch angle from vectors
 
