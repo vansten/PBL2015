@@ -15,7 +15,6 @@ namespace TrashSoup.Engine
         protected Vector3 rotation;
         protected Vector3 forward;
         protected float scale;
-        protected Matrix preRotation;
 
         #endregion
 
@@ -80,7 +79,6 @@ namespace TrashSoup.Engine
             this.Position = new Vector3(0.0f, 0.0f, 0.0f);
             this.Rotation = new Vector3(0.0f, 0.0f, 0.0f);
             this.Scale = 1.0f;
-            this.preRotation = Matrix.CreateRotationX(-MathHelper.PiOver2);
         }
 
         public Transform(GameObject obj, Vector3 position, Vector3 forward, Vector3 rotation, float scale)
@@ -115,16 +113,16 @@ namespace TrashSoup.Engine
         protected void CalculateWorldMatrix()
         {
             Matrix translation, rotation, scale;
-            translation = Matrix.CreateTranslation(new Vector3(this.Position.X, -this.Position.Y, this.Position.Z));
+            translation = Matrix.CreateTranslation(new Vector3(this.Position.X, this.Position.Y, -this.Position.Z));
             rotation = Matrix.CreateFromYawPitchRoll(Rotation.Y, Rotation.X, Rotation.Z);
             scale = Matrix.CreateScale(this.Scale);
 
-            this.worldMatrix = rotation *translation *scale * preRotation;
+            this.worldMatrix = scale * rotation * translation;
         }
 
         protected void RotateAsForward()
         {
-            float rotY = (float)Math.Atan2(this.Forward.X, this.Forward.Z);
+            float rotY = (float)Math.Atan2(-this.Forward.X, this.Forward.Z);
             this.Rotation = new Vector3(this.Rotation.X, rotY, this.Rotation.Z);
         }
 

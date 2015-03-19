@@ -12,8 +12,10 @@ namespace TrashSoup.Gameplay
     {
         #region constants
 
-        protected const float PLAYER_SPEED = 1.0f;
-        protected const float SPRINT_MULTIPLIER = 10.0f;
+        protected const float PLAYER_SPEED = 100.0f;
+        protected const float SPRINT_MULTIPLIER = 5.0f;
+        protected const float SPRINT_ACCELERATION = 3.0f;
+        protected const float ROTATION_SPEED = 10.0f;
 
         #endregion
 
@@ -22,6 +24,7 @@ namespace TrashSoup.Gameplay
         protected Vector3 tempMove;
         protected Vector3 tempMoveRotated;
         protected float sprint;
+        protected float sprintM;
         protected float rotation;
 
         #endregion
@@ -47,14 +50,23 @@ namespace TrashSoup.Gameplay
                     -ResourceManager.Instance.CurrentScene.Cam.Direction.Z);
                 tempMoveRotated = Vector3.Transform(tempMove, Matrix.CreateRotationY(rotation));
                 myObject.MyTransform.Forward = tempMoveRotated;
+                Debug.Log(myObject.MyTransform.Forward.X.ToString() + " " + myObject.MyTransform.Forward.Y.ToString() + " " + myObject.MyTransform.Forward.Z.ToString());
+                if (InputManager.Instance.GetGamePadButton(Buttons.B))
+                {
+                    sprint = MathHelper.Lerp(1.0f, SPRINT_MULTIPLIER, sprintM);
+                    sprintM += SPRINT_ACCELERATION * (gameTime.ElapsedGameTime.Milliseconds / 1000.0f);
+                    sprintM = MathHelper.Min(sprintM, 1.0f);
+                }
+                else if(sprintM != 0.0f || sprint != 1.0f)
+                {
+                    sprint = MathHelper.Lerp(1.0f, SPRINT_MULTIPLIER, sprintM);
+                    sprintM -= 2.0f*SPRINT_ACCELERATION * (gameTime.ElapsedGameTime.Milliseconds / 1000.0f);
+                    sprintM = MathHelper.Max(sprintM, 0.0f);
+                }
 
-                sprint = (InputManager.Instance.GetGamePadButton(Buttons.B)) ? SPRINT_MULTIPLIER : 1.0f;
-
-                myObject.MyTransform.Position += (myObject.MyTransform.Forward * PLAYER_SPEED * sprint);
-                // object rotation to forward vector is automatically controlled by transform
+                myObject.MyTransform.Position += (myObject.MyTransform.Forward * PLAYER_SPEED * sprint * (gameTime.ElapsedGameTime.Milliseconds / 1000.0f));
+                
             }
-            // Player Camera is automatically controlled by transform
-            //if(playerCam != null) playerCam.Translation += new Vector3(movement.X, movement.Y, -movement.Z);
         }
 
         public override void Draw(Microsoft.Xna.Framework.GameTime gameTime)
@@ -64,7 +76,8 @@ namespace TrashSoup.Gameplay
 
         protected override void Start()
         {
-
+            sprint = 1.0f;
+            sprintM = 0.0f;
         }
 
         #endregion
