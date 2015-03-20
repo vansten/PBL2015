@@ -82,6 +82,52 @@ namespace TrashSoup.Engine
             return null;
         }
 
+        public void UpdateAll(GameTime gameTime)
+        {
+            //[vansten] Added testing code for physics simulation
+            Cam.Update(gameTime);
+            foreach (GameObject obj in ObjectsDictionary.Values)
+            {
+                obj.Update(gameTime);
+                if (gameTime.TotalGameTime.Seconds > 8)  //time to turn off physics
+                {
+                    if (obj.MyPhysicalObject != null)
+                    {
+                        obj.MyPhysicalObject = null;
+                    }
+                }
+                else if (gameTime.TotalGameTime.Seconds > 4) //time to awake
+                {
+                    if (obj.MyPhysicalObject != null && obj.MyPhysicalObject.Sleeping)
+                    {
+                        obj.MyPhysicalObject.Awake();
+                    }
+                }
+                else if (gameTime.TotalGameTime.Seconds > 3) //time to go sleep for a while
+                {
+                    if (obj.MyPhysicalObject != null && !obj.MyPhysicalObject.Sleeping)
+                    {
+                        obj.MyPhysicalObject.Sleep();
+                    }
+                }
+            }
+        }
+
+        // draws all gameobjects linearly
+        public void DrawAll(GameTime gameTime)
+        {
+            foreach (GameObject obj in ObjectsDictionary.Values)
+            {
+                obj.Draw(gameTime);
+            }
+        }
+
+        // draws gameobjects that are inside frustum
+        public void DrawAll(BoundingFrustum frustum, GameTime gameTime)
+        {
+            // not implemented yet
+        }
+
         #endregion
     }
 }

@@ -8,6 +8,10 @@ namespace TrashSoup.Engine
 {
     public class Transform : ObjectComponent
     {
+        #region constants
+
+        #endregion
+
         #region variables
 
         protected Matrix worldMatrix;
@@ -53,7 +57,6 @@ namespace TrashSoup.Engine
             set
             {
                 forward = value;
-                RotateAsForward();
                 CalculateWorldMatrix();
             }
         }
@@ -118,12 +121,6 @@ namespace TrashSoup.Engine
             scale = Matrix.CreateScale(this.Scale);
 
             this.worldMatrix = scale * rotation * translation;
-        }
-
-        protected void RotateAsForward()
-        {
-            float rotY = (float)Math.Atan2(-this.Forward.X, this.Forward.Z);
-            this.Rotation = new Vector3(this.Rotation.X, rotY, this.Rotation.Z);
         }
 
         #endregion

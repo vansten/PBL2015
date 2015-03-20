@@ -15,7 +15,8 @@ namespace TrashSoup.Gameplay
         protected const float PLAYER_SPEED = 100.0f;
         protected const float SPRINT_MULTIPLIER = 5.0f;
         protected const float SPRINT_ACCELERATION = 3.0f;
-        protected const float ROTATION_SPEED = 10.0f;
+        protected const float SPRINT_DECELERATION = 2.5f*SPRINT_ACCELERATION;
+        protected const float ROTATION_SPEED = 0.2f;
 
         #endregion
 
@@ -23,9 +24,16 @@ namespace TrashSoup.Gameplay
 
         protected Vector3 tempMove;
         protected Vector3 tempMoveRotated;
+        protected Vector3 prevForward;
+        protected float nextForwardAngle;
+        protected float rotM;
         protected float sprint;
         protected float sprintM;
         protected float rotation;
+
+        protected float rotY;
+        protected float prevRotY;
+
 
         #endregion
 
@@ -46,11 +54,17 @@ namespace TrashSoup.Gameplay
                 ResourceManager.Instance.CurrentScene.Cam != null)
             {
                 // now to rotate that damn vector as camera direction is rotated
+                rotM = rotation;
+                prevForward = myObject.MyTransform.Forward;
+
                 rotation = (float)Math.Atan2(ResourceManager.Instance.CurrentScene.Cam.Direction.X,
                     -ResourceManager.Instance.CurrentScene.Cam.Direction.Z);
+                rotation = CurveAngle(rotM, rotation, 3.0f*ROTATION_SPEED);
                 tempMoveRotated = Vector3.Transform(tempMove, Matrix.CreateRotationY(rotation));
-                myObject.MyTransform.Forward = tempMoveRotated;
-                Debug.Log(myObject.MyTransform.Forward.X.ToString() + " " + myObject.MyTransform.Forward.Y.ToString() + " " + myObject.MyTransform.Forward.Z.ToString());
+
+                myObject.MyTransform.Forward = Vector3.Lerp(prevForward, tempMoveRotated, ROTATION_SPEED);
+                myObject.MyTransform.Rotation = RotateAsForward(myObject.MyTransform.Forward, myObject.MyTransform.Rotation);
+               
                 if (InputManager.Instance.GetGamePadButton(Buttons.B))
                 {
                     sprint = MathHelper.Lerp(1.0f, SPRINT_MULTIPLIER, sprintM);
@@ -60,12 +74,11 @@ namespace TrashSoup.Gameplay
                 else if(sprintM != 0.0f || sprint != 1.0f)
                 {
                     sprint = MathHelper.Lerp(1.0f, SPRINT_MULTIPLIER, sprintM);
-                    sprintM -= 2.0f*SPRINT_ACCELERATION * (gameTime.ElapsedGameTime.Milliseconds / 1000.0f);
+                    sprintM -= SPRINT_DECELERATION * (gameTime.ElapsedGameTime.Milliseconds / 1000.0f);
                     sprintM = MathHelper.Max(sprintM, 0.0f);
                 }
 
                 myObject.MyTransform.Position += (myObject.MyTransform.Forward * PLAYER_SPEED * sprint * (gameTime.ElapsedGameTime.Milliseconds / 1000.0f));
-                
             }
         }
 
@@ -79,6 +92,40 @@ namespace TrashSoup.Gameplay
             sprint = 1.0f;
             sprintM = 0.0f;
         }
+
+        protected Vector3 RotateAsForward(Vector3 forward, Vector3 rotation)
+        {
+            this.prevRotY = this.rotY;
+            this.rotY = (float)Math.Atan2(-forward.X, forward.Z);
+            this.rotY = CurveAngle(prevRotY, rotY, ROTATION_SPEED);
+            return rotation = new Vector3(rotation.X, rotY, rotation.Z);
+        }
+
+        private float CurveAngle(float from, float to, float step)
+        {
+            if (step == 0) return from;
+            if (from == to || step == 1) return to;
+
+            Vector2 fromVector = new Vector2((float)Math.Cos(from), (float)Math.Sin(from));
+            Vector2 toVector = new Vector2((float)Math.Cos(to), (float)Math.Sin(to));
+
+            Vector2 currentVector = Slerp(fromVector, toVector, step);
+
+            return (float)Math.Atan2(currentVector.Y, currentVector.X);
+        }
+
+        private Vector2 Slerp(Vector2 from, Vector2 to, float step)
+        {
+            if (step == 0) return from;
+            if (from == to || step == 1) return to;
+
+            double theta = Math.Acos(Vector2.Dot(from, to));
+            if (theta == 0) return to;
+
+            double sinTheta = Math.Sin(theta);
+            return (float)(Math.Sin((1 - step) * theta) / sinTheta) * from + (float)(Math.Sin(step * theta) / sinTheta) * to;
+        }
+
 
         #endregion
     }
