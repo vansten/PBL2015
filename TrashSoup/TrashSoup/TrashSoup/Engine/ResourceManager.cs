@@ -59,12 +59,8 @@ namespace TrashSoup.Engine
             GameObject testTer = new GameObject(2, "testTer");
             List<Material> matList2 = new List<Material>();
             matList2.Add(new Material(Textures[1], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
-            testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 2.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
+            testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, -10.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
             testTer.Components.Add(new CustomModel(testTer, new Model[] { Models[1], null, null }, 3, matList2));
-
-            //Physics teting, the box just should jump a little and then fall
-            //testBox.MyPhysicalObject = new PhysicalObject(testBox, 1.0f, 0.05f, true);
-            //testBox.MyPhysicalObject.AddForce(new Vector3(0.0f, 20.0f, 50.0f));
 
             GameObject testBox2 = new GameObject(3, "testBox2");
             List<Material> matList3 = new List<Material>();
@@ -76,8 +72,8 @@ namespace TrashSoup.Engine
 
             CurrentScene = new Scene(new SceneParams(0, "test"));
             Camera cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -1.0f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)),
-                 new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 10.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f, testBox);
-            cam.Components.Add(new CameraBehaviourComponent(cam));
+                 new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 10.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
+            cam.Components.Add(new CameraBehaviourComponent(cam, testBox));
             CurrentScene.Cam = cam;
 
 

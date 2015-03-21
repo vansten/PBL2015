@@ -52,6 +52,8 @@ namespace TrashSoup.Engine
                 this.LODs[i] = lods[i];
             }
             Mat = matList;
+
+           FlipZAxis();
         }
 
         public override void Update(GameTime gameTime)
@@ -80,7 +82,7 @@ namespace TrashSoup.Engine
                         {
                             be.Projection = camera.ProjectionMatrix;
                             be.View = camera.ViewMatrix;
-                            be.World = transform.GetWorldMatrix() *  mm.ParentBone.Transform;
+                            be.World = mm.ParentBone.Transform * transform.GetWorldMatrix();
                             be.TextureEnabled = true;
                             be.EnableDefaultLighting();
                             be.Texture = Mat[0].Diffuse;
@@ -94,7 +96,26 @@ namespace TrashSoup.Engine
 
         protected override void Start()
         {
-            
+        }
+
+        protected void FlipZAxis()
+        {
+            for(int i = 0; i < LOD_COUNT; i++)
+            {
+                if(LODs[i] != null)
+                {
+                    foreach (ModelMesh mm in LODs[i].Meshes)
+                    {
+                        Matrix trans = mm.ParentBone.Transform;
+                        trans.Forward = new Vector3(
+                            trans.Forward.X,
+                            trans.Forward.Y,
+                            -trans.Forward.Z
+                            );
+                        mm.ParentBone.Transform = trans;
+                    }
+                }
+            }
         }
 
         #endregion

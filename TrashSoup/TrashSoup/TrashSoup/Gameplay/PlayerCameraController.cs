@@ -26,12 +26,16 @@ namespace TrashSoup.Gameplay
         protected float currentPitch = 0.0f;
         protected float tempPitch;
 
+        protected GameObject target;
+
         #endregion
 
         #region methods
 
-        public CameraBehaviourComponent(GameObject obj) : base(obj)
+        public CameraBehaviourComponent(GameObject obj, GameObject target) : base(obj)
         {
+            this.target = target;
+
             Start();
         }
 
@@ -53,6 +57,8 @@ namespace TrashSoup.Gameplay
 
             cam.Position = Vector3.Transform(cam.Position,
                     Matrix.CreateFromAxisAngle(cam.Up, tempYaw));
+
+            cam.Translation = new Vector3(target.MyTransform.Position.X, target.MyTransform.Position.Y, -target.MyTransform.Position.Z);
         }
 
         public override void Draw(GameTime gameTime)

@@ -123,41 +123,15 @@ namespace TrashSoup
             GUIManager.Instance.Update(gameTime);
             AudioManager.Instance.Update(gameTime);
 
-            //Why do you call this twice?
-            //[vansten: Commenting] ResourceManager.Instance.CurrentScene.Cam.Update(gameTime);
-            //Updating scene, only for testing?
-            //[vansten] Of course it's only for testing, this should be in Scene update method
-            //[vansten] Added testing code for physics simulation
-            ResourceManager.Instance.CurrentScene.Cam.Update(gameTime);
-            foreach(GameObject obj in ResourceManager.Instance.CurrentScene.ObjectsDictionary.Values)
-            {
-                obj.Update(gameTime);
-                if(gameTime.TotalGameTime.Seconds > 8)  //time to turn off physics
-                {
-                    if(obj.MyPhysicalObject != null)
-                    {
-                        obj.MyPhysicalObject = null;
-                    }
-                }
-                else if(gameTime.TotalGameTime.Seconds > 4) //time to awake
-                {
-                    if(obj.MyPhysicalObject != null && obj.MyPhysicalObject.Sleeping)
-                    {
-                        obj.MyPhysicalObject.Awake();
-                    }
-                }
-                else if(gameTime.TotalGameTime.Seconds > 3) //time to go sleep for a while
-                {
-                    if (obj.MyPhysicalObject != null && !obj.MyPhysicalObject.Sleeping)
-                    {
-                        obj.MyPhysicalObject.Sleep();
-                    }
-                }
-            }
+            ResourceManager.Instance.CurrentScene.UpdateAll(gameTime);
 
             //TESTING PARTICLES
-            Emitter explosionEmitter = new Emitter(ResourceManager.Instance.Particles.ElementAt(0));
-            explosionEmitter.RunEmitter(gameTime);
+            for (int i = 0; i < ResourceManager.Instance.Particles.Count; ++i)
+            {
+                ResourceManager.Instance.Particles[i].Update(gameTime);
+                if (ResourceManager.Instance.Particles[i].IsDead)
+                    ResourceManager.Instance.Particles[i].SetEnabled();
+            }
 
             base.Update(gameTime);
         }
@@ -167,11 +141,7 @@ namespace TrashSoup
             this.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            //Drawing scene, only for testing?
-            foreach (GameObject obj in ResourceManager.Instance.CurrentScene.ObjectsDictionary.Values)
-            {
-                obj.Draw(gameTime);
-            }
+            ResourceManager.Instance.CurrentScene.DrawAll(gameTime);
 
             //TESTING PARTICLES
             foreach(Particle p in ResourceManager.Instance.Particles)

@@ -8,6 +8,10 @@ namespace TrashSoup.Engine
 {
     public class Transform : ObjectComponent
     {
+        #region constants
+
+        #endregion
+
         #region variables
 
         protected Matrix worldMatrix;
@@ -15,7 +19,6 @@ namespace TrashSoup.Engine
         protected Vector3 rotation;
         protected Vector3 forward;
         protected float scale;
-        protected Matrix preRotation;
 
         #endregion
 
@@ -54,7 +57,6 @@ namespace TrashSoup.Engine
             set
             {
                 forward = value;
-                RotateAsForward();
                 CalculateWorldMatrix();
             }
         }
@@ -71,8 +73,6 @@ namespace TrashSoup.Engine
             }
         }
 
-        public Camera TransformableCamera { get; set; }
-
         #endregion
 
         #region methods
@@ -82,8 +82,6 @@ namespace TrashSoup.Engine
             this.Position = new Vector3(0.0f, 0.0f, 0.0f);
             this.Rotation = new Vector3(0.0f, 0.0f, 0.0f);
             this.Scale = 1.0f;
-            this.preRotation = Matrix.CreateRotationX(-MathHelper.PiOver2);
-            this.TransformableCamera = null;
         }
 
         public Transform(GameObject obj, Vector3 position, Vector3 forward, Vector3 rotation, float scale)
@@ -118,22 +116,11 @@ namespace TrashSoup.Engine
         protected void CalculateWorldMatrix()
         {
             Matrix translation, rotation, scale;
-            translation = Matrix.CreateTranslation(new Vector3(this.Position.X, -this.Position.Y, this.Position.Z));
+            translation = Matrix.CreateTranslation(new Vector3(this.Position.X, this.Position.Y, -this.Position.Z));
             rotation = Matrix.CreateFromYawPitchRoll(Rotation.Y, Rotation.X, Rotation.Z);
             scale = Matrix.CreateScale(this.Scale);
 
-            if(this.TransformableCamera != null)
-            {
-                TransformableCamera.Translation = new Vector3(this.Position.X, this.Position.Y, -this.Position.Z);
-            }
-
-            this.worldMatrix = rotation *translation *scale * preRotation;
-        }
-
-        protected void RotateAsForward()
-        {
-            float rotY = (float)Math.Atan2(this.Forward.X, this.Forward.Z);
-            this.Rotation = new Vector3(this.Rotation.X, rotY, this.Rotation.Z);
+            this.worldMatrix = scale * rotation * translation;
         }
 
         #endregion
