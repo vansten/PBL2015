@@ -156,12 +156,8 @@ namespace TrashSoup
             }
 
             //TESTING PARTICLES
-            for (int i = 0; i < ResourceManager.Instance.Particles.Count; ++i )
-            {
-                ResourceManager.Instance.Particles[i].Update(gameTime);
-                if (ResourceManager.Instance.Particles[i].IsDead)
-                    ResourceManager.Instance.Particles[i].SetEnabled();
-            }
+            Emitter explosionEmitter = new Emitter(ResourceManager.Instance.Particles.ElementAt(0));
+            explosionEmitter.RunEmitter(gameTime);
 
             base.Update(gameTime);
         }
