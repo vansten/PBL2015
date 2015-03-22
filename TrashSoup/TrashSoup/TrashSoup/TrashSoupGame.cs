@@ -16,6 +16,7 @@ namespace TrashSoup
     public class TrashSoupGame : Microsoft.Xna.Framework.Game
     {
         public static TrashSoupGame Instance { get; protected set; }
+        public bool EditorMode = false;
 
         public GraphicsDeviceManager GraphicsManager { get; protected set; }
         SpriteBatch spriteBatch;
@@ -37,7 +38,6 @@ namespace TrashSoup
             Instance = this;
             Debug.Log("Engine start");
         }
-
         
         protected override void Initialize()
         {
@@ -67,73 +67,76 @@ namespace TrashSoup
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                this.Exit();
-
-            #region Teting GUI for game pad
-
-            //Just for GUIButton testing
-            //Will be removed after everyone sees it
-            if(!this.disabled)
+            if(!this.EditorMode)
             {
-                if(InputManager.Instance.GetGamePadButtonDown(Buttons.DPadDown))
+                if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                    this.Exit();
+
+                #region Teting GUI for game pad
+
+                //Just for GUIButton testing
+                //Will be removed after everyone sees it
+                if(!this.disabled)
                 {
-                    this.currButton = this.currButton - 1;
-                    if (this.currButton < 0)
+                    if(InputManager.Instance.GetGamePadButtonDown(Buttons.DPadDown))
                     {
-                        this.currButton = this.myButtons.Count - 1;
+                        this.currButton = this.currButton - 1;
+                        if (this.currButton < 0)
+                        {
+                            this.currButton = this.myButtons.Count - 1;
+                        }
+                    }
+                    else if (InputManager.Instance.GetGamePadButtonDown(Buttons.DPadUp))
+                    {
+                        this.currButton = this.currButton + 1;
+                        if (this.currButton > this.myButtons.Count - 1)
+                        {
+                            this.currButton = 0;
+                        }
+                    }
+
+                    this.myButtons[currButton].ChangeState(GUIButtonState.HOVER);
+                    foreach (GUIButton button in this.myButtons)
+                    {
+                        if(button != this.myButtons[currButton])
+                        {
+                            button.ChangeState(GUIButtonState.NORMAL);
+                        }
+                    }
+
+                    GUIManager.Instance.DrawButton(this.myButtons[0]);
+                    GUIManager.Instance.DrawButton(this.myButtons[1]);
+                }
+                else
+                {
+                    if(InputManager.Instance.GetGamePadButtonDown(Buttons.B))
+                    {
+                        this.disabled = false;
+                        this.myButtons[0].Enable();
+                        this.myButtons[1].Enable();
                     }
                 }
-                else if (InputManager.Instance.GetGamePadButtonDown(Buttons.DPadUp))
+
+                #endregion
+
+                //Updating input manager and GUI manager 
+                //because of the fact that they don't want to be a game component
+                InputManager.Instance.Update(gameTime);
+                GUIManager.Instance.Update(gameTime);
+                AudioManager.Instance.Update(gameTime);
+
+                ResourceManager.Instance.CurrentScene.UpdateAll(gameTime);
+
+                //TESTING PARTICLES
+                for (int i = 0; i < ResourceManager.Instance.Particles.Count; ++i)
                 {
-                    this.currButton = this.currButton + 1;
-                    if (this.currButton > this.myButtons.Count - 1)
-                    {
-                        this.currButton = 0;
-                    }
+                    ResourceManager.Instance.Particles[i].Update(gameTime);
+                    if (ResourceManager.Instance.Particles[i].IsDead)
+                        ResourceManager.Instance.Particles[i].SetEnabled();
                 }
 
-                this.myButtons[currButton].ChangeState(GUIButtonState.HOVER);
-                foreach (GUIButton button in this.myButtons)
-                {
-                    if(button != this.myButtons[currButton])
-                    {
-                        button.ChangeState(GUIButtonState.NORMAL);
-                    }
-                }
-
-                GUIManager.Instance.DrawButton(this.myButtons[0]);
-                GUIManager.Instance.DrawButton(this.myButtons[1]);
+                base.Update(gameTime);
             }
-            else
-            {
-                if(InputManager.Instance.GetGamePadButtonDown(Buttons.B))
-                {
-                    this.disabled = false;
-                    this.myButtons[0].Enable();
-                    this.myButtons[1].Enable();
-                }
-            }
-
-            #endregion
-
-            //Updating input manager and GUI manager 
-            //because of the fact that they don't want to be a game component
-            InputManager.Instance.Update(gameTime);
-            GUIManager.Instance.Update(gameTime);
-            AudioManager.Instance.Update(gameTime);
-
-            ResourceManager.Instance.CurrentScene.UpdateAll(gameTime);
-
-            //TESTING PARTICLES
-            for (int i = 0; i < ResourceManager.Instance.Particles.Count; ++i)
-            {
-                ResourceManager.Instance.Particles[i].Update(gameTime);
-                if (ResourceManager.Instance.Particles[i].IsDead)
-                    ResourceManager.Instance.Particles[i].SetEnabled();
-            }
-
-            base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)

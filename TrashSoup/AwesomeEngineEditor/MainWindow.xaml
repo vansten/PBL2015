@@ -7,13 +7,13 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="600"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="800"/>
-            <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
 
         <!-- Row 0, menu + labels for hierarchy and details-->
@@ -26,7 +26,7 @@
                         <MenuItem Name="QuitMI" Header="Quit" Click="QuitMI_Click"/>
                     </MenuItem>
                     <MenuItem Header="Edit" Width="120" Height="40" FontSize="30" BorderBrush="Black" BorderThickness="2" Margin="50,0,0,0">
-                        <MenuItem Name="AddGameObjectMI" Header="Add game object" Click="AddGameObjectMI_Click"/>
+                        <MenuItem Name="AddGameObjectMI" Header="Add game object" Click="AddGameObjectMI_Click" IsEnabled="{Binding IsSaveSceneMIEnabled}"/>
                         <MenuItem Name="RemoveGameObjectMI" Header="Remove game object" Click="RemoveGameObjectMI_Click" IsEnabled="{Binding IsRemoveModelMIEnabled}"/>
                     </MenuItem>
                     <MenuItem Header="Help" Width="120" Height="40" FontSize="30" BorderBrush="Black" BorderThickness="2" Margin="50,0,0,0">
@@ -61,47 +61,13 @@
         <!-- Hierarchy -->
         <DockPanel Grid.Row="1" Grid.Column="1">
             <Border BorderBrush="Black" BorderThickness="2">
-                <TreeView Name="HierarchyTreeView" Width="300" FontSize="30" Background="LightGray" SelectedItemChanged="HierarchyTreeView_SelectedItemChanged" MouseLeftButtonDown="HierarchyTreeView_MouseLeftButtonDown">
-                    <TreeViewItem Header="Test">
-                        <TreeViewItem Header="Test child"/>
-                    </TreeViewItem>
-                    <TreeViewItem Header="Test2">
-                        <TreeViewItem Header="Test child 2">
-                            <TreeViewItem Header="Test child of child"/>
-                        </TreeViewItem>
-                    </TreeViewItem>
-                    <TreeViewItem Header="Test">
-                        <TreeViewItem Header="Test child"/>
-                    </TreeViewItem>
-                    <TreeViewItem Header="Test2">
-                        <TreeViewItem Header="Test child 2">
-                            <TreeViewItem Header="Test child of child"/>
-                        </TreeViewItem>
-                    </TreeViewItem>
-                    <TreeViewItem Header="Test">
-                        <TreeViewItem Header="Test child"/>
-                    </TreeViewItem>
-                    <TreeViewItem Header="Test2">
-                        <TreeViewItem Header="Test child 2">
-                            <TreeViewItem Header="Test child of child"/>
-                        </TreeViewItem>
-                    </TreeViewItem>
-                    <TreeViewItem Header="Test">
-                        <TreeViewItem Header="Test child"/>
-                    </TreeViewItem>
-                    <TreeViewItem Header="Test2">
-                        <TreeViewItem Header="Test child 2">
-                            <TreeViewItem Header="Test child of child"/>
-                        </TreeViewItem>
-                    </TreeViewItem>
-                    <TreeViewItem Header="Test">
-                        <TreeViewItem Header="Test child"/>
-                    </TreeViewItem>
-                    <TreeViewItem Header="Test2">
-                        <TreeViewItem Header="Test child 2">
-                            <TreeViewItem Header="Test child of child"/>
-                        </TreeViewItem>
-                    </TreeViewItem>
+                <TreeView Name="HierarchyTreeView" Width="300" FontSize="30" Background="LightGray" SelectedItemChanged="HierarchyTreeView_SelectedItemChanged" MouseLeftButtonDown="HierarchyTreeView_MouseLeftButtonDown"
+                          ItemsSource="{Binding GameObjects}">
+                    <TreeView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </TreeView.ItemTemplate>
                 </TreeView>
             </Border>
         </DockPanel>
@@ -110,8 +76,8 @@
         <DockPanel Grid.Row="1" Grid.Column="2">
             <Border BorderBrush="Black" BorderThickness="2">
                 <Grid Name="DetailsInfo">
-                    <TextBlock Name="Test" Text="There should be some details like textures used (open file dialog), position, rotation, scale, model path, shader (?)" TextWrapping="Wrap" FontSize="30"/>
-                    <TextBlock Text="Add component to this object" VerticalAlignment="Bottom" Margin="0, 0, 0, 90" FontSize="15"/>
+                    <TextBlock Name="Test" Text="There should be some details like textures used (open file dialog), position, rotation, scale, model path, shader (?)" TextWrapping="Wrap" FontSize="14"/>
+                    <TextBlock Text="Add component to this object: " VerticalAlignment="Bottom" Margin="0, 0, 0, 80" FontSize="15"/>
                     <ComboBox Name="ObjectComponents" VerticalAlignment="Bottom" Margin="0, 0, 0, 50" SelectionChanged="ObjectComponents_SelectionChanged"/>
                 </Grid>
             </Border>

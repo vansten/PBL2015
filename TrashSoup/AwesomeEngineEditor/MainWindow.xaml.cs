@@ -27,13 +27,28 @@ namespace AwesomeEngineEditor
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public About AboutWindow;
-        private object selectedObject = null;
+        private TrashSoup.Engine.GameObject selectedObject = null;
 
         private Visibility isXYZVisible;
         private Visibility isMoreLessVisible;
         private Visibility isTranslateRotateScaleVisible;
         private bool isSaveSceneMIEnabled = false;
         private ObservableCollection<TrashSoup.Engine.ObjectComponent> objectComponents = new ObservableCollection<TrashSoup.Engine.ObjectComponent>();
+        private ObservableCollection<TrashSoup.Engine.GameObject> gameObjects = new ObservableCollection<TrashSoup.Engine.GameObject>();
+        private TrashSoup.TrashSoupGame myGame;
+
+        public ObservableCollection<TrashSoup.Engine.GameObject> GameObjects
+        {
+            get
+            {
+                return this.gameObjects;
+            }
+            set
+            {
+                this.gameObjects = value;
+                OnPropertyChanged();
+            }
+        }
 
         public System.Windows.Visibility IsTranslateRotateScaleVisible
         {
@@ -98,7 +113,6 @@ namespace AwesomeEngineEditor
         private void FillObjectComponents()
         {
             Type[] types = typeof(TrashSoup.Engine.ObjectComponent).Assembly.GetTypes();
-            List<Type> forbiddenTypes = new List<Type>();
             foreach (Type t in types)
             {
                 if (t.IsSubclassOf(typeof(TrashSoup.Engine.ObjectComponent)) && t != typeof(TrashSoup.Engine.Transform))
@@ -134,6 +148,9 @@ namespace AwesomeEngineEditor
             this.DetailsInfo.Visibility = System.Windows.Visibility.Hidden;
             this.FillObjectComponents();
             this.ObjectComponents.ItemsSource = this.objectComponents;
+            this.myGame = new TrashSoup.TrashSoupGame();
+            this.myGame.EditorMode = true;
+            this.myGame.RunOneFrame();
         }
 
         void MainWindow_Closing(object sender, CancelEventArgs e)
@@ -155,13 +172,13 @@ namespace AwesomeEngineEditor
 
         private void HierarchyTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            this.selectedObject = this.HierarchyTreeView.SelectedItem;
+            this.selectedObject = ((TrashSoup.Engine.GameObject)this.HierarchyTreeView.SelectedItem);
             if(this.selectedObject != null)
             {
                 OnPropertyChanged("IsRemoveModelMIEnabled");
                 this.DetailsInfo.Visibility = System.Windows.Visibility.Visible;
                 this.IsTranslateRotateScaleVisible = System.Windows.Visibility.Visible;
-                this.Test.Text = ((TreeViewItem)this.selectedObject).Header.ToString();
+                this.GenerateDetailsText();
             }
             else
             {
@@ -175,9 +192,9 @@ namespace AwesomeEngineEditor
             TreeView treeView = sender as TreeView;
             if (treeView != null)
             {
-                TreeViewItem item = (TreeViewItem)treeView.SelectedItem;
-                if(item != null)
+                for (int i = 0; i < treeView.Items.Count; ++i)
                 {
+                    TreeViewItem item = (TreeViewItem)(treeView.ItemContainerGenerator.ContainerFromIndex(i));
                     item.IsSelected = false;
                     this.DetailsInfo.Visibility = System.Windows.Visibility.Hidden;
                     this.IsTranslateRotateScaleVisible = System.Windows.Visibility.Hidden;
@@ -253,19 +270,23 @@ namespace AwesomeEngineEditor
 
         private void ChangeTransform(float value)
         {
+            if (this.selectedObject == null) return;
             if (this.TranslateToggle.IsChecked.Value)
             {
                 if (this.XToggle.IsChecked.Value)
                 {
                     //Position.X += value
+                    this.selectedObject.MyTransform.Position += new Microsoft.Xna.Framework.Vector3(value, 0, 0);
                 }
                 else if (this.YToggle.IsChecked.Value)
                 {
                     //Position.Y += value
+                    this.selectedObject.MyTransform.Position += new Microsoft.Xna.Framework.Vector3(0, value, 0);
                 }
                 else if (this.ZToggle.IsChecked.Value)
                 {
                     //Position.Z += value
+                    this.selectedObject.MyTransform.Position += new Microsoft.Xna.Framework.Vector3(0, 0, value);
                 }
             }
             else if (this.RotateToggle.IsChecked.Value)
@@ -273,31 +294,26 @@ namespace AwesomeEngineEditor
                 if (this.XToggle.IsChecked.Value)
                 {
                     //Rotation.X += value
+                    this.selectedObject.MyTransform.Rotation += new Microsoft.Xna.Framework.Vector3(value, 0, 0);
                 }
                 else if (this.YToggle.IsChecked.Value)
                 {
                     //Rotation.Y += value
+                    this.selectedObject.MyTransform.Rotation += new Microsoft.Xna.Framework.Vector3(0, value, 0);
                 }
                 else if (this.ZToggle.IsChecked.Value)
                 {
                     //Rotation.Z += value
+                    this.selectedObject.MyTransform.Rotation += new Microsoft.Xna.Framework.Vector3(0, 0, value);
                 }
             }
             else if (this.ScaleToggle.IsChecked.Value)
             {
-                if (this.XToggle.IsChecked.Value)
-                {
-                    //Scale.X += value
-                }
-                else if (this.YToggle.IsChecked.Value)
-                {
-                    //Scale.Y += value
-                }
-                else if (this.ZToggle.IsChecked.Value)
-                {
-                    //Scale.Z += value
-                }
+                this.selectedObject.MyTransform.Scale += value;
             }
+
+
+            this.GenerateDetailsText();
         }
 
         private void AboutMI_Click(object sender, RoutedEventArgs e)
@@ -336,39 +352,17 @@ namespace AwesomeEngineEditor
 
         private void AddGameObjectMI_Click(object sender, RoutedEventArgs e)
         {
-            TreeViewItem newItem = new TreeViewItem();
             Random rnd = new Random();
-            newItem.Header = "GameObject " + rnd.Next(0, 1000).ToString();
-            if(this.selectedObject != null)
-            {
-                ((TreeViewItem)this.selectedObject).Items.Add(newItem);
-            }
-            else
-            {
-                this.HierarchyTreeView.Items.Add(newItem);
-            }
+            uint r = (uint)rnd.Next(0,1000);
+            TrashSoup.Engine.GameObject go = new TrashSoup.Engine.GameObject(r, "GameObject " + r);
+            go.MyTransform = new TrashSoup.Engine.Transform(go);
+            this.GameObjects.Add(go);
         }
 
         private void RemoveGameObjectMI_Click(object sender, RoutedEventArgs e)
         {
-            //Remove model
-            TreeViewItem curItem = ((TreeViewItem)this.selectedObject);
-            Type curItemParentType = curItem.Parent.GetType();
-            if(curItemParentType == curItem.GetType())
-            {
-                TreeViewItem parent = ((TreeViewItem)curItem.Parent);
-                parent.Items.Remove(curItem);
-            }
-            else
-            {
-                TreeView parent = ((TreeView)curItem.Parent);
-                parent.Items.Remove(curItem);
-            }
-            curItem.IsSelected = false;
-            foreach(TreeViewItem tvi in this.HierarchyTreeView.Items)
-            {
-                tvi.IsSelected = false;
-            }
+            //Remove game object
+            this.GameObjects.Remove(((TrashSoup.Engine.GameObject)this.HierarchyTreeView.SelectedItem));
             this.selectedObject = null;
             this.DetailsInfo.Visibility = System.Windows.Visibility.Hidden;
             OnPropertyChanged("IsRemoveModelMIEnabled");
@@ -383,7 +377,71 @@ namespace AwesomeEngineEditor
         {
             if(this.ObjectComponents.SelectedItem != null)
             {
+                if (this.selectedObject == null) return;
+                if (this.ObjectComponents.SelectedItem.GetType() == typeof(TrashSoup.Engine.PhysicalObject))
+                {
+                    this.selectedObject.MyPhysicalObject = new TrashSoup.Engine.PhysicalObject(this.selectedObject);
+                }
+                else
+                {
+                    int i = this.ObjectComponents.SelectedIndex;
+                    Type t = this.objectComponents[i].GetType();
+                    ConstructorInfo[] ci = t.GetConstructors();
+                    ConstructorInfo ciWithLeastParameters = ci[0];
+                    foreach (ConstructorInfo c in ci)
+                    {
+                        if (c.GetParameters().Length < ciWithLeastParameters.GetParameters().Length)
+                        {
+                            ciWithLeastParameters = c;
+                        }
+                    }
+                    List<object> parameters = new List<object>();
+                    int stop = ciWithLeastParameters.GetParameters().Length;
+                    for (int j = 0; j < stop; ++j)
+                    {
+                        parameters.Add(null);
+                    }
+                    object obj = Activator.CreateInstance(t, parameters.ToArray());
+                    Type objType = obj.GetType();
+                    foreach(TrashSoup.Engine.ObjectComponent oc in this.selectedObject.Components)
+                    {
+                        if(oc.GetType() == objType)
+                        {
+                            this.ObjectComponents.SelectedItem = null;
+                            this.GenerateDetailsText();
+                            return;
+                        }
+                    }
+                    this.selectedObject.Components.Add((TrashSoup.Engine.ObjectComponent)obj);
+                }
                 this.ObjectComponents.SelectedItem = null;
+                this.GenerateDetailsText();
+            }
+        }
+
+        private void GenerateDetailsText()
+        {
+            if (this.selectedObject == null) return;
+            this.Test.Text = "ID: " + ((TrashSoup.Engine.GameObject)this.selectedObject).UniqueID + "\n";
+            this.Test.Text += "Name: " + ((TrashSoup.Engine.GameObject)this.selectedObject).Name + "\n";
+            this.Test.Text += "Position: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyTransform.Position + "\n";
+            this.Test.Text += "Rotation: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyTransform.Rotation + "\n";
+            this.Test.Text += "Scale: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyTransform.Scale + "\n";
+            if(this.selectedObject.MyPhysicalObject != null)
+            {
+                this.Test.Text += "Drag factor: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyPhysicalObject.DragFactor + "\n";
+                this.Test.Text += "Is using gravity: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyPhysicalObject.IsUsingGravity + "\n";
+                this.Test.Text += "Mass: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyPhysicalObject.Mass + "\n";
+                this.Test.Text += "Position Constratints: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyPhysicalObject.PositionConstraints + "\n";
+                this.Test.Text += "Rotation Constratints: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyPhysicalObject.RotationConstraints + "\n";
+            }
+            if(this.selectedObject.Components.Count > 0)
+            {
+                this.Test.Text += "\n\nAttached components:\n";
+                foreach (TrashSoup.Engine.ObjectComponent oc in this.selectedObject.Components)
+                {
+                    this.Test.Text += oc.ToString() + "\n";
+                }
             }
         }
     }
