@@ -83,7 +83,7 @@ namespace TrashSoup.Engine
 
             //TESTING PARTICLES
             ParticleSettings testSettings = new ParticleSettings(2, 1000, 2000, 100, 600, 16, 50, 2000, 3000);
-            Particles.Add(new Particle(game.GraphicsDevice, new Vector3(0.0f, 10.0f, -10.0f),
+            Particles.Add(new ExplosionParticle(game.GraphicsDevice, new Vector3(0.0f, 10.0f, -10.0f),
                 SingleRandom.Instance.rnd.Next(testSettings.minLife, testSettings.maxLife),
                 SingleRandom.Instance.rnd.Next(testSettings.minRoundTime, testSettings.maxRoundTime),
                 SingleRandom.Instance.rnd.Next(testSettings.minParticlesPerRound, testSettings.maxParticlesPerRound),

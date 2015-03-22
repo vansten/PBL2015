@@ -54,6 +54,7 @@ namespace TrashSoup.Engine
         protected VertexPositionTexture[] vertices;
         protected Vector3[] vertexDirectionArray;
         protected Color[] vertexColorArray;
+        protected Color[] colors;
         protected VertexBuffer particleVertexBuffer;
 
         /// <summary>
@@ -122,51 +123,22 @@ namespace TrashSoup.Engine
             vertexColorArray = new Color[particleSettings.maxParticles];
 
             //Get color data from colors texture
-            Color[] colors = new Color[particleColorsTexture.Width *
+            colors = new Color[particleColorsTexture.Width *
                 particleColorsTexture.Height];
             particleColorsTexture.GetData(colors);
 
-            //Loop until max particles
-            for(int i = 0; i < particleSettings.maxParticles; ++i)
-            {
-                float size = (float)SingleRandom.Instance.rnd.NextDouble() * particleSettings.maxSize;
-
-                //Set position, direction and size of particle
-                vertices[i * 4] = new VertexPositionTexture(position, new Vector2(0, 0));
-                vertices[(i * 4) + 1] = new VertexPositionTexture(new Vector3(position.X,
-                    position.Y + size, position.Z), new Vector2(0, 1));
-                vertices[(i * 4) + 2] = new VertexPositionTexture(new Vector3(position.X + size,
-                    position.Y, position.Z), new Vector2(1, 0));
-                vertices[(i * 4) + 3] = new VertexPositionTexture(new Vector3(position.X + size,
-                    position.Y + size, position.Z), new Vector2(1, 1));
-
-                Vector3 direction = new Vector3(
-                    (float)SingleRandom.Instance.rnd.NextDouble() * 2 - 1,
-                    (float)SingleRandom.Instance.rnd.NextDouble() * 2 - 1,
-                    (float)SingleRandom.Instance.rnd.NextDouble() * 2 - 1);
-                direction.Normalize();
-
-                //Make sure that all particles move at random speeds
-                direction *= (float)SingleRandom.Instance.rnd.NextDouble();
-
-                //Set direction of particle
-                vertexDirectionArray[i] = direction;
-
-                //Set color of particle by getting a random color from the texture
-                vertexColorArray[i] = colors[(
-                    SingleRandom.Instance.rnd.Next(0, particleColorsTexture.Height) * particleColorsTexture.Width) +
-                    SingleRandom.Instance.rnd.Next(0, particleColorsTexture.Width)];
-            }
-
             //Instantiate vertex buffer
-            particleVertexBuffer = new VertexBuffer(graphicsDevice, typeof(VertexPositionTexture), vertices.Length, BufferUsage.None);
+            particleVertexBuffer = new VertexBuffer(graphicsDevice, typeof(VertexPositionTexture), vertices.Length, BufferUsage.None); 
+
         }
 
         public virtual void Update(GameTime gameTime)
         {
             //Decrement life left until it's gone
             if (lifeLeft > 0)
+            {
                 lifeLeft -= gameTime.ElapsedGameTime.Milliseconds;
+            }
 
             //Check if it's time for new round
             timeSinceLastRound += gameTime.ElapsedGameTime.Milliseconds;
@@ -182,14 +154,16 @@ namespace TrashSoup.Engine
                     if (endOfLiveParticlesIndex > particleSettings.maxParticles)
                         endOfLiveParticlesIndex = particleSettings.maxParticles;
                 }
-                if(lifeLeft <= 0)
+                if (lifeLeft <= 0)
                 {
                     //Increment end of dead particles index each round
-                    if(endOfDeadParticlesIndex < particleSettings.maxParticles)
+                    if (endOfDeadParticlesIndex < particleSettings.maxParticles)
                     {
                         endOfDeadParticlesIndex += numParticlesPerRound;
                         if (endOfDeadParticlesIndex > particleSettings.maxParticles)
+                        {
                             endOfDeadParticlesIndex = particleSettings.maxParticles;
+                        }
                     }
                 }
             }
@@ -209,7 +183,7 @@ namespace TrashSoup.Engine
             graphicsDevice.SetVertexBuffer(particleVertexBuffer);
 
             //Only draw if there are live particles
-            if(endOfLiveParticlesIndex - endOfDeadParticlesIndex > 0)
+            if(Math.Abs(endOfLiveParticlesIndex - endOfDeadParticlesIndex) > 0)
             {
                 for(int i = endOfDeadParticlesIndex; i < endOfLiveParticlesIndex; ++i)
                 {
@@ -230,13 +204,31 @@ namespace TrashSoup.Engine
             }
         }
 
-        public void SetEnabled()
-        {
-            InitializeParticleVertices();
-            lifeLeft = life;
-            endOfDeadParticlesIndex = 0;
-            endOfLiveParticlesIndex = 0;
+        public int getLive() { return endOfLiveParticlesIndex; }
+
+        public virtual void SetEnabled()
+        { 
         }
         #endregion
+    }
+
+    class Emitter
+    {
+        private Particle p;
+
+        public Emitter(Particle p)
+        {
+            this.p = p;
+        }
+
+        public void RunEmitter(GameTime gameTime)
+        {
+            p.Update(gameTime);
+            if (p.IsDead)
+            {
+                p.SetEnabled();
+            }
+        }
+
     }
 }
