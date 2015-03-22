@@ -1,0 +1,137 @@
+﻿<Window x:Class="AwesomeEngineEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Awesome Engine Editor v 0.001" Height="768" Width="1366"
+        Background="LightGray">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="600"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="800"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Row 0, menu + labels for hierarchy and details-->
+        <DockPanel Grid.Row="0" Grid.Column="0">
+            <Border BorderThickness="2" BorderBrush="Black">
+                <Menu IsMainMenu="True" Width="auto" HorizontalAlignment="Left" Background="LightGray" Margin="0, 20, 0, 0">
+                    <MenuItem Header="File" Width="120" Height="40" FontSize="30" BorderBrush="Black" BorderThickness="2" Margin="50,0,0,0">
+                        <MenuItem Name="OpenSceneMI" Header="Open scene" Click="OpenSceneMI_Click"/>
+                        <MenuItem Name="SaveSceneMI" Header="Save scene" Click="SaveSceneMI_Click" IsEnabled="{Binding IsSaveSceneMIEnabled}"/>
+                        <MenuItem Name="QuitMI" Header="Quit" Click="QuitMI_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="Edit" Width="120" Height="40" FontSize="30" BorderBrush="Black" BorderThickness="2" Margin="50,0,0,0">
+                        <MenuItem Name="AddGameObjectMI" Header="Add game object" Click="AddGameObjectMI_Click"/>
+                        <MenuItem Name="RemoveGameObjectMI" Header="Remove game object" Click="RemoveGameObjectMI_Click" IsEnabled="{Binding IsRemoveModelMIEnabled}"/>
+                    </MenuItem>
+                    <MenuItem Header="Help" Width="120" Height="40" FontSize="30" BorderBrush="Black" BorderThickness="2" Margin="50,0,0,0">
+                        <MenuItem Name="AboutMI" Header="About" Click="AboutMI_Click"/>
+                    </MenuItem>
+                </Menu>
+            </Border>
+        </DockPanel>
+
+        <DockPanel Grid.Row="0" Grid.Column="1">
+            <Border BorderBrush="Black" BorderThickness="2">
+                <Label Content="Hierarchy" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40"/>
+            </Border>
+        </DockPanel>
+
+        <DockPanel Grid.Row="0" Grid.Column="2">
+            <Border BorderBrush="Black" BorderThickness="2">
+                <Label Content="Details" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40"/>
+            </Border>
+        </DockPanel>
+
+        <!-- End of row 0 -->
+
+        <!-- Row 1, XNA window + hierarchy + details-->
+        <DockPanel Grid.Row="1" Grid.Column="0">
+            <Border BorderBrush="Black" BorderThickness="2">
+                <!-- XNA Window -->
+                <TextBlock Text="Here will be an awesome XNA render image. I don't know how exactly we will be moving in this window but it will be awesome, you'll see" FontSize="60" TextWrapping="Wrap"/>
+            </Border>
+        </DockPanel>
+        
+        <!-- Hierarchy -->
+        <DockPanel Grid.Row="1" Grid.Column="1">
+            <Border BorderBrush="Black" BorderThickness="2">
+                <TreeView Name="HierarchyTreeView" Width="300" FontSize="30" Background="LightGray" SelectedItemChanged="HierarchyTreeView_SelectedItemChanged" MouseLeftButtonDown="HierarchyTreeView_MouseLeftButtonDown">
+                    <TreeViewItem Header="Test">
+                        <TreeViewItem Header="Test child"/>
+                    </TreeViewItem>
+                    <TreeViewItem Header="Test2">
+                        <TreeViewItem Header="Test child 2">
+                            <TreeViewItem Header="Test child of child"/>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                    <TreeViewItem Header="Test">
+                        <TreeViewItem Header="Test child"/>
+                    </TreeViewItem>
+                    <TreeViewItem Header="Test2">
+                        <TreeViewItem Header="Test child 2">
+                            <TreeViewItem Header="Test child of child"/>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                    <TreeViewItem Header="Test">
+                        <TreeViewItem Header="Test child"/>
+                    </TreeViewItem>
+                    <TreeViewItem Header="Test2">
+                        <TreeViewItem Header="Test child 2">
+                            <TreeViewItem Header="Test child of child"/>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                    <TreeViewItem Header="Test">
+                        <TreeViewItem Header="Test child"/>
+                    </TreeViewItem>
+                    <TreeViewItem Header="Test2">
+                        <TreeViewItem Header="Test child 2">
+                            <TreeViewItem Header="Test child of child"/>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                    <TreeViewItem Header="Test">
+                        <TreeViewItem Header="Test child"/>
+                    </TreeViewItem>
+                    <TreeViewItem Header="Test2">
+                        <TreeViewItem Header="Test child 2">
+                            <TreeViewItem Header="Test child of child"/>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                </TreeView>
+            </Border>
+        </DockPanel>
+        
+        <!-- Details -->
+        <DockPanel Grid.Row="1" Grid.Column="2">
+            <Border BorderBrush="Black" BorderThickness="2">
+                <Grid Name="DetailsInfo">
+                    <TextBlock Name="Test" Text="There should be some details like textures used (open file dialog), position, rotation, scale, model path, shader (?)" TextWrapping="Wrap" FontSize="30"/>
+                    <TextBlock Text="Add component to this object" VerticalAlignment="Bottom" Margin="0, 0, 0, 90" FontSize="15"/>
+                    <ComboBox Name="ObjectComponents" VerticalAlignment="Bottom" Margin="0, 0, 0, 50" SelectionChanged="ObjectComponents_SelectionChanged"/>
+                </Grid>
+            </Border>
+        </DockPanel>
+        
+        <!-- End of row 1-->
+        
+        <!-- Row 2 -->
+
+        <DockPanel Grid.Row="2" Grid.Column="0">
+            <ToggleButton Name="TranslateToggle" Content="Translate" Width="100" Click="TranslateToggle_Click" Visibility="{Binding IsTranslateRotateScaleVisible}"/>
+            <ToggleButton Name="RotateToggle" Content="Rotate" Width="100" Click="RotateToggle_Click" Visibility="{Binding IsTranslateRotateScaleVisible}"/>
+            <ToggleButton Name="ScaleToggle" Content="Scale" Width="100" Margin="0, 0, 50, 0" Click="ScaleToggle_Click" Visibility="{Binding IsTranslateRotateScaleVisible}"/>
+            <ToggleButton Name="XToggle" Content="X" Width="40" Visibility="{Binding IsXYZVisible}" Click="XToggle_Click"/>
+            <ToggleButton Name="YToggle" Content="Y" Width="40" Visibility="{Binding IsXYZVisible}" Click="YToggle_Click"/>
+            <ToggleButton Name="ZToggle" Content="Z" Width="40" Margin="0, 0, 50, 0" Visibility="{Binding IsXYZVisible}" Click="ZToggle_Click"/>
+            <Button Name="MoreButton" Content="More" Width="60" Visibility="{Binding IsMoreLessVisible}" Click="MoreButton_Click"/>
+            <Button Name="LessButton" Content="Less" Width="60" Margin="0, 0, 50, 0" Visibility="{Binding IsMoreLessVisible}" Click="LessButton_Click"/>
+            <TextBlock/>
+        </DockPanel>
+
+    </Grid>
+</Window>
