@@ -78,6 +78,7 @@ namespace TrashSoup.Engine
 
         //Effect
         protected Effect particleEffect;
+        protected Effect billboardEffect;
 
         //Textures
         protected Texture2D particleColorsTexture;
@@ -106,6 +107,7 @@ namespace TrashSoup.Engine
             this.particleColorsTexture = particleColorsTexture;
             this.particleSettings = particleSettings;
             this.particleEffect = particleEffect;
+            this.billboardEffect = ResourceManager.Instance.Effects.ElementAt(1);
 
             InitializeParticleVertices();
         }
@@ -187,25 +189,52 @@ namespace TrashSoup.Engine
             {
                 for(int i = endOfDeadParticlesIndex; i < endOfLiveParticlesIndex; ++i)
                 {
-                    particleEffect.Parameters["WorldViewProjection"].SetValue(
-                        camera.ViewMatrix * camera.ProjectionMatrix);
-                    particleEffect.Parameters["particleColor"].SetValue(
-                        vertexColorArray[i].ToVector4());
+                    //particleEffect.Parameters["WorldViewProjection"].SetValue(
+                    //    camera.ViewMatrix * camera.ProjectionMatrix);
+                    //particleEffect.Parameters["particleColor"].SetValue(
+                    //    vertexColorArray[i].ToVector4());
 
                     //Draw particles
-                    foreach(EffectPass pass in particleEffect.CurrentTechnique.Passes)
+                    //foreach (EffectPass pass in particleEffect.CurrentTechnique.Passes)
+                    //{
+                    //    pass.Apply();
+
+                    //    RasterizerState stat = new RasterizerState();
+                    //    stat.CullMode = CullMode.None;
+                    //    graphicsDevice.RasterizerState = stat;
+                    //    graphicsDevice.DrawUserPrimitives<VertexPositionTexture>(
+                    //        PrimitiveType.TriangleStrip, vertices, i * 4, 2);
+                    //}
+
+                    //Draw billboarded particles
+                    billboardEffect.Parameters["World"].SetValue(Matrix.Identity);
+                    billboardEffect.Parameters["View"].SetValue(camera.ViewMatrix);
+                    billboardEffect.Parameters["Projection"].SetValue(camera.ProjectionMatrix);
+                    billboardEffect.Parameters["CamPos"].SetValue(camera.Position + camera.GetDirection());
+                    billboardEffect.Parameters["AllowedRotDir"].SetValue(new Vector3(1, 1, 0));
+                    billboardEffect.Parameters["particleColor"].SetValue(
+                         vertexColorArray[i].ToVector4());
+                    billboardEffect.Parameters["BillboardTexture"].SetValue(ResourceManager.Instance.Textures.ElementAt(2));
+
+                    foreach (EffectPass pass in billboardEffect.CurrentTechnique.Passes)
                     {
                         pass.Apply();
 
+                        RasterizerState stat = new RasterizerState();
+                        stat.CullMode = CullMode.None;
+                        graphicsDevice.RasterizerState = stat;
                         graphicsDevice.DrawUserPrimitives<VertexPositionTexture>(
                             PrimitiveType.TriangleStrip, vertices, i * 4, 2);
+
                     }
                 }
             }
         }
 
-        public int getLive() { return endOfLiveParticlesIndex; }
-
+        /// <summary>
+        /// 
+        /// Important for looping the particle. Sets proper variables to default
+        /// </summary>
         public virtual void SetEnabled()
         { 
         }

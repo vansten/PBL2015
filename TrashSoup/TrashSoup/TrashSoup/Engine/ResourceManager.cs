@@ -36,6 +36,7 @@ namespace TrashSoup.Engine
 
         public void LoadContent(Game game)
         {
+            LoadTextures(game);
             LoadEffects(game);
             AudioManager.Instance.LoadContent();
             LoadCues();
@@ -44,8 +45,8 @@ namespace TrashSoup.Engine
             //AudioManager.Instance.PlayCue(GetCueFromCueList("Track1")); //default music from tutorial, just to check that everything works xD
 
             // FOR TETIN
-            Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\cargo"));
-            Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\metal01_d"));
+            //Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\cargo"));
+            //Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\metal01_d"));
             Models.Add(game.Content.Load<Model>(@"Models\Test\TestBox"));
             Models.Add(game.Content.Load<Model>(@"Models\Test\TestTerrain"));
 
@@ -114,6 +115,20 @@ namespace TrashSoup.Engine
 
         /// <summary>
         /// 
+        /// Load every texture from content to textures list
+        /// </summary>
+        /// <param name="game"></param>
+        private void LoadTextures(Game game)
+        {
+            // FOR TETIN
+            Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\cargo"));
+            Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\metal01_d"));
+            Textures.Add(game.Content.Load<Texture2D>(@"Textures\ParticleTest\Particle"));
+
+        }
+
+        /// <summary>
+        /// 
         /// Load every effect to effect list.
         /// </summary>
         /// <param name="game"></param>
@@ -121,7 +136,10 @@ namespace TrashSoup.Engine
         {
             Effects.Add(game.Content.Load<Effect>(@"Effects\Particle"));
             Effects.ElementAt(0).CurrentTechnique = Effects.ElementAt(0).Techniques["Technique1"];
-            Effects.ElementAt(0).Parameters["theTexture"].SetValue(game.Content.Load<Texture2D>(@"Textures\ParticleTest\Particle"));
+            Effects.ElementAt(0).Parameters["theTexture"].SetValue(Textures.ElementAt(2));
+
+            Effects.Add(game.Content.Load<Effect>(@"Effects\Billboard"));
+            Effects.ElementAt(1).CurrentTechnique = Effects.ElementAt(1).Techniques["Technique1"];
         }
         #endregion
     }
