@@ -84,6 +84,7 @@
     <Compile Include="Engine\AudioManager.cs" />
     <Compile Include="Engine\Camera.cs" />
     <Compile Include="Engine\CustomModel.cs" />
+    <Compile Include="Engine\CustomSkinnedModel.cs" />
     <Compile Include="Engine\Debug.cs" />
     <Compile Include="Engine\ExplosionParticle.cs" />
     <Compile Include="Engine\Material.cs" />

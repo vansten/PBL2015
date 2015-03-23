@@ -78,27 +78,14 @@ namespace TrashSoup.Engine
 
                     foreach (ModelMesh mm in mod.Meshes)
                     {
-                        foreach (Effect be in mm.Effects)
+                        foreach (BasicEffect be in mm.Effects)
                         {
-                            if(be is BasicEffect)
-                            {
-                                BasicEffect beb = be as BasicEffect;
-                                beb.Projection = camera.ProjectionMatrix;
-                                beb.View = camera.ViewMatrix;
-                                beb.World = mm.ParentBone.Transform * transform.GetWorldMatrix();
-                                beb.TextureEnabled = true;
-                                beb.EnableDefaultLighting();
-                                beb.Texture = Mat[0].Diffuse;
-                            }
-                            else if (be is SkinnedEffect)
-                            {
-                                SkinnedEffect bes = be as SkinnedEffect;
-                                bes.Projection = camera.ProjectionMatrix;
-                                bes.View = camera.ViewMatrix;
-                                bes.World = mm.ParentBone.Transform * transform.GetWorldMatrix();
-                                bes.EnableDefaultLighting();
-                                //bes.Texture = Mat[0].Diffuse;
-                            }
+                             be.Projection = camera.ProjectionMatrix;
+                             be.View = camera.ViewMatrix;
+                             be.World = mm.ParentBone.Transform * transform.GetWorldMatrix();
+                             be.TextureEnabled = true;
+                             be.EnableDefaultLighting();
+                             be.Texture = Mat[0].Diffuse;
                         }
 
                         mm.Draw();
@@ -111,7 +98,7 @@ namespace TrashSoup.Engine
         {
         }
 
-        protected void FlipZAxis()
+        protected virtual void FlipZAxis()
         {
             for(int i = 0; i < LOD_COUNT; i++)
             {

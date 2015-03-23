@@ -55,7 +55,7 @@ namespace TrashSoup.Engine
             List<Material> matList = new List<Material>();
             matList.Add(new Material(Textures[0], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
             testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.4f);
-            testBox.Components.Add(new CustomModel(testBox, new Model[] { Models[2], null, null }, 3, matList));
+            testBox.Components.Add(new CustomSkinnedModel(testBox, new Model[] { Models[2], null, null }, 3, matList));
             testBox.Components.Add(new PlayerController(testBox));
 
             GameObject testTer = new GameObject(2, "testTer");

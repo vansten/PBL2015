@@ -143,6 +143,7 @@ namespace SkinnedModelPipeline
             List<Keyframe> keyframes = new List<Keyframe>();
 
             int boneIndex;
+            Matrix trans;
             // for each input animation channel
             foreach(KeyValuePair<string, AnimationChannel> channel in animation.Channels)
             {

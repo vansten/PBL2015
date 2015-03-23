@@ -129,7 +129,7 @@ namespace SkinningModelLibrary
             for(int bone = 1; bone < worldTransforms.Length; ++bone)
             {
                 parentBone = skinningDataValue.SkeletonHierarchy[bone];
-                worldTransforms[bone] = boneTransforms[bone] * worldTransforms[bone];
+                worldTransforms[bone] = boneTransforms[bone] * worldTransforms[parentBone];
             }
         }
 
