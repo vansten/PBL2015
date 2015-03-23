@@ -117,20 +117,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animations\Test\t-pose_2.fbx">
-      <Name>t-pose_2</Name>
+    <ProjectReference Include="..\..\SkinnedModelPipeline\SkinnedModelPipeline.csproj">
+      <Project>{45323740-376e-45f6-b3ec-4b46ed823a91}</Project>
+      <Name>SkinnedModelPipeline</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Animations\Test\dude.fbx">
+      <Name>dude</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-    </Compile>
-    <Compile Include="Animations\Test\walking_1.fbx">
-      <Name>walking_1</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-    </Compile>
-    <Compile Include="Animations\Test\walking_nomesh.FBX">
-      <Name>walking_nomesh</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>SkinnedModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

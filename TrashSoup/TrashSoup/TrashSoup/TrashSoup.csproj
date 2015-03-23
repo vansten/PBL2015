@@ -10,6 +10,7 @@
     <RootNamespace>TrashSoup</RootNamespace>
     <AssemblyName>TrashSoup</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
     <XnaProfile>HiDef</XnaProfile>
@@ -80,19 +81,14 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Engine\AnimationClip.cs" />
-    <Compile Include="Engine\AnimationPlayer.cs" />
     <Compile Include="Engine\AudioManager.cs" />
     <Compile Include="Engine\Camera.cs" />
     <Compile Include="Engine\CustomModel.cs" />
     <Compile Include="Engine\Debug.cs" />
     <Compile Include="Engine\ExplosionParticle.cs" />
-    <Compile Include="Engine\Keyframe.cs" />
     <Compile Include="Engine\Material.cs" />
     <Compile Include="Engine\PhysicalObject.cs" />
     <Compile Include="Engine\PhysicsManager.cs" />
-    <Compile Include="Engine\SkinnedModelProcessor.cs" />
-    <Compile Include="Engine\SkinningData.cs" />
     <Compile Include="Engine\Transform.cs" />
     <Compile Include="Gameplay\InputHandler.cs" />
     <Compile Include="Gameplay\PlayerCameraController.cs" />
@@ -117,6 +113,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\SkinnedModelLibrary\SkinnedModelLibrary.csproj">
+      <Project>{3467ee31-18d7-4019-a9dc-59cc9885459f}</Project>
+      <Name>SkinnedModelLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TrashSoupContent\TrashSoupContent.contentproj">
       <Name>TrashSoupContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>
