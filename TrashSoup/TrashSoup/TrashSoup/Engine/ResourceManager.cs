@@ -49,12 +49,14 @@ namespace TrashSoup.Engine
             //Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\metal01_d"));
             Models.Add(game.Content.Load<Model>(@"Models\Test\TestBox"));
             Models.Add(game.Content.Load<Model>(@"Models\Test\TestTerrain"));
+            Models.Add(game.Content.Load<Model>(@"Animations\Test\t-pose_2"));
+            Models.Add(game.Content.Load<Model>(@"Animations\Test\walking_nomesh"));
 
             GameObject testBox = new GameObject(1, "testBox");
             List<Material> matList = new List<Material>();
             matList.Add(new Material(Textures[0], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
-            testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
-            testBox.Components.Add(new CustomModel(testBox, new Model[] { Models[0], null, null }, 3, matList));
+            testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.15f);
+            testBox.Components.Add(new CustomModel(testBox, new Model[] { Models[2], null, null }, 3, matList));
             testBox.Components.Add(new PlayerController(testBox));
 
             GameObject testTer = new GameObject(2, "testTer");
