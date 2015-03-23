@@ -111,6 +111,7 @@ namespace SkinnedModelPipeline
                 {
                     boneMap.Add(boneName, i);
                 }
+                
             }
 
             // convert each animation in turn

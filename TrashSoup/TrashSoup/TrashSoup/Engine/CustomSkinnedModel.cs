@@ -74,7 +74,7 @@ namespace TrashSoup.Engine
 
         protected override void FlipZAxis()
         {
-            // do nothing since it's magically fixed o.O
+            // do nothing since it's magically good o.O
         }
 
         protected void FlipNormals(Model model)

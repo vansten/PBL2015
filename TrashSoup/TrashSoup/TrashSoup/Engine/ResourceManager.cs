@@ -49,12 +49,13 @@ namespace TrashSoup.Engine
             //Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\metal01_d"));
             Models.Add(game.Content.Load<Model>(@"Models\Test\TestBox"));
             Models.Add(game.Content.Load<Model>(@"Models\Test\TestTerrain"));
-            Models.Add(game.Content.Load<Model>(@"Animations\Test\dude"));
+            Models.Add(game.Content.Load<Model>(@"Animations\Test\walking_1"));
+            //Models.Add(game.Content.Load<Model>(@"Models\Test\TestGuy"));
 
             GameObject testBox = new GameObject(1, "testBox");
             List<Material> matList = new List<Material>();
             matList.Add(new Material(Textures[0], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
-            testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.4f);
+            testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.2f);
             testBox.Components.Add(new CustomSkinnedModel(testBox, new Model[] { Models[2], null, null }, 3, matList));
             testBox.Components.Add(new PlayerController(testBox));
 
