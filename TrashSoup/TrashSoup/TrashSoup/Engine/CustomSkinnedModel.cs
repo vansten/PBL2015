@@ -21,6 +21,12 @@ namespace TrashSoup.Engine
         #endregion
 
         #region methods
+
+        public CustomSkinnedModel(GameObject obj) : base(obj)
+        {
+            
+        }
+
         public CustomSkinnedModel(GameObject obj, Model[] lods, uint lodCount, List<Material> matList) : base(obj, lods, lodCount, matList)
         {
             if(lods[0] != null)
