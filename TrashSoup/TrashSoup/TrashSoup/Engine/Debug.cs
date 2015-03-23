@@ -7,7 +7,7 @@ using System.Text;
 
 namespace TrashSoup.Engine
 {
-    class Debug
+    public class Debug
     {
         public static void Log(string message)
         {
