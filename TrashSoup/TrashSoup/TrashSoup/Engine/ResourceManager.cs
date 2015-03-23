@@ -117,7 +117,19 @@ namespace TrashSoup.Engine
 
         /// <summary>
         /// 
+        /// Load every model from content to textures list
+        /// IMPORTANT!!! SET TAG FOR EVERY ELEMENT
+        /// </summary>
+        /// <param name="game"></param>
+        private void LoadModels(Game game)
+        {
+
+        }
+
+        /// <summary>
+        /// 
         /// Load every texture from content to textures list
+        /// IMPORTANT!!! SET NAME FOR EVERY ELEMENT
         /// </summary>
         /// <param name="game"></param>
         private void LoadTextures(Game game)
@@ -132,6 +144,7 @@ namespace TrashSoup.Engine
         /// <summary>
         /// 
         /// Load every effect to effect list.
+        /// IMPORTANT!!! SET NAME FOR EVERY ELEMENT
         /// </summary>
         /// <param name="game"></param>
         private void LoadEffects(Game game)
