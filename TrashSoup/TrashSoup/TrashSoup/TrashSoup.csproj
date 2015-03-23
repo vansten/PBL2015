@@ -13,7 +13,7 @@
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
-    <XnaProfile>Reach</XnaProfile>
+    <XnaProfile>HiDef</XnaProfile>
     <XnaCrossPlatformGroupID>955db4ce-3684-45bc-ac3b-3aab62208c76</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
     <ApplicationIcon>Game.ico</ApplicationIcon>
@@ -64,6 +64,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.FBXImporter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.GamerServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
@@ -82,6 +84,7 @@
     <Compile Include="Engine\AudioManager.cs" />
     <Compile Include="Engine\Camera.cs" />
     <Compile Include="Engine\CustomModel.cs" />
+    <Compile Include="Engine\CustomSkinnedModel.cs" />
     <Compile Include="Engine\Debug.cs" />
     <Compile Include="Engine\ExplosionParticle.cs" />
     <Compile Include="Engine\Material.cs" />
@@ -112,6 +115,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\SkinnedModelLibrary\SkinnedModelLibrary.csproj">
+      <Project>{3467ee31-18d7-4019-a9dc-59cc9885459f}</Project>
+      <Name>SkinnedModelLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TrashSoupContent\TrashSoupContent.contentproj">
       <Name>TrashSoupContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>

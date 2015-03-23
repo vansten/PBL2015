@@ -5,6 +5,7 @@ using System.Text;
 using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
 using TrashSoup.Engine;
 
 namespace TrashSoup.Gameplay

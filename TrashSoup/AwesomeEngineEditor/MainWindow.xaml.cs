@@ -135,10 +135,13 @@ namespace AwesomeEngineEditor
                     this.objectComponents.Add((TrashSoup.Engine.ObjectComponent)obj);
                 }
             }
+
+            TrashSoup.Engine.Debug.Log("Editor completed loading list of object components");
         }
 
         public MainWindow()
         {
+            TrashSoup.Engine.Debug.Log("Editor started");
             InitializeComponent();
             this.DataContext = this;
             this.Closing += MainWindow_Closing;

@@ -82,12 +82,12 @@ namespace TrashSoup.Engine
                     {
                         foreach (BasicEffect be in mm.Effects)
                         {
-                            be.Projection = camera.ProjectionMatrix;
-                            be.View = camera.ViewMatrix;
-                            be.World = mm.ParentBone.Transform * transform.GetWorldMatrix();
-                            be.TextureEnabled = true;
-                            be.EnableDefaultLighting();
-                            be.Texture = Mat[0].Diffuse;
+                             be.Projection = camera.ProjectionMatrix;
+                             be.View = camera.ViewMatrix;
+                             be.World = mm.ParentBone.Transform * transform.GetWorldMatrix();
+                             be.TextureEnabled = true;
+                             be.EnableDefaultLighting();
+                             be.Texture = Mat[0].Diffuse;
                         }
 
                         mm.Draw();
@@ -100,7 +100,7 @@ namespace TrashSoup.Engine
         {
         }
 
-        protected void FlipZAxis()
+        protected virtual void FlipZAxis()
         {
             for(int i = 0; i < LOD_COUNT; i++)
             {
