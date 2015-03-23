@@ -135,6 +135,10 @@ namespace TrashSoup
                         ResourceManager.Instance.Particles[i].SetEnabled();
                 }
 
+                //TESTING SAVE
+                if (Keyboard.GetState().IsKeyDown(Keys.F5))
+                    SaveManager.Instance.SaveFileAction();
+
                 base.Update(gameTime);
             }
         }

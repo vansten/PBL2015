@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace TrashSoup.Engine
 {
-    public class Camera : GameObject
+    public class Camera : GameObject, IXmlSerializable
     {
         #region variables
         protected GameObject toFollow;
@@ -90,6 +91,29 @@ namespace TrashSoup.Engine
         protected void CreateLookAt()
         {
             this.ViewMatrix = Matrix.CreateLookAt(Position + Translation, Target + Translation, Up);
+        }
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            writer.WriteStartElement("CameraPosition");
+            writer.WriteElementString("X", Position.X.ToString());
+            writer.WriteElementString("Y", Position.Y.ToString());
+            writer.WriteElementString("Z", Position.Z.ToString());
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("CameraUp");
+            writer.WriteElementString("X", Up.X.ToString());
+            writer.WriteElementString("Y", Up.Y.ToString());
+            writer.WriteElementString("Z", Up.Z.ToString());
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("CameraTarget");
+            writer.WriteElementString("X", Target.X.ToString());
+            writer.WriteElementString("Y", Target.Y.ToString());
+            writer.WriteElementString("Z", Target.Z.ToString());
+            writer.WriteEndElement();
         }
         #endregion
     }

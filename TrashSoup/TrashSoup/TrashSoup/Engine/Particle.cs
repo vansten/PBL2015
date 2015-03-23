@@ -189,23 +189,6 @@ namespace TrashSoup.Engine
             {
                 for(int i = endOfDeadParticlesIndex; i < endOfLiveParticlesIndex; ++i)
                 {
-                    //particleEffect.Parameters["WorldViewProjection"].SetValue(
-                    //    camera.ViewMatrix * camera.ProjectionMatrix);
-                    //particleEffect.Parameters["particleColor"].SetValue(
-                    //    vertexColorArray[i].ToVector4());
-
-                    //Draw particles
-                    //foreach (EffectPass pass in particleEffect.CurrentTechnique.Passes)
-                    //{
-                    //    pass.Apply();
-
-                    //    RasterizerState stat = new RasterizerState();
-                    //    stat.CullMode = CullMode.None;
-                    //    graphicsDevice.RasterizerState = stat;
-                    //    graphicsDevice.DrawUserPrimitives<VertexPositionTexture>(
-                    //        PrimitiveType.TriangleStrip, vertices, i * 4, 2);
-                    //}
-
                     //Draw billboarded particles
                     billboardEffect.Parameters["World"].SetValue(Matrix.Identity);
                     billboardEffect.Parameters["View"].SetValue(camera.ViewMatrix);

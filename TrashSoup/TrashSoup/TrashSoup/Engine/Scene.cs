@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 
 namespace TrashSoup.Engine
 {
-    [Serializable]
-    public class SceneParams
+    public class SceneParams : IXmlSerializable
     {
         #region properties
         public uint UniqueID { get; set; }
@@ -21,11 +21,25 @@ namespace TrashSoup.Engine
             this.UniqueID = uniqueID;
             this.Name = name;
         }
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(System.Xml.XmlReader reader)
+        {
+
+        }
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
+            writer.WriteElementString("UniqueID", UniqueID.ToString());
+            writer.WriteElementString("Name", Name);
+        }
         #endregion
     }
 
-    [Serializable]
-    public class Scene
+    public class Scene : IXmlSerializable
     {
         #region properties
 
@@ -39,6 +53,10 @@ namespace TrashSoup.Engine
         #endregion
 
         #region methods
+        public Scene()
+        {
+
+        }
         public Scene(SceneParams par)
         {
             this.Params = par;
@@ -128,6 +146,35 @@ namespace TrashSoup.Engine
             // not implemented yet
         }
 
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(System.Xml.XmlReader reader)
+        {
+
+        }
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
+            writer.WriteStartElement("SceneParams");
+            (Params as IXmlSerializable).WriteXml(writer);
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("Camera");
+            (Cam as IXmlSerializable).WriteXml(writer);
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("ObjectsDictionary");
+            foreach(GameObject obj in ObjectsDictionary.Values)
+            {
+                writer.WriteStartElement("GameObject");
+                (obj as IXmlSerializable).WriteXml(writer);
+                writer.WriteEndElement();
+            }
+            writer.WriteEndElement();
+        }
         #endregion
     }
 }

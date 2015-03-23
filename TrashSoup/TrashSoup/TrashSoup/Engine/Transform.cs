@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using System.Xml.Serialization;
 
 namespace TrashSoup.Engine
 {
-    public class Transform : ObjectComponent
+    public class Transform : ObjectComponent, IXmlSerializable
     {
         #region constants
 
@@ -123,6 +124,34 @@ namespace TrashSoup.Engine
             this.worldMatrix = scale * rotation * translation;
         }
 
+        public System.Xml.Schema.XmlSchema GetSchema() { return null; }
+        public void ReadXml(System.Xml.XmlReader reader)
+        {
+
+        }
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
+            writer.WriteStartElement("Position");
+            writer.WriteElementString("X", Position.X.ToString());
+            writer.WriteElementString("Y", Position.Y.ToString());
+            writer.WriteElementString("Z", Position.Z.ToString());
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("Rotation");
+            writer.WriteElementString("X", Rotation.X.ToString());
+            writer.WriteElementString("Y", Rotation.Y.ToString());
+            writer.WriteElementString("Z", Rotation.Z.ToString());
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("Forward");
+            writer.WriteElementString("X", Forward.X.ToString());
+            writer.WriteElementString("Y", Forward.Y.ToString());
+            writer.WriteElementString("Z", Forward.Z.ToString());
+            writer.WriteEndElement();
+
+            writer.WriteElementString("Scale", Scale.ToString());
+        }
         #endregion
     }
 }

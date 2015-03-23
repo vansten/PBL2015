@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace TrashSoup.Engine
 {
-    [Serializable]
-    public class GameObject
+    public class GameObject : IXmlSerializable
     {
         #region variables
 
@@ -91,6 +90,68 @@ namespace TrashSoup.Engine
                 }
             }
         }
+
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(System.Xml.XmlReader reader)
+        {
+            
+        }
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
+            writer.WriteElementString("UniqueID", UniqueID.ToString());
+            writer.WriteElementString("Name", Name);
+
+            if(MyTransform != null)
+            {
+                writer.WriteStartElement("MyTransform");
+                (MyTransform as IXmlSerializable).WriteXml(writer);
+                writer.WriteEndElement();
+            }
+
+            if(MyPhysicalObject != null)
+            {
+                writer.WriteStartElement("MyPhysicalObject");
+                (MyPhysicalObject as IXmlSerializable).WriteXml(writer);
+                writer.WriteEndElement();
+            }
+
+            if(Components.Count != 0)
+            {
+                writer.WriteStartElement("Components");
+                foreach (ObjectComponent comp in Components)
+                {
+                    if(comp != null)
+                    {
+                        if(comp is CustomModel)
+                        {
+                            writer.WriteStartElement("CustomModel");
+                        }
+                        else if(comp is Gameplay.PlayerController)
+                        {
+                            writer.WriteStartElement("PlayerController");
+                        }
+                        else if(comp is PhysicalObject)
+                        {
+                            writer.WriteStartElement("PhysicalObject");
+                        }
+                        else if(comp is Gameplay.CameraBehaviourComponent)
+                        {
+                            writer.WriteStartElement("CameraBehaviourComponent");
+                        }
+                        (comp as IXmlSerializable).WriteXml(writer);
+                        writer.WriteEndElement();
+                    }
+                }
+                writer.WriteEndElement();
+            }
+
+        }
         #endregion
+
     }
 }

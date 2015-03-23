@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using TrashSoup.Engine;
 
 namespace TrashSoup.Gameplay
 {
-    public class CameraBehaviourComponent : ObjectComponent
+    public class CameraBehaviourComponent : ObjectComponent, IXmlSerializable
     {
         #region constants
 
@@ -69,6 +70,21 @@ namespace TrashSoup.Gameplay
         protected override void Start()
         {
             cam = (Camera)myObject;
+        }
+
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(System.Xml.XmlReader reader)
+        {
+
+        }
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
+            writer.WriteElementString("TargetID", target.UniqueID.ToString());
         }
 
         #endregion

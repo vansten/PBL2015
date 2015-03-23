@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 
 namespace TrashSoup.Engine
@@ -33,7 +34,7 @@ namespace TrashSoup.Engine
     //TODO:
     //Improve Update function
     //Add function to deal with collisions
-    public class PhysicalObject : ObjectComponent
+    public class PhysicalObject : ObjectComponent, IXmlSerializable
     {
         #region Variables
 
@@ -139,6 +140,33 @@ namespace TrashSoup.Engine
         public override void Draw(GameTime gameTime)
         {
             //Do nothing, we do not expect to draw something as abstract as physical object component
+        }
+
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(System.Xml.XmlReader reader)
+        {
+            
+        }
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
+            writer.WriteElementString("Acceleration", acceleration.ToString());
+            writer.WriteElementString("Mass", Mass.ToString());
+            writer.WriteElementString("DragFactor", DragFactor.ToString());
+            writer.WriteElementString("IsUsingGravity", IsUsingGravity.ToString());
+
+            writer.WriteStartElement("Velocity");
+            writer.WriteElementString("X", Velocity.X.ToString());
+            writer.WriteElementString("Y", Velocity.Y.ToString());
+            writer.WriteElementString("Z", Velocity.Z.ToString());
+            writer.WriteEndElement();
+
+            writer.WriteElementString("RotationConstraints", RotationConstraints.ToString());
+            writer.WriteElementString("PositionConstraints", PositionConstraints.ToString());
         }
 
         #endregion

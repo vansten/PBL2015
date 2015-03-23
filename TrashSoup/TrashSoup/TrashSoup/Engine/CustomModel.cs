@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace TrashSoup.Engine
 {
-    public class CustomModel : ObjectComponent
+    public class CustomModel : ObjectComponent, IXmlSerializable
     {
         #region staticVariables
 
@@ -118,6 +120,44 @@ namespace TrashSoup.Engine
             }
         }
 
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(System.Xml.XmlReader reader)
+        {
+            
+        }
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
+            writer.WriteElementString("LODState", LODState.ToString());
+
+            writer.WriteStartElement("LODs");
+            foreach(Model model in LODs)
+            {
+                if(model != null)
+                {
+                    writer.WriteElementString("ModelPath", model.Tag.ToString());
+                }
+            }
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("Materials");
+            foreach(Material mat in Mat)
+            {
+                if(mat != null)
+                {
+                    writer.WriteElementString("DiffusePath", mat.Diffuse.Name);
+                    if (mat.MyEffect is BasicEffect)
+                        mat.MyEffect.Name = "BasicEffect";
+                    writer.WriteElementString("EffectPath", mat.MyEffect.Name);
+                }
+            }
+            writer.WriteEndElement();
+        }
         #endregion
+
     }
 }

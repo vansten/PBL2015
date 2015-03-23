@@ -36,6 +36,7 @@ namespace TrashSoup.Engine
 
         public void LoadContent(Game game)
         {
+            LoadModels(game);
             LoadTextures(game);
             LoadEffects(game);
             AudioManager.Instance.LoadContent();
@@ -47,8 +48,8 @@ namespace TrashSoup.Engine
             // FOR TETIN
             //Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\cargo"));
             //Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\metal01_d"));
-            Models.Add(game.Content.Load<Model>(@"Models\Test\TestBox"));
-            Models.Add(game.Content.Load<Model>(@"Models\Test\TestTerrain"));
+            //Models.Add(game.Content.Load<Model>(@"Models\Test\TestBox"));
+            //Models.Add(game.Content.Load<Model>(@"Models\Test\TestTerrain"));
 
             GameObject testBox = new GameObject(1, "testBox");
             List<Material> matList = new List<Material>();
@@ -105,6 +106,40 @@ namespace TrashSoup.Engine
 
         /// <summary>
         /// 
+        /// Method gets model from our list searching for elements which tag is "name" parameter;
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public Model GetModelFromModelsList(String name)
+        {
+            return Models.Find(x => x.Tag.Equals(name));
+        }
+
+
+        /// <summary>
+        /// 
+        /// Method gets texture from our list searching for elements which name contains "name" parameter.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public Texture2D GetTextureFromTexturesList(String name)
+        {
+            return Textures.Find(x => x.Name.Contains(name));
+        }
+
+        /// <summary>
+        /// 
+        /// Method gets effect from our list searching for elements which name contains "name" parameter.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public Effect GetEffectFromEffectsList(String name)
+        {
+            return Effects.Find(x => x.Name.Contains(name));
+        }
+
+        /// <summary>
+        /// 
         /// Load every sound to cue list.
         /// </summary>
         private void LoadCues()
@@ -115,31 +150,52 @@ namespace TrashSoup.Engine
 
         /// <summary>
         /// 
+        /// Load every model to model list.
+        /// IMPORTANT!!! ADD TAGS TO EVERY MODEL
+        /// </summary>
+        /// <param name="game"></param>
+        private void LoadModels(Game game)
+        {
+            Models.Add(game.Content.Load<Model>(@"Models/Test/TestBox"));
+            Models[0].Tag = "Models/Test/TestBox";
+            Models.Add(game.Content.Load<Model>(@"Models/Test/TestTerrain"));
+            Models[1].Tag = "Models/Test/TestTerrain";
+        }
+
+        /// <summary>
+        /// 
         /// Load every texture from content to textures list
+        /// IMPORTANT!!! ADD NAME TO EVERY TEXTURE
         /// </summary>
         /// <param name="game"></param>
         private void LoadTextures(Game game)
         {
             // FOR TETIN
-            Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\cargo"));
-            Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\metal01_d"));
-            Textures.Add(game.Content.Load<Texture2D>(@"Textures\ParticleTest\Particle"));
+            Textures.Add(game.Content.Load<Texture2D>(@"Textures/Test/cargo"));
+            Textures[0].Name = "Textures/Test/cargo";
+            Textures.Add(game.Content.Load<Texture2D>(@"Textures/Test/metal01_d"));
+            Textures[1].Name = "Textures/Test/metal01_d";
+            Textures.Add(game.Content.Load<Texture2D>(@"Textures/ParticleTest/Particle"));
+            Textures[2].Name = "Textures/ParticleTest/Particle";
 
         }
 
         /// <summary>
         /// 
         /// Load every effect to effect list.
+        /// IMPORTANT!!! ADD NAME TO EVERY EFFECT
         /// </summary>
         /// <param name="game"></param>
         private void LoadEffects(Game game)
         {
-            Effects.Add(game.Content.Load<Effect>(@"Effects\Particle"));
+            Effects.Add(game.Content.Load<Effect>(@"Effects/Particle"));
             Effects.ElementAt(0).CurrentTechnique = Effects.ElementAt(0).Techniques["Technique1"];
             Effects.ElementAt(0).Parameters["theTexture"].SetValue(Textures.ElementAt(2));
+            Effects.ElementAt(0).Name = "Effects/Particle";
 
-            Effects.Add(game.Content.Load<Effect>(@"Effects\Billboard"));
+            Effects.Add(game.Content.Load<Effect>(@"Effects/Billboard"));
             Effects.ElementAt(1).CurrentTechnique = Effects.ElementAt(1).Techniques["Technique1"];
+            Effects.ElementAt(1).Name = "Effects/Billboard";
         }
         #endregion
     }

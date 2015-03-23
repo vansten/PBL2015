@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using TrashSoup.Engine;
 
 namespace TrashSoup.Gameplay
 {
-    public class PlayerController : ObjectComponent
+    public class PlayerController : ObjectComponent, IXmlSerializable
     {
         #region constants
 
@@ -126,6 +127,21 @@ namespace TrashSoup.Gameplay
             return (float)(Math.Sin((1 - step) * theta) / sinTheta) * from + (float)(Math.Sin(step * theta) / sinTheta) * to;
         }
 
+
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(System.Xml.XmlReader reader)
+        {
+            
+        }
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
+            
+        }
 
         #endregion
     }
