@@ -139,7 +139,7 @@ namespace TrashSoup.Engine
             {
                 if(model != null)
                 {
-                    writer.WriteElementString("ModelPath", model.Tag.ToString());
+                    writer.WriteElementString("ModelPath", model.ToString());
                 }
             }
             writer.WriteEndElement();
@@ -149,10 +149,10 @@ namespace TrashSoup.Engine
             {
                 if(mat != null)
                 {
-                    writer.WriteElementString("DiffusePath", mat.Diffuse.Name);
+                    writer.WriteElementString("DiffusePath", mat.Diffuse.ToString());
                     if (mat.MyEffect is BasicEffect)
                         mat.MyEffect.Name = "BasicEffect";
-                    writer.WriteElementString("EffectPath", mat.MyEffect.Name);
+                    writer.WriteElementString("EffectPath", mat.MyEffect.ToString());
                 }
             }
             writer.WriteEndElement();
