@@ -24,6 +24,7 @@ namespace TrashSoup.Engine
         public bool Visible { get; set; }
 
         public Transform MyTransform { get; set; }
+        public Collider MyCollider { get; set; }
 
         public PhysicalObject MyPhysicalObject 
         {
@@ -73,6 +74,11 @@ namespace TrashSoup.Engine
                     this.MyPhysicalObject.Update(gameTime);
                 }
 
+                if(this.MyCollider != null)
+                {
+                    this.MyCollider.Update(gameTime);
+                }
+
                 foreach (ObjectComponent obj in Components)
                 {
                     obj.Update(gameTime);
@@ -84,6 +90,16 @@ namespace TrashSoup.Engine
         {
             if(this.Visible)
             {
+                //[vansten] This is for debug drawing of collider
+                //[vansten] It won't be build if we build a release version
+#if DEBUG
+                if (this.MyCollider != null)
+                {
+                    this.MyCollider.Draw(gameTime);
+                }
+
+#endif
+
                 foreach (ObjectComponent obj in Components)
                 {
                     obj.Draw(gameTime);
@@ -151,6 +167,31 @@ namespace TrashSoup.Engine
             }
 
         }
+
+        /// <summary>
+        /// 
+        /// This function will call every OnTrigger(GameObject) in this game object components
+        /// </summary>
+        public void OnTrigger(GameObject otherGO)
+        {
+            foreach(ObjectComponent oc in this.Components)
+            {
+                oc.OnTrigger(otherGO);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// This function will call every OnCollision(GameObject) in this game object components
+        /// </summary>
+        public void OnCollision(GameObject otherGO)
+        {
+            foreach (ObjectComponent oc in this.Components)
+            {
+                oc.OnCollision(otherGO);
+            }
+        }
+
         #endregion
 
     }

@@ -69,7 +69,7 @@ namespace TrashSoup.Gameplay
 
         protected override void Start()
         {
-            cam = (Camera)myObject;
+            cam = (Camera)MyObject;
         }
 
         public System.Xml.Schema.XmlSchema GetSchema()

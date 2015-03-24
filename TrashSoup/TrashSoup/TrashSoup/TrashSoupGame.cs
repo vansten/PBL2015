@@ -119,6 +119,9 @@ namespace TrashSoup
 
                 #endregion
 
+                //Update Physics first !!
+                PhysicsManager.Instance.Update(gameTime);
+
                 //Updating input manager and GUI manager 
                 //because of the fact that they don't want to be a game component
                 InputManager.Instance.Update(gameTime);

@@ -10,7 +10,7 @@ namespace TrashSoup.Engine
     {
         #region variables
 
-        protected GameObject myObject;
+        public GameObject MyObject;
 
         #endregion
 
@@ -24,7 +24,7 @@ namespace TrashSoup.Engine
         #region methods
         public ObjectComponent(GameObject myObj)
         {
-            this.myObject = myObj;
+            this.MyObject = myObj;
             this.Enabled = true;
             this.Visible = true;
         }
@@ -34,6 +34,16 @@ namespace TrashSoup.Engine
         public abstract void Draw(GameTime gameTime);
 
         protected abstract void Start();
+
+        public virtual void OnCollision(GameObject other)
+        {
+
+        }
+
+        public virtual void OnTrigger(GameObject other)
+        {
+
+        }
 
         #endregion
     }

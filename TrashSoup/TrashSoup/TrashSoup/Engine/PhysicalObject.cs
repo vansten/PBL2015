@@ -130,9 +130,9 @@ namespace TrashSoup.Engine
                 this.Velocity += PhysicsManager.Instance.Gravity * (float)gameTime.ElapsedGameTime.Milliseconds / 1000.0f;
 
                 //Change game object position because of velocity
-                if (this.myObject.MyTransform != null)
+                if (this.MyObject.MyTransform != null)
                 {
-                    this.myObject.MyTransform.Position += Velocity * (float)gameTime.ElapsedGameTime.Milliseconds / 1000.0f;
+                    this.MyObject.MyTransform.Position += Velocity * (float)gameTime.ElapsedGameTime.Milliseconds / 1000.0f;
                 }
             }
         }

@@ -11,13 +11,20 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
 
         <!-- Row 0, menu + labels for hierarchy and details-->
+
         <DockPanel Grid.Row="0" Grid.Column="0">
+            <Border BorderBrush="Black" BorderThickness="2">
+                <Label Content="Hierarchy" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40"/>
+            </Border>
+        </DockPanel>
+        
+        <DockPanel Grid.Row="0" Grid.Column="1">
             <Border BorderThickness="2" BorderBrush="Black">
                 <Menu IsMainMenu="True" Width="auto" HorizontalAlignment="Left" Background="LightGray" Margin="0, 20, 0, 0">
                     <MenuItem Header="File" Width="120" Height="40" FontSize="30" BorderBrush="Black" BorderThickness="2" Margin="50,0,0,0">
@@ -36,12 +43,6 @@
             </Border>
         </DockPanel>
 
-        <DockPanel Grid.Row="0" Grid.Column="1">
-            <Border BorderBrush="Black" BorderThickness="2">
-                <Label Content="Hierarchy" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40"/>
-            </Border>
-        </DockPanel>
-
         <DockPanel Grid.Row="0" Grid.Column="2">
             <Border BorderBrush="Black" BorderThickness="2">
                 <Label Content="Details" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40"/>
@@ -51,15 +52,9 @@
         <!-- End of row 0 -->
 
         <!-- Row 1, XNA window + hierarchy + details-->
-        <DockPanel Grid.Row="1" Grid.Column="0">
-            <Border BorderBrush="Black" BorderThickness="2">
-                <!-- XNA Window -->
-                <TextBlock Text="Here will be an awesome XNA render image. I don't know how exactly we will be moving in this window but it will be awesome, you'll see" FontSize="60" TextWrapping="Wrap"/>
-            </Border>
-        </DockPanel>
-        
+
         <!-- Hierarchy -->
-        <DockPanel Grid.Row="1" Grid.Column="1">
+        <DockPanel Grid.Row="1" Grid.Column="0">
             <Border BorderBrush="Black" BorderThickness="2">
                 <TreeView Name="HierarchyTreeView" Width="300" FontSize="30" Background="LightGray" SelectedItemChanged="HierarchyTreeView_SelectedItemChanged" MouseLeftButtonDown="HierarchyTreeView_MouseLeftButtonDown"
                           ItemsSource="{Binding GameObjects}">
@@ -69,6 +64,13 @@
                         </DataTemplate>
                     </TreeView.ItemTemplate>
                 </TreeView>
+            </Border>
+        </DockPanel>
+
+        <!-- XNA Window -->
+        <DockPanel Grid.Row="1" Grid.Column="1">
+            <Border BorderBrush="Black" BorderThickness="2">
+                <TextBlock Text="Here will be an awesome XNA render image. I don't know how exactly we will be moving in this window but it will be awesome, you'll see" FontSize="60" TextWrapping="Wrap"/>
             </Border>
         </DockPanel>
         

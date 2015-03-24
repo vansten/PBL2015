@@ -13,6 +13,7 @@ namespace TrashSoup.Engine
         #region Variables
 
         private List<GameObject> physicalObjects;
+        private List<Collider> allColliders;
 
         #endregion
 
@@ -27,6 +28,7 @@ namespace TrashSoup.Engine
         public PhysicsManager()
         {
             this.physicalObjects = new List<GameObject>();
+            this.allColliders = new List<Collider>();
             this.Gravity = new Vector3(0.0f, -9.81f, 0.0f);
         }
 
@@ -53,9 +55,54 @@ namespace TrashSoup.Engine
             }
         }
 
+        /// <summary>
+        /// 
+        /// Adds a collider to list, so it can be itterated to find a collider that collides with one of physical objects
+        /// </summary>
+        public void AddCollider(Collider col)
+        {
+            this.allColliders.Add(col);
+        }
+
+        /// <summary>
+        /// 
+        /// Removes collider so it can't longer collide with anything
+        /// </summary>
+        public void RemoveCollider(Collider col)
+        {
+            this.allColliders.Remove(col);
+        }
+
+        /// <summary>
+        /// 
+        /// Checking for collision, detectig them, deciding if they are trigger enters or collisions, preventing object from colliding with itself
+        /// </summary>
         public void Update(GameTime gameTime)
         {
-            //Do nothing right now
+            foreach(Collider col in this.allColliders)
+            {
+                foreach(GameObject po in this.physicalObjects)
+                {
+                    if(col.MyObject != po)
+                    {
+                        if (col.Intersects(po.MyPhysicalObject))
+                        {
+                            if (col.IsTrigger)
+                            {
+                                Debug.Log("Trigger found: " + col.MyObject.Name + " vs. " + po.Name + " at time: " + gameTime.TotalGameTime.Seconds + " s.");
+                                col.MyObject.OnTrigger(po);
+                                po.OnTrigger(col.MyObject);
+                            }
+                            else
+                            {
+                                Debug.Log("Collision found: " + col.MyObject.Name + " vs. " + po.Name + " at time: " + gameTime.TotalGameTime.Seconds + " s.");
+                                col.MyObject.OnCollision(po);
+                                po.OnCollision(col.MyObject);
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         #endregion

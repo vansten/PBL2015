@@ -57,15 +57,15 @@ namespace TrashSoup.Gameplay
             {
                 // now to rotate that damn vector as camera direction is rotated
                 rotM = rotation;
-                prevForward = myObject.MyTransform.Forward;
+                prevForward = MyObject.MyTransform.Forward;
 
                 rotation = (float)Math.Atan2(ResourceManager.Instance.CurrentScene.Cam.Direction.X,
                     -ResourceManager.Instance.CurrentScene.Cam.Direction.Z);
                 rotation = CurveAngle(rotM, rotation, 3.0f*ROTATION_SPEED);
                 tempMoveRotated = Vector3.Transform(tempMove, Matrix.CreateRotationY(rotation));
 
-                myObject.MyTransform.Forward = Vector3.Lerp(prevForward, tempMoveRotated, ROTATION_SPEED);
-                myObject.MyTransform.Rotation = RotateAsForward(myObject.MyTransform.Forward, myObject.MyTransform.Rotation);
+                MyObject.MyTransform.Forward = Vector3.Lerp(prevForward, tempMoveRotated, ROTATION_SPEED);
+                MyObject.MyTransform.Rotation = RotateAsForward(MyObject.MyTransform.Forward, MyObject.MyTransform.Rotation);
                
                 if (InputManager.Instance.GetGamePadButton(Buttons.B))
                 {
@@ -80,7 +80,7 @@ namespace TrashSoup.Gameplay
                     sprintM = MathHelper.Max(sprintM, 0.0f);
                 }
 
-                myObject.MyTransform.Position += (myObject.MyTransform.Forward * PLAYER_SPEED * sprint * (gameTime.ElapsedGameTime.Milliseconds / 1000.0f));
+                MyObject.MyTransform.Position += (MyObject.MyTransform.Forward * PLAYER_SPEED * sprint * (gameTime.ElapsedGameTime.Milliseconds / 1000.0f));
             }
         }
 
