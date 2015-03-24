@@ -14,6 +14,7 @@ namespace TrashSoup.Engine
 
         protected SkinningData skinningData;
         protected AnimationPlayer animationPlayer;
+        protected string currentAnimString;
 
         #endregion
 
@@ -31,14 +32,14 @@ namespace TrashSoup.Engine
         {
             if(lods[0] != null)
             {
-                //FlipNormals(lods[0]);
-
                 skinningData = lods[0].Tag as SkinningData;
                 if (skinningData == null) throw new InvalidOperationException("LOD 0 doesn't contain skinning data tag");
 
+                this.currentAnimString = skinningData.AnimationClips.Keys.ElementAt(0);
+
                 animationPlayer = new AnimationPlayer(skinningData);
 
-                animationPlayer.StartClip(skinningData.AnimationClips["Take 001"]);
+                animationPlayer.StartClip(skinningData.AnimationClips.Values.ElementAt(0));
             }
         }
 
@@ -78,31 +79,39 @@ namespace TrashSoup.Engine
             }
         }
 
-        protected override void FlipZAxis()
+        public void AddAnimation(KeyValuePair<string, AnimationClip> newClip)
         {
-            // do nothing since it's magically good o.O
+            this.skinningData.AnimationClips.Add(newClip.Key, newClip.Value);
         }
 
-        protected void FlipNormals(Model model)
+        public void SetCurrentAnim(string which)
         {
-            ushort tmp;
-            ushort[] indexTmp;
-            foreach (ModelMesh mm in model.Meshes)
-            {
-                foreach(ModelMeshPart mp in mm.MeshParts)
-                {
-                    indexTmp = new ushort[mp.IndexBuffer.IndexCount];
-                    mp.IndexBuffer.GetData(indexTmp);
-                    for(int i = 0; i < mp.IndexBuffer.IndexCount; i+=3)
-                    {
-                        tmp = indexTmp[i];
-                        indexTmp[i] = indexTmp[i + 2];
-                        indexTmp[i + 2] = tmp;
-                    }
-                    mp.IndexBuffer.SetData(indexTmp);
-                }
-            }
+            AnimationClip clip;
+            this.skinningData.AnimationClips.TryGetValue(which, out clip);
+            if (clip == null) throw new InvalidOperationException("Animation name not found in AnimationClip dictionary");
+            animationPlayer.StartClip(clip);
         }
+
+        //protected void FlipNormals(Model model)
+        //{
+        //    ushort tmp;
+        //    ushort[] indexTmp;
+        //    foreach (ModelMesh mm in model.Meshes)
+        //    {
+        //        foreach(ModelMeshPart mp in mm.MeshParts)
+        //        {
+        //            indexTmp = new ushort[mp.IndexBuffer.IndexCount];
+        //            mp.IndexBuffer.GetData(indexTmp);
+        //            for(int i = 0; i < mp.IndexBuffer.IndexCount; i+=3)
+        //            {
+        //                tmp = indexTmp[i];
+        //                indexTmp[i] = indexTmp[i + 2];
+        //                indexTmp[i + 2] = tmp;
+        //            }
+        //            mp.IndexBuffer.SetData(indexTmp);
+        //        }
+        //    }
+        //}
         #endregion
     }
 }

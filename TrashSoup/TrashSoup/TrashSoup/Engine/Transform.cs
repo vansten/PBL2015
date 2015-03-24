@@ -10,7 +10,7 @@ namespace TrashSoup.Engine
     public class Transform : ObjectComponent, IXmlSerializable
     {
         #region constants
-
+        protected Matrix preRotationMatrix = Matrix.CreateRotationY(MathHelper.Pi);
         #endregion
 
         #region variables
@@ -121,7 +121,7 @@ namespace TrashSoup.Engine
             rotation = Matrix.CreateFromYawPitchRoll(Rotation.Y, Rotation.X, Rotation.Z);
             scale = Matrix.CreateScale(this.Scale);
 
-            this.worldMatrix = scale * rotation * translation;
+            this.worldMatrix = preRotationMatrix * scale * rotation * translation;
         }
 
         public System.Xml.Schema.XmlSchema GetSchema() { return null; }
