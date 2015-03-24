@@ -101,6 +101,7 @@ namespace TrashSoup.Engine
         /// </summary>
         protected override void CreateCollider()
         {
+            if (this.MyObject == null) return;
             foreach(ObjectComponent oc in this.MyObject.Components)
             {
                 if(oc.GetType() == typeof(CustomModel))
