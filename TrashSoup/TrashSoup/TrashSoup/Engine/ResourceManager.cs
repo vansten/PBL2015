@@ -19,7 +19,8 @@ namespace TrashSoup.Engine
     {
         #region Variables
         public Scene CurrentScene;
-        public List<Model> Models = new List<Model>();
+        //public List<Model> Models = new List<Model>();
+        public Dictionary<String, Model> Models = new Dictionary<string, Model>();
         public List<Texture2D> Textures = new List<Texture2D>();
         public List<SpriteFont> Fonts = new List<SpriteFont>();
         public List<Effect> Effects = new List<Effect>();
@@ -47,17 +48,22 @@ namespace TrashSoup.Engine
             // FOR TETIN
             //Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\cargo"));
             //Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\metal01_d"));
-            Models.Add(game.Content.Load<Model>(@"Models\Test\TestBox"));
-            Models.Add(game.Content.Load<Model>(@"Models\Test\TestTerrain"));
-            Models.Add(game.Content.Load<Model>(@"Models\Test\TestGuy"));
-            Models.Add(game.Content.Load<Model>(@"Animations\Test\walking_1"));
+            //Models.Add(game.Content.Load<Model>(@"Models\Test\TestBox"));
+            //Models.Add(game.Content.Load<Model>(@"Models\Test\TestTerrain"));
+            //Models.Add(game.Content.Load<Model>(@"Models\Test\TestGuy"));
+            //Models.Add(game.Content.Load<Model>(@"Animations\Test\walking_1"));
+            AddModel("Models/Test/TestBox");
+            AddModel("Models/Test/TestTerrain");
+            AddModel("Models/Test/TestGuy");
+            AddModel("Animations/Test/walking_1");
+
 
             GameObject testBox = new GameObject(1, "testBox");
             List<Material> matList = new List<Material>();
             matList.Add(new Material(Textures[0], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
             testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.2f);
-            CustomSkinnedModel skModel = new CustomSkinnedModel(testBox, new Model[] { Models[2], null, null }, 3, matList);
-            skModel.AddAnimation(LoadAnimationFromModel(skModel.LODs[0], this.Models[3], "walking_1"));
+            CustomSkinnedModel skModel = new CustomSkinnedModel(testBox, new Model[] { Models["Models/Test/TestGuy"], null, null }, 3, matList);
+            skModel.AddAnimation(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/walking_1"], "walking_1"));
             skModel.SetCurrentAnim("walking_1");
             testBox.Components.Add(skModel);
             testBox.Components.Add(new PlayerController(testBox));
@@ -67,13 +73,13 @@ namespace TrashSoup.Engine
             List<Material> matList2 = new List<Material>();
             matList2.Add(new Material(Textures[1], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
             testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, -10.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
-            testTer.Components.Add(new CustomModel(testTer, new Model[] { Models[1], null, null }, 3, matList2));
+            testTer.Components.Add(new CustomModel(testTer, new Model[] { Models["Models/Test/TestTerrain"], null, null }, 3, matList2));
 
             GameObject testBox2 = new GameObject(3, "testBox2");
             List<Material> matList3 = new List<Material>();
             matList3.Add(new Material(Textures[1], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
             testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 10.0f, 30.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
-            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models[0], null, null }, 3, matList3));
+            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Test/TestBox"], null, null }, 3, matList3));
             testBox2.MyCollider = new BoxCollider(testBox2);    //Add a box collider to test physisc
             testBox2.MyPhysicalObject = new PhysicalObject(testBox2, 1.0f, 0.05f, true);
             testBox2.MyPhysicalObject.AddForce(new Vector3(0.0f, 100.0f, 20.0f));
@@ -126,9 +132,9 @@ namespace TrashSoup.Engine
         /// IMPORTANT!!! SET TAG FOR EVERY ELEMENT
         /// </summary>
         /// <param name="game"></param>
-        private void LoadModels(Game game)
+        private void AddModel(String path)
         {
-
+            Models.Add(path, TrashSoupGame.Instance.Content.Load<Model>(path));
         }
 
         /// <summary>

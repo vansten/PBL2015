@@ -28,6 +28,7 @@ namespace TrashSoup.Engine
 
         public LODStateEnum LODState { get; set; }
         public Model[] LODs { get; set; }
+        public String[] Paths { get; set; }
         // material doesn't change with LOD, but with MeshPart !!!
         public List<Material> Mat { get; set; }
 
@@ -39,9 +40,11 @@ namespace TrashSoup.Engine
         {
             this.LODState = LODStateEnum.HI;
             this.LODs = new Model[LOD_COUNT];
+            this.Paths = new String[LOD_COUNT];
             for(int i = 0; i < LOD_COUNT; i++)
             {
                 this.LODs[i] = null;
+                this.Paths[i] = null;
             }
             this.Mat = new List<Material>();
         }
@@ -52,6 +55,7 @@ namespace TrashSoup.Engine
             for(int i = 0; i < lodCount && i < LOD_COUNT; i++)
             {
                 this.LODs[i] = lods[i];
+                this.Paths[i] = ResourceManager.Instance.Models.FirstOrDefault(x => x.Value == lods[i]).Key;
             }
             Mat = matList;
         }
@@ -133,11 +137,11 @@ namespace TrashSoup.Engine
             writer.WriteElementString("LODState", LODState.ToString());
 
             writer.WriteStartElement("LODs");
-            foreach(Model model in LODs)
+            foreach(String path in Paths)
             {
-                if(model != null)
+                if(path != null)
                 {
-                    writer.WriteElementString("ModelPath", model.ToString());
+                    writer.WriteElementString("ModelPath", path);
                 }
             }
             writer.WriteEndElement();
