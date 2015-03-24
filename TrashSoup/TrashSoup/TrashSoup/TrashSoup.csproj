@@ -82,7 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine\AudioManager.cs" />
+    <Compile Include="Engine\BoxCollider.cs" />
     <Compile Include="Engine\Camera.cs" />
+    <Compile Include="Engine\Collider.cs" />
     <Compile Include="Engine\CustomModel.cs" />
     <Compile Include="Engine\CustomSkinnedModel.cs" />
     <Compile Include="Engine\Debug.cs" />

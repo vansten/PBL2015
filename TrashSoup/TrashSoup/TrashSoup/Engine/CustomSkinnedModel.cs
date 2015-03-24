@@ -57,7 +57,7 @@ namespace TrashSoup.Engine
                 if (mod != null)
                 {
                     Camera camera = ResourceManager.Instance.CurrentScene.Cam;
-                    Transform transform = myObject.MyTransform;
+                    Transform transform = MyObject.MyTransform;
                     Matrix[] bones = animationPlayer.GetSkinTransforms();
 
                     foreach (ModelMesh mm in mod.Meshes)

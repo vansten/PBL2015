@@ -58,6 +58,7 @@ namespace TrashSoup.Engine
             testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.2f);
             testBox.Components.Add(new CustomSkinnedModel(testBox, new Model[] { Models[2], null, null }, 3, matList));
             testBox.Components.Add(new PlayerController(testBox));
+            testBox.MyCollider = new BoxCollider(testBox);  //Add a box collider to test collisions
 
             GameObject testTer = new GameObject(2, "testTer");
             List<Material> matList2 = new List<Material>();
@@ -70,6 +71,7 @@ namespace TrashSoup.Engine
             matList3.Add(new Material(Textures[1], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
             testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 10.0f, 30.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
             testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models[0], null, null }, 3, matList3));
+            testBox2.MyCollider = new BoxCollider(testBox2);    //Add a box collider to test physisc
             testBox2.MyPhysicalObject = new PhysicalObject(testBox2, 1.0f, 0.05f, true);
             testBox2.MyPhysicalObject.AddForce(new Vector3(0.0f, 100.0f, 20.0f));
 
