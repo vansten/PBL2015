@@ -118,10 +118,12 @@ namespace SkinnedModelPipeline
             Dictionary<string, AnimationClip> animationClips;
             animationClips = new Dictionary<string, AnimationClip>();
 
+            int j = 0;
             foreach(KeyValuePair<string, AnimationContent> animation in animations)
             {
                 AnimationClip processed = ProcessAnimation(animation.Value, boneMap);
-                animationClips.Add(animation.Key, processed);
+                animationClips.Add("DefaultAnim" + j.ToString(), processed);
+                ++j;
             }
 
             if(animationClips.Count == 0)

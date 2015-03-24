@@ -49,14 +49,17 @@ namespace TrashSoup.Engine
             //Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\metal01_d"));
             Models.Add(game.Content.Load<Model>(@"Models\Test\TestBox"));
             Models.Add(game.Content.Load<Model>(@"Models\Test\TestTerrain"));
+            Models.Add(game.Content.Load<Model>(@"Models\Test\TestGuy"));
             Models.Add(game.Content.Load<Model>(@"Animations\Test\walking_1"));
-            //Models.Add(game.Content.Load<Model>(@"Models\Test\TestGuy"));
 
             GameObject testBox = new GameObject(1, "testBox");
             List<Material> matList = new List<Material>();
             matList.Add(new Material(Textures[0], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
             testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.2f);
-            testBox.Components.Add(new CustomSkinnedModel(testBox, new Model[] { Models[2], null, null }, 3, matList));
+            CustomSkinnedModel skModel = new CustomSkinnedModel(testBox, new Model[] { Models[2], null, null }, 3, matList);
+            skModel.AddAnimation(LoadAnimationFromModel(skModel.LODs[0], this.Models[3], "walking_1"));
+            skModel.SetCurrentAnim("walking_1");
+            testBox.Components.Add(skModel);
             testBox.Components.Add(new PlayerController(testBox));
 
             GameObject testTer = new GameObject(2, "testTer");
@@ -155,6 +158,18 @@ namespace TrashSoup.Engine
 
             Effects.Add(game.Content.Load<Effect>(@"Effects\Billboard"));
             Effects.ElementAt(1).CurrentTechnique = Effects.ElementAt(1).Techniques["Technique1"];
+        }
+
+        private KeyValuePair<string, SkinningModelLibrary.AnimationClip> LoadAnimationFromModel(Model model, Model animation, string newName)
+        {
+            // need to extract AnimationClips from animation and save it into new SkinningData with the rest
+            // of the data from original skinned Model. 
+            if(model.Tag == null || animation.Tag == null) throw new InvalidOperationException("Either destination model or animation is not a skinned model");
+            SkinningModelLibrary.SkinningData modelData = model.Tag as SkinningModelLibrary.SkinningData;
+            SkinningModelLibrary.SkinningData animationData = animation.Tag as SkinningModelLibrary.SkinningData;
+            if (modelData.SkeletonHierarchy.Count != animationData.SkeletonHierarchy.Count) throw new InvalidOperationException("Model hierarchy is not the same as the animation's");
+
+            return new KeyValuePair<string, SkinningModelLibrary.AnimationClip>(newName, animationData.AnimationClips.Values.ElementAt(0));
         }
         #endregion
     }

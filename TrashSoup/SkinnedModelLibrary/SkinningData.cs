@@ -15,7 +15,7 @@ namespace SkinningModelLibrary
         #region properties
 
         [ContentSerializer]
-        public Dictionary<string, AnimationClip> AnimationClips { get; private set; }
+        public Dictionary<string, AnimationClip> AnimationClips { get; set; }
 
         [ContentSerializer]
         public List<Matrix> BindPose { get; private set; }

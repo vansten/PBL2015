@@ -21,7 +21,7 @@ namespace SkinningModelLibrary
         // current animation transform matrices
         Matrix[] boneTransforms;
         Matrix[] worldTransforms;
-        Matrix[] skinTransfomrs;
+        Matrix[] skinTransforms;
 
         // backlink to the bind pose and skeleton hierarchy data
         SkinningData skinningDataValue;
@@ -50,7 +50,7 @@ namespace SkinningModelLibrary
             this.skinningDataValue = skinningData;
             boneTransforms = new Matrix[skinningData.BindPose.Count];
             worldTransforms = new Matrix[skinningData.BindPose.Count];
-            skinTransfomrs = new Matrix[skinningData.BindPose.Count];
+            skinTransforms = new Matrix[skinningData.BindPose.Count];
         }
 
         public void StartClip(AnimationClip clip)
@@ -135,9 +135,9 @@ namespace SkinningModelLibrary
 
         public void UpdateSkinTransforms()
         {
-            for(int bone = 0; bone < skinTransfomrs.Length; ++bone)
+            for(int bone = 0; bone < skinTransforms.Length; ++bone)
             {
-                skinTransfomrs[bone] = skinningDataValue.InverseBindPose[bone] * worldTransforms[bone];
+                skinTransforms[bone] = skinningDataValue.InverseBindPose[bone] * worldTransforms[bone];
             }
         }
 
@@ -153,7 +153,7 @@ namespace SkinningModelLibrary
 
         public Matrix[] GetSkinTransforms()
         {
-            return skinTransfomrs;
+            return skinTransforms;
         }
 
         #endregion
