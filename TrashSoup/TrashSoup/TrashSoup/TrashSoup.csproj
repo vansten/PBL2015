@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine\Animator.cs" />
+    <Compile Include="Engine\AnimatorState.cs" />
     <Compile Include="Engine\AudioManager.cs" />
     <Compile Include="Engine\BoxCollider.cs" />
     <Compile Include="Engine\Camera.cs" />

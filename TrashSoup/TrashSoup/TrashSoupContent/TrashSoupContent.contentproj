@@ -137,7 +137,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animations\Test\idle_1.fbx">
+    <Compile Include="Animations\Test\idle_1.FBX">
       <Name>idle_1</Name>
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>

@@ -12,8 +12,19 @@ namespace TrashSoup.Engine
     {
         #region variables
 
-        protected SkinningData skinningData;
-        protected Dictionary<string, AnimationPlayer> animationPlayers = new Dictionary<string,AnimationPlayer>();
+        protected AnimatorState newState;
+        protected Dictionary<string, AnimationPlayer> animationPlayers = new Dictionary<string, AnimationPlayer>();
+        protected float currentInterpolation = 0.0f;
+        protected bool ifInterpolate = false;
+        protected uint currentInterpolationTimeMS = 0;
+
+        #endregion
+
+        #region properties
+
+        public SkinningData SkinningData { get; set; }
+        public AnimatorState CurrentState { get; set; }
+        public Dictionary<string, AnimatorState> AvailableStates { get; set; }
 
         #endregion
 
@@ -21,23 +32,41 @@ namespace TrashSoup.Engine
 
         public Animator(GameObject go) : base(go)
         {
-
+            AvailableStates = new Dictionary<string, AnimatorState>();
         }
 
         public Animator(GameObject go, Model baseAnim) : base(go)
         {
-            skinningData = baseAnim.Tag as SkinningData;
-            if (skinningData == null) throw new InvalidOperationException("LOD 0 doesn't contain skinning data tag");
-
-            animationPlayers.Add(skinningData.AnimationClips.Keys.ElementAt(0), new AnimationPlayer(skinningData, skinningData.AnimationClips.Keys.ElementAt(0), 1.0f));
-
-            animationPlayers[skinningData.AnimationClips.Keys.ElementAt(0)].StartClip();
+            SkinningData = baseAnim.Tag as SkinningData;
+            if (SkinningData == null) throw new InvalidOperationException("LOD 0 doesn't contain skinning data tag");
+            AvailableStates = new Dictionary<string, AnimatorState>();
+            CurrentState = null;
+            newState = null;
         }
 
         public override void Update(GameTime gameTime)
         {
-            foreach(KeyValuePair<string, AnimationPlayer> ap in animationPlayers)
-                ap.Value.Update(gameTime.ElapsedGameTime, true, Matrix.Identity);
+            if(ifInterpolate)
+            {
+                CalculateInterpolationAmount(gameTime);
+                if(currentInterpolation >= 1.0f)
+                {
+                    this.CurrentState = newState;
+                    this.newState = null;
+                    this.currentInterpolation = 0.0f;
+                    this.currentInterpolationTimeMS = 0;
+                    this.ifInterpolate = false;
+                }
+            }
+
+            if (CurrentState != null)
+            {
+                CurrentState.Update(gameTime);
+            }
+            if (newState != null)
+            {
+                newState.Update(gameTime);
+            }
         }
 
         public override void Draw(GameTime gameTime)
@@ -52,69 +81,107 @@ namespace TrashSoup.Engine
 
         public Matrix[] GetSkinTransforms()
         {
-            return GetCurrentlyPlayedInterpolated();
+            return GetTransformsInterpolated((CurrentState != null) ? CurrentState.Animation : null, (newState != null) ? newState.Animation : null, currentInterpolation);
         }
 
-        public void AddAnimation(KeyValuePair<string, AnimationClip> newClip)
+        public void AddAnimationClip(KeyValuePair<string, AnimationClip> newClip)
         {
-            this.skinningData.AnimationClips.Add(newClip.Key, newClip.Value);
-            this.animationPlayers.Add(newClip.Key, new AnimationPlayer(this.skinningData, newClip.Key, 1.0f));
+            this.SkinningData.AnimationClips.Add(newClip.Key, newClip.Value);
+            this.animationPlayers.Add(newClip.Key, new AnimationPlayer(this.SkinningData, newClip.Key));
         }
 
-        public void AddAnimation(KeyValuePair<string, AnimationClip> newClip, float interpolation)
+        public void RemoveAnimatonClip(string key)
         {
-            this.skinningData.AnimationClips.Add(newClip.Key, newClip.Value);
-            this.animationPlayers.Add(newClip.Key, new AnimationPlayer(this.skinningData, newClip.Key, interpolation));
-        }
-
-        public void RemoveAnimaton(string key)
-        {
-            this.skinningData.AnimationClips.Remove(key);
+            this.SkinningData.AnimationClips.Remove(key);
             animationPlayers.Remove(key);
         }
 
-        public void StartAnimation(string key)
+        public AnimationClip GetAnimationClip(string key)
         {
-            animationPlayers[key].StartClip();
+            return SkinningData.AnimationClips[key];
         }
 
-        public void StopAnimation(string key)
+        public AnimationPlayer GetAnimationPlayer(string key)
+        {
+            return animationPlayers[key];
+        }
+
+        public void StartAnimation()
+        {
+            CurrentState.Animation.StartClip();
+        }
+
+        public void StopAnimation()
         {
             throw new NotImplementedException();
         }
 
-        public void PauseAnimation(string key)
+        public void PauseAnimation()
         {
             throw new NotImplementedException();
         }
 
-        public void ResumeAnimation(string key)
+        public void ResumeAnimation()
         {
             throw new NotImplementedException();
         }
 
-        protected Matrix[] GetCurrentlyPlayedInterpolated()
+        public void ChangeState(string stateName)
         {
-            Matrix[] interpolated;
-            if(animationPlayers.Count > 1)
+            AnimatorState newState = null;
+
+            foreach (KeyValuePair<uint, AnimatorState> kp in CurrentState.Transitions)
             {
-                //tbc
-                interpolated = animationPlayers.ElementAt(0).Value.GetSkinTransforms();
-                return interpolated;
+                if (kp.Value.Name.Equals(stateName))
+                {
+                    newState = kp.Value;
+                    currentInterpolationTimeMS = kp.Key;
+                }
             }
-            else if(animationPlayers.Count == 1)
+
+            if (newState == null)
             {
-                interpolated = animationPlayers.ElementAt(0).Value.GetSkinTransforms();
-                return interpolated;
+                Debug.Log("Transition not found in current state's dictionary");
+                return;
+            }
+
+            this.newState = newState;
+            ifInterpolate = true;
+            currentInterpolation = 0.0f;
+            newState.Animation.StartClip();
+        }
+
+        protected void CalculateInterpolationAmount(GameTime gameTime)
+        {
+            float nextAmount = (gameTime.ElapsedGameTime.Milliseconds) / MathHelper.Max((float)currentInterpolationTimeMS, 1.0f);
+            this.currentInterpolation += nextAmount;
+        }
+
+        protected Matrix[] GetTransformsInterpolated(AnimationPlayer one, AnimationPlayer two, float interp)
+        {
+            if (one == null && two != null) return two.GetSkinTransforms();
+            else if (two == null && one != null) return one.GetSkinTransforms();
+            else if (one == null && two == null)
+            {
+                Matrix[] oldMatrices = new Matrix[SkinningData.BindPose.Count];
+                for (int i = 0; i < SkinningData.BindPose.Count; ++i)
+                {
+                    oldMatrices[i] = Matrix.Identity;
+                }
+                return oldMatrices;
             }
             else
             {
-                interpolated = new Matrix[skinningData.BindPose.Count];
-                for(int i = 0; i < skinningData.BindPose.Count; ++i)
+                Matrix[] oneM = one.GetSkinTransforms();
+                Matrix[] twoM = two.GetSkinTransforms();
+                Matrix[] newMatrices = new Matrix[SkinningData.BindPose.Count];
+
+                for (int j = 0; j < SkinningData.BindPose.Count; ++j)
                 {
-                    interpolated[i] = Matrix.Identity;
+                    newMatrices[j] = Matrix.Lerp(oneM[j], twoM[j], MathHelper.Clamp(interp, 0.0f, 1.0f));
                 }
-                return interpolated;
+
+                return newMatrices;
             }
         }
 
