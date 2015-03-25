@@ -40,24 +40,30 @@ namespace SkinningModelLibrary
             get { return currentTimeValue; }
         }
 
+        public float InterpolationPercentage { get; set; }
+
+        public string AnimationKey { get; set; }
+
         #endregion
 
         #region methods
 
-        public AnimationPlayer(SkinningData skinningData)
+        public AnimationPlayer(SkinningData skinningData, string animKey, float interp)
         {
             if (skinningData == null) throw new ArgumentNullException("skinningData");
             this.skinningDataValue = skinningData;
+            this.AnimationKey = animKey;
+            this.InterpolationPercentage = interp;
             boneTransforms = new Matrix[skinningData.BindPose.Count];
             worldTransforms = new Matrix[skinningData.BindPose.Count];
             skinTransforms = new Matrix[skinningData.BindPose.Count];
+
+            currentClipValue = skinningData.AnimationClips[animKey];
+            if (currentClipValue == null) throw new ArgumentNullException("clip");
         }
 
-        public void StartClip(AnimationClip clip)
+        public void StartClip()
         {
-            if (clip == null) throw new ArgumentNullException("clip");
-
-            currentClipValue = clip;
             currentTimeValue = TimeSpan.Zero;
             currentKeyframe = 0;
 

@@ -24,6 +24,7 @@ namespace TrashSoup.Engine
         public bool Visible { get; set; }
 
         public Transform MyTransform { get; set; }
+        public Animator MyAnimator { get; set; }
         public Collider MyCollider { get; set; }
 
         public PhysicalObject MyPhysicalObject 
@@ -77,6 +78,11 @@ namespace TrashSoup.Engine
                 if(this.MyCollider != null)
                 {
                     this.MyCollider.Update(gameTime);
+                }
+
+                if (this.MyAnimator != null)
+                {
+                    this.MyAnimator.Update(gameTime);
                 }
 
                 foreach (ObjectComponent obj in Components)
