@@ -52,8 +52,7 @@ namespace TrashSoup.Engine
 
         public Matrix[] GetSkinTransforms()
         {
-            // here interpolate!
-            return animationPlayers.ElementAt(0).Value.GetSkinTransforms();
+            return GetCurrentlyPlayedInterpolated();
         }
 
         public void AddAnimation(KeyValuePair<string, AnimationClip> newClip)
@@ -92,6 +91,31 @@ namespace TrashSoup.Engine
         public void ResumeAnimation(string key)
         {
             throw new NotImplementedException();
+        }
+
+        protected Matrix[] GetCurrentlyPlayedInterpolated()
+        {
+            Matrix[] interpolated;
+            if(animationPlayers.Count > 1)
+            {
+                //tbc
+                interpolated = animationPlayers.ElementAt(0).Value.GetSkinTransforms();
+                return interpolated;
+            }
+            else if(animationPlayers.Count == 1)
+            {
+                interpolated = animationPlayers.ElementAt(0).Value.GetSkinTransforms();
+                return interpolated;
+            }
+            else
+            {
+                interpolated = new Matrix[skinningData.BindPose.Count];
+                for(int i = 0; i < skinningData.BindPose.Count; ++i)
+                {
+                    interpolated[i] = Matrix.Identity;
+                }
+                return interpolated;
+            }
         }
 
         #endregion

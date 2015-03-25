@@ -64,8 +64,8 @@ namespace TrashSoup.Engine
             testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.2f);
             CustomSkinnedModel skModel = new CustomSkinnedModel(testBox, new Model[] { Models["Models/Test/TestGuy"], null, null }, 3, matList);
             Animator playerAnimator = new Animator(testBox, skModel.LODs[0]);
-            playerAnimator.AddAnimation(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/walking_1"], "walking_1"));
-            //playerAnimator.AddAnimation(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/idle_1"], "idle_1"));
+            playerAnimator.AddAnimation(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/walking_1"], "walking_1"), 0.5f);
+            playerAnimator.AddAnimation(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/idle_1"], "idle_1"), 0.5f);
             testBox.Components.Add(skModel);
             testBox.MyAnimator = playerAnimator;
             testBox.Components.Add(new PlayerController(testBox));
