@@ -120,7 +120,25 @@ namespace TrashSoup.Engine
 
         public void ReadXml(System.Xml.XmlReader reader)
         {
-            
+            reader.MoveToContent();
+            reader.ReadStartElement();
+
+            UniqueID = (uint)reader.ReadElementContentAsInt("UniqueID", "");
+            Name = reader.ReadElementString("Name", "");
+
+            if(reader.Name == "MyTransform")
+            {
+                (MyTransform as IXmlSerializable).ReadXml(reader);
+            }
+
+            if(reader.Name == "MyPhysicalObject")
+            {
+                (MyPhysicalObject as IXmlSerializable).ReadXml(reader);
+            }
+
+            //komponenty
+
+            reader.ReadEndElement();
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)
@@ -164,6 +182,14 @@ namespace TrashSoup.Engine
                         else if(comp is Gameplay.CameraBehaviourComponent)
                         {
                             writer.WriteStartElement("CameraBehaviourComponent");
+                        }
+                        else if(comp is Collider)
+                        {
+                            writer.WriteStartElement("Collider");
+                        }
+                        else if(comp is Transform)
+                        {
+                            writer.WriteStartElement("Transform");
                         }
                         (comp as IXmlSerializable).WriteXml(writer);
                         writer.WriteEndElement();

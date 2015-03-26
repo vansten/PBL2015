@@ -93,6 +93,36 @@ namespace TrashSoup.Engine
             this.ViewMatrix = Matrix.CreateLookAt(Position + Translation, Target + Translation, Up);
         }
 
+        public System.Xml.Schema.XmlSchema GetSchema() { return null; }
+
+        public void ReadXml(System.Xml.XmlReader reader)
+        {
+            base.ReadXml(reader);
+
+            if(reader.Name == "CameraPosition")
+            {
+                Position = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""),
+                    reader.ReadElementContentAsFloat("Z", ""));
+            }
+
+            if(reader.Name == "CameraUp")
+            {
+                Up = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""),
+                    reader.ReadElementContentAsFloat("Z", ""));
+            }
+
+            if(reader.Name == "CameraTarget")
+            {
+
+                Target = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""),
+                    reader.ReadElementContentAsFloat("Z", ""));
+
+            }
+        }
+
         public void WriteXml(System.Xml.XmlWriter writer)
         {
             base.WriteXml(writer);

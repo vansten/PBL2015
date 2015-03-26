@@ -30,7 +30,13 @@ namespace TrashSoup.Engine
 
         public void ReadXml(System.Xml.XmlReader reader)
         {
-            
+            reader.MoveToContent();
+            reader.ReadStartElement();
+
+            if (reader.Name == "Scene")
+            {
+                (scene as IXmlSerializable).ReadXml(reader);
+            }
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)
@@ -49,6 +55,17 @@ namespace TrashSoup.Engine
                 {
                     serializer.Serialize(file, this.scene);
                 }
+            }
+        }
+
+        public void LoadFileAction()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Scene));
+            using(FileStream file = new FileStream(this.XmlPath, FileMode.Open))
+            {
+                this.scene = new Scene();
+                Scene tmp = (Scene)serializer.Deserialize(file);
+                this.scene = tmp;
             }
         }
         #endregion

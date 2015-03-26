@@ -79,7 +79,7 @@ namespace TrashSoup.Gameplay
 
         public void ReadXml(System.Xml.XmlReader reader)
         {
-
+            
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)
