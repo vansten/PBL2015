@@ -28,7 +28,13 @@ namespace TrashSoup.Engine
 
         public void ReadXml(System.Xml.XmlReader reader)
         {
+            reader.MoveToContent();
+            reader.ReadStartElement();
 
+            this.UniqueID = (uint)reader.ReadElementContentAsInt("UniqueID", "");
+            this.Name = reader.ReadElementString("Name", "");
+
+            reader.ReadEndElement();
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)
@@ -153,7 +159,31 @@ namespace TrashSoup.Engine
 
         public void ReadXml(System.Xml.XmlReader reader)
         {
+            reader.MoveToContent();
+            reader.ReadStartElement();
 
+            if(reader.Name == "SceneParams")
+            {
+                (Params as IXmlSerializable).ReadXml(reader);
+            }
+
+            if(reader.Name == "Camera")
+            {
+                (Cam as IXmlSerializable).ReadXml(reader);
+            }
+
+            while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
+            {
+                uint key = (uint)reader.ReadElementContentAsInt("GameObjectKey", "");
+                if (reader.Name == "GameObject")
+                {
+                    GameObject obj = new GameObject(0, "");
+                    (obj as IXmlSerializable).ReadXml(reader);
+                    ObjectsDictionary.Add(key, obj);
+                }
+            }
+
+            reader.ReadEndElement();
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)
@@ -167,10 +197,11 @@ namespace TrashSoup.Engine
             writer.WriteEndElement();
 
             writer.WriteStartElement("ObjectsDictionary");
-            foreach(GameObject obj in ObjectsDictionary.Values)
+            for (int i = 0; i < ObjectsDictionary.Count; ++i )
             {
+                writer.WriteElementString("GameObjectKey", ObjectsDictionary.Keys.ElementAt(i).ToString());
                 writer.WriteStartElement("GameObject");
-                (obj as IXmlSerializable).WriteXml(writer);
+                (ObjectsDictionary.Values.ElementAt(i) as IXmlSerializable).WriteXml(writer);
                 writer.WriteEndElement();
             }
             writer.WriteEndElement();
