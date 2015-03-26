@@ -16,6 +16,7 @@ namespace TrashSoup.Engine
         protected Dictionary<string, AnimationPlayer> animationPlayers = new Dictionary<string, AnimationPlayer>();
         protected bool ifInterpolate = false;
         protected uint currentInterpolationTimeMS = 0;
+        protected float interDirection = 1.0f;
 
         #endregion
 
@@ -50,10 +51,18 @@ namespace TrashSoup.Engine
         {
             if(ifInterpolate)
             {
-                CalculateInterpolationAmount(gameTime);
+                CalculateInterpolationAmount(gameTime, this.interDirection);
                 if(CurrentInterpolation >= 1.0f)
                 {
                     this.CurrentState = newState;
+                    this.newState = null;
+                    this.CurrentInterpolation = 0.0f;
+                    this.currentInterpolationTimeMS = 0;
+                    this.ifInterpolate = false;
+                }
+                else if(CurrentInterpolation <= 0.0f)
+                {
+                    this.interDirection = 1.0f;
                     this.newState = null;
                     this.CurrentInterpolation = 0.0f;
                     this.currentInterpolationTimeMS = 0;
@@ -128,6 +137,31 @@ namespace TrashSoup.Engine
             throw new NotImplementedException();
         }
 
+        public void ChangeState(string stateName)
+        {
+            AnimatorState newState = null;
+
+            foreach (KeyValuePair<uint, AnimatorState> kp in CurrentState.Transitions)
+            {
+                if (kp.Value.Name.Equals(stateName))
+                {
+                    newState = kp.Value;
+                    currentInterpolationTimeMS = kp.Key;
+                }
+            }
+
+            if (newState == null)
+            {
+                Debug.Log("Transition not found in current state's dictionary");
+                return;
+            }
+
+            this.newState = newState;
+            ifInterpolate = true;
+            CurrentInterpolation = 0.0f;
+            newState.Animation.StartClip();
+        }
+
         public void ChangeState(string stateName, float startInterp)
         {
             AnimatorState newState = null;
@@ -157,7 +191,6 @@ namespace TrashSoup.Engine
         {
             AnimatorState oldS = this.AvailableStates[oldState];
             AnimatorState newS = this.AvailableStates[newState];
-            Debug.Log(startInterp.ToString());
             this.newState = newS;
             this.CurrentState = oldS;
             ifInterpolate = true;
@@ -183,7 +216,7 @@ namespace TrashSoup.Engine
 
             if (newState == null)
             {
-                Debug.Log("Transition not found in current state's dictionary");
+                Debug.Log("ANIMATOR ERROR: Transition not found in current state's dictionary");
                 return;
             }
 
@@ -194,18 +227,39 @@ namespace TrashSoup.Engine
 
         public void RemoveBlendStateToCurrent()
         {
-            //ChangeState(this.newState.Name, this.CurrentState.Name, this.CurrentInterpolation);
+            if(this.CurrentState != null && this.newState != null)
+            {
+                ChangeState(this.CurrentState.Name, this.newState.Name, this.CurrentInterpolation);
+                this.interDirection = -1.0f;
+                uint newTime = 0;
+                foreach (KeyValuePair<uint, AnimatorState> p in newState.Transitions)
+                {
+                    if (p.Value == CurrentState) newTime = p.Key;
+                }
+                this.currentInterpolationTimeMS = newTime;
+            }
+            else
+            {
+                Debug.Log("ANIMATOR ERROR: Either currentState or blendState is NULL");
+            }
         }
 
         public void RemoveBlendStateToNew()
         {
-            //this.ChangeState(this.newState.Name);
+            if (this.CurrentState != null && this.newState != null)
+            {
+                this.ChangeState(this.newState.Name);
+            }
+            else
+            {
+                Debug.Log("ANIMATOR ERROR: Either currentState or blendState is NULL");
+            }
         }
 
-        protected void CalculateInterpolationAmount(GameTime gameTime)
+        protected void CalculateInterpolationAmount(GameTime gameTime, float direction)
         {
             float nextAmount = (gameTime.ElapsedGameTime.Milliseconds) / MathHelper.Max((float)currentInterpolationTimeMS, 1.0f);
-            this.CurrentInterpolation += nextAmount;
+            this.CurrentInterpolation += direction * nextAmount;
         }
 
         protected Matrix[] GetTransformsInterpolated(AnimationPlayer one, AnimationPlayer two, float interp)
