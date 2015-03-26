@@ -57,6 +57,7 @@ namespace TrashSoup.Engine
             AddModel("Models/Test/TestGuy");
             AddModel("Animations/Test/walking_1");
             AddModel("Animations/Test/idle_1");
+            AddModel("Animations/Test/jump_1");
 
             GameObject testBox = new GameObject(1, "testBox");
             List<Material> matList = new List<Material>();
@@ -66,6 +67,7 @@ namespace TrashSoup.Engine
             Animator playerAnimator = new Animator(testBox, skModel.LODs[0]);
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/walking_1"], "walking_1"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/idle_1"], "idle_1"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/jump_1"], "jump_1"));
             testBox.Components.Add(skModel);
             testBox.MyAnimator = playerAnimator;
             testBox.Components.Add(new PlayerController(testBox));

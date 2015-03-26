@@ -81,7 +81,7 @@ namespace TrashSoup.Gameplay
                 MyObject.MyTransform.Forward = Vector3.Lerp(prevForward, tempMoveRotated, ROTATION_SPEED);
                 MyObject.MyTransform.Rotation = RotateAsForward(MyObject.MyTransform.Forward, MyObject.MyTransform.Rotation);
                
-                if (InputManager.Instance.GetGamePadButton(Buttons.B))
+                if (InputManager.Instance.GetGamePadButton(Buttons.B) && tempMove.Length() >= 0.8f)
                 {
                     sprint = MathHelper.Lerp(1.0f, SPRINT_MULTIPLIER, sprintM);
                     sprintM += SPRINT_ACCELERATION * (gameTime.ElapsedGameTime.Milliseconds / 1000.0f);
@@ -104,6 +104,16 @@ namespace TrashSoup.Gameplay
                     MyObject.MyAnimator.RemoveBlendStateToCurrent();
                 }
             }
+
+            if (InputManager.Instance.GetGamePadButton(Buttons.A))
+            {
+                if (MyObject.MyAnimator != null)
+                {
+                    if(MyObject.MyAnimator.CurrentState != null)
+                    // jump!
+                    MyObject.MyAnimator.ChangeState("Jump");
+                }
+            }
         }
 
         public override void Draw(Microsoft.Xna.Framework.GameTime gameTime)
@@ -120,10 +130,15 @@ namespace TrashSoup.Gameplay
             {
                 MyObject.MyAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", MyObject.MyAnimator.GetAnimationPlayer("idle_1")));
                 MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", MyObject.MyAnimator.GetAnimationPlayer("walking_1")));
+                MyObject.MyAnimator.AvailableStates.Add("Jump", new AnimatorState("Jump", MyObject.MyAnimator.GetAnimationPlayer("jump_1"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates["Idle"].Transitions.Add(500, MyObject.MyAnimator.AvailableStates["Walk"]);
+                MyObject.MyAnimator.AvailableStates["Idle"].Transitions.Add(501, MyObject.MyAnimator.AvailableStates["Jump"]);
                 MyObject.MyAnimator.AvailableStates["Walk"].Transitions.Add(250, MyObject.MyAnimator.AvailableStates["Idle"]);
+                MyObject.MyAnimator.AvailableStates["Walk"].Transitions.Add(200, MyObject.MyAnimator.AvailableStates["Jump"]);
+                MyObject.MyAnimator.AvailableStates["Jump"].Transitions.Add(100, MyObject.MyAnimator.AvailableStates["Walk"]);
+                MyObject.MyAnimator.AvailableStates["Jump"].Transitions.Add(1001, MyObject.MyAnimator.AvailableStates["Idle"]);
                 MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["Idle"];
-                MyObject.MyAnimator.SetBlendState("Walk");
+                //MyObject.MyAnimator.SetBlendState("Walk");
             }
         }
 
