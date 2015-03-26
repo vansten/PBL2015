@@ -14,7 +14,6 @@ namespace TrashSoup.Engine
 
         protected AnimatorState newState;
         protected Dictionary<string, AnimationPlayer> animationPlayers = new Dictionary<string, AnimationPlayer>();
-        protected float currentInterpolation = 0.0f;
         protected bool ifInterpolate = false;
         protected uint currentInterpolationTimeMS = 0;
 
@@ -25,6 +24,7 @@ namespace TrashSoup.Engine
         public SkinningData SkinningData { get; set; }
         public AnimatorState CurrentState { get; set; }
         public Dictionary<string, AnimatorState> AvailableStates { get; set; }
+        public float CurrentInterpolation { get; set; }
 
         #endregion
 
@@ -33,10 +33,12 @@ namespace TrashSoup.Engine
         public Animator(GameObject go) : base(go)
         {
             AvailableStates = new Dictionary<string, AnimatorState>();
+            this.CurrentInterpolation = 0.0f;
         }
 
         public Animator(GameObject go, Model baseAnim) : base(go)
         {
+            this.CurrentInterpolation = 0.0f;
             SkinningData = baseAnim.Tag as SkinningData;
             if (SkinningData == null) throw new InvalidOperationException("LOD 0 doesn't contain skinning data tag");
             AvailableStates = new Dictionary<string, AnimatorState>();
@@ -49,11 +51,11 @@ namespace TrashSoup.Engine
             if(ifInterpolate)
             {
                 CalculateInterpolationAmount(gameTime);
-                if(currentInterpolation >= 1.0f)
+                if(CurrentInterpolation >= 1.0f)
                 {
                     this.CurrentState = newState;
                     this.newState = null;
-                    this.currentInterpolation = 0.0f;
+                    this.CurrentInterpolation = 0.0f;
                     this.currentInterpolationTimeMS = 0;
                     this.ifInterpolate = false;
                 }
@@ -81,7 +83,7 @@ namespace TrashSoup.Engine
 
         public Matrix[] GetSkinTransforms()
         {
-            return GetTransformsInterpolated((CurrentState != null) ? CurrentState.Animation : null, (newState != null) ? newState.Animation : null, currentInterpolation);
+            return GetTransformsInterpolated((CurrentState != null) ? CurrentState.Animation : null, (newState != null) ? newState.Animation : null, CurrentInterpolation);
         }
 
         public void AddAnimationClip(KeyValuePair<string, AnimationClip> newClip)
@@ -126,7 +128,7 @@ namespace TrashSoup.Engine
             throw new NotImplementedException();
         }
 
-        public void ChangeState(string stateName)
+        public void ChangeState(string stateName, float startInterp)
         {
             AnimatorState newState = null;
 
@@ -147,14 +149,63 @@ namespace TrashSoup.Engine
 
             this.newState = newState;
             ifInterpolate = true;
-            currentInterpolation = 0.0f;
+            CurrentInterpolation = startInterp;
             newState.Animation.StartClip();
+        }
+
+        public void ChangeState(string oldState, string newState, float startInterp)
+        {
+            AnimatorState oldS = this.AvailableStates[oldState];
+            AnimatorState newS = this.AvailableStates[newState];
+            Debug.Log(startInterp.ToString());
+            this.newState = newS;
+            this.CurrentState = oldS;
+            ifInterpolate = true;
+            CurrentInterpolation = startInterp;
+            if (this.CurrentState.Animation.MyState == AnimationPlayer.animationStates.STOPPED)
+                this.CurrentState.Animation.StartClip();
+            if (this.newState.Animation.MyState == AnimationPlayer.animationStates.STOPPED)
+                this.newState.Animation.StartClip();
+        }
+
+        public void SetBlendState(string stateName)
+        {
+            AnimatorState newState = null;
+
+            foreach (KeyValuePair<uint, AnimatorState> kp in CurrentState.Transitions)
+            {
+                if (kp.Value.Name.Equals(stateName))
+                {
+                    newState = kp.Value;
+                    currentInterpolationTimeMS = kp.Key;
+                }
+            }
+
+            if (newState == null)
+            {
+                Debug.Log("Transition not found in current state's dictionary");
+                return;
+            }
+
+            this.newState = newState;
+            CurrentInterpolation = 0.0f;
+            newState.Animation.StartClip();
+        }
+
+        public void RemoveBlendStateToCurrent()
+        {
+            //ChangeState(this.newState.Name, this.CurrentState.Name, this.CurrentInterpolation);
+        }
+
+        public void RemoveBlendStateToNew()
+        {
+            //this.ChangeState(this.newState.Name);
         }
 
         protected void CalculateInterpolationAmount(GameTime gameTime)
         {
             float nextAmount = (gameTime.ElapsedGameTime.Milliseconds) / MathHelper.Max((float)currentInterpolationTimeMS, 1.0f);
-            this.currentInterpolation += nextAmount;
+            this.CurrentInterpolation += nextAmount;
         }
 
         protected Matrix[] GetTransformsInterpolated(AnimationPlayer one, AnimationPlayer two, float interp)

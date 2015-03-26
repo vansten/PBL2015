@@ -66,11 +66,6 @@ namespace TrashSoup.Engine
             Animator playerAnimator = new Animator(testBox, skModel.LODs[0]);
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/walking_1"], "walking_1"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/idle_1"], "idle_1"));
-            playerAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", playerAnimator.GetAnimationPlayer("idle_1")));
-            playerAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", playerAnimator.GetAnimationPlayer("walking_1")));
-            playerAnimator.AvailableStates["Idle"].Transitions.Add(500, playerAnimator.AvailableStates["Walk"]);
-            playerAnimator.AvailableStates["Walk"].Transitions.Add(250, playerAnimator.AvailableStates["Idle"]);
-            playerAnimator.CurrentState = playerAnimator.AvailableStates["Idle"];
             testBox.Components.Add(skModel);
             testBox.MyAnimator = playerAnimator;
             testBox.Components.Add(new PlayerController(testBox));

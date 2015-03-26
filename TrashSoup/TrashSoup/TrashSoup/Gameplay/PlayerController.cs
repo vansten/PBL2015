@@ -56,14 +56,18 @@ namespace TrashSoup.Gameplay
             if(tempMove.Length() > 0.0f &&
                 ResourceManager.Instance.CurrentScene.Cam != null)
             {
-                if(moving == false)
+                if (moving == false)
                 {
                     moving = true;
 
-                    if(MyObject.MyAnimator != null)
+                    if (MyObject.MyAnimator != null)
                     {
-                        MyObject.MyAnimator.ChangeState("Walk");
+                        MyObject.MyAnimator.SetBlendState("Walk");
                     }
+                }
+                if(moving == true)
+                {
+                    MyObject.MyAnimator.CurrentInterpolation = MathHelper.Clamp(tempMove.Length(), 0.0f, 1.0f);
                 }
                 // now to rotate that damn vector as camera direction is rotated
                 rotM = rotation;
@@ -97,7 +101,7 @@ namespace TrashSoup.Gameplay
                 if (moving == true)
                 {
                     moving = false;
-                    MyObject.MyAnimator.ChangeState("Idle");
+                    MyObject.MyAnimator.RemoveBlendStateToCurrent();
                 }
             }
         }
@@ -111,6 +115,16 @@ namespace TrashSoup.Gameplay
         {
             sprint = 1.0f;
             sprintM = 0.0f;
+
+            if(MyObject.MyAnimator != null)
+            {
+                MyObject.MyAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", MyObject.MyAnimator.GetAnimationPlayer("idle_1")));
+                MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", MyObject.MyAnimator.GetAnimationPlayer("walking_1")));
+                MyObject.MyAnimator.AvailableStates["Idle"].Transitions.Add(500, MyObject.MyAnimator.AvailableStates["Walk"]);
+                MyObject.MyAnimator.AvailableStates["Walk"].Transitions.Add(250, MyObject.MyAnimator.AvailableStates["Idle"]);
+                MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["Idle"];
+                MyObject.MyAnimator.SetBlendState("Walk");
+            }
         }
 
         protected Vector3 RotateAsForward(Vector3 forward, Vector3 rotation)
