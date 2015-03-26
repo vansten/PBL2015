@@ -36,6 +36,7 @@ namespace TrashSoup.Gameplay
         protected float rotY;
         protected float prevRotY;
 
+        protected bool moving = false;
 
         #endregion
 
@@ -55,6 +56,15 @@ namespace TrashSoup.Gameplay
             if(tempMove.Length() > 0.0f &&
                 ResourceManager.Instance.CurrentScene.Cam != null)
             {
+                if(moving == false)
+                {
+                    moving = true;
+
+                    if(MyObject.MyAnimator != null)
+                    {
+                        MyObject.MyAnimator.ChangeState("Walk");
+                    }
+                }
                 // now to rotate that damn vector as camera direction is rotated
                 rotM = rotation;
                 prevForward = MyObject.MyTransform.Forward;
@@ -81,6 +91,14 @@ namespace TrashSoup.Gameplay
                 }
 
                 MyObject.MyTransform.Position += (MyObject.MyTransform.Forward * PLAYER_SPEED * sprint * (gameTime.ElapsedGameTime.Milliseconds / 1000.0f));
+            }
+            else
+            {
+                if (moving == true)
+                {
+                    moving = false;
+                    MyObject.MyAnimator.ChangeState("Idle");
+                }
             }
         }
 

@@ -89,7 +89,7 @@
         
         <!-- Row 2 -->
 
-        <DockPanel Grid.Row="2" Grid.Column="0">
+        <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
             <ToggleButton Name="TranslateToggle" Content="Translate" Width="100" Click="TranslateToggle_Click" Visibility="{Binding IsTranslateRotateScaleVisible}"/>
             <ToggleButton Name="RotateToggle" Content="Rotate" Width="100" Click="RotateToggle_Click" Visibility="{Binding IsTranslateRotateScaleVisible}"/>
             <ToggleButton Name="ScaleToggle" Content="Scale" Width="100" Margin="0, 0, 50, 0" Click="ScaleToggle_Click" Visibility="{Binding IsTranslateRotateScaleVisible}"/>
