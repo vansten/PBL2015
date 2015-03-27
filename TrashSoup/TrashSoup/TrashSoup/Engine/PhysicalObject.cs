@@ -152,7 +152,26 @@ namespace TrashSoup.Engine
 
         public void ReadXml(System.Xml.XmlReader reader)
         {
-            
+            reader.MoveToContent();
+            reader.ReadStartElement();
+
+            //acceleration
+
+            Mass = reader.ReadElementContentAsFloat("Mass", "");
+            DragFactor = reader.ReadElementContentAsFloat("DragFactor", "");
+            IsUsingGravity = reader.ReadElementContentAsBoolean("IsUsingGravity", "");
+
+            if(reader.Name == "Velocity")
+            {
+                Velocity = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""),
+                    reader.ReadElementContentAsFloat("Z", ""));
+            }
+
+            RotationConstraints = (RotationConstraintsEnum)reader.ReadElementContentAsObject("RotationConstraints", "");
+            PositionConstraints = (PositionConstraintsEnum)reader.ReadElementContentAsObject("PositionConstraints", "");
+
+            reader.ReadEndElement();
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)

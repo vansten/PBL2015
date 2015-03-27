@@ -21,15 +21,6 @@ namespace TrashSoup
         public GraphicsDeviceManager GraphicsManager { get; protected set; }
         SpriteBatch spriteBatch;
 
-        #region Teting GUI
-
-        private bool disabled = false;
-        private List<GUIButton> myButtons = new List<GUIButton>();
-        private Texture2D buttonNormalTexture;
-        private int currButton = 0;
-
-        #endregion
-
         public TrashSoupGame()
         {
             GraphicsManager = new GraphicsDeviceManager(this);
@@ -50,14 +41,6 @@ namespace TrashSoup
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             ResourceManager.Instance.LoadContent(this);
-
-            #region Teting GUI
-
-            this.buttonNormalTexture = this.Content.Load<Texture2D>("Textures/GUITest/ButtonNormal");
-            this.myButtons.Add(new GUIButton(this.buttonNormalTexture, this.Content.Load<Texture2D>("Textures/GUITest/ButtonHover"), this.Content.Load<Texture2D>("Textures/GUITest/ButtonPressed"), this.Content.Load<Texture2D>("Textures/GUITest/ButtonDisabled"), this.ButtonPressedCallback, new Vector2(0.1f, 0.0f), 0.25f, 0.1f));
-            this.myButtons.Add(new GUIButton(this.buttonNormalTexture, this.Content.Load<Texture2D>("Textures/GUITest/ButtonHover"), this.Content.Load<Texture2D>("Textures/GUITest/ButtonPressed"), this.Content.Load<Texture2D>("Textures/GUITest/ButtonDisabled"), this.Button2PressedCallback, new Vector2(0.1f, 0.4f), 0.25f, 0.1f));
-
-            #endregion
         }
 
         protected override void UnloadContent()
@@ -71,53 +54,6 @@ namespace TrashSoup
             {
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                     this.Exit();
-
-                #region Teting GUI for game pad
-
-                //Just for GUIButton testing
-                //Will be removed after everyone sees it
-                if(!this.disabled)
-                {
-                    if(InputManager.Instance.GetGamePadButtonDown(Buttons.DPadDown))
-                    {
-                        this.currButton = this.currButton - 1;
-                        if (this.currButton < 0)
-                        {
-                            this.currButton = this.myButtons.Count - 1;
-                        }
-                    }
-                    else if (InputManager.Instance.GetGamePadButtonDown(Buttons.DPadUp))
-                    {
-                        this.currButton = this.currButton + 1;
-                        if (this.currButton > this.myButtons.Count - 1)
-                        {
-                            this.currButton = 0;
-                        }
-                    }
-
-                    this.myButtons[currButton].ChangeState(GUIButtonState.HOVER);
-                    foreach (GUIButton button in this.myButtons)
-                    {
-                        if(button != this.myButtons[currButton])
-                        {
-                            button.ChangeState(GUIButtonState.NORMAL);
-                        }
-                    }
-
-                    GUIManager.Instance.DrawButton(this.myButtons[0]);
-                    GUIManager.Instance.DrawButton(this.myButtons[1]);
-                }
-                else
-                {
-                    if(InputManager.Instance.GetGamePadButtonDown(Buttons.B))
-                    {
-                        this.disabled = false;
-                        this.myButtons[0].Enable();
-                        this.myButtons[1].Enable();
-                    }
-                }
-
-                #endregion
 
                 //Update Physics first !!
                 PhysicsManager.Instance.Update(gameTime);
@@ -161,40 +97,6 @@ namespace TrashSoup
 
             GUIManager.Instance.Render(this.spriteBatch);
         }
-
-        #region Functions for teting GUI
-
-        private void ButtonPressedCallback()
-        {
-            if(this.disabled)
-            {
-                this.myButtons[0].Enable();
-                this.myButtons[1].Enable();
-            }
-            else
-            {
-                this.myButtons[0].Disable();
-                this.myButtons[1].Disable();
-            }
-            this.disabled = !this.disabled;
-        }
-
-        private void Button2PressedCallback()
-        {
-            if (this.disabled)
-            {
-                this.myButtons[0].Enable();
-                this.myButtons[1].Enable();
-            }
-            else
-            {
-                this.myButtons[0].Disable();
-                this.myButtons[1].Disable();
-            }
-            this.disabled = !this.disabled;
-        }
-
-        #endregion
 
     }
 }

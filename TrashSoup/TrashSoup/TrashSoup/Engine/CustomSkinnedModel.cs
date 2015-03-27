@@ -4,17 +4,12 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SkinningModelLibrary;
 
 namespace TrashSoup.Engine
 {
     public class CustomSkinnedModel : CustomModel
     {
         #region variables
-
-        protected SkinningData skinningData;
-        protected AnimationPlayer animationPlayer;
-        protected string currentAnimString;
 
         #endregion
 
@@ -30,24 +25,7 @@ namespace TrashSoup.Engine
 
         public CustomSkinnedModel(GameObject obj, Model[] lods, uint lodCount, List<Material> matList) : base(obj, lods, lodCount, matList)
         {
-            if(lods[0] != null)
-            {
-                skinningData = lods[0].Tag as SkinningData;
-                if (skinningData == null) throw new InvalidOperationException("LOD 0 doesn't contain skinning data tag");
 
-                this.currentAnimString = skinningData.AnimationClips.Keys.ElementAt(0);
-
-                animationPlayer = new AnimationPlayer(skinningData);
-
-                animationPlayer.StartClip(skinningData.AnimationClips.Values.ElementAt(0));
-            }
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            animationPlayer.Update(gameTime.ElapsedGameTime, true, Matrix.Identity);
-
-            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
@@ -59,13 +37,14 @@ namespace TrashSoup.Engine
                 {
                     Camera camera = ResourceManager.Instance.CurrentScene.Cam;
                     Transform transform = MyObject.MyTransform;
-                    Matrix[] bones = animationPlayer.GetSkinTransforms();
+                    Matrix[] bones = null;
+                    if (MyObject.MyAnimator != null) bones = MyObject.MyAnimator.GetSkinTransforms();
 
                     foreach (ModelMesh mm in mod.Meshes)
                     {
                         foreach (SkinnedEffect be in mm.Effects)
                         {
-                            be.SetBoneTransforms(bones);
+                            if(bones != null) be.SetBoneTransforms(bones);
 
                             be.Projection = camera.ProjectionMatrix;
                             be.View = camera.ViewMatrix;
@@ -77,19 +56,6 @@ namespace TrashSoup.Engine
                     }
                 }
             }
-        }
-
-        public void AddAnimation(KeyValuePair<string, AnimationClip> newClip)
-        {
-            this.skinningData.AnimationClips.Add(newClip.Key, newClip.Value);
-        }
-
-        public void SetCurrentAnim(string which)
-        {
-            AnimationClip clip;
-            this.skinningData.AnimationClips.TryGetValue(which, out clip);
-            if (clip == null) throw new InvalidOperationException("Animation name not found in AnimationClip dictionary");
-            animationPlayer.StartClip(clip);
         }
 
         //protected void FlipNormals(Model model)

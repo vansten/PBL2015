@@ -56,16 +56,20 @@ namespace TrashSoup.Engine
             AddModel("Models/Test/TestTerrain");
             AddModel("Models/Test/TestGuy");
             AddModel("Animations/Test/walking_1");
-
+            AddModel("Animations/Test/idle_1");
+            AddModel("Animations/Test/jump_1");
 
             GameObject testBox = new GameObject(1, "testBox");
             List<Material> matList = new List<Material>();
             matList.Add(new Material(Textures[0], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
             testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.2f);
             CustomSkinnedModel skModel = new CustomSkinnedModel(testBox, new Model[] { Models["Models/Test/TestGuy"], null, null }, 3, matList);
-            skModel.AddAnimation(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/walking_1"], "walking_1"));
-            skModel.SetCurrentAnim("walking_1");
+            Animator playerAnimator = new Animator(testBox, skModel.LODs[0]);
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/walking_1"], "walking_1"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/idle_1"], "idle_1"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/jump_1"], "jump_1"));
             testBox.Components.Add(skModel);
+            testBox.MyAnimator = playerAnimator;
             testBox.Components.Add(new PlayerController(testBox));
             testBox.MyCollider = new BoxCollider(testBox);  //Add a box collider to test collisions
 

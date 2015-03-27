@@ -127,7 +127,33 @@ namespace TrashSoup.Engine
         public System.Xml.Schema.XmlSchema GetSchema() { return null; }
         public void ReadXml(System.Xml.XmlReader reader)
         {
+            reader.MoveToContent();
+            reader.ReadStartElement();
 
+            if(reader.Name == "Position")
+            {
+                Position = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""),
+                    reader.ReadElementContentAsFloat("Z", ""));
+            }
+
+            if(reader.Name == "Rotation")
+            {
+                Rotation = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""),
+                    reader.ReadElementContentAsFloat("Z", ""));
+            }
+
+            if(reader.Name == "Forward")
+            {
+                Forward = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""),
+                    reader.ReadElementContentAsFloat("Z", ""));
+            }
+
+            Scale = reader.ReadElementContentAsFloat("Scale", "");
+
+            reader.ReadEndElement();
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)

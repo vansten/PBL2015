@@ -129,7 +129,23 @@ namespace TrashSoup.Engine
 
         public void ReadXml(System.Xml.XmlReader reader)
         {
-            
+            reader.MoveToContent();
+            reader.ReadStartElement();
+
+            LODState = (LODStateEnum)reader.ReadElementContentAsObject("LODState", "");
+
+            if(reader.Name == "LODs")
+            {
+                for(int i = 0; i<Paths.Count(); ++i)
+                {
+                    Paths[i] = reader.ReadElementString("ModelPath", "");
+                    LODs[i] = ResourceManager.Instance.Models[Paths[i]];
+                }
+            }
+
+            //materials
+
+            reader.ReadEndElement();
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)

@@ -36,6 +36,7 @@ namespace TrashSoup.Gameplay
         protected float rotY;
         protected float prevRotY;
 
+        protected bool moving = false;
 
         #endregion
 
@@ -55,6 +56,19 @@ namespace TrashSoup.Gameplay
             if(tempMove.Length() > 0.0f &&
                 ResourceManager.Instance.CurrentScene.Cam != null)
             {
+                if (moving == false)
+                {
+                    moving = true;
+
+                    if (MyObject.MyAnimator != null)
+                    {
+                        MyObject.MyAnimator.SetBlendState("Walk");
+                    }
+                }
+                if(moving == true)
+                {
+                    MyObject.MyAnimator.CurrentInterpolation = MathHelper.Clamp(tempMove.Length(), 0.0f, 1.0f);
+                }
                 // now to rotate that damn vector as camera direction is rotated
                 rotM = rotation;
                 prevForward = MyObject.MyTransform.Forward;
@@ -67,7 +81,7 @@ namespace TrashSoup.Gameplay
                 MyObject.MyTransform.Forward = Vector3.Lerp(prevForward, tempMoveRotated, ROTATION_SPEED);
                 MyObject.MyTransform.Rotation = RotateAsForward(MyObject.MyTransform.Forward, MyObject.MyTransform.Rotation);
                
-                if (InputManager.Instance.GetGamePadButton(Buttons.B))
+                if (InputManager.Instance.GetGamePadButton(Buttons.B) && tempMove.Length() >= 0.8f)
                 {
                     sprint = MathHelper.Lerp(1.0f, SPRINT_MULTIPLIER, sprintM);
                     sprintM += SPRINT_ACCELERATION * (gameTime.ElapsedGameTime.Milliseconds / 1000.0f);
@@ -82,6 +96,24 @@ namespace TrashSoup.Gameplay
 
                 MyObject.MyTransform.Position += (MyObject.MyTransform.Forward * PLAYER_SPEED * sprint * (gameTime.ElapsedGameTime.Milliseconds / 1000.0f));
             }
+            else
+            {
+                if (moving == true)
+                {
+                    moving = false;
+                    MyObject.MyAnimator.RemoveBlendStateToCurrent();
+                }
+            }
+
+            if (InputManager.Instance.GetGamePadButton(Buttons.A))
+            {
+                if (MyObject.MyAnimator != null)
+                {
+                    if(MyObject.MyAnimator.CurrentState != null)
+                    // jump!
+                    MyObject.MyAnimator.ChangeState("Jump");
+                }
+            }
         }
 
         public override void Draw(Microsoft.Xna.Framework.GameTime gameTime)
@@ -93,6 +125,21 @@ namespace TrashSoup.Gameplay
         {
             sprint = 1.0f;
             sprintM = 0.0f;
+
+            if(MyObject.MyAnimator != null)
+            {
+                MyObject.MyAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", MyObject.MyAnimator.GetAnimationPlayer("idle_1")));
+                MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", MyObject.MyAnimator.GetAnimationPlayer("walking_1")));
+                MyObject.MyAnimator.AvailableStates.Add("Jump", new AnimatorState("Jump", MyObject.MyAnimator.GetAnimationPlayer("jump_1"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates["Idle"].Transitions.Add(500, MyObject.MyAnimator.AvailableStates["Walk"]);
+                MyObject.MyAnimator.AvailableStates["Idle"].Transitions.Add(501, MyObject.MyAnimator.AvailableStates["Jump"]);
+                MyObject.MyAnimator.AvailableStates["Walk"].Transitions.Add(250, MyObject.MyAnimator.AvailableStates["Idle"]);
+                MyObject.MyAnimator.AvailableStates["Walk"].Transitions.Add(200, MyObject.MyAnimator.AvailableStates["Jump"]);
+                MyObject.MyAnimator.AvailableStates["Jump"].Transitions.Add(100, MyObject.MyAnimator.AvailableStates["Walk"]);
+                MyObject.MyAnimator.AvailableStates["Jump"].Transitions.Add(1001, MyObject.MyAnimator.AvailableStates["Idle"]);
+                MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["Idle"];
+                //MyObject.MyAnimator.SetBlendState("Walk");
+            }
         }
 
         protected Vector3 RotateAsForward(Vector3 forward, Vector3 rotation)

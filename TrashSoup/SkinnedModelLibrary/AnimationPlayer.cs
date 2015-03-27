@@ -11,6 +11,17 @@ namespace SkinningModelLibrary
     /// </summary>
     public class AnimationPlayer
     {
+        #region enums
+
+        public enum animationStates
+        {
+            STOPPED,
+            PLAYING,
+            PAUSED
+        };
+
+        #endregion
+
         #region variables
 
         // information about currently playing animation clip
@@ -40,36 +51,59 @@ namespace SkinningModelLibrary
             get { return currentTimeValue; }
         }
 
+        public string AnimationKey { get; set; }
+
+        public animationStates MyState { get; set; }
+
         #endregion
 
         #region methods
 
-        public AnimationPlayer(SkinningData skinningData)
+        public AnimationPlayer(SkinningData skinningData, string animKey)
         {
             if (skinningData == null) throw new ArgumentNullException("skinningData");
             this.skinningDataValue = skinningData;
+            this.AnimationKey = animKey;
+            this.MyState = animationStates.STOPPED;
             boneTransforms = new Matrix[skinningData.BindPose.Count];
             worldTransforms = new Matrix[skinningData.BindPose.Count];
             skinTransforms = new Matrix[skinningData.BindPose.Count];
+
+            currentClipValue = skinningData.AnimationClips[animKey];
+            if (currentClipValue == null) throw new ArgumentNullException("clip");
         }
 
-        public void StartClip(AnimationClip clip)
+        public void StartClip()
         {
-            if (clip == null) throw new ArgumentNullException("clip");
-
-            currentClipValue = clip;
-            currentTimeValue = TimeSpan.Zero;
-            currentKeyframe = 0;
+            if(this.MyState == animationStates.STOPPED)
+            {
+                currentTimeValue = TimeSpan.Zero;
+                currentKeyframe = 0;
+            }
+            this.MyState = animationStates.PLAYING;
 
             // initialize bone transforms to the bind pose
             skinningDataValue.BindPose.CopyTo(boneTransforms, 0);
         }
 
+        public void StopClip()
+        {
+            this.MyState = animationStates.STOPPED;
+        }
+
+        public void PauseClip()
+        {
+            this.MyState = animationStates.PAUSED;
+        }
+
         public void Update(TimeSpan time, bool relativeToCurrentTime, Matrix rootTransform)
         {
-            UpdateBoneTransforms(time, relativeToCurrentTime);
-            UpdateWorldTransforms(rootTransform);
-            UpdateSkinTransforms();
+            if (MyState == animationStates.PLAYING)
+            {
+                UpdateBoneTransforms(time, relativeToCurrentTime);
+                UpdateWorldTransforms(rootTransform);
+                UpdateSkinTransforms();
+            }
         }
 
         public void UpdateBoneTransforms(TimeSpan time, bool relativeToCurrentTime)
@@ -154,6 +188,11 @@ namespace SkinningModelLibrary
         public Matrix[] GetSkinTransforms()
         {
             return skinTransforms;
+        }
+
+        public TimeSpan GetDuration()
+        {
+            return currentClipValue.Duration;
         }
 
         #endregion
