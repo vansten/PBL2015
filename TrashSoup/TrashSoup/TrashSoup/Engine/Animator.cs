@@ -73,7 +73,7 @@ namespace TrashSoup.Engine
         {
             this.Locked = false;
             this.CurrentInterpolation = 0.0f;
-            SkinningData = baseAnim.Tag as SkinningData;
+            SkinningData = (baseAnim.Tag as object[])[0] as SkinningData;
             if (SkinningData == null) throw new InvalidOperationException("LOD 0 doesn't contain skinning data tag");
             AvailableStates = new Dictionary<string, AnimatorState>();
             CurrentState = null;

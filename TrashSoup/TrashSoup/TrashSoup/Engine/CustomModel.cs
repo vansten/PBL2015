@@ -77,19 +77,34 @@ namespace TrashSoup.Engine
                 {
                     Camera camera = ResourceManager.Instance.CurrentScene.Cam;
                     Transform transform = MyObject.MyTransform;
-                    Matrix[] transforms = new Matrix[mod.Bones.Count];
-                    mod.CopyAbsoluteBoneTransformsTo(transforms);
 
+                    int ctr = 0;
                     foreach (ModelMesh mm in mod.Meshes)
                     {
-                        foreach (BasicEffect be in mm.Effects)
+                        for (int i = 0; i < mm.MeshParts.Count; ++i)
                         {
-                             be.Projection = camera.ProjectionMatrix;
-                             be.View = camera.ViewMatrix;
-                             be.World = mm.ParentBone.Transform * transform.GetWorldMatrix();
-                             be.TextureEnabled = true;
-                             be.EnableDefaultLighting();
-                             be.Texture = Mat[0].Diffuse;
+                            switch (this.Mat[ctr].MyEffectType)
+                            {
+                                case Material.EffectType.BASIC:
+                                    (this.Mat[ctr].MyEffect as BasicEffect).Projection = camera.ProjectionMatrix;
+                                    (this.Mat[ctr].MyEffect as BasicEffect).View = camera.ViewMatrix;
+                                    (this.Mat[ctr].MyEffect as BasicEffect).World = mm.ParentBone.Transform * transform.GetWorldMatrix();
+                                    (this.Mat[ctr].MyEffect as BasicEffect).EnableDefaultLighting();
+                                    (this.Mat[ctr].MyEffect as BasicEffect).Texture = this.Mat[ctr].DiffuseMap;
+
+                                    mm.MeshParts[i].Effect = this.Mat[ctr].MyEffect;
+                                    ++ctr;
+                                    break;
+
+                                case Material.EffectType.DEFAULT:
+                                    break;
+
+                                case Material.EffectType.NORMAL:
+                                    break;
+
+                                case Material.EffectType.CUBE:
+                                    break;
+                            }
                         }
 
                         mm.Draw();
@@ -167,7 +182,7 @@ namespace TrashSoup.Engine
             {
                 if(mat != null)
                 {
-                    writer.WriteElementString("DiffusePath", mat.Diffuse.ToString());
+                    writer.WriteElementString("DiffusePath", mat.DiffuseMap.ToString());
                     if (mat.MyEffect is BasicEffect)
                         mat.MyEffect.Name = "BasicEffect";
                     writer.WriteElementString("EffectPath", mat.MyEffect.ToString());

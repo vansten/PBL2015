@@ -16,6 +16,8 @@ namespace TrashSoup
     public class TrashSoupGame : Microsoft.Xna.Framework.Game
     {
         public static TrashSoupGame Instance { get; protected set; }
+        public const string ROOT_DIRECTIORY = "Content";
+        public const string ROOT_DIRECTIORY_PROJECT = "TrashSoupContent";
         public bool EditorMode = false;
 
         public GraphicsDeviceManager GraphicsManager { get; protected set; }
@@ -24,7 +26,7 @@ namespace TrashSoup
         public TrashSoupGame()
         {
             GraphicsManager = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+            Content.RootDirectory = ROOT_DIRECTIORY;
             this.IsMouseVisible = true;
             Instance = this;
             Debug.Log("Engine start");

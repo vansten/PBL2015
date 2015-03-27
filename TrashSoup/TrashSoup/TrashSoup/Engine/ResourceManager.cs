@@ -17,14 +17,20 @@ namespace TrashSoup.Engine
 
     class ResourceManager : Singleton<ResourceManager>
     {
+        #region Constants
+
+        private const string MATLOADER_BENAME = "GenBEffectMat";
+        private const string MATLOADER_SENAME = "GenSEffectMat";
+
+        #endregion
+
         #region Variables
         public Scene CurrentScene;
-        //public List<Model> Models = new List<Model>();
-        public Dictionary<String, Model> Models = new Dictionary<string, Model>();
-        public List<Texture2D> Textures = new List<Texture2D>();
+        public Dictionary<string, Model> Models = new Dictionary<string, Model>();
+        public Dictionary<string, Texture2D> Textures = new Dictionary<string, Texture2D>();
         public List<SpriteFont> Fonts = new List<SpriteFont>();
         public List<Effect> Effects = new List<Effect>();
-        //place for materials
+        public Dictionary<string, Material> Materials = new Dictionary<string,Material>();
         public List<Cue> Sounds = new List<Cue>();
         public List<Particle> Particles = new List<Particle>();
         #endregion
@@ -46,12 +52,6 @@ namespace TrashSoup.Engine
             //AudioManager.Instance.PlayCue(GetCueFromCueList("Track1")); //default music from tutorial, just to check that everything works xD
 
             // FOR TETIN
-            //Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\cargo"));
-            //Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\metal01_d"));
-            //Models.Add(game.Content.Load<Model>(@"Models\Test\TestBox"));
-            //Models.Add(game.Content.Load<Model>(@"Models\Test\TestTerrain"));
-            //Models.Add(game.Content.Load<Model>(@"Models\Test\TestGuy"));
-            //Models.Add(game.Content.Load<Model>(@"Animations\Test\walking_1"));
             AddModel("Models/Test/TestBox");
             AddModel("Models/Test/TestTerrain");
             AddModel("Models/Test/TestGuy");
@@ -59,11 +59,31 @@ namespace TrashSoup.Engine
             AddModel("Animations/Test/idle_1");
             AddModel("Animations/Test/jump_1");
 
+            // loading materials
+            List<Material> testPlayerMats = new List<Material>();
+            Material testPlayerMat = new Material("testPlayerMat", new BasicEffect(TrashSoupGame.Instance.GraphicsDevice), Textures[@"Textures\Test\cargo"]);
+            (testPlayerMat.MyEffect as BasicEffect).PreferPerPixelLighting = true;
+            (testPlayerMat.MyEffect as BasicEffect).TextureEnabled = true;
+            testPlayerMats.Add(testPlayerMat);
+            testPlayerMat.MyEffectType = Material.EffectType.BASIC;
+            this.Materials.Add(testPlayerMat.Name, testPlayerMat);
+
+            List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"]);
+
+            List<Material> testTerMats = new List<Material>();
+            Material testTerMat = new Material("testTerMat", new BasicEffect(TrashSoupGame.Instance.GraphicsDevice), Textures[@"Textures\Test\metal01_d"]);
+            testTerMat.MyEffectType = Material.EffectType.BASIC;
+            (testTerMat.MyEffect as BasicEffect).SpecularPower = 10.0f;
+            (testTerMat.MyEffect as BasicEffect).SpecularColor = new Vector3(0.2f, 0.2f, 0.2f);
+            (testTerMat.MyEffect as BasicEffect).PreferPerPixelLighting = true;
+            (testTerMat.MyEffect as BasicEffect).TextureEnabled = true;
+            this.Materials.Add(testTerMat.Name, testTerMat);
+            testTerMats.Add(testTerMat);
+
+            // loading gameobjects
             GameObject testBox = new GameObject(1, "testBox");
-            List<Material> matList = new List<Material>();
-            matList.Add(new Material(Textures[0], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
             testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.2f);
-            CustomSkinnedModel skModel = new CustomSkinnedModel(testBox, new Model[] { Models["Models/Test/TestGuy"], null, null }, 3, matList);
+            CustomSkinnedModel skModel = new CustomSkinnedModel(testBox, new Model[] { Models["Models/Test/TestGuy"], null, null }, 3, playerMats);
             Animator playerAnimator = new Animator(testBox, skModel.LODs[0]);
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/walking_1"], "walking_1"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/idle_1"], "idle_1"));
@@ -74,26 +94,23 @@ namespace TrashSoup.Engine
             testBox.MyCollider = new BoxCollider(testBox);  //Add a box collider to test collisions
 
             GameObject testTer = new GameObject(2, "testTer");
-            List<Material> matList2 = new List<Material>();
-            matList2.Add(new Material(Textures[1], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
             testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, -10.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
-            testTer.Components.Add(new CustomModel(testTer, new Model[] { Models["Models/Test/TestTerrain"], null, null }, 3, matList2));
+            testTer.Components.Add(new CustomModel(testTer, new Model[] { Models["Models/Test/TestTerrain"], null, null }, 3, testTerMats));
 
             GameObject testBox2 = new GameObject(3, "testBox2");
-            List<Material> matList3 = new List<Material>();
-            matList3.Add(new Material(Textures[1], new BasicEffect(TrashSoupGame.Instance.GraphicsDevice)));
             testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 10.0f, 30.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
-            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Test/TestBox"], null, null }, 3, matList3));
+            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Test/TestBox"], null, null }, 3, testPlayerMats));
             testBox2.MyCollider = new BoxCollider(testBox2);    //Add a box collider to test physisc
             testBox2.MyPhysicalObject = new PhysicalObject(testBox2, 1.0f, 0.05f, false);
 
+            // loading scene
             CurrentScene = new Scene(new SceneParams(0, "test"));
             Camera cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -1.0f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)),
                  new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 10.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
             cam.Components.Add(new CameraBehaviourComponent(cam, testBox));
             CurrentScene.Cam = cam;
 
-
+            // adding items to scene
             CurrentScene.ObjectsDictionary.Add(testTer.UniqueID, testTer);
             CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);
             CurrentScene.ObjectsDictionary.Add(testBox2.UniqueID, testBox2);
@@ -141,6 +158,22 @@ namespace TrashSoup.Engine
         }
 
         /// <summary>
+        /// Used to load a single texture. If it doesn't exist in resourceManager, Content.Load is called.
+        /// </summary>
+        /// <param name="texturePath"></param>
+        private Texture2D LoadTexture(string texturePath)
+        {
+            if (Textures.ContainsKey(texturePath))
+                return Textures[texturePath];
+            else
+            {
+                Texture2D newTex = TrashSoupGame.Instance.Content.Load<Texture2D>(texturePath);
+                Textures.Add(texturePath, newTex);
+                return newTex;
+            }
+        }
+
+        /// <summary>
         /// 
         /// Load every texture from content to textures list
         /// IMPORTANT!!! SET NAME FOR EVERY ELEMENT
@@ -149,10 +182,9 @@ namespace TrashSoup.Engine
         private void LoadTextures(Game game)
         {
             // FOR TETIN
-            Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\cargo"));
-            Textures.Add(game.Content.Load<Texture2D>(@"Textures\Test\metal01_d"));
-            Textures.Add(game.Content.Load<Texture2D>(@"Textures\ParticleTest\Particle"));
-
+            Textures.Add(@"Textures\Test\cargo", game.Content.Load<Texture2D>(@"Textures\Test\cargo"));
+            Textures.Add(@"Textures\Test\metal01_d", game.Content.Load<Texture2D>(@"Textures\Test\metal01_d"));
+            Textures.Add(@"Textures\ParticleTest\Particle", game.Content.Load<Texture2D>(@"Textures\ParticleTest\Particle"));
         }
 
         /// <summary>
@@ -165,23 +197,122 @@ namespace TrashSoup.Engine
         {
             Effects.Add(game.Content.Load<Effect>(@"Effects\Particle"));
             Effects.ElementAt(0).CurrentTechnique = Effects.ElementAt(0).Techniques["Technique1"];
-            Effects.ElementAt(0).Parameters["theTexture"].SetValue(Textures.ElementAt(2));
+            Effects.ElementAt(0).Parameters["theTexture"].SetValue(Textures[@"Textures\ParticleTest\Particle"]);
 
             Effects.Add(game.Content.Load<Effect>(@"Effects\Billboard"));
             Effects.ElementAt(1).CurrentTechnique = Effects.ElementAt(1).Techniques["Technique1"];
         }
 
+        /// <summary>
+        /// Loads animation clip from Model object, when we load just an animated skeleton from Animations folder
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="animation"></param>
+        /// <param name="newName"></param>
+        /// <returns></returns>
         private KeyValuePair<string, SkinningModelLibrary.AnimationClip> LoadAnimationFromModel(Model model, Model animation, string newName)
         {
             // need to extract AnimationClips from animation and save it into new SkinningData with the rest
             // of the data from original skinned Model. 
             if(model.Tag == null || animation.Tag == null) throw new InvalidOperationException("Either destination model or animation is not a skinned model");
-            SkinningModelLibrary.SkinningData modelData = model.Tag as SkinningModelLibrary.SkinningData;
-            SkinningModelLibrary.SkinningData animationData = animation.Tag as SkinningModelLibrary.SkinningData;
+            SkinningModelLibrary.SkinningData modelData = (model.Tag as object[])[0] as SkinningModelLibrary.SkinningData;
+            SkinningModelLibrary.SkinningData animationData = (animation.Tag as object[])[0] as SkinningModelLibrary.SkinningData;
             if (modelData.SkeletonHierarchy.Count != animationData.SkeletonHierarchy.Count) throw new InvalidOperationException("Model hierarchy is not the same as the animation's");
 
             return new KeyValuePair<string, SkinningModelLibrary.AnimationClip>(newName, animationData.AnimationClips.Values.ElementAt(0));
         }
+
+        /// <summary>
+        /// Returns list of materials that are used by every given model's ModelMeshPart
+        /// Loads these materials to material library as well.
+        /// Effect types can be: BasicEffect, SkinnedEffect
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        private List<Material> LoadBasicMaterialsFromModel(Model model)
+        {
+            List<Material> materials = new List<Material>();
+
+            List<SkinnedModelLibrary.MaterialModel> materialModels = (List<SkinnedModelLibrary.MaterialModel>)(model.Tag as object[])[1];
+            for (int i = 0; i < materialModels.Count; ++i )
+                materialModels[i] = ProcessMaterialModelFilenames(materialModels[i]);
+
+            List<string> materialNames = (List<string>)(model.Tag as object[])[2];
+
+            Effect effectToAdd;
+            bool isSkinned = false;
+            if (model.Meshes[0].Effects[0] is BasicEffect)
+            {
+                effectToAdd = new BasicEffect(TrashSoupGame.Instance.GraphicsDevice);
+                (effectToAdd as BasicEffect).PreferPerPixelLighting = true;
+            }
+            else if (model.Meshes[0].Effects[0] is SkinnedEffect)
+            {
+                effectToAdd = new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice);
+                (effectToAdd as SkinnedEffect).PreferPerPixelLighting = true;
+                isSkinned = true;
+            }
+            else
+            {
+                Debug.Log("MATERIAL LOADING FAILED: Unrecognized effect type in model.");
+                return materials;
+            }
+            
+            foreach(SkinnedModelLibrary.MaterialModel mm in materialModels)
+            {
+                Material mat = new Material(mm.MaterialName);
+                mat.MyEffect = effectToAdd;
+                if (isSkinned)
+                {
+                    mat.MyEffectType = Material.EffectType.SKINNED;
+                }
+                else mat.MyEffectType = Material.EffectType.BASIC;
+                if (mm.MaterialTextureNames[0] != null) mat.DiffuseMap = LoadTexture(mm.MaterialTextureNames[0]);
+                if (mm.MaterialTextureNames[1] != null) mat.NormalMap = LoadTexture(mm.MaterialTextureNames[1]);
+                if (mm.MaterialTextureNames[2] != null) mat.CubeMap = LoadTexture(mm.MaterialTextureNames[2]);
+                mat.UpdateEffect();
+
+                this.Materials.Add(mat.Name, mat);
+            }
+
+            foreach(string matName in materialNames)
+            {
+                materials.Add(this.Materials[matName]);
+            }
+
+            return materials;
+        }
+
+        private SkinnedModelLibrary.MaterialModel ProcessMaterialModelFilenames(SkinnedModelLibrary.MaterialModel matModel)
+        {
+            string rootDir = TrashSoupGame.ROOT_DIRECTIORY;
+            string pRootDir = TrashSoupGame.ROOT_DIRECTIORY_PROJECT;
+            for (int i = 0; i < SkinnedModelLibrary.MaterialModel.TEXTURE_COUNT; ++i )
+            {
+                if (matModel.MaterialTextureNames[i] == null)
+                    continue;
+
+                string path = matModel.MaterialTextureNames[i];
+                string newPath = "";
+                string[] strDivided = path.Split(new char[] { '\\' });
+
+                string fileName = (strDivided.Last()).Split(new char[] { '.' })[0];
+                newPath += fileName;
+
+                int j = strDivided.Count() - 2;     // points to pre-last element, which is first part of tha path
+                string tmpPathElement = fileName;
+                while (!(strDivided[j]).Equals(rootDir) && !(strDivided[j]).Equals(pRootDir) && j >= 0)
+                {
+                    tmpPathElement = strDivided[j];
+                    newPath = tmpPathElement + "\\" + newPath;
+                    --j;
+                }
+
+                matModel.MaterialTextureNames[i] = newPath;
+            }
+            return matModel;
+        }
+
         #endregion
     }
 }

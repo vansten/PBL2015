@@ -197,7 +197,7 @@ namespace TrashSoup.Engine
                     billboardEffect.Parameters["AllowedRotDir"].SetValue(new Vector3(1, 1, 0));
                     billboardEffect.Parameters["particleColor"].SetValue(
                          vertexColorArray[i].ToVector4());
-                    billboardEffect.Parameters["BillboardTexture"].SetValue(ResourceManager.Instance.Textures.ElementAt(2));
+                    billboardEffect.Parameters["BillboardTexture"].SetValue(ResourceManager.Instance.Textures[@"Textures\ParticleTest\Particle"]);
 
                     foreach (EffectPass pass in billboardEffect.CurrentTechnique.Passes)
                     {
