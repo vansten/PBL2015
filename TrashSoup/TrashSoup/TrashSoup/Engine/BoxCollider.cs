@@ -20,6 +20,7 @@ namespace TrashSoup.Engine
         private CustomSkinnedModel skinned;
         private Vector3 min;
         private Vector3 max;
+        private Vector3[] corners;
 
         #endregion
 
@@ -112,9 +113,6 @@ namespace TrashSoup.Engine
 
             min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
             max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
-            float minX, minY, minZ, maxX, maxY, maxZ;
-            minX = minY = minZ = float.MaxValue;
-            maxX = maxY = maxZ = float.MinValue;
 
             if (this.model != null)
             {
@@ -126,6 +124,12 @@ namespace TrashSoup.Engine
                         int vertexBufferSize = part.NumVertices * vertexStride;
                         float[] vertexData = new float[vertexBufferSize / sizeof(float)];
                         part.VertexBuffer.GetData<float>(vertexData);
+                        Vector3 center = Vector3.Zero;
+                        for (int i = 0; i < vertexBufferSize / sizeof(float); i+=vertexStride / sizeof(float))
+                        {
+                            center += new Vector3(vertexData[i], vertexData[i + 1], vertexData[i + 2]);
+                        }
+                        center /= vertexData.Length / 3;
 
                         for (int i = 0; i < vertexBufferSize / sizeof(float); i += vertexStride / sizeof(float))
                         {
@@ -168,7 +172,9 @@ namespace TrashSoup.Engine
                     }
                 }
             }
+
             this.box = new BoundingBox(min, max);
+            this.corners = this.box.GetCorners();
 
             base.CreateCollider();
         }
@@ -200,8 +206,18 @@ namespace TrashSoup.Engine
         /// </summary>
         protected override void UpdateCollider()
         {
-            this.box.Min = Vector3.Transform(min, this.worldMatrix);
-            this.box.Max = Vector3.Transform(max, this.worldMatrix);
+            min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
+            max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
+
+            Vector3[] newCorners = this.box.GetCorners();
+            for (int i = 0; i < corners.Length; ++i)
+            {
+                newCorners[i] = Vector3.Transform(corners[i], this.worldMatrix);
+                min = Vector3.Min(min, newCorners[i]);
+                max = Vector3.Max(max, newCorners[i]);
+            }
+            this.box.Min = min;
+            this.box.Max = max;
 
             base.UpdateCollider();
         }

@@ -46,10 +46,6 @@ namespace TrashSoup.Engine
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            /*Vector3 tmp = this.MyObject.MyTransform.Position;
-            tmp.Z = -tmp.Z;
-            this.worldMatrix = Matrix.CreateScale(this.MyObject.MyTransform.Scale) * Matrix.CreateFromYawPitchRoll(this.MyObject.MyTransform.Rotation.Y, this.MyObject.MyTransform.Rotation.X, this.MyObject.MyTransform.Rotation.Z) * Matrix.CreateTranslation(tmp);
-            */
             this.worldMatrix = this.MyObject.MyTransform.GetWorldMatrix();
             this.UpdateCollider();
         }

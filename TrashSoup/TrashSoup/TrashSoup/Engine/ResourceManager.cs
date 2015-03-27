@@ -85,8 +85,7 @@ namespace TrashSoup.Engine
             testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 10.0f, 30.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
             testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Test/TestBox"], null, null }, 3, matList3));
             testBox2.MyCollider = new BoxCollider(testBox2);    //Add a box collider to test physisc
-            testBox2.MyPhysicalObject = new PhysicalObject(testBox2, 1.0f, 0.05f, true);
-            testBox2.MyPhysicalObject.AddForce(new Vector3(0.0f, 100.0f, 20.0f));
+            testBox2.MyPhysicalObject = new PhysicalObject(testBox2, 1.0f, 0.05f, false);
 
             CurrentScene = new Scene(new SceneParams(0, "test"));
             Camera cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -1.0f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)),
