@@ -15,7 +15,7 @@ namespace TrashSoup.Engine
     {
         #region Variables
 
-        private BoundingBox box;
+        public BoundingBox box;
         private CustomModel model;
         private CustomSkinnedModel skinned;
         private Vector3 min;
@@ -112,6 +112,9 @@ namespace TrashSoup.Engine
 
             min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
             max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
+            float minX, minY, minZ, maxX, maxY, maxZ;
+            minX = minY = minZ = float.MaxValue;
+            maxX = maxY = maxZ = float.MinValue;
 
             if (this.model != null)
             {
@@ -165,7 +168,6 @@ namespace TrashSoup.Engine
                     }
                 }
             }
-
             this.box = new BoundingBox(min, max);
 
             base.CreateCollider();

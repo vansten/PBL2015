@@ -107,27 +107,6 @@ namespace TrashSoup.Engine
             foreach (GameObject obj in ObjectsDictionary.Values)
             {
                 obj.Update(gameTime);
-                if (gameTime.TotalGameTime.Seconds > 8)  //time to turn off physics
-                {
-                    if (obj.MyPhysicalObject != null)
-                    {
-                        obj.MyPhysicalObject = null;
-                    }
-                }
-                else if (gameTime.TotalGameTime.Seconds > 4) //time to awake
-                {
-                    if (obj.MyPhysicalObject != null && obj.MyPhysicalObject.Sleeping)
-                    {
-                        obj.MyPhysicalObject.Awake();
-                    }
-                }
-                else if (gameTime.TotalGameTime.Seconds > 3) //time to go sleep for a while
-                {
-                    if (obj.MyPhysicalObject != null && !obj.MyPhysicalObject.Sleeping)
-                    {
-                        obj.MyPhysicalObject.Sleep();
-                    }
-                }
             }
         }
 
