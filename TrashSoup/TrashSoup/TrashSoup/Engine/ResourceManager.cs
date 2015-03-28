@@ -191,9 +191,9 @@ namespace TrashSoup.Engine
         /// <param name="game"></param>
         private void LoadEffects(Game game)
         {
-            Effects.Add(game.Content.Load<Effect>(@"Effects\Particle"));
-            Effects.ElementAt(0).CurrentTechnique = Effects.ElementAt(0).Techniques["Technique1"];
-            Effects.ElementAt(0).Parameters["theTexture"].SetValue(Textures[@"Textures\ParticleTest\Particle"]);
+            //Effects.Add(game.Content.Load<Effect>(@"Effects\Particle"));
+            //Effects.ElementAt(0).CurrentTechnique = Effects.ElementAt(0).Techniques["Technique1"];
+            //Effects.ElementAt(0).Parameters["theTexture"].SetValue(Textures[@"Textures\ParticleTest\Particle"]);
 
             //Effects.Add(game.Content.Load<Effect>(@"Effects\Billboard"));
             //Effects.ElementAt(1).CurrentTechnique = Effects.ElementAt(1).Techniques["Technique1"];
