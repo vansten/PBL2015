@@ -40,16 +40,35 @@ namespace TrashSoup.Engine
                     Matrix[] bones = null;
                     if (MyObject.MyAnimator != null) bones = MyObject.MyAnimator.GetSkinTransforms();
 
+                    int ctr = 0;
                     foreach (ModelMesh mm in mod.Meshes)
                     {
-                        foreach (SkinnedEffect be in mm.Effects)
+                        for (int i = 0; i < mm.MeshParts.Count; ++i )
                         {
-                            if(bones != null) be.SetBoneTransforms(bones);
+                            switch (this.Mat[ctr].MyEffectType)
+                            {
+                                case Material.EffectType.SKINNED:
+                                    (this.Mat[ctr].MyEffect as SkinnedEffect).Projection = camera.ProjectionMatrix;
+                                    (this.Mat[ctr].MyEffect as SkinnedEffect).View = camera.ViewMatrix;
+                                    (this.Mat[ctr].MyEffect as SkinnedEffect).World = mm.ParentBone.Transform * transform.GetWorldMatrix();
+                                    (this.Mat[ctr].MyEffect as SkinnedEffect).EnableDefaultLighting();
+                                    (this.Mat[ctr].MyEffect as SkinnedEffect).Texture = this.Mat[ctr].DiffuseMap;
 
-                            be.Projection = camera.ProjectionMatrix;
-                            be.View = camera.ViewMatrix;
-                            be.World = mm.ParentBone.Transform * transform.GetWorldMatrix();
-                            be.EnableDefaultLighting();
+                                    if (bones != null) (this.Mat[ctr].MyEffect as SkinnedEffect).SetBoneTransforms(bones);
+
+                                    mm.MeshParts[i].Effect = this.Mat[ctr].MyEffect;
+                                    ++ctr;
+                                    break;
+
+                                case Material.EffectType.DEFAULT_SKINNED:
+                                    break;
+
+                                case Material.EffectType.NORMAL_SKINNED:
+                                    break;
+
+                                case Material.EffectType.CUBE_SKINNED:
+                                    break;
+                            }
                         }
 
                         mm.Draw();

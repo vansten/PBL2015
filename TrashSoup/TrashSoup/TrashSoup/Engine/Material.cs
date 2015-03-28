@@ -10,6 +10,22 @@ namespace TrashSoup.Engine
     // A container for textures and effects associated with the model
     public class Material
     {
+        #region enums
+
+        public enum EffectType
+        {
+            BASIC,
+            SKINNED,
+            DEFAULT,
+            DEFAULT_SKINNED,
+            NORMAL,
+            NORMAL_SKINNED,
+            CUBE,
+            CUBE_SKINNED
+        }
+
+        #endregion
+
         #region variables
 
 
@@ -18,7 +34,13 @@ namespace TrashSoup.Engine
 
         #region properties
 
-        public Texture2D Diffuse { get; set; }
+        public string Name { get; set; }
+
+        public EffectType MyEffectType { get; set; }
+
+        public Texture2D DiffuseMap { get; set; }
+        public Texture2D NormalMap { get; set; }
+        public Texture2D CubeMap { get; set; }
 
         public Effect MyEffect { get; set; }
 
@@ -26,10 +48,54 @@ namespace TrashSoup.Engine
 
         #region methods
 
-        public Material(Texture2D diffuse, Effect effect)
+        public Material(string name)
         {
-            this.Diffuse = diffuse;
+            this.Name = name;
+            this.DiffuseMap = null;
+            this.NormalMap = null;
+            this.CubeMap = null;
+        }
+
+        public Material(string name, Effect effect)
+            : this(name)
+        {
             this.MyEffect = effect;
+        }
+
+        public Material(string name, Effect effect, Texture2D diffuse) : this(name, effect)
+        {
+            this.DiffuseMap = diffuse;
+        }
+
+        public Material(string name, Effect effect, Texture2D diffuse, Texture2D normal)
+            : this(name, effect, diffuse)
+        {
+            this.NormalMap = normal;
+        }
+
+        public Material(string name, Effect effect, Texture2D diffuse, Texture2D normal, Texture2D cube)
+            : this(name, effect, diffuse, normal)
+        {
+            this.CubeMap = cube;
+        }
+
+        public void UpdateEffect()
+        {
+            switch (this.MyEffectType)
+            {
+                case Material.EffectType.SKINNED:
+                    (this.MyEffect as SkinnedEffect).Texture = this.DiffuseMap;
+                    break;
+
+                case Material.EffectType.DEFAULT_SKINNED:
+                    break;
+
+                case Material.EffectType.NORMAL_SKINNED:
+                    break;
+
+                case Material.EffectType.CUBE_SKINNED:
+                    break;
+            }
         }
 
         #endregion
