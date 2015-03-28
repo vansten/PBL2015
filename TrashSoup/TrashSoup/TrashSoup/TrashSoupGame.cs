@@ -67,12 +67,16 @@ namespace TrashSoup
                 ResourceManager.Instance.CurrentScene.UpdateAll(gameTime);
 
                 //TESTING PARTICLES
-                for (int i = 0; i < ResourceManager.Instance.Particles.Count; ++i)
-                {
-                    ResourceManager.Instance.Particles[i].Update(gameTime);
-                    if (ResourceManager.Instance.Particles[i].IsDead)
-                        ResourceManager.Instance.Particles[i].SetEnabled();
-                }
+                //Generate a direction within 15 degrees of (0, 1, 0)
+                Vector3 offset = new Vector3(MathHelper.ToRadians(10.0f));
+                Vector3 randAngle = Vector3.Up + new Vector3(
+                    -offset.X + (float)SingleRandom.Instance.rnd.NextDouble() * (offset.X - (-offset.X)),
+                    -offset.Y + (float)SingleRandom.Instance.rnd.NextDouble() * (offset.Y - (-offset.Y)),
+                    -offset.Z + (float)SingleRandom.Instance.rnd.NextDouble() * (offset.Z - (-offset.Z))
+                    );
+                ResourceManager.Instance.ps.AddParticle(new Vector3(0.0f, 10.0f, -5.0f),
+                    randAngle, 20.0f);
+                ResourceManager.Instance.ps.Update();
 
                 //TESTING SAVE
                 if (Keyboard.GetState().IsKeyDown(Keys.F5))
@@ -89,9 +93,7 @@ namespace TrashSoup
 
             ResourceManager.Instance.CurrentScene.DrawAll(gameTime);
 
-            //TESTING PARTICLES
-            foreach(Particle p in ResourceManager.Instance.Particles)
-                p.Draw(ResourceManager.Instance.CurrentScene.Cam);
+            ResourceManager.Instance.ps.Draw();
 
             base.Draw(gameTime);
 

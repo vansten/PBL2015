@@ -90,8 +90,9 @@
     <Compile Include="Engine\CustomModel.cs" />
     <Compile Include="Engine\CustomSkinnedModel.cs" />
     <Compile Include="Engine\Debug.cs" />
-    <Compile Include="Engine\ExplosionParticle.cs" />
     <Compile Include="Engine\Material.cs" />
+    <Compile Include="Engine\ParticleSystem.cs" />
+    <Compile Include="Engine\ParticleVertex.cs" />
     <Compile Include="Engine\PhysicalObject.cs" />
     <Compile Include="Engine\PhysicsManager.cs" />
     <Compile Include="Engine\SaveManager.cs" />
@@ -102,7 +103,6 @@
     <Compile Include="Engine\GUIManager.cs" />
     <Compile Include="Engine\InputManager.cs" />
     <Compile Include="Engine\ObjectComponent.cs" />
-    <Compile Include="Engine\Particle.cs" />
     <Compile Include="Gameplay\PlayerController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
