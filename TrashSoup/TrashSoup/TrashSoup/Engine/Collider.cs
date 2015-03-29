@@ -26,6 +26,12 @@ namespace TrashSoup.Engine
             protected set;
         }
 
+        public Vector3 IntersectionVector
+        {
+            get;
+            protected set;
+        }
+
         #endregion
 
         #region Methods

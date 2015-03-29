@@ -87,7 +87,7 @@ namespace TrashSoup.Engine
                     {
                         if (col.Intersects(po.MyPhysicalObject))
                         {
-                            if (col.IsTrigger)
+                            if (col.IsTrigger || po.MyCollider.IsTrigger)
                             {
                                 Debug.Log("Trigger found: " + col.MyObject.Name + " vs. " + po.Name + " at time: " + gameTime.TotalGameTime.Seconds + " s.");
                                 col.MyObject.OnTrigger(po);
@@ -95,7 +95,9 @@ namespace TrashSoup.Engine
                             }
                             else
                             {
-                                Debug.Log("Collision found: " + col.MyObject.Name + " vs. " + po.Name + " at time: " + gameTime.TotalGameTime.Seconds + " s.");
+                                //Debug.Log("Collision found: " + col.MyObject.Name + " vs. " + po.Name + " at time: " + gameTime.TotalGameTime.Seconds + " s.");
+                                //Debug.Log("Intersection vector: " + col.IntersectionVector.ToString());
+                                po.MyTransform.Position -= col.IntersectionVector;
                                 col.MyObject.OnCollision(po);
                                 po.OnCollision(col.MyObject);
                             }

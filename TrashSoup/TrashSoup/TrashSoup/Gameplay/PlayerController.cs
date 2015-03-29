@@ -126,6 +126,8 @@ namespace TrashSoup.Gameplay
             sprint = 1.0f;
             sprintM = 0.0f;
 
+            if (MyObject == null) return;
+
             if(MyObject.MyAnimator != null)
             {
                 MyObject.MyAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", MyObject.MyAnimator.GetAnimationPlayer("idle_1")));

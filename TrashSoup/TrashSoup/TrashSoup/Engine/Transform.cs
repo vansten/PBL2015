@@ -17,6 +17,7 @@ namespace TrashSoup.Engine
 
         protected Matrix worldMatrix;
         protected Vector3 position;
+        protected Vector3 prevPosition;
         protected Vector3 rotation;
         protected Vector3 forward;
         protected float scale;
@@ -33,10 +34,20 @@ namespace TrashSoup.Engine
             }
             set
             {
+                this.prevPosition = this.position;
                 position = value;
                 CalculateWorldMatrix();
             }
         }
+
+        public Vector3 PrevPosition
+        {
+            get
+            {
+                return this.prevPosition;
+            }
+        }
+
         public Vector3 Rotation 
         { 
             get
@@ -81,6 +92,7 @@ namespace TrashSoup.Engine
         public Transform(GameObject obj) : base(obj)
         {
             this.Position = new Vector3(0.0f, 0.0f, 0.0f);
+            this.prevPosition = Vector3.Zero;
             this.Rotation = new Vector3(0.0f, 0.0f, 0.0f);
             this.Scale = 1.0f;
         }
@@ -90,6 +102,7 @@ namespace TrashSoup.Engine
         {
             this.Position = position;
             this.Rotation = rotation;
+            this.prevPosition = position;
             this.Scale = scale;
             this.Forward = forward;
         }

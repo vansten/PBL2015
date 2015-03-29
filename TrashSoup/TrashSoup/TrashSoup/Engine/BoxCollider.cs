@@ -193,8 +193,63 @@ namespace TrashSoup.Engine
             
             if(poCollider.GetType() == typeof(BoxCollider))
             {
-                BoxCollider poBox = (BoxCollider)poCollider;
-                return this.box.Intersects(poBox.box);
+                BoundingBox poBox = ((BoxCollider)poCollider).box;
+                if (this.box.Intersects(poBox))
+                {
+                    Vector3 positionChange = po.MyObject.MyTransform.Position - po.MyObject.MyTransform.PrevPosition;
+                    if(positionChange != Vector3.Zero)
+                    {
+                        positionChange.Normalize();
+                    }
+                    float x, y, z;
+                    float x1, x2, y1, y2, z1, z2;
+                    x1 = x2 = y1 = y2 = z1 = z2 = 0.0f;
+                    x = y = z = 0.0f;
+
+                    x1 = poBox.Max.X - this.box.Min.X;
+                    if(x1 < 0.0f || poBox.Max.X > this.box.Max.X)
+                    {
+                        x1 = 0.0f;
+                    }
+
+                    x2 = poBox.Min.X - this.box.Max.X;
+                    if(x2 > 0.0f || poBox.Min.X < this.box.Min.X)
+                    {
+                        x2 = 0.0f;
+                    }
+
+                    y1 = poBox.Max.Y - this.box.Min.Y;
+                    if (y1 < 0.0f || poBox.Max.Y > this.box.Max.Y)
+                    {
+                        y1 = 0.0f;
+                    }
+
+                    y2 = poBox.Min.Y - this.box.Max.Y;
+                    if (y2 > 0.0f || poBox.Min.Y < this.box.Min.Y)
+                    {
+                        y2 = 0.0f;
+                    }
+
+                    z1 = poBox.Max.Z - this.box.Min.Z;
+                    if (z1 < 0.0f || poBox.Max.Z > this.box.Max.Z)
+                    {
+                        z1 = 0.0f;
+                    }
+
+                    z2 = poBox.Min.Z - this.box.Max.Y;
+                    if (z2 > 0.0f || poBox.Min.Z < this.box.Min.Z)
+                    {
+                        z2 = 0.0f;
+                    }
+
+                    x = (Math.Abs(x1) > Math.Abs(x2) ? x1 : x2) * -Math.Sign(positionChange.X);
+                    y = (Math.Abs(y1) > Math.Abs(y2) ? y1 : y2) * -Math.Sign(positionChange.Y);
+                    z = (Math.Abs(z1) > Math.Abs(z2) ? z1 : z2) * -Math.Sign(positionChange.Z);
+
+                    this.IntersectionVector = new Vector3(x, y, z);
+
+                    return true;
+                }
             }
 
             return false;

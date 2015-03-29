@@ -110,6 +110,14 @@ namespace AwesomeEngineEditor
             }
         }
 
+        public string TypeName
+        {
+            get
+            {
+                return "XYZ";
+            }
+        }
+
         private void FillObjectComponents()
         {
             Type[] types = typeof(TrashSoup.Engine.ObjectComponent).Assembly.GetTypes();
