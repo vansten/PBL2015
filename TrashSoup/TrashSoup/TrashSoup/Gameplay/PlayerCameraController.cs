@@ -50,7 +50,7 @@ namespace TrashSoup.Gameplay
             if (Math.Abs(currentPitch + tempPitch) < CAM_TOTAL_PITCH)
             {
                 currentPitch += tempPitch;
-                cam.Position = cam.Position / cam.Position.Length();
+                cam.Position = cam.Position / Math.Max(cam.Position.Length(), 0.000001f);
                 cam.Position = CAM_DISTANCE * cam.Position;
                 cam.Position = Vector3.Transform(cam.Position,
                     Matrix.CreateFromAxisAngle(cam.Right, tempPitch));

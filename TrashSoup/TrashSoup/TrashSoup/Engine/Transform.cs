@@ -56,7 +56,9 @@ namespace TrashSoup.Engine
             }
             set
             {
-                rotation = value;
+                rotation.X = MathHelper.Clamp(value.X, -MathHelper.Pi, MathHelper.Pi);
+                rotation.Y = MathHelper.Clamp(value.Y, -MathHelper.Pi, MathHelper.Pi);
+                rotation.Z = MathHelper.Clamp(value.Z, -MathHelper.Pi, MathHelper.Pi);
                 CalculateWorldMatrix();
             }
         }

@@ -75,8 +75,13 @@ namespace TrashSoup.Gameplay
 
                 rotation = (float)Math.Atan2(ResourceManager.Instance.CurrentScene.Cam.Direction.X,
                     -ResourceManager.Instance.CurrentScene.Cam.Direction.Z);
-                rotation = CurveAngle(rotM, rotation, 3.0f*ROTATION_SPEED);
+                rotation = CurveAngle(rotM, rotation, 3.0f*ROTATION_SPEED);                 // to się chyba gdzieś tu wywala ale nie jestem pewien
                 tempMoveRotated = Vector3.Transform(tempMove, Matrix.CreateRotationY(rotation));
+
+                if (float.IsNaN(tempMoveRotated.X) || float.IsNaN(tempMoveRotated.Y) || float.IsNaN(tempMoveRotated.Z))
+                {
+                    Debug.Log("PLAYERCONTROLLER ERROR: NaN detected in tempMoveRotated");
+                }
 
                 MyObject.MyTransform.Forward = Vector3.Lerp(prevForward, tempMoveRotated, ROTATION_SPEED);
                 MyObject.MyTransform.Rotation = RotateAsForward(MyObject.MyTransform.Forward, MyObject.MyTransform.Rotation);
@@ -109,9 +114,12 @@ namespace TrashSoup.Gameplay
             {
                 if (MyObject.MyAnimator != null)
                 {
-                    if(MyObject.MyAnimator.CurrentState != null)
-                    // jump!
-                    MyObject.MyAnimator.ChangeState("Jump");
+                    if(MyObject.MyAnimator.ThirdState == null)
+                    {
+                        // jump!
+                        //Debug.Log("Jump!");
+                        MyObject.MyAnimator.ChangeState("Jump");
+                    }
                 }
             }
         }
@@ -133,12 +141,12 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", MyObject.MyAnimator.GetAnimationPlayer("idle_1")));
                 MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", MyObject.MyAnimator.GetAnimationPlayer("walking_1")));
                 MyObject.MyAnimator.AvailableStates.Add("Jump", new AnimatorState("Jump", MyObject.MyAnimator.GetAnimationPlayer("jump_1"), AnimatorState.StateType.SINGLE));
-                MyObject.MyAnimator.AvailableStates["Idle"].Transitions.Add(500, MyObject.MyAnimator.AvailableStates["Walk"]);
-                MyObject.MyAnimator.AvailableStates["Idle"].Transitions.Add(501, MyObject.MyAnimator.AvailableStates["Jump"]);
-                MyObject.MyAnimator.AvailableStates["Walk"].Transitions.Add(250, MyObject.MyAnimator.AvailableStates["Idle"]);
-                MyObject.MyAnimator.AvailableStates["Walk"].Transitions.Add(200, MyObject.MyAnimator.AvailableStates["Jump"]);
-                MyObject.MyAnimator.AvailableStates["Jump"].Transitions.Add(100, MyObject.MyAnimator.AvailableStates["Walk"]);
-                MyObject.MyAnimator.AvailableStates["Jump"].Transitions.Add(1001, MyObject.MyAnimator.AvailableStates["Idle"]);
+                MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Jump"], new TimeSpan(0, 0, 0, 0, 500));
+                MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 250));
+                MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Jump"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["Jump"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 100));
+                MyObject.MyAnimator.AvailableStates["Jump"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 500));
                 MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["Idle"];
                 //MyObject.MyAnimator.SetBlendState("Walk");
             }
@@ -162,7 +170,9 @@ namespace TrashSoup.Gameplay
 
             Vector2 currentVector = Slerp(fromVector, toVector, step);
 
-            return (float)Math.Atan2(currentVector.Y, currentVector.X);
+            float toReturn = (float)Math.Atan2(currentVector.Y, currentVector.X);
+
+            return toReturn;
         }
 
         private Vector2 Slerp(Vector2 from, Vector2 to, float step)
@@ -170,11 +180,21 @@ namespace TrashSoup.Gameplay
             if (step == 0) return from;
             if (from == to || step == 1) return to;
 
-            double theta = Math.Acos(Vector2.Dot(from, to));
+            double dot = (double)Vector2.Dot(from, to);
+            double theta = Math.Acos(dot);
             if (theta == 0) return to;
 
             double sinTheta = Math.Sin(theta);
-            return (float)(Math.Sin((1 - step) * theta) / sinTheta) * from + (float)(Math.Sin(step * theta) / sinTheta) * to;
+            
+            Vector2 toReturn = (float)(Math.Sin((1 - step) * theta) / sinTheta) * from + (float)(Math.Sin(step * theta) / sinTheta) * to;
+
+            if(float.IsNaN(toReturn.X) || float.IsNaN(toReturn.Y))
+            {
+                Debug.Log("PLAYERCONTROLLER ERROR: NaN detected in Slerp()");
+                throw new InvalidOperationException("PLAYERCONTROLLER ERROR: NaN detected in Slerp()");
+            }
+
+            return toReturn;
         }
 
 

@@ -18,6 +18,17 @@ namespace TrashSoup.Engine
         }
 
         #endregion
+
+        #region variables
+
+        /// <summary>
+        /// A transition is described by a time it takes and an another animation that we transite to.
+        /// </summary>
+        protected List<AnimatorState> transitions;
+        protected List<TimeSpan> transitionTimes;
+
+        #endregion
+
         #region properties
 
         public string Name { get; set; }
@@ -25,19 +36,15 @@ namespace TrashSoup.Engine
         public StateType Type { get; set; }
         public bool IsFinished { get; set; }
 
-        /// <summary>
-        /// A transition is described by a time it takes in ms and an another animation that we transite to.
-        /// </summary>
-        public Dictionary<uint, AnimatorState> Transitions { get; set; }
-
         #endregion
 
         #region methods
 
         public AnimatorState()
         {
-            this.Transitions = new Dictionary<uint, AnimatorState>();
-            this.Transitions.Add(0, this);
+            this.transitions = new List<AnimatorState>();
+            this.transitionTimes = new List<TimeSpan>();
+            this.AddTransition(this, TimeSpan.Zero);
             this.Type = StateType.LOOPING;
             this.IsFinished = false;
         }
@@ -65,6 +72,42 @@ namespace TrashSoup.Engine
                 }
             }
             Animation.Update(gameTime.ElapsedGameTime, true, Matrix.Identity);
+        }
+
+        public List<AnimatorState> GetTransitions()
+        {
+            return this.transitions;
+        }
+
+        public List<TimeSpan> GetTransitionTimes()
+        {
+            return this.transitionTimes;
+        }
+
+        public void AddTransition(AnimatorState state, TimeSpan span)
+        {
+            this.transitions.Add(state);
+            this.transitionTimes.Add(span);
+        }
+
+        public TimeSpan GetTimeByTransition(AnimatorState state)
+        {
+            int i = transitions.IndexOf(state);
+            if (i == -1) return default(TimeSpan);
+            else return transitionTimes[i];
+        }
+
+        public KeyValuePair<TimeSpan, AnimatorState> GetTransitionAndTimeByName(string name)
+        {
+            for(int i = 0; i < transitions.Count; ++i)
+            {
+                if(transitions[i].Name.Equals(name))
+                {
+                    return new KeyValuePair<TimeSpan, AnimatorState>(transitionTimes[i], transitions[i]);
+                }
+            }
+
+            return new KeyValuePair<TimeSpan,AnimatorState>(default(TimeSpan), null);
         }
 
         #endregion
