@@ -54,8 +54,7 @@ namespace TrashSoup.Engine
                 XmlSerializer serializer = new XmlSerializer(typeof(Scene));
                 using (FileStream file = new FileStream(this.XmlPath, FileMode.Create))
                 {
-                    serializer.Serialize(file, this.scene);
-                    Debug.Log("Save Completed");
+                    serializer.Serialize(file, ResourceManager.Instance.CurrentScene);
                 }
             }
         }
@@ -68,7 +67,6 @@ namespace TrashSoup.Engine
                 //this.scene = new Scene();
                 //Scene tmp = (Scene)serializer.Deserialize(file);
                 ResourceManager.Instance.CurrentScene = (Scene)serializer.Deserialize(file);
-                Debug.Log("Load Completed");
             }
         }
         #endregion

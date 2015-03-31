@@ -146,9 +146,22 @@ namespace TrashSoup.Engine
 
             }
 
+            if (reader.Name == "CameraRight")
+            {
+                reader.ReadStartElement();
+                Right = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""),
+                    reader.ReadElementContentAsFloat("Z", ""));
+                reader.ReadEndElement();
+
+            }
+
             FOV = reader.ReadElementContentAsFloat("FOV", "");
             Near = reader.ReadElementContentAsFloat("Near", "");
             Far = reader.ReadElementContentAsFloat("Far", "");
+
+            CreateLookAt();
+            CreateProjection(FOV, Near, Far);
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)
@@ -183,6 +196,12 @@ namespace TrashSoup.Engine
             writer.WriteElementString("X", XmlConvert.ToString(Target.X));
             writer.WriteElementString("Y", XmlConvert.ToString(Target.Y));
             writer.WriteElementString("Z", XmlConvert.ToString(Target.Z));
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("CameraRight");
+            writer.WriteElementString("X", XmlConvert.ToString(Right.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(Right.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(Right.Z));
             writer.WriteEndElement();
 
             writer.WriteElementString("FOV", XmlConvert.ToString(FOV));
