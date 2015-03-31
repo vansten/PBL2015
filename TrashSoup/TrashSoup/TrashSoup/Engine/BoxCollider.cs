@@ -196,11 +196,12 @@ namespace TrashSoup.Engine
                 BoundingBox poBox = ((BoxCollider)poCollider).box;
                 if (this.box.Intersects(poBox))
                 {
-                    Vector3 positionChange = po.MyObject.MyTransform.Position - po.MyObject.MyTransform.PrevPosition;
+                    Vector3 positionChange = po.MyObject.MyTransform.PositionChangeNormal;
                     if(positionChange != Vector3.Zero)
                     {
                         positionChange.Normalize();
                     }
+
                     float x, y, z;
                     float x1, x2, y1, y2, z1, z2;
                     x1 = x2 = y1 = y2 = z1 = z2 = 0.0f;
@@ -218,6 +219,11 @@ namespace TrashSoup.Engine
                         x2 = 0.0f;
                     }
 
+                    if(x1 != 0.0f && x2 != 0.0f)
+                    {
+                        x1 = x2 = 0.0f;
+                    }
+
                     y1 = poBox.Max.Y - this.box.Min.Y;
                     if (y1 < 0.0f || poBox.Max.Y > this.box.Max.Y)
                     {
@@ -229,6 +235,11 @@ namespace TrashSoup.Engine
                     {
                         y2 = 0.0f;
                     }
+                    
+                    if (y1 != 0.0f && y2 != 0.0f)
+                    {
+                        y1 = y2 = 0.0f;
+                    }
 
                     z1 = poBox.Max.Z - this.box.Min.Z;
                     if (z1 < 0.0f || poBox.Max.Z > this.box.Max.Z)
@@ -236,15 +247,33 @@ namespace TrashSoup.Engine
                         z1 = 0.0f;
                     }
 
-                    z2 = poBox.Min.Z - this.box.Max.Y;
+                    z2 = poBox.Min.Z - this.box.Max.Z;
                     if (z2 > 0.0f || poBox.Min.Z < this.box.Min.Z)
                     {
                         z2 = 0.0f;
                     }
 
-                    x = (Math.Abs(x1) > Math.Abs(x2) ? x1 : x2) * -Math.Sign(positionChange.X);
-                    y = (Math.Abs(y1) > Math.Abs(y2) ? y1 : y2) * -Math.Sign(positionChange.Y);
-                    z = (Math.Abs(z1) > Math.Abs(z2) ? z1 : z2) * -Math.Sign(positionChange.Z);
+                    if (z1 != 0.0f && z2 != 0.0f)
+                    {
+                        z1 = z2 = 0.0f;
+                    }
+
+                    x = Math.Abs(x1) > Math.Abs(x2) ? x1 : x2;
+                    y = Math.Abs(y1) > Math.Abs(y2) ? y1 : y2;
+                    z = Math.Abs(z1) > Math.Abs(z2) ? z1 : z2;
+
+                    if(po.Velocity.X == 0.0f)
+                    {
+                        x *= positionChange.X;
+                    }
+                    if(po.Velocity.Y == 0.0f)
+                    {
+                        y *= positionChange.Y;
+                    }
+                    if(po.Velocity.Z == 0.0f)
+                    {
+                        z *= positionChange.Z;
+                    }
 
                     this.IntersectionVector = new Vector3(x, y, z);
 
@@ -273,8 +302,6 @@ namespace TrashSoup.Engine
             }
             this.box.Min = min;
             this.box.Max = max;
-
-            base.UpdateCollider();
         }
 
         #endregion

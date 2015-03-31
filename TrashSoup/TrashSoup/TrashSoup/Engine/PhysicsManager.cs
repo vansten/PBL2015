@@ -79,13 +79,14 @@ namespace TrashSoup.Engine
         /// </summary>
         public void Update(GameTime gameTime)
         {
+            if (gameTime.TotalGameTime.Ticks < 1) return;
             foreach(Collider col in this.allColliders)
             {
                 foreach(GameObject po in this.physicalObjects)
                 {
                     if(col.MyObject != po)
                     {
-                        if (col.Intersects(po.MyPhysicalObject))
+                        if(col.Intersects(po.MyPhysicalObject))
                         {
                             if (col.IsTrigger || po.MyCollider.IsTrigger)
                             {
@@ -95,9 +96,7 @@ namespace TrashSoup.Engine
                             }
                             else
                             {
-                                //Debug.Log("Collision found: " + col.MyObject.Name + " vs. " + po.Name + " at time: " + gameTime.TotalGameTime.Seconds + " s.");
-                                //Debug.Log("Intersection vector: " + col.IntersectionVector.ToString());
-                                po.MyTransform.Position -= col.IntersectionVector;
+                                Debug.Log("Collision found: " + col.MyObject.Name + " vs. " + po.Name + " at time: " + gameTime.TotalGameTime.Seconds + " s.");
                                 col.MyObject.OnCollision(po);
                                 po.OnCollision(col.MyObject);
                             }

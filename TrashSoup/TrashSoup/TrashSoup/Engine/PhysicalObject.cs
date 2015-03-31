@@ -117,6 +117,19 @@ namespace TrashSoup.Engine
             //Improve velocity changing function (maybe oblique throw equation ?)
             //Find a better way to slowing down (decreasing acceleration)
 
+#if DEBUG
+            if(InputManager.Instance.GetGamePadButtonDown(Microsoft.Xna.Framework.Input.Buttons.DPadDown))
+            {
+                this.IsUsingGravity = !this.IsUsingGravity;
+                if(!this.IsUsingGravity)
+                {
+                    Vector3 tmp = this.Velocity; ;
+                    tmp.Y = MathHelper.Clamp(tmp.Y, 0.0f, float.MaxValue);
+                    this.Velocity = tmp;
+                }
+            }
+#endif
+
             //If is not sleeping
             if(!this.Sleeping)
             {
@@ -144,6 +157,14 @@ namespace TrashSoup.Engine
         public override void Draw(GameTime gameTime)
         {
             //Do nothing, we do not expect to draw something as abstract as physical object component
+        }
+
+        public override void OnCollision(GameObject other)
+        {
+            if(other.MyCollider != null)
+            {
+                this.MyObject.MyTransform.Position -= other.MyCollider.IntersectionVector;
+            }
         }
 
         public System.Xml.Schema.XmlSchema GetSchema()

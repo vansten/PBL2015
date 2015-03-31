@@ -66,7 +66,7 @@
     <Compile Include="Models\Test\TestBox.FBX">
       <Name>TestBox</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -80,7 +80,7 @@
     <Compile Include="Models\Test\TestTerrain.FBX">
       <Name>TestTerrain</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>

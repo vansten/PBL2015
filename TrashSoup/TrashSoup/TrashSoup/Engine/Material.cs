@@ -42,6 +42,9 @@ namespace TrashSoup.Engine
         public Texture2D NormalMap { get; set; }
         public Texture2D CubeMap { get; set; }
 
+        public Vector3 SpecularColor { get; set; }
+        public float Glossiness { get; set; }
+
         public Effect MyEffect { get; set; }
 
         #endregion
@@ -54,6 +57,8 @@ namespace TrashSoup.Engine
             this.DiffuseMap = null;
             this.NormalMap = null;
             this.CubeMap = null;
+            this.Glossiness = 0.0f;
+            this.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
         }
 
         public Material(string name, Effect effect)
