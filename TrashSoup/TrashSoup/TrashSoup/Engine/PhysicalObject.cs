@@ -116,6 +116,19 @@ namespace TrashSoup.Engine
             //Improve velocity changing function (maybe oblique throw equation ?)
             //Find a better way to slowing down (decreasing acceleration)
 
+#if DEBUG
+            if(InputManager.Instance.GetGamePadButtonDown(Microsoft.Xna.Framework.Input.Buttons.DPadDown))
+            {
+                this.IsUsingGravity = !this.IsUsingGravity;
+                if(!this.IsUsingGravity)
+                {
+                    Vector3 tmp = this.Velocity; ;
+                    tmp.Y = MathHelper.Clamp(tmp.Y, 0.0f, float.MaxValue);
+                    this.Velocity = tmp;
+                }
+            }
+#endif
+
             //If is not sleeping
             if(!this.Sleeping)
             {
