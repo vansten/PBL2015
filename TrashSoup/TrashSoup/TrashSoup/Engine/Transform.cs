@@ -18,6 +18,7 @@ namespace TrashSoup.Engine
         protected Matrix worldMatrix;
         protected Vector3 position;
         protected Vector3 prevPosition;
+        protected Vector3 positionChangeNormal;
         protected Vector3 rotation;
         protected Vector3 forward;
         protected float scale;
@@ -36,15 +37,16 @@ namespace TrashSoup.Engine
             {
                 this.prevPosition = this.position;
                 position = value;
+                this.CalculatePositionChange();
                 CalculateWorldMatrix();
             }
         }
 
-        public Vector3 PrevPosition
+        public Vector3 PositionChangeNormal
         {
             get
             {
-                return this.prevPosition;
+                return this.positionChangeNormal;
             }
         }
 
@@ -137,6 +139,18 @@ namespace TrashSoup.Engine
             scale = Matrix.CreateScale(this.Scale);
 
             this.worldMatrix = preRotationMatrix * scale * rotation * translation;
+        }
+
+        protected void CalculatePositionChange()
+        {
+            this.positionChangeNormal.X = Math.Abs(this.position.X - this.prevPosition.X);// < 0.01f ? 0.0f : 1.0f;
+            this.positionChangeNormal.Y = Math.Abs(this.position.Y - this.prevPosition.Y);// < 0.01f ? 0.0f : 1.0f;
+            this.positionChangeNormal.Z = Math.Abs(this.position.Z - this.prevPosition.Z);// < 0.01f ? 0.0f : 1.0f;
+            if(this.positionChangeNormal.Length() > 0.0f)
+            {
+                this.positionChangeNormal.Normalize();
+            }
+            this.positionChangeNormal.Z *= -1.0f;
         }
 
         public System.Xml.Schema.XmlSchema GetSchema() { return null; }

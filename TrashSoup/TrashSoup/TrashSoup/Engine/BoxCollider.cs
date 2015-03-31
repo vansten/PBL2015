@@ -196,7 +196,7 @@ namespace TrashSoup.Engine
                 BoundingBox poBox = ((BoxCollider)poCollider).box;
                 if (this.box.Intersects(poBox))
                 {
-                    Vector3 positionChange = po.MyObject.MyTransform.Position - po.MyObject.MyTransform.PrevPosition;
+                    Vector3 positionChange = po.MyObject.MyTransform.PositionChangeNormal;
                     if(positionChange != Vector3.Zero)
                     {
                         positionChange.Normalize();
@@ -236,15 +236,19 @@ namespace TrashSoup.Engine
                         z1 = 0.0f;
                     }
 
-                    z2 = poBox.Min.Z - this.box.Max.Y;
+                    z2 = poBox.Min.Z - this.box.Max.Z;
                     if (z2 > 0.0f || poBox.Min.Z < this.box.Min.Z)
                     {
                         z2 = 0.0f;
                     }
 
-                    x = (Math.Abs(x1) > Math.Abs(x2) ? x1 : x2) * -Math.Sign(positionChange.X);
-                    y = (Math.Abs(y1) > Math.Abs(y2) ? y1 : y2) * -Math.Sign(positionChange.Y);
-                    z = (Math.Abs(z1) > Math.Abs(z2) ? z1 : z2) * -Math.Sign(positionChange.Z);
+                    x = Math.Abs(x1) > Math.Abs(x2) ? x1 : x2;
+                    y = Math.Abs(y1) > Math.Abs(y2) ? y1 : y2;
+                    z = Math.Abs(z1) > Math.Abs(z2) ? z1 : z2;
+
+                    x *= positionChange.X;
+                    y *= positionChange.Y;
+                    z *= positionChange.Z;
 
                     this.IntersectionVector = new Vector3(x, y, z);
 
@@ -273,8 +277,6 @@ namespace TrashSoup.Engine
             }
             this.box.Min = min;
             this.box.Max = max;
-
-            base.UpdateCollider();
         }
 
         #endregion

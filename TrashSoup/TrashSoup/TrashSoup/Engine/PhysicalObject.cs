@@ -145,6 +145,14 @@ namespace TrashSoup.Engine
             //Do nothing, we do not expect to draw something as abstract as physical object component
         }
 
+        public override void OnCollision(GameObject other)
+        {
+            if(other.MyCollider != null)
+            {
+                this.MyObject.MyTransform.Position -= other.MyCollider.IntersectionVector;
+            }
+        }
+
         public System.Xml.Schema.XmlSchema GetSchema()
         {
             return null;

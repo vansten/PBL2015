@@ -218,6 +218,11 @@ namespace TrashSoup.Engine
         /// </summary>
         public void OnCollision(GameObject otherGO)
         {
+            if(this.MyPhysicalObject != null)
+            {
+                this.MyPhysicalObject.OnCollision(otherGO);
+            }
+
             foreach (ObjectComponent oc in this.Components)
             {
                 oc.OnCollision(otherGO);
