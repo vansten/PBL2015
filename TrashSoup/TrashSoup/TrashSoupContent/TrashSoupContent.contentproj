@@ -103,6 +103,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CustomEffectPipeline\CustomEffectPipeline.csproj">
+      <Project>{506a8aa5-e51a-4cdf-b1a4-7d3273ee6da0}</Project>
+      <Name>CustomEffectPipeline</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\SkinnedModelPipeline\SkinnedModelPipeline.csproj">
       <Project>{45323740-376e-45f6-b3ec-4b46ed823a91}</Project>
       <Name>SkinnedModelPipeline</Name>
@@ -163,6 +167,13 @@
       <Name>ParticleEffect</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Effects\DefaultEffect.fx">
+      <Name>DefaultEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>DefaultEffectProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

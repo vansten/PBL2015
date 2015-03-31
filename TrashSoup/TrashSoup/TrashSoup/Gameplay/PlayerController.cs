@@ -181,6 +181,11 @@ namespace TrashSoup.Gameplay
             if (from == to || step == 1) return to;
 
             double dot = (double)Vector2.Dot(from, to);
+
+            // clampin'!
+            if (dot > 1) dot = 1;
+            else if (dot < -1) dot = -1;
+
             double theta = Math.Acos(dot);
             if (theta == 0) return to;
 

@@ -21,7 +21,8 @@ namespace TrashSoup.Engine
             NORMAL,
             NORMAL_SKINNED,
             CUBE,
-            CUBE_SKINNED
+            CUBE_SKINNED,
+            ALPHA
         }
 
         #endregion
@@ -41,9 +42,15 @@ namespace TrashSoup.Engine
         public Texture2D DiffuseMap { get; set; }
         public Texture2D NormalMap { get; set; }
         public Texture2D CubeMap { get; set; }
+        public Texture2D AlphaMap { get; set; }
 
         public Vector3 SpecularColor { get; set; }
         public float Glossiness { get; set; }
+
+        public Vector3 ReflectivityColor { get; set; }
+        public float ReflectivityBias { get; set; }     // 0 means 0% reflection, 100% texture, 1 means otherwise
+
+        public float Transparency { get; set; }         // 1.0 means opaque
 
         public Effect MyEffect { get; set; }
 
@@ -57,8 +64,13 @@ namespace TrashSoup.Engine
             this.DiffuseMap = null;
             this.NormalMap = null;
             this.CubeMap = null;
+            this.AlphaMap = null;
             this.Glossiness = 0.0f;
-            this.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
+            this.SpecularColor = new Vector3(1.0f, 1.0f, 1.0f);
+            this.Glossiness = 50.0f;
+            this.ReflectivityColor = new Vector3(1.0f, 1.0f, 1.0f);
+            this.ReflectivityBias = 0.2f;
+            this.Transparency = 1.0f;
         }
 
         public Material(string name, Effect effect)
@@ -72,24 +84,44 @@ namespace TrashSoup.Engine
             this.DiffuseMap = diffuse;
         }
 
-        public Material(string name, Effect effect, Texture2D diffuse, Texture2D normal)
-            : this(name, effect, diffuse)
-        {
-            this.NormalMap = normal;
-        }
+        //public Material(string name, Effect effect, Texture2D diffuse, Texture2D normal)
+        //    : this(name, effect, diffuse)
+        //{
+        //    this.NormalMap = normal;
+        //}
 
-        public Material(string name, Effect effect, Texture2D diffuse, Texture2D normal, Texture2D cube)
-            : this(name, effect, diffuse, normal)
-        {
-            this.CubeMap = cube;
-        }
+        //public Material(string name, Effect effect, Texture2D diffuse, Texture2D normal, Texture2D cube)
+        //    : this(name, effect, diffuse, normal)
+        //{
+        //    this.CubeMap = cube;
+        //}
 
         public void UpdateEffect()
         {
             switch (this.MyEffectType)
             {
+                case Material.EffectType.BASIC:
+                    (this.MyEffect as BasicEffect).Texture = this.DiffuseMap;
+                    (this.MyEffect as BasicEffect).SpecularColor = this.SpecularColor;
+                    (this.MyEffect as BasicEffect).SpecularPower = this.Glossiness;
+                    break;
+
+                case Material.EffectType.DEFAULT:
+                    break;
+
+                case Material.EffectType.NORMAL:
+                    break;
+
+                case Material.EffectType.CUBE:
+                    break;
+
+                case Material.EffectType.ALPHA:
+                    break;
+
                 case Material.EffectType.SKINNED:
                     (this.MyEffect as SkinnedEffect).Texture = this.DiffuseMap;
+                    (this.MyEffect as SkinnedEffect).SpecularColor = this.SpecularColor;
+                    (this.MyEffect as SkinnedEffect).SpecularPower = this.Glossiness;
                     break;
 
                 case Material.EffectType.DEFAULT_SKINNED:

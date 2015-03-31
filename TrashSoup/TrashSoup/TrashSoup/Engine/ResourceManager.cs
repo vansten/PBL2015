@@ -67,6 +67,7 @@ namespace TrashSoup.Engine
             (testPlayerMat.MyEffect as BasicEffect).TextureEnabled = true;
             testPlayerMats.Add(testPlayerMat);
             testPlayerMat.MyEffectType = Material.EffectType.BASIC;
+            testPlayerMat.UpdateEffect();
             this.Materials.Add(testPlayerMat.Name, testPlayerMat);
 
             List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"]);
@@ -74,10 +75,11 @@ namespace TrashSoup.Engine
             List<Material> testTerMats = new List<Material>();
             Material testTerMat = new Material("testTerMat", new BasicEffect(TrashSoupGame.Instance.GraphicsDevice), Textures[@"Textures\Test\metal01_d"]);
             testTerMat.MyEffectType = Material.EffectType.BASIC;
-            (testTerMat.MyEffect as BasicEffect).SpecularPower = 10.0f;
-            (testTerMat.MyEffect as BasicEffect).SpecularColor = new Vector3(0.2f, 0.2f, 0.2f);
+            testTerMat.SpecularColor = new Vector3(0.2f, 0.2f, 0.2f);
+            testTerMat.Glossiness = 10.0f;
             (testTerMat.MyEffect as BasicEffect).PreferPerPixelLighting = true;
             (testTerMat.MyEffect as BasicEffect).TextureEnabled = true;
+            testTerMat.UpdateEffect();
             this.Materials.Add(testTerMat.Name, testTerMat);
             testTerMats.Add(testTerMat);
 

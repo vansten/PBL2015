@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrashSoup", "TrashSoup\TrashSoup\TrashSoup.csproj", "{43399BF9-4A83-4269-A1B4-541967529AAD}"
 EndProject
@@ -12,6 +12,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkinnedModelLibrary", "SkinnedModelLibrary\SkinnedModelLibrary.csproj", "{3467EE31-18D7-4019-A9DC-59CC9885459F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkinnedModelPipeline", "SkinnedModelPipeline\SkinnedModelPipeline.csproj", "{45323740-376E-45F6-B3EC-4B46ED823A91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomEffectPipeline", "CustomEffectPipeline\CustomEffectPipeline.csproj", "{506A8AA5-E51A-4CDF-B1A4-7D3273EE6DA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomEffectLibrary", "CustomEffectLibrary\CustomEffectLibrary.csproj", "{7A6CE90B-C8AE-44AD-B97B-4444F17677C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,6 +80,26 @@ Global
 		{45323740-376E-45F6-B3EC-4B46ED823A91}.Release|Mixed Platforms.Build.0 = Release|x86
 		{45323740-376E-45F6-B3EC-4B46ED823A91}.Release|x86.ActiveCfg = Release|x86
 		{45323740-376E-45F6-B3EC-4B46ED823A91}.Release|x86.Build.0 = Release|x86
+		{506A8AA5-E51A-4CDF-B1A4-7D3273EE6DA0}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{506A8AA5-E51A-4CDF-B1A4-7D3273EE6DA0}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{506A8AA5-E51A-4CDF-B1A4-7D3273EE6DA0}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{506A8AA5-E51A-4CDF-B1A4-7D3273EE6DA0}.Debug|x86.ActiveCfg = Debug|x86
+		{506A8AA5-E51A-4CDF-B1A4-7D3273EE6DA0}.Debug|x86.Build.0 = Debug|x86
+		{506A8AA5-E51A-4CDF-B1A4-7D3273EE6DA0}.Release|Any CPU.ActiveCfg = Release|x86
+		{506A8AA5-E51A-4CDF-B1A4-7D3273EE6DA0}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{506A8AA5-E51A-4CDF-B1A4-7D3273EE6DA0}.Release|Mixed Platforms.Build.0 = Release|x86
+		{506A8AA5-E51A-4CDF-B1A4-7D3273EE6DA0}.Release|x86.ActiveCfg = Release|x86
+		{506A8AA5-E51A-4CDF-B1A4-7D3273EE6DA0}.Release|x86.Build.0 = Release|x86
+		{7A6CE90B-C8AE-44AD-B97B-4444F17677C9}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{7A6CE90B-C8AE-44AD-B97B-4444F17677C9}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{7A6CE90B-C8AE-44AD-B97B-4444F17677C9}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{7A6CE90B-C8AE-44AD-B97B-4444F17677C9}.Debug|x86.ActiveCfg = Debug|x86
+		{7A6CE90B-C8AE-44AD-B97B-4444F17677C9}.Debug|x86.Build.0 = Debug|x86
+		{7A6CE90B-C8AE-44AD-B97B-4444F17677C9}.Release|Any CPU.ActiveCfg = Release|x86
+		{7A6CE90B-C8AE-44AD-B97B-4444F17677C9}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{7A6CE90B-C8AE-44AD-B97B-4444F17677C9}.Release|Mixed Platforms.Build.0 = Release|x86
+		{7A6CE90B-C8AE-44AD-B97B-4444F17677C9}.Release|x86.ActiveCfg = Release|x86
+		{7A6CE90B-C8AE-44AD-B97B-4444F17677C9}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

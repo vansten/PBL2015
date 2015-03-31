@@ -101,7 +101,7 @@ namespace TrashSoup.Engine
 
             if (ifHelperInterpolate)
             {
-                Debug.Log(this.hCurrentInterpolation.ToString() + " " + gameTime.TotalGameTime.Seconds.ToString());
+                //Debug.Log(this.hCurrentInterpolation.ToString() + " " + gameTime.TotalGameTime.Seconds.ToString());
                 CalculateInterpolationAmount(gameTime, this.hCurrentInterpolationTimeMS, this.hInterDirection, ref this.hCurrentInterpolation);
                 if (hCurrentInterpolation >= 1.0f && this.hInterDirection == 1.0f) // we've interpolated TO and playing this animation atm
                 {
