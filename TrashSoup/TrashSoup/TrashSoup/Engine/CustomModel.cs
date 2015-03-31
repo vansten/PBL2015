@@ -28,23 +28,28 @@ namespace TrashSoup.Engine
 
         public LODStateEnum LODState { get; set; }
         public Model[] LODs { get; set; }
-        public String[] Paths { get; set; }
+        public List<String> Paths { get; set; }
         // material doesn't change with LOD, but with MeshPart !!!
         public List<Material> Mat { get; set; }
 
         #endregion
 
         #region methods
+        public CustomModel() 
+        {
+            this.LODs = new Model[LOD_COUNT];
+            this.Paths = new List<string>();
+            this.Mat = new List<Material>();
+        }
 
         public CustomModel(GameObject obj) : base(obj)
         {
             this.LODState = LODStateEnum.HI;
             this.LODs = new Model[LOD_COUNT];
-            this.Paths = new String[LOD_COUNT];
+            this.Paths = new List<String>();
             for(int i = 0; i < LOD_COUNT; i++)
             {
                 this.LODs[i] = null;
-                this.Paths[i] = null;
             }
             this.Mat = new List<Material>();
         }
@@ -55,7 +60,7 @@ namespace TrashSoup.Engine
             for(int i = 0; i < lodCount && i < LOD_COUNT; i++)
             {
                 this.LODs[i] = lods[i];
-                this.Paths[i] = ResourceManager.Instance.Models.FirstOrDefault(x => x.Value == lods[i]).Key;
+                this.Paths.Add(ResourceManager.Instance.Models.FirstOrDefault(x => x.Value == lods[i]).Key);
             }
             Mat = matList;
         }
@@ -147,18 +152,53 @@ namespace TrashSoup.Engine
             reader.MoveToContent();
             reader.ReadStartElement();
 
-            LODState = (LODStateEnum)reader.ReadElementContentAsObject("LODState", "");
+            LODState = (LODStateEnum)Enum.Parse(typeof(LODStateEnum), reader.ReadElementString("LODState", ""));
 
             if(reader.Name == "LODs")
             {
-                for(int i = 0; i<Paths.Count(); ++i)
+                reader.ReadStartElement();
+                while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
                 {
-                    Paths[i] = reader.ReadElementString("ModelPath", "");
-                    LODs[i] = ResourceManager.Instance.Models[Paths[i]];
+                    String s = reader.ReadElementString("ModelPath", "");
+                    Paths.Add(s);
                 }
+                reader.ReadEndElement();
             }
 
-            //materials
+            for(int j = 0; j<Paths.Count(); ++j)
+            {
+                LODs[j] = ResourceManager.Instance.Models[Paths[j]];
+            }
+
+            if(reader.Name == "Materials")
+            {
+                reader.ReadStartElement();
+                while(reader.NodeType != System.Xml.XmlNodeType.EndElement)
+                {
+                    if (reader.Name == "Material")
+                    {
+                        reader.ReadStartElement();
+                        Material m = new Material("null");
+                        m.Name = reader.ReadElementString("Name", "");
+                        String s = reader.ReadElementString("DiffusePath", "");
+                        m.DiffuseMap = ResourceManager.Instance.Textures[s];
+                        m.MyEffectType = (Material.EffectType)Enum.Parse(typeof(Material.EffectType), reader.ReadElementString("EffectType", ""));
+                        switch (m.MyEffectType)
+                        {
+                            case Material.EffectType.BASIC:
+                                m.MyEffect = new BasicEffect(TrashSoupGame.Instance.GraphicsDevice);
+                                break;
+                            case Material.EffectType.SKINNED:
+                                m.MyEffect = new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice);
+                                break;
+                        }
+                        Mat.Add(m);
+                        reader.ReadEndElement();
+                    }
+                }
+               
+                reader.ReadEndElement();
+            }
 
             reader.ReadEndElement();
         }
@@ -182,10 +222,11 @@ namespace TrashSoup.Engine
             {
                 if(mat != null)
                 {
-                    writer.WriteElementString("DiffusePath", mat.DiffuseMap.ToString());
-                    if (mat.MyEffect is BasicEffect)
-                        mat.MyEffect.Name = "BasicEffect";
-                    writer.WriteElementString("EffectPath", mat.MyEffect.ToString());
+                    writer.WriteStartElement("Material");
+                    writer.WriteElementString("Name", mat.Name);
+                    writer.WriteElementString("DiffusePath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == mat.DiffuseMap).Key);
+                    writer.WriteElementString("EffectType", mat.MyEffectType.ToString());
+                    writer.WriteEndElement();
                 }
             }
             writer.WriteEndElement();

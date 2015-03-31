@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 
@@ -155,7 +156,14 @@ namespace TrashSoup.Engine
             reader.MoveToContent();
             reader.ReadStartElement();
 
-            //acceleration
+            if(reader.Name == "Acceleration")
+            {
+                reader.ReadStartElement();
+                acceleration = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""),
+                    reader.ReadElementContentAsFloat("Z", ""));
+                reader.ReadEndElement();
+            }
 
             Mass = reader.ReadElementContentAsFloat("Mass", "");
             DragFactor = reader.ReadElementContentAsFloat("DragFactor", "");
@@ -163,28 +171,37 @@ namespace TrashSoup.Engine
 
             if(reader.Name == "Velocity")
             {
+                reader.ReadStartElement();
                 Velocity = new Vector3(reader.ReadElementContentAsFloat("X", ""),
                     reader.ReadElementContentAsFloat("Y", ""),
                     reader.ReadElementContentAsFloat("Z", ""));
+                reader.ReadEndElement();
             }
 
-            RotationConstraints = (RotationConstraintsEnum)reader.ReadElementContentAsObject("RotationConstraints", "");
-            PositionConstraints = (PositionConstraintsEnum)reader.ReadElementContentAsObject("PositionConstraints", "");
+            RotationConstraints = (RotationConstraintsEnum)Enum.Parse(typeof(RotationConstraintsEnum), 
+                reader.ReadElementString("RotationConstraints", ""));
+            PositionConstraints = (PositionConstraintsEnum)Enum.Parse(typeof(PositionConstraintsEnum),
+                reader.ReadElementString("PositionConstraints", ""));
 
             reader.ReadEndElement();
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)
         {
-            writer.WriteElementString("Acceleration", acceleration.ToString());
-            writer.WriteElementString("Mass", Mass.ToString());
-            writer.WriteElementString("DragFactor", DragFactor.ToString());
-            writer.WriteElementString("IsUsingGravity", IsUsingGravity.ToString());
+            writer.WriteStartElement("Acceleration");
+            writer.WriteElementString("X", XmlConvert.ToString(acceleration.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(acceleration.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(acceleration.Z));
+            writer.WriteEndElement();
+
+            writer.WriteElementString("Mass", XmlConvert.ToString(Mass));
+            writer.WriteElementString("DragFactor", XmlConvert.ToString(DragFactor));
+            writer.WriteElementString("IsUsingGravity", XmlConvert.ToString(IsUsingGravity));
 
             writer.WriteStartElement("Velocity");
-            writer.WriteElementString("X", Velocity.X.ToString());
-            writer.WriteElementString("Y", Velocity.Y.ToString());
-            writer.WriteElementString("Z", Velocity.Z.ToString());
+            writer.WriteElementString("X", XmlConvert.ToString(Velocity.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(Velocity.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(Velocity.Z));
             writer.WriteEndElement();
 
             writer.WriteElementString("RotationConstraints", RotationConstraints.ToString());

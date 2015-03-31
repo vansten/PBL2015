@@ -41,6 +41,8 @@ namespace TrashSoup.Gameplay
         #endregion
 
         #region methods
+        public PlayerController() { }
+
 
         public PlayerController(GameObject obj) : base(obj)
         {
@@ -205,7 +207,7 @@ namespace TrashSoup.Gameplay
 
         public void ReadXml(System.Xml.XmlReader reader)
         {
-            
+            reader.ReadStartElement();
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)

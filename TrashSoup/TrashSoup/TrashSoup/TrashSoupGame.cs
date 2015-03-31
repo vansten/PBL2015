@@ -83,6 +83,8 @@ namespace TrashSoup
                 //TESTING SAVE
                 if (Keyboard.GetState().IsKeyDown(Keys.F5))
                     SaveManager.Instance.SaveFileAction();
+                if (Keyboard.GetState().IsKeyDown(Keys.F6))
+                    SaveManager.Instance.LoadFileAction();
 
                 base.Update(gameTime);
             }

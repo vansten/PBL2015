@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
+using Microsoft.Xna.Framework;
 
 namespace TrashSoup.Engine
 {
@@ -54,6 +55,7 @@ namespace TrashSoup.Engine
                 using (FileStream file = new FileStream(this.XmlPath, FileMode.Create))
                 {
                     serializer.Serialize(file, this.scene);
+                    Debug.Log("Save Completed");
                 }
             }
         }
@@ -63,9 +65,10 @@ namespace TrashSoup.Engine
             XmlSerializer serializer = new XmlSerializer(typeof(Scene));
             using(FileStream file = new FileStream(this.XmlPath, FileMode.Open))
             {
-                this.scene = new Scene();
-                Scene tmp = (Scene)serializer.Deserialize(file);
-                this.scene = tmp;
+                //this.scene = new Scene();
+                //Scene tmp = (Scene)serializer.Deserialize(file);
+                ResourceManager.Instance.CurrentScene = (Scene)serializer.Deserialize(file);
+                Debug.Log("Load Completed");
             }
         }
         #endregion

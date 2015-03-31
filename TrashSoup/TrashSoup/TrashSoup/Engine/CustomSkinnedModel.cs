@@ -18,6 +18,11 @@ namespace TrashSoup.Engine
 
         #region methods
 
+        public CustomSkinnedModel()
+        {
+
+        }
+
         public CustomSkinnedModel(GameObject obj) : base(obj)
         {
             
