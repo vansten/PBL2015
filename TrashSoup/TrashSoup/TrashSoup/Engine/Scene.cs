@@ -61,7 +61,6 @@ namespace TrashSoup.Engine
         #region methods
         public Scene()
         {
-
         }
         public Scene(SceneParams par)
         {
@@ -83,7 +82,7 @@ namespace TrashSoup.Engine
 
         public GameObject GetObject(uint uniqueID)
         {
-            return null;
+            return ObjectsDictionary[uniqueID];
         }
 
         public List<GameObject> GetObjectsOfType(Type type)
@@ -141,25 +140,34 @@ namespace TrashSoup.Engine
             reader.MoveToContent();
             reader.ReadStartElement();
 
+            ObjectsDictionary = new Dictionary<uint, GameObject>();
+
             if(reader.Name == "SceneParams")
             {
+                Params = new SceneParams(0, "null");
                 (Params as IXmlSerializable).ReadXml(reader);
             }
 
-            if(reader.Name == "Camera")
-            {
-                (Cam as IXmlSerializable).ReadXml(reader);
-            }
-
+            reader.ReadStartElement();
             while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
             {
-                uint key = (uint)reader.ReadElementContentAsInt("GameObjectKey", "");
                 if (reader.Name == "GameObject")
                 {
+                    reader.ReadStartElement();
                     GameObject obj = new GameObject(0, "");
+                    uint key = (uint)reader.ReadElementContentAsInt("GameObjectKey", "");
                     (obj as IXmlSerializable).ReadXml(reader);
                     ObjectsDictionary.Add(key, obj);
                 }
+                reader.ReadEndElement();
+            }
+            reader.ReadEndElement();
+
+            if (reader.Name == "Camera")
+            {
+                Cam = new Camera(0, "null", Vector3.Zero, Vector3.Zero, Vector3.Zero, Vector3.Zero, MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
+                reader.ReadStartElement();
+                (Cam as IXmlSerializable).ReadXml(reader);
             }
 
             reader.ReadEndElement();
@@ -171,19 +179,20 @@ namespace TrashSoup.Engine
             (Params as IXmlSerializable).WriteXml(writer);
             writer.WriteEndElement();
 
-            writer.WriteStartElement("Camera");
-            (Cam as IXmlSerializable).WriteXml(writer);
-            writer.WriteEndElement();
-
             writer.WriteStartElement("ObjectsDictionary");
             for (int i = 0; i < ObjectsDictionary.Count; ++i )
             {
-                writer.WriteElementString("GameObjectKey", ObjectsDictionary.Keys.ElementAt(i).ToString());
                 writer.WriteStartElement("GameObject");
+                writer.WriteElementString("GameObjectKey", ObjectsDictionary.Keys.ElementAt(i).ToString());
                 (ObjectsDictionary.Values.ElementAt(i) as IXmlSerializable).WriteXml(writer);
                 writer.WriteEndElement();
             }
             writer.WriteEndElement();
+
+            writer.WriteStartElement("Camera");
+            (Cam as IXmlSerializable).WriteXml(writer);
+            writer.WriteEndElement();
+
         }
         #endregion
     }

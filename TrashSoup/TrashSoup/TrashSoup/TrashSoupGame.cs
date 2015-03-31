@@ -19,6 +19,8 @@ namespace TrashSoup
         public const string ROOT_DIRECTIORY = "Content";
         public const string ROOT_DIRECTIORY_PROJECT = "TrashSoupContent";
         public bool EditorMode = false;
+        private bool f5pressed = false;
+        private bool f6pressed = false;
 
         public GraphicsDeviceManager GraphicsManager { get; protected set; }
         SpriteBatch spriteBatch;
@@ -81,8 +83,27 @@ namespace TrashSoup
                 ResourceManager.Instance.ps.Update();
 
                 //TESTING SAVE
-                if (Keyboard.GetState().IsKeyDown(Keys.F5))
+                if (Keyboard.GetState().IsKeyDown(Keys.F5) && !f5pressed)
+                {
                     SaveManager.Instance.SaveFileAction();
+                    Debug.Log("Save Completed");
+                    f5pressed = true;
+                }
+                if (Keyboard.GetState().IsKeyUp(Keys.F5) && f5pressed)
+                {
+                    f5pressed = false;
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.F6) && !f6pressed)
+                {
+                    SaveManager.Instance.LoadFileAction();
+                    SaveManager.Instance.LoadFileAction();
+                    Debug.Log("Load Completed");
+                    f6pressed = true;
+                }
+                if (Keyboard.GetState().IsKeyUp(Keys.F6) && f6pressed)
+                {
+                    f6pressed = false;
+                }
 
                 base.Update(gameTime);
             }

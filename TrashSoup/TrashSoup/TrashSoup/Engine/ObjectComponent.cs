@@ -22,6 +22,13 @@ namespace TrashSoup.Engine
         #endregion
 
         #region methods
+        public ObjectComponent()
+        {
+            this.MyObject = null;
+            this.Enabled = true;
+            this.Visible = true;
+        }
+
         public ObjectComponent(GameObject myObj)
         {
             this.MyObject = myObj;

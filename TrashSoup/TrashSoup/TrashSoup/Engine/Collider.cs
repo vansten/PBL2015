@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace TrashSoup.Engine
 {
@@ -10,7 +12,7 @@ namespace TrashSoup.Engine
     /// 
     /// Base class for every colliders we will have
     /// </summary>
-    public class Collider : ObjectComponent
+    public class Collider : ObjectComponent, IXmlSerializable
     {
         #region Variables
 
@@ -35,6 +37,10 @@ namespace TrashSoup.Engine
         #endregion
 
         #region Methods
+        public Collider() 
+        {
+            
+        }
 
         public Collider(GameObject go) : base(go)
         {
@@ -91,6 +97,23 @@ namespace TrashSoup.Engine
         protected virtual void UpdateCollider()
         {
 
+        }
+
+        public System.Xml.Schema.XmlSchema GetSchema() { return null; }
+        public void ReadXml(System.Xml.XmlReader reader)
+        {
+            //worldMatrix
+            worldMatrix = this.MyObject.MyTransform.GetWorldMatrix();
+            reader.MoveToContent();
+            reader.ReadStartElement();
+
+            IsTrigger = reader.ReadElementContentAsBoolean("IsTrigger", "");
+
+            reader.ReadEndElement();
+        }
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
+            writer.WriteElementString("IsTrigger", XmlConvert.ToString(IsTrigger));
         }
 
         #endregion

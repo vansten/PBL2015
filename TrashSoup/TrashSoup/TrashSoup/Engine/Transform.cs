@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace TrashSoup.Engine
@@ -18,6 +19,7 @@ namespace TrashSoup.Engine
         protected Matrix worldMatrix;
         protected Vector3 position;
         protected Vector3 prevPosition;
+        protected Vector3 positionChangeNormal;
         protected Vector3 rotation;
         protected Vector3 forward;
         protected float scale;
@@ -36,15 +38,16 @@ namespace TrashSoup.Engine
             {
                 this.prevPosition = this.position;
                 position = value;
+                this.CalculatePositionChange();
                 CalculateWorldMatrix();
             }
         }
 
-        public Vector3 PrevPosition
+        public Vector3 PositionChangeNormal
         {
             get
             {
-                return this.prevPosition;
+                return this.positionChangeNormal;
             }
         }
 
@@ -139,6 +142,18 @@ namespace TrashSoup.Engine
             this.worldMatrix = preRotationMatrix * scale * rotation * translation;
         }
 
+        protected void CalculatePositionChange()
+        {
+            this.positionChangeNormal.X = Math.Abs(this.position.X - this.prevPosition.X);// < 0.01f ? 0.0f : 1.0f;
+            this.positionChangeNormal.Y = Math.Abs(this.position.Y - this.prevPosition.Y);// < 0.01f ? 0.0f : 1.0f;
+            this.positionChangeNormal.Z = Math.Abs(this.position.Z - this.prevPosition.Z);// < 0.01f ? 0.0f : 1.0f;
+            if(this.positionChangeNormal.Length() > 0.0f)
+            {
+                this.positionChangeNormal.Normalize();
+            }
+            this.positionChangeNormal.Z *= -1.0f;
+        }
+
         public System.Xml.Schema.XmlSchema GetSchema() { return null; }
         public void ReadXml(System.Xml.XmlReader reader)
         {
@@ -147,23 +162,29 @@ namespace TrashSoup.Engine
 
             if(reader.Name == "Position")
             {
+                reader.ReadStartElement();
                 Position = new Vector3(reader.ReadElementContentAsFloat("X", ""),
                     reader.ReadElementContentAsFloat("Y", ""),
                     reader.ReadElementContentAsFloat("Z", ""));
+                reader.ReadEndElement();
             }
 
             if(reader.Name == "Rotation")
             {
+                reader.ReadStartElement();
                 Rotation = new Vector3(reader.ReadElementContentAsFloat("X", ""),
                     reader.ReadElementContentAsFloat("Y", ""),
                     reader.ReadElementContentAsFloat("Z", ""));
+                reader.ReadEndElement();
             }
 
             if(reader.Name == "Forward")
             {
+                reader.ReadStartElement();
                 Forward = new Vector3(reader.ReadElementContentAsFloat("X", ""),
                     reader.ReadElementContentAsFloat("Y", ""),
                     reader.ReadElementContentAsFloat("Z", ""));
+                reader.ReadEndElement();
             }
 
             Scale = reader.ReadElementContentAsFloat("Scale", "");
@@ -174,24 +195,24 @@ namespace TrashSoup.Engine
         public void WriteXml(System.Xml.XmlWriter writer)
         {
             writer.WriteStartElement("Position");
-            writer.WriteElementString("X", Position.X.ToString());
-            writer.WriteElementString("Y", Position.Y.ToString());
-            writer.WriteElementString("Z", Position.Z.ToString());
+            writer.WriteElementString("X", XmlConvert.ToString(Position.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(Position.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(Position.Z));
             writer.WriteEndElement();
 
             writer.WriteStartElement("Rotation");
-            writer.WriteElementString("X", Rotation.X.ToString());
-            writer.WriteElementString("Y", Rotation.Y.ToString());
-            writer.WriteElementString("Z", Rotation.Z.ToString());
+            writer.WriteElementString("X", XmlConvert.ToString(Rotation.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(Rotation.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(Rotation.Z));
             writer.WriteEndElement();
 
             writer.WriteStartElement("Forward");
-            writer.WriteElementString("X", Forward.X.ToString());
-            writer.WriteElementString("Y", Forward.Y.ToString());
-            writer.WriteElementString("Z", Forward.Z.ToString());
+            writer.WriteElementString("X", XmlConvert.ToString(Forward.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(Forward.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(Forward.Z));
             writer.WriteEndElement();
 
-            writer.WriteElementString("Scale", Scale.ToString());
+            writer.WriteElementString("Scale", XmlConvert.ToString(Scale));
         }
         #endregion
     }

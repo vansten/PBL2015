@@ -32,6 +32,12 @@ namespace TrashSoup.Gameplay
         #endregion
 
         #region methods
+        public CameraBehaviourComponent(GameObject obj) : base(obj)
+        {
+            this.target = null;
+
+            Start();
+        }
 
         public CameraBehaviourComponent(GameObject obj, GameObject target) : base(obj)
         {
@@ -79,7 +85,10 @@ namespace TrashSoup.Gameplay
 
         public void ReadXml(System.Xml.XmlReader reader)
         {
-            
+            //reader.MoveToContent();
+            reader.ReadStartElement();
+            target = ResourceManager.Instance.CurrentScene.GetObject((uint)reader.ReadElementContentAsInt("TargetID", ""));
+            reader.ReadEndElement();
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)

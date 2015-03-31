@@ -121,22 +121,43 @@ namespace TrashSoup.Engine
         public void ReadXml(System.Xml.XmlReader reader)
         {
             reader.MoveToContent();
-            reader.ReadStartElement();
+            //reader.ReadStartElement();
 
             UniqueID = (uint)reader.ReadElementContentAsInt("UniqueID", "");
             Name = reader.ReadElementString("Name", "");
 
             if(reader.Name == "MyTransform")
             {
+                MyTransform = new Transform(this);
                 (MyTransform as IXmlSerializable).ReadXml(reader);
             }
 
             if(reader.Name == "MyPhysicalObject")
             {
+                MyPhysicalObject = new PhysicalObject(this);
                 (MyPhysicalObject as IXmlSerializable).ReadXml(reader);
             }
 
-            //komponenty
+            if(reader.Name == "MyCollider")
+            {
+                MyCollider = new Collider(this);
+                (MyCollider as IXmlSerializable).ReadXml(reader);
+            }
+
+            if(reader.Name == "Components")
+            {
+                List<object> parameters = new List<object>();
+                parameters.Add(this);
+                reader.MoveToContent();
+                reader.ReadStartElement();
+                while(reader.NodeType != System.Xml.XmlNodeType.EndElement)
+                {
+                    Object obj = Activator.CreateInstance(Type.GetType(reader.Name), parameters.ToArray());
+                    (obj as IXmlSerializable).ReadXml(reader);
+                    Components.Add((ObjectComponent)obj);
+                }
+
+            }
 
             reader.ReadEndElement();
         }
@@ -160,6 +181,13 @@ namespace TrashSoup.Engine
                 writer.WriteEndElement();
             }
 
+            if (MyCollider != null)
+            {
+                writer.WriteStartElement("MyCollider");
+                (MyCollider as IXmlSerializable).WriteXml(writer);
+                writer.WriteEndElement();
+            }
+
             if(Components.Count != 0)
             {
                 writer.WriteStartElement("Components");
@@ -167,30 +195,7 @@ namespace TrashSoup.Engine
                 {
                     if(comp != null)
                     {
-                        if(comp is CustomModel)
-                        {
-                            writer.WriteStartElement("CustomModel");
-                        }
-                        else if(comp is Gameplay.PlayerController)
-                        {
-                            writer.WriteStartElement("PlayerController");
-                        }
-                        else if(comp is PhysicalObject)
-                        {
-                            writer.WriteStartElement("PhysicalObject");
-                        }
-                        else if(comp is Gameplay.CameraBehaviourComponent)
-                        {
-                            writer.WriteStartElement("CameraBehaviourComponent");
-                        }
-                        else if(comp is Collider)
-                        {
-                            writer.WriteStartElement("Collider");
-                        }
-                        else if(comp is Transform)
-                        {
-                            writer.WriteStartElement("Transform");
-                        }
+                        writer.WriteStartElement(comp.GetType().ToString());
                         (comp as IXmlSerializable).WriteXml(writer);
                         writer.WriteEndElement();
                     }
@@ -218,6 +223,11 @@ namespace TrashSoup.Engine
         /// </summary>
         public void OnCollision(GameObject otherGO)
         {
+            if(this.MyPhysicalObject != null)
+            {
+                this.MyPhysicalObject.OnCollision(otherGO);
+            }
+
             foreach (ObjectComponent oc in this.Components)
             {
                 oc.OnCollision(otherGO);

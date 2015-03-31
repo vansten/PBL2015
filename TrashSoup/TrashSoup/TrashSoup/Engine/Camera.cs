@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
+using System.Xml;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -101,26 +102,66 @@ namespace TrashSoup.Engine
 
             if(reader.Name == "CameraPosition")
             {
+                reader.ReadStartElement();
                 Position = new Vector3(reader.ReadElementContentAsFloat("X", ""),
                     reader.ReadElementContentAsFloat("Y", ""),
                     reader.ReadElementContentAsFloat("Z", ""));
+                reader.ReadEndElement();
+            }
+
+            if (reader.Name == "CameraTranslation")
+            {
+                reader.ReadStartElement();
+                Translation = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""),
+                    reader.ReadElementContentAsFloat("Z", ""));
+                reader.ReadEndElement();
+            }
+
+            if (reader.Name == "CameraDirection")
+            {
+                reader.ReadStartElement();
+                Direction = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""),
+                    reader.ReadElementContentAsFloat("Z", ""));
+                reader.ReadEndElement();
             }
 
             if(reader.Name == "CameraUp")
             {
+                reader.ReadStartElement();
                 Up = new Vector3(reader.ReadElementContentAsFloat("X", ""),
                     reader.ReadElementContentAsFloat("Y", ""),
                     reader.ReadElementContentAsFloat("Z", ""));
+                reader.ReadEndElement();
             }
 
             if(reader.Name == "CameraTarget")
             {
-
+                reader.ReadStartElement();
                 Target = new Vector3(reader.ReadElementContentAsFloat("X", ""),
                     reader.ReadElementContentAsFloat("Y", ""),
                     reader.ReadElementContentAsFloat("Z", ""));
+                reader.ReadEndElement();
 
             }
+
+            if (reader.Name == "CameraRight")
+            {
+                reader.ReadStartElement();
+                Right = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""),
+                    reader.ReadElementContentAsFloat("Z", ""));
+                reader.ReadEndElement();
+
+            }
+
+            FOV = reader.ReadElementContentAsFloat("FOV", "");
+            Near = reader.ReadElementContentAsFloat("Near", "");
+            Far = reader.ReadElementContentAsFloat("Far", "");
+
+            CreateLookAt();
+            CreateProjection(FOV, Near, Far);
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)
@@ -128,9 +169,21 @@ namespace TrashSoup.Engine
             base.WriteXml(writer);
 
             writer.WriteStartElement("CameraPosition");
-            writer.WriteElementString("X", Position.X.ToString());
-            writer.WriteElementString("Y", Position.Y.ToString());
-            writer.WriteElementString("Z", Position.Z.ToString());
+            writer.WriteElementString("X", XmlConvert.ToString(Position.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(Position.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(Position.Z));
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("CameraTranslation");
+            writer.WriteElementString("X", XmlConvert.ToString(Translation.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(Translation.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(Translation.Z));
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("CameraDirection");
+            writer.WriteElementString("X", XmlConvert.ToString(Direction.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(Direction.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(Direction.Z));
             writer.WriteEndElement();
 
             writer.WriteStartElement("CameraUp");
@@ -140,10 +193,20 @@ namespace TrashSoup.Engine
             writer.WriteEndElement();
 
             writer.WriteStartElement("CameraTarget");
-            writer.WriteElementString("X", Target.X.ToString());
-            writer.WriteElementString("Y", Target.Y.ToString());
-            writer.WriteElementString("Z", Target.Z.ToString());
+            writer.WriteElementString("X", XmlConvert.ToString(Target.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(Target.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(Target.Z));
             writer.WriteEndElement();
+
+            writer.WriteStartElement("CameraRight");
+            writer.WriteElementString("X", XmlConvert.ToString(Right.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(Right.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(Right.Z));
+            writer.WriteEndElement();
+
+            writer.WriteElementString("FOV", XmlConvert.ToString(FOV));
+            writer.WriteElementString("Near", XmlConvert.ToString(Near));
+            writer.WriteElementString("Far", XmlConvert.ToString(Far));
         }
         #endregion
     }
