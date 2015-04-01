@@ -187,9 +187,16 @@ namespace TrashSoup.Engine
                         {
                             case Material.EffectType.BASIC:
                                 m.MyEffect = new BasicEffect(TrashSoupGame.Instance.GraphicsDevice);
+                                m.SpecularColor = new Vector3(0.2f, 0.2f, 0.2f);
+                                m.Glossiness = 10.0f;
+                                (m.MyEffect as BasicEffect).PreferPerPixelLighting = true;
+                                (m.MyEffect as BasicEffect).TextureEnabled = true;
+                                m.UpdateEffect();
                                 break;
                             case Material.EffectType.SKINNED:
                                 m.MyEffect = new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice);
+                                (m.MyEffect as SkinnedEffect).PreferPerPixelLighting = true;
+                                m.UpdateEffect();
                                 break;
                         }
                         Mat.Add(m);
