@@ -96,7 +96,6 @@ namespace TrashSoup
                 if (Keyboard.GetState().IsKeyDown(Keys.F6) && !f6pressed)
                 {
                     SaveManager.Instance.LoadFileAction();
-                    SaveManager.Instance.LoadFileAction();
                     Debug.Log("Load Completed");
                     f6pressed = true;
                 }

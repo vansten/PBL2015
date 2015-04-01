@@ -5,6 +5,7 @@ using System.Text;
 using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using TrashSoup.Engine;
+using System.Xml;
 
 namespace TrashSoup.Gameplay
 {
@@ -85,15 +86,28 @@ namespace TrashSoup.Gameplay
 
         public void ReadXml(System.Xml.XmlReader reader)
         {
-            //reader.MoveToContent();
+            reader.MoveToContent();
             reader.ReadStartElement();
             target = ResourceManager.Instance.CurrentScene.GetObject((uint)reader.ReadElementContentAsInt("TargetID", ""));
+            if(reader.Name == "TargetPosition")
+            {
+                reader.ReadStartElement();
+                this.target.MyTransform.Position = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""),
+                    reader.ReadElementContentAsFloat("Z", ""));
+                reader.ReadEndElement();
+            }
             reader.ReadEndElement();
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)
         {
-            writer.WriteElementString("TargetID", target.UniqueID.ToString());
+            writer.WriteElementString("TargetID", this.target.UniqueID.ToString());
+            writer.WriteStartElement("TargetPosition");
+            writer.WriteElementString("X", XmlConvert.ToString(this.target.MyTransform.Position.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(this.target.MyTransform.Position.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(this.target.MyTransform.Position.Z));
+            writer.WriteEndElement();
         }
 
         #endregion

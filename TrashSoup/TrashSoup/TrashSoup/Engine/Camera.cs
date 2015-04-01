@@ -98,7 +98,7 @@ namespace TrashSoup.Engine
 
         public void ReadXml(System.Xml.XmlReader reader)
         {
-            base.ReadXml(reader);
+            
 
             if(reader.Name == "CameraPosition")
             {
@@ -162,11 +162,13 @@ namespace TrashSoup.Engine
 
             CreateLookAt();
             CreateProjection(FOV, Near, Far);
+
+            base.ReadXml(reader);
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)
         {
-            base.WriteXml(writer);
+
 
             writer.WriteStartElement("CameraPosition");
             writer.WriteElementString("X", XmlConvert.ToString(Position.X));
@@ -207,6 +209,8 @@ namespace TrashSoup.Engine
             writer.WriteElementString("FOV", XmlConvert.ToString(FOV));
             writer.WriteElementString("Near", XmlConvert.ToString(Near));
             writer.WriteElementString("Far", XmlConvert.ToString(Far));
+
+            base.WriteXml(writer);
         }
         #endregion
     }
