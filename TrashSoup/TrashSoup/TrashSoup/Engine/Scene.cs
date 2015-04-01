@@ -52,6 +52,8 @@ namespace TrashSoup.Engine
         public SceneParams Params { get; set; }
         public Camera Cam { get; set; }
 
+        public LightAmbient AmbientLight { get; set; }
+        public LightDirectional[] DirectionalLights { get; set; }
         public Dictionary<uint, GameObject> ObjectsDictionary { get; protected set; }
         public QuadTree<GameObject> ObjectsQT { get; protected set; }
         // place for bounding sphere tree
@@ -65,6 +67,10 @@ namespace TrashSoup.Engine
         public Scene(SceneParams par)
         {
             this.Params = par;
+
+            DirectionalLights = new LightDirectional[ResourceManager.DIRECTIONAL_MAX_LIGHTS];
+            for (int i = 0; i < ResourceManager.DIRECTIONAL_MAX_LIGHTS; ++i)
+                DirectionalLights[i] = null;
 
             ObjectsDictionary = new Dictionary<uint, GameObject>();
             ObjectsQT = new QuadTree<GameObject>();

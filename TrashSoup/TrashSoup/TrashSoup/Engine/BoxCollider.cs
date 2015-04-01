@@ -17,7 +17,7 @@ namespace TrashSoup.Engine
 
         public BoundingBox box;
         private CustomModel model;
-        private CustomSkinnedModel skinned;
+        //private CustomSkinnedModel skinned;
         private Vector3 min;
         private Vector3 max;
         private Vector3[] corners;
@@ -141,37 +141,37 @@ namespace TrashSoup.Engine
                     }
                 }
             }
-            else
-            {
-                foreach (ObjectComponent oc in this.MyObject.Components)
-                {
-                    if (oc.GetType() == typeof(CustomSkinnedModel))
-                    {
-                        this.skinned = (CustomSkinnedModel)oc;
-                    }
-                }
+            //else
+            //{
+            //    foreach (ObjectComponent oc in this.MyObject.Components)
+            //    {
+            //        //if (oc.GetType() == typeof(CustomSkinnedModel))
+            //        //{
+            //        //    this.skinned = (CustomSkinnedModel)oc;
+            //        //}
+            //    }
 
-                if (this.skinned == null) return;
+            //    //if (this.skinned == null) return;
 
-                foreach (ModelMesh mesh in this.skinned.LODs[0].Meshes)
-                {
-                    foreach (ModelMeshPart part in mesh.MeshParts)
-                    {
-                        int vertexStride = part.VertexBuffer.VertexDeclaration.VertexStride;
-                        int vertexBufferSize = part.NumVertices * vertexStride;
-                        float[] vertexData = new float[vertexBufferSize / sizeof(float)];
-                        part.VertexBuffer.GetData<float>(vertexData);
+            //    foreach (ModelMesh mesh in this.skinned.LODs[0].Meshes)
+            //    {
+            //        foreach (ModelMeshPart part in mesh.MeshParts)
+            //        {
+            //            int vertexStride = part.VertexBuffer.VertexDeclaration.VertexStride;
+            //            int vertexBufferSize = part.NumVertices * vertexStride;
+            //            float[] vertexData = new float[vertexBufferSize / sizeof(float)];
+            //            part.VertexBuffer.GetData<float>(vertexData);
 
-                        for (int i = 0; i < vertexBufferSize / sizeof(float); i += vertexStride / sizeof(float))
-                        {
-                            Vector3 transformedPosition = Vector3.Transform(new Vector3(vertexData[i], vertexData[i + 1], vertexData[i + 2]), this.worldMatrix);
+            //            for (int i = 0; i < vertexBufferSize / sizeof(float); i += vertexStride / sizeof(float))
+            //            {
+            //                Vector3 transformedPosition = Vector3.Transform(new Vector3(vertexData[i], vertexData[i + 1], vertexData[i + 2]), this.worldMatrix);
 
-                            min = Vector3.Min(min, transformedPosition);
-                            max = Vector3.Max(max, transformedPosition);
-                        }
-                    }
-                }
-            }
+            //                min = Vector3.Min(min, transformedPosition);
+            //                max = Vector3.Max(max, transformedPosition);
+            //            }
+            //        }
+            //    }
+            //}
 
             this.box = new BoundingBox(min, max);
             this.corners = this.box.GetCorners();

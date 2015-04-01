@@ -19,8 +19,8 @@ namespace TrashSoup.Engine
     {
         #region Constants
 
-        private const string MATLOADER_BENAME = "GenBEffectMat";
-        private const string MATLOADER_SENAME = "GenSEffectMat";
+        public const int DIRECTIONAL_MAX_LIGHTS = 3;
+        public const int POINT_MAX_LIGHTS_PER_OBJECT = 10; 
 
         #endregion
 
@@ -62,11 +62,8 @@ namespace TrashSoup.Engine
 
             // loading materials
             List<Material> testPlayerMats = new List<Material>();
-            Material testPlayerMat = new Material("testPlayerMat", new BasicEffect(TrashSoupGame.Instance.GraphicsDevice), Textures[@"Textures\Test\cargo"]);
-            (testPlayerMat.MyEffect as BasicEffect).PreferPerPixelLighting = true;
-            (testPlayerMat.MyEffect as BasicEffect).TextureEnabled = true;
+            Material testPlayerMat = new Material("testPlayerMat", Effects[0], Textures[@"Textures\Test\cargo"]);
             testPlayerMats.Add(testPlayerMat);
-            testPlayerMat.MyEffectType = Material.EffectType.BASIC;
             testPlayerMat.UpdateEffect();
             this.Materials.Add(testPlayerMat.Name, testPlayerMat);
 
@@ -74,11 +71,8 @@ namespace TrashSoup.Engine
 
             List<Material> testTerMats = new List<Material>();
             Material testTerMat = new Material("testTerMat", new BasicEffect(TrashSoupGame.Instance.GraphicsDevice), Textures[@"Textures\Test\metal01_d"]);
-            testTerMat.MyEffectType = Material.EffectType.BASIC;
-            testTerMat.SpecularColor = new Vector3(0.2f, 0.2f, 0.2f);
+            testTerMat.SpecularColor = new Vector3(0.1f, 0.1f, 0.0f);
             testTerMat.Glossiness = 10.0f;
-            (testTerMat.MyEffect as BasicEffect).PreferPerPixelLighting = true;
-            (testTerMat.MyEffect as BasicEffect).TextureEnabled = true;
             testTerMat.UpdateEffect();
             this.Materials.Add(testTerMat.Name, testTerMat);
             testTerMats.Add(testTerMat);
@@ -86,7 +80,7 @@ namespace TrashSoup.Engine
             // loading gameobjects
             GameObject testBox = new GameObject(1, "testBox");
             testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, -40.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.2f);
-            CustomSkinnedModel skModel = new CustomSkinnedModel(testBox, new Model[] { Models["Models/Test/TestGuy"], null, null }, 3, playerMats);
+            CustomModel skModel = new CustomModel(testBox, new Model[] { Models["Models/Test/TestGuy"], null, null }, 3, playerMats);
             Animator playerAnimator = new Animator(testBox, skModel.LODs[0]);
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/walking_1"], "walking_1"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/idle_1"], "idle_1"));
@@ -106,6 +100,10 @@ namespace TrashSoup.Engine
             testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Test/TestBox"], null, null }, 3, testPlayerMats));
             testBox2.MyCollider = new BoxCollider(testBox2);    //Add a box collider to test physisc
 
+            // adding lights
+            LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.05f, 0.05f, 0.2f), new Vector3(0.0f, 0.0f, 0.3f));
+            LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(1.0f, 0.8f, 0.8f), new Vector3(1.0f, 0.0f, 0.0f), new Vector3(-1.0f, -1.0f, -1.0f));
+
             // loading scene
             CurrentScene = new Scene(new SceneParams(0, "test"));
             Camera cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -1.0f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)),
@@ -117,6 +115,9 @@ namespace TrashSoup.Engine
             CurrentScene.ObjectsDictionary.Add(testTer.UniqueID, testTer);
             CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);
             CurrentScene.ObjectsDictionary.Add(testBox2.UniqueID, testBox2);
+
+            CurrentScene.AmbientLight = amb;
+            CurrentScene.DirectionalLights[0] = ldr;
 
             ////TESTING PARTICLES
             ps = new ParticleSystem(TrashSoupGame.Instance.GraphicsDevice, 
@@ -179,6 +180,24 @@ namespace TrashSoup.Engine
         /// <param name="game"></param>
         private void LoadTextures(Game game)
         {
+            // Adding "default" textures for all maps containing only one pixel in one color
+            uint diffColor = 0xFFFFFFFF;
+            uint normColor = 0x0F0FFFFF;
+            uint blackColor = 0x000000FF;
+            Texture2D defDiff = new Texture2D(TrashSoupGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            defDiff.SetData<uint>(new uint[] { diffColor });
+            Textures.Add("DefaultDiffuse", defDiff);
+            Texture2D defNrm = new Texture2D(TrashSoupGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            defNrm.SetData<uint>(new uint[] { normColor });
+            Textures.Add("DefaultNormal", defNrm);
+            Texture2D defCbc = new Texture2D(TrashSoupGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            defCbc.SetData<uint>(new uint[] { blackColor });
+            Textures.Add("DefaultCube", defCbc);
+            Texture2D defAlp = new Texture2D(TrashSoupGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            defAlp.SetData<uint>(new uint[] { diffColor });
+            Textures.Add("DefaultAlpha", defAlp);
+            ///////////////////////////////////////////
+
             // FOR TETIN
             Textures.Add(@"Textures\Test\cargo", game.Content.Load<Texture2D>(@"Textures\Test\cargo"));
             Textures.Add(@"Textures\Test\metal01_d", game.Content.Load<Texture2D>(@"Textures\Test\metal01_d"));
@@ -199,6 +218,8 @@ namespace TrashSoup.Engine
 
             //Effects.Add(game.Content.Load<Effect>(@"Effects\Billboard"));
             //Effects.ElementAt(1).CurrentTechnique = Effects.ElementAt(1).Techniques["Technique1"];
+            Effect ef = TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\DefaultEffect");
+            Effects.Add(ef);
         }
 
         /// <summary>
@@ -238,17 +259,14 @@ namespace TrashSoup.Engine
             List<string> materialNames = (List<string>)(model.Tag as object[])[2];
 
             Effect effectToAdd;
-            bool isSkinned = false;
+
             if (model.Meshes[0].Effects[0] is BasicEffect)
             {
                 effectToAdd = new BasicEffect(TrashSoupGame.Instance.GraphicsDevice);
-                (effectToAdd as BasicEffect).PreferPerPixelLighting = true;
             }
             else if (model.Meshes[0].Effects[0] is SkinnedEffect)
             {
                 effectToAdd = new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice);
-                (effectToAdd as SkinnedEffect).PreferPerPixelLighting = true;
-                isSkinned = true;
             }
             else
             {
@@ -258,13 +276,7 @@ namespace TrashSoup.Engine
             
             foreach(SkinnedModelLibrary.MaterialModel mm in materialModels)
             {
-                Material mat = new Material(mm.MaterialName);
-                mat.MyEffect = effectToAdd;
-                if (isSkinned)
-                {
-                    mat.MyEffectType = Material.EffectType.SKINNED;
-                }
-                else mat.MyEffectType = Material.EffectType.BASIC;
+                Material mat = new Material(mm.MaterialName, effectToAdd);
                 if (mm.MaterialTextureNames[0] != null) mat.DiffuseMap = LoadTexture(mm.MaterialTextureNames[0]);
                 if (mm.MaterialTextureNames[1] != null) mat.NormalMap = LoadTexture(mm.MaterialTextureNames[1]);
                 if (mm.MaterialTextureNames[2] != null) mat.CubeMap = LoadTexture(mm.MaterialTextureNames[2]);

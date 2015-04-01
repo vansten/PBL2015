@@ -12,24 +12,27 @@ namespace TrashSoup.Engine
     {
         #region enums
 
-        public enum EffectType
-        {
-            BASIC,
-            SKINNED,
-            DEFAULT,
-            DEFAULT_SKINNED,
-            NORMAL,
-            NORMAL_SKINNED,
-            CUBE,
-            CUBE_SKINNED,
-            ALPHA
-        }
-
         #endregion
 
         #region variables
 
+        protected Texture2D diffuseMap;
+        protected Texture2D normalMap;
+        protected Texture2D cubeMap;
+        protected Texture2D alphaMap;
 
+        protected Vector3 specularColor;
+        protected float glossiness;
+
+        protected Vector3 reflectivityColor;
+        protected float reflectivityBias;
+
+        protected float transparency;
+
+        protected bool perPixelLighting;
+
+        protected Dictionary<string, EffectParameter> parameters;
+        protected List<string> dirLightsNames;
 
         #endregion
 
@@ -37,20 +40,178 @@ namespace TrashSoup.Engine
 
         public string Name { get; set; }
 
-        public EffectType MyEffectType { get; set; }
+        public Texture2D DiffuseMap
+        {
+            get
+            {
+                return diffuseMap;
+            }
+            set
+            {
+                diffuseMap = value;
+                
+                EffectParameter param = null;
+                this.parameters.TryGetValue("DiffuseMap", out param);
+                if (param != null)
+                {
+                    param.SetValue(this.diffuseMap);
+                }
+                else
+                {
+                    this.parameters.TryGetValue("Texture", out param);
+                    if (param != null) param.SetValue(this.diffuseMap);
+                }
+            }
+        }
 
-        public Texture2D DiffuseMap { get; set; }
-        public Texture2D NormalMap { get; set; }
-        public Texture2D CubeMap { get; set; }
-        public Texture2D AlphaMap { get; set; }
+        public Texture2D NormalMap
+        {
+            get
+            {
+                return normalMap;
+            }
+            set
+            {
+                normalMap = value;
 
-        public Vector3 SpecularColor { get; set; }
-        public float Glossiness { get; set; }
+                EffectParameter param = null;
+                this.parameters.TryGetValue("NormalMap", out param);
+                if (param != null) param.SetValue(this.normalMap);
+            }
+        }
 
-        public Vector3 ReflectivityColor { get; set; }
-        public float ReflectivityBias { get; set; }     // 0 means 0% reflection, 100% texture, 1 means otherwise
+        public Texture2D CubeMap
+        {
+            get
+            {
+                return cubeMap;
+            }
+            set
+            {
+                cubeMap = value;
 
-        public float Transparency { get; set; }         // 1.0 means opaque
+                EffectParameter param = null;
+                this.parameters.TryGetValue("CubeMap", out param);
+                if (param != null) param.SetValue(this.cubeMap);
+            }
+        }
+
+        public Texture2D AlphaMap
+        {
+            get
+            {
+                return diffuseMap;
+            }
+            set
+            {
+                diffuseMap = value;
+
+                EffectParameter param = null;
+                this.parameters.TryGetValue("AlphaMap", out param);
+                if (param != null) param.SetValue(this.alphaMap);
+            }
+        }
+
+        public Vector3 SpecularColor
+        {
+            get
+            {
+                return specularColor;
+            }
+            set
+            {
+                specularColor = value;
+
+                EffectParameter param;
+                this.parameters.TryGetValue("SpecularColor", out param);
+                if (param != null) param.SetValue(this.specularColor);
+            }
+        }
+
+        public float Glossiness
+        {
+            get
+            {
+                return glossiness;
+            }
+            set
+            {
+                glossiness = value;
+
+                EffectParameter param;
+                this.parameters.TryGetValue("Glossiness", out param);
+                if (param != null) param.SetValue(this.glossiness);
+            }
+        }
+
+        public Vector3 ReflectivityColor
+        {
+            get
+            {
+                return reflectivityColor;
+            }
+            set
+            {
+                reflectivityColor = value;
+
+                EffectParameter param;
+                this.parameters.TryGetValue("ReflectivityColor", out param);
+                if (param != null) param.SetValue(this.reflectivityColor);
+            }
+        }
+
+        public float ReflectivityBias       // 0 means 0% reflection, 100% texture, 1 means otherwise
+        {
+            get
+            {
+                return reflectivityBias;
+            }
+            set
+            {
+                reflectivityBias = value;
+
+                EffectParameter param;
+                this.parameters.TryGetValue("ReflectivityBias", out param);
+                if (param != null) param.SetValue(this.reflectivityBias);
+            }
+        }
+
+        public float Transparency       // 1.0 means opaque
+        {
+            get
+            {
+                return transparency;
+            }
+            set
+            {
+                transparency = value;
+
+                EffectParameter param;
+                this.parameters.TryGetValue("Transparency", out param);
+                if (param != null) param.SetValue(this.transparency);
+            }
+        }
+
+        public bool PerPixelLighting
+        {
+            get
+            {
+                return perPixelLighting;
+            }
+            set
+            {
+                this.perPixelLighting = value;
+
+                if(MyEffect is BasicEffect)
+                {
+                    (MyEffect as BasicEffect).PreferPerPixelLighting = perPixelLighting;
+                }
+                else if (MyEffect is SkinnedEffect)
+                {
+                    (MyEffect as SkinnedEffect).PreferPerPixelLighting = perPixelLighting;
+                }
+            }
+        }
 
         public Effect MyEffect { get; set; }
 
@@ -58,25 +219,30 @@ namespace TrashSoup.Engine
 
         #region methods
 
-        public Material(string name)
+        public Material(string name, Effect effect)
         {
+            this.MyEffect = effect;
+            this.parameters = new Dictionary<string, EffectParameter>();
+
+            this.dirLightsNames = new List<string>();
+            this.dirLightsNames.Add("DirLight0");
+            this.dirLightsNames.Add("DirLight1");
+            this.dirLightsNames.Add("DirLight2");
+
             this.Name = name;
-            this.DiffuseMap = null;
-            this.NormalMap = null;
-            this.CubeMap = null;
-            this.AlphaMap = null;
-            this.Glossiness = 0.0f;
+
+            AssignParamsInitialize();
+
+            this.DiffuseMap = ResourceManager.Instance.Textures["DefaultDiffuse"];
+            this.NormalMap = ResourceManager.Instance.Textures["DefaultNormal"];
+            this.CubeMap = ResourceManager.Instance.Textures["DefaultCube"];
+            this.AlphaMap = ResourceManager.Instance.Textures["DefaultAlpha"];
             this.SpecularColor = new Vector3(1.0f, 1.0f, 1.0f);
             this.Glossiness = 50.0f;
             this.ReflectivityColor = new Vector3(1.0f, 1.0f, 1.0f);
             this.ReflectivityBias = 0.2f;
             this.Transparency = 1.0f;
-        }
-
-        public Material(string name, Effect effect)
-            : this(name)
-        {
-            this.MyEffect = effect;
+            this.perPixelLighting = false;
         }
 
         public Material(string name, Effect effect, Texture2D diffuse) : this(name, effect)
@@ -84,54 +250,84 @@ namespace TrashSoup.Engine
             this.DiffuseMap = diffuse;
         }
 
-        //public Material(string name, Effect effect, Texture2D diffuse, Texture2D normal)
-        //    : this(name, effect, diffuse)
-        //{
-        //    this.NormalMap = normal;
-        //}
-
-        //public Material(string name, Effect effect, Texture2D diffuse, Texture2D normal, Texture2D cube)
-        //    : this(name, effect, diffuse, normal)
-        //{
-        //    this.CubeMap = cube;
-        //}
-
         public void UpdateEffect()
         {
-            switch (this.MyEffectType)
+            UpdateEffect(Matrix.Identity, Matrix.Identity, null, null, new Vector3(0.0f, 0.0f, 0.0f));
+        }
+
+        public void UpdateEffect(Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3 eyeVector)
+        {
+            this.parameters["World"].SetValue(world);
+            this.parameters["WorldInverseTranspose"].SetValue(Matrix.Transpose(Matrix.Invert(world)));
+            this.parameters["WorldViewProj"].SetValue(worldViewProj);
+
+            // updating textures because fuck you
+            EffectParameter param = null;
+            this.parameters.TryGetValue("DiffuseMap", out param);
+            if (param != null)
             {
-                case Material.EffectType.BASIC:
-                    (this.MyEffect as BasicEffect).Texture = this.DiffuseMap;
-                    (this.MyEffect as BasicEffect).SpecularColor = this.SpecularColor;
-                    (this.MyEffect as BasicEffect).SpecularPower = this.Glossiness;
-                    break;
+                param.SetValue(this.diffuseMap);
+            }
+            else
+            {
+                this.parameters.TryGetValue("Texture", out param);
+                if (param != null) param.SetValue(this.diffuseMap);
+            }
 
-                case Material.EffectType.DEFAULT:
-                    break;
+            // lights
+            if(amb != null)
+            {
+                param = null;
+                this.parameters.TryGetValue("AmbientLightColor", out param);
+                if(param != null) param.SetValue(amb.LightColor);
+            }
+            if(dirs != null)
+            {
+                for (int i = 0; i < ResourceManager.DIRECTIONAL_MAX_LIGHTS; ++i )
+                {
+                    if(dirs[i] != null)
+                    {
+                        param = null;
+                        this.parameters.TryGetValue(this.dirLightsNames[i] + "Direction", out param);
+                        if (param != null) param.SetValue(dirs[i].LightDirection);
 
-                case Material.EffectType.NORMAL:
-                    break;
+                        param = null;
+                        this.parameters.TryGetValue(this.dirLightsNames[i] + "DiffuseColor", out param);
+                        if (param != null) param.SetValue(dirs[i].LightColor);
 
-                case Material.EffectType.CUBE:
-                    break;
+                        param = null;
+                        this.parameters.TryGetValue(this.dirLightsNames[i] + "SpecularColor", out param);
+                        if (param != null) param.SetValue(dirs[i].LightSpecularColor);
+                    }
+                }
+            }
 
-                case Material.EffectType.ALPHA:
-                    break;
+            // eyevector
+            param = null;
+            this.parameters.TryGetValue("EyePosition", out param);
+            if (param != null) param.SetValue(eyeVector);
+        }
 
-                case Material.EffectType.SKINNED:
-                    (this.MyEffect as SkinnedEffect).Texture = this.DiffuseMap;
-                    (this.MyEffect as SkinnedEffect).SpecularColor = this.SpecularColor;
-                    (this.MyEffect as SkinnedEffect).SpecularPower = this.Glossiness;
-                    break;
+        public void SetEffectBones(Matrix[] bones)
+        {
+            EffectParameter param = null;
+            this.parameters.TryGetValue("Bones", out param);
+            if (param != null) param.SetValue(bones);
+        }
 
-                case Material.EffectType.DEFAULT_SKINNED:
-                    break;
+        protected void AssignParamsInitialize()
+        {
+            if (MyEffect == null) throw new NullReferenceException("MyEffect iz null and you tryin' to extract params from it, nigga?");
 
-                case Material.EffectType.NORMAL_SKINNED:
-                    break;
+            foreach(EffectParameter p in MyEffect.Parameters)
+            {
+                this.parameters.Add(p.Name, p);
+            }
 
-                case Material.EffectType.CUBE_SKINNED:
-                    break;
+            if(MyEffect is BasicEffect)
+            {
+                (MyEffect as BasicEffect).LightingEnabled = true;
+                (MyEffect as BasicEffect).TextureEnabled = true;
             }
         }
 

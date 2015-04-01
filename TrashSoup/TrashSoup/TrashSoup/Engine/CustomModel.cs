@@ -82,34 +82,22 @@ namespace TrashSoup.Engine
                 {
                     Camera camera = ResourceManager.Instance.CurrentScene.Cam;
                     Transform transform = MyObject.MyTransform;
+                    Matrix[] bones = null;
+                    if (MyObject.MyAnimator != null) bones = MyObject.MyAnimator.GetSkinTransforms();
 
                     int ctr = 0;
                     foreach (ModelMesh mm in mod.Meshes)
                     {
                         for (int i = 0; i < mm.MeshParts.Count; ++i)
                         {
-                            switch (this.Mat[ctr].MyEffectType)
-                            {
-                                case Material.EffectType.BASIC:
-                                    (this.Mat[ctr].MyEffect as BasicEffect).Projection = camera.ProjectionMatrix;
-                                    (this.Mat[ctr].MyEffect as BasicEffect).View = camera.ViewMatrix;
-                                    (this.Mat[ctr].MyEffect as BasicEffect).World = mm.ParentBone.Transform * transform.GetWorldMatrix();
-                                    (this.Mat[ctr].MyEffect as BasicEffect).EnableDefaultLighting();
-                                    (this.Mat[ctr].MyEffect as BasicEffect).Texture = this.Mat[ctr].DiffuseMap;
-
-                                    mm.MeshParts[i].Effect = this.Mat[ctr].MyEffect;
-                                    ++ctr;
-                                    break;
-
-                                case Material.EffectType.DEFAULT:
-                                    break;
-
-                                case Material.EffectType.NORMAL:
-                                    break;
-
-                                case Material.EffectType.CUBE:
-                                    break;
-                            }
+                            this.Mat[ctr].UpdateEffect(mm.ParentBone.Transform * transform.GetWorldMatrix(), 
+                                 (mm.ParentBone.Transform * transform.GetWorldMatrix()) * camera.ViewMatrix * camera.ProjectionMatrix,
+                                 ResourceManager.Instance.CurrentScene.AmbientLight,
+                                 ResourceManager.Instance.CurrentScene.DirectionalLights,
+                                 camera.Position + camera.Translation);
+                            mm.MeshParts[i].Effect = this.Mat[ctr].MyEffect;
+                            if (bones != null) this.Mat[ctr].SetEffectBones(bones);
+                            ++ctr;
                         }
 
                         mm.Draw();
@@ -177,30 +165,30 @@ namespace TrashSoup.Engine
                 {
                     if (reader.Name == "Material")
                     {
-                        reader.ReadStartElement();
-                        Material m = new Material("null");
-                        m.Name = reader.ReadElementString("Name", "");
-                        String s = reader.ReadElementString("DiffusePath", "");
-                        m.DiffuseMap = ResourceManager.Instance.Textures[s];
-                        m.MyEffectType = (Material.EffectType)Enum.Parse(typeof(Material.EffectType), reader.ReadElementString("EffectType", ""));
-                        switch (m.MyEffectType)
-                        {
-                            case Material.EffectType.BASIC:
-                                m.MyEffect = new BasicEffect(TrashSoupGame.Instance.GraphicsDevice);
-                                m.SpecularColor = new Vector3(0.2f, 0.2f, 0.2f);
-                                m.Glossiness = 10.0f;
-                                (m.MyEffect as BasicEffect).PreferPerPixelLighting = true;
-                                (m.MyEffect as BasicEffect).TextureEnabled = true;
-                                m.UpdateEffect();
-                                break;
-                            case Material.EffectType.SKINNED:
-                                m.MyEffect = new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice);
-                                (m.MyEffect as SkinnedEffect).PreferPerPixelLighting = true;
-                                m.UpdateEffect();
-                                break;
-                        }
-                        Mat.Add(m);
-                        reader.ReadEndElement();
+                        //reader.ReadStartElement();
+                        //Material m = new Material("null", null);
+                        //m.Name = reader.ReadElementString("Name", "");
+                        //String s = reader.ReadElementString("DiffusePath", "");
+                        //m.DiffuseMap = ResourceManager.Instance.Textures[s];
+                        //m.MyEffectType = (Material.EffectType)Enum.Parse(typeof(Material.EffectType), reader.ReadElementString("EffectType", ""));
+                        //switch (m.MyEffectType)
+                        //{
+                        //    case Material.EffectType.BASIC:
+                        //        m.MyEffect = new BasicEffect(TrashSoupGame.Instance.GraphicsDevice);
+                        //        m.SpecularColor = new Vector3(0.2f, 0.2f, 0.2f);
+                        //        m.Glossiness = 10.0f;
+                        //        (m.MyEffect as BasicEffect).PreferPerPixelLighting = true;
+                        //        (m.MyEffect as BasicEffect).TextureEnabled = true;
+                        //        m.UpdateEffect();
+                        //        break;
+                        //    case Material.EffectType.SKINNED:
+                        //        m.MyEffect = new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice);
+                        //        (m.MyEffect as SkinnedEffect).PreferPerPixelLighting = true;
+                        //        m.UpdateEffect();
+                        //        break;
+                        //}
+                        //Mat.Add(m);
+                        //reader.ReadEndElement();
                     }
                 }
                
@@ -232,7 +220,7 @@ namespace TrashSoup.Engine
                     writer.WriteStartElement("Material");
                     writer.WriteElementString("Name", mat.Name);
                     writer.WriteElementString("DiffusePath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == mat.DiffuseMap).Key);
-                    writer.WriteElementString("EffectType", mat.MyEffectType.ToString());
+                    //writer.WriteElementString("EffectType", mat.MyEffectType.ToString());
                     writer.WriteEndElement();
                 }
             }

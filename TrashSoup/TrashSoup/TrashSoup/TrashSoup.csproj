@@ -81,6 +81,8 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine\LightDirectional.cs" />
+    <Compile Include="Engine\LightAmbient.cs" />
     <Compile Include="Engine\Animator.cs" />
     <Compile Include="Engine\AnimatorState.cs" />
     <Compile Include="Engine\AudioManager.cs" />
@@ -88,7 +90,6 @@
     <Compile Include="Engine\Camera.cs" />
     <Compile Include="Engine\Collider.cs" />
     <Compile Include="Engine\CustomModel.cs" />
-    <Compile Include="Engine\CustomSkinnedModel.cs" />
     <Compile Include="Engine\Debug.cs" />
     <Compile Include="Engine\Material.cs" />
     <Compile Include="Engine\ParticleSystem.cs" />

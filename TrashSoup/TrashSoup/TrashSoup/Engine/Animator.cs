@@ -16,8 +16,6 @@ namespace TrashSoup.Engine
         protected bool ifInterpolate = false;
         protected int currentInterpolationTimeMS = 0;
         protected float interDirection = 1.0f;
-        protected Stack<AnimatorState> animatorStack = new Stack<AnimatorState>();
-        protected Matrix[] tmpTransforms = null;
 
         protected float currentInterpolation;
         protected float sentInterpolation;
