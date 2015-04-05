@@ -97,6 +97,7 @@
     <Compile Include="Engine\PhysicalObject.cs" />
     <Compile Include="Engine\PhysicsManager.cs" />
     <Compile Include="Engine\SaveManager.cs" />
+    <Compile Include="Engine\SphereCollider.cs" />
     <Compile Include="Engine\Transform.cs" />
     <Compile Include="Gameplay\InputHandler.cs" />
     <Compile Include="Gameplay\PlayerCameraController.cs" />
