@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace TrashSoup.Engine
 {
-    class Singleton <T> where T : new()
+    public class Singleton <T> where T : new()
     {
         #region Variables
 

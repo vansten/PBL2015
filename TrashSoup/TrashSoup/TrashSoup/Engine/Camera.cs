@@ -68,12 +68,19 @@ namespace TrashSoup.Engine
         {
             base.Update(gameTime);
 
+            OnUpdate(gameTime);
+
             this.Direction = this.Target - this.Position;
             this.Direction = this.Direction / this.Direction.Length();
             this.Right = Vector3.Cross(this.Direction, this.Up);
             this.Right = this.Right / this.Right.Length();
 
             CreateLookAt();
+        }
+
+        protected virtual void OnUpdate(GameTime gameTime)
+        {
+            //Do nothing, it's for editor camera that derieves from this class
         }
 
         public Vector3 GetDirection() { return Direction; }

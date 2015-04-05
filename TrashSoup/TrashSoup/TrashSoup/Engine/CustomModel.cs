@@ -165,30 +165,30 @@ namespace TrashSoup.Engine
                 {
                     if (reader.Name == "Material")
                     {
-                        //reader.ReadStartElement();
-                        //Material m = new Material("null", null);
-                        //m.Name = reader.ReadElementString("Name", "");
-                        //String s = reader.ReadElementString("DiffusePath", "");
-                        //m.DiffuseMap = ResourceManager.Instance.Textures[s];
-                        //m.MyEffectType = (Material.EffectType)Enum.Parse(typeof(Material.EffectType), reader.ReadElementString("EffectType", ""));
-                        //switch (m.MyEffectType)
-                        //{
-                        //    case Material.EffectType.BASIC:
-                        //        m.MyEffect = new BasicEffect(TrashSoupGame.Instance.GraphicsDevice);
-                        //        m.SpecularColor = new Vector3(0.2f, 0.2f, 0.2f);
-                        //        m.Glossiness = 10.0f;
-                        //        (m.MyEffect as BasicEffect).PreferPerPixelLighting = true;
-                        //        (m.MyEffect as BasicEffect).TextureEnabled = true;
-                        //        m.UpdateEffect();
-                        //        break;
-                        //    case Material.EffectType.SKINNED:
-                        //        m.MyEffect = new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice);
-                        //        (m.MyEffect as SkinnedEffect).PreferPerPixelLighting = true;
-                        //        m.UpdateEffect();
-                        //        break;
-                        //}
-                        //Mat.Add(m);
-                        //reader.ReadEndElement();
+                        reader.ReadStartElement();
+                        Material m = new Material("null", null);
+                        m.Name = reader.ReadElementString("Name", "");
+                        String s = reader.ReadElementString("DiffusePath", "");
+                        m.DiffuseMap = ResourceManager.Instance.Textures[s];
+                        /*m.MyEffectType = (Material.EffectType)Enum.Parse(typeof(Material.EffectType), reader.ReadElementString("EffectType", ""));
+                        switch (m.MyEffectType)
+                        {
+                            case Material.EffectType.BASIC:
+                                m.MyEffect = new BasicEffect(TrashSoupGame.Instance.GraphicsDevice);
+                                m.SpecularColor = new Vector3(0.2f, 0.2f, 0.2f);
+                                m.Glossiness = 10.0f;
+                                (m.MyEffect as BasicEffect).PreferPerPixelLighting = true;
+                                (m.MyEffect as BasicEffect).TextureEnabled = true;
+                                m.UpdateEffect();
+                                break;
+                            case Material.EffectType.SKINNED:
+                                m.MyEffect = new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice);
+                                (m.MyEffect as SkinnedEffect).PreferPerPixelLighting = true;
+                                m.UpdateEffect();
+                                break;
+                        }*/
+                        Mat.Add(m);
+                        reader.ReadEndElement();
                     }
                 }
                

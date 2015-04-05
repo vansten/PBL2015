@@ -81,6 +81,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine\EditorCamera.cs" />
     <Compile Include="Engine\LightDirectional.cs" />
     <Compile Include="Engine\LightAmbient.cs" />
     <Compile Include="Engine\Animator.cs" />

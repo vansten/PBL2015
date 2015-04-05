@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework;
 namespace TrashSoup.Engine
 {
     [XmlRoot("Save")]
-    class SaveManager : Singleton<SaveManager>, IXmlSerializable
+    public class SaveManager : Singleton<SaveManager>, IXmlSerializable
     {
         #region variables
         public Scene scene;
@@ -69,6 +69,13 @@ namespace TrashSoup.Engine
                 ResourceManager.Instance.CurrentScene = (Scene)serializer.Deserialize(file);
             }
         }
+
+        public void EditorLoadFileAction(string filepath)
+        {
+            this.XmlPath = filepath;
+            LoadFileAction();
+        }
+
         #endregion
     }
 }

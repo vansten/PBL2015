@@ -15,7 +15,7 @@ namespace TrashSoup.Engine
         public Random rnd = new Random();
     }
 
-    class ResourceManager : Singleton<ResourceManager>
+    public class ResourceManager : Singleton<ResourceManager>
     {
         #region Constants
 
@@ -37,6 +37,7 @@ namespace TrashSoup.Engine
         #endregion
 
         #region Methods
+
         public ResourceManager()
         {
 
@@ -106,9 +107,22 @@ namespace TrashSoup.Engine
 
             // loading scene
             CurrentScene = new Scene(new SceneParams(0, "test"));
-            Camera cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -1.0f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)),
-                 new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 10.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
-            cam.Components.Add(new CameraBehaviourComponent(cam, testBox));
+
+            Camera cam = null;
+
+            if(TrashSoupGame.Instance.EditorMode)
+            {
+                //Editor camera
+                cam = new EditorCamera(1, "editorCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -50.0f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)),
+                     new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 10.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
+            }
+            else
+            {
+                //Game camera
+                cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -1.0f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)),
+                     new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 10.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
+                cam.Components.Add(new CameraBehaviourComponent(cam, testBox));
+            }
             CurrentScene.Cam = cam;
 
             // adding items to scene

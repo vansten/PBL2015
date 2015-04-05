@@ -17,6 +17,10 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 using System.Reflection;
+using Microsoft.Xna.Framework.Graphics;
+using System.Threading;
+using Microsoft.Win32;
+using Microsoft.Xna.Framework.Audio;
 
 namespace AwesomeEngineEditor
 {
@@ -161,7 +165,17 @@ namespace AwesomeEngineEditor
             this.ObjectComponents.ItemsSource = this.objectComponents;
             this.myGame = new TrashSoup.TrashSoupGame();
             this.myGame.EditorMode = true;
-            this.myGame.RunOneFrame();
+            this.myGame.GraphicsManager.ApplyChanges();
+            this.XNAImage.DrawFunction += Draw;
+        }
+
+        private void Draw(GraphicsDevice obj)
+        {
+            if(this.isSaveSceneMIEnabled)
+            {
+                this.myGame.EditorUpdate();
+                this.myGame.EditorDraw();
+            }
         }
 
         void MainWindow_Closing(object sender, CancelEventArgs e)
@@ -343,12 +357,39 @@ namespace AwesomeEngineEditor
 
         private void OpenSceneMI_Click(object sender, RoutedEventArgs e)
         {
+            if (this.IsSaveSceneMIEnabled)
+            {
+                return;
+            }
+
             this.IsSaveSceneMIEnabled = true;
+
+            this.XNAImage.GraphicsDevice = this.myGame.GraphicsDevice;
+            this.myGame.EditorLoadContent();
+
+            /*OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "XML files (scenes ofc) (*.xml) | *.xml";
+            string filepath = "";
+            if(ofd.ShowDialog() == true)
+            {
+                filepath = ofd.FileName;
+            }
+
+            if(filepath != "")
+            {
+                this.IsSaveSceneMIEnabled = true;
+
+                TrashSoup.Engine.SaveManager.Instance.EditorLoadFileAction(filepath);
+
+                this.XNAImage.GraphicsDevice = this.myGame.GraphicsDevice;
+                this.myGame.EditorLoadContent();
+            }*/
         }
 
         private void SaveSceneMI_Click(object sender, RoutedEventArgs e)
         {
             //Scene save
+            //TrashSoup.Engine.SaveManager.Instance.SaveFileAction();
         }
 
         private void SaveScene()

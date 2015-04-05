@@ -33,11 +33,16 @@ namespace TrashSoup
             Instance = this;
             Debug.Log("Engine start");
         }
-        
+
         protected override void Initialize()
         {
 
             base.Initialize();
+        }
+
+        public void EditorLoadContent()
+        {
+            this.LoadContent();
         }
 
         protected override void LoadContent()
@@ -50,6 +55,12 @@ namespace TrashSoup
         protected override void UnloadContent()
         {
 
+        }
+
+        public void EditorUpdate()
+        {
+            //ResourceManager.Instance.CurrentScene.Cam.Update(new GameTime());
+            this.Update(new GameTime());
         }
 
         protected override void Update(GameTime gameTime)
@@ -106,6 +117,23 @@ namespace TrashSoup
 
                 base.Update(gameTime);
             }
+            else
+            {
+                //Editor mode camera control ;)
+                ResourceManager.Instance.CurrentScene.Cam.Update(gameTime);
+            }
+        }
+
+        public void EditorDraw()
+        {
+            this.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            ResourceManager.Instance.CurrentScene.DrawAll(null);
+
+            ResourceManager.Instance.ps.Draw();
+
+            GUIManager.Instance.Render(this.spriteBatch);
         }
 
         protected override void Draw(GameTime gameTime)
