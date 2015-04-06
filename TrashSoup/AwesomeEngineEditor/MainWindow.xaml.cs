@@ -367,23 +367,27 @@ namespace AwesomeEngineEditor
             this.XNAImage.GraphicsDevice = this.myGame.GraphicsDevice;
             this.myGame.EditorLoadContent();
 
-            /*OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "XML files (scenes ofc) (*.xml) | *.xml";
-            string filepath = "";
-            if(ofd.ShowDialog() == true)
-            {
-                filepath = ofd.FileName;
-            }
+            //OpenFileDialog ofd = new OpenFileDialog();
+            //ofd.Filter = "XML files (scenes ofc) (*.xml) | *.xml";
+            //string filepath = "";
+            //if(ofd.ShowDialog() == true)
+            //{
+            //    filepath = ofd.FileName;
+            //}
 
-            if(filepath != "")
-            {
-                this.IsSaveSceneMIEnabled = true;
+            //if(filepath != "")
+            //{
+            //    if(this.IsSaveSceneMIEnabled)
+            //    {
+            //        SaveSceneMI_Click(sender, e);
+            //    }
 
-                TrashSoup.Engine.SaveManager.Instance.EditorLoadFileAction(filepath);
+            //    this.IsSaveSceneMIEnabled = true;
 
-                this.XNAImage.GraphicsDevice = this.myGame.GraphicsDevice;
-                this.myGame.EditorLoadContent();
-            }*/
+            //    TrashSoup.Engine.SaveManager.Instance.EditorLoadFileAction(filepath);
+            //    this.XNAImage.GraphicsDevice = this.myGame.GraphicsDevice;
+            //    this.myGame.EditorLoadContent();
+            //}
         }
 
         private void SaveSceneMI_Click(object sender, RoutedEventArgs e)
