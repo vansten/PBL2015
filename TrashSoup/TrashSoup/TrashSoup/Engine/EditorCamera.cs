@@ -28,20 +28,18 @@ namespace TrashSoup.Engine
 
         protected override void OnUpdate(GameTime gameTime)
         {
-            //[vansten] It's now simple and I'm sure that it could be done better, but it has low priority on my TO DO list
-            //[vansten] I believe that this should be enough to get it working and if this causes problem I will rewrite this
             base.OnUpdate(gameTime);
 
             MouseState mouse = Mouse.GetState();
 
             this.currentMousePosition = new Vector2(mouse.X, mouse.Y);
 
-            if(!mouseDown && mouse.LeftButton == ButtonState.Pressed)
+            if(!mouseDown && mouse.RightButton == ButtonState.Pressed)
             {
                 mouseDown = true;
             }
-            
-            if(mouseDown && mouse.LeftButton == ButtonState.Released)
+
+            if (mouseDown && mouse.RightButton == ButtonState.Released)
             {
                 mouseDown = false;
             }

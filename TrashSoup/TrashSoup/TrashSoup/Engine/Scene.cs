@@ -147,6 +147,7 @@ namespace TrashSoup.Engine
             reader.ReadStartElement();
 
             ObjectsDictionary = new Dictionary<uint, GameObject>();
+            DirectionalLights = new LightDirectional[ResourceManager.DIRECTIONAL_MAX_LIGHTS];
 
             if(reader.Name == "SceneParams")
             {
@@ -154,7 +155,37 @@ namespace TrashSoup.Engine
                 (Params as IXmlSerializable).ReadXml(reader);
             }
 
-            reader.ReadStartElement();
+            if (reader.Name == "AmbientLight")
+            {
+                AmbientLight = new LightAmbient(0, "null");
+                (AmbientLight as IXmlSerializable).ReadXml(reader);
+            }
+
+            int ctr = 0;
+            reader.ReadStartElement("DirectionalLights");
+            while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
+            {
+                if (reader.Name == "DirectionalLight")
+                {
+                    reader.ReadStartElement();
+                    if(reader.Name != "null")
+                    {
+                        LightDirectional obj = new LightDirectional(0, "");
+                        (obj as IXmlSerializable).ReadXml(reader);
+                        DirectionalLights[ctr] = obj;
+                        ++ctr;
+                    }
+                    else
+                    {
+                        reader.ReadElementString("null", "");
+                        reader.ReadEndElement();
+                        ++ctr;
+                    }
+                }
+            }
+            reader.ReadEndElement();
+
+            reader.ReadStartElement("ObjectsDictionary");
             while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
             {
                 if (reader.Name == "GameObject")
@@ -183,6 +214,22 @@ namespace TrashSoup.Engine
         {
             writer.WriteStartElement("SceneParams");
             (Params as IXmlSerializable).WriteXml(writer);
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("AmbientLight");
+            (AmbientLight as IXmlSerializable).WriteXml(writer);
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("DirectionalLights");
+            for (int i = 0; i < ResourceManager.DIRECTIONAL_MAX_LIGHTS; ++i )
+            {
+                writer.WriteStartElement("DirectionalLight");
+                if (DirectionalLights[i] != null)
+                    (DirectionalLights[i] as IXmlSerializable).WriteXml(writer);
+                else
+                    writer.WriteElementString("null","");
+                writer.WriteEndElement();
+            }
             writer.WriteEndElement();
 
             writer.WriteStartElement("ObjectsDictionary");

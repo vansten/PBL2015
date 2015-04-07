@@ -100,11 +100,11 @@ namespace TrashSoup.Engine
         {
             get
             {
-                return diffuseMap;
+                return alphaMap;
             }
             set
             {
-                diffuseMap = value;
+                alphaMap = value;
 
                 EffectParameter param = null;
                 this.parameters.TryGetValue("AlphaMap", out param);

@@ -6,6 +6,7 @@ using System.IO;
 using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Xml;
 
 namespace TrashSoup.Engine
 {
@@ -163,11 +164,58 @@ namespace TrashSoup.Engine
                 reader.ReadStartElement();
                 while(reader.NodeType != System.Xml.XmlNodeType.EndElement)
                 {
-                    if(reader.Name == "Material")
+                    if (reader.Name == "Material")
                     {
-                        Mat.Add(ResourceManager.Instance.Materials[reader.ReadElementString("Material", "")]);
+                        reader.ReadStartElement();
+                        
+                        String newName = reader.ReadElementString("Name", "");
+
+                        int newEffectID = reader.ReadElementContentAsInt("EffectID", "");
+                        Effect newEf = null;
+                        switch(newEffectID)
+                        {
+                            case -1:
+                                newEf = new BasicEffect(TrashSoupGame.Instance.GraphicsDevice);
+                                break;
+                            case -2:
+                                newEf = new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice);
+                                break;
+                            default:
+                                newEf = ResourceManager.Instance.Effects[newEffectID];
+                                break;
+                        }
+
+                        Material m = new Material(newName, newEf);
+
+                        m.DiffuseMap = ResourceManager.Instance.Textures[reader.ReadElementString("DiffusePath", "")];
+                        m.NormalMap = ResourceManager.Instance.Textures[reader.ReadElementString("NormalPath", "")];
+                        m.CubeMap = ResourceManager.Instance.Textures[reader.ReadElementString("CubePath", "")];
+                        m.AlphaMap = ResourceManager.Instance.Textures[reader.ReadElementString("AlphaPath", "")];
+
+                        reader.ReadStartElement("SpecularColor");
+                        m.SpecularColor = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                                                       reader.ReadElementContentAsFloat("Y", ""),
+                                                       reader.ReadElementContentAsFloat("Z", ""));
+                        reader.ReadEndElement();
+
+                        m.Glossiness = reader.ReadElementContentAsFloat("Glossiness", "");
+
+                        reader.ReadStartElement("ReflectivityColor");
+                        m.ReflectivityColor = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                                                       reader.ReadElementContentAsFloat("Y", ""),
+                                                       reader.ReadElementContentAsFloat("Z", ""));
+                        reader.ReadEndElement();
+
+                        m.ReflectivityBias = reader.ReadElementContentAsFloat("ReflectivityBias", "");
+                        m.Transparency = reader.ReadElementContentAsFloat("Transparency", "");
+                        m.PerPixelLighting = reader.ReadElementContentAsBoolean("PerPixelLighting", "");
+                        
+                        reader.ReadEndElement();
+
+                        Mat.Add(m);
                     }
                 }
+               
                 reader.ReadEndElement();
             }
 
@@ -193,7 +241,39 @@ namespace TrashSoup.Engine
             {
                 if(mat != null)
                 {
-                    writer.WriteElementString("Material", ResourceManager.Instance.Materials.FirstOrDefault(x => x.Value == mat).Key);
+                    writer.WriteStartElement("Material");
+                    writer.WriteElementString("Name", mat.Name);
+
+                    int effectID = ResourceManager.Instance.Effects.IndexOf(mat.MyEffect);
+                    if(effectID == -1)
+                    {
+                        if (mat.MyEffect is SkinnedEffect) effectID = -2;
+                    }
+                    writer.WriteElementString("EffectID", XmlConvert.ToString(effectID));
+
+                    writer.WriteElementString("DiffusePath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == mat.DiffuseMap).Key);
+                    writer.WriteElementString("NormalPath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == mat.NormalMap).Key);
+                    writer.WriteElementString("CubePath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == mat.CubeMap).Key);
+                    writer.WriteElementString("AlphaPath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == mat.AlphaMap).Key);
+
+                    writer.WriteStartElement("SpecularColor");
+                    writer.WriteElementString("X", XmlConvert.ToString(mat.SpecularColor.X));
+                    writer.WriteElementString("Y", XmlConvert.ToString(mat.SpecularColor.Y));
+                    writer.WriteElementString("Z", XmlConvert.ToString(mat.SpecularColor.Z));
+                    writer.WriteEndElement();
+
+                    writer.WriteElementString("Glossiness", XmlConvert.ToString(mat.Glossiness));
+
+                    writer.WriteStartElement("ReflectivityColor");
+                    writer.WriteElementString("X", XmlConvert.ToString(mat.ReflectivityColor.X));
+                    writer.WriteElementString("Y", XmlConvert.ToString(mat.ReflectivityColor.Y));
+                    writer.WriteElementString("Z", XmlConvert.ToString(mat.ReflectivityColor.Z));
+                    writer.WriteEndElement();
+
+                    writer.WriteElementString("ReflectivityBias", XmlConvert.ToString(mat.ReflectivityBias));
+                    writer.WriteElementString("Transparency", XmlConvert.ToString(mat.Transparency));
+                    writer.WriteElementString("PerPixelLighting", XmlConvert.ToString(mat.PerPixelLighting));
+                    writer.WriteEndElement();
                 }
             }
             writer.WriteEndElement();
