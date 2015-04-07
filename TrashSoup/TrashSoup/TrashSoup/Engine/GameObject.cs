@@ -144,6 +144,18 @@ namespace TrashSoup.Engine
                 (MyCollider as IXmlSerializable).ReadXml(reader);
             }
 
+            if(reader.Name == "MyAnimator")
+            {
+                reader.ReadStartElement();
+                MyAnimator = new Animator(this, ResourceManager.Instance.Models[reader.ReadElementString("BaseAnim", "")]);
+                while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
+                {
+                    String s = reader.ReadElementString("AnimatorClip", "");
+                    MyAnimator.animationPlayers.Add(s, new SkinningModelLibrary.AnimationPlayer(MyAnimator.SkinningData, s));
+                }
+                reader.ReadEndElement();
+            }
+
             if(reader.Name == "Components")
             {
                 List<object> parameters = new List<object>();
@@ -185,6 +197,17 @@ namespace TrashSoup.Engine
             {
                 writer.WriteStartElement("MyCollider");
                 (MyCollider as IXmlSerializable).WriteXml(writer);
+                writer.WriteEndElement();
+            }
+
+            if(MyAnimator != null)
+            {
+                writer.WriteStartElement("MyAnimator");
+                writer.WriteElementString("BaseAnim", ResourceManager.Instance.Models.FirstOrDefault(x => x.Value == MyAnimator.BaseAnim).Key);
+                foreach (KeyValuePair<string, SkinningModelLibrary.AnimationClip> pair in MyAnimator.SkinningData.AnimationClips)
+                {
+                    writer.WriteElementString("AnimatorClip", pair.Key);
+                }
                 writer.WriteEndElement();
             }
 

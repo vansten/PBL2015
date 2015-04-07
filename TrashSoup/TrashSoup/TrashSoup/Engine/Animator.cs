@@ -12,7 +12,7 @@ namespace TrashSoup.Engine
     {
         #region variables
 
-        protected Dictionary<string, AnimationPlayer> animationPlayers = new Dictionary<string, AnimationPlayer>();
+        public Dictionary<string, AnimationPlayer> animationPlayers = new Dictionary<string, AnimationPlayer>();
         protected bool ifInterpolate = false;
         protected int currentInterpolationTimeMS = 0;
         protected float interDirection = 1.0f;
@@ -29,6 +29,7 @@ namespace TrashSoup.Engine
 
         #region properties
 
+        public Model BaseAnim { get; set; }
         public SkinningData SkinningData { get; set; }
         public AnimatorState CurrentState { get; set; }
         public AnimatorState NewState { get; set; }
@@ -67,6 +68,7 @@ namespace TrashSoup.Engine
         public Animator(GameObject go, Model baseAnim) : base(go)
         {
             this.CurrentInterpolation = 0.0f;
+            BaseAnim = baseAnim;
             SkinningData = (baseAnim.Tag as object[])[0] as SkinningData;
             if (SkinningData == null) throw new InvalidOperationException("LOD 0 doesn't contain skinning data tag");
             AvailableStates = new Dictionary<string, AnimatorState>();
