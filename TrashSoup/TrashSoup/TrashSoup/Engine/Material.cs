@@ -330,7 +330,6 @@ namespace TrashSoup.Engine
                 (MyEffect as BasicEffect).TextureEnabled = true;
             }
         }
-
         #endregion
     }
 }

@@ -163,35 +163,11 @@ namespace TrashSoup.Engine
                 reader.ReadStartElement();
                 while(reader.NodeType != System.Xml.XmlNodeType.EndElement)
                 {
-                    if (reader.Name == "Material")
+                    if(reader.Name == "Material")
                     {
-                        reader.ReadStartElement();
-                        Material m = new Material("null", null);
-                        m.Name = reader.ReadElementString("Name", "");
-                        String s = reader.ReadElementString("DiffusePath", "");
-                        m.DiffuseMap = ResourceManager.Instance.Textures[s];
-                        /*m.MyEffectType = (Material.EffectType)Enum.Parse(typeof(Material.EffectType), reader.ReadElementString("EffectType", ""));
-                        switch (m.MyEffectType)
-                        {
-                            case Material.EffectType.BASIC:
-                                m.MyEffect = new BasicEffect(TrashSoupGame.Instance.GraphicsDevice);
-                                m.SpecularColor = new Vector3(0.2f, 0.2f, 0.2f);
-                                m.Glossiness = 10.0f;
-                                (m.MyEffect as BasicEffect).PreferPerPixelLighting = true;
-                                (m.MyEffect as BasicEffect).TextureEnabled = true;
-                                m.UpdateEffect();
-                                break;
-                            case Material.EffectType.SKINNED:
-                                m.MyEffect = new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice);
-                                (m.MyEffect as SkinnedEffect).PreferPerPixelLighting = true;
-                                m.UpdateEffect();
-                                break;
-                        }*/
-                        Mat.Add(m);
-                        reader.ReadEndElement();
+                        Mat.Add(ResourceManager.Instance.Materials[reader.ReadElementString("Material", "")]);
                     }
                 }
-               
                 reader.ReadEndElement();
             }
 
@@ -217,11 +193,7 @@ namespace TrashSoup.Engine
             {
                 if(mat != null)
                 {
-                    writer.WriteStartElement("Material");
-                    writer.WriteElementString("Name", mat.Name);
-                    writer.WriteElementString("DiffusePath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == mat.DiffuseMap).Key);
-                    //writer.WriteElementString("EffectType", mat.MyEffectType.ToString());
-                    writer.WriteEndElement();
+                    writer.WriteElementString("Material", ResourceManager.Instance.Materials.FirstOrDefault(x => x.Value == mat).Key);
                 }
             }
             writer.WriteEndElement();
