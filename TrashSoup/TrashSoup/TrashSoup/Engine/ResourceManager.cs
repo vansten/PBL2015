@@ -64,7 +64,7 @@ namespace TrashSoup.Engine
 
             // loading materials
             List<Material> testPlayerMats = new List<Material>();
-            Material testPlayerMat = new Material("testPlayerMat", this.Effects[0], Textures[@"Textures\Test\cargo"]);
+            Material testPlayerMat = new Material("testPlayerMat", this.Effects[2], Textures[@"Textures\Test\cargo"]);
             testPlayerMats.Add(testPlayerMat);
             testPlayerMat.Glossiness = 40.0f;
             testPlayerMat.Transparency = 1.0f;
@@ -74,7 +74,7 @@ namespace TrashSoup.Engine
             List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"]);
 
             List<Material> testTerMats = new List<Material>();
-            Material testTerMat = new Material("testTerMat", new BasicEffect(TrashSoupGame.Instance.GraphicsDevice), Textures[@"Textures\Test\metal01_d"]);
+            Material testTerMat = new Material("testTerMat", this.Effects[0], Textures[@"Textures\Test\metal01_d"]);
             testTerMat.SpecularColor = new Vector3(0.1f, 0.1f, 0.0f);
             testTerMat.Glossiness = 10.0f;
             testTerMat.UpdateEffect();
@@ -212,9 +212,6 @@ namespace TrashSoup.Engine
             Texture2D defCbc = new Texture2D(TrashSoupGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             defCbc.SetData<uint>(new uint[] { blackColor });
             Textures.Add("DefaultCube", defCbc);
-            Texture2D defAlp = new Texture2D(TrashSoupGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
-            defAlp.SetData<uint>(new uint[] { diffColor });
-            Textures.Add("DefaultAlpha", defAlp);
             ///////////////////////////////////////////
 
             // FOR TETIN
@@ -238,6 +235,8 @@ namespace TrashSoup.Engine
             //Effects.Add(game.Content.Load<Effect>(@"Effects\Billboard"));
             //Effects.ElementAt(1).CurrentTechnique = Effects.ElementAt(1).Techniques["Technique1"];
             Effect ef = TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\DefaultEffect");
+            Effects.Add(new BasicEffect(TrashSoupGame.Instance.GraphicsDevice));
+            Effects.Add(new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice));
             Effects.Add(ef);
         }
 
@@ -281,11 +280,11 @@ namespace TrashSoup.Engine
 
             if (model.Meshes[0].Effects[0] is BasicEffect)
             {
-                effectToAdd = new BasicEffect(TrashSoupGame.Instance.GraphicsDevice);
+                effectToAdd = Effects[0];
             }
             else if (model.Meshes[0].Effects[0] is SkinnedEffect)
             {
-                effectToAdd = new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice);
+                effectToAdd = Effects[1];
             }
             else
             {

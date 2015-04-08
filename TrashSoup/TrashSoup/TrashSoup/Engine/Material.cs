@@ -49,18 +49,6 @@ namespace TrashSoup.Engine
             set
             {
                 diffuseMap = value;
-                
-                EffectParameter param = null;
-                this.parameters.TryGetValue("DiffuseMap", out param);
-                if (param != null)
-                {
-                    param.SetValue(this.diffuseMap);
-                }
-                else
-                {
-                    this.parameters.TryGetValue("Texture", out param);
-                    if (param != null) param.SetValue(this.diffuseMap);
-                }
             }
         }
 
@@ -73,10 +61,6 @@ namespace TrashSoup.Engine
             set
             {
                 normalMap = value;
-
-                EffectParameter param = null;
-                this.parameters.TryGetValue("NormalMap", out param);
-                if (param != null) param.SetValue(this.normalMap);
             }
         }
 
@@ -89,26 +73,6 @@ namespace TrashSoup.Engine
             set
             {
                 cubeMap = value;
-
-                EffectParameter param = null;
-                this.parameters.TryGetValue("CubeMap", out param);
-                if (param != null) param.SetValue(this.cubeMap);
-            }
-        }
-
-        public Texture2D AlphaMap
-        {
-            get
-            {
-                return alphaMap;
-            }
-            set
-            {
-                alphaMap = value;
-
-                EffectParameter param = null;
-                this.parameters.TryGetValue("AlphaMap", out param);
-                if (param != null) param.SetValue(this.alphaMap);
             }
         }
 
@@ -121,10 +85,6 @@ namespace TrashSoup.Engine
             set
             {
                 specularColor = value;
-
-                EffectParameter param;
-                this.parameters.TryGetValue("SpecularColor", out param);
-                if (param != null) param.SetValue(this.specularColor);
             }
         }
 
@@ -137,10 +97,6 @@ namespace TrashSoup.Engine
             set
             {
                 glossiness = value;
-
-                EffectParameter param;
-                this.parameters.TryGetValue("Glossiness", out param);
-                if (param != null) param.SetValue(this.glossiness);
             }
         }
 
@@ -153,10 +109,6 @@ namespace TrashSoup.Engine
             set
             {
                 reflectivityColor = value;
-
-                EffectParameter param;
-                this.parameters.TryGetValue("ReflectivityColor", out param);
-                if (param != null) param.SetValue(this.reflectivityColor);
             }
         }
 
@@ -169,10 +121,6 @@ namespace TrashSoup.Engine
             set
             {
                 reflectivityBias = value;
-
-                EffectParameter param;
-                this.parameters.TryGetValue("ReflectivityBias", out param);
-                if (param != null) param.SetValue(this.reflectivityBias);
             }
         }
 
@@ -185,10 +133,6 @@ namespace TrashSoup.Engine
             set
             {
                 transparency = value;
-
-                EffectParameter param;
-                this.parameters.TryGetValue("Transparency", out param);
-                if (param != null) param.SetValue(this.transparency);
             }
         }
 
@@ -201,15 +145,6 @@ namespace TrashSoup.Engine
             set
             {
                 this.perPixelLighting = value;
-
-                if(MyEffect is BasicEffect)
-                {
-                    (MyEffect as BasicEffect).PreferPerPixelLighting = perPixelLighting;
-                }
-                else if (MyEffect is SkinnedEffect)
-                {
-                    (MyEffect as SkinnedEffect).PreferPerPixelLighting = perPixelLighting;
-                }
             }
         }
 
@@ -236,7 +171,6 @@ namespace TrashSoup.Engine
             this.DiffuseMap = ResourceManager.Instance.Textures["DefaultDiffuse"];
             this.NormalMap = ResourceManager.Instance.Textures["DefaultNormal"];
             this.CubeMap = ResourceManager.Instance.Textures["DefaultCube"];
-            this.AlphaMap = ResourceManager.Instance.Textures["DefaultAlpha"];
             this.SpecularColor = new Vector3(1.0f, 1.0f, 1.0f);
             this.Glossiness = 50.0f;
             this.ReflectivityColor = new Vector3(1.0f, 1.0f, 1.0f);
@@ -261,7 +195,7 @@ namespace TrashSoup.Engine
             this.parameters["WorldInverseTranspose"].SetValue(Matrix.Transpose(Matrix.Invert(world)));
             this.parameters["WorldViewProj"].SetValue(worldViewProj);
 
-            // updating textures because fuck you
+            // updating all because fuck you
             EffectParameter param = null;
             this.parameters.TryGetValue("DiffuseMap", out param);
             if (param != null)
@@ -272,6 +206,39 @@ namespace TrashSoup.Engine
             {
                 this.parameters.TryGetValue("Texture", out param);
                 if (param != null) param.SetValue(this.diffuseMap);
+            }
+
+            param = null;
+            this.parameters.TryGetValue("NormalMap", out param);
+            if (param != null) param.SetValue(this.normalMap);
+            param = null;
+            this.parameters.TryGetValue("CubeMap", out param);
+            if (param != null) param.SetValue(this.cubeMap);
+            param = null;
+            this.parameters.TryGetValue("CubeMap", out param);
+            if (param != null) param.SetValue(this.cubeMap);
+            param = null;
+            this.parameters.TryGetValue("SpecularColor", out param);
+            if (param != null) param.SetValue(this.specularColor);
+            param = null;
+            this.parameters.TryGetValue("Glossiness", out param);
+            if (param != null) param.SetValue(this.glossiness);
+            param = null;
+            this.parameters.TryGetValue("ReflectivityColor", out param);
+            if (param != null) param.SetValue(this.reflectivityColor);
+            param = null;
+            this.parameters.TryGetValue("ReflectivityBias", out param);
+            if (param != null) param.SetValue(this.reflectivityBias);
+            param = null;
+            this.parameters.TryGetValue("Transparency", out param);
+            if (param != null) param.SetValue(this.transparency);
+            if (MyEffect is BasicEffect)
+            {
+                (MyEffect as BasicEffect).PreferPerPixelLighting = perPixelLighting;
+            }
+            else if (MyEffect is SkinnedEffect)
+            {
+                (MyEffect as SkinnedEffect).PreferPerPixelLighting = perPixelLighting;
             }
 
             // lights
