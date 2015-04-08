@@ -57,13 +57,14 @@ namespace TrashSoup.Engine
             AddModel("Models/Test/TestBox");
             AddModel("Models/Test/TestTerrain");
             AddModel("Models/Test/TestGuy");
+            AddModel("Models/Test/TestSphere");
             AddModel("Animations/Test/walking_1");
             AddModel("Animations/Test/idle_1");
             AddModel("Animations/Test/jump_1");
 
             // loading materials
             List<Material> testPlayerMats = new List<Material>();
-            Material testPlayerMat = new Material("testPlayerMat", Effects[0], Textures[@"Textures\Test\cargo"]);
+            Material testPlayerMat = new Material("testPlayerMat", this.Effects[0], Textures[@"Textures\Test\cargo"]);
             testPlayerMats.Add(testPlayerMat);
             testPlayerMat.UpdateEffect();
             this.Materials.Add(testPlayerMat.Name, testPlayerMat);
@@ -97,12 +98,12 @@ namespace TrashSoup.Engine
             testTer.Components.Add(new CustomModel(testTer, new Model[] { Models["Models/Test/TestTerrain"], null, null }, 3, testTerMats));
 
             GameObject testBox2 = new GameObject(3, "testBox2");
-            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 10.0f, 30.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
-            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Test/TestBox"], null, null }, 3, testPlayerMats));
+            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 40.0f, 70.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
+            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Test/TestSphere"], null, null }, 3, testPlayerMats));
             testBox2.MyCollider = new BoxCollider(testBox2);    //Add a box collider to test physisc
 
             // adding lights
-            LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.05f, 0.05f, 0.2f), new Vector3(0.0f, 0.0f, 0.3f));
+            LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.05f, 0.05f, 0.2f));
             LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(1.0f, 0.8f, 0.8f), new Vector3(1.0f, 0.0f, 0.0f), new Vector3(-1.0f, -1.0f, -1.0f));
 
             // loading scene

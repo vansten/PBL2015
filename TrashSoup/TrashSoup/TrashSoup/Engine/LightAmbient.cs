@@ -13,7 +13,6 @@ namespace TrashSoup.Engine
         #region properties
 
         public Vector3 LightColor { get; set; }
-        public Vector3 LightSpecularColor { get; set; }
 
         #endregion
 
@@ -25,11 +24,10 @@ namespace TrashSoup.Engine
             
         }
 
-        public LightAmbient(uint uniqueID, string name, Vector3 color, Vector3 specular)
+        public LightAmbient(uint uniqueID, string name, Vector3 color)
             : base(uniqueID, name)
         {
             this.LightColor = color;
-            this.LightSpecularColor = specular;
         }
 
         System.Xml.Schema.XmlSchema IXmlSerializable.GetSchema()
@@ -48,12 +46,6 @@ namespace TrashSoup.Engine
                 reader.ReadElementContentAsFloat("Z", ""));
             reader.ReadEndElement();
 
-            reader.ReadStartElement("LightSpecularColor");
-            LightSpecularColor = new Vector3(reader.ReadElementContentAsFloat("X", ""),
-                reader.ReadElementContentAsFloat("Y", ""),
-                reader.ReadElementContentAsFloat("Z", ""));
-            reader.ReadEndElement();
-
             base.ReadXml(reader);
         }
 
@@ -63,12 +55,6 @@ namespace TrashSoup.Engine
             writer.WriteElementString("X", XmlConvert.ToString(LightColor.X));
             writer.WriteElementString("Y", XmlConvert.ToString(LightColor.Y));
             writer.WriteElementString("Z", XmlConvert.ToString(LightColor.Z));
-            writer.WriteEndElement();
-
-            writer.WriteStartElement("LightSpecularColor");
-            writer.WriteElementString("X", XmlConvert.ToString(LightSpecularColor.X));
-            writer.WriteElementString("Y", XmlConvert.ToString(LightSpecularColor.Y));
-            writer.WriteElementString("Z", XmlConvert.ToString(LightSpecularColor.Z));
             writer.WriteEndElement();
 
             base.WriteXml(writer);
