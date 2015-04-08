@@ -14,6 +14,12 @@ namespace TrashSoup.Engine
         private GamePadState currentGamePadState;
         private GamePadState previousGamePadState;
 
+        private KeyboardState currentKeyboardState;
+        private KeyboardState prevKeyboardState;
+
+        private MouseState currentMouseState;
+        private MouseState prevMouseState;
+
         #endregion
 
         #region Methods
@@ -21,12 +27,20 @@ namespace TrashSoup.Engine
         public InputManager()
         {
             this.currentGamePadState = GamePad.GetState(PlayerIndex.One);
+            this.currentKeyboardState = Keyboard.GetState();
+            this.currentMouseState = Mouse.GetState();
         }
 
         public void Update(GameTime gameTime)
         {
             this.previousGamePadState = this.currentGamePadState;
             this.currentGamePadState = GamePad.GetState(PlayerIndex.One);
+
+            this.prevKeyboardState = this.currentKeyboardState;
+            this.currentKeyboardState = Keyboard.GetState();
+
+            this.prevMouseState = this.currentMouseState;
+            this.currentMouseState = Mouse.GetState();
         }
 
         /// <summary>
@@ -80,6 +94,92 @@ namespace TrashSoup.Engine
         public bool GetGamePadButton(Buttons button)
         {
             return this.currentGamePadState.IsButtonDown(button);
+        }
+
+        public bool GetKeyboardButton(Keys key)
+        {
+            return this.currentKeyboardState.IsKeyDown(key);
+        }
+
+        public bool GetKeyboardButtonDown(Keys key)
+        {
+            return (this.currentKeyboardState.IsKeyDown(key) && this.prevKeyboardState.IsKeyUp(key));
+        }
+
+        public bool GetKeyboardButtonUp(Keys key)
+        {
+            return (this.currentKeyboardState.IsKeyUp(key) && this.prevKeyboardState.IsKeyDown(key));
+        }
+
+        public bool GetLeftMouseButton()
+        {
+            return (this.currentMouseState.LeftButton == ButtonState.Pressed);
+        }
+
+        public bool GetLeftMouseButtonDown()
+        {
+            return ((this.currentMouseState.LeftButton == ButtonState.Pressed) &&
+                (this.prevMouseState.LeftButton == ButtonState.Released));
+        }
+
+        public bool GetLeftMouseButtonUp()
+        {
+            return ((this.currentMouseState.LeftButton == ButtonState.Released) &&
+                (this.prevMouseState.LeftButton == ButtonState.Pressed));
+        }
+
+        public bool GetRightMouseButton()
+        {
+            return (this.currentMouseState.RightButton == ButtonState.Pressed);
+        }
+
+        public bool GetRightMouseButtonDown()
+        {
+            return ((this.currentMouseState.RightButton == ButtonState.Pressed) &&
+                (this.prevMouseState.RightButton == ButtonState.Released));
+        }
+
+        public bool GetRightMouseButtonUp()
+        {
+            return ((this.currentMouseState.RightButton == ButtonState.Released) &&
+                (this.prevMouseState.RightButton == ButtonState.Pressed));
+        }
+
+        public bool GetMiddleMouseButton()
+        {
+            return (this.currentMouseState.MiddleButton == ButtonState.Pressed);
+        }
+
+        public bool GetMiddleMouseButtonDown()
+        {
+            return ((this.currentMouseState.MiddleButton == ButtonState.Pressed) &&
+                (this.prevMouseState.MiddleButton == ButtonState.Released));
+        }
+
+        public bool GetMiddleMouseButtonUp()
+        {
+            return ((this.currentMouseState.MiddleButton == ButtonState.Released) &&
+                (this.prevMouseState.MiddleButton == ButtonState.Pressed));
+        }
+
+        public int GetRelativeScrollValue()
+        {
+            return this.currentMouseState.ScrollWheelValue - this.prevMouseState.ScrollWheelValue;
+        }
+
+        public int GetTotalScrollValue()
+        {
+            return this.currentMouseState.ScrollWheelValue;
+        }
+
+        public Vector2 GetMouseRelativeValue()
+        {
+            return new Vector2(this.currentMouseState.X - this.prevMouseState.X, this.currentMouseState.Y - this.prevMouseState.Y);
+        }
+
+        public Vector2 GetMouseTotalValue()
+        {
+            return new Vector2(this.currentMouseState.X, this.currentMouseState.Y);
         }
         
         #endregion

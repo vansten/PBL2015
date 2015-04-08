@@ -51,9 +51,10 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            tempMove = new Vector3(InputManager.Instance.GetLeftStickValue().X,
+            Vector2 movementVector = InputHandler.Instance.GetMovementVector();
+            tempMove = new Vector3(movementVector.X,
                 (InputManager.Instance.GetGamePadButton(Buttons.RightTrigger) ? 1.0f : 0.0f) - (InputManager.Instance.GetGamePadButton(Buttons.LeftTrigger) ? 1.0f : 0.0f),
-                InputManager.Instance.GetLeftStickValue().Y);
+                movementVector.Y);
 
             if(tempMove.Length() > 0.0f &&
                 ResourceManager.Instance.CurrentScene.Cam != null)
@@ -112,7 +113,7 @@ namespace TrashSoup.Gameplay
                 }
             }
 
-            if (InputManager.Instance.GetGamePadButton(Buttons.A))
+            if (InputHandler.Instance.IsJumping())
             {
                 if (MyObject.MyAnimator != null)
                 {

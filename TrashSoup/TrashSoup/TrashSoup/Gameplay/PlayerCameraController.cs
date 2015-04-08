@@ -15,7 +15,7 @@ namespace TrashSoup.Gameplay
 
         protected const float CAM_YAW_SENSITIVITY = MathHelper.PiOver4 / 30.0f;
         protected const float CAM_PITCH_SENSITIVITY = MathHelper.PiOver4 / 30.0f;
-        protected const float CAM_TOTAL_PITCH = MathHelper.PiOver2 - MathHelper.PiOver4/2.0f;
+        protected const float CAM_TOTAL_PITCH = MathHelper.PiOver2 - MathHelper.PiOver4;
         protected const float CAM_DISTANCE = 60.0f;
 
         #endregion
@@ -49,8 +49,9 @@ namespace TrashSoup.Gameplay
 
         public override void Update(GameTime gameTime)
         {
-            tempYaw = -CAM_YAW_SENSITIVITY * (InputManager.Instance.GetRightStickValue().X);
-            tempPitch = CAM_PITCH_SENSITIVITY * (InputManager.Instance.GetRightStickValue().Y);
+            Vector2 camVector = InputHandler.Instance.GetCameraVector();
+            tempYaw = -CAM_YAW_SENSITIVITY * (camVector.X);
+            tempPitch = CAM_PITCH_SENSITIVITY * (camVector.Y);
 
             // TODO: secure this differently, probably counting up actual pitch angle from vectors
 
