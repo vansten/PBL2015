@@ -51,23 +51,38 @@ struct ColorPair
 	float3 Specular;
 };
 
+inline void ComputeSingleLight(float3 L, float3 color, float3 specularColor, float3 E, float3 N, inout ColorPair pair)
+{
+	float3 H = normalize(normalize(E) + L);
+	float intensity = max(dot(L, N), 0.0f);
+	float3 specular = pow(max(0.0f, dot(H, N)), Glossiness) * length(specularColor);
+
+	pair.Diffuse += intensity * color;
+	pair.Specular += specular * specularColor * intensity;
+}
+
 ColorPair ComputeLight(float3 E, float3 N)
 {
+	E = normalize(E);
+	N = normalize(N);
+
 	ColorPair result;
 
 	result.Diffuse = AmbientLightColor;
 	result.Specular = 0;
 
 	// DirLight0
-	float3 L = -DirLight0Direction;
-	float3 H = normalize(E + L);
-	float intensity = max(dot(L, N), 0.0f);
-	float3 color = DirLight0DiffuseColor;
-	float3 specularColor = DirLight0SpecularColor;
-	float3 specular = pow(max(0.0f, dot(H, N)), Glossiness) * length(specularColor);
+	ComputeSingleLight(-DirLight0Direction, DirLight0DiffuseColor, DirLight0SpecularColor, E, N, result);
 
-	result.Diffuse += intensity * color;
-	result.Specular += specular * specularColor * intensity;
+	// DirLight1
+	ComputeSingleLight(-DirLight1Direction, DirLight1DiffuseColor, DirLight1SpecularColor, E, N, result);
+
+	// DirLight2
+	ComputeSingleLight(-DirLight2Direction, DirLight2DiffuseColor, DirLight2SpecularColor, E, N, result);
+
+	// point lights
+
+
 
 	return result;
 }
@@ -93,11 +108,12 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	float alpha = color.a;
 	color.a = 1.0f;
 
-	ColorPair computedLight = ComputeLight(normalize(EyePosition - input.PositionWS.xyz), input.Normal);
+	ColorPair computedLight = ComputeLight(EyePosition - input.PositionWS.xyz, input.Normal);
 
 	color = color * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f);
 
-	color.a = Transparency;
+	color *= Transparency;
+
     return color;
 }
 

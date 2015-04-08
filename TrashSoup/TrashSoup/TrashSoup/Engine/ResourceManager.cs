@@ -66,6 +66,8 @@ namespace TrashSoup.Engine
             List<Material> testPlayerMats = new List<Material>();
             Material testPlayerMat = new Material("testPlayerMat", this.Effects[0], Textures[@"Textures\Test\cargo"]);
             testPlayerMats.Add(testPlayerMat);
+            testPlayerMat.Glossiness = 40.0f;
+            testPlayerMat.Transparency = 1.0f;
             testPlayerMat.UpdateEffect();
             this.Materials.Add(testPlayerMat.Name, testPlayerMat);
 
@@ -105,6 +107,7 @@ namespace TrashSoup.Engine
             // adding lights
             LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.05f, 0.05f, 0.2f));
             LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(1.0f, 0.8f, 0.8f), new Vector3(1.0f, 0.0f, 0.0f), new Vector3(-1.0f, -1.0f, -1.0f));
+            LightDirectional ldr2 = new LightDirectional(102, "LightDirectional2", new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 1.0f));
 
             // loading scene
             CurrentScene = new Scene(new SceneParams(0, "test"));
@@ -133,6 +136,7 @@ namespace TrashSoup.Engine
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;
+            CurrentScene.DirectionalLights[1] = ldr2;
 
             ////TESTING PARTICLES
             ps = new ParticleSystem(TrashSoupGame.Instance.GraphicsDevice, 

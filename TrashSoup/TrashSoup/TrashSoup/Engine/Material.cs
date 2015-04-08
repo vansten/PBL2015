@@ -279,7 +279,16 @@ namespace TrashSoup.Engine
             {
                 param = null;
                 this.parameters.TryGetValue("AmbientLightColor", out param);
-                if(param != null) param.SetValue(amb.LightColor);
+                if (param != null)
+                {
+                    param.SetValue(amb.LightColor);
+                }
+                else
+                {
+                    param = null;
+                    this.parameters.TryGetValue("EmissiveColor", out param);
+                    param.SetValue(amb.LightColor);
+                }
             }
             if(dirs != null)
             {
@@ -327,7 +336,17 @@ namespace TrashSoup.Engine
             if(MyEffect is BasicEffect)
             {
                 (MyEffect as BasicEffect).LightingEnabled = true;
+                (MyEffect as BasicEffect).DirectionalLight0.Enabled = true;
+                (MyEffect as BasicEffect).DirectionalLight1.Enabled = true;
+                (MyEffect as BasicEffect).DirectionalLight2.Enabled = true;
                 (MyEffect as BasicEffect).TextureEnabled = true;
+            }
+            else if(MyEffect is SkinnedEffect)
+            {
+                (MyEffect as SkinnedEffect).EnableDefaultLighting();
+                (MyEffect as SkinnedEffect).DirectionalLight0.Enabled = true;
+                (MyEffect as SkinnedEffect).DirectionalLight1.Enabled = true;
+                (MyEffect as SkinnedEffect).DirectionalLight2.Enabled = true;
             }
         }
         #endregion
