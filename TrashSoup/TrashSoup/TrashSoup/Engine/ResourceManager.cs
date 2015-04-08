@@ -74,7 +74,7 @@ namespace TrashSoup.Engine
             List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"]);
 
             List<Material> testTerMats = new List<Material>();
-            Material testTerMat = new Material("testTerMat", this.Effects[0], Textures[@"Textures\Test\metal01_d"]);
+            Material testTerMat = new Material("testTerMat", this.Effects[2], Textures[@"Textures\Test\metal01_d"]);
             testTerMat.SpecularColor = new Vector3(0.1f, 0.1f, 0.0f);
             testTerMat.Glossiness = 10.0f;
             testTerMat.UpdateEffect();
@@ -105,9 +105,10 @@ namespace TrashSoup.Engine
             testBox2.MyCollider = new BoxCollider(testBox2);    //Add a box collider to test physisc
 
             // adding lights
-            LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.05f, 0.05f, 0.2f));
-            LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(1.0f, 0.8f, 0.8f), new Vector3(1.0f, 0.0f, 0.0f), new Vector3(-1.0f, -1.0f, -1.0f));
-            LightDirectional ldr2 = new LightDirectional(102, "LightDirectional2", new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 1.0f));
+            LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.05f, 0.05f, 0.1f));
+            LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(0.2f, 0.1f, 0.1f), new Vector3(1.0f, 0.8f, 0.8f), new Vector3(-1.0f, -1.0f, -1.0f));
+            LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 70.0f);
+            lp1.MyTransform = new Transform(lp1, new Vector3(0.0f, 15.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
 
             // loading scene
             CurrentScene = new Scene(new SceneParams(0, "test"));
@@ -123,8 +124,8 @@ namespace TrashSoup.Engine
             else
             {
                 //Game camera
-                cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -1.0f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)),
-                     new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 10.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
+                cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -1.0f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)) + new Vector3(0.0f, 4.0f, 0.0f),
+                     new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 25.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
                 cam.Components.Add(new CameraBehaviourComponent(cam, testBox));
             }
             CurrentScene.Cam = cam;
@@ -136,7 +137,7 @@ namespace TrashSoup.Engine
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;
-            CurrentScene.DirectionalLights[1] = ldr2;
+            CurrentScene.PointLights.Add(lp1);
 
             ////TESTING PARTICLES
             ps = new ParticleSystem(TrashSoupGame.Instance.GraphicsDevice, 

@@ -47,6 +47,15 @@ namespace TrashSoup.Engine
 
     public class Scene : IXmlSerializable
     {
+        #region variables
+
+        private Vector3[] tempPLColors;
+        private Vector3[] tempPLSpeculars;
+        private Vector3[] tempPLPositions;
+        private float[] tempPLAttenuations;
+
+        #endregion
+
         #region properties
 
         public SceneParams Params { get; set; }
@@ -54,6 +63,7 @@ namespace TrashSoup.Engine
 
         public LightAmbient AmbientLight { get; set; }
         public LightDirectional[] DirectionalLights { get; set; }
+        public List<LightPoint> PointLights { get; set; }
         public Dictionary<uint, GameObject> ObjectsDictionary { get; protected set; }
         public QuadTree<GameObject> ObjectsQT { get; protected set; }
         // place for bounding sphere tree
@@ -71,6 +81,19 @@ namespace TrashSoup.Engine
             DirectionalLights = new LightDirectional[ResourceManager.DIRECTIONAL_MAX_LIGHTS];
             for (int i = 0; i < ResourceManager.DIRECTIONAL_MAX_LIGHTS; ++i)
                 DirectionalLights[i] = null;
+            PointLights = new List<LightPoint>();
+
+            tempPLColors = new Vector3[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
+            tempPLSpeculars = new Vector3[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
+            tempPLPositions = new Vector3[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
+            tempPLAttenuations = new float[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
+            for (int i = 0; i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i )
+            {
+                tempPLColors[i] = new Vector3(0.0f, 0.0f, 0.0f);
+                tempPLSpeculars[i] = new Vector3(0.0f, 0.0f, 0.0f);
+                tempPLPositions[i] = new Vector3(0.0f, 0.0f, 0.0f);
+                tempPLAttenuations[i] = 0.0f;
+            }
 
             ObjectsDictionary = new Dictionary<uint, GameObject>();
             ObjectsQT = new QuadTree<GameObject>();
@@ -134,6 +157,68 @@ namespace TrashSoup.Engine
         public void DrawAll(BoundingFrustum frustum, GameTime gameTime)
         {
             // not implemented yet
+        }
+
+        public void FlushTempPointLightData()
+        {
+            for (int i = 0; i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i)
+            {
+                tempPLColors[i].X = 0.0f;
+                tempPLColors[i].Y = 0.0f;
+                tempPLColors[i].Z = 0.0f;
+                tempPLPositions[i].X = 0.0f;
+                tempPLPositions[i].Y = 0.0f;
+                tempPLPositions[i].Z = 0.0f;
+                tempPLSpeculars[i].X = 0.0f;
+                tempPLSpeculars[i].Y = 0.0f;
+                tempPLSpeculars[i].Z = 0.0f;
+                tempPLAttenuations[i] = 0.0f;
+            }
+        }
+
+        public Vector3[] GetPointLightDiffuseColors()
+        {
+            for (int i = 0; i < PointLights.Count && i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i)
+            {
+                tempPLColors[i] = PointLights[i].LightColor;
+            }
+
+            return tempPLColors;
+        }
+
+        public Vector3[] GetPointLightSpecularColors()
+        {
+            for (int i = 0; i < PointLights.Count && i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i)
+            {
+                tempPLSpeculars[i] = PointLights[i].LightSpecularColor;
+            }
+
+            return tempPLSpeculars;
+        }
+
+        public Vector3[] GetPointLightPositions()
+        {
+            for (int i = 0; i < PointLights.Count && i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i)
+            {
+                tempPLPositions[i] = PointLights[i].MyTransform.Position;
+            }
+
+            return tempPLPositions;
+        }
+
+        public float[] GetPointLightAttenuations()
+        {
+            for (int i = 0; i < PointLights.Count && i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i)
+            {
+                tempPLAttenuations[i] = PointLights[i].Attenuation;
+            }
+
+            return tempPLAttenuations;
+        }
+
+        public uint GetPointLightCount()
+        {
+            return (PointLights.Count > 10 ? 10 : (uint)PointLights.Count);
         }
 
         public System.Xml.Schema.XmlSchema GetSchema()

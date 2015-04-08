@@ -1,3 +1,7 @@
+#define POINT_MAX_LIGHTS_PER_OBJECT 10
+#define MINIMUM_LENGTH_VALUE 0.00000000001f
+#define ATTENUATION_MULTIPLIER 8
+
 float4x4 World;
 float4x4 WorldViewProj;
 float4x4 WorldInverseTranspose;
@@ -13,6 +17,12 @@ float3 DirLight1SpecularColor;
 float3 DirLight2Direction;
 float3 DirLight2DiffuseColor;
 float3 DirLight2SpecularColor;
+
+float3 PointLightDiffuseColors[POINT_MAX_LIGHTS_PER_OBJECT];
+float3 PointLightPositions[POINT_MAX_LIGHTS_PER_OBJECT];
+float3 PointLightSpecularColors[POINT_MAX_LIGHTS_PER_OBJECT];
+float PointLightAttenuations[POINT_MAX_LIGHTS_PER_OBJECT];
+uint PointLightCount;
 
 texture DiffuseMap;
 sampler DiffuseSampler = sampler_state
@@ -58,18 +68,21 @@ inline void ComputeSingleLight(float3 L, float3 color, float3 specularColor, flo
 	float3 specular = pow(max(0.0f, dot(H, N)), Glossiness) * length(specularColor);
 
 	pair.Diffuse += intensity * color;
-	pair.Specular += specular * specularColor * intensity;
+	pair.Specular += specular * specularColor * pair.Diffuse;
 }
 
-ColorPair ComputeLight(float3 E, float3 N)
+ColorPair ComputeLight(float3 posWS, float3 E, float3 N)
 {
 	E = normalize(E);
 	N = normalize(N);
 
 	ColorPair result;
+	ColorPair temp;
 
 	result.Diffuse = AmbientLightColor;
 	result.Specular = 0;
+	temp.Diffuse = 0;
+	temp.Specular = 0;
 
 	// DirLight0
 	ComputeSingleLight(-DirLight0Direction, DirLight0DiffuseColor, DirLight0SpecularColor, E, N, result);
@@ -81,7 +94,24 @@ ColorPair ComputeLight(float3 E, float3 N)
 	ComputeSingleLight(-DirLight2Direction, DirLight2DiffuseColor, DirLight2SpecularColor, E, N, result);
 
 	// point lights
+	float3 L;
+	float Llength;
+	float att;
+	for (uint i = 0; i < PointLightCount; ++i)
+	{
+		L = PointLightPositions[i] - posWS;
+		Llength = length(L);
+		ComputeSingleLight(normalize(L), PointLightDiffuseColors[i], PointLightSpecularColors[i], E, N, temp);
 
+		att = saturate(ATTENUATION_MULTIPLIER * length(PointLightDiffuseColors[i]) * PointLightAttenuations[i] / max(Llength * Llength, MINIMUM_LENGTH_VALUE));
+		temp.Diffuse = temp.Diffuse * att;
+		temp.Specular = temp.Specular * att;
+		result.Diffuse += temp.Diffuse;
+		result.Specular += temp.Specular;
+
+		temp.Diffuse = 0;
+		temp.Specular = 0;
+	}
 
 
 	return result;
@@ -108,7 +138,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	float alpha = color.a;
 	color.a = 1.0f;
 
-	ColorPair computedLight = ComputeLight(EyePosition - input.PositionWS.xyz, input.Normal);
+	ColorPair computedLight = ComputeLight(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal);
 
 	color = color * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f);
 

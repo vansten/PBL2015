@@ -186,10 +186,11 @@ namespace TrashSoup.Engine
 
         public void UpdateEffect()
         {
-            UpdateEffect(Matrix.Identity, Matrix.Identity, null, null, new Vector3(0.0f, 0.0f, 0.0f));
+            UpdateEffect(Matrix.Identity, Matrix.Identity, null, null, null, null, null, null, 0, new Vector3(0.0f, 0.0f, 0.0f));
         }
 
-        public void UpdateEffect(Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3 eyeVector)
+        public void UpdateEffect(Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
+            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector)
         {
             this.parameters["World"].SetValue(world);
             this.parameters["WorldInverseTranspose"].SetValue(Matrix.Transpose(Matrix.Invert(world)));
@@ -257,6 +258,7 @@ namespace TrashSoup.Engine
                     param.SetValue(amb.LightColor);
                 }
             }
+
             if(dirs != null)
             {
                 for (int i = 0; i < ResourceManager.DIRECTIONAL_MAX_LIGHTS; ++i )
@@ -277,6 +279,40 @@ namespace TrashSoup.Engine
                     }
                 }
             }
+
+            // point lights
+
+            if(pointColors != null)
+            {
+                param = null;
+                this.parameters.TryGetValue("PointLightDiffuseColors", out param);
+                if (param != null) param.SetValue(pointColors);
+            }
+
+            if(pointSpeculars != null)
+            {
+                param = null;
+                this.parameters.TryGetValue("PointLightSpecularColors", out param);
+                if (param != null) param.SetValue(pointSpeculars);
+            }
+
+            if (pointPositions != null)
+            {
+                param = null;
+                this.parameters.TryGetValue("PointLightPositions", out param);
+                if (param != null) param.SetValue(pointPositions);
+            }
+
+            if(pointAttenuations != null)
+            {
+                param = null;
+                this.parameters.TryGetValue("PointLightAttenuations", out param);
+                if (param != null) param.SetValue(pointAttenuations);
+            }
+
+            param = null;
+            this.parameters.TryGetValue("PointLightCount", out param);
+            if (param != null) param.SetValue(pointCount);
 
             // eyevector
             param = null;
@@ -304,8 +340,17 @@ namespace TrashSoup.Engine
             {
                 (MyEffect as BasicEffect).LightingEnabled = true;
                 (MyEffect as BasicEffect).DirectionalLight0.Enabled = true;
+                (MyEffect as BasicEffect).DirectionalLight0.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
+                (MyEffect as BasicEffect).DirectionalLight0.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
+                (MyEffect as BasicEffect).DirectionalLight0.Direction = new Vector3(0.0f, 1.0f, 0.0f);
                 (MyEffect as BasicEffect).DirectionalLight1.Enabled = true;
+                (MyEffect as BasicEffect).DirectionalLight1.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
+                (MyEffect as BasicEffect).DirectionalLight1.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
+                (MyEffect as BasicEffect).DirectionalLight1.Direction = new Vector3(0.0f, 1.0f, 0.0f);
                 (MyEffect as BasicEffect).DirectionalLight2.Enabled = true;
+                (MyEffect as BasicEffect).DirectionalLight2.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
+                (MyEffect as BasicEffect).DirectionalLight2.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
+                (MyEffect as BasicEffect).DirectionalLight2.Direction = new Vector3(0.0f, 1.0f, 0.0f);
                 (MyEffect as BasicEffect).TextureEnabled = true;
             }
             else if(MyEffect is SkinnedEffect)
@@ -314,6 +359,15 @@ namespace TrashSoup.Engine
                 (MyEffect as SkinnedEffect).DirectionalLight0.Enabled = true;
                 (MyEffect as SkinnedEffect).DirectionalLight1.Enabled = true;
                 (MyEffect as SkinnedEffect).DirectionalLight2.Enabled = true;
+                (MyEffect as SkinnedEffect).DirectionalLight0.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
+                (MyEffect as SkinnedEffect).DirectionalLight0.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
+                (MyEffect as SkinnedEffect).DirectionalLight0.Direction = new Vector3(0.0f, 1.0f, 0.0f);
+                (MyEffect as SkinnedEffect).DirectionalLight1.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
+                (MyEffect as SkinnedEffect).DirectionalLight1.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
+                (MyEffect as SkinnedEffect).DirectionalLight1.Direction = new Vector3(0.0f, 1.0f, 0.0f);
+                (MyEffect as SkinnedEffect).DirectionalLight2.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
+                (MyEffect as SkinnedEffect).DirectionalLight2.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
+                (MyEffect as SkinnedEffect).DirectionalLight2.Direction = new Vector3(0.0f, 1.0f, 0.0f);
             }
         }
         #endregion
