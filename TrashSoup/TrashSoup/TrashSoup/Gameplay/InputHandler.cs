@@ -33,9 +33,15 @@ namespace TrashSoup.Gameplay
         /// 
         /// Returns true if sqrt(LeftStickValue().Length()) > 0.75f
         /// </summary>
-        public bool IsSprinting()
+        public bool IsRunning()
         {
             return InputManager.Instance.GetLeftStickValue().LengthSquared() > 0.75f;
+        }
+
+        public bool IsSprinting()
+        {
+            return (InputManager.Instance.GetGamePadButton(Microsoft.Xna.Framework.Input.Buttons.B) ||
+                InputManager.Instance.GetKeyboardButton(Keys.LeftShift));
         }
 
         /// <summary>

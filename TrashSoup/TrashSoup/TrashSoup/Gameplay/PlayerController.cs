@@ -89,7 +89,7 @@ namespace TrashSoup.Gameplay
                 MyObject.MyTransform.Forward = Vector3.Lerp(prevForward, tempMoveRotated, ROTATION_SPEED);
                 MyObject.MyTransform.Rotation = RotateAsForward(MyObject.MyTransform.Forward, MyObject.MyTransform.Rotation);
                
-                if (InputManager.Instance.GetGamePadButton(Buttons.B) && tempMove.Length() >= 0.8f)
+                if (InputHandler.Instance.IsSprinting() && tempMove.Length() >= 0.8f)
                 {
                     sprint = MathHelper.Lerp(1.0f, SPRINT_MULTIPLIER, sprintM);
                     sprintM += SPRINT_ACCELERATION * (gameTime.ElapsedGameTime.Milliseconds / 1000.0f);
