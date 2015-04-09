@@ -196,7 +196,7 @@ namespace TrashSoup.Engine
 
                         m.DiffuseMap = ResourceManager.Instance.Textures[reader.ReadElementString("DiffusePath", "")];
                         m.NormalMap = ResourceManager.Instance.Textures[reader.ReadElementString("NormalPath", "")];
-                        m.CubeMap = ResourceManager.Instance.Textures[reader.ReadElementString("CubePath", "")];
+                        m.CubeMap = ResourceManager.Instance.TexturesCube[reader.ReadElementString("CubePath", "")];
 
                         reader.ReadStartElement("SpecularColor");
                         m.SpecularColor = new Vector3(reader.ReadElementContentAsFloat("X", ""),
@@ -261,7 +261,7 @@ namespace TrashSoup.Engine
 
                     writer.WriteElementString("DiffusePath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == mat.DiffuseMap).Key);
                     writer.WriteElementString("NormalPath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == mat.NormalMap).Key);
-                    writer.WriteElementString("CubePath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == mat.CubeMap).Key);
+                    writer.WriteElementString("CubePath", ResourceManager.Instance.TexturesCube.FirstOrDefault(x => x.Value == mat.CubeMap).Key);
 
                     writer.WriteStartElement("SpecularColor");
                     writer.WriteElementString("X", XmlConvert.ToString(mat.SpecularColor.X));

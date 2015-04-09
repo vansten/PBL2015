@@ -298,6 +298,81 @@ namespace TrashSoup.Engine
             }
         }
 
+        public ObjectComponent GetComponent<T>() where T : System.Type
+        {
+            T tmpVariable = default(T);
+            System.Type t = tmpVariable.GetType();
+
+            if(t == typeof(Transform) && this.MyTransform != null)
+            {
+                return this.MyTransform;
+            }
+
+            if(t == typeof(Animator) && this.MyAnimator != null)
+            {
+                return this.MyAnimator;
+            }
+
+            if(t == typeof(Collider) && this.MyCollider != null)
+            {
+                return this.MyCollider;
+            }
+
+            if(t == typeof(PhysicalObject) && this.MyPhysicalObject != null)
+            {
+                return this.MyPhysicalObject;
+            }
+
+            foreach(ObjectComponent oc in this.Components)
+            {
+                if(oc.GetType() == t)
+                {
+                    return oc;
+                }
+            }
+
+            return null;
+        }
+
+        public List<ObjectComponent> GetComponents<T>() where T : System.Type
+        {
+            List<ObjectComponent> componentsList = new List<ObjectComponent>();
+
+
+            T tmpVariable = default(T);
+            System.Type t = tmpVariable.GetType();
+
+            if (t == typeof(Transform) && this.MyTransform != null)
+            {
+                componentsList.Add(this.MyTransform);
+            }
+
+            if (t == typeof(Animator) && this.MyAnimator != null)
+            {
+                componentsList.Add(this.MyAnimator);
+            }
+
+            if (t == typeof(Collider) && this.MyCollider != null)
+            {
+                componentsList.Add(this.MyCollider);
+            }
+
+            if (t == typeof(PhysicalObject) && this.MyPhysicalObject != null)
+            {
+                componentsList.Add(this.MyPhysicalObject);
+            }
+
+            foreach (ObjectComponent oc in this.Components)
+            {
+                if (oc.GetType() == t)
+                {
+                    componentsList.Add(oc);
+                }
+            }
+
+            return componentsList;
+        }
+
         #endregion
 
     }

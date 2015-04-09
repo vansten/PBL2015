@@ -65,6 +65,16 @@ namespace TrashSoup.Engine
             writer.WriteElementString("MyObjectID", MyObject.UniqueID.ToString());
         }
 
+        public ObjectComponent GetComponent<T>() where T : System.Type
+        {
+            return this.MyObject.GetComponent<T>();
+        }
+
+        public List<ObjectComponent> GetComponents<T>() where T : System.Type
+        {
+            return this.MyObject.GetComponents<T>();
+        }
+
         #endregion
     }
 }
