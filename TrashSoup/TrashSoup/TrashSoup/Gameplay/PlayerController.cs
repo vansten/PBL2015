@@ -51,9 +51,10 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            tempMove = new Vector3(InputManager.Instance.GetLeftStickValue().X,
+            Vector2 movementVector = InputHandler.Instance.GetMovementVector();
+            tempMove = new Vector3(movementVector.X,
                 (InputManager.Instance.GetGamePadButton(Buttons.RightTrigger) ? 1.0f : 0.0f) - (InputManager.Instance.GetGamePadButton(Buttons.LeftTrigger) ? 1.0f : 0.0f),
-                InputManager.Instance.GetLeftStickValue().Y);
+                movementVector.Y);
 
             if(tempMove.Length() > 0.0f &&
                 ResourceManager.Instance.CurrentScene.Cam != null)
@@ -88,7 +89,7 @@ namespace TrashSoup.Gameplay
                 MyObject.MyTransform.Forward = Vector3.Lerp(prevForward, tempMoveRotated, ROTATION_SPEED);
                 MyObject.MyTransform.Rotation = RotateAsForward(MyObject.MyTransform.Forward, MyObject.MyTransform.Rotation);
                
-                if (InputManager.Instance.GetGamePadButton(Buttons.B) && tempMove.Length() >= 0.8f)
+                if (InputHandler.Instance.IsSprinting() && tempMove.Length() >= 0.8f)
                 {
                     sprint = MathHelper.Lerp(1.0f, SPRINT_MULTIPLIER, sprintM);
                     sprintM += SPRINT_ACCELERATION * (gameTime.ElapsedGameTime.Milliseconds / 1000.0f);
@@ -112,7 +113,7 @@ namespace TrashSoup.Gameplay
                 }
             }
 
-            if (InputManager.Instance.GetGamePadButton(Buttons.A))
+            if (InputHandler.Instance.IsJumping())
             {
                 if (MyObject.MyAnimator != null)
                 {

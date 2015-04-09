@@ -92,6 +92,7 @@
     <Compile Include="Engine\Collider.cs" />
     <Compile Include="Engine\CustomModel.cs" />
     <Compile Include="Engine\Debug.cs" />
+    <Compile Include="Engine\LightPoint.cs" />
     <Compile Include="Engine\Material.cs" />
     <Compile Include="Engine\ParticleSystem.cs" />
     <Compile Include="Engine\ParticleVertex.cs" />

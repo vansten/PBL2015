@@ -65,20 +65,19 @@ namespace TrashSoup.Engine
 
             // loading materials
             List<Material> testPlayerMats = new List<Material>();
-            Material testPlayerMat = new Material("testPlayerMat", this.Effects[2], Textures[@"Textures\Test\cargo"]);
+            Material testPlayerMat = new Material("testPlayerMat", this.Effects[3], Textures[@"Textures\Test\cargo"]);
             testPlayerMats.Add(testPlayerMat);
+            testPlayerMat.NormalMap = Textures[@"Textures\Test\cargo_NRM"];
             testPlayerMat.Glossiness = 40.0f;
             testPlayerMat.Transparency = 1.0f;
-            testPlayerMat.UpdateEffect();
             this.Materials.Add(testPlayerMat.Name, testPlayerMat);
 
-            List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"]);
+            List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"], null);
 
             List<Material> testTerMats = new List<Material>();
-            Material testTerMat = new Material("testTerMat", this.Effects[0], Textures[@"Textures\Test\metal01_d"]);
+            Material testTerMat = new Material("testTerMat", this.Effects[2], Textures[@"Textures\Test\metal01_d"]);
             testTerMat.SpecularColor = new Vector3(0.1f, 0.1f, 0.0f);
             testTerMat.Glossiness = 10.0f;
-            testTerMat.UpdateEffect();
             this.Materials.Add(testTerMat.Name, testTerMat);
             testTerMats.Add(testTerMat);
 
@@ -106,9 +105,10 @@ namespace TrashSoup.Engine
             testBox2.MyCollider = new BoxCollider(testBox2);    //Add a box collider to test physisc
 
             // adding lights
-            LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.05f, 0.05f, 0.2f));
-            LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(1.0f, 0.8f, 0.8f), new Vector3(1.0f, 0.0f, 0.0f), new Vector3(-1.0f, -1.0f, -1.0f));
-            LightDirectional ldr2 = new LightDirectional(102, "LightDirectional2", new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 1.0f));
+            LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.05f, 0.05f, 0.1f));
+            LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(0.5f, 0.4f, 0.3f), new Vector3(1.0f, 0.8f, 0.8f), new Vector3(-1.0f, -1.0f, -1.0f));
+            LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 70.0f);
+            lp1.MyTransform = new Transform(lp1, new Vector3(0.0f, 15.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
 
             // loading scene
             CurrentScene = new Scene(new SceneParams(0, "test"));
@@ -124,8 +124,8 @@ namespace TrashSoup.Engine
             else
             {
                 //Game camera
-                cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -1.0f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)),
-                     new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 10.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
+                cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -1.0f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)) + new Vector3(0.0f, 4.0f, 0.0f),
+                     new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 25.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
                 cam.Components.Add(new CameraBehaviourComponent(cam, testBox));
             }
             CurrentScene.Cam = cam;
@@ -137,7 +137,7 @@ namespace TrashSoup.Engine
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;
-            CurrentScene.DirectionalLights[1] = ldr2;
+            CurrentScene.PointLights.Add(lp1);
 
             ////TESTING PARTICLES
             ps = new ParticleSystem(TrashSoupGame.Instance.GraphicsDevice, 
@@ -222,6 +222,7 @@ namespace TrashSoup.Engine
 
             // FOR TETIN
             Textures.Add(@"Textures\Test\cargo", game.Content.Load<Texture2D>(@"Textures\Test\cargo"));
+            Textures.Add(@"Textures\Test\cargo_NRM", game.Content.Load<Texture2D>(@"Textures\Test\cargo_NRM"));
             Textures.Add(@"Textures\Test\metal01_d", game.Content.Load<Texture2D>(@"Textures\Test\metal01_d"));
             Textures.Add(@"Textures\ParticleTest\Particle", game.Content.Load<Texture2D>(@"Textures\ParticleTest\Particle"));
         }
@@ -244,6 +245,7 @@ namespace TrashSoup.Engine
             Effects.Add(new BasicEffect(TrashSoupGame.Instance.GraphicsDevice));
             Effects.Add(new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice));
             Effects.Add(ef);
+            Effects.Add(TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\NormalEffect"));
         }
 
         /// <summary>
@@ -272,7 +274,7 @@ namespace TrashSoup.Engine
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        private List<Material> LoadBasicMaterialsFromModel(Model model)
+        private List<Material> LoadBasicMaterialsFromModel(Model model, Effect toBeAdded)
         {
             List<Material> materials = new List<Material>();
 
@@ -284,18 +286,25 @@ namespace TrashSoup.Engine
 
             Effect effectToAdd;
 
-            if (model.Meshes[0].Effects[0] is BasicEffect)
+            if(toBeAdded == null)
             {
-                effectToAdd = Effects[0];
-            }
-            else if (model.Meshes[0].Effects[0] is SkinnedEffect)
-            {
-                effectToAdd = Effects[1];
+                if (model.Meshes[0].Effects[0] is BasicEffect)
+                {
+                    effectToAdd = Effects[0];
+                }
+                else if (model.Meshes[0].Effects[0] is SkinnedEffect)
+                {
+                    effectToAdd = Effects[1];
+                }
+                else
+                {
+                    Debug.Log("MATERIAL LOADING FAILED: Unrecognized effect type in model.");
+                    return materials;
+                }
             }
             else
             {
-                Debug.Log("MATERIAL LOADING FAILED: Unrecognized effect type in model.");
-                return materials;
+                effectToAdd = toBeAdded;
             }
             
             foreach(SkinnedModelLibrary.MaterialModel mm in materialModels)
