@@ -74,6 +74,17 @@ namespace TrashSoup.Engine
             testPlayerMat.Transparency = 1.0f;
             this.Materials.Add(testPlayerMat.Name, testPlayerMat);
 
+            List<Material> testPlayerMats2 = new List<Material>();
+            Material testPlayerMat2 = new Material("testPlayerMat2", this.Effects[7], Textures[@"Textures\Test\cargo"]);
+            testPlayerMats2.Add(testPlayerMat2);
+            testPlayerMat2.NormalMap = Textures[@"Textures\Test\cargo_NRM"];
+            testPlayerMat2.CubeMap = TexturesCube[@"Textures\Skyboxes\Sunset"];
+            testPlayerMat2.Glossiness = 40.0f;
+            testPlayerMat2.ReflectivityColor = new Vector3(1.0f, 0.0f, 1.0f);
+            testPlayerMat2.ReflectivityBias = 0.7f;
+            testPlayerMat2.Transparency = 1.0f;
+            this.Materials.Add(testPlayerMat2.Name, testPlayerMat2);
+
             List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"], this.Effects[5]);
 
             List<Material> testTerMats = new List<Material>();
@@ -92,7 +103,7 @@ namespace TrashSoup.Engine
             testSBMats.Add(testSBMat);
 
             // loading gameobjects
-            GameObject testBox = new GameObject(1, "testBox");
+            GameObject testBox = new GameObject(1, "Player");
             testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, -40.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.2f);
             CustomModel skModel = new CustomModel(testBox, new Model[] { Models["Models/Test/TestGuy"], null, null }, 3, playerMats);
             Animator playerAnimator = new Animator(testBox, skModel.LODs[0]);
@@ -110,9 +121,14 @@ namespace TrashSoup.Engine
             testTer.Components.Add(new CustomModel(testTer, new Model[] { Models["Models/Test/TestTerrain"], null, null }, 3, testTerMats));
 
             GameObject testBox2 = new GameObject(3, "testBox2");
-            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 40.0f, 70.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
+            testBox2.MyTransform = new Transform(testBox2, new Vector3(-100.0f, 40.0f, 70.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
             testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Test/TestSphere"], null, null }, 3, testPlayerMats));
-            testBox2.MyCollider = new BoxCollider(testBox2);    //Add a box collider to test physisc
+            testBox2.MyCollider = new BoxCollider(testBox2);
+
+            GameObject testBox3 = new GameObject(5, "testBox3");
+            testBox3.MyTransform = new Transform(testBox3, new Vector3(100.0f, 40.0f, 70.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
+            testBox3.Components.Add(new CustomModel(testBox3, new Model[] { Models["Models/Test/TestSphere"], null, null }, 3, testPlayerMats2));
+            testBox3.MyCollider = new BoxCollider(testBox3);
 
             GameObject skyBox = new GameObject(4, "skyBox");
             skyBox.MyTransform = new Transform(skyBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1000.0f);
@@ -121,8 +137,8 @@ namespace TrashSoup.Engine
             // adding lights
             LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.05f, 0.05f, 0.1f));
             LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(0.5f, 0.4f, 0.3f), new Vector3(1.0f, 0.8f, 0.8f), new Vector3(-1.0f, -1.0f, -1.0f));
-            LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 70.0f);
-            lp1.MyTransform = new Transform(lp1, new Vector3(0.0f, 15.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
+            LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 200.0f);
+            lp1.MyTransform = new Transform(lp1, new Vector3(-40.0f, 40.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
 
             // loading scene
             CurrentScene = new Scene(new SceneParams(0, "test"));
@@ -149,6 +165,7 @@ namespace TrashSoup.Engine
             CurrentScene.ObjectsDictionary.Add(testTer.UniqueID, testTer);
             CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);
             CurrentScene.ObjectsDictionary.Add(testBox2.UniqueID, testBox2);
+            CurrentScene.ObjectsDictionary.Add(testBox3.UniqueID, testBox3);
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;
@@ -287,6 +304,7 @@ namespace TrashSoup.Engine
             Effects.Add(TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\DefaultSkinnedEffect"));
             Effects.Add(TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\NormalSkinnedEffect"));
             Effects.Add(TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\SkyboxEffect"));
+            Effects.Add(TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\CubeNormalEffect"));
         }
 
         /// <summary>
