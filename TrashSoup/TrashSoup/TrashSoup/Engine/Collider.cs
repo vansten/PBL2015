@@ -99,20 +99,24 @@ namespace TrashSoup.Engine
 
         }
 
-        public System.Xml.Schema.XmlSchema GetSchema() { return null; }
-        public void ReadXml(System.Xml.XmlReader reader)
+        public override System.Xml.Schema.XmlSchema GetSchema() { return null; }
+        public override void ReadXml(System.Xml.XmlReader reader)
         {
-            //worldMatrix
-            worldMatrix = this.MyObject.MyTransform.GetWorldMatrix();
             reader.MoveToContent();
             reader.ReadStartElement();
 
+            base.ReadXml(reader);
+            ////worldMatrix
+            //worldMatrix = this.MyObject.MyTransform.GetWorldMatrix();
+
             IsTrigger = reader.ReadElementContentAsBoolean("IsTrigger", "");
+            //MyObject = ResourceManager.Instance.CurrentScene.GetObject(tmp);
 
             reader.ReadEndElement();
         }
-        public void WriteXml(System.Xml.XmlWriter writer)
+        public override void WriteXml(System.Xml.XmlWriter writer)
         {
+            base.WriteXml(writer);
             writer.WriteElementString("IsTrigger", XmlConvert.ToString(IsTrigger));
         }
 

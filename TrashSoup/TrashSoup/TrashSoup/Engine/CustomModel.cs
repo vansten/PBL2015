@@ -136,15 +136,17 @@ namespace TrashSoup.Engine
         //    }
         //}
 
-        public System.Xml.Schema.XmlSchema GetSchema()
+        public override System.Xml.Schema.XmlSchema GetSchema()
         {
             return null;
         }
 
-        public void ReadXml(System.Xml.XmlReader reader)
+        public override void ReadXml(System.Xml.XmlReader reader)
         {
             reader.MoveToContent();
             reader.ReadStartElement();
+
+            base.ReadXml(reader);
 
             LODState = (LODStateEnum)Enum.Parse(typeof(LODStateEnum), reader.ReadElementString("LODState", ""));
 
@@ -226,8 +228,10 @@ namespace TrashSoup.Engine
             reader.ReadEndElement();
         }
 
-        public void WriteXml(System.Xml.XmlWriter writer)
+        public override void WriteXml(System.Xml.XmlWriter writer)
         {
+            base.WriteXml(writer);
+
             writer.WriteElementString("LODState", LODState.ToString());
 
             writer.WriteStartElement("LODs");

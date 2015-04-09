@@ -206,19 +206,24 @@ namespace TrashSoup.Gameplay
         }
 
 
-        public System.Xml.Schema.XmlSchema GetSchema()
+        public override System.Xml.Schema.XmlSchema GetSchema()
         {
             return null;
         }
 
-        public void ReadXml(System.Xml.XmlReader reader)
+        public override void ReadXml(System.Xml.XmlReader reader)
         {
             reader.ReadStartElement();
+
+            base.ReadXml(reader);
+            //MyObject = ResourceManager.Instance.CurrentScene.GetObject(tmp);
+
+            reader.ReadEndElement();
         }
 
-        public void WriteXml(System.Xml.XmlWriter writer)
+        public override void WriteXml(System.Xml.XmlWriter writer)
         {
-            
+            base.WriteXml(writer);
         }
 
         #endregion

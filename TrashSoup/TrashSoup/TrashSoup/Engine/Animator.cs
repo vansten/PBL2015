@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SkinningModelLibrary;
 
 namespace TrashSoup.Engine
 {
-    public class Animator : ObjectComponent
+    public class Animator : ObjectComponent, IXmlSerializable
     {
         #region variables
 
@@ -403,6 +404,21 @@ namespace TrashSoup.Engine
 
                 return newMatrices;
             }
+        }
+
+        public override System.Xml.Schema.XmlSchema GetSchema()
+        {
+            return base.GetSchema();
+        }
+
+        public override void ReadXml(System.Xml.XmlReader reader)
+        {
+            base.ReadXml(reader);
+        }
+
+        public override void WriteXml(System.Xml.XmlWriter writer)
+        {
+            base.WriteXml(writer);
         }
 
         #endregion

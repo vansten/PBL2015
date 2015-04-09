@@ -27,6 +27,7 @@ namespace TrashSoup.Engine
         #region Variables
         public Scene CurrentScene;
         public Dictionary<string, Model> Models = new Dictionary<string, Model>();
+        public Dictionary<string, Model> Animations = new Dictionary<string, Model>();
         public Dictionary<string, Texture2D> Textures = new Dictionary<string, Texture2D>();
         public List<SpriteFont> Fonts = new List<SpriteFont>();
         public List<Effect> Effects = new List<Effect>();
@@ -58,9 +59,9 @@ namespace TrashSoup.Engine
             AddModel("Models/Test/TestTerrain");
             AddModel("Models/Test/TestGuy");
             AddModel("Models/Test/TestSphere");
-            AddModel("Animations/Test/walking_1");
-            AddModel("Animations/Test/idle_1");
-            AddModel("Animations/Test/jump_1");
+            AddAnimation("Animations/Test/walking_1");
+            AddAnimation("Animations/Test/idle_1");
+            AddAnimation("Animations/Test/jump_1");
 
             // loading materials
             List<Material> testPlayerMats = new List<Material>();
@@ -85,9 +86,9 @@ namespace TrashSoup.Engine
             testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, -40.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.2f);
             CustomModel skModel = new CustomModel(testBox, new Model[] { Models["Models/Test/TestGuy"], null, null }, 3, playerMats);
             Animator playerAnimator = new Animator(testBox, skModel.LODs[0]);
-            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/walking_1"], "walking_1"));
-            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/idle_1"], "idle_1"));
-            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Models["Animations/Test/jump_1"], "jump_1"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/Test/walking_1"], "walking_1"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/Test/idle_1"], "idle_1"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/Test/jump_1"], "jump_1"));
             testBox.Components.Add(skModel);
             testBox.MyAnimator = playerAnimator;
             testBox.Components.Add(new PlayerController(testBox));
@@ -173,6 +174,11 @@ namespace TrashSoup.Engine
         private void AddModel(String path)
         {
             Models.Add(path, TrashSoupGame.Instance.Content.Load<Model>(path));
+        }
+
+        private void AddAnimation(String path)
+        {
+            Animations.Add(path, TrashSoupGame.Instance.Content.Load<Model>(path));
         }
 
         /// <summary>
