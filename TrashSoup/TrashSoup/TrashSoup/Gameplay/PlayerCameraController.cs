@@ -79,16 +79,20 @@ namespace TrashSoup.Gameplay
             cam = (Camera)MyObject;
         }
 
-        public System.Xml.Schema.XmlSchema GetSchema()
+        public override System.Xml.Schema.XmlSchema GetSchema()
         {
             return null;
         }
 
-        public void ReadXml(System.Xml.XmlReader reader)
+        public override void ReadXml(System.Xml.XmlReader reader)
         {
             reader.MoveToContent();
             reader.ReadStartElement();
+
+            base.ReadXml(reader);
+
             target = ResourceManager.Instance.CurrentScene.GetObject((uint)reader.ReadElementContentAsInt("TargetID", ""));
+            //target = ResourceManager.Instance.CurrentScene.GetObject(tmp);
             if(reader.Name == "TargetPosition")
             {
                 reader.ReadStartElement();
@@ -100,8 +104,10 @@ namespace TrashSoup.Gameplay
             reader.ReadEndElement();
         }
 
-        public void WriteXml(System.Xml.XmlWriter writer)
+        public override void WriteXml(System.Xml.XmlWriter writer)
         {
+            base.WriteXml(writer);
+
             writer.WriteElementString("TargetID", this.target.UniqueID.ToString());
             writer.WriteStartElement("TargetPosition");
             writer.WriteElementString("X", XmlConvert.ToString(this.target.MyTransform.Position.X));

@@ -146,7 +146,7 @@ namespace TrashSoup.Engine
             reader.MoveToContent();
             reader.ReadStartElement();
 
-            ObjectsDictionary = new Dictionary<uint, GameObject>();
+            ResourceManager.Instance.CurrentScene.ObjectsDictionary = new Dictionary<uint, GameObject>();
             DirectionalLights = new LightDirectional[ResourceManager.DIRECTIONAL_MAX_LIGHTS];
 
             if(reader.Name == "SceneParams")
@@ -193,8 +193,8 @@ namespace TrashSoup.Engine
                     reader.ReadStartElement();
                     GameObject obj = new GameObject(0, "");
                     uint key = (uint)reader.ReadElementContentAsInt("GameObjectKey", "");
+                    ResourceManager.Instance.CurrentScene.ObjectsDictionary.Add(key, obj);
                     (obj as IXmlSerializable).ReadXml(reader);
-                    ObjectsDictionary.Add(key, obj);
                 }
                 reader.ReadEndElement();
             }
@@ -206,6 +206,8 @@ namespace TrashSoup.Engine
                 reader.ReadStartElement();
                 (Cam as IXmlSerializable).ReadXml(reader);
             }
+
+            ObjectsDictionary = ResourceManager.Instance.CurrentScene.ObjectsDictionary;
 
             reader.ReadEndElement();
         }

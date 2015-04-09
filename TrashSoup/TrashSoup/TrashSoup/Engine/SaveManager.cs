@@ -66,6 +66,7 @@ namespace TrashSoup.Engine
             {
                 //this.scene = new Scene();
                 //Scene tmp = (Scene)serializer.Deserialize(file);
+                ResourceManager.Instance.CurrentScene = new Scene();
                 ResourceManager.Instance.CurrentScene = (Scene)serializer.Deserialize(file);
             }
         }

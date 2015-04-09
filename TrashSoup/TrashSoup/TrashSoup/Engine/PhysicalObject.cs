@@ -167,15 +167,18 @@ namespace TrashSoup.Engine
             }
         }
 
-        public System.Xml.Schema.XmlSchema GetSchema()
+        public override System.Xml.Schema.XmlSchema GetSchema()
         {
             return null;
         }
 
-        public void ReadXml(System.Xml.XmlReader reader)
+        public override void ReadXml(System.Xml.XmlReader reader)
         {
             reader.MoveToContent();
             reader.ReadStartElement();
+
+            base.ReadXml(reader);
+            //MyObject = ResourceManager.Instance.CurrentScene.GetObject(tmp);
 
             if(reader.Name == "Acceleration")
             {
@@ -207,8 +210,10 @@ namespace TrashSoup.Engine
             reader.ReadEndElement();
         }
 
-        public void WriteXml(System.Xml.XmlWriter writer)
+        public override void WriteXml(System.Xml.XmlWriter writer)
         {
+            base.WriteXml(writer);
+
             writer.WriteStartElement("Acceleration");
             writer.WriteElementString("X", XmlConvert.ToString(acceleration.X));
             writer.WriteElementString("Y", XmlConvert.ToString(acceleration.Y));

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 
 namespace TrashSoup.Engine
 {
-    public abstract class ObjectComponent
+    public abstract class ObjectComponent : IXmlSerializable
     {
         #region variables
 
@@ -18,6 +19,7 @@ namespace TrashSoup.Engine
 
         public bool Enabled { get; set; }
         public bool Visible { get; set; }
+        public uint tmp;
 
         #endregion
 
@@ -50,6 +52,17 @@ namespace TrashSoup.Engine
         public virtual void OnTrigger(GameObject other)
         {
 
+        }
+
+        public virtual System.Xml.Schema.XmlSchema GetSchema() { return null; }
+        public virtual void ReadXml(System.Xml.XmlReader reader)
+        {
+            //MyObject = ResourceManager.Instance.CurrentScene.GetObject((uint)reader.ReadElementContentAsInt("MyObjectID", ""));
+            tmp = (uint)reader.ReadElementContentAsInt("MyObjectID", "");
+        }
+        public virtual void WriteXml(System.Xml.XmlWriter writer)
+        {
+            writer.WriteElementString("MyObjectID", MyObject.UniqueID.ToString());
         }
 
         #endregion

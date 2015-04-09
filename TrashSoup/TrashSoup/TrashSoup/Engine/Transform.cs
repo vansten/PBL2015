@@ -154,11 +154,14 @@ namespace TrashSoup.Engine
             this.positionChangeNormal.Z *= -1.0f;
         }
 
-        public System.Xml.Schema.XmlSchema GetSchema() { return null; }
-        public void ReadXml(System.Xml.XmlReader reader)
+        public override System.Xml.Schema.XmlSchema GetSchema() { return null; }
+        public override void ReadXml(System.Xml.XmlReader reader)
         {
             reader.MoveToContent();
             reader.ReadStartElement();
+
+            base.ReadXml(reader);
+            //MyObject = ResourceManager.Instance.CurrentScene.GetObject(tmp);
 
             if(reader.Name == "Position")
             {
@@ -192,8 +195,10 @@ namespace TrashSoup.Engine
             reader.ReadEndElement();
         }
 
-        public void WriteXml(System.Xml.XmlWriter writer)
+        public override void WriteXml(System.Xml.XmlWriter writer)
         {
+            base.WriteXml(writer);
+
             writer.WriteStartElement("Position");
             writer.WriteElementString("X", XmlConvert.ToString(Position.X));
             writer.WriteElementString("Y", XmlConvert.ToString(Position.Y));

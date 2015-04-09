@@ -138,7 +138,7 @@ namespace TrashSoup.Engine
                 (MyPhysicalObject as IXmlSerializable).ReadXml(reader);
             }
 
-            if(reader.Name == "MyCollider")
+            if (reader.Name == "MyCollider")
             {
                 MyCollider = new Collider(this);
                 (MyCollider as IXmlSerializable).ReadXml(reader);
@@ -148,6 +148,8 @@ namespace TrashSoup.Engine
             {
                 reader.ReadStartElement();
                 MyAnimator = new Animator(this, ResourceManager.Instance.Models[reader.ReadElementString("BaseAnim", "")]);
+                (MyAnimator as IXmlSerializable).ReadXml(reader);
+                //MyAnimator.MyObject = ResourceManager.Instance.CurrentScene.GetObject(MyAnimator.tmp);
                 while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
                 {
                     String s = reader.ReadElementString("AnimatorClip", "");
@@ -204,6 +206,7 @@ namespace TrashSoup.Engine
             {
                 writer.WriteStartElement("MyAnimator");
                 writer.WriteElementString("BaseAnim", ResourceManager.Instance.Models.FirstOrDefault(x => x.Value == MyAnimator.BaseAnim).Key);
+                (MyAnimator as IXmlSerializable).WriteXml(writer);
                 foreach (KeyValuePair<string, SkinningModelLibrary.AnimationClip> pair in MyAnimator.SkinningData.AnimationClips)
                 {
                     writer.WriteElementString("AnimatorClip", pair.Key);
