@@ -18,8 +18,7 @@ namespace TrashSoup.Engine
 
         protected Texture2D diffuseMap;
         protected Texture2D normalMap;
-        protected Texture2D cubeMap;
-        protected Texture2D alphaMap;
+        protected TextureCube cubeMap;
 
         protected Vector3 specularColor;
         protected float glossiness;
@@ -64,7 +63,7 @@ namespace TrashSoup.Engine
             }
         }
 
-        public Texture2D CubeMap
+        public TextureCube CubeMap
         {
             get
             {
@@ -170,7 +169,7 @@ namespace TrashSoup.Engine
 
             this.DiffuseMap = ResourceManager.Instance.Textures["DefaultDiffuse"];
             this.NormalMap = ResourceManager.Instance.Textures["DefaultNormal"];
-            this.CubeMap = ResourceManager.Instance.Textures["DefaultCube"];
+            this.CubeMap = ResourceManager.Instance.TexturesCube["DefaultCube"];
             this.SpecularColor = new Vector3(1.0f, 1.0f, 1.0f);
             this.Glossiness = 50.0f;
             this.ReflectivityColor = new Vector3(1.0f, 1.0f, 1.0f);

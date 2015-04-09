@@ -172,14 +172,14 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
 	// computin normals
 
-	float3 nAdj = (tex2D(NormalSampler, input.TexCoord)).xyz;
+	float4 nAdj = tex2D(NormalSampler, input.TexCoord);
 	input.Normal = normalize(input.Normal);
 
 	nAdj.x = (nAdj.x * 2) - 1;
 	nAdj.y = (nAdj.y * 2) - 1;
 	nAdj.z = (nAdj.z * 2) - 1;
 
-	input.Normal = input.Normal + nAdj;
+	input.Normal = input.Normal + nAdj.xyz;
 	input.Normal = normalize(input.Normal);
 
 	////////
@@ -188,7 +188,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
 	color = color * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f);
 
-	color *= Transparency;
+	color *= Transparency * nAdj.w;
 
     return color;
 }

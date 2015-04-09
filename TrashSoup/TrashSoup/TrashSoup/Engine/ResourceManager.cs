@@ -29,6 +29,7 @@ namespace TrashSoup.Engine
         public Dictionary<string, Model> Models = new Dictionary<string, Model>();
         public Dictionary<string, Model> Animations = new Dictionary<string, Model>();
         public Dictionary<string, Texture2D> Textures = new Dictionary<string, Texture2D>();
+        public Dictionary<string, TextureCube> TexturesCube = new Dictionary<string, TextureCube>();
         public List<SpriteFont> Fonts = new List<SpriteFont>();
         public List<Effect> Effects = new List<Effect>();
         public Dictionary<string, Material> Materials = new Dictionary<string,Material>();
@@ -56,6 +57,7 @@ namespace TrashSoup.Engine
 
             // FOR TETIN
             AddModel("Models/Test/TestBox");
+            AddModel("Models/Test/TestCube");
             AddModel("Models/Test/TestTerrain");
             AddModel("Models/Test/TestGuy");
             AddModel("Models/Test/TestSphere");
@@ -81,6 +83,14 @@ namespace TrashSoup.Engine
             this.Materials.Add(testTerMat.Name, testTerMat);
             testTerMats.Add(testTerMat);
 
+            List<Material> testSBMats = new List<Material>();
+            Material testSBMat = new Material("testSBMat", this.Effects[6]);
+            testSBMat.CubeMap = TexturesCube[@"Textures\Skyboxes\Sunset"];
+            testSBMat.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
+            testSBMat.Glossiness = 100.0f;
+            this.Materials.Add(testSBMat.Name, testSBMat);
+            testSBMats.Add(testSBMat);
+
             // loading gameobjects
             GameObject testBox = new GameObject(1, "testBox");
             testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, -40.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.2f);
@@ -103,6 +113,10 @@ namespace TrashSoup.Engine
             testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 40.0f, 70.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
             testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Test/TestSphere"], null, null }, 3, testPlayerMats));
             testBox2.MyCollider = new BoxCollider(testBox2);    //Add a box collider to test physisc
+
+            GameObject skyBox = new GameObject(4, "skyBox");
+            skyBox.MyTransform = new Transform(skyBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1000.0f);
+            skyBox.Components.Add(new CustomModel(skyBox, new Model[] { Models["Models/Test/TestCube"], null, null }, 3, testSBMats));
 
             // adding lights
             LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.05f, 0.05f, 0.1f));
@@ -131,6 +145,7 @@ namespace TrashSoup.Engine
             CurrentScene.Cam = cam;
 
             // adding items to scene
+            CurrentScene.ObjectsDictionary.Add(skyBox.UniqueID, skyBox);
             CurrentScene.ObjectsDictionary.Add(testTer.UniqueID, testTer);
             CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);
             CurrentScene.ObjectsDictionary.Add(testBox2.UniqueID, testBox2);
@@ -198,6 +213,22 @@ namespace TrashSoup.Engine
         }
 
         /// <summary>
+        /// Used to load a single cube texture. If it doesn't exist in resourceManager, Content.Load is called.
+        /// </summary>
+        /// <param name="texturePath"></param>
+        private TextureCube LoadTextureCube(string texturePath)
+        {
+            if (TexturesCube.ContainsKey(texturePath))
+                return TexturesCube[texturePath];
+            else
+            {
+                TextureCube newTex = TrashSoupGame.Instance.Content.Load<TextureCube>(texturePath);
+                TexturesCube.Add(texturePath, newTex);
+                return newTex;
+            }
+        }
+
+        /// <summary>
         /// 
         /// Load every texture from content to textures list
         /// IMPORTANT!!! SET NAME FOR EVERY ELEMENT
@@ -215,12 +246,19 @@ namespace TrashSoup.Engine
             Texture2D defNrm = new Texture2D(TrashSoupGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             defNrm.SetData<uint>(new uint[] { normColor });
             Textures.Add("DefaultNormal", defNrm);
-            Texture2D defCbc = new Texture2D(TrashSoupGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
-            defCbc.SetData<uint>(new uint[] { blackColor });
-            Textures.Add("DefaultCube", defCbc);
+            TextureCube defCbc = new TextureCube(TrashSoupGame.Instance.GraphicsDevice, 1, false, SurfaceFormat.Color);
+            defCbc.SetData<uint>(CubeMapFace.NegativeX, new uint[] { blackColor });
+            defCbc.SetData<uint>(CubeMapFace.PositiveX, new uint[] { blackColor });
+            defCbc.SetData<uint>(CubeMapFace.NegativeY, new uint[] { blackColor });
+            defCbc.SetData<uint>(CubeMapFace.PositiveY, new uint[] { blackColor });
+            defCbc.SetData<uint>(CubeMapFace.NegativeZ, new uint[] { blackColor });
+            defCbc.SetData<uint>(CubeMapFace.PositiveZ, new uint[] { blackColor });
+            TexturesCube.Add("DefaultCube", defCbc);
             ///////////////////////////////////////////
 
             // FOR TETIN
+            TexturesCube.Add(@"Textures\Skyboxes\Sunset", game.Content.Load<TextureCube>(@"Textures\Skyboxes\Sunset"));
+
             Textures.Add(@"Textures\Test\cargo", game.Content.Load<Texture2D>(@"Textures\Test\cargo"));
             Textures.Add(@"Textures\Test\cargo_NRM", game.Content.Load<Texture2D>(@"Textures\Test\cargo_NRM"));
             Textures.Add(@"Textures\Test\metal01_d", game.Content.Load<Texture2D>(@"Textures\Test\metal01_d"));
@@ -248,6 +286,7 @@ namespace TrashSoup.Engine
             Effects.Add(TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\NormalEffect"));
             Effects.Add(TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\DefaultSkinnedEffect"));
             Effects.Add(TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\NormalSkinnedEffect"));
+            Effects.Add(TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\SkyboxEffect"));
         }
 
         /// <summary>
@@ -314,7 +353,7 @@ namespace TrashSoup.Engine
                 Material mat = new Material(mm.MaterialName, effectToAdd);
                 if (mm.MaterialTextureNames[0] != null) mat.DiffuseMap = LoadTexture(mm.MaterialTextureNames[0]);
                 if (mm.MaterialTextureNames[1] != null) mat.NormalMap = LoadTexture(mm.MaterialTextureNames[1]);
-                if (mm.MaterialTextureNames[2] != null) mat.CubeMap = LoadTexture(mm.MaterialTextureNames[2]);
+                if (mm.MaterialTextureNames[2] != null) mat.CubeMap = LoadTextureCube(mm.MaterialTextureNames[2]);
 
                 this.Materials.Add(mat.Name, mat);
             }
