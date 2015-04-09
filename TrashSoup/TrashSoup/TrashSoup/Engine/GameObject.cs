@@ -96,6 +96,11 @@ namespace TrashSoup.Engine
         {
             if(this.Visible)
             {
+                foreach (ObjectComponent obj in Components)
+                {
+                    obj.Draw(gameTime);
+                }
+
                 //[vansten] This is for debug drawing of collider
                 //[vansten] It won't be build if we build a release version
 #if DEBUG
@@ -105,11 +110,6 @@ namespace TrashSoup.Engine
                 }
 
 #endif
-
-                foreach (ObjectComponent obj in Components)
-                {
-                    obj.Draw(gameTime);
-                }
             }
         }
 

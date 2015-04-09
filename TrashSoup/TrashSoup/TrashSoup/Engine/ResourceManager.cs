@@ -61,6 +61,7 @@ namespace TrashSoup.Engine
             AddModel("Models/Test/TestTerrain");
             AddModel("Models/Test/TestGuy");
             AddModel("Models/Test/TestSphere");
+            AddModel("Models/Test/TestMirror");
             AddAnimation("Animations/Test/walking_1");
             AddAnimation("Animations/Test/idle_1");
             AddAnimation("Animations/Test/jump_1");
@@ -84,6 +85,12 @@ namespace TrashSoup.Engine
             testPlayerMat2.ReflectivityBias = 0.7f;
             testPlayerMat2.Transparency = 1.0f;
             this.Materials.Add(testPlayerMat2.Name, testPlayerMat2);
+
+            List<Material> testMirrorMats = new List<Material>();
+            Material testMirrorMat = new MirrorMaterial("testMirrorMat", this.Effects[2]);
+            testMirrorMats.Add(testMirrorMat);
+            testMirrorMat.Glossiness = 100.0f;
+            this.Materials.Add(testMirrorMat.Name, testMirrorMat);
 
             List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"], this.Effects[5]);
 
@@ -130,6 +137,11 @@ namespace TrashSoup.Engine
             testBox3.Components.Add(new CustomModel(testBox3, new Model[] { Models["Models/Test/TestSphere"], null, null }, 3, testPlayerMats2));
             testBox3.MyCollider = new BoxCollider(testBox3);
 
+            GameObject testMirror = new GameObject(6, "testMirror");
+            testMirror.MyTransform = new Transform(testMirror, new Vector3(-100.0f, 40.0f, -120.0f), new Vector3(1.0f, 0.0f, 0.0f), new Vector3(0.0f, -MathHelper.PiOver2, 0.0f), 2.0f);
+            testMirror.Components.Add(new CustomModel(testMirror, new Model[] { Models["Models/Test/TestMirror"], null, null }, 3, testMirrorMats));
+            testMirror.MyCollider = new BoxCollider(testMirror);
+
             GameObject skyBox = new GameObject(4, "skyBox");
             skyBox.MyTransform = new Transform(skyBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1000.0f);
             skyBox.Components.Add(new CustomModel(skyBox, new Model[] { Models["Models/Test/TestCube"], null, null }, 3, testSBMats));
@@ -161,11 +173,13 @@ namespace TrashSoup.Engine
             CurrentScene.Cam = cam;
 
             // adding items to scene
+            CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror);
             CurrentScene.ObjectsDictionary.Add(skyBox.UniqueID, skyBox);
             CurrentScene.ObjectsDictionary.Add(testTer.UniqueID, testTer);
             CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);
             CurrentScene.ObjectsDictionary.Add(testBox2.UniqueID, testBox2);
             CurrentScene.ObjectsDictionary.Add(testBox3.UniqueID, testBox3);
+            
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;
