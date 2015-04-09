@@ -73,6 +73,17 @@ namespace TrashSoup.Engine
         #region methods
         public Scene()
         {
+            tempPLColors = new Vector3[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
+            tempPLSpeculars = new Vector3[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
+            tempPLPositions = new Vector3[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
+            tempPLAttenuations = new float[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
+            for (int i = 0; i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i)
+            {
+                tempPLColors[i] = new Vector3(0.0f, 0.0f, 0.0f);
+                tempPLSpeculars[i] = new Vector3(0.0f, 0.0f, 0.0f);
+                tempPLPositions[i] = new Vector3(0.0f, 0.0f, 0.0f);
+                tempPLAttenuations[i] = 0.0f;
+            }
         }
         public Scene(SceneParams par)
         {
@@ -232,6 +243,7 @@ namespace TrashSoup.Engine
             reader.ReadStartElement();
 
             ResourceManager.Instance.CurrentScene.ObjectsDictionary = new Dictionary<uint, GameObject>();
+            ResourceManager.Instance.CurrentScene.PointLights = new List<LightPoint>();
             DirectionalLights = new LightDirectional[ResourceManager.DIRECTIONAL_MAX_LIGHTS];
 
             if(reader.Name == "SceneParams")
@@ -270,6 +282,19 @@ namespace TrashSoup.Engine
             }
             reader.ReadEndElement();
 
+            reader.ReadStartElement("PointLights");
+            while(reader.NodeType != System.Xml.XmlNodeType.EndElement)
+            {
+                if(reader.Name == "PointLight")
+                {
+                    reader.ReadStartElement();
+                    LightPoint pl = new LightPoint(0, "");
+                    ResourceManager.Instance.CurrentScene.PointLights.Add(pl);
+                    (pl as IXmlSerializable).ReadXml(reader);
+                }
+            }
+            reader.ReadEndElement();
+
             reader.ReadStartElement("ObjectsDictionary");
             while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
             {
@@ -293,6 +318,7 @@ namespace TrashSoup.Engine
             }
 
             ObjectsDictionary = ResourceManager.Instance.CurrentScene.ObjectsDictionary;
+            PointLights = ResourceManager.Instance.CurrentScene.PointLights;
 
             reader.ReadEndElement();
         }
@@ -315,6 +341,15 @@ namespace TrashSoup.Engine
                     (DirectionalLights[i] as IXmlSerializable).WriteXml(writer);
                 else
                     writer.WriteElementString("null","");
+                writer.WriteEndElement();
+            }
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("PointLights");
+            foreach(LightPoint pl in PointLights)
+            {
+                writer.WriteStartElement("PointLight");
+                (pl as IXmlSerializable).WriteXml(writer);
                 writer.WriteEndElement();
             }
             writer.WriteEndElement();

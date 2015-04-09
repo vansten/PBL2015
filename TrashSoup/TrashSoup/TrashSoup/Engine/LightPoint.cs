@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace TrashSoup.Engine
@@ -63,6 +64,46 @@ namespace TrashSoup.Engine
             {
                 Debug.Log("LightPoint: No Transfrom attached");
             }
+        }
+
+        public System.Xml.Schema.XmlSchema GetSchema() { return null; }
+
+        public void ReadXml(System.Xml.XmlReader reader)
+        {
+            reader.ReadStartElement("Color");
+            LightColor = new Vector3(reader.ReadElementContentAsFloat("R", ""),
+                reader.ReadElementContentAsFloat("G", ""),
+                reader.ReadElementContentAsFloat("B", ""));
+            reader.ReadEndElement();
+
+            reader.ReadStartElement("SpecularColor");
+            LightSpecularColor = new Vector3(reader.ReadElementContentAsFloat("R", ""),
+                reader.ReadElementContentAsFloat("G", ""),
+                reader.ReadElementContentAsFloat("B", ""));
+            reader.ReadEndElement();
+
+            Attenuation = reader.ReadElementContentAsFloat("Attenuation", "");
+
+            base.ReadXml(reader);
+        }
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
+            writer.WriteStartElement("Color");
+            writer.WriteElementString("R", LightColor.X.ToString());
+            writer.WriteElementString("G", LightColor.Y.ToString());
+            writer.WriteElementString("B", LightColor.Z.ToString());
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("SpecularColor");
+            writer.WriteElementString("R", LightSpecularColor.X.ToString());
+            writer.WriteElementString("G", LightSpecularColor.Y.ToString());
+            writer.WriteElementString("B", LightSpecularColor.Z.ToString());
+            writer.WriteEndElement();
+
+            writer.WriteElementString("Attenuation", XmlConvert.ToString(Attenuation));
+
+            base.WriteXml(writer);
         }
 
         #endregion
