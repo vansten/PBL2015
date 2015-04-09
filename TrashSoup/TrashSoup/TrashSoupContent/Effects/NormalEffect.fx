@@ -33,6 +33,15 @@ sampler DiffuseSampler = sampler_state
 	MagFilter = Linear;
 };
 
+texture NormalMap;
+sampler NormalSampler = sampler_state
+{
+	texture = <NormalMap>;
+	MipFilter = Linear;
+	MinFilter = Linear;
+	MagFilter = Linear;
+};
+
 float3 EyePosition;
 
 float3 SpecularColor;
@@ -137,6 +146,20 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	float4 color = tex2D(DiffuseSampler, input.TexCoord);
 	float alpha = color.a;
 	color.a = 1.0f;
+
+	// computin normals
+
+	float3 nAdj = (tex2D(NormalSampler, input.TexCoord)).xyz;
+	input.Normal = normalize(input.Normal);
+
+	nAdj.x = (nAdj.x * 2) - 1;
+	nAdj.y = (nAdj.y * 2) - 1;
+	nAdj.z = (nAdj.z * 2) - 1;
+
+	input.Normal = input.Normal + nAdj;
+	input.Normal = normalize(input.Normal);
+
+	////////
 
 	ColorPair computedLight = ComputeLight(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal);
 
