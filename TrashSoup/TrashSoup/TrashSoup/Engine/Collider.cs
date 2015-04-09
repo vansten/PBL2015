@@ -102,17 +102,17 @@ namespace TrashSoup.Engine
         public override System.Xml.Schema.XmlSchema GetSchema() { return null; }
         public override void ReadXml(System.Xml.XmlReader reader)
         {
-            reader.MoveToContent();
-            reader.ReadStartElement();
+            //reader.MoveToContent();
+            //reader.ReadStartElement();
 
             base.ReadXml(reader);
             ////worldMatrix
-            //worldMatrix = this.MyObject.MyTransform.GetWorldMatrix();
+            worldMatrix = this.MyObject.MyTransform.GetWorldMatrix();
 
             IsTrigger = reader.ReadElementContentAsBoolean("IsTrigger", "");
             //MyObject = ResourceManager.Instance.CurrentScene.GetObject(tmp);
 
-            reader.ReadEndElement();
+            //reader.ReadEndElement();
         }
         public override void WriteXml(System.Xml.XmlWriter writer)
         {

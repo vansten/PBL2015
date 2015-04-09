@@ -138,11 +138,25 @@ namespace TrashSoup.Engine
                 (MyPhysicalObject as IXmlSerializable).ReadXml(reader);
             }
 
-            if (reader.Name == "MyCollider")
-            {
-                MyCollider = new Collider(this);
-                (MyCollider as IXmlSerializable).ReadXml(reader);
-            }
+            //if (reader.Name == "MyCollider")
+            //{
+            //    reader.ReadStartElement();
+            //    String s = reader.ReadElementString("Type", "");
+            //    switch(s)
+            //    {
+            //        case "TrashSoup.Engine.BoxCollider":
+            //            MyCollider = new BoxCollider(this);
+            //            break;
+            //        case "TrashSoup.Engine.SphereCollider":
+            //            MyCollider = new SphereCollider(this);
+            //            break;
+            //        default:
+            //            MyCollider = new Collider(this);
+            //            break;
+            //    }
+            //    (MyCollider as IXmlSerializable).ReadXml(reader);
+            //    reader.ReadEndElement();
+            //}
 
             if(reader.Name == "MyAnimator")
             {
@@ -174,6 +188,29 @@ namespace TrashSoup.Engine
             }
 
             reader.ReadEndElement();
+
+            if (reader.Name == "MyCollider")
+            {
+                reader.ReadStartElement();
+                String s = reader.ReadElementString("Type", "");
+                switch (s)
+                {
+                    //commented because Collider system will be changed
+                    //case "TrashSoup.Engine.BoxCollider":
+                    //    MyCollider = new BoxCollider(this);
+                    //    break;
+                    //case "TrashSoup.Engine.SphereCollider":
+                    //    MyCollider = new BoxCollider(this);
+                    //    break;
+                    default:
+                        MyCollider = new Collider(this);
+                        break;
+                }
+                (MyCollider as IXmlSerializable).ReadXml(reader);
+                reader.ReadEndElement();
+            }
+
+            //reader.ReadEndElement();
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)
@@ -192,13 +229,6 @@ namespace TrashSoup.Engine
             {
                 writer.WriteStartElement("MyPhysicalObject");
                 (MyPhysicalObject as IXmlSerializable).WriteXml(writer);
-                writer.WriteEndElement();
-            }
-
-            if (MyCollider != null)
-            {
-                writer.WriteStartElement("MyCollider");
-                (MyCollider as IXmlSerializable).WriteXml(writer);
                 writer.WriteEndElement();
             }
 
@@ -226,6 +256,14 @@ namespace TrashSoup.Engine
                         writer.WriteEndElement();
                     }
                 }
+                writer.WriteEndElement();
+            }
+
+            if (MyCollider != null)
+            {
+                writer.WriteStartElement("MyCollider");
+                writer.WriteElementString("Type", MyCollider.GetType().ToString());
+                (MyCollider as IXmlSerializable).WriteXml(writer);
                 writer.WriteEndElement();
             }
 
@@ -258,6 +296,81 @@ namespace TrashSoup.Engine
             {
                 oc.OnCollision(otherGO);
             }
+        }
+
+        public ObjectComponent GetComponent<T>() where T : System.Type
+        {
+            T tmpVariable = default(T);
+            System.Type t = tmpVariable.GetType();
+
+            if(t == typeof(Transform) && this.MyTransform != null)
+            {
+                return this.MyTransform;
+            }
+
+            if(t == typeof(Animator) && this.MyAnimator != null)
+            {
+                return this.MyAnimator;
+            }
+
+            if(t == typeof(Collider) && this.MyCollider != null)
+            {
+                return this.MyCollider;
+            }
+
+            if(t == typeof(PhysicalObject) && this.MyPhysicalObject != null)
+            {
+                return this.MyPhysicalObject;
+            }
+
+            foreach(ObjectComponent oc in this.Components)
+            {
+                if(oc.GetType() == t)
+                {
+                    return oc;
+                }
+            }
+
+            return null;
+        }
+
+        public List<ObjectComponent> GetComponents<T>() where T : System.Type
+        {
+            List<ObjectComponent> componentsList = new List<ObjectComponent>();
+
+
+            T tmpVariable = default(T);
+            System.Type t = tmpVariable.GetType();
+
+            if (t == typeof(Transform) && this.MyTransform != null)
+            {
+                componentsList.Add(this.MyTransform);
+            }
+
+            if (t == typeof(Animator) && this.MyAnimator != null)
+            {
+                componentsList.Add(this.MyAnimator);
+            }
+
+            if (t == typeof(Collider) && this.MyCollider != null)
+            {
+                componentsList.Add(this.MyCollider);
+            }
+
+            if (t == typeof(PhysicalObject) && this.MyPhysicalObject != null)
+            {
+                componentsList.Add(this.MyPhysicalObject);
+            }
+
+            foreach (ObjectComponent oc in this.Components)
+            {
+                if (oc.GetType() == t)
+                {
+                    componentsList.Add(oc);
+                }
+            }
+
+            return componentsList;
         }
 
         #endregion
