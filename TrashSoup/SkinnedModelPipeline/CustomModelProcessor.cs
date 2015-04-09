@@ -25,6 +25,7 @@ namespace SkinnedModelPipeline
             // Chain to teh base ModelProcessor class so it can convert the model data
             ModelContent model = base.Process(input, context);
 
+
             // Read material names from Material property
             List<SkinnedModelLibrary.MaterialModel> mats = new List<SkinnedModelLibrary.MaterialModel>();
             List<string> tmpNames = new List<string>();
@@ -52,6 +53,30 @@ namespace SkinnedModelPipeline
             model.Tag = intoTag;
 
             return model;
+        }
+
+        public override bool PremultiplyTextureAlpha
+        {
+            get
+            {
+                return false;
+            }
+            set
+            {
+                
+            }
+        }
+
+        public override bool GenerateMipmaps
+        {
+            get
+            {
+                return true;
+            }
+            set
+            {
+                
+            }
         }
     }
 }

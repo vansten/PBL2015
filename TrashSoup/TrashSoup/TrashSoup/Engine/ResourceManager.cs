@@ -71,7 +71,7 @@ namespace TrashSoup.Engine
             testPlayerMat.Transparency = 1.0f;
             this.Materials.Add(testPlayerMat.Name, testPlayerMat);
 
-            List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"], null);
+            List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"], this.Effects[5]);
 
             List<Material> testTerMats = new List<Material>();
             Material testTerMat = new Material("testTerMat", this.Effects[2], Textures[@"Textures\Test\metal01_d"]);
@@ -240,6 +240,8 @@ namespace TrashSoup.Engine
             Effects.Add(new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice));
             Effects.Add(ef);
             Effects.Add(TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\NormalEffect"));
+            Effects.Add(TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\DefaultSkinnedEffect"));
+            Effects.Add(TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\NormalSkinnedEffect"));
         }
 
         /// <summary>
@@ -253,7 +255,7 @@ namespace TrashSoup.Engine
         {
             // need to extract AnimationClips from animation and save it into new SkinningData with the rest
             // of the data from original skinned Model. 
-            if(model.Tag == null || animation.Tag == null) throw new InvalidOperationException("Either destination model or animation is not a skinned model");
+            if((model.Tag as object[])[0] == null || (animation.Tag as object[])[0] == null) throw new InvalidOperationException("Either destination model or animation is not a skinned model");
             SkinningModelLibrary.SkinningData modelData = (model.Tag as object[])[0] as SkinningModelLibrary.SkinningData;
             SkinningModelLibrary.SkinningData animationData = (animation.Tag as object[])[0] as SkinningModelLibrary.SkinningData;
             if (modelData.SkeletonHierarchy.Count != animationData.SkeletonHierarchy.Count) throw new InvalidOperationException("Model hierarchy is not the same as the animation's");
@@ -307,7 +309,6 @@ namespace TrashSoup.Engine
                 if (mm.MaterialTextureNames[0] != null) mat.DiffuseMap = LoadTexture(mm.MaterialTextureNames[0]);
                 if (mm.MaterialTextureNames[1] != null) mat.NormalMap = LoadTexture(mm.MaterialTextureNames[1]);
                 if (mm.MaterialTextureNames[2] != null) mat.CubeMap = LoadTexture(mm.MaterialTextureNames[2]);
-                mat.UpdateEffect();
 
                 this.Materials.Add(mat.Name, mat);
             }
