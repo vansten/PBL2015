@@ -54,6 +54,18 @@ namespace TrashSoup.Engine
             }
         }
 
+        public Texture2D TempDiffuseMap
+        {
+            get
+            {
+                return tempDiffuseMap;
+            }
+            set
+            {
+                tempDiffuseMap = value;
+            }
+        }
+
         #endregion
 
         #region methods
