@@ -138,11 +138,25 @@ namespace TrashSoup.Engine
                 (MyPhysicalObject as IXmlSerializable).ReadXml(reader);
             }
 
-            if (reader.Name == "MyCollider")
-            {
-                MyCollider = new Collider(this);
-                (MyCollider as IXmlSerializable).ReadXml(reader);
-            }
+            //if (reader.Name == "MyCollider")
+            //{
+            //    reader.ReadStartElement();
+            //    String s = reader.ReadElementString("Type", "");
+            //    switch(s)
+            //    {
+            //        case "TrashSoup.Engine.BoxCollider":
+            //            MyCollider = new BoxCollider(this);
+            //            break;
+            //        case "TrashSoup.Engine.SphereCollider":
+            //            MyCollider = new SphereCollider(this);
+            //            break;
+            //        default:
+            //            MyCollider = new Collider(this);
+            //            break;
+            //    }
+            //    (MyCollider as IXmlSerializable).ReadXml(reader);
+            //    reader.ReadEndElement();
+            //}
 
             if(reader.Name == "MyAnimator")
             {
@@ -174,6 +188,29 @@ namespace TrashSoup.Engine
             }
 
             reader.ReadEndElement();
+
+            if (reader.Name == "MyCollider")
+            {
+                reader.ReadStartElement();
+                String s = reader.ReadElementString("Type", "");
+                switch (s)
+                {
+                    //commented because Collider system will be changed
+                    //case "TrashSoup.Engine.BoxCollider":
+                    //    MyCollider = new BoxCollider(this);
+                    //    break;
+                    //case "TrashSoup.Engine.SphereCollider":
+                    //    MyCollider = new BoxCollider(this);
+                    //    break;
+                    default:
+                        MyCollider = new Collider(this);
+                        break;
+                }
+                (MyCollider as IXmlSerializable).ReadXml(reader);
+                reader.ReadEndElement();
+            }
+
+            //reader.ReadEndElement();
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)
@@ -192,13 +229,6 @@ namespace TrashSoup.Engine
             {
                 writer.WriteStartElement("MyPhysicalObject");
                 (MyPhysicalObject as IXmlSerializable).WriteXml(writer);
-                writer.WriteEndElement();
-            }
-
-            if (MyCollider != null)
-            {
-                writer.WriteStartElement("MyCollider");
-                (MyCollider as IXmlSerializable).WriteXml(writer);
                 writer.WriteEndElement();
             }
 
@@ -226,6 +256,14 @@ namespace TrashSoup.Engine
                         writer.WriteEndElement();
                     }
                 }
+                writer.WriteEndElement();
+            }
+
+            if (MyCollider != null)
+            {
+                writer.WriteStartElement("MyCollider");
+                writer.WriteElementString("Type", MyCollider.GetType().ToString());
+                (MyCollider as IXmlSerializable).WriteXml(writer);
                 writer.WriteEndElement();
             }
 
