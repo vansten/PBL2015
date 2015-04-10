@@ -163,14 +163,7 @@ namespace TrashSoup.Engine
 
             for(int j = 0; j<Paths.Count(); ++j)
             {
-                if (ResourceManager.Instance.Models.TryGetValue(Paths[j], out LODs[j]))
-                    Debug.Log("Model successfully loaded - " + Paths[j]);
-                else
-                {
-                    LODs[j] = TrashSoupGame.Instance.Content.Load<Model>(Paths[j]);
-                    ResourceManager.Instance.Models.Add(Paths[j], LODs[j]);
-                    Debug.Log("New model successfully loaded - " + Paths[j]);
-                }
+                LODs[j] = ResourceManager.Instance.LoadModel(Paths[j]);
             }
 
             if(reader.Name == "Materials")
@@ -201,68 +194,7 @@ namespace TrashSoup.Engine
 
                         Material m = new Material(newName, newEf);
 
-                        String path = reader.ReadElementString("DiffusePath", "");
-                        Texture2D tmp = new Texture2D(TrashSoupGame.Instance.GraphicsDevice, 10, 10);
-                        if(ResourceManager.Instance.Textures.TryGetValue(path, out tmp))
-                        {
-                            m.DiffuseMap = tmp;
-                            Debug.Log("Texture successfully loaded [diffuse] - " + path);
-                        }
-                        else
-                        {
-                            m.DiffuseMap = TrashSoupGame.Instance.Content.Load<Texture2D>(path);
-                            ResourceManager.Instance.Textures.Add(path, m.DiffuseMap);
-                            Debug.Log("New texture successfully loaded [diffuse] - " + path);
-                        }
-
-                        path = reader.ReadElementString("NormalPath", "");
-                        if (ResourceManager.Instance.Textures.TryGetValue(path, out tmp))
-                        {
-                            m.NormalMap = tmp;
-                            Debug.Log("Texture successfully loaded [normal] - " + path);
-                        }
-                        else
-                        {
-                            m.NormalMap = TrashSoupGame.Instance.Content.Load<Texture2D>(path);
-                            ResourceManager.Instance.Textures.Add(path, m.NormalMap);
-                            Debug.Log("New texture successfully loaded [normal] - " + path);
-                        }
-
-                        path = reader.ReadElementString("CubePath", "");
-                        TextureCube tmpcube = null;
-                        if (ResourceManager.Instance.TexturesCube.TryGetValue(path, out tmpcube))
-                        {
-                            m.CubeMap = tmpcube;
-                            Debug.Log("Texture successfully loaded [cube] - " + path);
-                        }
-                        else
-                        {
-                            m.CubeMap = TrashSoupGame.Instance.Content.Load<TextureCube>(path);
-                            ResourceManager.Instance.TexturesCube.Add(path, m.CubeMap);
-                            Debug.Log("New texture successfully loaded [cube] - " + path);
-                        }
-
-                        //m.DiffuseMap = ResourceManager.Instance.Textures[reader.ReadElementString("DiffusePath", "")];
-                        //m.NormalMap = ResourceManager.Instance.Textures[reader.ReadElementString("NormalPath", "")];
-                        //m.CubeMap = ResourceManager.Instance.TexturesCube[reader.ReadElementString("CubePath", "")];
-
-                        reader.ReadStartElement("SpecularColor");
-                        m.SpecularColor = new Vector3(reader.ReadElementContentAsFloat("X", ""),
-                                                       reader.ReadElementContentAsFloat("Y", ""),
-                                                       reader.ReadElementContentAsFloat("Z", ""));
-                        reader.ReadEndElement();
-
-                        m.Glossiness = reader.ReadElementContentAsFloat("Glossiness", "");
-
-                        reader.ReadStartElement("ReflectivityColor");
-                        m.ReflectivityColor = new Vector3(reader.ReadElementContentAsFloat("X", ""),
-                                                       reader.ReadElementContentAsFloat("Y", ""),
-                                                       reader.ReadElementContentAsFloat("Z", ""));
-                        reader.ReadEndElement();
-
-                        m.ReflectivityBias = reader.ReadElementContentAsFloat("ReflectivityBias", "");
-                        m.Transparency = reader.ReadElementContentAsFloat("Transparency", "");
-                        m.PerPixelLighting = reader.ReadElementContentAsBoolean("PerPixelLighting", "");
+                        (m as IXmlSerializable).ReadXml(reader);
                         
                         reader.ReadEndElement();
 
@@ -298,39 +230,17 @@ namespace TrashSoup.Engine
                 if(mat != null)
                 {
                     writer.WriteStartElement("Material");
+
                     writer.WriteElementString("Name", mat.Name);
 
                     int effectID = ResourceManager.Instance.Effects.IndexOf(mat.MyEffect);
-                    if(effectID == -1)
+                    if (effectID == -1)
                     {
                         if (mat.MyEffect is SkinnedEffect) effectID = -2;
                     }
                     writer.WriteElementString("EffectID", XmlConvert.ToString(effectID));
 
-                    if (mat is MirrorMaterial)
-                        writer.WriteElementString("DiffusePath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == (mat as MirrorMaterial).TempDiffuseMap).Key);
-                    else
-                        writer.WriteElementString("DiffusePath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == mat.DiffuseMap).Key);
-                    writer.WriteElementString("NormalPath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == mat.NormalMap).Key);
-                    writer.WriteElementString("CubePath", ResourceManager.Instance.TexturesCube.FirstOrDefault(x => x.Value == mat.CubeMap).Key);
-
-                    writer.WriteStartElement("SpecularColor");
-                    writer.WriteElementString("X", XmlConvert.ToString(mat.SpecularColor.X));
-                    writer.WriteElementString("Y", XmlConvert.ToString(mat.SpecularColor.Y));
-                    writer.WriteElementString("Z", XmlConvert.ToString(mat.SpecularColor.Z));
-                    writer.WriteEndElement();
-
-                    writer.WriteElementString("Glossiness", XmlConvert.ToString(mat.Glossiness));
-
-                    writer.WriteStartElement("ReflectivityColor");
-                    writer.WriteElementString("X", XmlConvert.ToString(mat.ReflectivityColor.X));
-                    writer.WriteElementString("Y", XmlConvert.ToString(mat.ReflectivityColor.Y));
-                    writer.WriteElementString("Z", XmlConvert.ToString(mat.ReflectivityColor.Z));
-                    writer.WriteEndElement();
-
-                    writer.WriteElementString("ReflectivityBias", XmlConvert.ToString(mat.ReflectivityBias));
-                    writer.WriteElementString("Transparency", XmlConvert.ToString(mat.Transparency));
-                    writer.WriteElementString("PerPixelLighting", XmlConvert.ToString(mat.PerPixelLighting));
+                    (mat as IXmlSerializable).WriteXml(writer);
                     writer.WriteEndElement();
                 }
             }

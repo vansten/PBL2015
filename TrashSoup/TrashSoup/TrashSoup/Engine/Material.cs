@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace TrashSoup.Engine
 {
     // A container for textures and effects associated with the model
-    public class Material
+    public class Material : IXmlSerializable
     {
         #region enums
 
@@ -368,6 +370,60 @@ namespace TrashSoup.Engine
                 (MyEffect as SkinnedEffect).DirectionalLight2.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
                 (MyEffect as SkinnedEffect).DirectionalLight2.Direction = new Vector3(0.0f, 1.0f, 0.0f);
             }
+        }
+
+        public System.Xml.Schema.XmlSchema GetSchema() { return null; }
+        public void ReadXml(System.Xml.XmlReader reader)
+        {
+            DiffuseMap = ResourceManager.Instance.LoadTexture(reader.ReadElementString("DiffusePath", ""));
+            NormalMap = ResourceManager.Instance.LoadTexture(reader.ReadElementString("NormalPath", ""));
+            CubeMap = ResourceManager.Instance.LoadTextureCube(reader.ReadElementString("CubePath", ""));
+
+            reader.ReadStartElement("SpecularColor");
+            SpecularColor = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                                           reader.ReadElementContentAsFloat("Y", ""),
+                                           reader.ReadElementContentAsFloat("Z", ""));
+            reader.ReadEndElement();
+
+            Glossiness = reader.ReadElementContentAsFloat("Glossiness", "");
+
+            reader.ReadStartElement("ReflectivityColor");
+            ReflectivityColor = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                                           reader.ReadElementContentAsFloat("Y", ""),
+                                           reader.ReadElementContentAsFloat("Z", ""));
+            reader.ReadEndElement();
+
+            ReflectivityBias = reader.ReadElementContentAsFloat("ReflectivityBias", "");
+            Transparency = reader.ReadElementContentAsFloat("Transparency", "");
+            PerPixelLighting = reader.ReadElementContentAsBoolean("PerPixelLighting", "");
+        }
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
+            if (this is MirrorMaterial)
+                writer.WriteElementString("DiffusePath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == (this as MirrorMaterial).TempDiffuseMap).Key);
+            else
+                writer.WriteElementString("DiffusePath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == DiffuseMap).Key);
+            writer.WriteElementString("NormalPath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == NormalMap).Key);
+            writer.WriteElementString("CubePath", ResourceManager.Instance.TexturesCube.FirstOrDefault(x => x.Value == CubeMap).Key);
+
+            writer.WriteStartElement("SpecularColor");
+            writer.WriteElementString("X", XmlConvert.ToString(SpecularColor.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(SpecularColor.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(SpecularColor.Z));
+            writer.WriteEndElement();
+
+            writer.WriteElementString("Glossiness", XmlConvert.ToString(Glossiness));
+
+            writer.WriteStartElement("ReflectivityColor");
+            writer.WriteElementString("X", XmlConvert.ToString(ReflectivityColor.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(ReflectivityColor.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(ReflectivityColor.Z));
+            writer.WriteEndElement();
+
+            writer.WriteElementString("ReflectivityBias", XmlConvert.ToString(ReflectivityBias));
+            writer.WriteElementString("Transparency", XmlConvert.ToString(Transparency));
+            writer.WriteElementString("PerPixelLighting", XmlConvert.ToString(PerPixelLighting));
         }
         #endregion
     }

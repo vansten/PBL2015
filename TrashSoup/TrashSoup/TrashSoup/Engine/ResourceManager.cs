@@ -228,10 +228,52 @@ namespace TrashSoup.Engine
         }
 
         /// <summary>
+        /// 
+        /// Checks if model with certain path exists in dictionary. If yes method returns it, if not, loads it, adds
+        /// to proper dictionary and returns the model.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public Model LoadModel(String path)
+        {
+            Model output = null;
+            if (Models.TryGetValue(path, out output))
+                Debug.Log("Model successfully loaded - " + path);
+            else
+            {
+                output = TrashSoupGame.Instance.Content.Load<Model>(path);
+                Models.Add(path, output);
+                Debug.Log("New model successfully loaded - " + path);
+            }
+            return output;
+        }
+
+        /// <summary>
+        /// 
+        /// Checks if animation with certain path exists in dictionary. If yes method returns it, if not, loads it, adds
+        /// to proper dictionary and returns the animation.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public Model LoadAnimation(String path)
+        {
+            Model output = null;
+            if (Animations.TryGetValue(path, out output))
+                Debug.Log("Animation successfully loaded - " + path);
+            else
+            {
+                output = TrashSoupGame.Instance.Content.Load<Model>(path);
+                Animations.Add(path, output);
+                Debug.Log("New animation successfully loaded - " + path);
+            }
+            return output;
+        }
+
+        /// <summary>
         /// Used to load a single texture. If it doesn't exist in resourceManager, Content.Load is called.
         /// </summary>
         /// <param name="texturePath"></param>
-        private Texture2D LoadTexture(string texturePath)
+        public Texture2D LoadTexture(string texturePath)
         {
             if (Textures.ContainsKey(texturePath))
                 return Textures[texturePath];
@@ -247,7 +289,7 @@ namespace TrashSoup.Engine
         /// Used to load a single cube texture. If it doesn't exist in resourceManager, Content.Load is called.
         /// </summary>
         /// <param name="texturePath"></param>
-        private TextureCube LoadTextureCube(string texturePath)
+        public TextureCube LoadTextureCube(string texturePath)
         {
             if (TexturesCube.ContainsKey(texturePath))
                 return TexturesCube[texturePath];
