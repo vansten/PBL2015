@@ -194,7 +194,18 @@ namespace TrashSoup.Engine
 
                         Material m = new Material(newName, newEf);
 
-                        (m as IXmlSerializable).ReadXml(reader);
+                        if (ResourceManager.Instance.Materials.TryGetValue(newName, out m))
+                        {
+                            Material tmp = new Material(newName, newEf);
+                            (tmp as IXmlSerializable).ReadXml(reader);
+                            Debug.Log("Material successfully loaded - " + newName);
+                        }
+                        else
+                        {
+                            (m as IXmlSerializable).ReadXml(reader);
+                            ResourceManager.Instance.Materials.Add(newName, m);
+                            Debug.Log("New material successfully loaded - " + newName);
+                        }
                         
                         reader.ReadEndElement();
 
