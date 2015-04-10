@@ -31,7 +31,7 @@ namespace TrashSoup.Engine
         public Dictionary<string, Texture2D> Textures = new Dictionary<string, Texture2D>();
         public Dictionary<string, TextureCube> TexturesCube = new Dictionary<string, TextureCube>();
         public List<SpriteFont> Fonts = new List<SpriteFont>();
-        public List<Effect> Effects = new List<Effect>();
+        public Dictionary<string, Effect> Effects = new Dictionary<string, Effect>();
         public Dictionary<string, Material> Materials = new Dictionary<string,Material>();
         public List<Cue> Sounds = new List<Cue>();
         public ParticleSystem ps;
@@ -68,7 +68,7 @@ namespace TrashSoup.Engine
 
             // loading materials
             List<Material> testPlayerMats = new List<Material>();
-            Material testPlayerMat = new Material("testPlayerMat", this.Effects[3], Textures[@"Textures\Test\cargo"]);
+            Material testPlayerMat = new Material("testPlayerMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Test\cargo"]);
             testPlayerMats.Add(testPlayerMat);
             testPlayerMat.NormalMap = Textures[@"Textures\Test\cargo_NRM"];
             testPlayerMat.Glossiness = 40.0f;
@@ -76,7 +76,7 @@ namespace TrashSoup.Engine
             this.Materials.Add(testPlayerMat.Name, testPlayerMat);
 
             List<Material> testPlayerMats2 = new List<Material>();
-            Material testPlayerMat2 = new Material("testPlayerMat2", this.Effects[7], Textures[@"Textures\Test\cargo"]);
+            Material testPlayerMat2 = new Material("testPlayerMat2", this.Effects[@"Effects\CubeNormalEffect"], Textures[@"Textures\Test\cargo"]);
             testPlayerMats2.Add(testPlayerMat2);
             testPlayerMat2.NormalMap = Textures[@"Textures\Test\cargo_NRM"];
             testPlayerMat2.CubeMap = TexturesCube[@"Textures\Skyboxes\Sunset"];
@@ -87,22 +87,22 @@ namespace TrashSoup.Engine
             this.Materials.Add(testPlayerMat2.Name, testPlayerMat2);
 
             List<Material> testMirrorMats = new List<Material>();
-            Material testMirrorMat = new MirrorMaterial("testMirrorMat", this.Effects[2]);
+            Material testMirrorMat = new MirrorMaterial("testMirrorMat", this.Effects[@"Effects\DefaultEffect"]);
             testMirrorMats.Add(testMirrorMat);
             testMirrorMat.Glossiness = 100.0f;
             this.Materials.Add(testMirrorMat.Name, testMirrorMat);
 
-            List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"], this.Effects[5]);
+            List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"], this.Effects[@"Effects\NormalSkinnedEffect"]);
 
             List<Material> testTerMats = new List<Material>();
-            Material testTerMat = new Material("testTerMat", this.Effects[2], Textures[@"Textures\Test\metal01_d"]);
+            Material testTerMat = new Material("testTerMat", this.Effects[@"Effects\DefaultEffect"], Textures[@"Textures\Test\metal01_d"]);
             testTerMat.SpecularColor = new Vector3(0.1f, 0.1f, 0.0f);
             testTerMat.Glossiness = 10.0f;
             this.Materials.Add(testTerMat.Name, testTerMat);
             testTerMats.Add(testTerMat);
 
             List<Material> testSBMats = new List<Material>();
-            Material testSBMat = new Material("testSBMat", this.Effects[6]);
+            Material testSBMat = new Material("testSBMat", this.Effects[@"Effects\SkyboxEffect"]);
             testSBMat.CubeMap = TexturesCube[@"Textures\Skyboxes\Sunset"];
             testSBMat.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
             testSBMat.Glossiness = 100.0f;
@@ -302,6 +302,26 @@ namespace TrashSoup.Engine
         }
 
         /// <summary>
+        /// Checks if effect with certain path exists in dictionary. If yes method returns it, if not, loads it, adds
+        /// to proper dictionary and returns the effect.
+        /// </summary>
+        /// <param name="effectPath"></param>
+        /// <returns></returns>
+        public Effect LoadEffect(string effectPath)
+        {
+            Effect output = null;
+            if (Effects.TryGetValue(effectPath, out output))
+                Debug.Log("Effect successfully loaded - " + effectPath);
+            else
+            {
+                output = TrashSoupGame.Instance.Content.Load<Effect>(effectPath);
+                Effects.Add(effectPath, output);
+                Debug.Log("New effect successfully loaded - " + effectPath);
+            }
+            return output;
+        }
+
+        /// <summary>
         /// 
         /// Load every texture from content to textures list
         /// IMPORTANT!!! SET NAME FOR EVERY ELEMENT
@@ -353,14 +373,14 @@ namespace TrashSoup.Engine
             //Effects.Add(game.Content.Load<Effect>(@"Effects\Billboard"));
             //Effects.ElementAt(1).CurrentTechnique = Effects.ElementAt(1).Techniques["Technique1"];
             Effect ef = TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\DefaultEffect");
-            Effects.Add(new BasicEffect(TrashSoupGame.Instance.GraphicsDevice));
-            Effects.Add(new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice));
-            Effects.Add(ef);
-            Effects.Add(TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\NormalEffect"));
-            Effects.Add(TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\DefaultSkinnedEffect"));
-            Effects.Add(TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\NormalSkinnedEffect"));
-            Effects.Add(TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\SkyboxEffect"));
-            Effects.Add(TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\CubeNormalEffect"));
+            Effects.Add("BasicEffect", new BasicEffect(TrashSoupGame.Instance.GraphicsDevice));
+            Effects.Add("SkinnedEffect", new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice));
+            Effects.Add(@"Effects\DefaultEffect", ef);
+            Effects.Add(@"Effects\NormalEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\NormalEffect"));
+            Effects.Add(@"Effects\DefaultSkinnedEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\DefaultSkinnedEffect"));
+            Effects.Add(@"Effects\NormalSkinnedEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\NormalSkinnedEffect"));
+            Effects.Add(@"Effects\SkyboxEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\SkyboxEffect"));
+            Effects.Add(@"Effects\CubeNormalEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\CubeNormalEffect"));
         }
 
         /// <summary>
@@ -405,11 +425,11 @@ namespace TrashSoup.Engine
             {
                 if (model.Meshes[0].Effects[0] is BasicEffect)
                 {
-                    effectToAdd = Effects[0];
+                    effectToAdd = Effects["BasicEffect"];
                 }
                 else if (model.Meshes[0].Effects[0] is SkinnedEffect)
                 {
-                    effectToAdd = Effects[1];
+                    effectToAdd = Effects["SkinnedEffect"];
                 }
                 else
                 {
