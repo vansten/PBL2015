@@ -87,9 +87,10 @@ namespace TrashSoup.Engine
             this.Materials.Add(testPlayerMat2.Name, testPlayerMat2);
 
             List<Material> testMirrorMats = new List<Material>();
-            Material testMirrorMat = new MirrorMaterial("testMirrorMat", this.Effects[@"Effects\DefaultEffect"]);
+            Material testMirrorMat = new MirrorMaterial("testMirrorMat", this.Effects[@"Effects\MirrorEffect"]);
             testMirrorMats.Add(testMirrorMat);
             testMirrorMat.Glossiness = 100.0f;
+            testMirrorMat.ReflectivityBias = 1.0f;
             this.Materials.Add(testMirrorMat.Name, testMirrorMat);
 
             List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"], this.Effects[@"Effects\NormalSkinnedEffect"]);
@@ -138,7 +139,7 @@ namespace TrashSoup.Engine
             testBox3.MyCollider = new BoxCollider(testBox3);
 
             GameObject testMirror = new GameObject(6, "testMirror");
-            testMirror.MyTransform = new Transform(testMirror, new Vector3(-100.0f, 40.0f, -120.0f), new Vector3(1.0f, 0.0f, 0.0f), new Vector3(0.0f, -MathHelper.PiOver2, 0.0f), 2.0f);
+            testMirror.MyTransform = new Transform(testMirror, new Vector3(-100.0f, 40.0f, -120.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 2.0f);
             testMirror.Components.Add(new CustomModel(testMirror, new Model[] { Models["Models/Test/TestMirror"], null, null }, 3, testMirrorMats));
             testMirror.MyCollider = new BoxCollider(testMirror);
 
@@ -330,11 +331,11 @@ namespace TrashSoup.Engine
         private void LoadTextures(Game game)
         {
             // Adding "default" textures for all maps containing only one pixel in one color
-            uint diffColor = 0xFFFFFFFF;
-            uint normColor = 0x0F0FFFFF;
-            uint blackColor = 0x000000FF;
+            //uint diffColor = 0xFFFFFFFF;
+            uint normColor = 0xFFFF0F0F;
+            uint blackColor = 0xFF000000;
             Texture2D defDiff = new Texture2D(TrashSoupGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
-            defDiff.SetData<uint>(new uint[] { diffColor });
+            defDiff.SetData<uint>(new uint[] { blackColor });
             Textures.Add("DefaultDiffuse", defDiff);
             Texture2D defNrm = new Texture2D(TrashSoupGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             defNrm.SetData<uint>(new uint[] { normColor });
@@ -381,6 +382,7 @@ namespace TrashSoup.Engine
             Effects.Add(@"Effects\NormalSkinnedEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\NormalSkinnedEffect"));
             Effects.Add(@"Effects\SkyboxEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\SkyboxEffect"));
             Effects.Add(@"Effects\CubeNormalEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\CubeNormalEffect"));
+            Effects.Add(@"Effects\MirrorEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\MirrorEffect"));
         }
 
         /// <summary>

@@ -21,7 +21,7 @@ namespace TrashSoup.Engine
 
         protected bool isRendering = false;
         protected GameTime tempGameTime;
-        protected Texture2D tempDiffuseMap;
+
         protected RenderTarget2D tempRenderTarget;
 
         protected Camera myCamera;
@@ -54,17 +54,7 @@ namespace TrashSoup.Engine
             }
         }
 
-        public Texture2D TempDiffuseMap
-        {
-            get
-            {
-                return tempDiffuseMap;
-            }
-            set
-            {
-                tempDiffuseMap = value;
-            }
-        }
+        protected Texture2D MirrorMap { get; set; }
 
         #endregion
 
@@ -74,7 +64,6 @@ namespace TrashSoup.Engine
             : base(name, effect)
         {
             tempGameTime = new GameTime();
-            tempDiffuseMap = this.DiffuseMap;
 
             myCamera = new Camera((uint)name.GetHashCode(), name + "OwnCamera", new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f),
                 new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.PiOver2,
@@ -102,11 +91,14 @@ namespace TrashSoup.Engine
                 TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(null);
                 isRendering = false;
 
-                this.DiffuseMap = MirrorRenderTarget;
-            }
-            else
-            {
-                this.DiffuseMap = tempDiffuseMap;
+                this.MirrorMap = MirrorRenderTarget;
+
+                EffectParameter param = null;
+                this.parameters.TryGetValue("MirrorMap", out param);
+                if (param != null)
+                {
+                    param.SetValue(this.MirrorMap);
+                }
             }
 
             base.UpdateEffect(world, worldViewProj, amb, dirs, pointColors, pointSpeculars, pointAttenuations, pointPositions, pointCount, eyeVector);
@@ -114,10 +106,28 @@ namespace TrashSoup.Engine
 
         protected void SetupCamera(Matrix wm)
         {
-            Vector3 position = wm.Translation;
+            Camera currentCam = ResourceManager.Instance.CurrentScene.Cam;
 
-            this.myCamera.Position = position;
-            this.myCamera.Target = this.myCamera.Position + new Vector3(1.0f, 0.0f, 0.0f);
+            Vector3 cCamPos = currentCam.Position + currentCam.Translation;
+            Vector3 cCamTgt = currentCam.Target;
+            Vector3 objectPosition, objectScale;
+            Quaternion objectRotation;
+            wm.Decompose(out objectScale, out objectRotation, out objectPosition);
+            //Vector3 newTarget = Vector3.Transform(new Vector3(0.0f, 0.0f, 1.0f), wm);
+            Vector3 newTarget = objectPosition - cCamPos;
+            
+            // flipping coords of relative target
+            newTarget.X = -newTarget.X;
+            //float temp = newTarget.Z;
+            //newTarget.Z = newTarget.X;
+            //newTarget.X = temp;
+
+            // transforming target as is our model transformed
+            newTarget = Vector3.Transform(newTarget, wm);
+
+            //Debug.Log(newTarget.X.ToString() + " " + newTarget.Y.ToString() + " " + newTarget.Z.ToString() + " ");
+            this.myCamera.Position = objectPosition;
+            this.myCamera.Target = newTarget;
 
             myCamera.Update(tempGameTime);
         }
