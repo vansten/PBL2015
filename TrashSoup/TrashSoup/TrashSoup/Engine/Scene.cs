@@ -301,10 +301,21 @@ namespace TrashSoup.Engine
                 if (reader.Name == "GameObject")
                 {
                     reader.ReadStartElement();
-                    GameObject obj = new GameObject(0, "");
+                    GameObject obj = null;
                     uint key = (uint)reader.ReadElementContentAsInt("GameObjectKey", "");
-                    ResourceManager.Instance.CurrentScene.ObjectsDictionary.Add(key, obj);
-                    (obj as IXmlSerializable).ReadXml(reader);
+                    if (ResourceManager.Instance.CurrentScene.ObjectsDictionary.TryGetValue(key, out obj))
+                    {
+                        Debug.Log("GameObject successfully loaded - " + obj.Name);
+                        GameObject tmp = null;
+                        (tmp as IXmlSerializable).ReadXml(reader);
+                    }
+                    else
+                    {
+                        obj = new GameObject(0, "");
+                        ResourceManager.Instance.CurrentScene.ObjectsDictionary.Add(key, obj);
+                        (obj as IXmlSerializable).ReadXml(reader);
+                        Debug.Log("New Gameobject successfully loaded - " + obj.Name);
+                    }
                 }
                 reader.ReadEndElement();
             }
