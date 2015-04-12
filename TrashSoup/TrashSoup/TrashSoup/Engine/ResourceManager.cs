@@ -139,7 +139,7 @@ namespace TrashSoup.Engine
             testBox3.MyCollider = new BoxCollider(testBox3);
 
             GameObject testMirror = new GameObject(6, "testMirror");
-            testMirror.MyTransform = new Transform(testMirror, new Vector3(-100.0f, 40.0f, -120.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 2.0f);
+            testMirror.MyTransform = new Transform(testMirror, new Vector3(-100.0f, 40.0f, -120.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, -MathHelper.PiOver4, 0.0f), 2.0f);
             testMirror.Components.Add(new CustomModel(testMirror, new Model[] { Models["Models/Test/TestMirror"], null, null }, 3, testMirrorMats));
             testMirror.MyCollider = new BoxCollider(testMirror);
 

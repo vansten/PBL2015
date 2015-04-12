@@ -113,19 +113,13 @@ namespace TrashSoup.Engine
             Vector3 objectPosition, objectScale;
             Quaternion objectRotation;
             wm.Decompose(out objectScale, out objectRotation, out objectPosition);
-            //Vector3 newTarget = Vector3.Transform(new Vector3(0.0f, 0.0f, 1.0f), wm);
+
             Vector3 newTarget = objectPosition - cCamPos;
-            
-            // flipping coords of relative target
-            newTarget.X = -newTarget.X;
-            //float temp = newTarget.Z;
-            //newTarget.Z = newTarget.X;
-            //newTarget.X = temp;
+            newTarget = Vector3.Reflect(Vector3.Normalize(newTarget), Vector3.Normalize(Vector3.Transform(new Vector3(0.0f, 0.0f, -1.0f), objectRotation)));
 
             // transforming target as is our model transformed
-            newTarget = Vector3.Transform(newTarget, wm);
+            newTarget = newTarget + objectPosition;
 
-            //Debug.Log(newTarget.X.ToString() + " " + newTarget.Y.ToString() + " " + newTarget.Z.ToString() + " ");
             this.myCamera.Position = objectPosition;
             this.myCamera.Target = newTarget;
 
