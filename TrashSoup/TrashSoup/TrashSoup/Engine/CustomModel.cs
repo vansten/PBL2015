@@ -100,7 +100,8 @@ namespace TrashSoup.Engine
                                  ResourceManager.Instance.CurrentScene.GetPointLightAttenuations(),
                                  ResourceManager.Instance.CurrentScene.GetPointLightPositions(),
                                  ResourceManager.Instance.CurrentScene.GetPointLightCount(),
-                                 camera.Position + camera.Translation);
+                                 camera.Position + camera.Translation,
+                                 camera.Bounds);
                             mm.MeshParts[i].Effect = this.Mat[ctr].MyEffect;
                             if (bones != null) this.Mat[ctr].SetEffectBones(bones);
                             ++ctr;

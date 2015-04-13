@@ -24,6 +24,8 @@ float3 PointLightSpecularColors[POINT_MAX_LIGHTS_PER_OBJECT];
 float PointLightAttenuations[POINT_MAX_LIGHTS_PER_OBJECT];
 uint PointLightCount;
 
+float4 BoundingFrustum[4];
+
 texture DiffuseMap;
 sampler DiffuseSampler = sampler_state
 {
@@ -53,6 +55,7 @@ struct VertexShaderOutput
 	float4 PositionWS : TEXCOORD2;
 	float2 TexCoord : TEXCOORD0;
 	float3 Normal : TEXCOORD1;
+	float4 ClipPlanes : TEXCOORD3;
 };
 
 struct ColorPair
@@ -129,11 +132,25 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 
 	output.Normal = normalize(mul(input.Normal, WorldInverseTranspose));
 
+	output.ClipPlanes.x = dot(output.PositionWS, BoundingFrustum[0]);
+	output.ClipPlanes.y = dot(output.PositionWS, BoundingFrustum[1]);
+	output.ClipPlanes.z = dot(output.PositionWS, BoundingFrustum[2]);
+	output.ClipPlanes.w = dot(output.PositionWS, BoundingFrustum[3]);
+
     return output;
 }
 
 float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 {
+	// clippin
+
+	clip(input.ClipPlanes.x);
+	clip(input.ClipPlanes.y);
+	clip(input.ClipPlanes.z);
+	clip(input.ClipPlanes.w);
+
+	//////
+
 	float4 color = tex2D(DiffuseSampler, input.TexCoord);
 	float alpha = color.a;
 	color.a = 1.0f;
