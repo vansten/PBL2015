@@ -35,6 +35,8 @@ namespace TrashSoup.Engine
         protected Dictionary<string, EffectParameter> parameters;
         protected List<string> dirLightsNames;
 
+        protected Vector4[] tempFrustumArray;
+
         #endregion
 
         #region properties
@@ -178,20 +180,22 @@ namespace TrashSoup.Engine
             this.ReflectivityBias = 0.2f;
             this.Transparency = 1.0f;
             this.perPixelLighting = false;
+            this.tempFrustumArray = new Vector4[4];
         }
 
-        public Material(string name, Effect effect, Texture2D diffuse) : this(name, effect)
+        public Material(string name, Effect effect, Texture2D diffuse)
+            : this(name, effect)
         {
             this.DiffuseMap = diffuse;
         }
 
         public void UpdateEffect()
         {
-            UpdateEffect(Matrix.Identity, Matrix.Identity, null, null, null, null, null, null, 0, new Vector3(0.0f, 0.0f, 0.0f));
+            UpdateEffect(Matrix.Identity, Matrix.Identity, null, null, null, null, null, null, 0, new Vector3(0.0f, 0.0f, 0.0f), new BoundingFrustum(Matrix.Identity));
         }
 
         public virtual void UpdateEffect(Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
-            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector)
+            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector, BoundingFrustum frustum)
         {
             this.parameters["World"].SetValue(world);
             this.parameters["WorldInverseTranspose"].SetValue(Matrix.Transpose(Matrix.Invert(world)));
@@ -244,7 +248,7 @@ namespace TrashSoup.Engine
             }
 
             // lights
-            if(amb != null)
+            if (amb != null)
             {
                 param = null;
                 this.parameters.TryGetValue("AmbientLightColor", out param);
@@ -260,11 +264,11 @@ namespace TrashSoup.Engine
                 }
             }
 
-            if(dirs != null)
+            if (dirs != null)
             {
-                for (int i = 0; i < ResourceManager.DIRECTIONAL_MAX_LIGHTS; ++i )
+                for (int i = 0; i < ResourceManager.DIRECTIONAL_MAX_LIGHTS; ++i)
                 {
-                    if(dirs[i] != null)
+                    if (dirs[i] != null)
                     {
                         param = null;
                         this.parameters.TryGetValue(this.dirLightsNames[i] + "Direction", out param);
@@ -283,14 +287,14 @@ namespace TrashSoup.Engine
 
             // point lights
 
-            if(pointColors != null)
+            if (pointColors != null)
             {
                 param = null;
                 this.parameters.TryGetValue("PointLightDiffuseColors", out param);
                 if (param != null) param.SetValue(pointColors);
             }
 
-            if(pointSpeculars != null)
+            if (pointSpeculars != null)
             {
                 param = null;
                 this.parameters.TryGetValue("PointLightSpecularColors", out param);
@@ -304,7 +308,7 @@ namespace TrashSoup.Engine
                 if (param != null) param.SetValue(pointPositions);
             }
 
-            if(pointAttenuations != null)
+            if (pointAttenuations != null)
             {
                 param = null;
                 this.parameters.TryGetValue("PointLightAttenuations", out param);
@@ -319,6 +323,33 @@ namespace TrashSoup.Engine
             param = null;
             this.parameters.TryGetValue("EyePosition", out param);
             if (param != null) param.SetValue(eyeVector);
+
+            // bounding frustum
+            tempFrustumArray[0].W = -frustum.Top.D + 0.1f;
+            tempFrustumArray[0].X = -frustum.Top.Normal.X;
+            tempFrustumArray[0].Y = -frustum.Top.Normal.Y;
+            tempFrustumArray[0].Z = -frustum.Top.Normal.Z;
+
+            tempFrustumArray[1].W = -frustum.Bottom.D + 0.1f;
+            tempFrustumArray[1].X = -frustum.Bottom.Normal.X;
+            tempFrustumArray[1].Y = -frustum.Bottom.Normal.Y;
+            tempFrustumArray[1].Z = -frustum.Bottom.Normal.Z;
+
+            tempFrustumArray[2].W = -frustum.Left.D + 0.1f;
+            tempFrustumArray[2].X = -frustum.Left.Normal.X;
+            tempFrustumArray[2].Y = -frustum.Left.Normal.Y;
+            tempFrustumArray[2].Z = -frustum.Left.Normal.Z;
+
+            tempFrustumArray[3].W = -frustum.Right.D + 0.1f;
+            tempFrustumArray[3].X = -frustum.Right.Normal.X;
+            tempFrustumArray[3].Y = -frustum.Right.Normal.Y;
+            tempFrustumArray[3].Z = -frustum.Right.Normal.Z;
+
+            param = null;
+            this.parameters.TryGetValue("BoundingFrustum", out param);
+            if (param != null) param.SetValue(tempFrustumArray);
+
+            //////////////////////
         }
 
         public void SetEffectBones(Matrix[] bones)
@@ -332,12 +363,12 @@ namespace TrashSoup.Engine
         {
             if (MyEffect == null) throw new NullReferenceException("MyEffect iz null and you tryin' to extract params from it, nigga?");
 
-            foreach(EffectParameter p in MyEffect.Parameters)
+            foreach (EffectParameter p in MyEffect.Parameters)
             {
                 this.parameters.Add(p.Name, p);
             }
 
-            if(MyEffect is BasicEffect)
+            if (MyEffect is BasicEffect)
             {
                 (MyEffect as BasicEffect).LightingEnabled = true;
                 (MyEffect as BasicEffect).DirectionalLight0.Enabled = true;
@@ -354,7 +385,7 @@ namespace TrashSoup.Engine
                 (MyEffect as BasicEffect).DirectionalLight2.Direction = new Vector3(0.0f, 1.0f, 0.0f);
                 (MyEffect as BasicEffect).TextureEnabled = true;
             }
-            else if(MyEffect is SkinnedEffect)
+            else if (MyEffect is SkinnedEffect)
             {
                 (MyEffect as SkinnedEffect).EnableDefaultLighting();
                 (MyEffect as SkinnedEffect).DirectionalLight0.Enabled = true;

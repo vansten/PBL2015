@@ -39,7 +39,7 @@ namespace TrashSoup.Engine
         public float FOV { get; set; }
         public float Near { get; set; }
         public float Far { get; set; }
-
+        public BoundingFrustum Bounds { get; set; }
 
         #endregion
 
@@ -58,10 +58,13 @@ namespace TrashSoup.Engine
             this.FOV = fov;
             this.Near = near;
             this.Far = far;
+            this.Bounds = new BoundingFrustum(Matrix.Identity);
 
             CreateLookAt();
 
             CreateProjection(fov, near, far);
+
+            CreateBounds();
         }
 
         public override void Update(GameTime gameTime)
@@ -76,6 +79,8 @@ namespace TrashSoup.Engine
             this.Right = this.Right / this.Right.Length();
 
             CreateLookAt();
+
+            CreateBounds();
         }
 
         protected virtual void OnUpdate(GameTime gameTime)
@@ -99,6 +104,12 @@ namespace TrashSoup.Engine
         protected void CreateLookAt()
         {
             this.ViewMatrix = Matrix.CreateLookAt(Position + Translation, Target + Translation, Up);
+        }
+
+
+        protected void CreateBounds()
+        {
+            this.Bounds.Matrix = this.ViewMatrix * this.ProjectionMatrix;
         }
 
         public System.Xml.Schema.XmlSchema GetSchema() { return null; }

@@ -62,6 +62,7 @@ namespace TrashSoup.Engine
             AddModel("Models/Test/TestGuy");
             AddModel("Models/Test/TestSphere");
             AddModel("Models/Test/TestMirror");
+            AddModel("Models/Test/TestSquarePlane");
             AddAnimation("Animations/Test/walking_1");
             AddAnimation("Animations/Test/idle_1");
             AddAnimation("Animations/Test/jump_1");
@@ -92,6 +93,15 @@ namespace TrashSoup.Engine
             testMirrorMat.Glossiness = 100.0f;
             testMirrorMat.ReflectivityBias = 1.0f;
             this.Materials.Add(testMirrorMat.Name, testMirrorMat);
+
+            List<Material> testWaterMats = new List<Material>();
+            Material testWaterMat = new WaterMaterial("testWaterMat", this.Effects[@"Effects\WaterEffect"]);
+            testWaterMats.Add(testWaterMat);
+            testWaterMat.DiffuseMap = Textures[@"Textures\Test\cargo"];
+            testWaterMat.NormalMap = Textures[@"Textures\Test\cargo_NRM"];
+            testWaterMat.Glossiness = 10.0f;
+            testWaterMat.ReflectivityBias = 0.5f;
+            this.Materials.Add(testWaterMat.Name, testWaterMat);
 
             List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"], this.Effects[@"Effects\NormalSkinnedEffect"]);
 
@@ -125,7 +135,7 @@ namespace TrashSoup.Engine
             testBox.MyCollider = new SphereCollider(testBox);  //Add a box collider to test collisions
 
             GameObject testTer = new GameObject(2, "testTer");
-            testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, -10.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
+            testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
             testTer.Components.Add(new CustomModel(testTer, new Model[] { Models["Models/Test/TestTerrain"], null, null }, 3, testTerMats));
 
             GameObject testBox2 = new GameObject(3, "testBox2");
@@ -139,9 +149,13 @@ namespace TrashSoup.Engine
             testBox3.MyCollider = new BoxCollider(testBox3);
 
             GameObject testMirror = new GameObject(6, "testMirror");
-            testMirror.MyTransform = new Transform(testMirror, new Vector3(-100.0f, 40.0f, -120.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, -MathHelper.PiOver4, 0.0f), 2.0f);
+            testMirror.MyTransform = new Transform(testMirror, new Vector3(-20.0f, 40.0f, 20.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, MathHelper.Pi, 0.0f), 2.0f);
             testMirror.Components.Add(new CustomModel(testMirror, new Model[] { Models["Models/Test/TestMirror"], null, null }, 3, testMirrorMats));
             testMirror.MyCollider = new BoxCollider(testMirror);
+
+            GameObject testWater = new GameObject(7, "tesWtater");
+            testWater.MyTransform = new Transform(testWater, new Vector3(220.0f, -15.0f, -160.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 30.0f);
+            testWater.Components.Add(new CustomModel(testWater, new Model[] { Models["Models/Test/TestSquarePlane"], null, null }, 3, testWaterMats));
 
             GameObject skyBox = new GameObject(4, "skyBox");
             skyBox.MyTransform = new Transform(skyBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1000.0f);
@@ -174,7 +188,8 @@ namespace TrashSoup.Engine
             CurrentScene.Cam = cam;
 
             // adding items to scene
-            CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror);
+            CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror); 
+            CurrentScene.ObjectsDictionary.Add(testWater.UniqueID, testWater);
             CurrentScene.ObjectsDictionary.Add(skyBox.UniqueID, skyBox);
             CurrentScene.ObjectsDictionary.Add(testTer.UniqueID, testTer);
             CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);
@@ -383,6 +398,7 @@ namespace TrashSoup.Engine
             Effects.Add(@"Effects\SkyboxEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\SkyboxEffect"));
             Effects.Add(@"Effects\CubeNormalEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\CubeNormalEffect"));
             Effects.Add(@"Effects\MirrorEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\MirrorEffect"));
+            Effects.Add(@"Effects\WaterEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\WaterEffect"));
         }
 
         /// <summary>

@@ -102,6 +102,7 @@
     <Compile Include="Engine\SaveManager.cs" />
     <Compile Include="Engine\SphereCollider.cs" />
     <Compile Include="Engine\Transform.cs" />
+    <Compile Include="Engine\WaterMaterial.cs" />
     <Compile Include="Gameplay\InputHandler.cs" />
     <Compile Include="Gameplay\PlayerCameraController.cs" />
     <Compile Include="Engine\GameObject.cs" />

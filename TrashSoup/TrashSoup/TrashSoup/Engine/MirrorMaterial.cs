@@ -22,8 +22,6 @@ namespace TrashSoup.Engine
         protected bool isRendering = false;
         protected GameTime tempGameTime;
 
-        protected RenderTarget2D tempRenderTarget;
-
         protected Camera myCamera;
         protected Camera tempCamera;
 
@@ -72,7 +70,7 @@ namespace TrashSoup.Engine
         }
 
          public override void UpdateEffect(Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
-            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector)
+            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector, BoundingFrustum frustum)
         {
             if(!isRendering)
             {
@@ -101,7 +99,7 @@ namespace TrashSoup.Engine
                 }
             }
 
-            base.UpdateEffect(world, worldViewProj, amb, dirs, pointColors, pointSpeculars, pointAttenuations, pointPositions, pointCount, eyeVector);
+            base.UpdateEffect(world, worldViewProj, amb, dirs, pointColors, pointSpeculars, pointAttenuations, pointPositions, pointCount, eyeVector, frustum);
         }
 
         protected void SetupCamera(Matrix wm)

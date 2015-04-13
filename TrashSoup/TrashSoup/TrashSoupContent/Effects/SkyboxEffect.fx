@@ -4,6 +4,8 @@ float4x4 WorldInverseTranspose;
 
 float3 AmbientLightColor;
 
+float4 BoundingFrustum[4];
+
 texture CubeMap;
 samplerCUBE CubeSampler = sampler_state
 {
@@ -26,6 +28,7 @@ struct VertexShaderOutput
 {
     float4 Position : POSITION0;
 	float3 TexCoord : TEXCOORD0;
+	float4 ClipPlanes : TEXCOORD1;
 };
 
 VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
@@ -37,11 +40,25 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 	float4 vertPos = mul(input.Position, World);
 	output.TexCoord = vertPos - EyePosition;
 
+	output.ClipPlanes.x = dot(vertPos, BoundingFrustum[0]);
+	output.ClipPlanes.y = dot(vertPos, BoundingFrustum[1]);
+	output.ClipPlanes.z = dot(vertPos, BoundingFrustum[2]);
+	output.ClipPlanes.w = dot(vertPos, BoundingFrustum[3]);
+
     return output;
 }
 
 float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 {
+	// clippin
+
+	clip(input.ClipPlanes.x);
+	clip(input.ClipPlanes.y);
+	clip(input.ClipPlanes.z);
+	clip(input.ClipPlanes.w);
+
+	//////
+
 	float4 color = texCUBE(CubeSampler, normalize(input.TexCoord));
 	color.a = 1;
     return color;

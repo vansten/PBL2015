@@ -44,16 +44,25 @@ sampler NormalSampler = sampler_state
 	MagFilter = Linear;
 };
 
-texture CubeMap;
-samplerCUBE CubeSampler = sampler_state
+texture ReflectionMap;
+sampler ReflectionSampler = sampler_state
 {
-	texture = <CubeMap>;
+	texture = <ReflectionMap>;
 	MipFilter = Linear;
 	MinFilter = Linear;
 	MagFilter = Linear;
-	AddressU = Mirror;
-	AddressV = Mirror;
 };
+
+texture RefractionMap;
+sampler RefractionSampler = sampler_state
+{
+	texture = <RefractionMap>;
+	MipFilter = Linear;
+	MinFilter = Linear;
+	MagFilter = Linear;
+};
+
+float4 ClipPlane0;
 
 float3 EyePosition;
 
@@ -77,8 +86,7 @@ struct VertexShaderOutput
 	float4 PositionWS : TEXCOORD2;
 	float2 TexCoord : TEXCOORD0;
 	float3 Normal : TEXCOORD1;
-	float3 Reflection : TEXCOORD3;
-	float4 ClipPlanes : TEXCOORD4;
+	float4 ClipPlanes : TEXCOORD3;
 };
 
 struct ColorPair
@@ -155,8 +163,6 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 
 	output.Normal = normalize(mul(input.Normal, WorldInverseTranspose));
 
-	output.Reflection = reflect(normalize(output.PositionWS - EyePosition), normalize(output.Normal));
-
 	output.ClipPlanes.x = dot(output.PositionWS, BoundingFrustum[0]);
 	output.ClipPlanes.y = dot(output.PositionWS, BoundingFrustum[1]);
 	output.ClipPlanes.z = dot(output.PositionWS, BoundingFrustum[2]);
@@ -194,17 +200,14 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
 	////////
 
-	// computin cube
+	// computin water
 
-	float3 reflection = (texCUBE(CubeSampler, normalize(input.Reflection))).xyz;
-	reflection = reflection * ReflectivityColor;
 
 	////////
 
 	ColorPair computedLight = ComputeLight(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal);
 
-	color =  (color * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f)) + 
-		saturate(ReflectivityBias) * (alpha * float4(reflection, 1.0f));
+	color =  (color * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f));
 
 	color *= Transparency;
 
