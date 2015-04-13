@@ -120,7 +120,10 @@ namespace TrashSoup
             else
             {
                 //Editor mode camera control ;)
-                ResourceManager.Instance.CurrentScene.Cam.Update(gameTime);
+                if(ResourceManager.Instance.CurrentScene != null && ResourceManager.Instance.CurrentScene.Cam != null)
+                {
+                    ResourceManager.Instance.CurrentScene.Cam.Update(gameTime);
+                }
             }
         }
 
@@ -129,9 +132,15 @@ namespace TrashSoup
             this.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            ResourceManager.Instance.CurrentScene.DrawAll(null);
+            if(ResourceManager.Instance.CurrentScene != null)
+            {
+                ResourceManager.Instance.CurrentScene.DrawAll(null);
+            }
 
+            if(ResourceManager.Instance.ps != null)
+            {
             ResourceManager.Instance.ps.Draw();
+            }
 
             GUIManager.Instance.Render(this.spriteBatch);
         }

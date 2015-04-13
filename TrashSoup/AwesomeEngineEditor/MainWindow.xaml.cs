@@ -365,29 +365,29 @@ namespace AwesomeEngineEditor
             this.IsSaveSceneMIEnabled = true;
 
             this.XNAImage.GraphicsDevice = this.myGame.GraphicsDevice;
-            this.myGame.EditorLoadContent();
+            //this.myGame.EditorLoadContent();
 
-            //OpenFileDialog ofd = new OpenFileDialog();
-            //ofd.Filter = "XML files (scenes ofc) (*.xml) | *.xml";
-            //string filepath = "";
-            //if(ofd.ShowDialog() == true)
-            //{
-            //    filepath = ofd.FileName;
-            //}
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "XML files (scenes ofc) (*.xml) | *.xml";
+            string filepath = "";
+            if (ofd.ShowDialog() == true)
+            {
+                filepath = ofd.FileName;
+            }
 
-            //if(filepath != "")
-            //{
-            //    if(this.IsSaveSceneMIEnabled)
-            //    {
-            //        SaveSceneMI_Click(sender, e);
-            //    }
+            if (filepath != "")
+            {
+                if (this.IsSaveSceneMIEnabled)
+                {
+                    SaveSceneMI_Click(sender, e);
+                }
 
-            //    this.IsSaveSceneMIEnabled = true;
+                this.IsSaveSceneMIEnabled = true;
 
-            //    TrashSoup.Engine.SaveManager.Instance.EditorLoadFileAction(filepath);
-            //    this.XNAImage.GraphicsDevice = this.myGame.GraphicsDevice;
-            //    this.myGame.EditorLoadContent();
-            //}
+                TrashSoup.Engine.SaveManager.Instance.EditorLoadFileAction(filepath);
+                this.XNAImage.GraphicsDevice = this.myGame.GraphicsDevice;
+                this.myGame.EditorLoadContent();
+            }
         }
 
         private void SaveSceneMI_Click(object sender, RoutedEventArgs e)

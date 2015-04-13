@@ -568,22 +568,25 @@ namespace TrashSoup.Engine
         /// </summary>
         public void Render(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
-
-            foreach (GUIElement element in this.elementsToDraw)
+            if(spriteBatch != null)
             {
-                element.Draw(spriteBatch);
+                spriteBatch.Begin();
+
+                foreach (GUIElement element in this.elementsToDraw)
+                {
+                    element.Draw(spriteBatch);
+                }
+
+                foreach (int i in this.buttonsToDrawIndices)
+                {
+                    this.allButtonsDeclared[i].Draw(spriteBatch);
+                }
+
+                this.buttonsToDrawIndices.Clear();
+                this.elementsToDraw.Clear();
+
+                spriteBatch.End();
             }
-
-            foreach(int i in this.buttonsToDrawIndices)
-            {
-                this.allButtonsDeclared[i].Draw(spriteBatch);
-            }
-
-            this.buttonsToDrawIndices.Clear();
-            this.elementsToDraw.Clear();
-
-            spriteBatch.End();
         }
 
         #endregion

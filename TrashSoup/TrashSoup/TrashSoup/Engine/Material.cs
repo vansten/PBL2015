@@ -171,9 +171,18 @@ namespace TrashSoup.Engine
 
             AssignParamsInitialize();
 
-            this.DiffuseMap = ResourceManager.Instance.Textures["DefaultDiffuse"];
-            this.NormalMap = ResourceManager.Instance.Textures["DefaultNormal"];
-            this.CubeMap = ResourceManager.Instance.TexturesCube["DefaultCube"];
+            if(ResourceManager.Instance.Textures.ContainsKey("DefaultDiffuse"))
+            {
+                this.DiffuseMap = ResourceManager.Instance.Textures["DefaultDiffuse"];
+            }
+            if (ResourceManager.Instance.Textures.ContainsKey("DefaultNormal"))
+            {
+                this.DiffuseMap = ResourceManager.Instance.Textures["DefaultNormal"];
+            }
+            if (ResourceManager.Instance.Textures.ContainsKey("DefaultCube"))
+            {
+                this.DiffuseMap = ResourceManager.Instance.Textures["DefaultCube"];
+            }
             this.SpecularColor = new Vector3(1.0f, 1.0f, 1.0f);
             this.Glossiness = 50.0f;
             this.ReflectivityColor = new Vector3(1.0f, 1.0f, 1.0f);

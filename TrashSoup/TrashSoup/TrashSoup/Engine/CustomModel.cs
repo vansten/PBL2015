@@ -224,7 +224,7 @@ namespace TrashSoup.Engine
 
                         Material m = new Material(newName, newEf);
 
-                        if (ResourceManager.Instance.Materials.TryGetValue(newName, out m))
+                        if (!ResourceManager.Instance.Materials.TryGetValue(newName, out m))
                         {
                             Material tmp = new Material(newName, newEf);
                             (tmp as IXmlSerializable).ReadXml(reader);
