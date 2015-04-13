@@ -189,7 +189,7 @@ namespace TrashSoup.Engine
 
             // adding items to scene
             CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror); 
-            CurrentScene.ObjectsDictionary.Add(testWater.UniqueID, testWater);
+            //CurrentScene.ObjectsDictionary.Add(testWater.UniqueID, testWater);
             CurrentScene.ObjectsDictionary.Add(skyBox.UniqueID, skyBox);
             CurrentScene.ObjectsDictionary.Add(testTer.UniqueID, testTer);
             CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);
