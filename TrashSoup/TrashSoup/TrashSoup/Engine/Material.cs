@@ -177,11 +177,11 @@ namespace TrashSoup.Engine
             }
             if (ResourceManager.Instance.Textures.ContainsKey("DefaultNormal"))
             {
-                this.DiffuseMap = ResourceManager.Instance.Textures["DefaultNormal"];
+                this.NormalMap = ResourceManager.Instance.Textures["DefaultNormal"];
             }
             if (ResourceManager.Instance.Textures.ContainsKey("DefaultCube"))
             {
-                this.DiffuseMap = ResourceManager.Instance.Textures["DefaultCube"];
+                this.CubeMap = ResourceManager.Instance.TexturesCube["DefaultCube"];
             }
             this.SpecularColor = new Vector3(1.0f, 1.0f, 1.0f);
             this.Glossiness = 50.0f;
@@ -415,9 +415,34 @@ namespace TrashSoup.Engine
         public System.Xml.Schema.XmlSchema GetSchema() { return null; }
         public void ReadXml(System.Xml.XmlReader reader)
         {
-            DiffuseMap = ResourceManager.Instance.LoadTexture(reader.ReadElementString("DiffusePath", ""));
-            NormalMap = ResourceManager.Instance.LoadTexture(reader.ReadElementString("NormalPath", ""));
-            CubeMap = ResourceManager.Instance.LoadTextureCube(reader.ReadElementString("CubePath", ""));
+            uint normColor = 0xFFFF0F0F;
+            uint blackColor = 0xFF000000;
+            Texture2D defDiff = null;
+            if (!ResourceManager.Instance.Textures.TryGetValue("DefaultDiffuse", out defDiff))
+            {
+                defDiff = new Texture2D(TrashSoupGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+                defDiff.SetData<uint>(new uint[] { blackColor });
+                ResourceManager.Instance.Textures.Add("DefaultDiffuse", defDiff);
+            }
+            Texture2D defNrm = null;
+            if (!ResourceManager.Instance.Textures.TryGetValue("DefaultNormal", out defNrm))
+            {
+                defNrm = new Texture2D(TrashSoupGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+                defNrm.SetData<uint>(new uint[] { normColor });
+                ResourceManager.Instance.Textures.Add("DefaultNormal", defNrm);
+            }
+            TextureCube defCbc = null;
+            if (!ResourceManager.Instance.TexturesCube.TryGetValue("DefaultCube", out defCbc))
+            {
+                defCbc = new TextureCube(TrashSoupGame.Instance.GraphicsDevice, 1, false, SurfaceFormat.Color);
+                defCbc.SetData<uint>(CubeMapFace.NegativeX, new uint[] { blackColor });
+                defCbc.SetData<uint>(CubeMapFace.PositiveX, new uint[] { blackColor });
+                defCbc.SetData<uint>(CubeMapFace.NegativeY, new uint[] { blackColor });
+                defCbc.SetData<uint>(CubeMapFace.PositiveY, new uint[] { blackColor });
+                defCbc.SetData<uint>(CubeMapFace.NegativeZ, new uint[] { blackColor });
+                defCbc.SetData<uint>(CubeMapFace.PositiveZ, new uint[] { blackColor });
+                ResourceManager.Instance.TexturesCube.Add("DefaultCube", defCbc);
+            }
 
             reader.ReadStartElement("SpecularColor");
             SpecularColor = new Vector3(reader.ReadElementContentAsFloat("X", ""),
@@ -440,10 +465,6 @@ namespace TrashSoup.Engine
 
         public void WriteXml(System.Xml.XmlWriter writer)
         {
-            writer.WriteElementString("DiffusePath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == DiffuseMap).Key);
-            writer.WriteElementString("NormalPath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == NormalMap).Key);
-            writer.WriteElementString("CubePath", ResourceManager.Instance.TexturesCube.FirstOrDefault(x => x.Value == CubeMap).Key);
-
             writer.WriteStartElement("SpecularColor");
             writer.WriteElementString("X", XmlConvert.ToString(SpecularColor.X));
             writer.WriteElementString("Y", XmlConvert.ToString(SpecularColor.Y));

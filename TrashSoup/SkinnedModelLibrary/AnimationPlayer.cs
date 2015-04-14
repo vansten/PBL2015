@@ -69,7 +69,11 @@ namespace SkinningModelLibrary
             worldTransforms = new Matrix[skinningData.BindPose.Count];
             skinTransforms = new Matrix[skinningData.BindPose.Count];
 
-            currentClipValue = skinningData.AnimationClips[animKey];
+            currentClipValue = null;
+            if(!skinningData.AnimationClips.TryGetValue(animKey, out currentClipValue))
+            {
+                currentClipValue = new AnimationClip(new TimeSpan(1), new List<Keyframe>());
+            }
             if (currentClipValue == null) throw new ArgumentNullException("clip");
         }
 

@@ -233,7 +233,10 @@ namespace TrashSoup.Engine
                         else
                         {
                             (m as IXmlSerializable).ReadXml(reader);
-                            ResourceManager.Instance.Materials.Add(newName, m);
+                            if(!ResourceManager.Instance.Materials.ContainsKey(newName))
+                            {
+                                ResourceManager.Instance.Materials.Add(newName, m);
+                            }
                             Debug.Log("New material successfully loaded - " + newName);
                         }
                         

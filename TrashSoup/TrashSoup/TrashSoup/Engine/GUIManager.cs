@@ -31,7 +31,7 @@ namespace TrashSoup.Engine
 
     #region GUIElement class
 
-    class GUIElement
+    public class GUIElement
     {
         #region Variables
 
@@ -85,7 +85,7 @@ namespace TrashSoup.Engine
 
     #region GUITexture class
 
-    class GUITexture : GUIElement
+    public class GUITexture : GUIElement
     {
         #region Variables
 
@@ -121,7 +121,7 @@ namespace TrashSoup.Engine
 
     #region GUIText class
 
-    class GUIText : GUIElement
+    public class GUIText : GUIElement
     {
         #region Variables
 
@@ -154,7 +154,7 @@ namespace TrashSoup.Engine
 
     #region GUIButton class
 
-    class GUIButton : GUIElement
+    public class GUIButton : GUIElement
     {
         #region Variables
 
@@ -402,7 +402,7 @@ namespace TrashSoup.Engine
 
     #region GUIManager class
 
-    class GUIManager : Singleton<GUIManager>
+    public class GUIManager : Singleton<GUIManager>
     {
         #region Variables
 

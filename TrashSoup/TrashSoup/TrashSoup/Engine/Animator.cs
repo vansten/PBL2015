@@ -187,7 +187,10 @@ namespace TrashSoup.Engine
 
         public void AddAnimationClip(KeyValuePair<string, AnimationClip> newClip)
         {
-            this.SkinningData.AnimationClips.Add(newClip.Key, newClip.Value);
+            if(!this.SkinningData.AnimationClips.ContainsKey(newClip.Key))
+            {
+                this.SkinningData.AnimationClips.Add(newClip.Key, newClip.Value);
+            }
             this.animationPlayers.Add(newClip.Key, new AnimationPlayer(this.SkinningData, newClip.Key));
         }
 

@@ -74,7 +74,10 @@ namespace TrashSoup.Engine
             testPlayerMat.NormalMap = Textures[@"Textures\Test\cargo_NRM"];
             testPlayerMat.Glossiness = 40.0f;
             testPlayerMat.Transparency = 1.0f;
-            this.Materials.Add(testPlayerMat.Name, testPlayerMat);
+            if(!this.Materials.ContainsKey(testPlayerMat.Name))
+            {
+                this.Materials.Add(testPlayerMat.Name, testPlayerMat);
+            }
 
             List<Material> testPlayerMats2 = new List<Material>();
             Material testPlayerMat2 = new Material("testPlayerMat2", this.Effects[@"Effects\CubeNormalEffect"], Textures[@"Textures\Test\cargo"]);
@@ -85,14 +88,20 @@ namespace TrashSoup.Engine
             testPlayerMat2.ReflectivityColor = new Vector3(1.0f, 0.0f, 1.0f);
             testPlayerMat2.ReflectivityBias = 0.7f;
             testPlayerMat2.Transparency = 1.0f;
-            this.Materials.Add(testPlayerMat2.Name, testPlayerMat2);
+            if(!this.Materials.ContainsKey(testPlayerMat2.Name))
+            {
+                this.Materials.Add(testPlayerMat2.Name, testPlayerMat2);
+            }
 
             List<Material> testMirrorMats = new List<Material>();
             Material testMirrorMat = new MirrorMaterial("testMirrorMat", this.Effects[@"Effects\MirrorEffect"]);
             testMirrorMats.Add(testMirrorMat);
             testMirrorMat.Glossiness = 100.0f;
             testMirrorMat.ReflectivityBias = 1.0f;
-            this.Materials.Add(testMirrorMat.Name, testMirrorMat);
+            if(!this.Materials.ContainsKey(testMirrorMat.Name))
+            {
+                this.Materials.Add(testMirrorMat.Name, testMirrorMat);
+            }
 
             List<Material> testWaterMats = new List<Material>();
             Material testWaterMat = new WaterMaterial("testWaterMat", this.Effects[@"Effects\WaterEffect"]);
@@ -101,7 +110,10 @@ namespace TrashSoup.Engine
             testWaterMat.NormalMap = Textures[@"Textures\Test\cargo_NRM"];
             testWaterMat.Glossiness = 10.0f;
             testWaterMat.ReflectivityBias = 0.5f;
-            this.Materials.Add(testWaterMat.Name, testWaterMat);
+            if(!this.Materials.ContainsKey(testWaterMat.Name))
+            {
+                this.Materials.Add(testWaterMat.Name, testWaterMat);
+            }
 
             List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"], this.Effects[@"Effects\NormalSkinnedEffect"]);
 
@@ -109,16 +121,28 @@ namespace TrashSoup.Engine
             Material testTerMat = new Material("testTerMat", this.Effects[@"Effects\DefaultEffect"], Textures[@"Textures\Test\metal01_d"]);
             testTerMat.SpecularColor = new Vector3(0.1f, 0.1f, 0.0f);
             testTerMat.Glossiness = 10.0f;
-            this.Materials.Add(testTerMat.Name, testTerMat);
-            testTerMats.Add(testTerMat);
+            if(!this.Materials.ContainsKey(testTerMat.Name))
+            {
+                this.Materials.Add(testTerMat.Name, testTerMat);
+            }
+            if(!testTerMats.Contains(testTerMat))
+            {
+                testTerMats.Add(testTerMat);
+            }
 
             List<Material> testSBMats = new List<Material>();
             Material testSBMat = new Material("testSBMat", this.Effects[@"Effects\SkyboxEffect"]);
             testSBMat.CubeMap = TexturesCube[@"Textures\Skyboxes\Sunset"];
             testSBMat.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
             testSBMat.Glossiness = 100.0f;
-            this.Materials.Add(testSBMat.Name, testSBMat);
-            testSBMats.Add(testSBMat);
+            if(!this.Materials.ContainsKey(testSBMat.Name))
+            {
+                this.Materials.Add(testSBMat.Name, testSBMat);
+            }
+            if(!testSBMats.Contains(testSBMat))
+            {
+                testSBMats.Add(testSBMat);
+            }
 
             // loading gameobjects
             GameObject testBox = new GameObject(1, "Player");
@@ -148,11 +172,11 @@ namespace TrashSoup.Engine
             testBox3.Components.Add(new CustomModel(testBox3, new Model[] { Models["Models/Test/TestSphere"], null, null }, 3, testPlayerMats2));
             testBox3.MyCollider = new BoxCollider(testBox3);
 
-            GameObject testMirror = new GameObject(6, "testMirror");
+            /*GameObject testMirror = new GameObject(6, "testMirror");
             testMirror.MyTransform = new Transform(testMirror, new Vector3(-20.0f, 40.0f, 20.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, MathHelper.Pi, 0.0f), 2.0f);
             testMirror.Components.Add(new CustomModel(testMirror, new Model[] { Models["Models/Test/TestMirror"], null, null }, 3, testMirrorMats));
             testMirror.MyCollider = new BoxCollider(testMirror);
-
+            */
             GameObject testWater = new GameObject(7, "tesWtater");
             testWater.MyTransform = new Transform(testWater, new Vector3(220.0f, -15.0f, -160.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 30.0f);
             testWater.Components.Add(new CustomModel(testWater, new Model[] { Models["Models/Test/TestSquarePlane"], null, null }, 3, testWaterMats));
@@ -188,7 +212,7 @@ namespace TrashSoup.Engine
             CurrentScene.Cam = cam;
 
             // adding items to scene
-            CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror); 
+            //CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror); 
             //CurrentScene.ObjectsDictionary.Add(testWater.UniqueID, testWater);
             CurrentScene.ObjectsDictionary.Add(skyBox.UniqueID, skyBox);
             CurrentScene.ObjectsDictionary.Add(testTer.UniqueID, testTer);
@@ -235,12 +259,18 @@ namespace TrashSoup.Engine
         /// <param name="game"></param>
         private void AddModel(String path)
         {
-            Models.Add(path, TrashSoupGame.Instance.Content.Load<Model>(path));
+            if(!Models.ContainsKey(path))
+            {
+                Models.Add(path, TrashSoupGame.Instance.Content.Load<Model>(path));
+            }
         }
 
         private void AddAnimation(String path)
         {
-            Animations.Add(path, TrashSoupGame.Instance.Content.Load<Model>(path));
+            if(!Animations.ContainsKey(path))
+            {
+                Animations.Add(path, TrashSoupGame.Instance.Content.Load<Model>(path));
+            }
         }
 
         /// <summary>
@@ -349,29 +379,56 @@ namespace TrashSoup.Engine
             //uint diffColor = 0xFFFFFFFF;
             uint normColor = 0xFFFF0F0F;
             uint blackColor = 0xFF000000;
-            Texture2D defDiff = new Texture2D(TrashSoupGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
-            defDiff.SetData<uint>(new uint[] { blackColor });
-            Textures.Add("DefaultDiffuse", defDiff);
-            Texture2D defNrm = new Texture2D(TrashSoupGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
-            defNrm.SetData<uint>(new uint[] { normColor });
-            Textures.Add("DefaultNormal", defNrm);
-            TextureCube defCbc = new TextureCube(TrashSoupGame.Instance.GraphicsDevice, 1, false, SurfaceFormat.Color);
-            defCbc.SetData<uint>(CubeMapFace.NegativeX, new uint[] { blackColor });
-            defCbc.SetData<uint>(CubeMapFace.PositiveX, new uint[] { blackColor });
-            defCbc.SetData<uint>(CubeMapFace.NegativeY, new uint[] { blackColor });
-            defCbc.SetData<uint>(CubeMapFace.PositiveY, new uint[] { blackColor });
-            defCbc.SetData<uint>(CubeMapFace.NegativeZ, new uint[] { blackColor });
-            defCbc.SetData<uint>(CubeMapFace.PositiveZ, new uint[] { blackColor });
-            TexturesCube.Add("DefaultCube", defCbc);
+            if (!Textures.ContainsKey("DefaultDiffuse"))
+            {
+                Texture2D defDiff = new Texture2D(TrashSoupGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+                defDiff.SetData<uint>(new uint[] { blackColor });
+                Textures.Add("DefaultDiffuse", defDiff);
+            }
+            if(!Textures.ContainsKey("DefaultNormal"))
+            {
+                Texture2D defNrm = new Texture2D(TrashSoupGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+                defNrm.SetData<uint>(new uint[] { normColor });
+                Textures.Add("DefaultNormal", defNrm);
+            }
+            if (!TexturesCube.ContainsKey("DefaultCube"))
+            {
+                TextureCube defCbc = new TextureCube(TrashSoupGame.Instance.GraphicsDevice, 1, false, SurfaceFormat.Color);
+                defCbc.SetData<uint>(CubeMapFace.NegativeX, new uint[] { blackColor });
+                defCbc.SetData<uint>(CubeMapFace.PositiveX, new uint[] { blackColor });
+                defCbc.SetData<uint>(CubeMapFace.NegativeY, new uint[] { blackColor });
+                defCbc.SetData<uint>(CubeMapFace.PositiveY, new uint[] { blackColor });
+                defCbc.SetData<uint>(CubeMapFace.NegativeZ, new uint[] { blackColor });
+                defCbc.SetData<uint>(CubeMapFace.PositiveZ, new uint[] { blackColor });
+                TexturesCube.Add("DefaultCube", defCbc);
+            }
             ///////////////////////////////////////////
 
             // FOR TETIN
-            TexturesCube.Add(@"Textures\Skyboxes\Sunset", game.Content.Load<TextureCube>(@"Textures\Skyboxes\Sunset"));
+            if(!TexturesCube.ContainsKey(@"Textures\Skyboxes\Sunset"))
+            {
+                TexturesCube.Add(@"Textures\Skyboxes\Sunset", game.Content.Load<TextureCube>(@"Textures\Skyboxes\Sunset"));
+            }
 
-            Textures.Add(@"Textures\Test\cargo", game.Content.Load<Texture2D>(@"Textures\Test\cargo"));
-            Textures.Add(@"Textures\Test\cargo_NRM", game.Content.Load<Texture2D>(@"Textures\Test\cargo_NRM"));
-            Textures.Add(@"Textures\Test\metal01_d", game.Content.Load<Texture2D>(@"Textures\Test\metal01_d"));
-            Textures.Add(@"Textures\ParticleTest\Particle", game.Content.Load<Texture2D>(@"Textures\ParticleTest\Particle"));
+            if(!Textures.ContainsKey(@"Textures\Test\cargo"))
+            {
+                Textures.Add(@"Textures\Test\cargo", game.Content.Load<Texture2D>(@"Textures\Test\cargo"));
+            }
+
+            if (!Textures.ContainsKey(@"Textures\Test\cargo_NRM"))
+            {
+                Textures.Add(@"Textures\Test\cargo_NRM", game.Content.Load<Texture2D>(@"Textures\Test\cargo_NRM"));
+            }
+
+            if (!Textures.ContainsKey(@"Textures\Test\metal01_d"))
+            {
+                Textures.Add(@"Textures\Test\metal01_d", game.Content.Load<Texture2D>(@"Textures\Test\metal01_d"));
+            }
+
+            if (!Textures.ContainsKey(@"Textures\ParticleTest\Particle"))
+            {
+                Textures.Add(@"Textures\ParticleTest\Particle", game.Content.Load<Texture2D>(@"Textures\ParticleTest\Particle"));
+            }
         }
 
         /// <summary>
@@ -388,17 +445,55 @@ namespace TrashSoup.Engine
 
             //Effects.Add(game.Content.Load<Effect>(@"Effects\Billboard"));
             //Effects.ElementAt(1).CurrentTechnique = Effects.ElementAt(1).Techniques["Technique1"];
-            Effect ef = TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\DefaultEffect");
-            Effects.Add("BasicEffect", new BasicEffect(TrashSoupGame.Instance.GraphicsDevice));
-            Effects.Add("SkinnedEffect", new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice));
-            Effects.Add(@"Effects\DefaultEffect", ef);
-            Effects.Add(@"Effects\NormalEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\NormalEffect"));
-            Effects.Add(@"Effects\DefaultSkinnedEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\DefaultSkinnedEffect"));
-            Effects.Add(@"Effects\NormalSkinnedEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\NormalSkinnedEffect"));
-            Effects.Add(@"Effects\SkyboxEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\SkyboxEffect"));
-            Effects.Add(@"Effects\CubeNormalEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\CubeNormalEffect"));
-            Effects.Add(@"Effects\MirrorEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\MirrorEffect"));
-            Effects.Add(@"Effects\WaterEffect", TrashSoupGame.Instance.Content.Load<Effect>(@"Effects\WaterEffect"));
+            if(!Effects.ContainsKey("BasicEffect"))
+            {
+                Effects.Add("BasicEffect", new BasicEffect(TrashSoupGame.Instance.GraphicsDevice));
+            }
+            if(!Effects.ContainsKey("SkinnedEffect"))
+            {
+                Effects.Add("SkinnedEffect", new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice));
+            }
+
+            string path = @"Effects\DefaultEffect";
+            if(!Effects.ContainsKey(path))
+            {
+                this.LoadEffect(path);
+            }
+            path = @"Effects\NormalEffect";
+            if(!Effects.ContainsKey(path))
+            {
+                this.LoadEffect(path);
+            }
+            path = @"Effects\DefaultSkinnedEffect";
+            if(!Effects.ContainsKey(path))
+            {
+                this.LoadEffect(path);
+            }
+            path = @"Effects\NormalSkinnedEffect";
+            if (!Effects.ContainsKey(path))
+            {
+                this.LoadEffect(path);
+            }
+            path = @"Effects\SkyboxEffect";
+            if (!Effects.ContainsKey(path))
+            {
+                this.LoadEffect(path);
+            }
+            path = @"Effects\CubeNormalEffect";
+            if (!Effects.ContainsKey(path))
+            {
+                this.LoadEffect(path);
+            }
+            path = @"Effects\MirrorEffect";
+            if (!Effects.ContainsKey(path))
+            {
+                this.LoadEffect(path);
+            }
+            path = @"Effects\WaterEffect";
+            if (!Effects.ContainsKey(path))
+            {
+                this.LoadEffect(path);
+            }
         }
 
         /// <summary>
@@ -467,7 +562,10 @@ namespace TrashSoup.Engine
                 if (mm.MaterialTextureNames[1] != null) mat.NormalMap = LoadTexture(mm.MaterialTextureNames[1]);
                 if (mm.MaterialTextureNames[2] != null) mat.CubeMap = LoadTextureCube(mm.MaterialTextureNames[2]);
 
-                this.Materials.Add(mat.Name, mat);
+                if(!this.Materials.ContainsKey(mat.Name))
+                {
+                    this.Materials.Add(mat.Name, mat);
+                }
             }
 
             foreach(string matName in materialNames)
@@ -496,7 +594,7 @@ namespace TrashSoup.Engine
 
                 int j = strDivided.Count() - 2;     // points to pre-last element, which is first part of tha path
                 string tmpPathElement = fileName;
-                while (!(strDivided[j]).Equals(rootDir) && !(strDivided[j]).Equals(pRootDir) && j >= 0)
+                while (j >= 0 && !(strDivided[j]).Equals(rootDir) && !(strDivided[j]).Equals(pRootDir))
                 {
                     tmpPathElement = strDivided[j];
                     newPath = tmpPathElement + "\\" + newPath;

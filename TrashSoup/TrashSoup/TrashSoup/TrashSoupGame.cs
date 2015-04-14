@@ -120,6 +120,7 @@ namespace TrashSoup
             else
             {
                 //Editor mode camera control ;)
+                ResourceManager.Instance.CurrentScene.UpdateAll(gameTime);
                 if(ResourceManager.Instance.CurrentScene != null && ResourceManager.Instance.CurrentScene.Cam != null)
                 {
                     ResourceManager.Instance.CurrentScene.Cam.Update(gameTime);
@@ -141,7 +142,6 @@ namespace TrashSoup
             {
             ResourceManager.Instance.ps.Draw();
             }
-
             GUIManager.Instance.Render(this.spriteBatch);
         }
 

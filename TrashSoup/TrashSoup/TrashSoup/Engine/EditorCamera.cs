@@ -7,7 +7,7 @@ using System.Text;
 
 namespace TrashSoup.Engine
 {
-    class EditorCamera : Camera
+    public class EditorCamera : Camera
     {
         private bool mouseDown = false;
         private Vector2 prevMousePosition = Vector2.Zero;

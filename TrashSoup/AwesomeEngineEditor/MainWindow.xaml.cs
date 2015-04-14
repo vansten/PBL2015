@@ -362,10 +362,7 @@ namespace AwesomeEngineEditor
                 return;
             }
 
-            this.IsSaveSceneMIEnabled = true;
-
             this.XNAImage.GraphicsDevice = this.myGame.GraphicsDevice;
-            //this.myGame.EditorLoadContent();
 
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "XML files (scenes ofc) (*.xml) | *.xml";
@@ -388,12 +385,20 @@ namespace AwesomeEngineEditor
                 this.XNAImage.GraphicsDevice = this.myGame.GraphicsDevice;
                 this.myGame.EditorLoadContent();
             }
+
+            foreach(TrashSoup.Engine.GameObject go in TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.Values)
+            {
+                this.GameObjects.Add(go);
+            }
+            this.GameObjects.Add(TrashSoup.Engine.ResourceManager.Instance.CurrentScene.Cam);
+
+            this.IsSaveSceneMIEnabled = true;
         }
 
         private void SaveSceneMI_Click(object sender, RoutedEventArgs e)
         {
             //Scene save
-            //TrashSoup.Engine.SaveManager.Instance.SaveFileAction();
+            TrashSoup.Engine.SaveManager.Instance.SaveFileAction();
         }
 
         private void SaveScene()
@@ -480,9 +485,16 @@ namespace AwesomeEngineEditor
             if (this.selectedObject == null) return;
             this.Test.Text = "ID: " + ((TrashSoup.Engine.GameObject)this.selectedObject).UniqueID + "\n";
             this.Test.Text += "Name: " + ((TrashSoup.Engine.GameObject)this.selectedObject).Name + "\n";
-            this.Test.Text += "Position: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyTransform.Position + "\n";
-            this.Test.Text += "Rotation: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyTransform.Rotation + "\n";
-            this.Test.Text += "Scale: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyTransform.Scale + "\n";
+            if(this.selectedObject.GetType().IsSubclassOf(typeof(TrashSoup.Engine.Camera)))
+            {
+                this.Test.Text += "Position: " + ((TrashSoup.Engine.Camera)this.selectedObject).Position.ToString();
+            }
+            else
+            {
+                this.Test.Text += "Position: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyTransform.Position + "\n";
+                this.Test.Text += "Rotation: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyTransform.Rotation + "\n";
+                this.Test.Text += "Scale: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyTransform.Scale + "\n";
+            }
             if(this.selectedObject.MyPhysicalObject != null)
             {
                 this.Test.Text += "Drag factor: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyPhysicalObject.DragFactor + "\n";

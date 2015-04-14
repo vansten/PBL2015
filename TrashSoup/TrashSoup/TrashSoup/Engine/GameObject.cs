@@ -161,7 +161,17 @@ namespace TrashSoup.Engine
             if(reader.Name == "MyAnimator")
             {
                 reader.ReadStartElement();
-                MyAnimator = new Animator(this, ResourceManager.Instance.Models[reader.ReadElementString("BaseAnim", "")]);
+                Model baseAnim = null;
+                string baseAnimPath = reader.ReadElementString("BaseAnim", "");
+                if(ResourceManager.Instance.Models.TryGetValue(baseAnimPath, out baseAnim))
+                {
+                    MyAnimator = new Animator(this, ResourceManager.Instance.Models[baseAnimPath]);
+                }
+                else
+                {
+                    baseAnim = ResourceManager.Instance.LoadModel(baseAnimPath);
+                    MyAnimator = new Animator(this, ResourceManager.Instance.Models[baseAnimPath]);
+                }
                 (MyAnimator as IXmlSerializable).ReadXml(reader);
                 //MyAnimator.MyObject = ResourceManager.Instance.CurrentScene.GetObject(MyAnimator.tmp);
                 while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
