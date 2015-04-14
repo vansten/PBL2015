@@ -36,6 +36,7 @@ namespace TrashSoup.Engine
         protected List<string> dirLightsNames;
 
         protected Vector4[] tempFrustumArray;
+        protected Vector4 additionalClipPlane;
 
         #endregion
 
@@ -200,11 +201,11 @@ namespace TrashSoup.Engine
 
         public void UpdateEffect()
         {
-            UpdateEffect(Matrix.Identity, Matrix.Identity, null, null, null, null, null, null, 0, new Vector3(0.0f, 0.0f, 0.0f), new BoundingFrustum(Matrix.Identity));
+            UpdateEffect(Matrix.Identity, Matrix.Identity, null, null, null, null, null, null, 0, new Vector3(0.0f, 0.0f, 0.0f), new BoundingFrustumExtended(Matrix.Identity));
         }
 
         public virtual void UpdateEffect(Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
-            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector, BoundingFrustum frustum)
+            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector, BoundingFrustumExtended frustum)
         {
             this.parameters["World"].SetValue(world);
             this.parameters["WorldInverseTranspose"].SetValue(Matrix.Transpose(Matrix.Invert(world)));
@@ -334,22 +335,22 @@ namespace TrashSoup.Engine
             if (param != null) param.SetValue(eyeVector);
 
             // bounding frustum
-            tempFrustumArray[0].W = -frustum.Top.D + 0.1f;
+            tempFrustumArray[0].W = -frustum.Top.D + BoundingFrustumExtended.CLIP_MARGIN;
             tempFrustumArray[0].X = -frustum.Top.Normal.X;
             tempFrustumArray[0].Y = -frustum.Top.Normal.Y;
             tempFrustumArray[0].Z = -frustum.Top.Normal.Z;
 
-            tempFrustumArray[1].W = -frustum.Bottom.D + 0.1f;
+            tempFrustumArray[1].W = -frustum.Bottom.D + BoundingFrustumExtended.CLIP_MARGIN;
             tempFrustumArray[1].X = -frustum.Bottom.Normal.X;
             tempFrustumArray[1].Y = -frustum.Bottom.Normal.Y;
             tempFrustumArray[1].Z = -frustum.Bottom.Normal.Z;
 
-            tempFrustumArray[2].W = -frustum.Left.D + 0.1f;
+            tempFrustumArray[2].W = -frustum.Left.D + BoundingFrustumExtended.CLIP_MARGIN;
             tempFrustumArray[2].X = -frustum.Left.Normal.X;
             tempFrustumArray[2].Y = -frustum.Left.Normal.Y;
             tempFrustumArray[2].Z = -frustum.Left.Normal.Z;
 
-            tempFrustumArray[3].W = -frustum.Right.D + 0.1f;
+            tempFrustumArray[3].W = -frustum.Right.D + BoundingFrustumExtended.CLIP_MARGIN;
             tempFrustumArray[3].X = -frustum.Right.Normal.X;
             tempFrustumArray[3].Y = -frustum.Right.Normal.Y;
             tempFrustumArray[3].Z = -frustum.Right.Normal.Z;
@@ -357,6 +358,15 @@ namespace TrashSoup.Engine
             param = null;
             this.parameters.TryGetValue("BoundingFrustum", out param);
             if (param != null) param.SetValue(tempFrustumArray);
+
+            additionalClipPlane.W = -frustum.AdditionalClip.D;
+            additionalClipPlane.X = -frustum.AdditionalClip.Normal.X;
+            additionalClipPlane.Y = -frustum.AdditionalClip.Normal.Y;
+            additionalClipPlane.Z = -frustum.AdditionalClip.Normal.Z;
+
+            param = null;
+            this.parameters.TryGetValue("CustomClippingPlane", out param);
+            if (param != null) param.SetValue(additionalClipPlane);
 
             //////////////////////
         }

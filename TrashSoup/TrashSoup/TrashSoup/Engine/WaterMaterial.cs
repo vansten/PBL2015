@@ -102,7 +102,7 @@ namespace TrashSoup.Engine
         }
 
         public override void UpdateEffect(Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
-            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector, BoundingFrustum frustum)
+            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector, BoundingFrustumExtended frustum)
         {
             if (!isRendering)
             {
@@ -124,20 +124,13 @@ namespace TrashSoup.Engine
             Quaternion objectRotation;
             wm.Decompose(out objectScale, out objectRotation, out objectPosition);
 
-            float planeHeight = -objectPosition.Y;
+            float planeHeight = -objectPosition.Y + 0.01f;
             Vector3 normal = new Vector3(0.0f, 1.0f, 0.0f);
 
             Vector4 planeCoeffs = new Vector4(normal, planeHeight);
             if (clipSide)
                 planeCoeffs *= -1.0f;
 
-            //Matrix currentView = ResourceManager.Instance.CurrentScene.Cam.ViewMatrix;
-            //Matrix currentProj = ResourceManager.Instance.CurrentScene.Cam.ProjectionMatrix;
-            //Matrix absViewProj = currentView * currentProj;
-            //Matrix inverseAbsViewProj = Matrix.Invert(absViewProj);
-            //inverseAbsViewProj = Matrix.Transpose(inverseAbsViewProj);
-
-            //planeCoeffs = Vector4.Transform(planeCoeffs, inverseAbsViewProj);
             return planeCoeffs;
         }
 
@@ -145,40 +138,20 @@ namespace TrashSoup.Engine
         {
             Vector4 refractionClip = CreatePlane(wm, false);
 
-            Matrix vm = Matrix.CreateLookAt(new Vector3(refractionClip.X, refractionClip.Y, refractionClip.Z) * refractionClip.W,
-                new Vector3(refractionClip.X, refractionClip.Y, refractionClip.Z) * 2.0f * refractionClip.W, new Vector3(0.0f, 1.0f, 0.0f));
+            //refractionCamera.Bounds.Matrix = vm * pm;
 
-            Matrix pm = Matrix.CreatePerspectiveFieldOfView
-            (
-                MathHelper.Pi - 0.0001f,
-                (float)TrashSoupGame.Instance.Window.ClientBounds.Width / (float)TrashSoupGame.Instance.Window.ClientBounds.Height,
-                0.0001f,
-                100.0f
-            );
-
-            refractionCamera.Position = ResourceManager.Instance.CurrentScene.Cam.Position;
-            refractionCamera.Translation = ResourceManager.Instance.CurrentScene.Cam.Translation;
-            refractionCamera.Target = ResourceManager.Instance.CurrentScene.Cam.Target;
-            refractionCamera.Up = ResourceManager.Instance.CurrentScene.Cam.Up;
-
-            refractionCamera.Update(tempGameTime);
-
-            refractionCamera.Bounds.Matrix = vm * pm;
-
-            tempCamera = ResourceManager.Instance.CurrentScene.Cam;
-            ResourceManager.Instance.CurrentScene.Cam = refractionCamera;
+            ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.D = refractionClip.W;
+            ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.Normal.X = refractionClip.X;
+            ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.Normal.Y = refractionClip.Y;
+            ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.Normal.Z = refractionClip.Z;
 
             TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(RefractionRenderTarget);
             ResourceManager.Instance.CurrentScene.DrawAll(tempGameTime);
             TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(null);
 
-            ResourceManager.Instance.CurrentScene.Cam = tempCamera;
+            ResourceManager.Instance.CurrentScene.Cam.Bounds.ZeroAllAdditionals();
 
             this.RefractionMap = RefractionRenderTarget;
-
-            System.IO.FileStream stream = new System.IO.FileStream("dupa.jpg", System.IO.FileMode.Create);
-            this.RefractionMap.SaveAsJpeg(stream, 1280, 720);
-            stream.Close();
 
             EffectParameter param = null;
             this.parameters.TryGetValue("ReflectionMap", out param);
@@ -190,6 +163,7 @@ namespace TrashSoup.Engine
 
         protected void DrawReflectionMap(Matrix wm)
         {
+            //Vector4 refractionClip = CreatePlane(wm, true);
 
         }
 

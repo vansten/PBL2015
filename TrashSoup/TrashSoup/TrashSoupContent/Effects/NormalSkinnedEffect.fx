@@ -27,6 +27,7 @@ float PointLightAttenuations[POINT_MAX_LIGHTS_PER_OBJECT];
 uint PointLightCount;
 
 float4 BoundingFrustum[4];
+float4 CustomClippingPlane;
 
 texture DiffuseMap;
 sampler DiffuseSampler = sampler_state
@@ -71,6 +72,7 @@ struct VertexShaderOutput
 	float2 TexCoord : TEXCOORD0;
 	float3 Normal : TEXCOORD1;
 	float4 ClipPlanes : TEXCOORD3;
+	float CustomClipPlane : TEXCOORD4;
 };
 
 struct ColorPair
@@ -168,6 +170,7 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 	output.ClipPlanes.y = dot(output.PositionWS, BoundingFrustum[1]);
 	output.ClipPlanes.z = dot(output.PositionWS, BoundingFrustum[2]);
 	output.ClipPlanes.w = dot(output.PositionWS, BoundingFrustum[3]);
+	output.CustomClipPlane = dot(output.PositionWS, CustomClippingPlane);
 
     return output;
 }
@@ -180,6 +183,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	clip(input.ClipPlanes.y);
 	clip(input.ClipPlanes.z);
 	clip(input.ClipPlanes.w);
+	clip(input.CustomClipPlane);
 
 	//////
 

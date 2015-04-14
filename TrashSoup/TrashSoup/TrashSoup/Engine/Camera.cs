@@ -39,7 +39,7 @@ namespace TrashSoup.Engine
         public float FOV { get; set; }
         public float Near { get; set; }
         public float Far { get; set; }
-        public BoundingFrustum Bounds { get; set; }
+        public BoundingFrustumExtended Bounds { get; set; }
 
         #endregion
 
@@ -58,7 +58,7 @@ namespace TrashSoup.Engine
             this.FOV = fov;
             this.Near = near;
             this.Far = far;
-            this.Bounds = new BoundingFrustum(Matrix.Identity);
+            this.Bounds = new BoundingFrustumExtended(Matrix.Identity);
 
             CreateLookAt();
 
