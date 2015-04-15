@@ -18,6 +18,8 @@ namespace TrashSoup.Engine
 
         #region variables
 
+        protected static bool isRendering = false;
+
         protected Texture2D diffuseMap;
         protected Texture2D normalMap;
         protected TextureCube cubeMap;

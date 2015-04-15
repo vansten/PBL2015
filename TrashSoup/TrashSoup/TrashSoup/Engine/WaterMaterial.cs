@@ -21,7 +21,6 @@ namespace TrashSoup.Engine
         protected static RenderTarget2D reflectionRenderTarget;
         protected static RenderTarget2D refractionRenderTarget;
 
-        protected bool isRendering = false;
         protected GameTime tempGameTime;
 
         protected Camera refractionCamera;
@@ -154,17 +153,54 @@ namespace TrashSoup.Engine
             this.RefractionMap = RefractionRenderTarget;
 
             EffectParameter param = null;
-            this.parameters.TryGetValue("ReflectionMap", out param);
+            this.parameters.TryGetValue("RefractionMap", out param);
             if (param != null)
             {
-                param.SetValue(this.ReflectionMap);
+                param.SetValue(this.RefractionMap);
             }
         }
 
         protected void DrawReflectionMap(Matrix wm)
         {
-            //Vector4 refractionClip = CreatePlane(wm, true);
+            Vector4 refractionClip = CreatePlane(wm, true);
 
+            ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.D = refractionClip.W;
+            ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.Normal.X = refractionClip.X;
+            ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.Normal.Y = refractionClip.Y;
+            ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.Normal.Z = refractionClip.Z;
+
+            Vector3 prevPos = ResourceManager.Instance.CurrentScene.Cam.Position;
+            Vector3 prevTrans = ResourceManager.Instance.CurrentScene.Cam.Translation;
+
+            ResourceManager.Instance.CurrentScene.Cam.Position = new Vector3(prevPos.X, -prevPos.Y - 2.0f * refractionClip.W, prevPos.Z);
+            ResourceManager.Instance.CurrentScene.Cam.Translation = new Vector3(prevTrans.X, -prevTrans.Y - 2.0f * refractionClip.W, prevTrans.Z);
+
+            ResourceManager.Instance.CurrentScene.Cam.Update(tempGameTime);
+
+            TrashSoupGame.Instance.GraphicsDevice.Clear(Color.CornflowerBlue);
+            TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(ReflectionRenderTarget);
+            ResourceManager.Instance.CurrentScene.DrawAll(tempGameTime);
+            TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(null);
+
+            ResourceManager.Instance.CurrentScene.Cam.Position = prevPos;
+            ResourceManager.Instance.CurrentScene.Cam.Translation = prevTrans;
+
+            ResourceManager.Instance.CurrentScene.Cam.Update(tempGameTime);
+
+            ResourceManager.Instance.CurrentScene.Cam.Bounds.ZeroAllAdditionals();
+
+            this.ReflectionMap = ReflectionRenderTarget;
+
+            //System.IO.FileStream stream = new System.IO.FileStream("Dupa.jpg", System.IO.FileMode.Create);
+            //this.ReflectionMap.SaveAsJpeg(stream, 1280, 720);
+            //stream.Close();
+
+            EffectParameter param = null;
+            this.parameters.TryGetValue("ReflectionMap", out param);
+            if (param != null)
+            {
+                param.SetValue(this.ReflectionMap);
+            }
         }
 
         #endregion

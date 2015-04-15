@@ -172,11 +172,11 @@ namespace TrashSoup.Engine
             testBox3.Components.Add(new CustomModel(testBox3, new Model[] { Models["Models/Test/TestSphere"], null, null }, 3, testPlayerMats2));
             testBox3.MyCollider = new BoxCollider(testBox3);
 
-            /*GameObject testMirror = new GameObject(6, "testMirror");
+            GameObject testMirror = new GameObject(6, "testMirror");
             testMirror.MyTransform = new Transform(testMirror, new Vector3(-20.0f, 40.0f, 20.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, MathHelper.Pi, 0.0f), 2.0f);
             testMirror.Components.Add(new CustomModel(testMirror, new Model[] { Models["Models/Test/TestMirror"], null, null }, 3, testMirrorMats));
             testMirror.MyCollider = new BoxCollider(testMirror);
-            */
+
             GameObject testWater = new GameObject(7, "tesWtater");
             testWater.MyTransform = new Transform(testWater, new Vector3(220.0f, -15.0f, -160.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 30.0f);
             testWater.Components.Add(new CustomModel(testWater, new Model[] { Models["Models/Test/TestSquarePlane"], null, null }, 3, testWaterMats));
@@ -210,8 +210,9 @@ namespace TrashSoup.Engine
             CurrentScene.Cam = cam;
 
             // adding items to scene
-            //CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror); 
-            //CurrentScene.ObjectsDictionary.Add(testWater.UniqueID, testWater);
+            
+            CurrentScene.ObjectsDictionary.Add(testWater.UniqueID, testWater);
+            CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror); 
             CurrentScene.ObjectsDictionary.Add(skyBox.UniqueID, skyBox);
             CurrentScene.ObjectsDictionary.Add(testTer.UniqueID, testTer);
             CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);

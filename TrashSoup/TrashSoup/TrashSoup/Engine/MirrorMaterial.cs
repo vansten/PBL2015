@@ -19,7 +19,6 @@ namespace TrashSoup.Engine
 
         protected static RenderTarget2D mirrorRenderTarget;
 
-        protected bool isRendering = false;
         protected GameTime tempGameTime;
 
         protected Camera myCamera;
@@ -41,7 +40,9 @@ namespace TrashSoup.Engine
                         MIRROR_BUFFER_SIZE,
                         false,
                         TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
-                        DepthFormat.Depth24
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
+                        1,
+                        RenderTargetUsage.PreserveContents
                         );
                 }
                 return mirrorRenderTarget;
@@ -77,7 +78,7 @@ namespace TrashSoup.Engine
                 isRendering = true;
 
                 TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(MirrorRenderTarget);
-
+                
                 SetupCamera(world);
                 tempCamera = ResourceManager.Instance.CurrentScene.Cam;
                 ResourceManager.Instance.CurrentScene.Cam = myCamera;
