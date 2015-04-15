@@ -514,7 +514,15 @@ namespace AwesomeEngineEditor
                     int stop = ciWithLeastParameters.GetParameters().Length;
                     for (int j = 0; j < stop; ++j)
                     {
-                        parameters.Add(null);
+                        Type parameterType = ciWithLeastParameters.GetParameters()[j].ParameterType;
+                        if(parameterType == typeof(TrashSoup.Engine.GameObject))
+                        {
+                            parameters.Add(this.selectedObject);
+                        }
+                        else
+                        {
+                            parameters.Add(null);
+                        }
                     }
                     object obj = Activator.CreateInstance(t, parameters.ToArray());
                     Type objType = obj.GetType();
