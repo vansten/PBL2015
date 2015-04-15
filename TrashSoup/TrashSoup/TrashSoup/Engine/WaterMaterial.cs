@@ -43,7 +43,9 @@ namespace TrashSoup.Engine
                         (int)(TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferHeight * REFLECTION_BUFFER_SIZE_MULTIPLIER),
                         false,
                         TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
-                        DepthFormat.Depth24
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
+                        RenderTargetUsage.DiscardContents
                         );
                 }
                 return reflectionRenderTarget;
@@ -66,7 +68,9 @@ namespace TrashSoup.Engine
                         (int)(TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferHeight * REFRACTION_BUFFER_SIZE_MULTIPLIER),
                         false,
                         TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
-                        DepthFormat.Depth24
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
+                        RenderTargetUsage.DiscardContents
                         );
                 }
                 return refractionRenderTarget;
@@ -176,8 +180,6 @@ namespace TrashSoup.Engine
             ResourceManager.Instance.CurrentScene.Cam.Translation = new Vector3(prevTrans.X, -prevTrans.Y - 2.0f * refractionClip.W, prevTrans.Z);
 
             ResourceManager.Instance.CurrentScene.Cam.Update(tempGameTime);
-
-            TrashSoupGame.Instance.GraphicsDevice.Clear(Color.CornflowerBlue);
             TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(ReflectionRenderTarget);
             ResourceManager.Instance.CurrentScene.DrawAll(tempGameTime);
             TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(null);

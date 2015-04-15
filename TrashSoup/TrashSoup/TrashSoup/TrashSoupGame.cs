@@ -28,6 +28,7 @@ namespace TrashSoup
         public TrashSoupGame()
         {
             GraphicsManager = new GraphicsDeviceManager(this);
+            GraphicsManager.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(SetToPreserve);
             Content.RootDirectory = ROOT_DIRECTIORY;
             this.IsMouseVisible = true;
             Instance = this;
@@ -36,7 +37,6 @@ namespace TrashSoup
 
         protected override void Initialize()
         {
-
             base.Initialize();
         }
 
@@ -159,5 +159,9 @@ namespace TrashSoup
             GUIManager.Instance.Render(this.spriteBatch);
         }
 
+        protected void SetToPreserve(object sender, PreparingDeviceSettingsEventArgs e)
+        {
+            e.GraphicsDeviceInformation.PresentationParameters.RenderTargetUsage = RenderTargetUsage.PreserveContents;
+        }
     }
 }

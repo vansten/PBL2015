@@ -41,8 +41,8 @@ namespace TrashSoup.Engine
                         false,
                         TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
                         TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
-                        1,
-                        RenderTargetUsage.PreserveContents
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
+                        RenderTargetUsage.DiscardContents
                         );
                 }
                 return mirrorRenderTarget;
@@ -89,8 +89,8 @@ namespace TrashSoup.Engine
 
                 TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(null);
                 isRendering = false;
-
                 this.MirrorMap = MirrorRenderTarget;
+               
 
                 EffectParameter param = null;
                 this.parameters.TryGetValue("MirrorMap", out param);
