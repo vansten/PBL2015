@@ -199,16 +199,14 @@ namespace TrashSoup.Engine
             if(TrashSoupGame.Instance.EditorMode)
             {
                 //Editor camera
-                cam = new EditorCamera(1, "editorCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -50.0f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)),
+                CurrentScene.EditorCam = new EditorCamera(1, "editorCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -50.0f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)),
                      new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 10.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
             }
-            else
-            {
                 //Game camera
-                cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -1.0f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)) + new Vector3(0.0f, 4.0f, 0.0f),
-                     new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 25.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
-                cam.Components.Add(new CameraBehaviourComponent(cam, testBox));
-            }
+            cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -1.0f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)) + new Vector3(0.0f, 4.0f, 0.0f),
+                    new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 25.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
+            cam.Components.Add(new CameraBehaviourComponent(cam, testBox));
+
             CurrentScene.Cam = cam;
 
             // adding items to scene

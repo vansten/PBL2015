@@ -40,6 +40,7 @@ namespace AwesomeEngineEditor
         private ObservableCollection<TrashSoup.Engine.ObjectComponent> objectComponents = new ObservableCollection<TrashSoup.Engine.ObjectComponent>();
         private ObservableCollection<TrashSoup.Engine.GameObject> gameObjects = new ObservableCollection<TrashSoup.Engine.GameObject>();
         private TrashSoup.TrashSoupGame myGame;
+        private TrashSoup.Engine.Camera normalCamera;
 
         public ObservableCollection<TrashSoup.Engine.GameObject> GameObjects
         {
@@ -301,17 +302,38 @@ namespace AwesomeEngineEditor
                 if (this.XToggle.IsChecked.Value)
                 {
                     //Position.X += value
-                    this.selectedObject.MyTransform.Position += new Microsoft.Xna.Framework.Vector3(value, 0, 0);
+                    if(this.selectedObject.GetType() != typeof(TrashSoup.Engine.Camera))
+                    {
+                        this.selectedObject.MyTransform.Position += new Microsoft.Xna.Framework.Vector3(value, 0, 0);
+                    }
+                    else
+                    {
+                        ((TrashSoup.Engine.Camera)this.selectedObject).Position += new Microsoft.Xna.Framework.Vector3(value, 0, 0);
+                    }
                 }
                 else if (this.YToggle.IsChecked.Value)
                 {
                     //Position.Y += value
-                    this.selectedObject.MyTransform.Position += new Microsoft.Xna.Framework.Vector3(0, value, 0);
+                    if (this.selectedObject.GetType() != typeof(TrashSoup.Engine.Camera))
+                    {
+                        this.selectedObject.MyTransform.Position += new Microsoft.Xna.Framework.Vector3(0, value, 0);
+                    }
+                    else
+                    {
+                        ((TrashSoup.Engine.Camera)this.selectedObject).Position += new Microsoft.Xna.Framework.Vector3(0, value, 0);
+                    }
                 }
                 else if (this.ZToggle.IsChecked.Value)
                 {
                     //Position.Z += value
-                    this.selectedObject.MyTransform.Position += new Microsoft.Xna.Framework.Vector3(0, 0, value);
+                    if (this.selectedObject.GetType() != typeof(TrashSoup.Engine.Camera))
+                    {
+                        this.selectedObject.MyTransform.Position += new Microsoft.Xna.Framework.Vector3(0, 0, value);
+                    }
+                    else
+                    {
+                        ((TrashSoup.Engine.Camera)this.selectedObject).Position += new Microsoft.Xna.Framework.Vector3(0, 0, value);
+                    }
                 }
             }
             else if (this.RotateToggle.IsChecked.Value)
@@ -319,17 +341,26 @@ namespace AwesomeEngineEditor
                 if (this.XToggle.IsChecked.Value)
                 {
                     //Rotation.X += value
-                    this.selectedObject.MyTransform.Rotation += new Microsoft.Xna.Framework.Vector3(value, 0, 0);
+                    if(this.selectedObject.GetType() != typeof(TrashSoup.Engine.Camera))
+                    {
+                        this.selectedObject.MyTransform.Rotation += new Microsoft.Xna.Framework.Vector3(value, 0, 0);
+                    }
                 }
                 else if (this.YToggle.IsChecked.Value)
                 {
                     //Rotation.Y += value
-                    this.selectedObject.MyTransform.Rotation += new Microsoft.Xna.Framework.Vector3(0, value, 0);
+                    if (this.selectedObject.GetType() != typeof(TrashSoup.Engine.Camera))
+                    {
+                        this.selectedObject.MyTransform.Rotation += new Microsoft.Xna.Framework.Vector3(0, value, 0);
+                    }
                 }
                 else if (this.ZToggle.IsChecked.Value)
                 {
                     //Rotation.Z += value
-                    this.selectedObject.MyTransform.Rotation += new Microsoft.Xna.Framework.Vector3(0, 0, value);
+                    if (this.selectedObject.GetType() != typeof(TrashSoup.Engine.Camera))
+                    {
+                        this.selectedObject.MyTransform.Rotation += new Microsoft.Xna.Framework.Vector3(0, 0, value);
+                    }
                 }
             }
             else if (this.ScaleToggle.IsChecked.Value)
@@ -390,7 +421,10 @@ namespace AwesomeEngineEditor
             {
                 this.GameObjects.Add(go);
             }
-            this.GameObjects.Add(TrashSoup.Engine.ResourceManager.Instance.CurrentScene.Cam);
+
+            this.normalCamera = TrashSoup.Engine.ResourceManager.Instance.CurrentScene.Cam;
+            TrashSoup.Engine.ResourceManager.Instance.CurrentScene.Cam = TrashSoup.Engine.ResourceManager.Instance.CurrentScene.EditorCam;
+            this.GameObjects.Add(this.normalCamera);
 
             this.IsSaveSceneMIEnabled = true;
         }
@@ -398,7 +432,27 @@ namespace AwesomeEngineEditor
         private void SaveSceneMI_Click(object sender, RoutedEventArgs e)
         {
             //Scene save
+            TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary = new Dictionary<uint, TrashSoup.Engine.GameObject>();
+            this.GameObjects.Remove(this.normalCamera);
+            foreach(TrashSoup.Engine.GameObject go in this.GameObjects)
+            {
+                if (!TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.ContainsKey(go.UniqueID))
+                {
+                    TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.Add(go.UniqueID, go);
+                }
+                else
+                {
+                    TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary[go.UniqueID] = go;
+                }
+            }
+
+            TrashSoup.Engine.ResourceManager.Instance.CurrentScene.Cam = this.normalCamera;
+
             TrashSoup.Engine.SaveManager.Instance.SaveFileAction();
+
+            TrashSoup.Engine.Debug.Log("Save completed");
+
+            TrashSoup.Engine.ResourceManager.Instance.CurrentScene.Cam = TrashSoup.Engine.ResourceManager.Instance.CurrentScene.EditorCam;
         }
 
         private void SaveScene()
@@ -485,7 +539,7 @@ namespace AwesomeEngineEditor
             if (this.selectedObject == null) return;
             this.Test.Text = "ID: " + ((TrashSoup.Engine.GameObject)this.selectedObject).UniqueID + "\n";
             this.Test.Text += "Name: " + ((TrashSoup.Engine.GameObject)this.selectedObject).Name + "\n";
-            if(this.selectedObject.GetType().IsSubclassOf(typeof(TrashSoup.Engine.Camera)))
+            if(this.selectedObject.GetType().IsSubclassOf(typeof(TrashSoup.Engine.Camera)) || this.selectedObject.GetType() == typeof(TrashSoup.Engine.Camera))
             {
                 this.Test.Text += "Position: " + ((TrashSoup.Engine.Camera)this.selectedObject).Position.ToString();
             }

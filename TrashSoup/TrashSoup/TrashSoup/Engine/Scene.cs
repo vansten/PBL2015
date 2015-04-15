@@ -60,11 +60,12 @@ namespace TrashSoup.Engine
 
         public SceneParams Params { get; set; }
         public Camera Cam { get; set; }
+        public EditorCamera EditorCam { get; set; }
 
         public LightAmbient AmbientLight { get; set; }
         public LightDirectional[] DirectionalLights { get; set; }
         public List<LightPoint> PointLights { get; set; }
-        public Dictionary<uint, GameObject> ObjectsDictionary { get; protected set; }
+        public Dictionary<uint, GameObject> ObjectsDictionary { get; set; }
         public QuadTree<GameObject> ObjectsQT { get; protected set; }
         // place for bounding sphere tree
 
