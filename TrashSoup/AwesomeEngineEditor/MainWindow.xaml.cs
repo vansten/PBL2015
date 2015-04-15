@@ -21,6 +21,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Threading;
 using Microsoft.Win32;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework;
 
 namespace AwesomeEngineEditor
 {
@@ -388,11 +389,6 @@ namespace AwesomeEngineEditor
 
         private void OpenSceneMI_Click(object sender, RoutedEventArgs e)
         {
-            if (this.IsSaveSceneMIEnabled)
-            {
-                return;
-            }
-
             this.XNAImage.GraphicsDevice = this.myGame.GraphicsDevice;
 
             OpenFileDialog ofd = new OpenFileDialog();
@@ -414,7 +410,7 @@ namespace AwesomeEngineEditor
 
                 TrashSoup.Engine.SaveManager.Instance.EditorLoadFileAction(filepath);
                 this.XNAImage.GraphicsDevice = this.myGame.GraphicsDevice;
-                this.myGame.EditorLoadContent();
+                //this.myGame.EditorLoadContent();
             }
 
             foreach(TrashSoup.Engine.GameObject go in TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.Values)
@@ -423,6 +419,8 @@ namespace AwesomeEngineEditor
             }
 
             this.normalCamera = TrashSoup.Engine.ResourceManager.Instance.CurrentScene.Cam;
+
+            TrashSoup.Engine.ResourceManager.Instance.CurrentScene.EditorCam = new TrashSoup.Engine.EditorCamera(1, "editorCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -50.0f), Microsoft.Xna.Framework.Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)), new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 10.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
             TrashSoup.Engine.ResourceManager.Instance.CurrentScene.Cam = TrashSoup.Engine.ResourceManager.Instance.CurrentScene.EditorCam;
             this.GameObjects.Add(this.normalCamera);
 
@@ -453,6 +451,7 @@ namespace AwesomeEngineEditor
             TrashSoup.Engine.Debug.Log("Save completed");
 
             TrashSoup.Engine.ResourceManager.Instance.CurrentScene.Cam = TrashSoup.Engine.ResourceManager.Instance.CurrentScene.EditorCam;
+            this.GameObjects.Add(this.normalCamera);
         }
 
         private void SaveScene()
@@ -471,12 +470,15 @@ namespace AwesomeEngineEditor
             uint r = (uint)rnd.Next(0,1000);
             TrashSoup.Engine.GameObject go = new TrashSoup.Engine.GameObject(r, "GameObject " + r);
             go.MyTransform = new TrashSoup.Engine.Transform(go);
+            go.Components = new List<TrashSoup.Engine.ObjectComponent>();
+            go.Components.Add(new TrashSoup.Engine.Transform(go));
             this.GameObjects.Add(go);
         }
 
         private void RemoveGameObjectMI_Click(object sender, RoutedEventArgs e)
         {
             //Remove game object
+            TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.Remove(((TrashSoup.Engine.GameObject)HierarchyTreeView.SelectedItem).UniqueID);
             this.GameObjects.Remove(((TrashSoup.Engine.GameObject)this.HierarchyTreeView.SelectedItem));
             this.selectedObject = null;
             this.DetailsInfo.Visibility = System.Windows.Visibility.Hidden;
@@ -565,6 +567,14 @@ namespace AwesomeEngineEditor
                 this.Test.Text += "Position Constratints: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyPhysicalObject.PositionConstraints + "\n";
                 this.Test.Text += "Rotation Constratints: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyPhysicalObject.RotationConstraints + "\n";
             }
+            if(this.selectedObject.MyAnimator != null)
+            {
+                for(int i = 0; i < this.selectedObject.MyAnimator.animationPlayers.Keys.Count; ++i)
+                {
+                    this.Test.Text += this.selectedObject.MyAnimator.animationPlayers.Keys.ElementAt(i) + "\n";
+                }
+            }
+
             if(this.selectedObject.Components.Count > 0)
             {
                 this.Test.Text += "\n\nAttached components:\n";

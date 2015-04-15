@@ -163,15 +163,11 @@ namespace TrashSoup.Engine
                 reader.ReadStartElement();
                 Model baseAnim = null;
                 string baseAnimPath = reader.ReadElementString("BaseAnim", "");
-                if(ResourceManager.Instance.Models.TryGetValue(baseAnimPath, out baseAnim))
-                {
-                    MyAnimator = new Animator(this, ResourceManager.Instance.Models[baseAnimPath]);
-                }
-                else
+                if(!ResourceManager.Instance.Models.TryGetValue(baseAnimPath, out baseAnim))
                 {
                     baseAnim = ResourceManager.Instance.LoadModel(baseAnimPath);
-                    MyAnimator = new Animator(this, ResourceManager.Instance.Models[baseAnimPath]);
                 }
+                MyAnimator = new Animator(this, ResourceManager.Instance.Models[baseAnimPath]);
                 (MyAnimator as IXmlSerializable).ReadXml(reader);
                 //MyAnimator.MyObject = ResourceManager.Instance.CurrentScene.GetObject(MyAnimator.tmp);
                 while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
@@ -247,7 +243,7 @@ namespace TrashSoup.Engine
                 writer.WriteStartElement("MyAnimator");
                 writer.WriteElementString("BaseAnim", ResourceManager.Instance.Models.FirstOrDefault(x => x.Value == MyAnimator.BaseAnim).Key);
                 (MyAnimator as IXmlSerializable).WriteXml(writer);
-                foreach (KeyValuePair<string, SkinningModelLibrary.AnimationClip> pair in MyAnimator.SkinningData.AnimationClips)
+                foreach (KeyValuePair<string, SkinningModelLibrary.AnimationPlayer> pair in MyAnimator.animationPlayers)
                 {
                     writer.WriteElementString("AnimatorClip", pair.Key);
                 }

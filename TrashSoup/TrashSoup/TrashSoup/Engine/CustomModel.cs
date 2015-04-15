@@ -228,6 +228,7 @@ namespace TrashSoup.Engine
                         {
                             Material tmp = new Material(newName, newEf);
                             (tmp as IXmlSerializable).ReadXml(reader);
+                            m = tmp;
                             Debug.Log("Material successfully loaded - " + newName);
                         }
                         else

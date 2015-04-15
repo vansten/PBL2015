@@ -117,6 +117,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SkinnedModelLibrary\SkinnedModelLibrary.csproj">
+      <Project>{3467ee31-18d7-4019-a9dc-59cc9885459f}</Project>
+      <Name>SkinnedModelLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SkinnedModelPipeline\SkinnedModelPipeline.csproj">
+      <Project>{45323740-376e-45f6-b3ec-4b46ed823a91}</Project>
+      <Name>SkinnedModelPipeline</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TrashSoup\TrashSoup\TrashSoup.csproj">
       <Project>{43399bf9-4a83-4269-a1b4-541967529aad}</Project>
       <Name>TrashSoup</Name>
