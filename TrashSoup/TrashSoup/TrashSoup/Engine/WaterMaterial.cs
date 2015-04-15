@@ -23,9 +23,8 @@ namespace TrashSoup.Engine
 
         protected GameTime tempGameTime;
 
-        protected Camera refractionCamera;
-        protected Camera reflectionCamera;
-        protected Camera tempCamera;
+        protected Matrix reflectionMatrix;
+        protected Vector2 tempWind;
 
         #endregion
 
@@ -92,20 +91,11 @@ namespace TrashSoup.Engine
             : base(name, effect)
         {
             tempGameTime = new GameTime();
-
-            reflectionCamera = new Camera((uint)name.GetHashCode(), name + "ReflCamera", new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f),
-                new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f,
-                0.1f,
-                2000.0f);
-
-            refractionCamera = new Camera((uint)name.GetHashCode(), name + "RefrCamera", new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f),
-                new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f,
-                0.1f,
-                2000.0f);
         }
 
         public override void UpdateEffect(Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
-            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector, BoundingFrustumExtended frustum)
+            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector, BoundingFrustumExtended frustum,
+            GameTime gameTime)
         {
             if (!isRendering)
             {
@@ -115,10 +105,17 @@ namespace TrashSoup.Engine
 
                 DrawReflectionMap(world);
 
+                tempWind += ResourceManager.Instance.CurrentScene.Params.Wind * (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
+                EffectParameter param = null;
+                this.parameters.TryGetValue("WindVector", out param);
+                if (param != null)
+                {
+                    param.SetValue(tempWind);
+                }
                 isRendering = false;
             }
 
-            base.UpdateEffect(world, worldViewProj, amb, dirs, pointColors, pointSpeculars, pointAttenuations, pointPositions, pointCount, eyeVector, frustum);
+            base.UpdateEffect(world, worldViewProj, amb, dirs, pointColors, pointSpeculars, pointAttenuations, pointPositions, pointCount, eyeVector, frustum, gameTime);
         }
 
         protected Vector4 CreatePlane(Matrix wm, bool clipSide)
@@ -127,7 +124,7 @@ namespace TrashSoup.Engine
             Quaternion objectRotation;
             wm.Decompose(out objectScale, out objectRotation, out objectPosition);
 
-            float planeHeight = -objectPosition.Y + 0.01f;
+            float planeHeight = -objectPosition.Y + 0.0001f;
             Vector3 normal = new Vector3(0.0f, 1.0f, 0.0f);
 
             Vector4 planeCoeffs = new Vector4(normal, planeHeight);
@@ -140,8 +137,6 @@ namespace TrashSoup.Engine
         protected void DrawRefractionMap(Matrix wm)
         {
             Vector4 refractionClip = CreatePlane(wm, false);
-
-            //refractionCamera.Bounds.Matrix = vm * pm;
 
             ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.D = refractionClip.W;
             ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.Normal.X = refractionClip.X;
@@ -167,6 +162,7 @@ namespace TrashSoup.Engine
         protected void DrawReflectionMap(Matrix wm)
         {
             Vector4 refractionClip = CreatePlane(wm, true);
+            float z = wm.Translation.Y;
 
             ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.D = refractionClip.W;
             ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.Normal.X = refractionClip.X;
@@ -175,17 +171,22 @@ namespace TrashSoup.Engine
 
             Vector3 prevPos = ResourceManager.Instance.CurrentScene.Cam.Position;
             Vector3 prevTrans = ResourceManager.Instance.CurrentScene.Cam.Translation;
+            Vector3 prevTgt = ResourceManager.Instance.CurrentScene.Cam.Target;
 
-            ResourceManager.Instance.CurrentScene.Cam.Position = new Vector3(prevPos.X, -prevPos.Y - 2.0f * refractionClip.W, prevPos.Z);
-            ResourceManager.Instance.CurrentScene.Cam.Translation = new Vector3(prevTrans.X, -prevTrans.Y - 2.0f * refractionClip.W, prevTrans.Z);
+            ResourceManager.Instance.CurrentScene.Cam.Position = new Vector3(prevPos.X, -prevPos.Y + 2.0f * z, prevPos.Z);
+            ResourceManager.Instance.CurrentScene.Cam.Translation = new Vector3(prevTrans.X, -prevTrans.Y + 2.0f * z, prevTrans.Z);
+            ResourceManager.Instance.CurrentScene.Cam.Target = new Vector3(prevTgt.X, -prevTgt.Y + 2.0f*z, prevTgt.Z);
 
             ResourceManager.Instance.CurrentScene.Cam.Update(tempGameTime);
+            reflectionMatrix = wm * ResourceManager.Instance.CurrentScene.Cam.ViewProjMatrix;
+
             TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(ReflectionRenderTarget);
             ResourceManager.Instance.CurrentScene.DrawAll(tempGameTime);
             TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(null);
 
             ResourceManager.Instance.CurrentScene.Cam.Position = prevPos;
             ResourceManager.Instance.CurrentScene.Cam.Translation = prevTrans;
+            ResourceManager.Instance.CurrentScene.Cam.Target = prevTgt;
 
             ResourceManager.Instance.CurrentScene.Cam.Update(tempGameTime);
 
@@ -198,6 +199,13 @@ namespace TrashSoup.Engine
             //stream.Close();
 
             EffectParameter param = null;
+            this.parameters.TryGetValue("ReflectViewProj", out param);
+            if (param != null)
+            {
+                param.SetValue(this.reflectionMatrix);
+            }
+
+            param = null;
             this.parameters.TryGetValue("ReflectionMap", out param);
             if (param != null)
             {

@@ -29,6 +29,12 @@ namespace TrashSoup.Engine
             protected set;
         }
 
+        public Matrix ViewProjMatrix
+        {
+            get;
+            protected set;
+        }
+
         public Vector3 Position { get; set; }
         public Vector3 Translation { get; set; }
         public Vector3 Direction { get; set; }
@@ -64,7 +70,8 @@ namespace TrashSoup.Engine
 
             CreateProjection(fov, near, far);
 
-            CreateBounds();
+            ViewProjMatrix = ViewMatrix * ProjectionMatrix;
+            this.Bounds.Matrix = ViewProjMatrix;
         }
 
         public override void Update(GameTime gameTime)
@@ -80,7 +87,8 @@ namespace TrashSoup.Engine
 
             CreateLookAt();
 
-            CreateBounds();
+            ViewProjMatrix = ViewMatrix * ProjectionMatrix;
+            this.Bounds.Matrix = ViewProjMatrix;
         }
 
         protected virtual void OnUpdate(GameTime gameTime)
@@ -104,12 +112,6 @@ namespace TrashSoup.Engine
         protected void CreateLookAt()
         {
             this.ViewMatrix = Matrix.CreateLookAt(Position + Translation, Target + Translation, Up);
-        }
-
-
-        protected void CreateBounds()
-        {
-            this.Bounds.Matrix = this.ViewMatrix * this.ProjectionMatrix;
         }
 
         public System.Xml.Schema.XmlSchema GetSchema() { return null; }

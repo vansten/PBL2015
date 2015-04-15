@@ -203,11 +203,12 @@ namespace TrashSoup.Engine
 
         public void UpdateEffect()
         {
-            UpdateEffect(Matrix.Identity, Matrix.Identity, null, null, null, null, null, null, 0, new Vector3(0.0f, 0.0f, 0.0f), new BoundingFrustumExtended(Matrix.Identity));
+            UpdateEffect(Matrix.Identity, Matrix.Identity, null, null, null, null, null, null, 0, new Vector3(0.0f, 0.0f, 0.0f), new BoundingFrustumExtended(Matrix.Identity), null);
         }
 
         public virtual void UpdateEffect(Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
-            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector, BoundingFrustumExtended frustum)
+            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector, BoundingFrustumExtended frustum,
+            GameTime gameTime)
         {
             this.parameters["World"].SetValue(world);
             this.parameters["WorldInverseTranspose"].SetValue(Matrix.Transpose(Matrix.Invert(world)));
@@ -289,6 +290,7 @@ namespace TrashSoup.Engine
                         param = null;
                         this.parameters.TryGetValue(this.dirLightsNames[i] + "DiffuseColor", out param);
                         if (param != null) param.SetValue(dirs[i].LightColor);
+
 
                         param = null;
                         this.parameters.TryGetValue(this.dirLightsNames[i] + "SpecularColor", out param);

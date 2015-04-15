@@ -13,6 +13,7 @@ namespace TrashSoup.Engine
         #region properties
         public uint UniqueID { get; set; }
         public string Name { get; set; }
+        public Vector2 Wind { get; set; }
         #endregion
 
         #region methods
@@ -21,6 +22,13 @@ namespace TrashSoup.Engine
             this.UniqueID = uniqueID;
             this.Name = name;
         }
+
+        public SceneParams(uint uniqueID, string name, Vector2 wind)
+            : this(uniqueID, name)
+        {
+            this.Wind = wind;
+        }
+
         public System.Xml.Schema.XmlSchema GetSchema()
         {
             return null;

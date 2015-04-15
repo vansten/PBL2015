@@ -110,24 +110,28 @@ ColorPair ComputeLight(float3 posWS, float3 E, float3 N)
 	temp.Specular = 0;
 
 	// DirLight0
-	ComputeSingleLight(-DirLight0Direction, DirLight0DiffuseColor, DirLight0SpecularColor, E, N, result);
+	ComputeSingleLight(-DirLight0Direction, DirLight0DiffuseColor,
+		float3(DirLight0SpecularColor.x * SpecularColor.x, DirLight0SpecularColor.y * SpecularColor.y, DirLight0SpecularColor.z * SpecularColor.z), E, N, result);
 
 	// DirLight1
-	ComputeSingleLight(-DirLight1Direction, DirLight1DiffuseColor, DirLight1SpecularColor, E, N, result);
+	ComputeSingleLight(-DirLight1Direction, DirLight1DiffuseColor,
+		float3(DirLight1SpecularColor.x * SpecularColor.x, DirLight1SpecularColor.y * SpecularColor.y, DirLight1SpecularColor.z * SpecularColor.z), E, N, result);
 
 	// DirLight2
-	ComputeSingleLight(-DirLight2Direction, DirLight2DiffuseColor, DirLight2SpecularColor, E, N, result);
+	ComputeSingleLight(-DirLight2Direction, DirLight2DiffuseColor,
+		float3(DirLight2SpecularColor.x * SpecularColor.x, DirLight2SpecularColor.y * SpecularColor.y, DirLight2SpecularColor.z * SpecularColor.z), E, N, result);
 
 	// point lights
 	float3 L;
 	float Llength;
 	float att;
-
 	for (uint i = 0; i < PointLightCount; ++i)
 	{
 		L = PointLightPositions[i] - posWS;
 		Llength = length(L);
-		ComputeSingleLight(normalize(L), PointLightDiffuseColors[i], PointLightSpecularColors[i], E, N, temp);
+		ComputeSingleLight(normalize(L), PointLightDiffuseColors[i],
+			float3(PointLightSpecularColors[i].x * SpecularColor.x, PointLightSpecularColors[i].y * SpecularColor.y, PointLightSpecularColors[i].z * SpecularColor.z),
+			E, N, temp);
 
 		att = saturate(ATTENUATION_MULTIPLIER * length(PointLightDiffuseColors[i]) * PointLightAttenuations[i] / max(Llength * Llength, MINIMUM_LENGTH_VALUE));
 		temp.Diffuse = temp.Diffuse * att;

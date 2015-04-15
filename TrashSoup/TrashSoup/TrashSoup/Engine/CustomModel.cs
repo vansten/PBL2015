@@ -92,7 +92,7 @@ namespace TrashSoup.Engine
                         for (int i = 0; i < mm.MeshParts.Count; ++i)
                         {
                             this.Mat[ctr].UpdateEffect(mm.ParentBone.Transform * transform.GetWorldMatrix(), 
-                                 (mm.ParentBone.Transform * transform.GetWorldMatrix()) * camera.ViewMatrix * camera.ProjectionMatrix,
+                                 (mm.ParentBone.Transform * transform.GetWorldMatrix()) * camera.ViewProjMatrix,
                                  ResourceManager.Instance.CurrentScene.AmbientLight,
                                  ResourceManager.Instance.CurrentScene.DirectionalLights,
                                  ResourceManager.Instance.CurrentScene.GetPointLightDiffuseColors(),
@@ -101,7 +101,8 @@ namespace TrashSoup.Engine
                                  ResourceManager.Instance.CurrentScene.GetPointLightPositions(),
                                  ResourceManager.Instance.CurrentScene.GetPointLightCount(),
                                  camera.Position + camera.Translation,
-                                 camera.Bounds);
+                                 camera.Bounds,
+                                 gameTime);
                             mm.MeshParts[i].Effect = this.Mat[ctr].MyEffect;
                             if (bones != null) this.Mat[ctr].SetEffectBones(bones);
                             ++ctr;

@@ -5,6 +5,7 @@
 float4x4 World;
 float4x4 WorldViewProj;
 float4x4 WorldInverseTranspose;
+float4x4 ReflectViewProj;
 
 float3 AmbientLightColor;
 
@@ -52,6 +53,8 @@ sampler ReflectionSampler = sampler_state
 	MipFilter = Linear;
 	MinFilter = Linear;
 	MagFilter = Linear;
+	AddressU = Mirror;
+	AddressV = Mirror;
 };
 
 texture RefractionMap;
@@ -61,9 +64,14 @@ sampler RefractionSampler = sampler_state
 	MipFilter = Linear;
 	MinFilter = Linear;
 	MagFilter = Linear;
+	AddressU = Mirror;
+	AddressV = Mirror;
 };
 
 float3 EyePosition;
+
+float2 WindVector;
+float DeltaTime;
 
 float3 SpecularColor;
 float Glossiness;
@@ -87,6 +95,8 @@ struct VertexShaderOutput
 	float3 Normal : TEXCOORD1;
 	float4 ClipPlanes : TEXCOORD3;
 	float CustomClipPlane : TEXCOORD4;
+	float4 ReflectionMapCoord : TEXCOORD5;
+	float4 RefractionMapCoord : TEXCOORD6;
 };
 
 struct ColorPair
@@ -119,13 +129,16 @@ ColorPair ComputeLight(float3 posWS, float3 E, float3 N)
 	temp.Specular = 0;
 
 	// DirLight0
-	ComputeSingleLight(-DirLight0Direction, DirLight0DiffuseColor, DirLight0SpecularColor, E, N, result);
+	ComputeSingleLight(-DirLight0Direction, DirLight0DiffuseColor,
+		float3(DirLight0SpecularColor.x * SpecularColor.x, DirLight0SpecularColor.y * SpecularColor.y, DirLight0SpecularColor.z * SpecularColor.z), E, N, result);
 
 	// DirLight1
-	ComputeSingleLight(-DirLight1Direction, DirLight1DiffuseColor, DirLight1SpecularColor, E, N, result);
+	ComputeSingleLight(-DirLight1Direction, DirLight1DiffuseColor,
+		float3(DirLight1SpecularColor.x * SpecularColor.x, DirLight1SpecularColor.y * SpecularColor.y, DirLight1SpecularColor.z * SpecularColor.z), E, N, result);
 
 	// DirLight2
-	ComputeSingleLight(-DirLight2Direction, DirLight2DiffuseColor, DirLight2SpecularColor, E, N, result);
+	ComputeSingleLight(-DirLight2Direction, DirLight2DiffuseColor,
+		float3(DirLight2SpecularColor.x * SpecularColor.x, DirLight2SpecularColor.y * SpecularColor.y, DirLight2SpecularColor.z * SpecularColor.z), E, N, result);
 
 	// point lights
 	float3 L;
@@ -135,7 +148,9 @@ ColorPair ComputeLight(float3 posWS, float3 E, float3 N)
 	{
 		L = PointLightPositions[i] - posWS;
 		Llength = length(L);
-		ComputeSingleLight(normalize(L), PointLightDiffuseColors[i], PointLightSpecularColors[i], E, N, temp);
+		ComputeSingleLight(normalize(L), PointLightDiffuseColors[i],
+			float3(PointLightSpecularColors[i].x * SpecularColor.x, PointLightSpecularColors[i].y * SpecularColor.y, PointLightSpecularColors[i].z * SpecularColor.z),
+			E, N, temp);
 
 		att = saturate(ATTENUATION_MULTIPLIER * length(PointLightDiffuseColors[i]) * PointLightAttenuations[i] / max(Llength * Llength, MINIMUM_LENGTH_VALUE));
 		temp.Diffuse = temp.Diffuse * att;
@@ -160,8 +175,13 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 	output.PositionWS = mul(input.Position, World);
 
 	output.TexCoord = input.TexCoord;
+	output.TexCoord.x = output.TexCoord.x + WindVector.x;
+	output.TexCoord.y = output.TexCoord.y + WindVector.y;
 
 	output.Normal = normalize(mul(input.Normal, WorldInverseTranspose));
+
+	output.ReflectionMapCoord = mul(input.Position, ReflectViewProj);
+	output.RefractionMapCoord = mul(input.Position, WorldViewProj);
 
 	output.ClipPlanes.x = dot(output.PositionWS, BoundingFrustum[0]);
 	output.ClipPlanes.y = dot(output.PositionWS, BoundingFrustum[1]);
@@ -203,13 +223,34 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	////////
 
 	// computin water
+	
+	float3 finalWater = float3(0, 0, 0);
+	float fresnel = saturate(dot(normalize(EyePosition - input.PositionWS.xyz), float3(0.0f, 1.0f, 0.0f)));
+	float pScale = 0.25f;
 
+	float2 projectedCoordsRF;
+	projectedCoordsRF.x = input.ReflectionMapCoord.x / input.ReflectionMapCoord.w / 2 + 0.5;
+	projectedCoordsRF.y = -input.ReflectionMapCoord.y / input.ReflectionMapCoord.w / 2 + 0.5;
+
+	projectedCoordsRF = projectedCoordsRF + (input.Normal.xy * pScale);
+	float3 refl = tex2D(ReflectionSampler, projectedCoordsRF);
+
+	float2 projectedCoordsRR;
+	projectedCoordsRR.x = input.RefractionMapCoord.x / input.RefractionMapCoord.w / 2 + 0.5;
+	projectedCoordsRR.y = -input.RefractionMapCoord.y / input.RefractionMapCoord.w / 2 + 0.5;
+
+	projectedCoordsRR = projectedCoordsRR + (input.Normal.xy * pScale);
+	float3 refr = tex2D(RefractionSampler, projectedCoordsRR);
+
+	finalWater = lerp(refl, refr, fresnel);
 
 	////////
 
 	ColorPair computedLight = ComputeLight(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal);
 
-	color =  (color * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f));
+	color =  lerp((color * float4(computedLight.Diffuse, 1.0f)), alpha * float4(finalWater, 1.0f), ReflectivityBias);
+	float3 specular = alpha * computedLight.Specular;
+	color = color + float4(specular, 1.0f);
 
 	color *= Transparency;
 

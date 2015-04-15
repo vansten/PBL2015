@@ -106,10 +106,10 @@ namespace TrashSoup.Engine
             List<Material> testWaterMats = new List<Material>();
             Material testWaterMat = new WaterMaterial("testWaterMat", this.Effects[@"Effects\WaterEffect"]);
             testWaterMats.Add(testWaterMat);
-            testWaterMat.DiffuseMap = Textures[@"Textures\Test\cargo"];
-            testWaterMat.NormalMap = Textures[@"Textures\Test\cargo_NRM"];
-            testWaterMat.Glossiness = 10.0f;
-            testWaterMat.ReflectivityBias = 0.5f;
+            testWaterMat.DiffuseMap = LoadTexture(@"Textures\Test\dirtywater");
+            testWaterMat.NormalMap = LoadTexture(@"Textures\Test\water");
+            testWaterMat.Glossiness = 200.0f;
+            testWaterMat.ReflectivityBias = 0.8f;
             if(!this.Materials.ContainsKey(testWaterMat.Name))
             {
                 this.Materials.Add(testWaterMat.Name, testWaterMat);
@@ -178,7 +178,7 @@ namespace TrashSoup.Engine
             testMirror.MyCollider = new BoxCollider(testMirror);
 
             GameObject testWater = new GameObject(7, "tesWtater");
-            testWater.MyTransform = new Transform(testWater, new Vector3(220.0f, -15.0f, -160.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 30.0f);
+            testWater.MyTransform = new Transform(testWater, new Vector3(0.0f, -15.0f, -0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 100.0f);
             testWater.Components.Add(new CustomModel(testWater, new Model[] { Models["Models/Test/TestSquarePlane"], null, null }, 3, testWaterMats));
 
             GameObject skyBox = new GameObject(4, "skyBox");
@@ -192,7 +192,7 @@ namespace TrashSoup.Engine
             lp1.MyTransform = new Transform(lp1, new Vector3(-40.0f, 40.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
 
             // loading scene
-            CurrentScene = new Scene(new SceneParams(0, "test"));
+            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f)));
 
             Camera cam = null;
 
