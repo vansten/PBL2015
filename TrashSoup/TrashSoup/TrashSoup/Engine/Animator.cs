@@ -207,7 +207,11 @@ namespace TrashSoup.Engine
 
         public AnimationPlayer GetAnimationPlayer(string key)
         {
-            return animationPlayers[key];
+            if(animationPlayers.ContainsKey(key))
+            {
+                return animationPlayers[key];
+            }
+            return null;
         }
 
         public void StartAnimation()
