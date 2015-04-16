@@ -15,6 +15,12 @@ namespace TrashSoup.Engine
 
         #endregion
 
+        #region effectParameters
+
+        protected EffectParameter epMirrorMap;
+
+        #endregion
+
         #region variables
 
         protected static RenderTarget2D mirrorRenderTarget;
@@ -92,12 +98,9 @@ namespace TrashSoup.Engine
                 isRendering = false;
                 this.MirrorMap = MirrorRenderTarget;
                
-
-                EffectParameter param = null;
-                this.parameters.TryGetValue("MirrorMap", out param);
-                if (param != null)
+                if(epMirrorMap != null)
                 {
-                    param.SetValue(this.MirrorMap);
+                    epMirrorMap.SetValue(this.MirrorMap);
                 }
             }
 
@@ -124,6 +127,22 @@ namespace TrashSoup.Engine
             this.myCamera.Target = newTarget;
 
             myCamera.Update(tempGameTime);
+        }
+
+        protected override void AssignParamsInitialize()
+        {
+            base.AssignParamsInitialize();
+
+            int pNameHash;
+            int mmHc = ("MirrorMap").GetHashCode();
+            foreach (EffectParameter p in MyEffect.Parameters)
+            {
+                pNameHash = p.Name.GetHashCode();
+                if (pNameHash.Equals(mmHc))
+                {
+                    epMirrorMap = p;
+                }
+            }
         }
 
         #endregion

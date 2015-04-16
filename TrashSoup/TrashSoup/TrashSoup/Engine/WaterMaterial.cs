@@ -16,6 +16,15 @@ namespace TrashSoup.Engine
 
         #endregion
 
+        #region effectParameters
+
+        EffectParameter epReflectionMap;
+        EffectParameter epRefractionMap;
+        EffectParameter epWindVector;
+        EffectParameter epReflectViewProj;
+
+        #endregion
+
         #region variables
 
         protected static RenderTarget2D reflectionRenderTarget;
@@ -106,12 +115,12 @@ namespace TrashSoup.Engine
                 DrawReflectionMap(world);
 
                 tempWind += ResourceManager.Instance.CurrentScene.Params.Wind * (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
-                EffectParameter param = null;
-                this.parameters.TryGetValue("WindVector", out param);
-                if (param != null)
+                
+                if(epWindVector != null)
                 {
-                    param.SetValue(tempWind);
+                    epWindVector.SetValue(tempWind);
                 }
+                
                 isRendering = false;
             }
 
@@ -151,11 +160,9 @@ namespace TrashSoup.Engine
 
             this.RefractionMap = RefractionRenderTarget;
 
-            EffectParameter param = null;
-            this.parameters.TryGetValue("RefractionMap", out param);
-            if (param != null)
+            if(epRefractionMap != null)
             {
-                param.SetValue(this.RefractionMap);
+                epRefractionMap.SetValue(RefractionMap);
             }
         }
 
@@ -192,18 +199,35 @@ namespace TrashSoup.Engine
             //this.ReflectionMap.SaveAsJpeg(stream, 800, 480);
             //stream.Close();
 
-            EffectParameter param = null;
-            this.parameters.TryGetValue("ReflectViewProj", out param);
-            if (param != null)
+            if(epReflectViewProj != null)
             {
-                param.SetValue(this.reflectionMatrix);
+                epReflectViewProj.SetValue(reflectionMatrix);
             }
 
-            param = null;
-            this.parameters.TryGetValue("ReflectionMap", out param);
-            if (param != null)
+            if(epReflectionMap != null)
             {
-                param.SetValue(this.ReflectionMap);
+                epReflectionMap.SetValue(ReflectionMap);
+            }
+        }
+
+        protected override void AssignParamsInitialize()
+        {
+            base.AssignParamsInitialize();
+
+            int pNameHash;
+            Dictionary<int, EffectParameter> nameHashes = new Dictionary<int, EffectParameter>();
+            nameHashes.Add(("ReflectionMap").GetHashCode(), epReflectionMap);
+            nameHashes.Add(("RefractionMap").GetHashCode(), epRefractionMap);
+            nameHashes.Add(("ReflectViewProj").GetHashCode(), epReflectViewProj);
+            nameHashes.Add(("WindVector").GetHashCode(), epWindVector);
+
+            foreach (EffectParameter p in MyEffect.Parameters)
+            {
+                pNameHash = p.Name.GetHashCode();
+                if (nameHashes.ContainsKey(pNameHash))
+                {
+                    nameHashes[pNameHash] = p;
+                }
             }
         }
 
