@@ -53,7 +53,7 @@ namespace TrashSoup.Gameplay
         {
             Vector2 movementVector = InputHandler.Instance.GetMovementVector();
             tempMove = new Vector3(movementVector.X,
-                (InputManager.Instance.GetGamePadButton(Buttons.RightTrigger) ? 1.0f : 0.0f) - (InputManager.Instance.GetGamePadButton(Buttons.LeftTrigger) ? 1.0f : 0.0f),
+                (InputManager.Instance.GetKeyboardButton(Keys.Q) ? 1.0f : 0.0f) - (InputManager.Instance.GetKeyboardButton(Keys.Z) ? 1.0f : 0.0f),
                 movementVector.Y);
 
             if(tempMove.Length() > 0.0f &&

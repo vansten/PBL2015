@@ -124,7 +124,7 @@ namespace TrashSoup.Engine
             Quaternion objectRotation;
             wm.Decompose(out objectScale, out objectRotation, out objectPosition);
 
-            float planeHeight = -objectPosition.Y + 0.0001f;
+            float planeHeight = -objectPosition.Y;
             Vector3 normal = new Vector3(0.0f, 1.0f, 0.0f);
 
             Vector4 planeCoeffs = new Vector4(normal, planeHeight);
@@ -163,34 +163,37 @@ namespace TrashSoup.Engine
         {
             Vector4 refractionClip = CreatePlane(wm, true);
             float z = wm.Translation.Y;
+            Camera cCam = ResourceManager.Instance.CurrentScene.Cam;
 
-            ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.D = refractionClip.W;
-            ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.Normal.X = refractionClip.X;
-            ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.Normal.Y = refractionClip.Y;
-            ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.Normal.Z = refractionClip.Z;
+            cCam.Bounds.AdditionalClip.D = refractionClip.W;
+            cCam.Bounds.AdditionalClip.Normal.X = refractionClip.X;
+            cCam.Bounds.AdditionalClip.Normal.Y = refractionClip.Y;
+            cCam.Bounds.AdditionalClip.Normal.Z = refractionClip.Z;
 
-            Vector3 prevPos = ResourceManager.Instance.CurrentScene.Cam.Position;
-            Vector3 prevTrans = ResourceManager.Instance.CurrentScene.Cam.Translation;
-            Vector3 prevTgt = ResourceManager.Instance.CurrentScene.Cam.Target;
+            Vector3 prevPos = cCam.Position;
+            Vector3 prevTrans = cCam.Translation;
+            Vector3 prevTgt = cCam.Target;
 
-            ResourceManager.Instance.CurrentScene.Cam.Position = new Vector3(prevPos.X, -prevPos.Y + 2.0f * z, prevPos.Z);
-            ResourceManager.Instance.CurrentScene.Cam.Translation = new Vector3(prevTrans.X, -prevTrans.Y + 2.0f * z, prevTrans.Z);
-            ResourceManager.Instance.CurrentScene.Cam.Target = new Vector3(prevTgt.X, -prevTgt.Y + 2.0f*z, prevTgt.Z);
+            cCam.Position = new Vector3(prevPos.X, -prevPos.Y + 2.0f*z , prevPos.Z);
+            cCam.Translation = new Vector3(prevTrans.X, -prevTrans.Y + 2.0f*z, prevTrans.Z);
+            cCam.Target = new Vector3(prevTgt.X, -prevTgt.Y + 2.0f*z, prevTgt.Z);
 
-            ResourceManager.Instance.CurrentScene.Cam.Update(tempGameTime);
-            reflectionMatrix = wm * ResourceManager.Instance.CurrentScene.Cam.ViewProjMatrix;
+            cCam.Update(tempGameTime);
+            reflectionMatrix = wm * cCam.ViewProjMatrix;
 
             TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(ReflectionRenderTarget);
             ResourceManager.Instance.CurrentScene.DrawAll(tempGameTime);
             TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(null);
 
-            ResourceManager.Instance.CurrentScene.Cam.Position = prevPos;
-            ResourceManager.Instance.CurrentScene.Cam.Translation = prevTrans;
-            ResourceManager.Instance.CurrentScene.Cam.Target = prevTgt;
+            Debug.Log(cCam.Position.ToString());
 
-            ResourceManager.Instance.CurrentScene.Cam.Update(tempGameTime);
+            cCam.Position = prevPos;
+            cCam.Translation = prevTrans;
+            cCam.Target = prevTgt;
 
-            ResourceManager.Instance.CurrentScene.Cam.Bounds.ZeroAllAdditionals();
+            cCam.Update(tempGameTime);
+
+            cCam.Bounds.ZeroAllAdditionals();
 
             this.ReflectionMap = ReflectionRenderTarget;
 

@@ -229,17 +229,17 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	float pScale = 0.25f;
 
 	float2 projectedCoordsRF;
-	projectedCoordsRF.x = input.ReflectionMapCoord.x / input.ReflectionMapCoord.w / 2 + 0.5;
-	projectedCoordsRF.y = -input.ReflectionMapCoord.y / input.ReflectionMapCoord.w / 2 + 0.5;
+	projectedCoordsRF.x = (input.ReflectionMapCoord.x / input.ReflectionMapCoord.w) / 2.0f + 0.5f;
+	projectedCoordsRF.y = (-input.ReflectionMapCoord.y / input.ReflectionMapCoord.w) / 2.0f + 0.5f;
 
-	projectedCoordsRF = projectedCoordsRF + (input.Normal.xy * pScale);
+	projectedCoordsRF = projectedCoordsRF + (nAdj.xy * pScale);
 	float3 refl = tex2D(ReflectionSampler, projectedCoordsRF);
 
 	float2 projectedCoordsRR;
-	projectedCoordsRR.x = input.RefractionMapCoord.x / input.RefractionMapCoord.w / 2 + 0.5;
-	projectedCoordsRR.y = -input.RefractionMapCoord.y / input.RefractionMapCoord.w / 2 + 0.5;
+	projectedCoordsRR.x = input.RefractionMapCoord.x / input.RefractionMapCoord.w / 2.0f + 0.5f;
+	projectedCoordsRR.y = -input.RefractionMapCoord.y / input.RefractionMapCoord.w / 2.0f + 0.5f;
 
-	projectedCoordsRR = projectedCoordsRR + (input.Normal.xy * pScale);
+	projectedCoordsRR = projectedCoordsRR + (nAdj.xy * pScale);
 	float3 refr = tex2D(RefractionSampler, projectedCoordsRR);
 
 	finalWater = lerp(refl, refr, fresnel);
@@ -253,6 +253,8 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	color = color + float4(specular, 1.0f);
 
 	color *= Transparency;
+
+	color = float4(finalWater, 1.0f);
 
     return color;
 }
