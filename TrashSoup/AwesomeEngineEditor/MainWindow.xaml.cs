@@ -124,6 +124,8 @@ namespace AwesomeEngineEditor
             }
         }
 
+        private ObservableCollection<UserControl> LoadedComponents = new ObservableCollection<UserControl>();
+
         private void FillObjectComponents()
         {
             Type[] types = typeof(TrashSoup.Engine.ObjectComponent).Assembly.GetTypes();
@@ -157,6 +159,7 @@ namespace AwesomeEngineEditor
         {
             TrashSoup.Engine.Debug.Log("Editor started");
             InitializeComponent();
+            this.Components.ItemsSource = this.LoadedComponents;
             this.DataContext = this;
             this.Closing += MainWindow_Closing;
             this.IsXYZVisible = System.Windows.Visibility.Hidden;
@@ -547,19 +550,21 @@ namespace AwesomeEngineEditor
         private void GenerateDetailsText()
         {
             if (this.selectedObject == null) return;
-            this.Test.Text = "ID: " + ((TrashSoup.Engine.GameObject)this.selectedObject).UniqueID + "\n";
-            this.Test.Text += "Name: " + ((TrashSoup.Engine.GameObject)this.selectedObject).Name + "\n";
+            this.LoadedComponents.Clear();
+            //this.Test.Text = "ID: " + ((TrashSoup.Engine.GameObject)this.selectedObject).UniqueID + "\n";
+            //this.Test.Text += "Name: " + ((TrashSoup.Engine.GameObject)this.selectedObject).Name + "\n";
             if(this.selectedObject.GetType().IsSubclassOf(typeof(TrashSoup.Engine.Camera)) || this.selectedObject.GetType() == typeof(TrashSoup.Engine.Camera))
             {
-                this.Test.Text += "Position: " + ((TrashSoup.Engine.Camera)this.selectedObject).Position.ToString();
+                //this.Test.Text += "Position: " + ((TrashSoup.Engine.Camera)this.selectedObject).Position.ToString();
+                Components.Camera cameraWindow = new Components.Camera();
+                this.LoadedComponents.Add(cameraWindow);
             }
             else
             {
-                this.Test.Text += "Position: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyTransform.Position + "\n";
-                this.Test.Text += "Rotation: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyTransform.Rotation + "\n";
-                this.Test.Text += "Scale: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyTransform.Scale + "\n";
+                Components.Transform transformWindow = new Components.Transform(((TrashSoup.Engine.GameObject)this.selectedObject).MyTransform);
+                this.LoadedComponents.Add(transformWindow);
             }
-            if(this.selectedObject.MyPhysicalObject != null)
+            /*if(this.selectedObject.MyPhysicalObject != null)
             {
                 this.Test.Text += "Drag factor: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyPhysicalObject.DragFactor + "\n";
                 this.Test.Text += "Is using gravity: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyPhysicalObject.IsUsingGravity + "\n";
@@ -573,14 +578,17 @@ namespace AwesomeEngineEditor
                 {
                     this.Test.Text += this.selectedObject.MyAnimator.animationPlayers.Keys.ElementAt(i) + "\n";
                 }
-            }
+            }*/
 
             if(this.selectedObject.Components.Count > 0)
             {
-                this.Test.Text += "\n\nAttached components:\n";
+                //this.Test.Text += "\n\nAttached components:\n";
+                this.LoadedComponents.Add(new Components.AttachedComponentText());
                 foreach (TrashSoup.Engine.ObjectComponent oc in this.selectedObject.Components)
                 {
-                    this.Test.Text += oc.ToString() + "\n";
+                    Components.ComponentWindow cw = new Components.ComponentWindow(oc);
+                    this.LoadedComponents.Add(cw);
+                    //this.Test.Text += oc.ToString() + "\n";
                 }
             }
         }

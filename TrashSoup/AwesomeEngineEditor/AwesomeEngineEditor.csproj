@@ -60,12 +60,40 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Components\AttachedComponentText.xaml.cs">
+      <DependentUpon>AttachedComponentText.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Camera.xaml.cs">
+      <DependentUpon>Camera.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ComponentWindow.xaml.cs">
+      <DependentUpon>ComponentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Transform.xaml.cs">
+      <DependentUpon>Transform.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GraphicsDeviceService.cs" />
     <Compile Include="XNAControl.xaml.cs">
       <DependentUpon>XNAControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="XNAImageSource.cs" />
     <Page Include="About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\AttachedComponentText.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Camera.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\ComponentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Transform.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

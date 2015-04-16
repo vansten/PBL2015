@@ -80,7 +80,8 @@
         <DockPanel Grid.Row="1" Grid.Column="2">
             <Border BorderBrush="Black" BorderThickness="2">
                 <Grid Name="DetailsInfo">
-                    <TextBlock Name="Test" Text="There should be some details like textures used (open file dialog), position, rotation, scale, model path, shader (?)" TextWrapping="Wrap" FontSize="14"/>
+                    <!--<TextBlock Name="Test" Text="There should be some details like textures used (open file dialog), position, rotation, scale, model path, shader (?)" TextWrapping="Wrap" FontSize="14"/>-->
+                    <ListView x:Name="Components" Background="LightGray"/>
                     <TextBlock Text="Add component to this object: " VerticalAlignment="Bottom" Margin="0, 0, 0, 80" FontSize="15"/>
                     <ComboBox Name="ObjectComponents" VerticalAlignment="Bottom" Margin="0, 0, 0, 50" SelectionChanged="ObjectComponents_SelectionChanged"/>
                 </Grid>
