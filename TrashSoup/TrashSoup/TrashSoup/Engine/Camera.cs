@@ -20,7 +20,7 @@ namespace TrashSoup.Engine
         public Matrix ViewMatrix
         {
             get;
-            protected set;
+            set;
         }
 
         public Matrix ProjectionMatrix
@@ -32,7 +32,7 @@ namespace TrashSoup.Engine
         public Matrix ViewProjMatrix
         {
             get;
-            protected set;
+            set;
         }
 
         public Vector3 Position { get; set; }

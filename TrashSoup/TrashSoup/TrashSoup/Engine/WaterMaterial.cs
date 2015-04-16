@@ -124,7 +124,7 @@ namespace TrashSoup.Engine
             Quaternion objectRotation;
             wm.Decompose(out objectScale, out objectRotation, out objectPosition);
 
-            float planeHeight = -objectPosition.Y;
+            float planeHeight = -objectPosition.Y - 0.00001f;
             Vector3 normal = new Vector3(0.0f, 1.0f, 0.0f);
 
             Vector4 planeCoeffs = new Vector4(normal, planeHeight);
@@ -170,26 +170,17 @@ namespace TrashSoup.Engine
             cCam.Bounds.AdditionalClip.Normal.Y = refractionClip.Y;
             cCam.Bounds.AdditionalClip.Normal.Z = refractionClip.Z;
 
-            Vector3 prevPos = cCam.Position;
-            Vector3 prevTrans = cCam.Translation;
-            Vector3 prevTgt = cCam.Target;
+            Matrix refl = Matrix.CreateReflection(new Plane((new Vector4(refractionClip.X, refractionClip.Y, refractionClip.X, refractionClip.W))));
+            Matrix flip = Matrix.CreateReflection(new Plane(new Vector4(0.0f, 1.0f, 0.0f, 0.0f)));
 
-            cCam.Position = new Vector3(prevPos.X, -prevPos.Y + 2.0f*z , prevPos.Z);
-            cCam.Translation = new Vector3(prevTrans.X, -prevTrans.Y + 2.0f*z, prevTrans.Z);
-            cCam.Target = new Vector3(prevTgt.X, -prevTgt.Y + 2.0f*z, prevTgt.Z);
-
-            cCam.Update(tempGameTime);
-            reflectionMatrix = wm * cCam.ViewProjMatrix;
+            cCam.ViewMatrix = refl * cCam.ViewMatrix * flip;
+            cCam.ViewProjMatrix = cCam.ViewMatrix * cCam.ProjectionMatrix;
+            cCam.Bounds.Matrix = cCam.ViewProjMatrix;
+            this.reflectionMatrix = wm * cCam.ViewProjMatrix;
 
             TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(ReflectionRenderTarget);
             ResourceManager.Instance.CurrentScene.DrawAll(tempGameTime);
             TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(null);
-
-            Debug.Log(cCam.Position.ToString());
-
-            cCam.Position = prevPos;
-            cCam.Translation = prevTrans;
-            cCam.Target = prevTgt;
 
             cCam.Update(tempGameTime);
 
@@ -198,7 +189,7 @@ namespace TrashSoup.Engine
             this.ReflectionMap = ReflectionRenderTarget;
 
             //System.IO.FileStream stream = new System.IO.FileStream("Dupa.jpg", System.IO.FileMode.Create);
-            //this.ReflectionMap.SaveAsJpeg(stream, 1280, 720);
+            //this.ReflectionMap.SaveAsJpeg(stream, 800, 480);
             //stream.Close();
 
             EffectParameter param = null;

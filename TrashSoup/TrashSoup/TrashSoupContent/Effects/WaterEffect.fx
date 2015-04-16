@@ -239,10 +239,10 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	projectedCoordsRR.x = input.RefractionMapCoord.x / input.RefractionMapCoord.w / 2.0f + 0.5f;
 	projectedCoordsRR.y = -input.RefractionMapCoord.y / input.RefractionMapCoord.w / 2.0f + 0.5f;
 
-	projectedCoordsRR = projectedCoordsRR + (nAdj.xy * pScale);
+	projectedCoordsRR = projectedCoordsRR + (nAdj.xy * pScale * 0.25f);
 	float3 refr = tex2D(RefractionSampler, projectedCoordsRR);
 
-	finalWater = lerp(refl, refr, fresnel);
+	finalWater = lerp(ReflectivityBias * refl, Transparency * refr, fresnel);
 
 	////////
 
@@ -253,8 +253,6 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	color = color + float4(specular, 1.0f);
 
 	color *= Transparency;
-
-	color = float4(finalWater, 1.0f);
 
     return color;
 }

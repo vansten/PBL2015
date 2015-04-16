@@ -109,7 +109,7 @@ namespace TrashSoup.Engine
             testWaterMat.DiffuseMap = LoadTexture(@"Textures\Test\dirtywater");
             testWaterMat.NormalMap = LoadTexture(@"Textures\Test\water");
             testWaterMat.Glossiness = 200.0f;
-            testWaterMat.ReflectivityBias = 0.8f;
+            testWaterMat.ReflectivityBias = 0.5f;
             if(!this.Materials.ContainsKey(testWaterMat.Name))
             {
                 this.Materials.Add(testWaterMat.Name, testWaterMat);
@@ -159,7 +159,7 @@ namespace TrashSoup.Engine
             testBox.MyCollider = new SphereCollider(testBox);  //Add a box collider to test collisions
 
             GameObject testTer = new GameObject(2, "testTer");
-            testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, -1.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
+            testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
             testTer.Components.Add(new CustomModel(testTer, new Model[] { Models["Models/Test/TestTerrain"], null, null }, 3, testTerMats));
 
             GameObject testBox2 = new GameObject(3, "testBox2");
@@ -178,7 +178,7 @@ namespace TrashSoup.Engine
             testMirror.MyCollider = new BoxCollider(testMirror);
 
             GameObject testWater = new GameObject(7, "tesWtater");
-            testWater.MyTransform = new Transform(testWater, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 100.0f);
+            testWater.MyTransform = new Transform(testWater, new Vector3(0.0f, -15.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 100.0f);
             testWater.Components.Add(new CustomModel(testWater, new Model[] { Models["Models/Test/TestSquarePlane"], null, null }, 3, testWaterMats));
 
             GameObject skyBox = new GameObject(4, "skyBox");

@@ -157,11 +157,11 @@ namespace TrashSoup.Engine
         public void UpdateAll(GameTime gameTime)
         {
             //[vansten] Added testing code for physics simulation
-            Cam.Update(gameTime);
             foreach (GameObject obj in ObjectsDictionary.Values)
             {
                 obj.Update(gameTime);
             }
+            Cam.Update(gameTime);
         }
 
         // draws all gameobjects linearly
