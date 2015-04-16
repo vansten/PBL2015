@@ -60,6 +60,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Components\Animator.xaml.cs">
+      <DependentUpon>Animator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\AttachedComponentText.xaml.cs">
       <DependentUpon>AttachedComponentText.xaml</DependentUpon>
     </Compile>
@@ -68,6 +71,12 @@
     </Compile>
     <Compile Include="Components\ComponentWindow.xaml.cs">
       <DependentUpon>ComponentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ObjectInfo.xaml.cs">
+      <DependentUpon>ObjectInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\PhysicalObject.xaml.cs">
+      <DependentUpon>PhysicalObject.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Transform.xaml.cs">
       <DependentUpon>Transform.xaml</DependentUpon>
@@ -81,6 +90,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Components\Animator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\AttachedComponentText.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -90,6 +103,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\ComponentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\ObjectInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\PhysicalObject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

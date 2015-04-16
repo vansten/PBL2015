@@ -208,6 +208,7 @@ namespace AwesomeEngineEditor
                 OnPropertyChanged("IsRemoveModelMIEnabled");
                 this.DetailsInfo.Visibility = System.Windows.Visibility.Visible;
                 this.IsTranslateRotateScaleVisible = System.Windows.Visibility.Visible;
+                this.GenerateRemovableComponentsList();
                 this.GenerateDetailsText();
             }
             else
@@ -500,7 +501,10 @@ namespace AwesomeEngineEditor
                 if (this.selectedObject == null) return;
                 if (this.ObjectComponents.SelectedItem.GetType() == typeof(TrashSoup.Engine.PhysicalObject))
                 {
-                    this.selectedObject.MyPhysicalObject = new TrashSoup.Engine.PhysicalObject(this.selectedObject);
+                    if(this.selectedObject.MyPhysicalObject == null)
+                    {
+                        this.selectedObject.MyPhysicalObject = new TrashSoup.Engine.PhysicalObject(this.selectedObject);
+                    }
                 }
                 else
                 {
@@ -551,46 +555,91 @@ namespace AwesomeEngineEditor
         {
             if (this.selectedObject == null) return;
             this.LoadedComponents.Clear();
-            //this.Test.Text = "ID: " + ((TrashSoup.Engine.GameObject)this.selectedObject).UniqueID + "\n";
-            //this.Test.Text += "Name: " + ((TrashSoup.Engine.GameObject)this.selectedObject).Name + "\n";
+            this.LoadedComponents.Add(new Components.ObjectInfo(this.selectedObject));
             if(this.selectedObject.GetType().IsSubclassOf(typeof(TrashSoup.Engine.Camera)) || this.selectedObject.GetType() == typeof(TrashSoup.Engine.Camera))
             {
-                //this.Test.Text += "Position: " + ((TrashSoup.Engine.Camera)this.selectedObject).Position.ToString();
                 Components.Camera cameraWindow = new Components.Camera();
                 this.LoadedComponents.Add(cameraWindow);
             }
             else
             {
-                Components.Transform transformWindow = new Components.Transform(((TrashSoup.Engine.GameObject)this.selectedObject).MyTransform);
+                Components.Transform transformWindow = new Components.Transform(this.selectedObject.MyTransform);
                 this.LoadedComponents.Add(transformWindow);
             }
-            /*if(this.selectedObject.MyPhysicalObject != null)
+            if(this.selectedObject.MyPhysicalObject != null)
             {
-                this.Test.Text += "Drag factor: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyPhysicalObject.DragFactor + "\n";
-                this.Test.Text += "Is using gravity: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyPhysicalObject.IsUsingGravity + "\n";
-                this.Test.Text += "Mass: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyPhysicalObject.Mass + "\n";
-                this.Test.Text += "Position Constratints: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyPhysicalObject.PositionConstraints + "\n";
-                this.Test.Text += "Rotation Constratints: " + ((TrashSoup.Engine.GameObject)this.selectedObject).MyPhysicalObject.RotationConstraints + "\n";
+                Components.PhysicalObject po = new Components.PhysicalObject(this.selectedObject.MyPhysicalObject);
+                this.LoadedComponents.Add(po);
             }
             if(this.selectedObject.MyAnimator != null)
             {
-                for(int i = 0; i < this.selectedObject.MyAnimator.animationPlayers.Keys.Count; ++i)
-                {
-                    this.Test.Text += this.selectedObject.MyAnimator.animationPlayers.Keys.ElementAt(i) + "\n";
-                }
-            }*/
+                Components.Animator animatorWindow = new Components.Animator(this.selectedObject.MyAnimator);
+                this.LoadedComponents.Add(animatorWindow);
+            }
 
             if(this.selectedObject.Components.Count > 0)
             {
-                //this.Test.Text += "\n\nAttached components:\n";
                 this.LoadedComponents.Add(new Components.AttachedComponentText());
                 foreach (TrashSoup.Engine.ObjectComponent oc in this.selectedObject.Components)
                 {
                     Components.ComponentWindow cw = new Components.ComponentWindow(oc);
                     this.LoadedComponents.Add(cw);
-                    //this.Test.Text += oc.ToString() + "\n";
                 }
             }
+        }
+
+        private void CurrentlyAddedComponents_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.CurrentlyAddedComponents.SelectedItem == null) return;
+            Type t = this.CurrentlyAddedComponents.SelectedItem.GetType();
+            if(this.selectedObject.MyAnimator != null && this.selectedObject.MyAnimator.GetType() == t)
+            {
+                this.selectedObject.MyAnimator = null;
+            }
+            if (this.selectedObject.MyCollider != null && this.selectedObject.MyCollider.GetType() == t)
+            {
+                this.selectedObject.MyCollider = null;
+            }
+            if (this.selectedObject.MyPhysicalObject != null && this.selectedObject.MyPhysicalObject.GetType() == t)
+            {
+                this.selectedObject.MyPhysicalObject = null;
+            }
+
+            foreach(TrashSoup.Engine.ObjectComponent oc in this.selectedObject.Components)
+            {
+                if(oc.GetType() == t)
+                {
+                    this.selectedObject.Components.Remove(oc);
+                    break;
+                }
+            }
+
+            this.GenerateRemovableComponentsList();
+            this.GenerateDetailsText();
+        }
+
+        private void GenerateRemovableComponentsList()
+        {
+            List<TrashSoup.Engine.ObjectComponent> ocs = new List<TrashSoup.Engine.ObjectComponent>();
+            foreach (TrashSoup.Engine.ObjectComponent oc in this.selectedObject.Components)
+            {
+                ocs.Add(oc);
+            }
+
+            if (this.selectedObject.MyCollider != null)
+            {
+                ocs.Add(this.selectedObject.MyCollider);
+            }
+            if (this.selectedObject.MyAnimator != null)
+            {
+                ocs.Add(this.selectedObject.MyAnimator);
+            }
+            if (this.selectedObject.MyPhysicalObject != null)
+            {
+                ocs.Add(this.selectedObject.MyPhysicalObject);
+            }
+
+            this.CurrentlyAddedComponents.ItemsSource = ocs;
         }
     }
 }

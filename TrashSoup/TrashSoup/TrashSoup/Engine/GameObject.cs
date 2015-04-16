@@ -18,7 +18,7 @@ namespace TrashSoup.Engine
 
         #region properties
         public uint UniqueID { get; protected set; }
-        public string Name { get; protected set; }
+        public string Name { get; set; }
         public List<string> Tags { get; set; }
         public bool Enabled { get; set; }
         public bool Visible { get; set; }

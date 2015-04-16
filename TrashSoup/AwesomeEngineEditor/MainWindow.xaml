@@ -10,6 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -56,7 +57,7 @@
         <!-- Row 1, XNA window + hierarchy + details-->
 
         <!-- Hierarchy -->
-        <DockPanel Grid.Row="1" Grid.Column="0">
+        <DockPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
             <Border BorderBrush="Black" BorderThickness="2">
                 <TreeView Name="HierarchyTreeView" Width="300" FontSize="30" Background="LightGray" SelectedItemChanged="HierarchyTreeView_SelectedItemChanged" MouseLeftButtonDown="HierarchyTreeView_MouseLeftButtonDown"
                           ItemsSource="{Binding GameObjects}">
@@ -70,7 +71,7 @@
         </DockPanel>
 
         <!-- XNA Window -->
-        <DockPanel Grid.Row="1" Grid.Column="1">
+        <DockPanel Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
             <Border BorderBrush="Black" BorderThickness="2">
                 <controls:XNAControl x:Name="XNAImage"/>
             </Border>
@@ -80,10 +81,7 @@
         <DockPanel Grid.Row="1" Grid.Column="2">
             <Border BorderBrush="Black" BorderThickness="2">
                 <Grid Name="DetailsInfo">
-                    <!--<TextBlock Name="Test" Text="There should be some details like textures used (open file dialog), position, rotation, scale, model path, shader (?)" TextWrapping="Wrap" FontSize="14"/>-->
                     <ListView x:Name="Components" Background="LightGray"/>
-                    <TextBlock Text="Add component to this object: " VerticalAlignment="Bottom" Margin="0, 0, 0, 80" FontSize="15"/>
-                    <ComboBox Name="ObjectComponents" VerticalAlignment="Bottom" Margin="0, 0, 0, 50" SelectionChanged="ObjectComponents_SelectionChanged"/>
                 </Grid>
             </Border>
         </DockPanel>
@@ -91,8 +89,16 @@
         <!-- End of row 1-->
         
         <!-- Row 2 -->
+        <StackPanel Grid.Row="2" Grid.Column="2">
+            <TextBlock Text="Remove component from this object: " Margin="10,0,0,0" FontSize="15"/>
+            <ComboBox Name="CurrentlyAddedComponents" Margin="20,0,20,0" SelectionChanged="CurrentlyAddedComponents_SelectionChanged"/>
+            <TextBlock Text="Add component to this object: " Margin="10, 10, 0, 0" FontSize="15"/>
+            <ComboBox Name="ObjectComponents" Margin="20, 0, 20, 0" SelectionChanged="ObjectComponents_SelectionChanged"/>
+        </StackPanel>
+        
+        <!-- Row 3 -->
 
-        <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+        <DockPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
             <ToggleButton Name="TranslateToggle" Content="Translate" Width="100" Click="TranslateToggle_Click" Visibility="{Binding IsTranslateRotateScaleVisible}"/>
             <ToggleButton Name="RotateToggle" Content="Rotate" Width="100" Click="RotateToggle_Click" Visibility="{Binding IsTranslateRotateScaleVisible}"/>
             <ToggleButton Name="ScaleToggle" Content="Scale" Width="100" Margin="0, 0, 50, 0" Click="ScaleToggle_Click" Visibility="{Binding IsTranslateRotateScaleVisible}"/>

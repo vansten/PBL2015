@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="AwesomeEngineEditor.Components.PhysicalObject"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Width="260" Height="auto">
+    <Grid>
+        <TextBlock Text="Physical Object" FontSize="25" FontWeight="Bold"/>
+        <TextBlock Text="Mass: " FontSize="20" Margin="0, 30, 0, 0"/>
+        <TextBlock Text="Drag factor: " FontSize="20" Margin="0, 60, 0, 0"/>
+        <TextBlock Text="Using gravity: " FontSize="20" Margin="0, 90, 0, 0"/>
+        <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="125,100,0,0" IsChecked="{Binding ObjectUsingGravity}"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="108,65,0,0" TextWrapping="Wrap" Text="{Binding ObjectDragFactor}" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="59,32,0,0" TextWrapping="Wrap" Text="{Binding ObjectMass}" VerticalAlignment="Top" Width="120"/>
+    </Grid>
+</UserControl>
