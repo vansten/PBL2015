@@ -244,7 +244,6 @@ namespace TrashSoup.Engine
         /// </summary>
         private void LoadCues()
         {
-            
             Sounds.Add(AudioManager.Instance.GetCue("Track1"));
         }
 
@@ -402,30 +401,12 @@ namespace TrashSoup.Engine
             ///////////////////////////////////////////
 
             // FOR TETIN
-            if(!TexturesCube.ContainsKey(@"Textures\Skyboxes\Sunset"))
-            {
-                TexturesCube.Add(@"Textures\Skyboxes\Sunset", game.Content.Load<TextureCube>(@"Textures\Skyboxes\Sunset"));
-            }
 
-            if(!Textures.ContainsKey(@"Textures\Test\cargo"))
-            {
-                Textures.Add(@"Textures\Test\cargo", game.Content.Load<Texture2D>(@"Textures\Test\cargo"));
-            }
-
-            if (!Textures.ContainsKey(@"Textures\Test\cargo_NRM"))
-            {
-                Textures.Add(@"Textures\Test\cargo_NRM", game.Content.Load<Texture2D>(@"Textures\Test\cargo_NRM"));
-            }
-
-            if (!Textures.ContainsKey(@"Textures\Test\metal01_d"))
-            {
-                Textures.Add(@"Textures\Test\metal01_d", game.Content.Load<Texture2D>(@"Textures\Test\metal01_d"));
-            }
-
-            if (!Textures.ContainsKey(@"Textures\ParticleTest\Particle"))
-            {
-                Textures.Add(@"Textures\ParticleTest\Particle", game.Content.Load<Texture2D>(@"Textures\ParticleTest\Particle"));
-            }
+            LoadTextureCube(@"Textures\Skyboxes\Sunset");
+            LoadTexture(@"Textures\Test\cargo");
+            LoadTexture(@"Textures\Test\cargo_NRM");
+            LoadTexture(@"Textures\Test\metal01_d");
+            LoadTexture(@"Textures\ParticleTest\Particle");
         }
 
         /// <summary>
@@ -452,45 +433,21 @@ namespace TrashSoup.Engine
             }
 
             string path = @"Effects\DefaultEffect";
-            if(!Effects.ContainsKey(path))
-            {
-                this.LoadEffect(path);
-            }
+            LoadEffect(path);
             path = @"Effects\NormalEffect";
-            if(!Effects.ContainsKey(path))
-            {
-                this.LoadEffect(path);
-            }
+            LoadEffect(path);
             path = @"Effects\DefaultSkinnedEffect";
-            if(!Effects.ContainsKey(path))
-            {
-                this.LoadEffect(path);
-            }
+            LoadEffect(path);
             path = @"Effects\NormalSkinnedEffect";
-            if (!Effects.ContainsKey(path))
-            {
-                this.LoadEffect(path);
-            }
+            LoadEffect(path);
             path = @"Effects\SkyboxEffect";
-            if (!Effects.ContainsKey(path))
-            {
-                this.LoadEffect(path);
-            }
+            LoadEffect(path);
             path = @"Effects\CubeNormalEffect";
-            if (!Effects.ContainsKey(path))
-            {
-                this.LoadEffect(path);
-            }
+            LoadEffect(path);
             path = @"Effects\MirrorEffect";
-            if (!Effects.ContainsKey(path))
-            {
-                this.LoadEffect(path);
-            }
+            LoadEffect(path);
             path = @"Effects\WaterEffect";
-            if (!Effects.ContainsKey(path))
-            {
-                this.LoadEffect(path);
-            }
+            LoadEffect(path);
         }
 
         /// <summary>
