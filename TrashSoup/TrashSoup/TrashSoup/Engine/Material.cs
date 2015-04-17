@@ -280,73 +280,84 @@ namespace TrashSoup.Engine
             Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector, BoundingFrustumExtended frustum,
             GameTime gameTime)
         {
-            if(epWorld != null)
+            //MyEffect.Parameters["World"].SetValue(world);
+            //MyEffect.Parameters["WorldInverseTranspose"].SetValue(Matrix.Transpose(Matrix.Invert(world)));
+            //MyEffect.Parameters["WorldViewProj"].SetValue(worldViewProj);
+            //MyEffect.Parameters["DiffuseMap"].SetValue(DiffuseMap);
+            //MyEffect.Parameters["DirLight0Direction"].SetValue(dirs[0].LightDirection);
+            //MyEffect.Parameters["DirLight0DiffuseColor"].SetValue(dirs[0].LightColor);
+            //MyEffect.Parameters["DirLight0SpecularColor"].SetValue(dirs[0].LightSpecularColor);
+
+            if (epWorld != null)
             {
                 epWorld.SetValue(world);
             }
             if (epWorldInverseTranspose != null)
             {
-                epWorld.SetValue(Matrix.Transpose(Matrix.Invert(world)));
+                epWorldInverseTranspose.SetValue(Matrix.Transpose(Matrix.Invert(world)));
             }
-            if(epWorldViewProj != null)
+            if (epWorldViewProj != null)
             {
                 epWorldViewProj.SetValue(worldViewProj);
             }
-            if(epDiffuseMap != null)
+            if (epDiffuseMap != null)
             {
                 epDiffuseMap.SetValue(DiffuseMap);
             }
-            if(epNormalMap != null)
+            if (epNormalMap != null)
             {
                 epNormalMap.SetValue(NormalMap);
             }
-            if(epCubeMap != null)
+            if (epCubeMap != null)
             {
                 epCubeMap.SetValue(CubeMap);
             }
-            if(epSpecularColor != null)
+            if (epSpecularColor != null)
             {
                 epSpecularColor.SetValue(specularColor);
             }
-            if(epGlossiness != null)
+            if (epGlossiness != null)
             {
                 epGlossiness.SetValue(glossiness);
             }
-            if(epReflectivityColor != null)
+            if (epReflectivityColor != null)
             {
                 epReflectivityColor.SetValue(reflectivityColor);
             }
-            if(epReflectivityBias != null)
+            if (epReflectivityBias != null)
             {
                 epReflectivityBias.SetValue(reflectivityBias);
             }
-            if(epTransparency != null)
+            if (epTransparency != null)
             {
                 epTransparency.SetValue(transparency);
             }
-            if(epPerPixelLighting != null)
+            if (epPerPixelLighting != null)
             {
                 epPerPixelLighting.SetValue(perPixelLighting);
             }
 
-            if(epAmbientLightColor != null)
+            if (epAmbientLightColor != null)
             {
                 epAmbientLightColor.SetValue(amb.LightColor);
             }
 
-            if(dirs[0] != null)
+            if (dirs[0] != null)
             {
                 if (epDirLight0Direction != null)
                 {
-                    epDirLight0Direction.SetValue(dirs[0].LightDirection);
+                    //epDirLight0Direction.SetValue(dirs[0].LightDirection);
+                    MyEffect.Parameters["DirLight0Direction"].SetValue(dirs[0].LightDirection);
                 }
                 if (epDirLight0DiffuseColor != null)
                 {
-                    epDirLight0DiffuseColor.SetValue(dirs[0].LightColor);
+                    //epDirLight0DiffuseColor.SetValue(dirs[0].LightColor);
+                    MyEffect.Parameters["DirLight0DiffuseColor"].SetValue(dirs[0].LightColor);
                 }
                 if (epDirLight0SpecularColor != null)
                 {
-                    epDirLight0SpecularColor.SetValue(dirs[0].LightSpecularColor);
+                    //epDirLight0SpecularColor.SetValue(dirs[0].LightSpecularColor);
+                    MyEffect.Parameters["DirLight0SpecularColor"].SetValue(dirs[0].LightSpecularColor);
                 }
             }
 
@@ -383,9 +394,9 @@ namespace TrashSoup.Engine
             }
 
 
-            if(pointColors != null)
+            if (pointColors != null)
             {
-                if(epPointLightDiffuseColors != null)
+                if (epPointLightDiffuseColors != null)
                 {
                     epPointLightDiffuseColors.SetValue(pointColors);
                 }
@@ -397,29 +408,29 @@ namespace TrashSoup.Engine
                     epPointLightSpecularColors.SetValue(pointSpeculars);
                 }
             }
-            if(pointPositions != null)
+            if (pointPositions != null)
             {
-                if(epPointLightPositions != null)
+                if (epPointLightPositions != null)
                 {
                     epPointLightPositions.SetValue(pointPositions);
                 }
             }
-            if(pointAttenuations != null)
+            if (pointAttenuations != null)
             {
-                if(epPointLightAttenuations != null)
+                if (epPointLightAttenuations != null)
                 {
                     epPointLightAttenuations.SetValue(pointAttenuations);
                 }
             }
-            if(pointCount != 0)
+            if (pointCount != 0)
             {
-                if(epPointLightCount != null)
+                if (epPointLightCount != null)
                 {
                     epPointLightCount.SetValue(pointCount);
                 }
             }
 
-            if(epEyePosition != null)
+            if (epEyePosition != null)
             {
                 epEyePosition.SetValue(eyeVector);
             }
@@ -445,7 +456,7 @@ namespace TrashSoup.Engine
             tempFrustumArray[3].Y = -frustum.Right.Normal.Y;
             tempFrustumArray[3].Z = -frustum.Right.Normal.Z;
 
-            if(epBoundingFrustum != null)
+            if (epBoundingFrustum != null)
             {
                 epBoundingFrustum.SetValue(tempFrustumArray);
             }
@@ -455,14 +466,14 @@ namespace TrashSoup.Engine
             additionalClipPlane.Y = -frustum.AdditionalClip.Normal.Y;
             additionalClipPlane.Z = -frustum.AdditionalClip.Normal.Z;
 
-            if(epCustomClippingPlane != null)
+            if (epCustomClippingPlane != null)
             {
                 epCustomClippingPlane.SetValue(additionalClipPlane);
             }
 
             //////////////////////
 
-            if(tempBEref != null)
+            if (tempBEref != null)
             {
                 // do shit for basicEffect
                 tempBEref.PreferPerPixelLighting = perPixelLighting;
@@ -536,10 +547,6 @@ namespace TrashSoup.Engine
                 else if (pNameHash == hWVP)
                 {
                     epWorldViewProj = p;
-                }
-                else if (pNameHash == hWIT)
-                {
-                    epWorldInverseTranspose = p;
                 }
                 else if (pNameHash == hDiff)
                 {

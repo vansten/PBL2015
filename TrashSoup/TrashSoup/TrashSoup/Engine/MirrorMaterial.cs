@@ -80,6 +80,10 @@ namespace TrashSoup.Engine
             Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector, BoundingFrustumExtended frustum,
              GameTime gameTime)
         {
+            if (epMirrorMap != null)
+            {
+                epMirrorMap.SetValue(ResourceManager.Instance.Textures["DefaultDiffuse"]);
+            }
             if(!isRendering)
             {
                 isRendering = true;

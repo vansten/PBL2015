@@ -109,7 +109,7 @@ namespace TrashSoup.Engine
             testWaterMat.DiffuseMap = LoadTexture(@"Textures\Test\dirtywater");
             testWaterMat.NormalMap = LoadTexture(@"Textures\Test\water");
             testWaterMat.Glossiness = 200.0f;
-            testWaterMat.ReflectivityBias = 0.5f;
+            testWaterMat.ReflectivityBias = 0.6f;
             if(!this.Materials.ContainsKey(testWaterMat.Name))
             {
                 this.Materials.Add(testWaterMat.Name, testWaterMat);
@@ -210,13 +210,13 @@ namespace TrashSoup.Engine
             CurrentScene.Cam = cam;
 
             // adding items to scene
-            //CurrentScene.ObjectsDictionary.Add(skyBox.UniqueID, skyBox);
+            CurrentScene.ObjectsDictionary.Add(skyBox.UniqueID, skyBox);
             CurrentScene.ObjectsDictionary.Add(testTer.UniqueID, testTer);
-            //CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);
-            //CurrentScene.ObjectsDictionary.Add(testBox2.UniqueID, testBox2);
-            //CurrentScene.ObjectsDictionary.Add(testBox3.UniqueID, testBox3);
-            //CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror);
-            //CurrentScene.ObjectsDictionary.Add(testWater.UniqueID, testWater);
+            CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);
+            CurrentScene.ObjectsDictionary.Add(testBox2.UniqueID, testBox2);
+            CurrentScene.ObjectsDictionary.Add(testBox3.UniqueID, testBox3);
+            CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror);
+            CurrentScene.ObjectsDictionary.Add(testWater.UniqueID, testWater);
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;

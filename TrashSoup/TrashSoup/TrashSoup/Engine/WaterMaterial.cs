@@ -106,6 +106,15 @@ namespace TrashSoup.Engine
             Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector, BoundingFrustumExtended frustum,
             GameTime gameTime)
         {
+            if (epReflectionMap != null)
+            {
+                epReflectionMap.SetValue(ResourceManager.Instance.Textures["DefaultDiffuse"]);
+            }
+            if (epRefractionMap != null)
+            {
+                epRefractionMap.SetValue(ResourceManager.Instance.Textures["DefaultDiffuse"]);
+            }
+
             if (!isRendering)
             {
                 isRendering = true;
@@ -215,18 +224,30 @@ namespace TrashSoup.Engine
             base.AssignParamsInitialize();
 
             int pNameHash;
-            Dictionary<int, EffectParameter> nameHashes = new Dictionary<int, EffectParameter>();
-            nameHashes.Add(("ReflectionMap").GetHashCode(), epReflectionMap);
-            nameHashes.Add(("RefractionMap").GetHashCode(), epRefractionMap);
-            nameHashes.Add(("ReflectViewProj").GetHashCode(), epReflectViewProj);
-            nameHashes.Add(("WindVector").GetHashCode(), epWindVector);
+
+            int rfMap = ("ReflectionMap").GetHashCode();
+            int rrMap = ("RefractionMap").GetHashCode();
+            int rVP = ("ReflectViewProj").GetHashCode();
+            int wv = ("WindVector").GetHashCode();
 
             foreach (EffectParameter p in MyEffect.Parameters)
             {
                 pNameHash = p.Name.GetHashCode();
-                if (nameHashes.ContainsKey(pNameHash))
+                if (pNameHash == rfMap)
                 {
-                    nameHashes[pNameHash] = p;
+                    epReflectionMap = p;
+                }
+                else if (pNameHash == rrMap)
+                {
+                    epRefractionMap = p;
+                }
+                else if (pNameHash == rVP)
+                {
+                    epReflectViewProj = p;
+                }
+                else if (pNameHash == wv)
+                {
+                    epWindVector = p;
                 }
             }
         }

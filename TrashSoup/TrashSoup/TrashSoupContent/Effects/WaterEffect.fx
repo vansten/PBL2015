@@ -241,14 +241,15 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
 	projectedCoordsRR = projectedCoordsRR + (nAdj.xy * pScale * 0.25f);
 	float3 refr = tex2D(RefractionSampler, projectedCoordsRR);
-
-	finalWater = lerp(ReflectivityBias * refl, Transparency * refr, fresnel);
+	
+	finalWater = lerp(refl, refr, clamp(fresnel, 0.5f, 1.0f));
 
 	////////
 
 	ColorPair computedLight = ComputeLight(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal);
 
-	color =  lerp((color * float4(computedLight.Diffuse, 1.0f)), alpha * float4(finalWater, 1.0f), ReflectivityBias);
+	float4 startColor = color * float4(computedLight.Diffuse, 1.0f);
+	color =  lerp(startColor, alpha * float4(finalWater, 1.0f), ReflectivityBias);
 	float3 specular = alpha * computedLight.Specular;
 	color = color + float4(specular, 1.0f);
 
