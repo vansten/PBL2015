@@ -72,6 +72,9 @@
     <Compile Include="Components\ComponentWindow.xaml.cs">
       <DependentUpon>ComponentWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\CustomModel.xaml.cs">
+      <DependentUpon>CustomModel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\ObjectInfo.xaml.cs">
       <DependentUpon>ObjectInfo.xaml</DependentUpon>
     </Compile>
@@ -103,6 +106,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\ComponentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\CustomModel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

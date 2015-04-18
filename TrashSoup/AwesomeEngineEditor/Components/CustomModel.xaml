@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="AwesomeEngineEditor.Components.CustomModel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Width="260" Height="auto">
+    <Grid>
+        <TextBlock Text="Custom model" FontSize="25" FontWeight="Bold"/>
+        
+        <TextBlock Text="LOD 0 Name:" FontSize="14" Margin="0, 30, 0, 0"/>
+        <TextBlock Text="{Binding LOD0Name}" FontSize="14" Margin="100, 30, 0, 0"/>
+        <Button x:Name="LOD0Open" Width="30" Height="14" Content="..." Margin="200, -10, 0, 0" Click="LOD0Open_Click"/>
+
+        <TextBlock Text="LOD 1 Name:" FontSize="14" Margin="0, 50, 0, 0" Visibility="{Binding LOD1Visibility}"/>
+        <TextBlock Text="{Binding LOD1Name}" FontSize="14" Margin="100, 50, 0, 0" Visibility="{Binding LOD1Visibility}"/>
+        <Button x:Name="LOD1Open" Width="30" Height="14" Content="..." Margin="200, 30, 0, 0" Click="LOD1Open_Click" Visibility="{Binding LOD1Visibility}"/>
+
+        <TextBlock Text="LOD 2 Name:" FontSize="14" Margin="0, 70, 0, 0" Visibility="{Binding LOD2Visibility}"/>
+        <TextBlock Text="{Binding LOD2Name}" FontSize="14" Margin="100, 70, 0, 0" Visibility="{Binding LOD2Visibility}"/>
+        <Button x:Name="LOD2Open" Width="30" Height="14" Content="..." Margin="200, 70, 0, 0" Click="LOD2Open_Click" Visibility="{Binding LOD2Visibility}"/>
+    </Grid>
+</UserControl>

@@ -253,7 +253,7 @@ namespace TrashSoup.Engine
         /// IMPORTANT!!! SET TAG FOR EVERY ELEMENT
         /// </summary>
         /// <param name="game"></param>
-        private void AddModel(String path)
+        public void AddModel(String path)
         {
             if(!Models.ContainsKey(path))
             {

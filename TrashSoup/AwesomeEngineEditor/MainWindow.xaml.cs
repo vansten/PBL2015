@@ -582,8 +582,16 @@ namespace AwesomeEngineEditor
                 this.LoadedComponents.Add(new Components.AttachedComponentText());
                 foreach (TrashSoup.Engine.ObjectComponent oc in this.selectedObject.Components)
                 {
-                    Components.ComponentWindow cw = new Components.ComponentWindow(oc);
-                    this.LoadedComponents.Add(cw);
+                    if (oc.GetType() == typeof(TrashSoup.Engine.CustomModel))
+                    {
+                        Components.CustomModel cm = new Components.CustomModel(((TrashSoup.Engine.CustomModel)oc));
+                        this.LoadedComponents.Add(cm);
+                    }
+                    else
+                    {
+                        Components.ComponentWindow cw = new Components.ComponentWindow(oc);
+                        this.LoadedComponents.Add(cw);
+                    }
                 }
             }
         }
