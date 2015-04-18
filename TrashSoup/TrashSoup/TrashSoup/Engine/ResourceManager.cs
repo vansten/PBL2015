@@ -109,7 +109,7 @@ namespace TrashSoup.Engine
             testWaterMat.DiffuseMap = LoadTexture(@"Textures\Test\dirtywater");
             testWaterMat.NormalMap = LoadTexture(@"Textures\Test\water");
             testWaterMat.Glossiness = 200.0f;
-            testWaterMat.ReflectivityBias = 0.5f;
+            testWaterMat.ReflectivityBias = 0.6f;
             if(!this.Materials.ContainsKey(testWaterMat.Name))
             {
                 this.Materials.Add(testWaterMat.Name, testWaterMat);

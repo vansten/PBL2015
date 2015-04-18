@@ -16,6 +16,46 @@ namespace TrashSoup.Engine
 
         #endregion
 
+        #region effectParameters
+
+        protected EffectParameter epWorld;
+        protected EffectParameter epWorldInverseTranspose;
+        protected EffectParameter epWorldViewProj;
+        protected EffectParameter epDiffuseMap;
+        protected EffectParameter epNormalMap;
+        protected EffectParameter epCubeMap;
+        protected EffectParameter epSpecularColor;
+        protected EffectParameter epGlossiness;
+        protected EffectParameter epReflectivityColor;
+        protected EffectParameter epReflectivityBias;
+        protected EffectParameter epTransparency;
+        protected EffectParameter epPerPixelLighting;
+
+        protected EffectParameter epBones;
+
+        protected EffectParameter epAmbientLightColor;
+        protected EffectParameter epDirLight0Direction;
+        protected EffectParameter epDirLight0DiffuseColor;
+        protected EffectParameter epDirLight0SpecularColor;
+        protected EffectParameter epDirLight1Direction;
+        protected EffectParameter epDirLight1DiffuseColor;
+        protected EffectParameter epDirLight1SpecularColor;
+        protected EffectParameter epDirLight2Direction;
+        protected EffectParameter epDirLight2DiffuseColor;
+        protected EffectParameter epDirLight2SpecularColor;
+
+        protected EffectParameter epPointLightDiffuseColors;
+        protected EffectParameter epPointLightSpecularColors;
+        protected EffectParameter epPointLightPositions;
+        protected EffectParameter epPointLightAttenuations;
+        protected EffectParameter epPointLightCount;
+
+        protected EffectParameter epEyePosition;
+        protected EffectParameter epBoundingFrustum;
+        protected EffectParameter epCustomClippingPlane;
+
+        #endregion
+
         #region variables
 
         protected static bool isRendering = false;
@@ -34,11 +74,11 @@ namespace TrashSoup.Engine
 
         protected bool perPixelLighting;
 
-        protected Dictionary<string, EffectParameter> parameters;
-        protected List<string> dirLightsNames;
-
         protected Vector4[] tempFrustumArray;
         protected Vector4 additionalClipPlane;
+
+        protected BasicEffect tempBEref;
+        protected SkinnedEffect tempSEref;
 
         #endregion
 
@@ -163,16 +203,8 @@ namespace TrashSoup.Engine
         public Material(string name, Effect effect)
         {
             this.MyEffect = effect;
-            this.parameters = new Dictionary<string, EffectParameter>();
-
-            this.dirLightsNames = new List<string>();
-            this.dirLightsNames.Add("DirLight0");
-            this.dirLightsNames.Add("DirLight1");
-            this.dirLightsNames.Add("DirLight2");
 
             this.Name = name;
-
-            AssignParamsInitialize();
 
             if(ResourceManager.Instance.Textures.ContainsKey("DefaultDiffuse"))
             {
@@ -193,6 +225,44 @@ namespace TrashSoup.Engine
             this.Transparency = 1.0f;
             this.perPixelLighting = false;
             this.tempFrustumArray = new Vector4[4];
+
+            epWorld = null;
+            epWorldInverseTranspose = null;
+            epWorldViewProj = null;
+            epDiffuseMap = null;
+            epNormalMap = null;
+            epCubeMap = null;
+            epSpecularColor = null;
+            epGlossiness = null;
+            epReflectivityColor = null;
+            epReflectivityBias = null;
+            epTransparency = null;
+            epPerPixelLighting = null;
+
+            epBones = null;
+
+            epAmbientLightColor = null;
+            epDirLight0Direction = null;
+            epDirLight0DiffuseColor = null;
+            epDirLight0SpecularColor = null;
+            epDirLight1Direction = null;
+            epDirLight1DiffuseColor = null;
+            epDirLight1SpecularColor = null;
+            epDirLight2Direction = null;
+            epDirLight2DiffuseColor = null;
+            epDirLight2SpecularColor = null;
+
+            epPointLightDiffuseColors = null;
+            epPointLightSpecularColors = null;
+            epPointLightPositions = null;
+            epPointLightAttenuations = null;
+            epPointLightCount = null;
+
+            epEyePosition = null;
+            epBoundingFrustum = null;
+            epCustomClippingPlane = null;
+
+            AssignParamsInitialize();
         }
 
         public Material(string name, Effect effect, Texture2D diffuse)
@@ -210,133 +280,160 @@ namespace TrashSoup.Engine
             Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector, BoundingFrustumExtended frustum,
             GameTime gameTime)
         {
-            this.parameters["World"].SetValue(world);
-            this.parameters["WorldInverseTranspose"].SetValue(Matrix.Transpose(Matrix.Invert(world)));
-            this.parameters["WorldViewProj"].SetValue(worldViewProj);
+            //MyEffect.Parameters["World"].SetValue(world);
+            //MyEffect.Parameters["WorldInverseTranspose"].SetValue(Matrix.Transpose(Matrix.Invert(world)));
+            //MyEffect.Parameters["WorldViewProj"].SetValue(worldViewProj);
+            //MyEffect.Parameters["DiffuseMap"].SetValue(DiffuseMap);
+            //MyEffect.Parameters["DirLight0Direction"].SetValue(dirs[0].LightDirection);
+            //MyEffect.Parameters["DirLight0DiffuseColor"].SetValue(dirs[0].LightColor);
+            //MyEffect.Parameters["DirLight0SpecularColor"].SetValue(dirs[0].LightSpecularColor);
 
-            // updating all because fuck you
-            EffectParameter param = null;
-            this.parameters.TryGetValue("DiffuseMap", out param);
-            if (param != null)
+            if (epWorld != null)
             {
-                param.SetValue(this.diffuseMap);
+                epWorld.SetValue(world);
             }
-            else
+            if (epWorldInverseTranspose != null)
             {
-                this.parameters.TryGetValue("Texture", out param);
-                if (param != null) param.SetValue(this.diffuseMap);
+                epWorldInverseTranspose.SetValue(Matrix.Transpose(Matrix.Invert(world)));
+            }
+            if (epWorldViewProj != null)
+            {
+                epWorldViewProj.SetValue(worldViewProj);
+            }
+            if (epDiffuseMap != null)
+            {
+                epDiffuseMap.SetValue(DiffuseMap);
+            }
+            if (epNormalMap != null)
+            {
+                epNormalMap.SetValue(NormalMap);
+            }
+            if (epCubeMap != null)
+            {
+                epCubeMap.SetValue(CubeMap);
+            }
+            if (epSpecularColor != null)
+            {
+                epSpecularColor.SetValue(specularColor);
+            }
+            if (epGlossiness != null)
+            {
+                epGlossiness.SetValue(glossiness);
+            }
+            if (epReflectivityColor != null)
+            {
+                epReflectivityColor.SetValue(reflectivityColor);
+            }
+            if (epReflectivityBias != null)
+            {
+                epReflectivityBias.SetValue(reflectivityBias);
+            }
+            if (epTransparency != null)
+            {
+                epTransparency.SetValue(transparency);
+            }
+            if (epPerPixelLighting != null)
+            {
+                epPerPixelLighting.SetValue(perPixelLighting);
             }
 
-            param = null;
-            this.parameters.TryGetValue("NormalMap", out param);
-            if (param != null) param.SetValue(this.normalMap);
-            param = null;
-            this.parameters.TryGetValue("CubeMap", out param);
-            if (param != null) param.SetValue(this.cubeMap);
-            param = null;
-            this.parameters.TryGetValue("CubeMap", out param);
-            if (param != null) param.SetValue(this.cubeMap);
-            param = null;
-            this.parameters.TryGetValue("SpecularColor", out param);
-            if (param != null) param.SetValue(this.specularColor);
-            param = null;
-            this.parameters.TryGetValue("Glossiness", out param);
-            if (param != null) param.SetValue(this.glossiness);
-            param = null;
-            this.parameters.TryGetValue("ReflectivityColor", out param);
-            if (param != null) param.SetValue(this.reflectivityColor);
-            param = null;
-            this.parameters.TryGetValue("ReflectivityBias", out param);
-            if (param != null) param.SetValue(this.reflectivityBias);
-            param = null;
-            this.parameters.TryGetValue("Transparency", out param);
-            if (param != null) param.SetValue(this.transparency);
-            if (MyEffect is BasicEffect)
+            if (epAmbientLightColor != null)
             {
-                (MyEffect as BasicEffect).PreferPerPixelLighting = perPixelLighting;
-            }
-            else if (MyEffect is SkinnedEffect)
-            {
-                (MyEffect as SkinnedEffect).PreferPerPixelLighting = perPixelLighting;
+                epAmbientLightColor.SetValue(amb.LightColor);
             }
 
-            // lights
-            if (amb != null)
+            if (dirs[0] != null)
             {
-                param = null;
-                this.parameters.TryGetValue("AmbientLightColor", out param);
-                if (param != null)
+                if (epDirLight0Direction != null)
                 {
-                    param.SetValue(amb.LightColor);
+                    //epDirLight0Direction.SetValue(dirs[0].LightDirection);
+                    MyEffect.Parameters["DirLight0Direction"].SetValue(dirs[0].LightDirection);
                 }
-                else
+                if (epDirLight0DiffuseColor != null)
                 {
-                    param = null;
-                    this.parameters.TryGetValue("EmissiveColor", out param);
-                    param.SetValue(amb.LightColor);
+                    //epDirLight0DiffuseColor.SetValue(dirs[0].LightColor);
+                    MyEffect.Parameters["DirLight0DiffuseColor"].SetValue(dirs[0].LightColor);
                 }
-            }
-
-            if (dirs != null)
-            {
-                for (int i = 0; i < ResourceManager.DIRECTIONAL_MAX_LIGHTS; ++i)
+                if (epDirLight0SpecularColor != null)
                 {
-                    if (dirs[i] != null)
-                    {
-                        param = null;
-                        this.parameters.TryGetValue(this.dirLightsNames[i] + "Direction", out param);
-                        if (param != null) param.SetValue(dirs[i].LightDirection);
-
-                        param = null;
-                        this.parameters.TryGetValue(this.dirLightsNames[i] + "DiffuseColor", out param);
-                        if (param != null) param.SetValue(dirs[i].LightColor);
-
-
-                        param = null;
-                        this.parameters.TryGetValue(this.dirLightsNames[i] + "SpecularColor", out param);
-                        if (param != null) param.SetValue(dirs[i].LightSpecularColor);
-                    }
+                    //epDirLight0SpecularColor.SetValue(dirs[0].LightSpecularColor);
+                    MyEffect.Parameters["DirLight0SpecularColor"].SetValue(dirs[0].LightSpecularColor);
                 }
             }
 
-            // point lights
+            if (dirs[1] != null)
+            {
+                if (epDirLight1Direction != null)
+                {
+                    epDirLight1Direction.SetValue(dirs[1].LightDirection);
+                }
+                if (epDirLight1DiffuseColor != null)
+                {
+                    epDirLight1DiffuseColor.SetValue(dirs[1].LightColor);
+                }
+                if (epDirLight1SpecularColor != null)
+                {
+                    epDirLight1SpecularColor.SetValue(dirs[1].LightSpecularColor);
+                }
+            }
+
+            if (dirs[2] != null)
+            {
+                if (epDirLight2Direction != null)
+                {
+                    epDirLight2Direction.SetValue(dirs[2].LightDirection);
+                }
+                if (epDirLight2DiffuseColor != null)
+                {
+                    epDirLight2DiffuseColor.SetValue(dirs[2].LightColor);
+                }
+                if (epDirLight2SpecularColor != null)
+                {
+                    epDirLight2SpecularColor.SetValue(dirs[2].LightSpecularColor);
+                }
+            }
+
 
             if (pointColors != null)
             {
-                param = null;
-                this.parameters.TryGetValue("PointLightDiffuseColors", out param);
-                if (param != null) param.SetValue(pointColors);
+                if (epPointLightDiffuseColors != null)
+                {
+                    epPointLightDiffuseColors.SetValue(pointColors);
+                }
             }
-
             if (pointSpeculars != null)
             {
-                param = null;
-                this.parameters.TryGetValue("PointLightSpecularColors", out param);
-                if (param != null) param.SetValue(pointSpeculars);
+                if (epPointLightSpecularColors != null)
+                {
+                    epPointLightSpecularColors.SetValue(pointSpeculars);
+                }
             }
-
             if (pointPositions != null)
             {
-                param = null;
-                this.parameters.TryGetValue("PointLightPositions", out param);
-                if (param != null) param.SetValue(pointPositions);
+                if (epPointLightPositions != null)
+                {
+                    epPointLightPositions.SetValue(pointPositions);
+                }
             }
-
             if (pointAttenuations != null)
             {
-                param = null;
-                this.parameters.TryGetValue("PointLightAttenuations", out param);
-                if (param != null) param.SetValue(pointAttenuations);
+                if (epPointLightAttenuations != null)
+                {
+                    epPointLightAttenuations.SetValue(pointAttenuations);
+                }
+            }
+            if (pointCount != 0)
+            {
+                if (epPointLightCount != null)
+                {
+                    epPointLightCount.SetValue(pointCount);
+                }
             }
 
-            param = null;
-            this.parameters.TryGetValue("PointLightCount", out param);
-            if (param != null) param.SetValue(pointCount);
-
-            // eyevector
-            param = null;
-            this.parameters.TryGetValue("EyePosition", out param);
-            if (param != null) param.SetValue(eyeVector);
+            if (epEyePosition != null)
+            {
+                epEyePosition.SetValue(eyeVector);
+            }
 
             // bounding frustum
             tempFrustumArray[0].W = -frustum.Top.D + BoundingFrustumExtended.CLIP_MARGIN;
@@ -359,70 +456,252 @@ namespace TrashSoup.Engine
             tempFrustumArray[3].Y = -frustum.Right.Normal.Y;
             tempFrustumArray[3].Z = -frustum.Right.Normal.Z;
 
-            param = null;
-            this.parameters.TryGetValue("BoundingFrustum", out param);
-            if (param != null) param.SetValue(tempFrustumArray);
+            if (epBoundingFrustum != null)
+            {
+                epBoundingFrustum.SetValue(tempFrustumArray);
+            }
 
             additionalClipPlane.W = -frustum.AdditionalClip.D;
             additionalClipPlane.X = -frustum.AdditionalClip.Normal.X;
             additionalClipPlane.Y = -frustum.AdditionalClip.Normal.Y;
             additionalClipPlane.Z = -frustum.AdditionalClip.Normal.Z;
 
-            param = null;
-            this.parameters.TryGetValue("CustomClippingPlane", out param);
-            if (param != null) param.SetValue(additionalClipPlane);
+            if (epCustomClippingPlane != null)
+            {
+                epCustomClippingPlane.SetValue(additionalClipPlane);
+            }
 
             //////////////////////
+
+            if (tempBEref != null)
+            {
+                // do shit for basicEffect
+                tempBEref.PreferPerPixelLighting = perPixelLighting;
+            }
+            if (tempSEref != null)
+            {
+                // do shit for skinnedEffect
+                tempSEref.PreferPerPixelLighting = perPixelLighting;
+            }
         }
 
         public void SetEffectBones(Matrix[] bones)
         {
-            EffectParameter param = null;
-            this.parameters.TryGetValue("Bones", out param);
-            if (param != null) param.SetValue(bones);
+            if(epBones != null)
+            {
+                epBones.SetValue(bones);
+            }
         }
 
-        protected void AssignParamsInitialize()
+        protected virtual void AssignParamsInitialize()
         {
             if (MyEffect == null) throw new NullReferenceException("MyEffect iz null and you tryin' to extract params from it, nigga?");
 
+            int pNameHash;
+
+            int hWorld = ("World").GetHashCode();
+            int hWIT = ("WorldInverseTranspose").GetHashCode();
+            int hWVP = ("WorldViewProj").GetHashCode();
+            int hDiff = ("DiffuseMap").GetHashCode();
+            int hDiff2 = ("Texture").GetHashCode();
+            int hNorm = ("NormalMap").GetHashCode();
+            int hCube = ("CubeMap").GetHashCode();
+            int hSpecCol = ("SpecularColor").GetHashCode();
+            int hGloss = ("Glossiness").GetHashCode();
+            int hRefl = ("ReflectivityColor").GetHashCode();
+            int hReflB = ("ReflectivityBias").GetHashCode();
+            int hTransp = ("Transparency").GetHashCode();
+            int hBones = ("Bones").GetHashCode();
+            int hAmbLCol = ("AmbientLightColor").GetHashCode();
+            int hEmiss = ("EmissiveColor").GetHashCode();
+            int l0dir = ("DirLight0Direction").GetHashCode();
+            int l0dif = ("DirLight0DiffuseColor").GetHashCode();
+            int l0spec = ("DirLight0SpecularColor").GetHashCode();
+            int l1dir = ("DirLight1Direction").GetHashCode();
+            int l1dif = ("DirLight1DiffuseColor").GetHashCode();
+            int l1spec = ("DirLight1SpecularColor").GetHashCode();
+            int l2dir = ("DirLight2Direction").GetHashCode();
+            int l2dif = ("DirLight2DiffuseColor").GetHashCode();
+            int l2spec = ("DirLight2SpecularColor").GetHashCode();
+            int pDiffs = ("PointLightDiffuseColors").GetHashCode();
+            int pSpecs = ("PointLightSpecularColors").GetHashCode();
+            int pPos = ("PointLightPositions").GetHashCode();
+            int pAtts = ("PointLightAttenuations").GetHashCode();
+            int pCnt = ("PointLightCount").GetHashCode();
+            int eyeP = ("EyePosition").GetHashCode();
+            int bs = ("BoundingFrustum").GetHashCode();
+            int cCP = ("CustomClippingPlane").GetHashCode();
+
             foreach (EffectParameter p in MyEffect.Parameters)
             {
-                this.parameters.Add(p.Name, p);
+                pNameHash = p.Name.GetHashCode();
+                
+                if(pNameHash == hWorld)
+                {
+                    epWorld = p;
+                }
+                else if(pNameHash == hWIT)
+                {
+                    epWorldInverseTranspose = p;
+                }
+                else if (pNameHash == hWVP)
+                {
+                    epWorldViewProj = p;
+                }
+                else if (pNameHash == hDiff)
+                {
+                    epDiffuseMap = p;
+                }
+                else if (pNameHash == hDiff2)
+                {
+                    epDiffuseMap = p;
+                }
+                else if (pNameHash == hNorm)
+                {
+                    epNormalMap = p;
+                }
+                else if (pNameHash == hCube)
+                {
+                    epCubeMap = p;
+                }
+                else if (pNameHash == hSpecCol)
+                {
+                    epSpecularColor = p;
+                }
+                else if (pNameHash == hGloss)
+                {
+                    epGlossiness = p;
+                }
+                else if (pNameHash == hRefl)
+                {
+                    epReflectivityColor = p;
+                }
+                else if (pNameHash == hReflB)
+                {
+                    epReflectivityBias = p;
+                }
+                else if (pNameHash == hTransp)
+                {
+                    epTransparency = p;
+                }
+                else if (pNameHash == hBones)
+                {
+                    epBones = p;
+                }
+                else if (pNameHash == hAmbLCol)
+                {
+                    epAmbientLightColor = p;
+                }
+                else if (pNameHash == hEmiss)
+                {
+                    epAmbientLightColor = p;
+                }
+                else if (pNameHash == l0dir)
+                {
+                    epDirLight0Direction = p;
+                }
+                else if (pNameHash == l0dif)
+                {
+                    epDirLight0DiffuseColor = p;
+                }
+                else if (pNameHash == l0spec)
+                {
+                    epDirLight0SpecularColor = p;
+                }
+                else if (pNameHash == l1dir)
+                {
+                    epDirLight1Direction = p;
+                }
+                else if (pNameHash == l1dif)
+                {
+                    epDirLight1DiffuseColor = p;
+                }
+                else if (pNameHash == l1spec)
+                {
+                    epDirLight1SpecularColor = p;
+                }
+                else if (pNameHash == l2dir)
+                {
+                    epDirLight2Direction = p;
+                }
+                else if (pNameHash == l2dif)
+                {
+                    epDirLight2DiffuseColor = p;
+                }
+                else if (pNameHash == l2spec)
+                {
+                    epDirLight2SpecularColor = p;
+                }
+                else if (pNameHash == pDiffs)
+                {
+                    epPointLightDiffuseColors = p;
+                }
+                else if (pNameHash == pSpecs)
+                {
+                    epPointLightSpecularColors = p;
+                }
+                else if (pNameHash == pPos)
+                {
+                    epPointLightPositions = p;
+                }
+                else if (pNameHash == pAtts)
+                {
+                    epPointLightAttenuations = p;
+                }
+                else if (pNameHash == pCnt)
+                {
+                    epPointLightCount = p;
+                }
+                else if (pNameHash == eyeP)
+                {
+                    epEyePosition = p;
+                }
+                else if (pNameHash == bs)
+                {
+                    epBoundingFrustum = p;
+                }
+                else if (pNameHash == cCP)
+                {
+                    epCustomClippingPlane = p;
+                }
             }
 
             if (MyEffect is BasicEffect)
             {
-                (MyEffect as BasicEffect).LightingEnabled = true;
-                (MyEffect as BasicEffect).DirectionalLight0.Enabled = true;
-                (MyEffect as BasicEffect).DirectionalLight0.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
-                (MyEffect as BasicEffect).DirectionalLight0.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
-                (MyEffect as BasicEffect).DirectionalLight0.Direction = new Vector3(0.0f, 1.0f, 0.0f);
-                (MyEffect as BasicEffect).DirectionalLight1.Enabled = true;
-                (MyEffect as BasicEffect).DirectionalLight1.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
-                (MyEffect as BasicEffect).DirectionalLight1.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
-                (MyEffect as BasicEffect).DirectionalLight1.Direction = new Vector3(0.0f, 1.0f, 0.0f);
-                (MyEffect as BasicEffect).DirectionalLight2.Enabled = true;
-                (MyEffect as BasicEffect).DirectionalLight2.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
-                (MyEffect as BasicEffect).DirectionalLight2.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
-                (MyEffect as BasicEffect).DirectionalLight2.Direction = new Vector3(0.0f, 1.0f, 0.0f);
-                (MyEffect as BasicEffect).TextureEnabled = true;
+                tempBEref = (BasicEffect)MyEffect;
+
+                tempBEref.LightingEnabled = true;
+                tempBEref.DirectionalLight0.Enabled = true;
+                tempBEref.DirectionalLight0.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
+                tempBEref.DirectionalLight0.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
+                tempBEref.DirectionalLight0.Direction = new Vector3(0.0f, 1.0f, 0.0f);
+                tempBEref.DirectionalLight1.Enabled = true;
+                tempBEref.DirectionalLight1.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
+                tempBEref.DirectionalLight1.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
+                tempBEref.DirectionalLight1.Direction = new Vector3(0.0f, 1.0f, 0.0f);
+                tempBEref.DirectionalLight2.Enabled = true;
+                tempBEref.DirectionalLight2.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
+                tempBEref.DirectionalLight2.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
+                tempBEref.DirectionalLight2.Direction = new Vector3(0.0f, 1.0f, 0.0f);
+                tempBEref.TextureEnabled = true;
             }
             else if (MyEffect is SkinnedEffect)
             {
-                (MyEffect as SkinnedEffect).EnableDefaultLighting();
-                (MyEffect as SkinnedEffect).DirectionalLight0.Enabled = true;
-                (MyEffect as SkinnedEffect).DirectionalLight1.Enabled = true;
-                (MyEffect as SkinnedEffect).DirectionalLight2.Enabled = true;
-                (MyEffect as SkinnedEffect).DirectionalLight0.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
-                (MyEffect as SkinnedEffect).DirectionalLight0.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
-                (MyEffect as SkinnedEffect).DirectionalLight0.Direction = new Vector3(0.0f, 1.0f, 0.0f);
-                (MyEffect as SkinnedEffect).DirectionalLight1.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
-                (MyEffect as SkinnedEffect).DirectionalLight1.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
-                (MyEffect as SkinnedEffect).DirectionalLight1.Direction = new Vector3(0.0f, 1.0f, 0.0f);
-                (MyEffect as SkinnedEffect).DirectionalLight2.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
-                (MyEffect as SkinnedEffect).DirectionalLight2.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
-                (MyEffect as SkinnedEffect).DirectionalLight2.Direction = new Vector3(0.0f, 1.0f, 0.0f);
+                tempSEref = (SkinnedEffect)MyEffect;
+
+                tempSEref.EnableDefaultLighting();
+                tempSEref.DirectionalLight0.Enabled = true;
+                tempSEref.DirectionalLight1.Enabled = true;
+                tempSEref.DirectionalLight2.Enabled = true;
+                tempSEref.DirectionalLight0.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
+                tempSEref.DirectionalLight0.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
+                tempSEref.DirectionalLight0.Direction = new Vector3(0.0f, 1.0f, 0.0f);
+                tempSEref.DirectionalLight1.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
+                tempSEref.DirectionalLight1.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
+                tempSEref.DirectionalLight1.Direction = new Vector3(0.0f, 1.0f, 0.0f);
+                tempSEref.DirectionalLight2.DiffuseColor = new Vector3(0.0f, 0.0f, 0.0f);
+                tempSEref.DirectionalLight2.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
+                tempSEref.DirectionalLight2.Direction = new Vector3(0.0f, 1.0f, 0.0f);
             }
         }
 
