@@ -5,6 +5,7 @@ using System.Text;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace TrashSoup.Engine
 {
@@ -165,18 +166,12 @@ namespace TrashSoup.Engine
         }
 
         // draws all gameobjects linearly
-        public void DrawAll(GameTime gameTime)
+        public void DrawAll(Camera cam, Effect effect, GameTime gameTime)
         {
             foreach (GameObject obj in ObjectsDictionary.Values)
             {
-                obj.Draw(gameTime);
+                obj.Draw(cam, effect, gameTime);
             }
-        }
-
-        // draws gameobjects that are inside frustum
-        public void DrawAll(BoundingFrustum frustum, GameTime gameTime)
-        {
-            // not implemented yet
         }
 
         public void FlushTempPointLightData()

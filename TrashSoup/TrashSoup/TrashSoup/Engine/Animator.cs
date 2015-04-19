@@ -160,7 +160,7 @@ namespace TrashSoup.Engine
                // (NewState != null ? NewState.Name : "null") + " " + gameTime.TotalGameTime.Seconds.ToString());
         }
 
-        public override void Draw(GameTime gameTime)
+        public override void Draw(Camera cam, Effect effect, GameTime gameTime)
         {
             // draw nothing
         }

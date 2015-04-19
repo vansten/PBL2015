@@ -117,7 +117,7 @@ namespace TrashSoup.Engine
             // do nothing since we change worldMatrix in properties
         }
 
-        public override void Draw(Microsoft.Xna.Framework.GameTime gameTime)
+        public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
         {
             // do nothing
         }

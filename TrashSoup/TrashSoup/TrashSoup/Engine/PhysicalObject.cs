@@ -154,7 +154,7 @@ namespace TrashSoup.Engine
             }
         }
 
-        public override void Draw(GameTime gameTime)
+        public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, GameTime gameTime)
         {
             //Do nothing, we do not expect to draw something as abstract as physical object component
         }

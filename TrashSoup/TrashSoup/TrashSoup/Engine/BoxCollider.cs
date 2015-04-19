@@ -44,7 +44,7 @@ namespace TrashSoup.Engine
         /// 
         /// Debug drawing collider, no one draws colliders in game :D
         /// </summary>
-        public override void Draw(Microsoft.Xna.Framework.GameTime gameTime)
+        public override void Draw(Camera cam, Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
         {
             short[] bBoxIndices = {
                                     0, 1, 1, 2, 2, 3, 3, 0, // Front edges
@@ -74,16 +74,19 @@ namespace TrashSoup.Engine
             gd.SetVertexBuffer(buffer);
             gd.Indices = ib;
 
+            if (cam == null)
+                cam = ResourceManager.Instance.CurrentScene.Cam;
+
             lineEffect.World = Matrix.Identity;
-            lineEffect.View = ResourceManager.Instance.CurrentScene.Cam.ViewMatrix;
-            lineEffect.Projection = ResourceManager.Instance.CurrentScene.Cam.ProjectionMatrix;
+            lineEffect.View = cam.ViewMatrix;
+            lineEffect.Projection = cam.ProjectionMatrix;
             foreach(EffectPass pass in lineEffect.CurrentTechnique.Passes)
             {
                 pass.Apply();
                 gd.DrawUserIndexedPrimitives(PrimitiveType.LineList, primitiveList, 0, 8, bBoxIndices, 0, 12);
             }
 
-            base.Draw(gameTime);
+            base.Draw(cam, effect, gameTime);
         }
 
         protected override void Start()

@@ -135,7 +135,7 @@ namespace TrashSoup
 
             if(ResourceManager.Instance.CurrentScene != null)
             {
-                ResourceManager.Instance.CurrentScene.DrawAll(null);
+                ResourceManager.Instance.CurrentScene.DrawAll(null, null, null);
             }
 
             if(ResourceManager.Instance.ps != null)
@@ -150,7 +150,7 @@ namespace TrashSoup
             this.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            ResourceManager.Instance.CurrentScene.DrawAll(gameTime);
+            ResourceManager.Instance.CurrentScene.DrawAll(null, null, gameTime);
 
             ResourceManager.Instance.ps.Draw();
 

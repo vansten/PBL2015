@@ -6,6 +6,7 @@ using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using TrashSoup.Engine;
 using System.Xml;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace TrashSoup.Gameplay
 {
@@ -70,7 +71,7 @@ namespace TrashSoup.Gameplay
             cam.Translation = new Vector3(target.MyTransform.Position.X, target.MyTransform.Position.Y, -target.MyTransform.Position.Z);
         }
 
-        public override void Draw(GameTime gameTime)
+        public override void Draw(Camera cam, Effect effect, GameTime gameTime)
         {
             // do nothing since it's camera
         }

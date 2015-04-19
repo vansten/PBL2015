@@ -102,10 +102,16 @@ namespace TrashSoup.Engine
             tempGameTime = new GameTime();
         }
 
-        public override void UpdateEffect(Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
+        public override void UpdateEffect(Effect effect, Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
             Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector, BoundingFrustumExtended frustum,
             GameTime gameTime)
         {
+            if (effect != null && tempEffect == null)
+            {
+                tempEffect = MyEffect;
+                MyEffect = effect;
+            }
+
             if (epReflectionMap != null)
             {
                 epReflectionMap.SetValue(ResourceManager.Instance.Textures["DefaultDiffuse"]);
@@ -119,9 +125,9 @@ namespace TrashSoup.Engine
             {
                 isRendering = true;
 
-                DrawRefractionMap(world);
+                DrawRefractionMap(effect, world);
 
-                DrawReflectionMap(world);
+                DrawReflectionMap(effect, world);
 
                 tempWind += ResourceManager.Instance.CurrentScene.Params.Wind * (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
                 
@@ -133,7 +139,7 @@ namespace TrashSoup.Engine
                 isRendering = false;
             }
 
-            base.UpdateEffect(world, worldViewProj, amb, dirs, pointColors, pointSpeculars, pointAttenuations, pointPositions, pointCount, eyeVector, frustum, gameTime);
+            base.UpdateEffect(effect, world, worldViewProj, amb, dirs, pointColors, pointSpeculars, pointAttenuations, pointPositions, pointCount, eyeVector, frustum, gameTime);
         }
 
         protected Vector4 CreatePlane(Matrix wm, bool clipSide)
@@ -152,7 +158,7 @@ namespace TrashSoup.Engine
             return planeCoeffs;
         }
 
-        protected void DrawRefractionMap(Matrix wm)
+        protected void DrawRefractionMap(Effect effect, Matrix wm)
         {
             Vector4 refractionClip = CreatePlane(wm, false);
 
@@ -162,7 +168,7 @@ namespace TrashSoup.Engine
             ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.Normal.Z = refractionClip.Z;
 
             TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(RefractionRenderTarget);
-            ResourceManager.Instance.CurrentScene.DrawAll(tempGameTime);
+            ResourceManager.Instance.CurrentScene.DrawAll(null, effect, tempGameTime);
             TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(null);
 
             ResourceManager.Instance.CurrentScene.Cam.Bounds.ZeroAllAdditionals();
@@ -175,7 +181,7 @@ namespace TrashSoup.Engine
             }
         }
 
-        protected void DrawReflectionMap(Matrix wm)
+        protected void DrawReflectionMap(Effect effect, Matrix wm)
         {
             Vector4 refractionClip = CreatePlane(wm, true);
             float z = wm.Translation.Y;
@@ -195,7 +201,7 @@ namespace TrashSoup.Engine
             this.reflectionMatrix = wm * cCam.ViewProjMatrix;
 
             TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(ReflectionRenderTarget);
-            ResourceManager.Instance.CurrentScene.DrawAll(tempGameTime);
+            ResourceManager.Instance.CurrentScene.DrawAll(null, effect, tempGameTime);
             TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(null);
 
             cCam.Update(tempGameTime);

@@ -92,13 +92,13 @@ namespace TrashSoup.Engine
             }
         }
 
-        public virtual void Draw(GameTime gameTime)
+        public virtual void Draw(Camera cam, Effect effect, GameTime gameTime)
         {
             if(this.Visible)
             {
                 foreach (ObjectComponent obj in Components)
                 {
-                    obj.Draw(gameTime);
+                    obj.Draw(cam, effect, gameTime);
                 }
 
                 //[vansten] This is for debug drawing of collider
@@ -106,7 +106,7 @@ namespace TrashSoup.Engine
 #if DEBUG
                 if (this.MyCollider != null)
                 {
-                    this.MyCollider.Draw(gameTime);
+                    this.MyCollider.Draw(cam, effect, gameTime);
                 }
 
 #endif

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace TrashSoup.Engine
 {
@@ -40,7 +41,7 @@ namespace TrashSoup.Engine
 
         public abstract void Update(GameTime gameTime);
 
-        public abstract void Draw(GameTime gameTime);
+        public abstract void Draw(Camera cam, Effect effect, GameTime gameTime);
 
         protected abstract void Start();
 

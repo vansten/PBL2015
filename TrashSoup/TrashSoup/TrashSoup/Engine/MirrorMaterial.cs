@@ -76,10 +76,16 @@ namespace TrashSoup.Engine
                 2000.0f);
         }
 
-         public override void UpdateEffect(Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
+         public override void UpdateEffect(Effect effect, Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
             Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector, BoundingFrustumExtended frustum,
              GameTime gameTime)
         {
+            if (effect != null && tempEffect == null)
+            {
+                tempEffect = MyEffect;
+                MyEffect = effect;
+            }
+
             if (epMirrorMap != null)
             {
                 epMirrorMap.SetValue(ResourceManager.Instance.Textures["DefaultDiffuse"]);
@@ -91,12 +97,12 @@ namespace TrashSoup.Engine
                 TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(MirrorRenderTarget);
                 
                 SetupCamera(world);
-                tempCamera = ResourceManager.Instance.CurrentScene.Cam;
-                ResourceManager.Instance.CurrentScene.Cam = myCamera;
+                //tempCamera = ResourceManager.Instance.CurrentScene.Cam;
+                //ResourceManager.Instance.CurrentScene.Cam = myCamera;
 
-                ResourceManager.Instance.CurrentScene.DrawAll(tempGameTime);
+                ResourceManager.Instance.CurrentScene.DrawAll(myCamera, effect, tempGameTime);
 
-                ResourceManager.Instance.CurrentScene.Cam = tempCamera;
+                //ResourceManager.Instance.CurrentScene.Cam = tempCamera;
 
                 TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(null);
                 isRendering = false;
@@ -108,7 +114,7 @@ namespace TrashSoup.Engine
                 }
             }
 
-            base.UpdateEffect(world, worldViewProj, amb, dirs, pointColors, pointSpeculars, pointAttenuations, pointPositions, pointCount, eyeVector, frustum, gameTime);
+            base.UpdateEffect(effect, world, worldViewProj, amb, dirs, pointColors, pointSpeculars, pointAttenuations, pointPositions, pointCount, eyeVector, frustum, gameTime);
         }
 
         protected void SetupCamera(Matrix wm)

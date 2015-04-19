@@ -62,7 +62,7 @@ namespace TrashSoup.Engine
             this.UpdateCollider();
         }
 
-        public override void Draw(Microsoft.Xna.Framework.GameTime gameTime)
+        public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
         {
 
         }

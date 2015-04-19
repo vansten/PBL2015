@@ -74,14 +74,19 @@ namespace TrashSoup.Engine
             }
         }
 
-        public override void Draw(GameTime gameTime)
+        public override void Draw(Camera cam, Effect effect, GameTime gameTime)
         {
             if(this.Visible)
             {
                 Model mod = LODs[(uint)LODState];
                 if(mod != null)
                 {
-                    Camera camera = ResourceManager.Instance.CurrentScene.Cam;
+                    Camera camera;
+                    if (cam == null)
+                        camera = ResourceManager.Instance.CurrentScene.Cam;
+                    else
+                        camera = cam;
+
                     Transform transform = MyObject.MyTransform;
                     Matrix[] bones = null;
                     if (MyObject.MyAnimator != null) bones = MyObject.MyAnimator.GetSkinTransforms();
@@ -91,7 +96,9 @@ namespace TrashSoup.Engine
                     {
                         for (int i = 0; i < mm.MeshParts.Count; ++i)
                         {
-                            this.Mat[ctr].UpdateEffect(mm.ParentBone.Transform * transform.GetWorldMatrix(), 
+                            this.Mat[ctr].UpdateEffect(
+                                 effect,
+                                 mm.ParentBone.Transform * transform.GetWorldMatrix(), 
                                  (mm.ParentBone.Transform * transform.GetWorldMatrix()) * camera.ViewProjMatrix,
                                  ResourceManager.Instance.CurrentScene.AmbientLight,
                                  ResourceManager.Instance.CurrentScene.DirectionalLights,
@@ -104,7 +111,8 @@ namespace TrashSoup.Engine
                                  camera.Bounds,
                                  gameTime);
                             mm.MeshParts[i].Effect = this.Mat[ctr].MyEffect;
-                            if (bones != null) this.Mat[ctr].SetEffectBones(bones);
+                            if (bones != null) this.Mat[ctr].SetEffectBones(effect, bones);
+                            this.Mat[ctr].FlushMaterialEffect();
                             ++ctr;
                         }
 

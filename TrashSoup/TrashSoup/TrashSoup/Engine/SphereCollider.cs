@@ -36,7 +36,7 @@ namespace TrashSoup.Engine
 
         }
 
-        public override void Draw(GameTime gameTime)
+        public override void Draw(Camera cam, Effect effect, GameTime gameTime)
         {
             //Dunno how to draw bounding sphere :(
             BoundingBox box = BoundingBox.CreateFromSphere(this.Sphere);
@@ -68,16 +68,19 @@ namespace TrashSoup.Engine
             gd.SetVertexBuffer(buffer);
             gd.Indices = ib;
 
+            if (cam == null)
+                cam = ResourceManager.Instance.CurrentScene.Cam;
+
             lineEffect.World = Matrix.Identity;
-            lineEffect.View = ResourceManager.Instance.CurrentScene.Cam.ViewMatrix;
-            lineEffect.Projection = ResourceManager.Instance.CurrentScene.Cam.ProjectionMatrix;
+            lineEffect.View = cam.ViewMatrix;
+            lineEffect.Projection = cam.ProjectionMatrix;
             foreach (EffectPass pass in lineEffect.CurrentTechnique.Passes)
             {
                 pass.Apply();
                 gd.DrawUserIndexedPrimitives(PrimitiveType.LineList, primitiveList, 0, 8, bBoxIndices, 0, 12);
             }
 
-            base.Draw(gameTime);
+            base.Draw(cam, effect, gameTime);
         }
 
         protected override void Start()

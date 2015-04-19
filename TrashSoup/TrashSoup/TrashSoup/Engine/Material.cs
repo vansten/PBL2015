@@ -80,6 +80,8 @@ namespace TrashSoup.Engine
         protected BasicEffect tempBEref;
         protected SkinnedEffect tempSEref;
 
+        protected Effect tempEffect;
+
         #endregion
 
         #region properties
@@ -273,20 +275,19 @@ namespace TrashSoup.Engine
 
         public void UpdateEffect()
         {
-            UpdateEffect(Matrix.Identity, Matrix.Identity, null, null, null, null, null, null, 0, new Vector3(0.0f, 0.0f, 0.0f), new BoundingFrustumExtended(Matrix.Identity), null);
+            UpdateEffect(null, Matrix.Identity, Matrix.Identity, null, null, null, null, null, null, 0, new Vector3(0.0f, 0.0f, 0.0f), new BoundingFrustumExtended(Matrix.Identity), null);
         }
 
-        public virtual void UpdateEffect(Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
+        public virtual void UpdateEffect(Effect effect, Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
             Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector, BoundingFrustumExtended frustum,
             GameTime gameTime)
         {
-            //MyEffect.Parameters["World"].SetValue(world);
-            //MyEffect.Parameters["WorldInverseTranspose"].SetValue(Matrix.Transpose(Matrix.Invert(world)));
-            //MyEffect.Parameters["WorldViewProj"].SetValue(worldViewProj);
-            //MyEffect.Parameters["DiffuseMap"].SetValue(DiffuseMap);
-            //MyEffect.Parameters["DirLight0Direction"].SetValue(dirs[0].LightDirection);
-            //MyEffect.Parameters["DirLight0DiffuseColor"].SetValue(dirs[0].LightColor);
-            //MyEffect.Parameters["DirLight0SpecularColor"].SetValue(dirs[0].LightSpecularColor);
+            if (effect != null && tempEffect == null)
+            {
+                tempEffect = MyEffect;
+                MyEffect = effect;
+                AssignParamsInitialize();
+            }
 
             if (epWorld != null)
             {
@@ -346,18 +347,15 @@ namespace TrashSoup.Engine
             {
                 if (epDirLight0Direction != null)
                 {
-                    //epDirLight0Direction.SetValue(dirs[0].LightDirection);
-                    MyEffect.Parameters["DirLight0Direction"].SetValue(dirs[0].LightDirection);
+                    epDirLight0Direction.SetValue(dirs[0].LightDirection);
                 }
                 if (epDirLight0DiffuseColor != null)
                 {
-                    //epDirLight0DiffuseColor.SetValue(dirs[0].LightColor);
-                    MyEffect.Parameters["DirLight0DiffuseColor"].SetValue(dirs[0].LightColor);
+                    epDirLight0DiffuseColor.SetValue(dirs[0].LightColor);
                 }
                 if (epDirLight0SpecularColor != null)
                 {
-                    //epDirLight0SpecularColor.SetValue(dirs[0].LightSpecularColor);
-                    MyEffect.Parameters["DirLight0SpecularColor"].SetValue(dirs[0].LightSpecularColor);
+                    epDirLight0SpecularColor.SetValue(dirs[0].LightSpecularColor);
                 }
             }
 
@@ -485,11 +483,21 @@ namespace TrashSoup.Engine
             }
         }
 
-        public void SetEffectBones(Matrix[] bones)
+        public void SetEffectBones(Effect effect, Matrix[] bones)
         {
             if(epBones != null)
             {
                 epBones.SetValue(bones);
+            }           
+        }
+
+        public void FlushMaterialEffect()
+        {
+            if (tempEffect != null)
+            {
+                MyEffect = tempEffect;
+                tempEffect = null;
+                AssignParamsInitialize();
             }
         }
 
