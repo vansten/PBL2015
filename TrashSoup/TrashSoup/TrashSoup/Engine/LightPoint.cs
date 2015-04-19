@@ -35,6 +35,7 @@ namespace TrashSoup.Engine
                 }
             }
         }
+        public bool CastShadows { get; set; }
 
         #endregion
 
@@ -46,12 +47,13 @@ namespace TrashSoup.Engine
 
         }
 
-        public LightPoint(uint uniqueID, string name, Vector3 lightColor, Vector3 lightSpecularColor, float attenuation)
+        public LightPoint(uint uniqueID, string name, Vector3 lightColor, Vector3 lightSpecularColor, float attenuation, bool castShadows)
             : base(uniqueID, name)
         {
             this.LightColor = lightColor;
             this.LightSpecularColor = lightSpecularColor;
             this.Attenuation = attenuation;
+            this.CastShadows = castShadows;
         }
 
         public void MultiplyAttenuationByScale()

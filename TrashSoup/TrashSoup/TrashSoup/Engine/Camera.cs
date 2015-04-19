@@ -43,6 +43,7 @@ namespace TrashSoup.Engine
         public Vector3 Right { get; set; }
         public float Speed { get; set; }
         public float FOV { get; set; }
+        public float Ratio { get; set; }
         public float Near { get; set; }
         public float Far { get; set; }
         public BoundingFrustumExtended Bounds { get; set; }
@@ -50,7 +51,7 @@ namespace TrashSoup.Engine
         #endregion
 
         #region methods
-        public Camera(uint uniqueID, string name, Vector3 pos, Vector3 translation, Vector3 target, Vector3 up, float fov, float near, float far) 
+        public Camera(uint uniqueID, string name, Vector3 pos, Vector3 translation, Vector3 target, Vector3 up, float fov, float ratio, float near, float far) 
             : base(uniqueID, name)
         {
             this.Position = pos;
@@ -62,13 +63,14 @@ namespace TrashSoup.Engine
             this.Up.Normalize();
             this.Right = Vector3.Cross(this.Direction, this.Up);
             this.FOV = fov;
+            this.Ratio = ratio;
             this.Near = near;
             this.Far = far;
             this.Bounds = new BoundingFrustumExtended(Matrix.Identity);
 
             CreateLookAt();
 
-            CreateProjection(fov, near, far);
+            CreateProjection();
 
             ViewProjMatrix = ViewMatrix * ProjectionMatrix;
             this.Bounds.Matrix = ViewProjMatrix;
@@ -98,12 +100,12 @@ namespace TrashSoup.Engine
 
         public Vector3 GetDirection() { return Direction; }
 
-        public void CreateProjection(float fov, float near, float far)
+        public void CreateProjection()
         {
             this.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView
             (
                 this.FOV,
-                (float)TrashSoupGame.Instance.Window.ClientBounds.Width / (float)TrashSoupGame.Instance.Window.ClientBounds.Height,
+                this.Ratio,
                 this.Near,
                 this.Far
             );
@@ -177,11 +179,12 @@ namespace TrashSoup.Engine
             }
 
             FOV = reader.ReadElementContentAsFloat("FOV", "");
+            Ratio = reader.ReadElementContentAsFloat("Ratio", "");
             Near = reader.ReadElementContentAsFloat("Near", "");
             Far = reader.ReadElementContentAsFloat("Far", "");
 
             CreateLookAt();
-            CreateProjection(FOV, Near, Far);
+            CreateProjection();
 
             base.ReadXml(reader);
         }
@@ -227,6 +230,7 @@ namespace TrashSoup.Engine
             writer.WriteEndElement();
 
             writer.WriteElementString("FOV", XmlConvert.ToString(FOV));
+            writer.WriteElementString("Ratio", XmlConvert.ToString(FOV));
             writer.WriteElementString("Near", XmlConvert.ToString(Near));
             writer.WriteElementString("Far", XmlConvert.ToString(Far));
 

@@ -30,8 +30,6 @@ namespace TrashSoup.Engine
         protected static RenderTarget2D reflectionRenderTarget;
         protected static RenderTarget2D refractionRenderTarget;
 
-        protected GameTime tempGameTime;
-
         protected Matrix reflectionMatrix;
         protected Vector2 tempWind;
 
@@ -99,7 +97,7 @@ namespace TrashSoup.Engine
         public WaterMaterial(string name, Effect effect)
             : base(name, effect)
         {
-            tempGameTime = new GameTime();
+
         }
 
         public override void UpdateEffect(Effect effect, Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
@@ -121,7 +119,7 @@ namespace TrashSoup.Engine
                 epRefractionMap.SetValue(ResourceManager.Instance.Textures["DefaultDiffuse"]);
             }
 
-            if (!isRendering)
+            if (!isRendering && TrashSoupGame.Instance.ActualRenderTarget == TrashSoupGame.Instance.DefaultRenderTarget)
             {
                 isRendering = true;
 
@@ -167,9 +165,9 @@ namespace TrashSoup.Engine
             ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.Normal.Y = refractionClip.Y;
             ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.Normal.Z = refractionClip.Z;
 
-            TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(RefractionRenderTarget);
+            TrashSoupGame.Instance.ActualRenderTarget = RefractionRenderTarget;
             ResourceManager.Instance.CurrentScene.DrawAll(null, effect, tempGameTime);
-            TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(null);
+            TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
 
             ResourceManager.Instance.CurrentScene.Cam.Bounds.ZeroAllAdditionals();
 
@@ -200,9 +198,9 @@ namespace TrashSoup.Engine
             cCam.Bounds.Matrix = cCam.ViewProjMatrix;
             this.reflectionMatrix = wm * cCam.ViewProjMatrix;
 
-            TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(ReflectionRenderTarget);
+            TrashSoupGame.Instance.ActualRenderTarget = ReflectionRenderTarget;
             ResourceManager.Instance.CurrentScene.DrawAll(null, effect, tempGameTime);
-            TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(null);
+            TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
 
             cCam.Update(tempGameTime);
 

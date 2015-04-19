@@ -69,7 +69,7 @@ namespace TrashSoup.Engine
 
             // loading materials
             List<Material> testPlayerMats = new List<Material>();
-            Material testPlayerMat = new Material("testPlayerMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Test\cargo"]);
+            Material testPlayerMat = new Material("testPlayerMat", this.Effects[@"Effects\DefaultEffect"], Textures[@"Textures\Test\cargo"]);
             testPlayerMats.Add(testPlayerMat);
             testPlayerMat.NormalMap = Textures[@"Textures\Test\cargo_NRM"];
             testPlayerMat.Glossiness = 40.0f;
@@ -187,8 +187,8 @@ namespace TrashSoup.Engine
 
             // adding lights
             LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.05f, 0.05f, 0.1f));
-            LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(0.5f, 0.4f, 0.3f), new Vector3(1.0f, 0.8f, 0.8f), new Vector3(-1.0f, -1.0f, -1.0f));
-            LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 200.0f);
+            LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(0.5f, 0.4f, 0.3f), new Vector3(1.0f, 0.8f, 0.8f), new Vector3(-1.0f, -1.0f, -1.0f), true);
+            LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 200.0f, false);
             lp1.MyTransform = new Transform(lp1, new Vector3(-40.0f, 40.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
 
             // loading scene
@@ -204,7 +204,8 @@ namespace TrashSoup.Engine
             }
                 //Game camera
             cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -1.0f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)) + new Vector3(0.0f, 4.0f, 0.0f),
-                    new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 25.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
+                    new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 25.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f,
+                    (float)TrashSoupGame.Instance.Window.ClientBounds.Width / (float)TrashSoupGame.Instance.Window.ClientBounds.Height, 0.1f, 2000.0f);
             cam.Components.Add(new CameraBehaviourComponent(cam, testBox));
 
             CurrentScene.Cam = cam;
@@ -215,8 +216,8 @@ namespace TrashSoup.Engine
             CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);
             CurrentScene.ObjectsDictionary.Add(testBox2.UniqueID, testBox2);
             CurrentScene.ObjectsDictionary.Add(testBox3.UniqueID, testBox3);
-            CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror);
-            CurrentScene.ObjectsDictionary.Add(testWater.UniqueID, testWater);
+            //CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror);
+            //CurrentScene.ObjectsDictionary.Add(testWater.UniqueID, testWater);
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;
@@ -447,6 +448,8 @@ namespace TrashSoup.Engine
             path = @"Effects\MirrorEffect";
             LoadEffect(path);
             path = @"Effects\WaterEffect";
+            LoadEffect(path);
+            path = @"Effects\ShadowMapEffect";
             LoadEffect(path);
         }
 

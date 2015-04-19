@@ -11,12 +11,38 @@ float3 AmbientLightColor;
 float3 DirLight0Direction;
 float3 DirLight0DiffuseColor;
 float3 DirLight0SpecularColor;
+texture DirLight0ShadowMap;
+sampler DirLight0ShadowMapSampler = sampler_state
+{
+	texture = <DirLight0ShadowMap>;
+	MipFilter = Linear;
+	MinFilter = Linear;
+	MagFilter = Linear;
+};
+
 float3 DirLight1Direction;
 float3 DirLight1DiffuseColor;
 float3 DirLight1SpecularColor;
+texture DirLight1ShadowMap;
+sampler DirLight1ShadowMapSampler = sampler_state
+{
+	texture = <DirLight1ShadowMap>;
+	MipFilter = Linear;
+	MinFilter = Linear;
+	MagFilter = Linear;
+};
+
 float3 DirLight2Direction;
 float3 DirLight2DiffuseColor;
 float3 DirLight2SpecularColor;
+texture DirLight2ShadowMap;
+sampler DirLight2ShadowMapSampler = sampler_state
+{
+	texture = <DirLight2ShadowMap>;
+	MipFilter = Linear;
+	MinFilter = Linear;
+	MagFilter = Linear;
+};
 
 float3 PointLightDiffuseColors[POINT_MAX_LIGHTS_PER_OBJECT];
 float3 PointLightPositions[POINT_MAX_LIGHTS_PER_OBJECT];

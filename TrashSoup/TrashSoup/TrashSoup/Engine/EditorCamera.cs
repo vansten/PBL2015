@@ -19,7 +19,7 @@ namespace TrashSoup.Engine
         private float curXRot = 0.0f;
         private float curYRot = 0.0f;
 
-        public EditorCamera(uint uniqueID, string name, Vector3 pos, Vector3 translation, Vector3 target, Vector3 up, float fov, float near, float far) : base(uniqueID, name, pos, translation, target, up, fov, near, far)
+        public EditorCamera(uint uniqueID, string name, Vector3 pos, Vector3 translation, Vector3 target, Vector3 up, float fov, float near, float far) : base(uniqueID, name, pos, translation, target, up, fov, 1.0f, near, far)
         {
             this.currentMousePosition = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
             this.Direction = Vector3.Transform(Vector3.Forward, Matrix.CreateRotationX(MathHelper.ToRadians(-curYRot)) * Matrix.CreateRotationY(MathHelper.ToRadians(-curXRot)));

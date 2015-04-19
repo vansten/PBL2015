@@ -19,6 +19,23 @@ namespace TrashSoup
         public const string ROOT_DIRECTIORY = "Content";
         public const string ROOT_DIRECTIORY_PROJECT = "TrashSoupContent";
         public bool EditorMode = false;
+        public RenderTarget2D DefaultRenderTarget { get; private set; }
+
+        private RenderTarget2D actualRenderTarget;
+        public RenderTarget2D ActualRenderTarget
+        {
+            get
+            {
+                return actualRenderTarget;
+            }
+            set
+            {
+                actualRenderTarget = value;
+                GraphicsDevice.SetRenderTarget(actualRenderTarget);
+            }
+
+        }
+
         private bool f5pressed = false;
         private bool f6pressed = false;
 
@@ -32,11 +49,22 @@ namespace TrashSoup
             Content.RootDirectory = ROOT_DIRECTIORY;
             this.IsMouseVisible = true;
             Instance = this;
+
             Debug.Log("Engine start");
         }
 
         protected override void Initialize()
         {
+            if (this.EditorMode)
+            {
+                // here u have to set a render target for editor
+            }
+            else
+            {
+                DefaultRenderTarget = null;
+            }
+            ActualRenderTarget = DefaultRenderTarget;
+
             base.Initialize();
         }
 

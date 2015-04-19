@@ -327,7 +327,7 @@ namespace TrashSoup.Engine
 
             if (reader.Name == "Camera")
             {
-                Cam = new Camera(0, "null", Vector3.Zero, Vector3.Zero, Vector3.Zero, Vector3.Zero, MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
+                Cam = new Camera(0, "null", Vector3.Zero, Vector3.Zero, Vector3.Zero, Vector3.Zero, MathHelper.Pi / 3.0f, 1.0f, 0.1f, 2000.0f);
                 reader.ReadStartElement();
                 (Cam as IXmlSerializable).ReadXml(reader);
             }

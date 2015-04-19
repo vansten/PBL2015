@@ -10,9 +10,18 @@ namespace TrashSoup.Engine
 {
     public class LightDirectional : GameObject, IXmlSerializable
     {
+        #region constants
+
+        const float DIRECTIONAL_DISTANCE = 200.0f;
+        const float DIRECTIONAL_CAM_NEAR_PLANE = 150.0f;
+        const float DIRECTIONAL_CAM_FAR_PLANE = 700.0f;
+
+        #endregion
+
         #region variables
 
         private Vector3 lightDirection;
+        private Camera shadowDrawCamera;
 
         #endregion
 
@@ -31,6 +40,25 @@ namespace TrashSoup.Engine
                 lightDirection = Vector3.Normalize(value);
             }
         }
+        public bool CastShadows { get; set; }
+        public Camera ShadowDrawCamera 
+        {
+            get
+            {
+                Camera cam = ResourceManager.Instance.CurrentScene.Cam;
+                if(cam != null)
+                {
+                    shadowDrawCamera.Position = DIRECTIONAL_DISTANCE * new Vector3(-LightDirection.X, -LightDirection.Y, -LightDirection.Z) + (cam.Position + cam.Translation);
+                    shadowDrawCamera.Target = cam.Position + cam.Translation;
+                    shadowDrawCamera.Update(null);
+                }
+                return shadowDrawCamera;
+            }
+            private set
+            {
+                shadowDrawCamera = value;
+            }
+        }
 
         #endregion
 
@@ -42,12 +70,16 @@ namespace TrashSoup.Engine
 
         }
 
-        public LightDirectional(uint uniqueID, string name, Vector3 color, Vector3 specular, Vector3 direction)
+        public LightDirectional(uint uniqueID, string name, Vector3 color, Vector3 specular, Vector3 direction, bool castShadows)
             : base(uniqueID, name)
         {
             this.LightColor = color;
             this.LightSpecularColor = specular;
             this.LightDirection = direction;
+            this.CastShadows = castShadows;
+
+            this.ShadowDrawCamera = new Camera(0, "", new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f),
+                MathHelper.PiOver2, 1.0f, DIRECTIONAL_CAM_NEAR_PLANE, DIRECTIONAL_CAM_FAR_PLANE);
         }
 
        

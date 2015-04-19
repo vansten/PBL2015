@@ -25,8 +25,6 @@ namespace TrashSoup.Engine
 
         protected static RenderTarget2D mirrorRenderTarget;
 
-        protected GameTime tempGameTime;
-
         protected Camera myCamera;
         protected Camera tempCamera;
 
@@ -68,10 +66,8 @@ namespace TrashSoup.Engine
         public MirrorMaterial(string name, Effect effect)
             : base(name, effect)
         {
-            tempGameTime = new GameTime();
-
             myCamera = new Camera((uint)name.GetHashCode(), name + "OwnCamera", new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f),
-                new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.PiOver2,
+                new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.PiOver2, 1.0f,
                 0.1f,
                 2000.0f);
         }
@@ -90,11 +86,11 @@ namespace TrashSoup.Engine
             {
                 epMirrorMap.SetValue(ResourceManager.Instance.Textures["DefaultDiffuse"]);
             }
-            if(!isRendering)
+            if (!isRendering && TrashSoupGame.Instance.ActualRenderTarget == TrashSoupGame.Instance.DefaultRenderTarget)
             {
                 isRendering = true;
 
-                TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(MirrorRenderTarget);
+                TrashSoupGame.Instance.ActualRenderTarget = MirrorRenderTarget;
                 
                 SetupCamera(world);
                 //tempCamera = ResourceManager.Instance.CurrentScene.Cam;
@@ -104,7 +100,7 @@ namespace TrashSoup.Engine
 
                 //ResourceManager.Instance.CurrentScene.Cam = tempCamera;
 
-                TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(null);
+                TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
                 isRendering = false;
                 this.MirrorMap = MirrorRenderTarget;
                

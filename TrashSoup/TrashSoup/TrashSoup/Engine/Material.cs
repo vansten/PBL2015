@@ -37,12 +37,15 @@ namespace TrashSoup.Engine
         protected EffectParameter epDirLight0Direction;
         protected EffectParameter epDirLight0DiffuseColor;
         protected EffectParameter epDirLight0SpecularColor;
+        protected EffectParameter epDirLight0ShadowMap;
         protected EffectParameter epDirLight1Direction;
         protected EffectParameter epDirLight1DiffuseColor;
         protected EffectParameter epDirLight1SpecularColor;
+        protected EffectParameter epDirLight1ShadowMap;
         protected EffectParameter epDirLight2Direction;
         protected EffectParameter epDirLight2DiffuseColor;
         protected EffectParameter epDirLight2SpecularColor;
+        protected EffectParameter epDirLight2ShadowMap;
 
         protected EffectParameter epPointLightDiffuseColors;
         protected EffectParameter epPointLightSpecularColors;
@@ -81,10 +84,38 @@ namespace TrashSoup.Engine
         protected SkinnedEffect tempSEref;
 
         protected Effect tempEffect;
+        protected GameTime tempGameTime;
+
+        protected static RenderTarget2D shadowMapRenderTarget1024;
 
         #endregion
 
         #region properties
+
+        protected static RenderTarget2D ShadowMapRenderTarget1024
+        {
+            get
+            {
+                if (shadowMapRenderTarget1024 == null)
+                {
+                    shadowMapRenderTarget1024 = new RenderTarget2D(
+                        TrashSoupGame.Instance.GraphicsDevice,
+                        1024,
+                        1024,
+                        false,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
+                        RenderTargetUsage.DiscardContents
+                        );
+                }
+                return shadowMapRenderTarget1024;
+            }
+            set
+            {
+                shadowMapRenderTarget1024 = value;
+            }
+        }
 
         public string Name { get; set; }
 
@@ -227,42 +258,7 @@ namespace TrashSoup.Engine
             this.Transparency = 1.0f;
             this.perPixelLighting = false;
             this.tempFrustumArray = new Vector4[4];
-
-            epWorld = null;
-            epWorldInverseTranspose = null;
-            epWorldViewProj = null;
-            epDiffuseMap = null;
-            epNormalMap = null;
-            epCubeMap = null;
-            epSpecularColor = null;
-            epGlossiness = null;
-            epReflectivityColor = null;
-            epReflectivityBias = null;
-            epTransparency = null;
-            epPerPixelLighting = null;
-
-            epBones = null;
-
-            epAmbientLightColor = null;
-            epDirLight0Direction = null;
-            epDirLight0DiffuseColor = null;
-            epDirLight0SpecularColor = null;
-            epDirLight1Direction = null;
-            epDirLight1DiffuseColor = null;
-            epDirLight1SpecularColor = null;
-            epDirLight2Direction = null;
-            epDirLight2DiffuseColor = null;
-            epDirLight2SpecularColor = null;
-
-            epPointLightDiffuseColors = null;
-            epPointLightSpecularColors = null;
-            epPointLightPositions = null;
-            epPointLightAttenuations = null;
-            epPointLightCount = null;
-
-            epEyePosition = null;
-            epBoundingFrustum = null;
-            epCustomClippingPlane = null;
+            this.tempGameTime = new GameTime();
 
             AssignParamsInitialize();
         }
@@ -357,6 +353,10 @@ namespace TrashSoup.Engine
                 {
                     epDirLight0SpecularColor.SetValue(dirs[0].LightSpecularColor);
                 }
+                if(epDirLight0ShadowMap != null)
+                {
+                    epDirLight0ShadowMap.SetValue(GenerateShadowMap(dirs[0]));
+                }
             }
 
             if (dirs[1] != null)
@@ -373,6 +373,10 @@ namespace TrashSoup.Engine
                 {
                     epDirLight1SpecularColor.SetValue(dirs[1].LightSpecularColor);
                 }
+                if (dirs[1].CastShadows && epDirLight1ShadowMap != null)
+                {
+                    epDirLight0ShadowMap.SetValue(GenerateShadowMap(dirs[1]));
+                }
             }
 
             if (dirs[2] != null)
@@ -388,6 +392,10 @@ namespace TrashSoup.Engine
                 if (epDirLight2SpecularColor != null)
                 {
                     epDirLight2SpecularColor.SetValue(dirs[2].LightSpecularColor);
+                }
+                if (dirs[2].CastShadows && epDirLight2ShadowMap != null)
+                {
+                    epDirLight0ShadowMap.SetValue(GenerateShadowMap(dirs[2]));
                 }
             }
 
@@ -501,9 +509,79 @@ namespace TrashSoup.Engine
             }
         }
 
+        protected Texture2D GenerateShadowMap(LightDirectional dir)
+        {
+            Texture2D tex;
+            if(!dir.CastShadows || TrashSoupGame.Instance.ActualRenderTarget != TrashSoupGame.Instance.DefaultRenderTarget)
+            {
+                tex = ResourceManager.Instance.Textures["DefaultDiffuse"];
+                return tex;
+            }
+
+            Camera cam = dir.ShadowDrawCamera;
+            Effect ef = ResourceManager.Instance.Effects[@"Effects\ShadowMapEffect"];
+
+            TrashSoupGame.Instance.ActualRenderTarget = ShadowMapRenderTarget1024;
+            TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
+            ResourceManager.Instance.CurrentScene.DrawAll(cam, ef, tempGameTime);
+            TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
+
+            tex = (Texture2D)ShadowMapRenderTarget1024;
+
+            //System.IO.FileStream stream = new System.IO.FileStream("Dupa.jpg", System.IO.FileMode.Create);
+            //tex.SaveAsJpeg(stream, 800, 480);
+            //stream.Close();
+
+            return tex;
+        }
+
+        protected TextureCube GenerateShadowMap(LightPoint point)
+        {
+            return null;
+        }
+
         protected virtual void AssignParamsInitialize()
         {
             if (MyEffect == null) throw new NullReferenceException("MyEffect iz null and you tryin' to extract params from it, nigga?");
+
+            epWorld = null;
+            epWorldInverseTranspose = null;
+            epWorldViewProj = null;
+            epDiffuseMap = null;
+            epNormalMap = null;
+            epCubeMap = null;
+            epSpecularColor = null;
+            epGlossiness = null;
+            epReflectivityColor = null;
+            epReflectivityBias = null;
+            epTransparency = null;
+            epPerPixelLighting = null;
+
+            epBones = null;
+
+            epAmbientLightColor = null;
+            epDirLight0Direction = null;
+            epDirLight0DiffuseColor = null;
+            epDirLight0SpecularColor = null;
+            epDirLight0ShadowMap = null;
+            epDirLight1Direction = null;
+            epDirLight1DiffuseColor = null;
+            epDirLight1SpecularColor = null;
+            epDirLight1ShadowMap = null;
+            epDirLight2Direction = null;
+            epDirLight2DiffuseColor = null;
+            epDirLight2SpecularColor = null;
+            epDirLight2ShadowMap = null;
+
+            epPointLightDiffuseColors = null;
+            epPointLightSpecularColors = null;
+            epPointLightPositions = null;
+            epPointLightAttenuations = null;
+            epPointLightCount = null;
+
+            epEyePosition = null;
+            epBoundingFrustum = null;
+            epCustomClippingPlane = null;
 
             int pNameHash;
 
@@ -525,11 +603,14 @@ namespace TrashSoup.Engine
             int l0dir = ("DirLight0Direction").GetHashCode();
             int l0dif = ("DirLight0DiffuseColor").GetHashCode();
             int l0spec = ("DirLight0SpecularColor").GetHashCode();
+            int l0sm = ("DirLight0ShadowMap").GetHashCode();
             int l1dir = ("DirLight1Direction").GetHashCode();
             int l1dif = ("DirLight1DiffuseColor").GetHashCode();
             int l1spec = ("DirLight1SpecularColor").GetHashCode();
+            int l1sm = ("DirLight1ShadowMap").GetHashCode();
             int l2dir = ("DirLight2Direction").GetHashCode();
             int l2dif = ("DirLight2DiffuseColor").GetHashCode();
+            int l2sm = ("DirLight2ShadowMap").GetHashCode();
             int l2spec = ("DirLight2SpecularColor").GetHashCode();
             int pDiffs = ("PointLightDiffuseColors").GetHashCode();
             int pSpecs = ("PointLightSpecularColors").GetHashCode();
@@ -616,6 +697,10 @@ namespace TrashSoup.Engine
                 {
                     epDirLight0SpecularColor = p;
                 }
+                else if (pNameHash == l0sm)
+                {
+                    epDirLight0ShadowMap = p;
+                }
                 else if (pNameHash == l1dir)
                 {
                     epDirLight1Direction = p;
@@ -628,6 +713,10 @@ namespace TrashSoup.Engine
                 {
                     epDirLight1SpecularColor = p;
                 }
+                else if (pNameHash == l1sm)
+                {
+                    epDirLight1ShadowMap = p;
+                }
                 else if (pNameHash == l2dir)
                 {
                     epDirLight2Direction = p;
@@ -639,6 +728,10 @@ namespace TrashSoup.Engine
                 else if (pNameHash == l2spec)
                 {
                     epDirLight2SpecularColor = p;
+                }
+                else if (pNameHash == l2sm)
+                {
+                    epDirLight2ShadowMap = p;
                 }
                 else if (pNameHash == pDiffs)
                 {
