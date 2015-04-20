@@ -14,7 +14,7 @@ namespace TrashSoup.Gameplay
     {
         #region constants
 
-        protected const float PLAYER_SPEED = 100.0f;
+        protected const float PLAYER_SPEED = 10.0f;
         protected const float SPRINT_MULTIPLIER = 5.0f;
         protected const float SPRINT_ACCELERATION = 3.0f;
         protected const float SPRINT_DECELERATION = 2.5f*SPRINT_ACCELERATION;

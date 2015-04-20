@@ -166,7 +166,7 @@ namespace TrashSoup.Engine
             ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.Normal.Z = refractionClip.Z;
 
             TrashSoupGame.Instance.ActualRenderTarget = RefractionRenderTarget;
-            ResourceManager.Instance.CurrentScene.DrawAll(null, effect, tempGameTime, false);
+            ResourceManager.Instance.CurrentScene.DrawAll(null, effect, TrashSoupGame.Instance.TempGameTime, false);
             TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
 
             ResourceManager.Instance.CurrentScene.Cam.Bounds.ZeroAllAdditionals();
@@ -199,10 +199,10 @@ namespace TrashSoup.Engine
             this.reflectionMatrix = wm * cCam.ViewProjMatrix;
 
             TrashSoupGame.Instance.ActualRenderTarget = ReflectionRenderTarget;
-            ResourceManager.Instance.CurrentScene.DrawAll(null, effect, tempGameTime, false);
+            ResourceManager.Instance.CurrentScene.DrawAll(null, effect, TrashSoupGame.Instance.TempGameTime, false);
             TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
 
-            cCam.Update(tempGameTime);
+            cCam.Update(TrashSoupGame.Instance.TempGameTime);
 
             cCam.Bounds.ZeroAllAdditionals();
 

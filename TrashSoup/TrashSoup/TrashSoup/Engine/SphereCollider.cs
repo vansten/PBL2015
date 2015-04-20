@@ -122,7 +122,7 @@ namespace TrashSoup.Engine
                         for (int i = 0; i < vertexBufferSize / sizeof(float); i += vertexStride / sizeof(float))
                         {
                             Vector3 transformedPosition = Vector3.Transform(new Vector3(vertexData[i], vertexData[i + 1], vertexData[i + 2]), this.worldMatrix);
-
+                            transformedPosition = Vector3.Transform(transformedPosition, mesh.ParentBone.Transform);
                             this.center += transformedPosition;
                             ++verticesNum;
                         }
@@ -142,6 +142,7 @@ namespace TrashSoup.Engine
                         for (int i = 0; i < vertexBufferSize / sizeof(float); i += vertexStride / sizeof(float))
                         {
                             Vector3 transformedPosition = Vector3.Transform(new Vector3(vertexData[i], vertexData[i + 1], vertexData[i + 2]), this.worldMatrix);
+                            transformedPosition = Vector3.Transform(transformedPosition, mesh.ParentBone.Transform);
 
                             if(Vector3.Distance(this.center, transformedPosition) > this.radius)
                             {

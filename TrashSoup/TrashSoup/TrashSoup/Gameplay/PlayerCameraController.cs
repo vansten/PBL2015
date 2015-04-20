@@ -17,7 +17,7 @@ namespace TrashSoup.Gameplay
         protected const float CAM_YAW_SENSITIVITY = MathHelper.PiOver4 / 30.0f;
         protected const float CAM_PITCH_SENSITIVITY = MathHelper.PiOver4 / 30.0f;
         protected const float CAM_TOTAL_PITCH = MathHelper.PiOver2 - MathHelper.PiOver4;
-        protected const float CAM_DISTANCE = 60.0f;
+        protected const float CAM_DISTANCE = 3.0f;
 
         #endregion
 

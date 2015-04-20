@@ -84,7 +84,6 @@ namespace TrashSoup.Engine
         protected SkinnedEffect tempSEref;
 
         protected Effect tempEffect;
-        protected GameTime tempGameTime;
 
         #endregion
 
@@ -231,7 +230,6 @@ namespace TrashSoup.Engine
             this.Transparency = 1.0f;
             this.perPixelLighting = false;
             this.tempFrustumArray = new Vector4[4];
-            this.tempGameTime = new GameTime();
 
             AssignParamsInitialize();
         }

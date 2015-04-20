@@ -134,6 +134,8 @@ namespace TrashSoup.Engine
                             min = Vector3.Min(min, transformedPosition);
                             max = Vector3.Max(max, transformedPosition);
                         }
+                        min = Vector3.Transform(min, mesh.ParentBone.Transform);
+                        max = Vector3.Transform(max, mesh.ParentBone.Transform);
                     }
                 }
             }

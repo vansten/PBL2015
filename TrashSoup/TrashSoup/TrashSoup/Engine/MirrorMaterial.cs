@@ -96,7 +96,7 @@ namespace TrashSoup.Engine
                 //tempCamera = ResourceManager.Instance.CurrentScene.Cam;
                 //ResourceManager.Instance.CurrentScene.Cam = myCamera;
 
-                ResourceManager.Instance.CurrentScene.DrawAll(myCamera, effect, tempGameTime, false);
+                ResourceManager.Instance.CurrentScene.DrawAll(myCamera, effect, TrashSoupGame.Instance.TempGameTime, false);
 
                 //ResourceManager.Instance.CurrentScene.Cam = tempCamera;
 
@@ -132,7 +132,7 @@ namespace TrashSoup.Engine
             this.myCamera.Position = objectPosition;
             this.myCamera.Target = newTarget;
 
-            myCamera.Update(tempGameTime);
+            myCamera.Update(TrashSoupGame.Instance.TempGameTime);
         }
 
         protected override void AssignParamsInitialize()

@@ -166,7 +166,7 @@ namespace TrashSoup
 
             if(ResourceManager.Instance.CurrentScene != null)
             {
-                ResourceManager.Instance.CurrentScene.DrawAll(null, null, null, true);
+                ResourceManager.Instance.CurrentScene.DrawAll(null, null, TempGameTime, true);
             }
 
             if(ResourceManager.Instance.ps != null)
