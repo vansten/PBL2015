@@ -20,6 +20,7 @@ namespace TrashSoup
         public const string ROOT_DIRECTIORY_PROJECT = "TrashSoupContent";
         public bool EditorMode = false;
         public RenderTarget2D DefaultRenderTarget { get; private set; }
+        public GameTime TempGameTime { get; private set; }
 
         private RenderTarget2D actualRenderTarget;
         public RenderTarget2D ActualRenderTarget
@@ -64,6 +65,8 @@ namespace TrashSoup
                 DefaultRenderTarget = null;
             }
             ActualRenderTarget = DefaultRenderTarget;
+
+            this.TempGameTime = new GameTime();
 
             base.Initialize();
         }
@@ -163,7 +166,7 @@ namespace TrashSoup
 
             if(ResourceManager.Instance.CurrentScene != null)
             {
-                ResourceManager.Instance.CurrentScene.DrawAll(null, null, null);
+                ResourceManager.Instance.CurrentScene.DrawAll(null, null, null, true);
             }
 
             if(ResourceManager.Instance.ps != null)
@@ -178,7 +181,7 @@ namespace TrashSoup
             this.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            ResourceManager.Instance.CurrentScene.DrawAll(null, null, gameTime);
+            ResourceManager.Instance.CurrentScene.DrawAll(null, null, gameTime, true);
 
             ResourceManager.Instance.ps.Draw();
 

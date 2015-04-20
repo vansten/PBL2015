@@ -96,7 +96,7 @@ namespace TrashSoup.Engine
                 //tempCamera = ResourceManager.Instance.CurrentScene.Cam;
                 //ResourceManager.Instance.CurrentScene.Cam = myCamera;
 
-                ResourceManager.Instance.CurrentScene.DrawAll(myCamera, effect, tempGameTime);
+                ResourceManager.Instance.CurrentScene.DrawAll(myCamera, effect, tempGameTime, false);
 
                 //ResourceManager.Instance.CurrentScene.Cam = tempCamera;
 

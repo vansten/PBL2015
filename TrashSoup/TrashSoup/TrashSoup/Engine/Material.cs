@@ -86,36 +86,9 @@ namespace TrashSoup.Engine
         protected Effect tempEffect;
         protected GameTime tempGameTime;
 
-        protected static RenderTarget2D shadowMapRenderTarget1024;
-
         #endregion
 
         #region properties
-
-        protected static RenderTarget2D ShadowMapRenderTarget1024
-        {
-            get
-            {
-                if (shadowMapRenderTarget1024 == null)
-                {
-                    shadowMapRenderTarget1024 = new RenderTarget2D(
-                        TrashSoupGame.Instance.GraphicsDevice,
-                        1024,
-                        1024,
-                        false,
-                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
-                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
-                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
-                        RenderTargetUsage.DiscardContents
-                        );
-                }
-                return shadowMapRenderTarget1024;
-            }
-            set
-            {
-                shadowMapRenderTarget1024 = value;
-            }
-        }
 
         public string Name { get; set; }
 
@@ -355,7 +328,7 @@ namespace TrashSoup.Engine
                 }
                 if(epDirLight0ShadowMap != null)
                 {
-                    epDirLight0ShadowMap.SetValue(GenerateShadowMap(dirs[0]));
+                    epDirLight0ShadowMap.SetValue(dirs[0].ShadowMapRenderTarget1024);
                 }
             }
 
@@ -375,7 +348,7 @@ namespace TrashSoup.Engine
                 }
                 if (dirs[1].CastShadows && epDirLight1ShadowMap != null)
                 {
-                    epDirLight0ShadowMap.SetValue(GenerateShadowMap(dirs[1]));
+                    epDirLight0ShadowMap.SetValue(dirs[1].ShadowMapRenderTarget1024);
                 }
             }
 
@@ -395,7 +368,7 @@ namespace TrashSoup.Engine
                 }
                 if (dirs[2].CastShadows && epDirLight2ShadowMap != null)
                 {
-                    epDirLight0ShadowMap.SetValue(GenerateShadowMap(dirs[2]));
+                    epDirLight0ShadowMap.SetValue(dirs[2].ShadowMapRenderTarget1024);
                 }
             }
 
@@ -507,37 +480,6 @@ namespace TrashSoup.Engine
                 tempEffect = null;
                 AssignParamsInitialize();
             }
-        }
-
-        protected Texture2D GenerateShadowMap(LightDirectional dir)
-        {
-            Texture2D tex;
-            if(!dir.CastShadows || TrashSoupGame.Instance.ActualRenderTarget != TrashSoupGame.Instance.DefaultRenderTarget)
-            {
-                tex = ResourceManager.Instance.Textures["DefaultDiffuse"];
-                return tex;
-            }
-
-            Camera cam = dir.ShadowDrawCamera;
-            Effect ef = ResourceManager.Instance.Effects[@"Effects\ShadowMapEffect"];
-
-            TrashSoupGame.Instance.ActualRenderTarget = ShadowMapRenderTarget1024;
-            TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
-            ResourceManager.Instance.CurrentScene.DrawAll(cam, ef, tempGameTime);
-            TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
-
-            tex = (Texture2D)ShadowMapRenderTarget1024;
-
-            //System.IO.FileStream stream = new System.IO.FileStream("Dupa.jpg", System.IO.FileMode.Create);
-            //tex.SaveAsJpeg(stream, 800, 480);
-            //stream.Close();
-
-            return tex;
-        }
-
-        protected TextureCube GenerateShadowMap(LightPoint point)
-        {
-            return null;
         }
 
         protected virtual void AssignParamsInitialize()

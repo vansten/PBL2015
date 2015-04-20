@@ -166,8 +166,24 @@ namespace TrashSoup.Engine
         }
 
         // draws all gameobjects linearly
-        public void DrawAll(Camera cam, Effect effect, GameTime gameTime)
+        public void DrawAll(Camera cam, Effect effect, GameTime gameTime, bool ifGenerateShadowMaps)
         {
+            if(ifGenerateShadowMaps)
+            {
+                // first create shadow maps for every light, will do that in graph as well
+                for (int i = 0; i < ResourceManager.DIRECTIONAL_MAX_LIGHTS; ++i)
+                {
+                    if (DirectionalLights[i] != null)
+                        DirectionalLights[i].GenerateShadowMap();
+                }
+
+                foreach (LightPoint point in PointLights)
+                {
+                    // point.GenerateShadowMap();
+                }
+            }
+            
+            // then objects
             foreach (GameObject obj in ObjectsDictionary.Values)
             {
                 obj.Draw(cam, effect, gameTime);

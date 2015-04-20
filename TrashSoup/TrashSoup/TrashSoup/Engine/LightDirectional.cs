@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using System.Xml.Serialization;
 using System.Xml;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace TrashSoup.Engine
 {
@@ -26,6 +27,8 @@ namespace TrashSoup.Engine
         #endregion
 
         #region properties
+
+        public RenderTarget2D ShadowMapRenderTarget1024 { get; set; }
 
         public Vector3 LightColor { get; set; }
         public Vector3 LightSpecularColor { get; set; }
@@ -80,8 +83,38 @@ namespace TrashSoup.Engine
 
             this.ShadowDrawCamera = new Camera(0, "", new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f),
                 MathHelper.PiOver2, 1.0f, DIRECTIONAL_CAM_NEAR_PLANE, DIRECTIONAL_CAM_FAR_PLANE);
+
+            this.ShadowMapRenderTarget1024 = new RenderTarget2D(
+                        TrashSoupGame.Instance.GraphicsDevice,
+                        1024,
+                        1024,
+                        false,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
+                        RenderTargetUsage.DiscardContents
+                        );
         }
 
+        public void GenerateShadowMap()
+        {
+            if (!this.CastShadows || TrashSoupGame.Instance.ActualRenderTarget != TrashSoupGame.Instance.DefaultRenderTarget)
+            {
+                return;
+            }
+
+            Camera cam = this.ShadowDrawCamera;
+            Effect ef = ResourceManager.Instance.Effects[@"Effects\ShadowMapEffect"];
+
+            TrashSoupGame.Instance.ActualRenderTarget = ShadowMapRenderTarget1024;
+            TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
+            ResourceManager.Instance.CurrentScene.DrawAll(cam, ef, TrashSoupGame.Instance.TempGameTime, false);
+            TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
+
+            //System.IO.FileStream stream = new System.IO.FileStream("Dupa.jpg", System.IO.FileMode.Create);
+            //tex.SaveAsJpeg(stream, 800, 480);
+            //stream.Close();
+        }
        
         System.Xml.Schema.XmlSchema IXmlSerializable.GetSchema()
         {
