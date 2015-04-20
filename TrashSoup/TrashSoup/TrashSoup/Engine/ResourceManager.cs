@@ -216,8 +216,8 @@ namespace TrashSoup.Engine
             CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);
             CurrentScene.ObjectsDictionary.Add(testBox2.UniqueID, testBox2);
             CurrentScene.ObjectsDictionary.Add(testBox3.UniqueID, testBox3);
-            CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror);
-            CurrentScene.ObjectsDictionary.Add(testWater.UniqueID, testWater);
+            //CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror);
+            //CurrentScene.ObjectsDictionary.Add(testWater.UniqueID, testWater);
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;

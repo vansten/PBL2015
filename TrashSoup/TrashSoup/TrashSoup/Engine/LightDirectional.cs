@@ -13,9 +13,9 @@ namespace TrashSoup.Engine
     {
         #region constants
 
-        const float DIRECTIONAL_DISTANCE = 200.0f;
-        const float DIRECTIONAL_CAM_NEAR_PLANE = 150.0f;
-        const float DIRECTIONAL_CAM_FAR_PLANE = 700.0f;
+        const float DIRECTIONAL_DISTANCE = 15.0f;
+        const float DIRECTIONAL_CAM_NEAR_PLANE = 15.0f;
+        const float DIRECTIONAL_CAM_FAR_PLANE = 75.0f;
 
         #endregion
 
@@ -52,7 +52,7 @@ namespace TrashSoup.Engine
                 if(cam != null)
                 {
                     shadowDrawCamera.Position = DIRECTIONAL_DISTANCE * new Vector3(-LightDirection.X, -LightDirection.Y, -LightDirection.Z) + (cam.Position + cam.Translation);
-                    shadowDrawCamera.Target = cam.Position + cam.Translation;
+                    shadowDrawCamera.Target = cam.Target + cam.Translation;
                     shadowDrawCamera.Update(null);
                 }
                 return shadowDrawCamera;
@@ -112,7 +112,7 @@ namespace TrashSoup.Engine
             TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
 
             //System.IO.FileStream stream = new System.IO.FileStream("Dupa.jpg", System.IO.FileMode.Create);
-            //tex.SaveAsJpeg(stream, 800, 480);
+            //ShadowMapRenderTarget1024.SaveAsJpeg(stream, 1024, 1024);
             //stream.Close();
         }
        
