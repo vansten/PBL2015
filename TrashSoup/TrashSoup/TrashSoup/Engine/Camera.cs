@@ -13,6 +13,7 @@ namespace TrashSoup.Engine
     {
         #region variables
         protected GameObject toFollow;
+        protected bool ortho;
         #endregion
        
         #region properties
@@ -46,7 +47,21 @@ namespace TrashSoup.Engine
         public float Ratio { get; set; }
         public float Near { get; set; }
         public float Far { get; set; }
+        public float OrthoWidth { get; set; }
+        public float OrthoHeight { get; set; }
         public BoundingFrustumExtended Bounds { get; set; }
+        public bool Ortho 
+        {
+            get
+            {
+                return ortho;
+            }
+            set
+            {
+                ortho = value;
+                CreateProjection();
+            }
+        }
 
         #endregion
 
@@ -102,13 +117,27 @@ namespace TrashSoup.Engine
 
         public void CreateProjection()
         {
-            this.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView
-            (
-                this.FOV,
-                this.Ratio,
-                this.Near,
-                this.Far
-            );
+            if(!Ortho)
+            {
+                this.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView
+                (
+                    this.FOV,
+                    this.Ratio,
+                    this.Near,
+                    this.Far
+                );
+            }
+            else
+            {
+                this.ProjectionMatrix = Matrix.CreateOrthographic
+                (
+                    this.OrthoWidth,
+                    this.OrthoHeight,
+                    this.Near,
+                    this.Far
+                );
+            }
+            
         }
 
         protected void CreateLookAt()

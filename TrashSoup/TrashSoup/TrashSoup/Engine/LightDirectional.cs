@@ -13,9 +13,11 @@ namespace TrashSoup.Engine
     {
         #region constants
 
-        const float DIRECTIONAL_DISTANCE = 15.0f;
-        const float DIRECTIONAL_CAM_NEAR_PLANE = 15.0f;
-        const float DIRECTIONAL_CAM_FAR_PLANE = 75.0f;
+        const float DIRECTIONAL_DISTANCE = 20.0f;
+        const float DIRECTIONAL_CAM_NEAR_PLANE = 0.2f;
+        const float DIRECTIONAL_CAM_FAR_PLANE = 50.0f;
+        const float DIRECTIONAL_SHADOW_RANGE = 20.0f;
+        const int DIRECTIONAL_SHADOW_MAP_SIZE = 2048;
 
         #endregion
 
@@ -76,11 +78,14 @@ namespace TrashSoup.Engine
 
             this.ShadowDrawCamera = new Camera(0, "", new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f),
                 MathHelper.PiOver2, 1.0f, DIRECTIONAL_CAM_NEAR_PLANE, DIRECTIONAL_CAM_FAR_PLANE);
+            this.ShadowDrawCamera.OrthoWidth = DIRECTIONAL_SHADOW_MAP_SIZE / 1000 * DIRECTIONAL_DISTANCE;
+            this.ShadowDrawCamera.OrthoHeight = DIRECTIONAL_SHADOW_MAP_SIZE / 1000 * DIRECTIONAL_DISTANCE;
+            this.ShadowDrawCamera.Ortho = true;
 
             this.ShadowMapRenderTarget2048 = new RenderTarget2D(
                         TrashSoupGame.Instance.GraphicsDevice,
-                        2048,
-                        2048,
+                        DIRECTIONAL_SHADOW_MAP_SIZE,
+                        DIRECTIONAL_SHADOW_MAP_SIZE,
                         false,
                         TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
                         TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
@@ -96,10 +101,13 @@ namespace TrashSoup.Engine
                 return;
             }
 
+            // setting up camera properly
             Camera cam = ResourceManager.Instance.CurrentScene.Cam;
-                shadowDrawCamera.Position = DIRECTIONAL_DISTANCE * new Vector3(-LightDirection.X, -LightDirection.Y, -LightDirection.Z) + (cam.Position + cam.Translation);
-                shadowDrawCamera.Target = cam.Target + cam.Translation;
-                shadowDrawCamera.Update(null);
+
+            shadowDrawCamera.Target = cam.Direction * DIRECTIONAL_SHADOW_RANGE + (cam.Target + cam.Translation);
+            shadowDrawCamera.Position = DIRECTIONAL_DISTANCE * new Vector3(-LightDirection.X, -LightDirection.Y, -LightDirection.Z) + (cam.Target + cam.Translation) + cam.Direction * DIRECTIONAL_SHADOW_RANGE;
+            shadowDrawCamera.Update(null);
+            ///////////////
 
             TrashSoupGame.Instance.ActualRenderTarget = ShadowMapRenderTarget2048;
             TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
@@ -109,7 +117,7 @@ namespace TrashSoup.Engine
             TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
 
             //System.IO.FileStream stream = new System.IO.FileStream("Dupa.jpg", System.IO.FileMode.Create);
-            //ShadowMapRenderTarget1024.SaveAsJpeg(stream, 1024, 1024);
+            //ShadowMapRenderTarget2048.SaveAsJpeg(stream, 1024, 1024);
             //stream.Close();
         }
        

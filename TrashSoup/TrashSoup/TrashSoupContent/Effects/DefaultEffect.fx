@@ -119,12 +119,13 @@ ColorPair ComputeLight(float3 posWS, float3 E, float3 N, float4 dirPos, float4 p
 	projectedDLScoords.x = (dirPos.x / dirPos.w) / 2.0f + 0.5f;
 	projectedDLScoords.y = (-dirPos.y / dirPos.w) / 2.0f + 0.5f;
 
+	float depth = tex2D(DirLight0ShadowMapSampler, projectedDLScoords).r;
+	float dist = dirPos.z / dirPos.w;
+
+	[branch]
 	if ((saturate(projectedDLScoords.x) == projectedDLScoords.x) && (saturate(projectedDLScoords.y) == projectedDLScoords.y))
 	{
-		float depth = tex2D(DirLight0ShadowMapSampler, projectedDLScoords).r;
-		float dist = dirPos.z / dirPos.w;
-
-		if ((dist - 0.01f) <= depth)
+		if ((dist - 0.005f) <= depth || depth <= 0.0001f)
 		{
 			// DirLight0
 			ComputeSingleLight(-DirLight0Direction, DirLight0DiffuseColor,
