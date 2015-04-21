@@ -11,6 +11,7 @@ float3 AmbientLightColor;
 float3 DirLight0Direction;
 float3 DirLight0DiffuseColor;
 float3 DirLight0SpecularColor;
+float4x4 DirLight0WorldViewProj;
 texture DirLight0ShadowMap;
 sampler DirLight0ShadowMapSampler = sampler_state
 {
@@ -18,37 +19,33 @@ sampler DirLight0ShadowMapSampler = sampler_state
 	MipFilter = Linear;
 	MinFilter = Linear;
 	MagFilter = Linear;
+	AddressU = clamp;
+	AddressV = clamp;
 };
 
 float3 DirLight1Direction;
 float3 DirLight1DiffuseColor;
 float3 DirLight1SpecularColor;
-texture DirLight1ShadowMap;
-sampler DirLight1ShadowMapSampler = sampler_state
-{
-	texture = <DirLight1ShadowMap>;
-	MipFilter = Linear;
-	MinFilter = Linear;
-	MagFilter = Linear;
-};
 
 float3 DirLight2Direction;
 float3 DirLight2DiffuseColor;
 float3 DirLight2SpecularColor;
-texture DirLight2ShadowMap;
-sampler DirLight2ShadowMapSampler = sampler_state
-{
-	texture = <DirLight2ShadowMap>;
-	MipFilter = Linear;
-	MinFilter = Linear;
-	MagFilter = Linear;
-};
 
 float3 PointLightDiffuseColors[POINT_MAX_LIGHTS_PER_OBJECT];
 float3 PointLightPositions[POINT_MAX_LIGHTS_PER_OBJECT];
 float3 PointLightSpecularColors[POINT_MAX_LIGHTS_PER_OBJECT];
 float PointLightAttenuations[POINT_MAX_LIGHTS_PER_OBJECT];
 uint PointLightCount;
+
+float4x4 Point0WorldViewProj;
+textureCUBE Point0ShadowMap;
+samplerCUBE Point0ShadowMapSampler = sampler_state
+{
+	texture = <Point0ShadowMap>;
+	MipFilter = Linear;
+	MinFilter = Linear;
+	MagFilter = Linear;
+};
 
 float4 BoundingFrustum[4];
 float4 CustomClippingPlane;
@@ -84,6 +81,8 @@ struct VertexShaderOutput
 	float3 Normal : TEXCOORD1;
 	float4 ClipPlanes : TEXCOORD3;
 	float CustomClipPlane : TEXCOORD4;
+	float4 PositionDLS : TEXCOORD5;
+	float4 PositionPLS : TEXCOORD6;
 };
 
 struct ColorPair
@@ -102,7 +101,7 @@ inline void ComputeSingleLight(float3 L, float3 color, float3 specularColor, flo
 	pair.Specular += specular * specularColor * pair.Diffuse;
 }
 
-ColorPair ComputeLight(float3 posWS, float3 E, float3 N)
+ColorPair ComputeLight(float3 posWS, float3 E, float3 N, float4 dirPos, float4 pointPos)
 {
 	E = normalize(E);
 	N = normalize(N);
@@ -115,10 +114,29 @@ ColorPair ComputeLight(float3 posWS, float3 E, float3 N)
 	temp.Diffuse = 0;
 	temp.Specular = 0;
 
-	// DirLight0
-	ComputeSingleLight(-DirLight0Direction, DirLight0DiffuseColor, 
-		float3(DirLight0SpecularColor.x * SpecularColor.x, DirLight0SpecularColor.y * SpecularColor.y, DirLight0SpecularColor.z * SpecularColor.z), E, N, result);
+	// shadows for DirLight0
+	float2 projectedDLScoords;
+	projectedDLScoords.x = (dirPos.x / dirPos.w) / 2.0f + 0.5f;
+	projectedDLScoords.y = (-dirPos.y / dirPos.w) / 2.0f + 0.5f;
 
+	if ((saturate(projectedDLScoords.x) == projectedDLScoords.x) && (saturate(projectedDLScoords.y) == projectedDLScoords.y))
+	{
+		float depth = tex2D(DirLight0ShadowMapSampler, projectedDLScoords).r;
+		float dist = dirPos.z / dirPos.w;
+
+		if ((dist - 0.01f) <= depth)
+		{
+			// DirLight0
+			ComputeSingleLight(-DirLight0Direction, DirLight0DiffuseColor,
+				float3(DirLight0SpecularColor.x * SpecularColor.x, DirLight0SpecularColor.y * SpecularColor.y, DirLight0SpecularColor.z * SpecularColor.z), E, N, result);
+		}
+	}
+	else
+	{
+		// DirLight0
+		ComputeSingleLight(-DirLight0Direction, DirLight0DiffuseColor,
+			float3(DirLight0SpecularColor.x * SpecularColor.x, DirLight0SpecularColor.y * SpecularColor.y, DirLight0SpecularColor.z * SpecularColor.z), E, N, result);
+	}
 	// DirLight1
 	ComputeSingleLight(-DirLight1Direction, DirLight1DiffuseColor, 
 		float3(DirLight1SpecularColor.x * SpecularColor.x, DirLight1SpecularColor.y * SpecularColor.y, DirLight1SpecularColor.z * SpecularColor.z), E, N, result);
@@ -138,6 +156,8 @@ ColorPair ComputeLight(float3 posWS, float3 E, float3 N)
 		ComputeSingleLight(normalize(L), PointLightDiffuseColors[i], 
 			float3(PointLightSpecularColors[i].x * SpecularColor.x, PointLightSpecularColors[i].y * SpecularColor.y, PointLightSpecularColors[i].z * SpecularColor.z),
 			E, N, temp);
+
+		// shadows for point light 0 - TBA
 
 		att = saturate(ATTENUATION_MULTIPLIER * length(PointLightDiffuseColors[i]) * PointLightAttenuations[i] / max(Llength * Llength, MINIMUM_LENGTH_VALUE));
 		temp.Diffuse = temp.Diffuse * att;
@@ -171,6 +191,9 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 	output.ClipPlanes.w = dot(output.PositionWS, BoundingFrustum[3]);
 	output.CustomClipPlane = dot(output.PositionWS, CustomClippingPlane);
 
+	output.PositionDLS = mul(input.Position, DirLight0WorldViewProj);
+	output.PositionPLS = mul(input.Position, Point0WorldViewProj);
+
     return output;
 }
 
@@ -190,12 +213,15 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	float alpha = color.a;
 	color.a = 1.0f;
 
-	ColorPair computedLight = ComputeLight(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal);
+	ColorPair computedLight = ComputeLight(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal, input.PositionDLS, input.PositionPLS);
 
 	color = color * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f);
 
 	color *= Transparency;
-
+	//float2 projectedDLScoords;
+	//projectedDLScoords.x = (input.PositionDLS.x / input.PositionDLS.w) / 2.0f + 0.5f;
+	//projectedDLScoords.y = (-input.PositionDLS.y / input.PositionDLS.w) / 2.0f + 0.5f;
+	//float4 color = tex2D(DirLight0ShadowMapSampler, projectedDLScoords);
     return color;
 }
 

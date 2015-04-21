@@ -101,7 +101,7 @@ namespace TrashSoup.Engine
         }
 
         public override void UpdateEffect(Effect effect, Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
-            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector, BoundingFrustumExtended frustum,
+            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, TextureCube point0SM, Matrix point0Mat, Vector3 eyeVector, BoundingFrustumExtended frustum,
             GameTime gameTime)
         {
             if (effect != null && tempEffect == null)
@@ -137,7 +137,7 @@ namespace TrashSoup.Engine
                 isRendering = false;
             }
 
-            base.UpdateEffect(effect, world, worldViewProj, amb, dirs, pointColors, pointSpeculars, pointAttenuations, pointPositions, pointCount, eyeVector, frustum, gameTime);
+            base.UpdateEffect(effect, world, worldViewProj, amb, dirs, pointColors, pointSpeculars, pointAttenuations, pointPositions, pointCount, point0SM, point0Mat, eyeVector, frustum, gameTime);
         }
 
         protected Vector4 CreatePlane(Matrix wm, bool clipSide)

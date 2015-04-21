@@ -38,20 +38,21 @@ namespace TrashSoup.Engine
         protected EffectParameter epDirLight0DiffuseColor;
         protected EffectParameter epDirLight0SpecularColor;
         protected EffectParameter epDirLight0ShadowMap;
+        protected EffectParameter epDirLight0WorldViewProj;
         protected EffectParameter epDirLight1Direction;
         protected EffectParameter epDirLight1DiffuseColor;
         protected EffectParameter epDirLight1SpecularColor;
-        protected EffectParameter epDirLight1ShadowMap;
         protected EffectParameter epDirLight2Direction;
         protected EffectParameter epDirLight2DiffuseColor;
         protected EffectParameter epDirLight2SpecularColor;
-        protected EffectParameter epDirLight2ShadowMap;
 
         protected EffectParameter epPointLightDiffuseColors;
         protected EffectParameter epPointLightSpecularColors;
         protected EffectParameter epPointLightPositions;
         protected EffectParameter epPointLightAttenuations;
         protected EffectParameter epPointLightCount;
+        protected EffectParameter epPoint0ShadowMap;
+        protected EffectParameter epPoint0WorldViewProj;
 
         protected EffectParameter epEyePosition;
         protected EffectParameter epBoundingFrustum;
@@ -240,14 +241,9 @@ namespace TrashSoup.Engine
             this.DiffuseMap = diffuse;
         }
 
-        public void UpdateEffect()
-        {
-            UpdateEffect(null, Matrix.Identity, Matrix.Identity, null, null, null, null, null, null, 0, new Vector3(0.0f, 0.0f, 0.0f), new BoundingFrustumExtended(Matrix.Identity), null);
-        }
-
         public virtual void UpdateEffect(Effect effect, Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
-            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Vector3 eyeVector, BoundingFrustumExtended frustum,
-            GameTime gameTime)
+            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, TextureCube point0SM, Matrix point0Mat, 
+            Vector3 eyeVector, BoundingFrustumExtended frustum, GameTime gameTime)
         {
             if (effect != null && tempEffect == null)
             {
@@ -324,9 +320,13 @@ namespace TrashSoup.Engine
                 {
                     epDirLight0SpecularColor.SetValue(dirs[0].LightSpecularColor);
                 }
-                if(epDirLight0ShadowMap != null)
+                if (epDirLight0ShadowMap != null && dirs[0].ShadowMapRenderTarget2048 != null)
                 {
-                    epDirLight0ShadowMap.SetValue(dirs[0].ShadowMapRenderTarget1024);
+                    epDirLight0ShadowMap.SetValue(dirs[0].ShadowMapRenderTarget2048);
+                }
+                if (epDirLight0WorldViewProj != null && dirs[0].ShadowDrawCamera != null)
+                {
+                    epDirLight0WorldViewProj.SetValue(world * dirs[0].ShadowDrawCamera.ViewProjMatrix);
                 }
             }
 
@@ -344,10 +344,6 @@ namespace TrashSoup.Engine
                 {
                     epDirLight1SpecularColor.SetValue(dirs[1].LightSpecularColor);
                 }
-                if (dirs[1].CastShadows && epDirLight1ShadowMap != null)
-                {
-                    epDirLight0ShadowMap.SetValue(dirs[1].ShadowMapRenderTarget1024);
-                }
             }
 
             if (dirs[2] != null)
@@ -363,10 +359,6 @@ namespace TrashSoup.Engine
                 if (epDirLight2SpecularColor != null)
                 {
                     epDirLight2SpecularColor.SetValue(dirs[2].LightSpecularColor);
-                }
-                if (dirs[2].CastShadows && epDirLight2ShadowMap != null)
-                {
-                    epDirLight0ShadowMap.SetValue(dirs[2].ShadowMapRenderTarget1024);
                 }
             }
 
@@ -404,6 +396,14 @@ namespace TrashSoup.Engine
                 if (epPointLightCount != null)
                 {
                     epPointLightCount.SetValue(pointCount);
+                }
+                if (epDirLight0ShadowMap != null && point0SM != null)
+                {
+                    epPoint0ShadowMap.SetValue(point0SM);
+                }
+                if (epDirLight0WorldViewProj != null)
+                {
+                    epPoint0WorldViewProj.SetValue(world * point0Mat);
                 }
             }
 
@@ -507,11 +507,9 @@ namespace TrashSoup.Engine
             epDirLight1Direction = null;
             epDirLight1DiffuseColor = null;
             epDirLight1SpecularColor = null;
-            epDirLight1ShadowMap = null;
             epDirLight2Direction = null;
             epDirLight2DiffuseColor = null;
             epDirLight2SpecularColor = null;
-            epDirLight2ShadowMap = null;
 
             epPointLightDiffuseColors = null;
             epPointLightSpecularColors = null;
@@ -544,19 +542,20 @@ namespace TrashSoup.Engine
             int l0dif = ("DirLight0DiffuseColor").GetHashCode();
             int l0spec = ("DirLight0SpecularColor").GetHashCode();
             int l0sm = ("DirLight0ShadowMap").GetHashCode();
+            int l0WVP = ("DirLight0WorldViewProj").GetHashCode();
             int l1dir = ("DirLight1Direction").GetHashCode();
             int l1dif = ("DirLight1DiffuseColor").GetHashCode();
             int l1spec = ("DirLight1SpecularColor").GetHashCode();
-            int l1sm = ("DirLight1ShadowMap").GetHashCode();
             int l2dir = ("DirLight2Direction").GetHashCode();
             int l2dif = ("DirLight2DiffuseColor").GetHashCode();
-            int l2sm = ("DirLight2ShadowMap").GetHashCode();
             int l2spec = ("DirLight2SpecularColor").GetHashCode();
             int pDiffs = ("PointLightDiffuseColors").GetHashCode();
             int pSpecs = ("PointLightSpecularColors").GetHashCode();
             int pPos = ("PointLightPositions").GetHashCode();
             int pAtts = ("PointLightAttenuations").GetHashCode();
             int pCnt = ("PointLightCount").GetHashCode();
+            int p0sm = ("Point0ShadowMap").GetHashCode();
+            int p0WVP = ("Point0WorldViewProj").GetHashCode();
             int eyeP = ("EyePosition").GetHashCode();
             int bs = ("BoundingFrustum").GetHashCode();
             int cCP = ("CustomClippingPlane").GetHashCode();
@@ -641,6 +640,10 @@ namespace TrashSoup.Engine
                 {
                     epDirLight0ShadowMap = p;
                 }
+                else if (pNameHash == l0WVP)
+                {
+                    epDirLight0WorldViewProj = p;
+                }
                 else if (pNameHash == l1dir)
                 {
                     epDirLight1Direction = p;
@@ -653,10 +656,6 @@ namespace TrashSoup.Engine
                 {
                     epDirLight1SpecularColor = p;
                 }
-                else if (pNameHash == l1sm)
-                {
-                    epDirLight1ShadowMap = p;
-                }
                 else if (pNameHash == l2dir)
                 {
                     epDirLight2Direction = p;
@@ -668,10 +667,6 @@ namespace TrashSoup.Engine
                 else if (pNameHash == l2spec)
                 {
                     epDirLight2SpecularColor = p;
-                }
-                else if (pNameHash == l2sm)
-                {
-                    epDirLight2ShadowMap = p;
                 }
                 else if (pNameHash == pDiffs)
                 {
@@ -692,6 +687,14 @@ namespace TrashSoup.Engine
                 else if (pNameHash == pCnt)
                 {
                     epPointLightCount = p;
+                }
+                else if (pNameHash == p0sm)
+                {
+                    epPoint0ShadowMap = p;
+                }
+                else if (pNameHash == p0WVP)
+                {
+                    epPoint0WorldViewProj = p;
                 }
                 else if (pNameHash == eyeP)
                 {

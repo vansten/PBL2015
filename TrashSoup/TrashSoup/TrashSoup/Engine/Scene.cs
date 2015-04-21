@@ -170,16 +170,12 @@ namespace TrashSoup.Engine
         {
             if(ifGenerateShadowMaps)
             {
-                // first create shadow maps for every light, will do that in graph as well
-                for (int i = 0; i < ResourceManager.DIRECTIONAL_MAX_LIGHTS; ++i)
-                {
-                    if (DirectionalLights[i] != null)
-                        DirectionalLights[i].GenerateShadowMap();
-                }
+                if (DirectionalLights[0] != null && DirectionalLights[0].CastShadows)
+                    DirectionalLights[0].GenerateShadowMap();
 
-                foreach (LightPoint point in PointLights)
+                if(PointLights.Count > 0 && PointLights[0].CastShadows)
                 {
-                    // point.GenerateShadowMap();
+                    PointLights[0].GenerateShadowMap();
                 }
             }
             
@@ -250,6 +246,30 @@ namespace TrashSoup.Engine
         public uint GetPointLightCount()
         {
             return (PointLights.Count > 10 ? 10 : (uint)PointLights.Count);
+        }
+
+        public TextureCube GetPointLight0ShadowMap()
+        {
+            if(PointLights.Count > 0)
+            {
+                if(PointLights[0] != null && PointLights[0].CastShadows)
+                {
+                    return PointLights[0].ShadowMapRenderTarget512;
+                }
+            }
+            return null;
+        }
+
+        public Matrix GetPointLight0ViewProj()
+        {
+            if (PointLights.Count > 0)
+            {
+                if (PointLights[0] != null && PointLights[0].ShadowDrawCamera != null)
+                {
+                    return PointLights[0].ShadowDrawCamera.ViewProjMatrix;
+                }
+            }
+            return Matrix.Identity;
         }
 
         public System.Xml.Schema.XmlSchema GetSchema()

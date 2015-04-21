@@ -91,6 +91,15 @@ namespace TrashSoup.Engine
                     Matrix[] bones = null;
                     if (MyObject.MyAnimator != null) bones = MyObject.MyAnimator.GetSkinTransforms();
 
+                    if(bones != null && effect != null)
+                    {
+                        effect.CurrentTechnique = effect.Techniques["Skinned"];
+                    }
+                    else if(effect != null)
+                    {
+                        effect.CurrentTechnique = effect.Techniques["Main"];
+                    }
+
                     int ctr = 0;
                     foreach (ModelMesh mm in mod.Meshes)
                     {
@@ -107,6 +116,8 @@ namespace TrashSoup.Engine
                                  ResourceManager.Instance.CurrentScene.GetPointLightAttenuations(),
                                  ResourceManager.Instance.CurrentScene.GetPointLightPositions(),
                                  ResourceManager.Instance.CurrentScene.GetPointLightCount(),
+                                 ResourceManager.Instance.CurrentScene.GetPointLight0ShadowMap(),
+                                 ResourceManager.Instance.CurrentScene.GetPointLight0ViewProj(),
                                  camera.Position + camera.Translation,
                                  camera.Bounds,
                                  gameTime);

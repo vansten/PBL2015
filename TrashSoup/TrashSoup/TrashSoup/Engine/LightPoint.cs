@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,13 @@ namespace TrashSoup.Engine
 {
     public class LightPoint : GameObject, IXmlSerializable
     {
+        #region constants
+
+        const float POINT_CAM_NEAR_PLANE = 1.0f;
+        const float POINT_CAM_FAR_PLANE = 50.0f;
+
+        #endregion
+
         #region variables
 
         protected float attenuation;
@@ -36,6 +44,8 @@ namespace TrashSoup.Engine
             }
         }
         public bool CastShadows { get; set; }
+        public RenderTargetCube ShadowMapRenderTarget512 { get; set; }
+        public Camera ShadowDrawCamera { get; set; }
 
         #endregion
 
@@ -66,6 +76,27 @@ namespace TrashSoup.Engine
             {
                 Debug.Log("LightPoint: No Transfrom attached");
             }
+        }
+
+        public void CreateCameraAndRenderTarget()
+        {
+            this.ShadowDrawCamera = new Camera(0, "", new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f),
+                MathHelper.PiOver2, 1.0f, POINT_CAM_NEAR_PLANE, POINT_CAM_FAR_PLANE);
+
+            this.ShadowMapRenderTarget512 = new RenderTargetCube(
+                        TrashSoupGame.Instance.GraphicsDevice,
+                        512,
+                        false,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
+                        RenderTargetUsage.DiscardContents
+                        );
+        }
+
+        public void GenerateShadowMap()
+        {
+            // TBA
         }
 
         public System.Xml.Schema.XmlSchema GetSchema() { return null; }

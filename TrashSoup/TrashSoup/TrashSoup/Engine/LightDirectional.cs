@@ -28,7 +28,7 @@ namespace TrashSoup.Engine
 
         #region properties
 
-        public RenderTarget2D ShadowMapRenderTarget1024 { get; set; }
+        public RenderTarget2D ShadowMapRenderTarget2048 { get; set; }
 
         public Vector3 LightColor { get; set; }
         public Vector3 LightSpecularColor { get; set; }
@@ -48,13 +48,6 @@ namespace TrashSoup.Engine
         {
             get
             {
-                Camera cam = ResourceManager.Instance.CurrentScene.Cam;
-                if(cam != null)
-                {
-                    shadowDrawCamera.Position = DIRECTIONAL_DISTANCE * new Vector3(-LightDirection.X, -LightDirection.Y, -LightDirection.Z) + (cam.Position + cam.Translation);
-                    shadowDrawCamera.Target = cam.Target + cam.Translation;
-                    shadowDrawCamera.Update(null);
-                }
                 return shadowDrawCamera;
             }
             private set
@@ -84,10 +77,10 @@ namespace TrashSoup.Engine
             this.ShadowDrawCamera = new Camera(0, "", new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f),
                 MathHelper.PiOver2, 1.0f, DIRECTIONAL_CAM_NEAR_PLANE, DIRECTIONAL_CAM_FAR_PLANE);
 
-            this.ShadowMapRenderTarget1024 = new RenderTarget2D(
+            this.ShadowMapRenderTarget2048 = new RenderTarget2D(
                         TrashSoupGame.Instance.GraphicsDevice,
-                        1024,
-                        1024,
+                        2048,
+                        2048,
                         false,
                         TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
                         TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
@@ -103,12 +96,16 @@ namespace TrashSoup.Engine
                 return;
             }
 
-            Camera cam = this.ShadowDrawCamera;
-            Effect ef = ResourceManager.Instance.Effects[@"Effects\ShadowMapEffect"];
+            Camera cam = ResourceManager.Instance.CurrentScene.Cam;
+                shadowDrawCamera.Position = DIRECTIONAL_DISTANCE * new Vector3(-LightDirection.X, -LightDirection.Y, -LightDirection.Z) + (cam.Position + cam.Translation);
+                shadowDrawCamera.Target = cam.Target + cam.Translation;
+                shadowDrawCamera.Update(null);
 
-            TrashSoupGame.Instance.ActualRenderTarget = ShadowMapRenderTarget1024;
+            TrashSoupGame.Instance.ActualRenderTarget = ShadowMapRenderTarget2048;
             TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
-            ResourceManager.Instance.CurrentScene.DrawAll(cam, ef, TrashSoupGame.Instance.TempGameTime, false);
+
+            ResourceManager.Instance.CurrentScene.DrawAll(this.ShadowDrawCamera, ResourceManager.Instance.Effects[@"Effects\ShadowMapEffect"], TrashSoupGame.Instance.TempGameTime, false);
+
             TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
 
             //System.IO.FileStream stream = new System.IO.FileStream("Dupa.jpg", System.IO.FileMode.Create);
