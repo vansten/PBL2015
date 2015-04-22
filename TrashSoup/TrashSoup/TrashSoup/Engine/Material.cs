@@ -209,6 +209,8 @@ namespace TrashSoup.Engine
             }
         }
 
+        public bool RecieveShadows { get; set; }
+
         public Effect MyEffect { get; set; }
 
         #endregion
@@ -239,6 +241,7 @@ namespace TrashSoup.Engine
             this.ReflectivityBias = 0.2f;
             this.Transparency = 1.0f;
             this.perPixelLighting = false;
+            this.RecieveShadows = false;
             this.tempFrustumArray = new Vector4[4];
 
             AssignParamsInitialize();
@@ -467,11 +470,11 @@ namespace TrashSoup.Engine
 
             if(tempBEref == null && tempSEref == null)
             {
-                if (bones != null && ((dirs[0] != null && dirs[0].CastShadows) || (point0SM != null)) && etSkinnedShadows != null)
+                if (bones != null && ((dirs[0] != null && dirs[0].CastShadows) || (point0SM != null)) && etSkinnedShadows != null && RecieveShadows)
                 {
                     MyEffect.CurrentTechnique = etSkinnedShadows;
                 }
-                else if (bones == null && ((dirs[0] != null && dirs[0].CastShadows) || (point0SM != null)) && etMainShadows != null)
+                else if (bones == null && ((dirs[0] != null && dirs[0].CastShadows) || (point0SM != null)) && etMainShadows != null && RecieveShadows)
                 {
                     MyEffect.CurrentTechnique = etMainShadows;
                 }

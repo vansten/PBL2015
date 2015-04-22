@@ -121,6 +121,7 @@ namespace TrashSoup.Engine
             Material testTerMat = new Material("testTerMat", this.Effects[@"Effects\DefaultEffect"], Textures[@"Textures\Test\metal01_d"]);
             testTerMat.SpecularColor = new Vector3(0.1f, 0.1f, 0.0f);
             testTerMat.Glossiness = 10.0f;
+            testTerMat.RecieveShadows = true;
             if(!this.Materials.ContainsKey(testTerMat.Name))
             {
                 this.Materials.Add(testTerMat.Name, testTerMat);
