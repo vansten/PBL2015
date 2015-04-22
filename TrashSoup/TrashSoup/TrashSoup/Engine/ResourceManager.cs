@@ -69,7 +69,7 @@ namespace TrashSoup.Engine
 
             // loading materials
             List<Material> testPlayerMats = new List<Material>();
-            Material testPlayerMat = new Material("testPlayerMat", this.Effects[@"Effects\DefaultEffect"], Textures[@"Textures\Test\cargo"]);
+            Material testPlayerMat = new Material("testPlayerMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Test\cargo"]);
             testPlayerMats.Add(testPlayerMat);
             testPlayerMat.NormalMap = Textures[@"Textures\Test\cargo_NRM"];
             testPlayerMat.Glossiness = 40.0f;

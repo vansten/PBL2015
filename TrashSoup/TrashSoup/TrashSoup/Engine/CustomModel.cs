@@ -111,8 +111,8 @@ namespace TrashSoup.Engine
                                  ResourceManager.Instance.CurrentScene.GetPointLight0ViewProj(),
                                  camera.Position + camera.Translation,
                                  camera.Bounds,
+                                 bones,
                                  gameTime);
-                            this.Mat[ctr].SetEffectBones(effect, bones);
                             mm.MeshParts[i].Effect = this.Mat[ctr].MyEffect;
                             this.Mat[ctr].FlushMaterialEffect();
                             ++ctr;

@@ -102,14 +102,8 @@ namespace TrashSoup.Engine
 
         public override void UpdateEffect(Effect effect, Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
             Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, TextureCube point0SM, Matrix point0Mat, Vector3 eyeVector, BoundingFrustumExtended frustum,
-            GameTime gameTime)
+            Matrix[] bones, GameTime gameTime)
         {
-            if (effect != null && tempEffect == null)
-            {
-                tempEffect = MyEffect;
-                MyEffect = effect;
-            }
-
             if (epReflectionMap != null)
             {
                 epReflectionMap.SetValue(ResourceManager.Instance.Textures["DefaultDiffuse"]);
@@ -119,7 +113,7 @@ namespace TrashSoup.Engine
                 epRefractionMap.SetValue(ResourceManager.Instance.Textures["DefaultDiffuse"]);
             }
 
-            if (!isRendering && TrashSoupGame.Instance.ActualRenderTarget == TrashSoupGame.Instance.DefaultRenderTarget)
+            if (!isRendering && TrashSoupGame.Instance.ActualRenderTarget == TrashSoupGame.Instance.DefaultRenderTarget && effect == null)
             {
                 isRendering = true;
 
@@ -137,7 +131,7 @@ namespace TrashSoup.Engine
                 isRendering = false;
             }
 
-            base.UpdateEffect(effect, world, worldViewProj, amb, dirs, pointColors, pointSpeculars, pointAttenuations, pointPositions, pointCount, point0SM, point0Mat, eyeVector, frustum, gameTime);
+            base.UpdateEffect(effect, world, worldViewProj, amb, dirs, pointColors, pointSpeculars, pointAttenuations, pointPositions, pointCount, point0SM, point0Mat, eyeVector, frustum, bones, gameTime);
         }
 
         protected Vector4 CreatePlane(Matrix wm, bool clipSide)

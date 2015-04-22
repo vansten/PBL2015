@@ -19,7 +19,9 @@ namespace TrashSoup.Engine
         #region effectTechniques
 
         EffectTechnique etMain;
+        EffectTechnique etMainShadows;
         EffectTechnique etSkinned;
+        EffectTechnique etSkinnedShadows;
 
         #endregion
 
@@ -250,7 +252,7 @@ namespace TrashSoup.Engine
 
         public virtual void UpdateEffect(Effect effect, Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
             Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, TextureCube point0SM, Matrix point0Mat, 
-            Vector3 eyeVector, BoundingFrustumExtended frustum, GameTime gameTime)
+            Vector3 eyeVector, BoundingFrustumExtended frustum, Matrix[] bones, GameTime gameTime)
         {
             if (effect != null && tempEffect == null)
             {
@@ -455,6 +457,36 @@ namespace TrashSoup.Engine
                 epCustomClippingPlane.SetValue(additionalClipPlane);
             }
 
+            if (epBones != null && bones != null)
+            {
+                epBones.SetValue(bones);
+                this.MyEffect.CurrentTechnique = etSkinned;
+            }
+
+            // setting up techniques
+
+            if(tempBEref == null && tempSEref == null)
+            {
+                if (bones != null && ((dirs[0] != null && dirs[0].CastShadows) || (point0SM != null)) && etSkinnedShadows != null)
+                {
+                    MyEffect.CurrentTechnique = etSkinnedShadows;
+                }
+                else if (bones == null && ((dirs[0] != null && dirs[0].CastShadows) || (point0SM != null)) && etMainShadows != null)
+                {
+                    MyEffect.CurrentTechnique = etMainShadows;
+                }
+                else if ((bones != null || ((dirs[0] == null || !dirs[0].CastShadows) && (point0SM == null))) && etSkinned != null)
+                {
+                    MyEffect.CurrentTechnique = etSkinned;
+                }
+                else
+                {
+                    MyEffect.CurrentTechnique = etMain;
+                }
+            }
+
+            //////////////////////
+
             //////////////////////
 
             if (tempBEref != null)
@@ -466,19 +498,6 @@ namespace TrashSoup.Engine
             {
                 // do shit for skinnedEffect
                 tempSEref.PreferPerPixelLighting = perPixelLighting;
-            }
-        }
-
-        public void SetEffectBones(Effect effect, Matrix[] bones)
-        {
-            if(epBones != null && etSkinned != null && bones != null)
-            {
-                epBones.SetValue(bones);
-                this.MyEffect.CurrentTechnique = etSkinned;
-            }
-            else
-            {
-                this.MyEffect.CurrentTechnique = etMain;
             }
         }
 
@@ -498,6 +517,8 @@ namespace TrashSoup.Engine
 
             etMain = null;
             etSkinned = null;
+            etMainShadows = null;
+            etSkinnedShadows = null;
 
             epWorld = null;
             epWorldInverseTranspose = null;
@@ -584,6 +605,13 @@ namespace TrashSoup.Engine
             {
                 etMain = MyEffect.Techniques["Main"];
                 etSkinned = MyEffect.Techniques["Skinned"];
+            }
+            else if (MyEffect.Techniques.Count == 4)
+            {
+                etMain = MyEffect.Techniques["Main"];
+                etSkinned = MyEffect.Techniques["Skinned"];
+                etMainShadows = MyEffect.Techniques["MainShadows"];
+                etSkinnedShadows = MyEffect.Techniques["SkinnedShadows"];
             }
 
             foreach (EffectParameter p in MyEffect.Parameters)
