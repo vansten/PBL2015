@@ -1,6 +1,8 @@
 #define POINT_MAX_LIGHTS_PER_OBJECT 10
 #define MINIMUM_LENGTH_VALUE 0.00000000001f
 #define ATTENUATION_MULTIPLIER 8
+#define SKINNED_EFFECT_MAX_BONES 72
+#define WEIGHTS_PER_VERTEX 4
 
 float4x4 World;
 float4x4 WorldViewProj;
@@ -36,6 +38,8 @@ float3 PointLightPositions[POINT_MAX_LIGHTS_PER_OBJECT];
 float3 PointLightSpecularColors[POINT_MAX_LIGHTS_PER_OBJECT];
 float PointLightAttenuations[POINT_MAX_LIGHTS_PER_OBJECT];
 uint PointLightCount;
+
+float4x3 Bones[SKINNED_EFFECT_MAX_BONES];
 
 float4x4 Point0WorldViewProj;
 textureCUBE Point0ShadowMap;
@@ -125,6 +129,7 @@ ColorPair ComputeLight(float3 posWS, float3 E, float3 N, float4 dirPos, float4 p
 	[branch]
 	if ((saturate(projectedDLScoords.x) == projectedDLScoords.x) && (saturate(projectedDLScoords.y) == projectedDLScoords.y))
 	{
+		[branch]
 		if ((dist - 0.005f) <= depth || depth <= 0.0001f)
 		{
 			// DirLight0
@@ -233,4 +238,63 @@ technique Main
         VertexShader = compile vs_3_0 VertexShaderFunction();
         PixelShader = compile ps_3_0 PixelShaderFunction();
     }
+}
+
+struct VertexShaderInputSkinned
+{
+	float4 Position : POSITION0;
+	float2 TexCoord : TEXCOORD0;
+	float3 Normal : NORMAL;
+	int4 Indices : BLENDINDICES0;
+	float4 Weights : BLENDWEIGHT0;
+};
+
+inline void Skin(inout VertexShaderInputSkinned input)
+{
+	float4x3 skinning = 0;
+
+		[unroll]
+	for (int i = 0; i < WEIGHTS_PER_VERTEX; ++i)
+	{
+		skinning += Bones[input.Indices[i]] * input.Weights[i];
+	}
+
+	input.Position.xyz = mul(input.Position, skinning);
+	input.Normal = mul(input.Normal, (float3x3)skinning);
+}
+
+VertexShaderOutput VertexShaderFunctionSkinned(VertexShaderInputSkinned input)
+{
+	VertexShaderOutput output;
+
+	Skin(input);
+
+	output.Position = mul(input.Position, WorldViewProj);
+
+	output.PositionWS = mul(input.Position, World);
+
+	output.TexCoord = input.TexCoord;
+
+	output.Normal = normalize(mul(input.Normal, WorldInverseTranspose));
+
+	output.ClipPlanes.x = dot(output.PositionWS, BoundingFrustum[0]);
+	output.ClipPlanes.y = dot(output.PositionWS, BoundingFrustum[1]);
+	output.ClipPlanes.z = dot(output.PositionWS, BoundingFrustum[2]);
+	output.ClipPlanes.w = dot(output.PositionWS, BoundingFrustum[3]);
+	output.CustomClipPlane = dot(output.PositionWS, CustomClippingPlane);
+
+	output.PositionDLS = mul(input.Position, DirLight0WorldViewProj);
+	output.PositionPLS = mul(input.Position, Point0WorldViewProj);
+
+	return output;
+}
+
+
+technique Skinned
+{
+	pass Pass1
+	{
+		VertexShader = compile vs_3_0 VertexShaderFunctionSkinned();
+		PixelShader = compile ps_3_0 PixelShaderFunction();
+	}
 }

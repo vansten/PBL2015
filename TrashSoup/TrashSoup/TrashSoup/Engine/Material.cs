@@ -16,6 +16,13 @@ namespace TrashSoup.Engine
 
         #endregion
 
+        #region effectTechniques
+
+        EffectTechnique etMain;
+        EffectTechnique etSkinned;
+
+        #endregion
+
         #region effectParameters
 
         protected EffectParameter epWorld;
@@ -464,10 +471,15 @@ namespace TrashSoup.Engine
 
         public void SetEffectBones(Effect effect, Matrix[] bones)
         {
-            if(epBones != null)
+            if(epBones != null && etSkinned != null && bones != null)
             {
                 epBones.SetValue(bones);
-            }           
+                this.MyEffect.CurrentTechnique = etSkinned;
+            }
+            else
+            {
+                this.MyEffect.CurrentTechnique = etMain;
+            }
         }
 
         public void FlushMaterialEffect()
@@ -483,6 +495,9 @@ namespace TrashSoup.Engine
         protected virtual void AssignParamsInitialize()
         {
             if (MyEffect == null) throw new NullReferenceException("MyEffect iz null and you tryin' to extract params from it, nigga?");
+
+            etMain = null;
+            etSkinned = null;
 
             epWorld = null;
             epWorldInverseTranspose = null;
@@ -559,6 +574,17 @@ namespace TrashSoup.Engine
             int eyeP = ("EyePosition").GetHashCode();
             int bs = ("BoundingFrustum").GetHashCode();
             int cCP = ("CustomClippingPlane").GetHashCode();
+
+            if(MyEffect.Techniques.Count == 1)
+            {
+                etMain = MyEffect.Techniques["Main"];
+                etSkinned = null;
+            }
+            else if (MyEffect.Techniques.Count == 2)
+            {
+                etMain = MyEffect.Techniques["Main"];
+                etSkinned = MyEffect.Techniques["Skinned"];
+            }
 
             foreach (EffectParameter p in MyEffect.Parameters)
             {

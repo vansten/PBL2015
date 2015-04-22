@@ -115,7 +115,7 @@ namespace TrashSoup.Engine
                 this.Materials.Add(testWaterMat.Name, testWaterMat);
             }
 
-            List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"], this.Effects[@"Effects\NormalSkinnedEffect"]);
+            List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"], this.Effects[@"Effects\NormalEffect"]);
 
             List<Material> testTerMats = new List<Material>();
             Material testTerMat = new Material("testTerMat", this.Effects[@"Effects\DefaultEffect"], Textures[@"Textures\Test\metal01_d"]);
@@ -353,13 +353,13 @@ namespace TrashSoup.Engine
         public Effect LoadEffect(string effectPath)
         {
             Effect output = null;
-            if (Effects.TryGetValue(effectPath, out output))
-                Debug.Log("Effect successfully loaded - " + effectPath);
-            else
+            if (!Effects.TryGetValue(effectPath, out output))
+                //Debug.Log("Effect successfully loaded - " + effectPath);
+            //else
             {
                 output = TrashSoupGame.Instance.Content.Load<Effect>(effectPath);
                 Effects.Add(effectPath, output);
-                Debug.Log("New effect successfully loaded - " + effectPath);
+                //Debug.Log("New effect successfully loaded - " + effectPath);
             }
             return output;
         }
@@ -418,12 +418,6 @@ namespace TrashSoup.Engine
         /// <param name="game"></param>
         private void LoadEffects(Game game)
         {
-            //Effects.Add(game.Content.Load<Effect>(@"Effects\Particle"));
-            //Effects.ElementAt(0).CurrentTechnique = Effects.ElementAt(0).Techniques["Technique1"];
-            //Effects.ElementAt(0).Parameters["theTexture"].SetValue(Textures[@"Textures\ParticleTest\Particle"]);
-
-            //Effects.Add(game.Content.Load<Effect>(@"Effects\Billboard"));
-            //Effects.ElementAt(1).CurrentTechnique = Effects.ElementAt(1).Techniques["Technique1"];
             if(!Effects.ContainsKey("BasicEffect"))
             {
                 Effects.Add("BasicEffect", new BasicEffect(TrashSoupGame.Instance.GraphicsDevice));
@@ -436,10 +430,6 @@ namespace TrashSoup.Engine
             string path = @"Effects\DefaultEffect";
             LoadEffect(path);
             path = @"Effects\NormalEffect";
-            LoadEffect(path);
-            path = @"Effects\DefaultSkinnedEffect";
-            LoadEffect(path);
-            path = @"Effects\NormalSkinnedEffect";
             LoadEffect(path);
             path = @"Effects\SkyboxEffect";
             LoadEffect(path);

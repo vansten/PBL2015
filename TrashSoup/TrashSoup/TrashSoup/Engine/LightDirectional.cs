@@ -16,7 +16,7 @@ namespace TrashSoup.Engine
         const float DIRECTIONAL_DISTANCE = 20.0f;
         const float DIRECTIONAL_CAM_NEAR_PLANE = 0.2f;
         const float DIRECTIONAL_CAM_FAR_PLANE = 50.0f;
-        const float DIRECTIONAL_SHADOW_RANGE = 20.0f;
+        const float DIRECTIONAL_SHADOW_RANGE = 15.0f;
         const int DIRECTIONAL_SHADOW_MAP_SIZE = 2048;
 
         #endregion

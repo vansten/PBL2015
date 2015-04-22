@@ -91,15 +91,6 @@ namespace TrashSoup.Engine
                     Matrix[] bones = null;
                     if (MyObject.MyAnimator != null) bones = MyObject.MyAnimator.GetSkinTransforms();
 
-                    if(bones != null && effect != null)
-                    {
-                        effect.CurrentTechnique = effect.Techniques["Skinned"];
-                    }
-                    else if(effect != null)
-                    {
-                        effect.CurrentTechnique = effect.Techniques["Main"];
-                    }
-
                     int ctr = 0;
                     foreach (ModelMesh mm in mod.Meshes)
                     {
@@ -121,8 +112,8 @@ namespace TrashSoup.Engine
                                  camera.Position + camera.Translation,
                                  camera.Bounds,
                                  gameTime);
+                            this.Mat[ctr].SetEffectBones(effect, bones);
                             mm.MeshParts[i].Effect = this.Mat[ctr].MyEffect;
-                            if (bones != null) this.Mat[ctr].SetEffectBones(effect, bones);
                             this.Mat[ctr].FlushMaterialEffect();
                             ++ctr;
                         }

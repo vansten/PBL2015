@@ -175,20 +175,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Effects\DefaultSkinnedEffect.fx">
-      <Name>DefaultSkinnedEffect</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Effects\NormalSkinnedEffect.fx">
-      <Name>NormalSkinnedEffect</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Textures\Test\TheGuy\GC_Clothes_COL_2kNEW.tga">
       <Name>GC_Clothes_COL_2kNEW</Name>
       <Importer>TextureImporter</Importer>
