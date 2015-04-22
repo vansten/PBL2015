@@ -65,7 +65,22 @@ namespace TrashSoup.Engine
         public LightDirectional(uint uniqueID, string name)
             : base(uniqueID, name)
         {
+            this.ShadowDrawCamera = new Camera(0, "", new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f),
+            MathHelper.PiOver2, 1.0f, DIRECTIONAL_CAM_NEAR_PLANE, DIRECTIONAL_CAM_FAR_PLANE);
+            this.ShadowDrawCamera.OrthoWidth = DIRECTIONAL_SHADOW_MAP_SIZE / 1000 * DIRECTIONAL_DISTANCE;
+            this.ShadowDrawCamera.OrthoHeight = DIRECTIONAL_SHADOW_MAP_SIZE / 1000 * DIRECTIONAL_DISTANCE;
+            this.ShadowDrawCamera.Ortho = true;
 
+            this.ShadowMapRenderTarget2048 = new RenderTarget2D(
+                        TrashSoupGame.Instance.GraphicsDevice,
+                        DIRECTIONAL_SHADOW_MAP_SIZE,
+                        DIRECTIONAL_SHADOW_MAP_SIZE,
+                        false,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
+                        RenderTargetUsage.DiscardContents
+                        );
         }
 
         public LightDirectional(uint uniqueID, string name, Vector3 color, Vector3 specular, Vector3 direction, bool castShadows)
@@ -130,6 +145,7 @@ namespace TrashSoup.Engine
         {
             reader.MoveToContent();
             //reader.ReadStartElement();
+            CastShadows = reader.ReadElementContentAsBoolean("CastShadows", "");
 
             reader.ReadStartElement("LightColor");
             LightColor = new Vector3(reader.ReadElementContentAsFloat("X", ""),
@@ -154,6 +170,8 @@ namespace TrashSoup.Engine
 
         void IXmlSerializable.WriteXml(System.Xml.XmlWriter writer)
         {
+            writer.WriteElementString("CastShadows", XmlConvert.ToString(CastShadows));
+
             writer.WriteStartElement("LightColor");
             writer.WriteElementString("X", XmlConvert.ToString(LightColor.X));
             writer.WriteElementString("Y", XmlConvert.ToString(LightColor.Y));

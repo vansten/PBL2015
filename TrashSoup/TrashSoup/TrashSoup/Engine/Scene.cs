@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
+using System.Xml;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -43,6 +44,14 @@ namespace TrashSoup.Engine
             this.UniqueID = (uint)reader.ReadElementContentAsInt("UniqueID", "");
             this.Name = reader.ReadElementString("Name", "");
 
+            if(reader.Name == "Wind")
+            {
+                reader.ReadStartElement();
+                Wind = new Vector2(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""));
+                reader.ReadEndElement();
+            }
+
             reader.ReadEndElement();
         }
 
@@ -50,6 +59,11 @@ namespace TrashSoup.Engine
         {
             writer.WriteElementString("UniqueID", UniqueID.ToString());
             writer.WriteElementString("Name", Name);
+
+            writer.WriteStartElement("Wind");
+            writer.WriteElementString("X", XmlConvert.ToString(Wind.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(Wind.Y));
+            writer.WriteEndElement();
         }
         #endregion
     }
