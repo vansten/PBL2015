@@ -389,7 +389,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
 	nAdj.x = (nAdj.x * 2) - 1;
 	nAdj.y = (nAdj.y * 2) - 1;
-	nAdj.z = (nAdj.z * 2) - 1;
+	nAdj.z = (nAdj.z) - 1;
 
 	input.Normal = input.Normal + nAdj;
 	input.Normal = normalize(input.Normal);

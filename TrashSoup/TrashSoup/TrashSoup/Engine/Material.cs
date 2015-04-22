@@ -409,11 +409,11 @@ namespace TrashSoup.Engine
                 {
                     epPointLightCount.SetValue(pointCount);
                 }
-                if (epDirLight0ShadowMap != null && point0SM != null)
+                if (epPoint0ShadowMap != null && point0SM != null)
                 {
                     epPoint0ShadowMap.SetValue(point0SM);
                 }
-                if (epDirLight0WorldViewProj != null)
+                if (epPoint0WorldViewProj != null)
                 {
                     epPoint0WorldViewProj.SetValue(world * point0Mat);
                 }
@@ -468,13 +468,15 @@ namespace TrashSoup.Engine
 
             // setting up techniques
 
+            bool shadows = ResourceManager.Instance.CurrentScene.Params.Shadows;
+            bool softShadows = ResourceManager.Instance.CurrentScene.Params.SoftShadows;
             if(tempBEref == null && tempSEref == null)
             {
-                if (bones != null && ((dirs[0] != null && dirs[0].CastShadows) || (point0SM != null)) && etSkinnedShadows != null && RecieveShadows)
+                if (bones != null && ((dirs[0] != null && dirs[0].CastShadows) || (point0SM != null)) && etSkinnedShadows != null && RecieveShadows && shadows)
                 {
                     MyEffect.CurrentTechnique = etSkinnedShadows;
                 }
-                else if (bones == null && ((dirs[0] != null && dirs[0].CastShadows) || (point0SM != null)) && etMainShadows != null && RecieveShadows)
+                else if (bones == null && ((dirs[0] != null && dirs[0].CastShadows) || (point0SM != null)) && etMainShadows != null && RecieveShadows && shadows)
                 {
                     MyEffect.CurrentTechnique = etMainShadows;
                 }
@@ -599,23 +601,10 @@ namespace TrashSoup.Engine
             int bs = ("BoundingFrustum").GetHashCode();
             int cCP = ("CustomClippingPlane").GetHashCode();
 
-            if(MyEffect.Techniques.Count == 1)
-            {
-                etMain = MyEffect.Techniques["Main"];
-                etSkinned = null;
-            }
-            else if (MyEffect.Techniques.Count == 2)
-            {
-                etMain = MyEffect.Techniques["Main"];
-                etSkinned = MyEffect.Techniques["Skinned"];
-            }
-            else if (MyEffect.Techniques.Count == 4)
-            {
-                etMain = MyEffect.Techniques["Main"];
-                etSkinned = MyEffect.Techniques["Skinned"];
-                etMainShadows = MyEffect.Techniques["MainShadows"];
-                etSkinnedShadows = MyEffect.Techniques["SkinnedShadows"];
-            }
+            etMain = MyEffect.Techniques["Main"];
+            etSkinned = MyEffect.Techniques["Skinned"];
+            etMainShadows = MyEffect.Techniques["MainShadows"];
+            etSkinnedShadows = MyEffect.Techniques["SkinnedShadows"];
 
             foreach (EffectParameter p in MyEffect.Parameters)
             {

@@ -15,6 +15,10 @@ namespace TrashSoup.Engine
         public uint UniqueID { get; set; }
         public string Name { get; set; }
         public Vector2 Wind { get; set; }
+        public DateTime Time { get; set; }
+        public bool Shadows { get; set; }
+        public bool SoftShadows { get; set; }
+        public bool Bloom { get; set; }
         #endregion
 
         #region methods
@@ -24,10 +28,14 @@ namespace TrashSoup.Engine
             this.Name = name;
         }
 
-        public SceneParams(uint uniqueID, string name, Vector2 wind)
+        public SceneParams(uint uniqueID, string name, Vector2 wind, DateTime time, bool shadows, bool softShadows, bool bloom)
             : this(uniqueID, name)
         {
             this.Wind = wind;
+            this.Time = time;
+            this.Shadows = shadows;
+            this.SoftShadows = softShadows;
+            this.Bloom = bloom;
         }
 
         public System.Xml.Schema.XmlSchema GetSchema()
@@ -168,14 +176,14 @@ namespace TrashSoup.Engine
         // draws all gameobjects linearly
         public void DrawAll(Camera cam, Effect effect, GameTime gameTime, bool ifGenerateShadowMaps)
         {
-            if(ifGenerateShadowMaps)
+            if(ifGenerateShadowMaps && Params.Shadows)
             {
                 if (DirectionalLights[0] != null && DirectionalLights[0].CastShadows)
-                    DirectionalLights[0].GenerateShadowMap();
+                    DirectionalLights[0].GenerateShadowMap(Params.SoftShadows);
 
                 if(PointLights.Count > 0 && PointLights[0].CastShadows)
                 {
-                    PointLights[0].GenerateShadowMap();
+                    PointLights[0].GenerateShadowMap(Params.SoftShadows);
                 }
             }
             

@@ -193,7 +193,7 @@ namespace TrashSoup.Engine
             lp1.MyTransform = new Transform(lp1, new Vector3(-3.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
 
             // loading scene
-            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f)));
+            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), DateTime.Now, true, false, true));
 
             Camera cam = null;
 
@@ -441,6 +441,10 @@ namespace TrashSoup.Engine
             path = @"Effects\WaterEffect";
             LoadEffect(path);
             path = @"Effects\ShadowMapEffect";
+            LoadEffect(path);
+            path = @"Effects\ShadowMapBlurredEffect";
+            LoadEffect(path);
+            path = @"Effects\POSTBlurEffect";
             LoadEffect(path);
         }
 

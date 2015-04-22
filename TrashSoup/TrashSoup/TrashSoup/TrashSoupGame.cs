@@ -194,5 +194,10 @@ namespace TrashSoup
         {
             e.GraphicsDeviceInformation.PresentationParameters.RenderTargetUsage = RenderTargetUsage.PreserveContents;
         }
+
+        public SpriteBatch GetSpriteBatch()
+        {
+            return this.spriteBatch;
+        }
     }
 }
