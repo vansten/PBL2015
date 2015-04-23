@@ -74,6 +74,7 @@ namespace TrashSoup.Engine
             testPlayerMat.NormalMap = Textures[@"Textures\Test\cargo_NRM"];
             testPlayerMat.Glossiness = 40.0f;
             testPlayerMat.Transparency = 1.0f;
+            testPlayerMat.RecieveShadows = true;
             if(!this.Materials.ContainsKey(testPlayerMat.Name))
             {
                 this.Materials.Add(testPlayerMat.Name, testPlayerMat);
@@ -88,6 +89,7 @@ namespace TrashSoup.Engine
             testPlayerMat2.ReflectivityColor = new Vector3(1.0f, 0.0f, 1.0f);
             testPlayerMat2.ReflectivityBias = 0.7f;
             testPlayerMat2.Transparency = 1.0f;
+            testPlayerMat2.RecieveShadows = true;
             if(!this.Materials.ContainsKey(testPlayerMat2.Name))
             {
                 this.Materials.Add(testPlayerMat2.Name, testPlayerMat2);
@@ -169,7 +171,7 @@ namespace TrashSoup.Engine
             testBox2.MyCollider = new BoxCollider(testBox2);
 
             GameObject testBox3 = new GameObject(5, "testBox3");
-            testBox3.MyTransform = new Transform(testBox3, new Vector3(3.0f, 2.0f, 2.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.2f);
+            testBox3.MyTransform = new Transform(testBox3, new Vector3(3.0f, 2.0f, 2.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, MathHelper.Pi, 0.0f), 1.2f);
             testBox3.Components.Add(new CustomModel(testBox3, new Model[] { Models["Models/Test/TestSphere"], null, null }, 3, testPlayerMats2));
             testBox3.MyCollider = new BoxCollider(testBox3);
 
@@ -193,7 +195,7 @@ namespace TrashSoup.Engine
             lp1.MyTransform = new Transform(lp1, new Vector3(-3.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
 
             // loading scene
-            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), DateTime.Now, true, false, true));
+            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), DateTime.Now, true, true, true));
 
             Camera cam = null;
 

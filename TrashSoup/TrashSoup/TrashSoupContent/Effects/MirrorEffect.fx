@@ -90,7 +90,7 @@ inline void ComputeSingleLight(float3 L, float3 color, float3 specularColor, flo
 {
 	float3 H = normalize(normalize(E) + L);
 	float intensity = max(dot(L, N), 0.0f);
-	float3 specular = pow(max(0.0f, dot(H, N)), Glossiness) * length(specularColor);
+	float3 specular = pow(max(0.0000001f, dot(H, N)), Glossiness) * length(specularColor);
 
 	pair.Diffuse += intensity * color;
 	pair.Specular += specular * specularColor * pair.Diffuse;
