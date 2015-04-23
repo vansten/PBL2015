@@ -69,7 +69,7 @@ namespace TrashSoup.Engine
 
             // loading materials
             List<Material> testPlayerMats = new List<Material>();
-            Material testPlayerMat = new Material("testPlayerMat", this.Effects[@"Effects\DefaultEffect"], Textures[@"Textures\Test\cargo"]);
+            Material testPlayerMat = new Material("testPlayerMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Test\cargo"]);
             testPlayerMats.Add(testPlayerMat);
             testPlayerMat.NormalMap = Textures[@"Textures\Test\cargo_NRM"];
             testPlayerMat.Glossiness = 40.0f;
@@ -121,6 +121,7 @@ namespace TrashSoup.Engine
             Material testTerMat = new Material("testTerMat", this.Effects[@"Effects\DefaultEffect"], Textures[@"Textures\Test\metal01_d"]);
             testTerMat.SpecularColor = new Vector3(0.1f, 0.1f, 0.0f);
             testTerMat.Glossiness = 10.0f;
+            testTerMat.RecieveShadows = true;
             if(!this.Materials.ContainsKey(testTerMat.Name))
             {
                 this.Materials.Add(testTerMat.Name, testTerMat);
@@ -192,7 +193,7 @@ namespace TrashSoup.Engine
             lp1.MyTransform = new Transform(lp1, new Vector3(-3.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
 
             // loading scene
-            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f)));
+            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), DateTime.Now, true, false, true));
 
             Camera cam = null;
 
@@ -440,6 +441,10 @@ namespace TrashSoup.Engine
             path = @"Effects\WaterEffect";
             LoadEffect(path);
             path = @"Effects\ShadowMapEffect";
+            LoadEffect(path);
+            path = @"Effects\ShadowMapBlurredEffect";
+            LoadEffect(path);
+            path = @"Effects\POSTBlurEffect";
             LoadEffect(path);
         }
 

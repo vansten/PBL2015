@@ -25,6 +25,12 @@ namespace TrashSoup.Engine
 
         private Vector3 lightDirection;
         private Camera shadowDrawCamera;
+        private Effect myShadowEffect;
+        private Effect myShadowBlurredEffect;
+        private Effect myBlurEffect;
+
+        private RenderTarget2D blurredRenderTarget;
+        private RenderTarget2D tempRenderTarget;
 
         #endregion
 
@@ -65,7 +71,34 @@ namespace TrashSoup.Engine
         public LightDirectional(uint uniqueID, string name)
             : base(uniqueID, name)
         {
+            this.ShadowDrawCamera = new Camera(0, "", new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f),
+            MathHelper.PiOver2, 1.0f, DIRECTIONAL_CAM_NEAR_PLANE, DIRECTIONAL_CAM_FAR_PLANE);
+            this.ShadowDrawCamera.OrthoWidth = DIRECTIONAL_SHADOW_MAP_SIZE / 1000 * DIRECTIONAL_DISTANCE;
+            this.ShadowDrawCamera.OrthoHeight = DIRECTIONAL_SHADOW_MAP_SIZE / 1000 * DIRECTIONAL_DISTANCE;
+            this.ShadowDrawCamera.Ortho = true;
 
+            this.ShadowMapRenderTarget2048 = new RenderTarget2D(
+                        TrashSoupGame.Instance.GraphicsDevice,
+                        DIRECTIONAL_SHADOW_MAP_SIZE,
+                        DIRECTIONAL_SHADOW_MAP_SIZE,
+                        false,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
+                        RenderTargetUsage.DiscardContents
+                        );
+
+
+            this.blurredRenderTarget = new RenderTarget2D(
+                        TrashSoupGame.Instance.GraphicsDevice,
+                        TrashSoupGame.Instance.Window.ClientBounds.Width,
+                        TrashSoupGame.Instance.Window.ClientBounds.Height,
+                        true,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
+                        RenderTargetUsage.DiscardContents
+                        );
         }
 
         public LightDirectional(uint uniqueID, string name, Vector3 color, Vector3 specular, Vector3 direction, bool castShadows)
@@ -90,15 +123,37 @@ namespace TrashSoup.Engine
                         TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
                         TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
                         TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
+                        RenderTargetUsage.PreserveContents
+                        );
+
+            this.blurredRenderTarget = new RenderTarget2D(
+                        TrashSoupGame.Instance.GraphicsDevice,
+                        TrashSoupGame.Instance.Window.ClientBounds.Width,
+                        TrashSoupGame.Instance.Window.ClientBounds.Height,
+                        true,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
                         RenderTargetUsage.DiscardContents
                         );
+
+
+            myShadowEffect = ResourceManager.Instance.Effects[@"Effects\ShadowMapEffect"];
+            myShadowBlurredEffect = ResourceManager.Instance.Effects[@"Effects\ShadowMapBlurredEffect"];
+            myBlurEffect = ResourceManager.Instance.Effects[@"Effects\POSTBlurEffect"];
         }
 
-        public void GenerateShadowMap()
+        public void GenerateShadowMap(bool ifBlurred)
         {
             if (!this.CastShadows || TrashSoupGame.Instance.ActualRenderTarget != TrashSoupGame.Instance.DefaultRenderTarget)
             {
                 return;
+            }
+
+            if(tempRenderTarget != null)
+            {
+                ShadowMapRenderTarget2048 = tempRenderTarget;
+                tempRenderTarget = null;
             }
 
             // setting up camera properly
@@ -109,12 +164,25 @@ namespace TrashSoup.Engine
             shadowDrawCamera.Update(null);
             ///////////////
 
+
             TrashSoupGame.Instance.ActualRenderTarget = ShadowMapRenderTarget2048;
             TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
 
-            ResourceManager.Instance.CurrentScene.DrawAll(this.ShadowDrawCamera, ResourceManager.Instance.Effects[@"Effects\ShadowMapEffect"], TrashSoupGame.Instance.TempGameTime, false);
+            ResourceManager.Instance.CurrentScene.DrawAll(this.ShadowDrawCamera, this.myShadowEffect, TrashSoupGame.Instance.TempGameTime, false);
 
             TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
+            
+            if(ifBlurred)
+            {
+                TrashSoupGame.Instance.ActualRenderTarget = blurredRenderTarget;
+                TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
+                ResourceManager.Instance.CurrentScene.DrawAll(null, this.myShadowBlurredEffect, TrashSoupGame.Instance.TempGameTime, false);
+                TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
+
+                TrashSoupGame.Instance.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+                tempRenderTarget = ShadowMapRenderTarget2048;
+                ShadowMapRenderTarget2048 = blurredRenderTarget;
+            }
 
             //System.IO.FileStream stream = new System.IO.FileStream("Dupa.jpg", System.IO.FileMode.Create);
             //ShadowMapRenderTarget2048.SaveAsJpeg(stream, 1024, 1024);
@@ -130,6 +198,7 @@ namespace TrashSoup.Engine
         {
             reader.MoveToContent();
             //reader.ReadStartElement();
+            CastShadows = reader.ReadElementContentAsBoolean("CastShadows", "");
 
             reader.ReadStartElement("LightColor");
             LightColor = new Vector3(reader.ReadElementContentAsFloat("X", ""),
@@ -149,11 +218,17 @@ namespace TrashSoup.Engine
                 reader.ReadElementContentAsFloat("Z", ""));
             reader.ReadEndElement();
 
+            myShadowEffect = ResourceManager.Instance.LoadEffect(@"Effects\ShadowMapEffect");
+            myShadowBlurredEffect = ResourceManager.Instance.LoadEffect(@"Effects\ShadowMapBlurredEffect");
+            myBlurEffect = ResourceManager.Instance.LoadEffect(@"Effects\POSTBlurEffect");
+
             base.ReadXml(reader);
         }
 
         void IXmlSerializable.WriteXml(System.Xml.XmlWriter writer)
         {
+            writer.WriteElementString("CastShadows", XmlConvert.ToString(CastShadows));
+
             writer.WriteStartElement("LightColor");
             writer.WriteElementString("X", XmlConvert.ToString(LightColor.X));
             writer.WriteElementString("Y", XmlConvert.ToString(LightColor.Y));

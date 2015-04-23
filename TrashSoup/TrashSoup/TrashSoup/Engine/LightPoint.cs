@@ -94,7 +94,7 @@ namespace TrashSoup.Engine
                         );
         }
 
-        public void GenerateShadowMap()
+        public void GenerateShadowMap(bool ifSoften)
         {
             // TBA
         }

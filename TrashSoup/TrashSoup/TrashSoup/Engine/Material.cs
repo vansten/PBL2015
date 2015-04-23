@@ -19,7 +19,9 @@ namespace TrashSoup.Engine
         #region effectTechniques
 
         EffectTechnique etMain;
+        EffectTechnique etMainShadows;
         EffectTechnique etSkinned;
+        EffectTechnique etSkinnedShadows;
 
         #endregion
 
@@ -207,6 +209,8 @@ namespace TrashSoup.Engine
             }
         }
 
+        public bool RecieveShadows { get; set; }
+
         public Effect MyEffect { get; set; }
 
         #endregion
@@ -237,6 +241,7 @@ namespace TrashSoup.Engine
             this.ReflectivityBias = 0.2f;
             this.Transparency = 1.0f;
             this.perPixelLighting = false;
+            this.RecieveShadows = false;
             this.tempFrustumArray = new Vector4[4];
 
             AssignParamsInitialize();
@@ -250,7 +255,7 @@ namespace TrashSoup.Engine
 
         public virtual void UpdateEffect(Effect effect, Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
             Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, TextureCube point0SM, Matrix point0Mat, 
-            Vector3 eyeVector, BoundingFrustumExtended frustum, GameTime gameTime)
+            Vector3 eyeVector, BoundingFrustumExtended frustum, Matrix[] bones, GameTime gameTime)
         {
             if (effect != null && tempEffect == null)
             {
@@ -404,11 +409,11 @@ namespace TrashSoup.Engine
                 {
                     epPointLightCount.SetValue(pointCount);
                 }
-                if (epDirLight0ShadowMap != null && point0SM != null)
+                if (epPoint0ShadowMap != null && point0SM != null)
                 {
                     epPoint0ShadowMap.SetValue(point0SM);
                 }
-                if (epDirLight0WorldViewProj != null)
+                if (epPoint0WorldViewProj != null)
                 {
                     epPoint0WorldViewProj.SetValue(world * point0Mat);
                 }
@@ -455,6 +460,38 @@ namespace TrashSoup.Engine
                 epCustomClippingPlane.SetValue(additionalClipPlane);
             }
 
+            if (epBones != null && bones != null)
+            {
+                epBones.SetValue(bones);
+                this.MyEffect.CurrentTechnique = etSkinned;
+            }
+
+            // setting up techniques
+
+            bool shadows = ResourceManager.Instance.CurrentScene.Params.Shadows;
+            bool softShadows = ResourceManager.Instance.CurrentScene.Params.SoftShadows;
+            if(tempBEref == null && tempSEref == null)
+            {
+                if (bones != null && ((dirs[0] != null && dirs[0].CastShadows) || (point0SM != null)) && etSkinnedShadows != null && RecieveShadows && shadows)
+                {
+                    MyEffect.CurrentTechnique = etSkinnedShadows;
+                }
+                else if (bones == null && ((dirs[0] != null && dirs[0].CastShadows) || (point0SM != null)) && etMainShadows != null && RecieveShadows && shadows)
+                {
+                    MyEffect.CurrentTechnique = etMainShadows;
+                }
+                else if ((bones != null || ((dirs[0] == null || !dirs[0].CastShadows) && (point0SM == null))) && etSkinned != null)
+                {
+                    MyEffect.CurrentTechnique = etSkinned;
+                }
+                else
+                {
+                    MyEffect.CurrentTechnique = etMain;
+                }
+            }
+
+            //////////////////////
+
             //////////////////////
 
             if (tempBEref != null)
@@ -466,19 +503,6 @@ namespace TrashSoup.Engine
             {
                 // do shit for skinnedEffect
                 tempSEref.PreferPerPixelLighting = perPixelLighting;
-            }
-        }
-
-        public void SetEffectBones(Effect effect, Matrix[] bones)
-        {
-            if(epBones != null && etSkinned != null && bones != null)
-            {
-                epBones.SetValue(bones);
-                this.MyEffect.CurrentTechnique = etSkinned;
-            }
-            else
-            {
-                this.MyEffect.CurrentTechnique = etMain;
             }
         }
 
@@ -498,6 +522,8 @@ namespace TrashSoup.Engine
 
             etMain = null;
             etSkinned = null;
+            etMainShadows = null;
+            etSkinnedShadows = null;
 
             epWorld = null;
             epWorldInverseTranspose = null;
@@ -575,16 +601,10 @@ namespace TrashSoup.Engine
             int bs = ("BoundingFrustum").GetHashCode();
             int cCP = ("CustomClippingPlane").GetHashCode();
 
-            if(MyEffect.Techniques.Count == 1)
-            {
-                etMain = MyEffect.Techniques["Main"];
-                etSkinned = null;
-            }
-            else if (MyEffect.Techniques.Count == 2)
-            {
-                etMain = MyEffect.Techniques["Main"];
-                etSkinned = MyEffect.Techniques["Skinned"];
-            }
+            etMain = MyEffect.Techniques["Main"];
+            etSkinned = MyEffect.Techniques["Skinned"];
+            etMainShadows = MyEffect.Techniques["MainShadows"];
+            etSkinnedShadows = MyEffect.Techniques["SkinnedShadows"];
 
             foreach (EffectParameter p in MyEffect.Parameters)
             {
@@ -807,6 +827,13 @@ namespace TrashSoup.Engine
                 ResourceManager.Instance.TexturesCube.Add("DefaultCube", defCbc);
             }
 
+            DiffuseMap = ResourceManager.Instance.LoadTexture(reader.ReadElementString("DiffusePath", ""));
+            NormalMap = ResourceManager.Instance.LoadTexture(reader.ReadElementString("NormalPath", ""));
+            if(reader.Name == "CubePath")
+            {
+                CubeMap = ResourceManager.Instance.LoadTextureCube(reader.ReadElementString("CubePath", ""));
+            }
+
             reader.ReadStartElement("SpecularColor");
             SpecularColor = new Vector3(reader.ReadElementContentAsFloat("X", ""),
                                            reader.ReadElementContentAsFloat("Y", ""),
@@ -828,6 +855,13 @@ namespace TrashSoup.Engine
 
         public void WriteXml(System.Xml.XmlWriter writer)
         {
+            writer.WriteElementString("DiffusePath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == DiffuseMap).Key);
+            writer.WriteElementString("NormalPath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == NormalMap).Key);
+            if(CubeMap != null)
+            {
+                writer.WriteElementString("CubePath", ResourceManager.Instance.TexturesCube.FirstOrDefault(x => x.Value == CubeMap).Key);   
+            }
+
             writer.WriteStartElement("SpecularColor");
             writer.WriteElementString("X", XmlConvert.ToString(SpecularColor.X));
             writer.WriteElementString("Y", XmlConvert.ToString(SpecularColor.Y));
