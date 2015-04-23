@@ -108,7 +108,7 @@ namespace TrashSoup.Engine
                                  ResourceManager.Instance.CurrentScene.GetPointLightPositions(),
                                  ResourceManager.Instance.CurrentScene.GetPointLightCount(),
                                  ResourceManager.Instance.CurrentScene.GetPointLight0ShadowMap(),
-                                 ResourceManager.Instance.CurrentScene.GetPointLight0ViewProj(),
+                                 ResourceManager.Instance.CurrentScene.GetPointLight0ViewProj(0),
                                  camera.Position + camera.Translation,
                                  camera.Bounds,
                                  bones,

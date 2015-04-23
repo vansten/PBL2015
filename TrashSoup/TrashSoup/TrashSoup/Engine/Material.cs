@@ -595,6 +595,8 @@ namespace TrashSoup.Engine
             epPointLightPositions = null;
             epPointLightAttenuations = null;
             epPointLightCount = null;
+            epPoint0ShadowMap = null;
+            epPoint0WorldViewProj = null;
 
             epEyePosition = null;
             epBoundingFrustum = null;

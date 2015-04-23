@@ -20,7 +20,10 @@ namespace TrashSoup.Engine
 
         #region variables
 
-        protected float attenuation;
+        private float attenuation;
+        private Effect myShadowEffect;
+        private Effect myShadowBlurredEffect;
+        private Effect myBlurEffect;
 
         #endregion
 
@@ -45,7 +48,7 @@ namespace TrashSoup.Engine
         }
         public bool CastShadows { get; set; }
         public RenderTargetCube ShadowMapRenderTarget512 { get; set; }
-        public Camera ShadowDrawCamera { get; set; }
+        public Camera[] Cameras { get; set; }
 
         #endregion
 
@@ -54,7 +57,7 @@ namespace TrashSoup.Engine
         public LightPoint(uint uniqueID, string name)
             : base(uniqueID, name)
         {
-
+            
         }
 
         public LightPoint(uint uniqueID, string name, Vector3 lightColor, Vector3 lightSpecularColor, float attenuation, bool castShadows)
@@ -78,10 +81,45 @@ namespace TrashSoup.Engine
             }
         }
 
-        public void CreateCameraAndRenderTarget()
+        public void GenerateShadowMap(bool ifBlurred)
         {
-            this.ShadowDrawCamera = new Camera(0, "", new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f),
+            if (!this.CastShadows || TrashSoupGame.Instance.ActualRenderTarget != TrashSoupGame.Instance.DefaultRenderTarget || Cameras == null)
+            {
+                return;
+            }
+
+            for(int i = 0; i < 6 ; ++i)
+            {
+                TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(ShadowMapRenderTarget512, (CubeMapFace)i);
+                TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
+                ResourceManager.Instance.CurrentScene.DrawAll(Cameras[i], myShadowEffect, TrashSoupGame.Instance.TempGameTime, false);
+            }
+            TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
+
+            if(ifBlurred)
+            {
+                // shit for blurred
+            }
+        }
+
+        public void SetupShadowRender()
+        {
+            this.Cameras = new Camera[6];
+
+            Vector3 pos = this.MyTransform.Position;
+
+            this.Cameras[0] = new Camera(0, "", Vector3.Zero, pos, Vector3.Right, Vector3.Up,
                 MathHelper.PiOver2, 1.0f, POINT_CAM_NEAR_PLANE, POINT_CAM_FAR_PLANE);
+            this.Cameras[1] = new Camera(0, "", Vector3.Zero, pos, Vector3.Left, Vector3.Up,
+                MathHelper.PiOver2, 1.0f, POINT_CAM_NEAR_PLANE, POINT_CAM_FAR_PLANE);
+            this.Cameras[2] = new Camera(0, "", Vector3.Zero, pos, Vector3.Up, Vector3.Backward,
+                MathHelper.PiOver2, 1.0f, POINT_CAM_NEAR_PLANE, POINT_CAM_FAR_PLANE);
+            this.Cameras[3] = new Camera(0, "", Vector3.Zero, pos, Vector3.Down, Vector3.Forward,
+                MathHelper.PiOver2, 1.0f, POINT_CAM_NEAR_PLANE, POINT_CAM_FAR_PLANE);
+            this.Cameras[4] = new Camera(0, "", Vector3.Zero, pos, Vector3.Forward, Vector3.Up,
+                MathHelper.PiOver2, 1.0f, POINT_CAM_NEAR_PLANE, POINT_CAM_FAR_PLANE);
+            this.Cameras[5] = new Camera(0, "", Vector3.Zero, pos, Vector3.Backward, Vector3.Up,
+                MathHelper.PiOver2, 1.0f, POINT_CAM_NEAR_PLANE, POINT_CAM_FAR_PLANE); 
 
             this.ShadowMapRenderTarget512 = new RenderTargetCube(
                         TrashSoupGame.Instance.GraphicsDevice,
@@ -92,11 +130,21 @@ namespace TrashSoup.Engine
                         TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
                         RenderTargetUsage.DiscardContents
                         );
+
+            this.MyTransform.PositionChanged += new Transform.PositionChangedEventHandler(UpdateCameras);
+
+            myShadowEffect = ResourceManager.Instance.Effects[@"Effects\ShadowMapEffect"];
+            myShadowBlurredEffect = ResourceManager.Instance.Effects[@"Effects\ShadowMapBlurredEffect"];
+            myBlurEffect = ResourceManager.Instance.Effects[@"Effects\POSTBlurEffect"];
         }
 
-        public void GenerateShadowMap(bool ifSoften)
+        private void UpdateCameras(object sender, EventArgs e)
         {
-            // TBA
+            foreach(Camera cam in Cameras)
+            {
+                cam.Translation = ((Transform)sender).Position;
+                cam.Update(null);
+            }
         }
 
         public System.Xml.Schema.XmlSchema GetSchema() { return null; }

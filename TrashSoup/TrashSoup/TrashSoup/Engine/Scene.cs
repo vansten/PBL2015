@@ -290,13 +290,13 @@ namespace TrashSoup.Engine
             return null;
         }
 
-        public Matrix GetPointLight0ViewProj()
+        public Matrix GetPointLight0ViewProj(int which)
         {
             if (PointLights.Count > 0)
             {
-                if (PointLights[0] != null && PointLights[0].ShadowDrawCamera != null)
+                if (PointLights[0] != null && PointLights[0].Cameras != null)
                 {
-                    return PointLights[0].ShadowDrawCamera.ViewProjMatrix;
+                    return PointLights[0].Cameras[which].ViewProjMatrix;
                 }
             }
             return Matrix.Identity;

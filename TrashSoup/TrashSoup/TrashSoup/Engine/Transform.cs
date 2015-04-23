@@ -40,6 +40,8 @@ namespace TrashSoup.Engine
                 position = value;
                 this.CalculatePositionChange();
                 CalculateWorldMatrix();
+
+                if(PositionChanged != null) PositionChanged(this, null);
             }
         }
 
@@ -89,6 +91,14 @@ namespace TrashSoup.Engine
                 CalculateWorldMatrix();
             }
         }
+
+        #endregion
+
+        #region events
+
+        public delegate void PositionChangedEventHandler(object sender, EventArgs e);
+
+        public event PositionChangedEventHandler PositionChanged;
 
         #endregion
 
