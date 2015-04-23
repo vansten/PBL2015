@@ -87,6 +87,18 @@ namespace TrashSoup.Engine
                         TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
                         RenderTargetUsage.DiscardContents
                         );
+
+
+            this.blurredRenderTarget = new RenderTarget2D(
+                        TrashSoupGame.Instance.GraphicsDevice,
+                        TrashSoupGame.Instance.Window.ClientBounds.Width,
+                        TrashSoupGame.Instance.Window.ClientBounds.Height,
+                        true,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
+                        RenderTargetUsage.DiscardContents
+                        );
         }
 
         public LightDirectional(uint uniqueID, string name, Vector3 color, Vector3 specular, Vector3 direction, bool castShadows)
@@ -205,6 +217,10 @@ namespace TrashSoup.Engine
                 reader.ReadElementContentAsFloat("Y", ""),
                 reader.ReadElementContentAsFloat("Z", ""));
             reader.ReadEndElement();
+
+            myShadowEffect = ResourceManager.Instance.LoadEffect(@"Effects\ShadowMapEffect");
+            myShadowBlurredEffect = ResourceManager.Instance.LoadEffect(@"Effects\ShadowMapBlurredEffect");
+            myBlurEffect = ResourceManager.Instance.LoadEffect(@"Effects\POSTBlurEffect");
 
             base.ReadXml(reader);
         }

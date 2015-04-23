@@ -52,6 +52,10 @@ namespace TrashSoup.Engine
             this.UniqueID = (uint)reader.ReadElementContentAsInt("UniqueID", "");
             this.Name = reader.ReadElementString("Name", "");
 
+            this.Shadows = reader.ReadElementContentAsBoolean("Shadows", "");
+            this.SoftShadows = reader.ReadElementContentAsBoolean("SoftShadows", "");
+            this.Bloom = reader.ReadElementContentAsBoolean("Bloom", "");
+
             if(reader.Name == "Wind")
             {
                 reader.ReadStartElement();
@@ -67,6 +71,10 @@ namespace TrashSoup.Engine
         {
             writer.WriteElementString("UniqueID", UniqueID.ToString());
             writer.WriteElementString("Name", Name);
+
+            writer.WriteElementString("Shadows", XmlConvert.ToString(Shadows));
+            writer.WriteElementString("SoftShadows", XmlConvert.ToString(SoftShadows));
+            writer.WriteElementString("Bloom", XmlConvert.ToString(Bloom));
 
             writer.WriteStartElement("Wind");
             writer.WriteElementString("X", XmlConvert.ToString(Wind.X));
