@@ -117,9 +117,14 @@ namespace TrashSoup.Engine
             {
                 isRendering = true;
 
+                bool currentShadows = ResourceManager.Instance.CurrentScene.Params.Shadows;
+                ResourceManager.Instance.CurrentScene.Params.Shadows = false;
+
                 DrawRefractionMap(effect, world);
 
                 DrawReflectionMap(effect, world);
+
+                ResourceManager.Instance.CurrentScene.Params.Shadows = currentShadows;
 
                 tempWind += ResourceManager.Instance.CurrentScene.Params.Wind * (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
                 

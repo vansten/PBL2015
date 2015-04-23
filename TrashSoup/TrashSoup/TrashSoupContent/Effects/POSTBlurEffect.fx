@@ -9,10 +9,10 @@ float4x4 WorldViewProj;
 float ScreenWidth;
 float ScreenHeight;
 
-texture Screen;
+texture ScreenTexture;
 sampler ScreenSampler = sampler_state
 {
-	texture = <Screen>;
+	texture = <ScreenTexture>;
 	MipFilter = Linear;
 	MinFilter = Linear;
 	MagFilter = Linear;
@@ -65,15 +65,17 @@ VertexShaderOutputHorizontal VertexShaderFunctionHor(VertexShaderInput input)
     output.Position = mul(input.Position, WorldViewProj);
 	output.TexCoord = input.TexCoord;
 
-	output.hCoord01 = input.TexCoord + float2(ScreenWidth * -4.0f, 0.0f);
-	output.hCoord02 = input.TexCoord + float2(ScreenWidth * -3.0f, 0.0f);
-	output.hCoord03 = input.TexCoord + float2(ScreenWidth * -2.0f, 0.0f);
-	output.hCoord04 = input.TexCoord + float2(ScreenWidth * -1.0f, 0.0f);
-	output.hCoord05 = input.TexCoord + float2(ScreenWidth * 0.0f, 0.0f);
-	output.hCoord06 = input.TexCoord + float2(ScreenWidth * 1.0f, 0.0f);
-	output.hCoord07 = input.TexCoord + float2(ScreenWidth * 2.0f, 0.0f);
-	output.hCoord08 = input.TexCoord + float2(ScreenWidth * 3.0f, 0.0f);
-	output.hCoord09 = input.TexCoord + float2(ScreenWidth * 4.0f, 0.0f);
+	float texelSize = 1.0f / ScreenWidth;
+
+	output.hCoord01 = input.TexCoord + float2(texelSize * -4.0f, 0.0f);
+	output.hCoord02 = input.TexCoord + float2(texelSize * -3.0f, 0.0f);
+	output.hCoord03 = input.TexCoord + float2(texelSize * -2.0f, 0.0f);
+	output.hCoord04 = input.TexCoord + float2(texelSize * -1.0f, 0.0f);
+	output.hCoord05 = input.TexCoord + float2(texelSize * 0.0f, 0.0f);
+	output.hCoord06 = input.TexCoord + float2(texelSize * 1.0f, 0.0f);
+	output.hCoord07 = input.TexCoord + float2(texelSize * 2.0f, 0.0f);
+	output.hCoord08 = input.TexCoord + float2(texelSize * 3.0f, 0.0f);
+	output.hCoord09 = input.TexCoord + float2(texelSize * 4.0f, 0.0f);
 
     return output;
 }
@@ -85,15 +87,17 @@ VertexShaderOutputVertical VertexShaderFunctionVer(VertexShaderInput input)
 	output.Position = mul(input.Position, WorldViewProj);
 	output.TexCoord = input.TexCoord;
 
-	output.hCoord01 = input.TexCoord + float2(0.0f, ScreenHeight * -4.0f);
-	output.hCoord02 = input.TexCoord + float2(0.0f, ScreenHeight * -3.0f);
-	output.hCoord03 = input.TexCoord + float2(0.0f, ScreenHeight * -2.0f);
-	output.hCoord04 = input.TexCoord + float2(0.0f, ScreenHeight * -1.0f);
-	output.hCoord05 = input.TexCoord + float2(0.0f, ScreenHeight * 0.0f);
-	output.hCoord06 = input.TexCoord + float2(0.0f, ScreenHeight * 1.0f);
-	output.hCoord07 = input.TexCoord + float2(0.0f, ScreenHeight * 2.0f);
-	output.hCoord08 = input.TexCoord + float2(0.0f, ScreenHeight * 3.0f);
-	output.hCoord09 = input.TexCoord + float2(0.0f, ScreenHeight * 4.0f);
+	float texelSize = 1.0f / ScreenHeight;
+
+	output.hCoord01 = input.TexCoord + float2(0.0f, texelSize * -4.0f);
+	output.hCoord02 = input.TexCoord + float2(0.0f, texelSize * -3.0f);
+	output.hCoord03 = input.TexCoord + float2(0.0f, texelSize * -2.0f);
+	output.hCoord04 = input.TexCoord + float2(0.0f, texelSize * -1.0f);
+	output.hCoord05 = input.TexCoord + float2(0.0f, texelSize * 0.0f);
+	output.hCoord06 = input.TexCoord + float2(0.0f, texelSize * 1.0f);
+	output.hCoord07 = input.TexCoord + float2(0.0f, texelSize * 2.0f);
+	output.hCoord08 = input.TexCoord + float2(0.0f, texelSize * 3.0f);
+	output.hCoord09 = input.TexCoord + float2(0.0f, texelSize * 4.0f);
 
 	return output;
 }
@@ -109,15 +113,15 @@ float4 PixelShaderFunction(VertexShaderOutputHorizontal input) : COLOR0
 
 	float4 color = float4(0.0f, 0.0f, 0.0f, 0.0f);
 
-	color += tex2D(ScreenSampler, input.hCoord01 * weight4);
-	color += tex2D(ScreenSampler, input.hCoord02 * weight3);
-	color += tex2D(ScreenSampler, input.hCoord03 * weight2);
-	color += tex2D(ScreenSampler, input.hCoord04 * weight1);
-	color += tex2D(ScreenSampler, input.hCoord05 * weight0);
-	color += tex2D(ScreenSampler, input.hCoord06 * weight1);
-	color += tex2D(ScreenSampler, input.hCoord07 * weight2);
-	color += tex2D(ScreenSampler, input.hCoord08 * weight3);
-	color += tex2D(ScreenSampler, input.hCoord09 * weight4);
+	color += tex2D(ScreenSampler, input.hCoord01) * weight4;
+	color += tex2D(ScreenSampler, input.hCoord02) * weight3;
+	color += tex2D(ScreenSampler, input.hCoord03) * weight2;
+	color += tex2D(ScreenSampler, input.hCoord04) * weight1;
+	color += tex2D(ScreenSampler, input.hCoord05) * weight0;
+	color += tex2D(ScreenSampler, input.hCoord06) * weight1;
+	color += tex2D(ScreenSampler, input.hCoord07) * weight2;
+	color += tex2D(ScreenSampler, input.hCoord08) * weight3;
+	color += tex2D(ScreenSampler, input.hCoord09) * weight4;
 
 	color.a = 1.0f;
 
@@ -126,11 +130,11 @@ float4 PixelShaderFunction(VertexShaderOutputHorizontal input) : COLOR0
 
 technique BlurHorizontal
 {
-    pass Pass1
-    {
-        VertexShader = compile vs_3_0 VertexShaderFunctionHor();
-        PixelShader = compile ps_3_0 PixelShaderFunction();
-    }
+	pass Pass1
+	{
+		VertexShader = compile vs_3_0 VertexShaderFunctionHor();
+		PixelShader = compile ps_3_0 PixelShaderFunction();
+	}
 }
 
 technique BlurVertical

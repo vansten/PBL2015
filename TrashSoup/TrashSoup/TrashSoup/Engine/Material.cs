@@ -22,6 +22,8 @@ namespace TrashSoup.Engine
         EffectTechnique etMainShadows;
         EffectTechnique etSkinned;
         EffectTechnique etSkinnedShadows;
+        EffectTechnique etMainBlurredShadows;
+        EffectTechnique etSkinnedBlurredShadows;
 
         #endregion
 
@@ -498,15 +500,25 @@ namespace TrashSoup.Engine
             bool softShadows = ResourceManager.Instance.CurrentScene.Params.SoftShadows;
             if(tempBEref == null && tempSEref == null)
             {
-                if (bones != null && ((dirs[0] != null && dirs[0].CastShadows) || (point0SM != null)) && etSkinnedShadows != null && RecieveShadows && shadows)
+                bool forShadows = ((dirs[0] != null && dirs[0].CastShadows) || (point0SM != null)) && RecieveShadows && shadows;
+
+                if (bones != null && forShadows && etSkinnedBlurredShadows != null && softShadows)
+                {
+                    MyEffect.CurrentTechnique = etSkinnedBlurredShadows;
+                }
+                else if (bones == null && forShadows && etMainBlurredShadows != null && softShadows)
+                {
+                    MyEffect.CurrentTechnique = etMainBlurredShadows;
+                }
+                else if (bones != null && forShadows && etSkinnedShadows != null)
                 {
                     MyEffect.CurrentTechnique = etSkinnedShadows;
                 }
-                else if (bones == null && ((dirs[0] != null && dirs[0].CastShadows) || (point0SM != null)) && etMainShadows != null && RecieveShadows && shadows)
+                else if (bones == null && forShadows && etMainShadows != null)
                 {
                     MyEffect.CurrentTechnique = etMainShadows;
                 }
-                else if ((bones != null || ((dirs[0] == null || !dirs[0].CastShadows) && (point0SM == null))) && etSkinned != null)
+                else if (bones != null && etSkinned != null)
                 {
                     MyEffect.CurrentTechnique = etSkinned;
                 }
@@ -631,6 +643,8 @@ namespace TrashSoup.Engine
             etSkinned = MyEffect.Techniques["Skinned"];
             etMainShadows = MyEffect.Techniques["MainShadows"];
             etSkinnedShadows = MyEffect.Techniques["SkinnedShadows"];
+            etMainBlurredShadows = MyEffect.Techniques["MainBlurredShadows"];
+            etSkinnedBlurredShadows = MyEffect.Techniques["SkinnedBlurredShadows"];
 
             foreach (EffectParameter p in MyEffect.Parameters)
             {

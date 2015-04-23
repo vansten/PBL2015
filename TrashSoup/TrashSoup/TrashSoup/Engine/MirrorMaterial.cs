@@ -90,7 +90,12 @@ namespace TrashSoup.Engine
                 //tempCamera = ResourceManager.Instance.CurrentScene.Cam;
                 //ResourceManager.Instance.CurrentScene.Cam = myCamera;
 
+                bool currentShadows = ResourceManager.Instance.CurrentScene.Params.Shadows;
+                ResourceManager.Instance.CurrentScene.Params.Shadows = false;
+
                 ResourceManager.Instance.CurrentScene.DrawAll(myCamera, effect, TrashSoupGame.Instance.TempGameTime, false);
+
+                ResourceManager.Instance.CurrentScene.Params.Shadows = currentShadows;
 
                 //ResourceManager.Instance.CurrentScene.Cam = tempCamera;
 
