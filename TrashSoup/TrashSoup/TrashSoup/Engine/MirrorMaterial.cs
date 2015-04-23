@@ -129,7 +129,7 @@ namespace TrashSoup.Engine
             myCamera.Update(TrashSoupGame.Instance.TempGameTime);
         }
 
-        protected override void AssignParamsInitialize()
+        public override void AssignParamsInitialize()
         {
             base.AssignParamsInitialize();
 

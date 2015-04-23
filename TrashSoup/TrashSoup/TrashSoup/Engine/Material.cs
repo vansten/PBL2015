@@ -217,6 +217,32 @@ namespace TrashSoup.Engine
 
         #region methods
 
+        public Material()
+        {
+
+            if (ResourceManager.Instance.Textures.ContainsKey("DefaultDiffuse"))
+            {
+                this.DiffuseMap = ResourceManager.Instance.Textures["DefaultDiffuse"];
+            }
+            if (ResourceManager.Instance.Textures.ContainsKey("DefaultNormal"))
+            {
+                this.NormalMap = ResourceManager.Instance.Textures["DefaultNormal"];
+            }
+            if (ResourceManager.Instance.Textures.ContainsKey("DefaultCube"))
+            {
+                this.CubeMap = ResourceManager.Instance.TexturesCube["DefaultCube"];
+            }
+            this.SpecularColor = new Vector3(1.0f, 1.0f, 1.0f);
+            this.Glossiness = 50.0f;
+            this.ReflectivityColor = new Vector3(1.0f, 1.0f, 1.0f);
+            this.ReflectivityBias = 0.2f;
+            this.Transparency = 1.0f;
+            this.perPixelLighting = false;
+            this.RecieveShadows = false;
+            this.tempFrustumArray = new Vector4[4];
+
+        }
+
         public Material(string name, Effect effect)
         {
             this.MyEffect = effect;
@@ -516,7 +542,7 @@ namespace TrashSoup.Engine
             }
         }
 
-        protected virtual void AssignParamsInitialize()
+        public virtual void AssignParamsInitialize()
         {
             if (MyEffect == null) throw new NullReferenceException("MyEffect iz null and you tryin' to extract params from it, nigga?");
 
@@ -798,6 +824,11 @@ namespace TrashSoup.Engine
         public System.Xml.Schema.XmlSchema GetSchema() { return null; }
         public void ReadXml(System.Xml.XmlReader reader)
         {
+            reader.MoveToContent();
+            reader.ReadStartElement();
+
+            Name = reader.ReadElementString("Name", "");
+
             uint normColor = 0xFFFF0F0F;
             uint blackColor = 0xFF000000;
             Texture2D defDiff = null;
@@ -851,10 +882,14 @@ namespace TrashSoup.Engine
             ReflectivityBias = reader.ReadElementContentAsFloat("ReflectivityBias", "");
             Transparency = reader.ReadElementContentAsFloat("Transparency", "");
             PerPixelLighting = reader.ReadElementContentAsBoolean("PerPixelLighting", "");
+
+            reader.ReadEndElement();
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)
         {
+            writer.WriteElementString("Name", Name);
+
             writer.WriteElementString("DiffusePath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == DiffuseMap).Key);
             writer.WriteElementString("NormalPath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == NormalMap).Key);
             if(CubeMap != null)

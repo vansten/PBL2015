@@ -183,76 +183,47 @@ namespace TrashSoup.Engine
                 reader.ReadStartElement();
                 while(reader.NodeType != System.Xml.XmlNodeType.EndElement)
                 {
-                    if (reader.Name == "Material")
+                    if (reader.Name == "Name")
                     {
-                        reader.ReadStartElement();
-                        
+
                         String newName = reader.ReadElementString("Name", "");
                         Effect newEf = ResourceManager.Instance.LoadEffect(reader.ReadElementString("EffectPath", ""));
-
-                        //if (reader.Name == "Effect")
-                        //{
-                        //    reader.ReadStartElement();
-                        //    int newEffectID = reader.ReadElementContentAsInt("EffectID", "");
-                        //    if(newEffectID <= ResourceManager.Instance.Effects.Count - 1)
-                        //    {
-                        //        switch (newEffectID)
-                        //        {
-                        //            case -1:
-                        //                newEf = new BasicEffect(TrashSoupGame.Instance.GraphicsDevice);
-                        //                break;
-                        //            case -2:
-                        //                newEf = new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice);
-                        //                break;
-                        //            default:
-                        //                //newEf = ResourceManager.Instance.Effects[newEffectID];
-                        //                break;
-                        //        }
-                        //        //odczyt do próżni
-                        //    }
-                        //    else
-                        //    {
-                        //        if(reader.Name == "EffectParameters")
-                        //        {
-                        //            newEf = EffectParameterDeserialization(reader);
-                        //        }
-
-                        //    }
-                        //    //switch (newEffectID)
-                        //    //{
-                        //    //    case -1:
-                        //    //        newEf = new BasicEffect(TrashSoupGame.Instance.GraphicsDevice);
-                        //    //        break;
-                        //    //    case -2:
-                        //    //        newEf = new SkinnedEffect(TrashSoupGame.Instance.GraphicsDevice);
-                        //    //        break;
-                        //    //    default:
-                        //    //        newEf = ResourceManager.Instance.Effects[newEffectID];
-                        //    //        break;
-                        //    //}
-                        //    reader.ReadEndElement();
-                        //}
 
                         Material m = new Material(newName, newEf);
 
                         if (!ResourceManager.Instance.Materials.TryGetValue(newName, out m))
                         {
                             Material tmp = new Material(newName, newEf);
-                            (tmp as IXmlSerializable).ReadXml(reader);
+                            XmlSerializer serializer = new XmlSerializer(typeof(Material));
+                            using (FileStream file = new FileStream(newName + ".xml", FileMode.Open))
+                            {
+                                tmp = (Material)serializer.Deserialize(file);
+                                tmp.Name = newName;
+                                tmp.MyEffect = newEf;
+                                tmp.AssignParamsInitialize();
+                                //ResourceManager.Instance.CurrentScene = (Scene)serializer.Deserialize(file);
+                            }
+                            //(tmp as IXmlSerializable).ReadXml(reader);
                             m = tmp;
                             Debug.Log("Material successfully loaded - " + newName);
                         }
                         else
                         {
-                            (m as IXmlSerializable).ReadXml(reader);
-                            if(!ResourceManager.Instance.Materials.ContainsKey(newName))
+                            XmlSerializer serializer = new XmlSerializer(typeof(Material));
+                            using (FileStream file = new FileStream(newName + ".xml", FileMode.Open))
+                            {
+                                m = (Material)serializer.Deserialize(file);
+                                m.Name = newName;
+                                m.MyEffect = newEf;
+                                m.AssignParamsInitialize();
+                                //ResourceManager.Instance.CurrentScene = (Scene)serializer.Deserialize(file);
+                            }
+                            if (!ResourceManager.Instance.Materials.ContainsKey(newName))
                             {
                                 ResourceManager.Instance.Materials.Add(newName, m);
                             }
                             Debug.Log("New material successfully loaded - " + newName);
                         }
-                        
-                        reader.ReadEndElement();
 
                         Mat.Add(m);
                     }
@@ -285,33 +256,19 @@ namespace TrashSoup.Engine
             {
                 if(mat != null)
                 {
-                    writer.WriteStartElement("Material");
+                    XmlSerializer serializer = new XmlSerializer(typeof(Material));
+                    using (FileStream file = new FileStream(mat.Name + ".xml", FileMode.Create))
+                    {
+                        serializer.Serialize(file, mat);
+                    }
+                    //writer.WriteStartElement("Material");
 
                     writer.WriteElementString("Name", mat.Name);
 
                     writer.WriteElementString("EffectPath", ResourceManager.Instance.Effects.FirstOrDefault(x => x.Value == mat.MyEffect).Key);
 
-                    //writer.WriteStartElement("Effect");
-
-                    //int effectID = ResourceManager.Instance.Effects.IndexOf(mat.MyEffect);
-                    //if (effectID == -1)
-                    //{
-                    //    if (mat.MyEffect is SkinnedEffect) effectID = -2;
-                    //}
-                    //writer.WriteElementString("EffectID", XmlConvert.ToString(effectID));
-
-                    //writer.WriteStartElement("EffectParameters", "");
-                    //foreach(EffectParameter param in mat.MyEffect.Parameters)
-                    //{
-                    //     writer.WriteElementString("Name", param.Name);
-                    //     EffectParametersSerialization(writer, param);
-                    //}
+                    //(mat as IXmlSerializable).WriteXml(writer);
                     //writer.WriteEndElement();
-
-                    //writer.WriteEndElement();
-
-                    (mat as IXmlSerializable).WriteXml(writer);
-                    writer.WriteEndElement();
                 }
             }
             writer.WriteEndElement();

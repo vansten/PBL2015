@@ -217,7 +217,7 @@ namespace TrashSoup.Engine
             }
         }
 
-        protected override void AssignParamsInitialize()
+        public override void AssignParamsInitialize()
         {
             base.AssignParamsInitialize();
 
