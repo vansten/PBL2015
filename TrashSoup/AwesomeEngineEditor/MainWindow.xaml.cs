@@ -414,6 +414,8 @@ namespace AwesomeEngineEditor
 
                 TrashSoup.Engine.SaveManager.Instance.EditorLoadFileAction(filepath);
                 this.XNAImage.GraphicsDevice = this.myGame.GraphicsDevice;
+                this.myGame.ActualRenderTarget = this.XNAImage.ImageSource.RenderTarget;
+                this.myGame.DefaultRenderTarget = this.XNAImage.ImageSource.RenderTarget;
                 //this.myGame.EditorLoadContent();
             }
 

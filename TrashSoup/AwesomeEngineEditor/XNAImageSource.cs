@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 
 namespace AwesomeEngineEditor
 {
-    class XNAImageSource : IDisposable
+    public class XNAImageSource : IDisposable
     {
         private RenderTarget2D renderTarget;
 
@@ -35,7 +35,7 @@ namespace AwesomeEngineEditor
 
         public XNAImageSource(GraphicsDevice device, int width, int height)
         {
-            renderTarget = new RenderTarget2D(device, width, height, false, SurfaceFormat.Color, DepthFormat.Depth24Stencil8);
+            renderTarget = new RenderTarget2D(device, width, height, false, SurfaceFormat.Color, DepthFormat.Depth24Stencil8, TrashSoup.TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount, RenderTargetUsage.PreserveContents);
 
             buffer = new byte[width * height * 4];
             writeableBitmap = new WriteableBitmap(width, height, 96, 96, System.Windows.Media.PixelFormats.Bgra32, null);

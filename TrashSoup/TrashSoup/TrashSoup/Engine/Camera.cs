@@ -259,7 +259,7 @@ namespace TrashSoup.Engine
             writer.WriteEndElement();
 
             writer.WriteElementString("FOV", XmlConvert.ToString(FOV));
-            writer.WriteElementString("Ratio", XmlConvert.ToString(FOV));
+            writer.WriteElementString("Ratio", XmlConvert.ToString(Ratio));
             writer.WriteElementString("Near", XmlConvert.ToString(Near));
             writer.WriteElementString("Far", XmlConvert.ToString(Far));
 
