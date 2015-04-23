@@ -18,8 +18,9 @@ namespace TrashSoup.Engine
         const float DIRECTIONAL_CAM_FAR_PLANE = 50.0f;
         const float DIRECTIONAL_SHADOW_RANGE = 15.0f;
         const int DIRECTIONAL_SHADOW_MAP_SIZE = 2048;
-        const int BLUR_FACTOR = 8;
-
+        const int BLUR_FACTOR = 2;
+        const float BLUR_FACTOR_IN = 0.4f;
+        
         #endregion
 
         #region variables
@@ -167,8 +168,8 @@ namespace TrashSoup.Engine
                 TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
 
                 myBlurEffect.Parameters["WorldViewProj"].SetValue(orthoMatrix);
-                myBlurEffect.Parameters["ScreenWidth"].SetValue((float)TrashSoupGame.Instance.Window.ClientBounds.Width);
-                myBlurEffect.Parameters["ScreenHeight"].SetValue((float)TrashSoupGame.Instance.Window.ClientBounds.Height);
+                myBlurEffect.Parameters["ScreenWidth"].SetValue(BLUR_FACTOR_IN * (float)TrashSoupGame.Instance.Window.ClientBounds.Width);
+                myBlurEffect.Parameters["ScreenHeight"].SetValue(BLUR_FACTOR_IN * (float)TrashSoupGame.Instance.Window.ClientBounds.Height);
 
                 myBlurEffect.CurrentTechnique = myBlurEffect.Techniques["BlurHorizontal"];
 
