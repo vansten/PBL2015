@@ -42,6 +42,14 @@ namespace AwesomeEngineEditor
             }
         }
 
+        public XNAImageSource ImageSource
+        {
+            get
+            {
+                return this.imageSource;
+            }
+        }
+
         public Action<GraphicsDevice> DrawFunction;
 
         public XNAControl()

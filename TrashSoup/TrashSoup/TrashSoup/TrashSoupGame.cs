@@ -19,7 +19,7 @@ namespace TrashSoup
         public const string ROOT_DIRECTIORY = "Content";
         public const string ROOT_DIRECTIORY_PROJECT = "TrashSoupContent";
         public bool EditorMode = false;
-        public RenderTarget2D DefaultRenderTarget { get; private set; }
+        public RenderTarget2D DefaultRenderTarget { get; set; }
         public GameTime TempGameTime { get; private set; }
 
         private RenderTarget2D actualRenderTarget;
@@ -56,11 +56,7 @@ namespace TrashSoup
 
         protected override void Initialize()
         {
-            if (this.EditorMode)
-            {
-                // here u have to set a render target for editor
-            }
-            else
+            if (!this.EditorMode)
             {
                 DefaultRenderTarget = null;
             }
