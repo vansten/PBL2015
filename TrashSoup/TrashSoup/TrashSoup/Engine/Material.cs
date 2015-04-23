@@ -896,6 +896,7 @@ namespace TrashSoup.Engine
             ReflectivityBias = reader.ReadElementContentAsFloat("ReflectivityBias", "");
             Transparency = reader.ReadElementContentAsFloat("Transparency", "");
             PerPixelLighting = reader.ReadElementContentAsBoolean("PerPixelLighting", "");
+            RecieveShadows = reader.ReadElementContentAsBoolean("ReceiveShadows", "");
 
             reader.ReadEndElement();
         }
@@ -928,6 +929,7 @@ namespace TrashSoup.Engine
             writer.WriteElementString("ReflectivityBias", XmlConvert.ToString(ReflectivityBias));
             writer.WriteElementString("Transparency", XmlConvert.ToString(Transparency));
             writer.WriteElementString("PerPixelLighting", XmlConvert.ToString(PerPixelLighting));
+            writer.WriteElementString("ReceiveShadows", XmlConvert.ToString(RecieveShadows));
         }
         #endregion
     }
