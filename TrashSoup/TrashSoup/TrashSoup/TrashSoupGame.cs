@@ -22,6 +22,14 @@ namespace TrashSoup
         public RenderTarget2D DefaultRenderTarget { get; set; }
         public GameTime TempGameTime { get; private set; }
 
+#if DEBUG
+        //Variables that allow us to display fps counter :) only in debug mode
+        private int frames = 0;
+        private float timer = 0.0f;
+        private SpriteFont font;
+        float fps = 0.0f;
+#endif
+
         private RenderTarget2D actualRenderTarget;
         public RenderTarget2D ActualRenderTarget
         {
@@ -47,6 +55,11 @@ namespace TrashSoup
         {
             GraphicsManager = new GraphicsDeviceManager(this);
             GraphicsManager.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(SetToPreserve);
+#if DEBUG
+            //Turning of lock to 60 fps :) only in debug mode
+            this.IsFixedTimeStep = false;
+            this.GraphicsManager.SynchronizeWithVerticalRetrace = false;
+#endif
             Content.RootDirectory = ROOT_DIRECTIORY;
             this.IsMouseVisible = true;
             Instance = this;
@@ -77,6 +90,10 @@ namespace TrashSoup
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             ResourceManager.Instance.LoadContent(this);
+#if DEBUG
+            //Loading font for fps counter :) only in debug mode
+            font = Content.Load<SpriteFont>("Fonts/FontTest");
+#endif
         }
 
         protected override void UnloadContent()
@@ -94,6 +111,19 @@ namespace TrashSoup
         {
             if(!this.EditorMode)
             {
+#if DEBUG
+                //Drawing fps counter ;) only if debug mode
+                //Just for check if added functionality makes our game to slow :( Like a physics...
+                ++frames;
+                timer += gameTime.ElapsedGameTime.Milliseconds;
+                if (timer > 1000.0f)
+                {
+                    fps = frames / (timer / 1000.0f);
+                    timer = 0.0f;
+                    frames = 0;
+                }
+                GUIManager.Instance.DrawText(this.font, fps.ToString(), new Vector2(0.1f, 0.1f), Color.Red);
+#endif
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                     this.Exit();
 

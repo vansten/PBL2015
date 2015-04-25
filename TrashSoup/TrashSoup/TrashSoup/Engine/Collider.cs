@@ -17,6 +17,7 @@ namespace TrashSoup.Engine
         #region Variables
 
         protected Matrix worldMatrix;
+        public BoundingSphere MyBoundingSphere;
 
         #endregion
 

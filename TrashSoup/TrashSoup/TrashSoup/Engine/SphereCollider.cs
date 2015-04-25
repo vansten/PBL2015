@@ -113,6 +113,7 @@ namespace TrashSoup.Engine
             {
                 foreach(ModelMesh mesh in this.model.LODs[0].Meshes)
                 {
+                    this.MyBoundingSphere = BoundingSphere.CreateMerged(this.MyBoundingSphere, mesh.BoundingSphere);
                     foreach (ModelMeshPart part in mesh.MeshParts)
                     {
                         int vertexStride = part.VertexBuffer.VertexDeclaration.VertexStride;
@@ -170,6 +171,11 @@ namespace TrashSoup.Engine
         {
             Collider poCollider = po.MyObject.MyCollider;
             if (poCollider == null)
+            {
+                return false;
+            }
+
+            if (!this.MyBoundingSphere.Intersects(poCollider.MyBoundingSphere))
             {
                 return false;
             }

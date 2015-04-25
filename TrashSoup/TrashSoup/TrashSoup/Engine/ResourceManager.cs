@@ -159,7 +159,7 @@ namespace TrashSoup.Engine
             testBox.MyAnimator = playerAnimator;
             testBox.Components.Add(new PlayerController(testBox));
             testBox.MyPhysicalObject = new PhysicalObject(testBox, 1.0f, 0.05f, false);
-            testBox.MyCollider = new SphereCollider(testBox);  //Add a box collider to test collisions
+            testBox.MyCollider = new BoxCollider(testBox);  //Add a box collider to test collisions
 
             GameObject testTer = new GameObject(2, "testTer");
             testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);

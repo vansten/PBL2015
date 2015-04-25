@@ -103,10 +103,11 @@ namespace TrashSoup.Engine
 
                 //[vansten] This is for debug drawing of collider
                 //[vansten] It won't be build if we build a release version
+                //[vansten] COMMENT DRAWING COLLIDER TO GET HIGHER FPS RATE!!!!!!!!!!!!!
 #if DEBUG
                 if (this.MyCollider != null)
                 {
-                    this.MyCollider.Draw(cam, effect, gameTime);
+                    //this.MyCollider.Draw(cam, effect, gameTime);
                 }
 
 #endif

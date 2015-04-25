@@ -416,7 +416,6 @@ namespace AwesomeEngineEditor
                 this.XNAImage.GraphicsDevice = this.myGame.GraphicsDevice;
                 this.myGame.ActualRenderTarget = this.XNAImage.ImageSource.RenderTarget;
                 this.myGame.DefaultRenderTarget = this.XNAImage.ImageSource.RenderTarget;
-                //this.myGame.EditorLoadContent();
             }
 
             foreach(TrashSoup.Engine.GameObject go in TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.Values)

@@ -37,9 +37,7 @@
       <Processor>XactProcessor</Processor>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Fonts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Compile Include="Textures\GUITest\ButtonDisabled.png">
       <Name>ButtonDisabled</Name>
@@ -298,6 +296,13 @@
       <Name>POSTBlurEffect</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Fonts\FontTest.spritefont">
+      <Name>FontTest</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

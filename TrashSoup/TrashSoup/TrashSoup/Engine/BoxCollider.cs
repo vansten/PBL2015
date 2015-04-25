@@ -121,6 +121,7 @@ namespace TrashSoup.Engine
             {
                 foreach (ModelMesh mesh in this.model.LODs[0].Meshes)
                 {
+                    this.MyBoundingSphere = BoundingSphere.CreateMerged(this.MyBoundingSphere, mesh.BoundingSphere);
                     foreach (ModelMeshPart part in mesh.MeshParts)
                     {
                         int vertexStride = part.VertexBuffer.VertexDeclaration.VertexStride;
@@ -154,6 +155,11 @@ namespace TrashSoup.Engine
         {
             Collider poCollider = po.MyObject.MyCollider;
             if (poCollider == null)
+            {
+                return false;
+            }
+
+            if (!this.MyBoundingSphere.Intersects(poCollider.MyBoundingSphere))
             {
                 return false;
             }
@@ -261,7 +267,7 @@ namespace TrashSoup.Engine
         {
             MinkowskiDifference md = new MinkowskiDifference();
             md.CalculateMikowskiDifference(this.Box.GetCorners(), boundingBox.GetCorners());
-            if(md.ContainsOrigin())
+            if(md.ContainsOrigin)
             {
                 if(!this.IsTrigger)
                 {
@@ -271,6 +277,7 @@ namespace TrashSoup.Engine
                 {
                     this.IntersectionVector = Vector3.Zero;
                 }
+                Debug.Log("COLLISION BETWEEN TWO BOXES");
                 return true;
             }
             return false;
