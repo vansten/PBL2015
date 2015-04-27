@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<Material>
+  <Name>testPlayerMat2</Name>
+  <DiffusePath>Textures\Test\cargo</DiffusePath>
+  <NormalPath>Textures\Test\cargo_NRM</NormalPath>
+  <CubePath>Textures\Skyboxes\Sunset</CubePath>
+  <SpecularColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </SpecularColor>
+  <Glossiness>40</Glossiness>
+  <ReflectivityColor>
+    <X>1</X>
+    <Y>0</Y>
+    <Z>1</Z>
+  </ReflectivityColor>
+  <ReflectivityBias>0.7</ReflectivityBias>
+  <Transparency>1</Transparency>
+  <PerPixelLighting>false</PerPixelLighting>
+  <ReceiveShadows>true</ReceiveShadows>
+</Material>

@@ -210,7 +210,7 @@ namespace TrashSoup.Engine
                         else
                         {
                             XmlSerializer serializer = new XmlSerializer(typeof(Material));
-                            using (FileStream file = new FileStream(newName + ".xml", FileMode.Open))
+                            using (FileStream file = new FileStream(Path.GetFullPath("../../../../TrashSoupContent/Materials/") + newName + ".xml", FileMode.Open))
                             {
                                 m = (Material)serializer.Deserialize(file);
                                 m.Name = newName;
@@ -257,7 +257,7 @@ namespace TrashSoup.Engine
                 if(mat != null)
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(Material));
-                    using (FileStream file = new FileStream(mat.Name + ".xml", FileMode.Create))
+                    using (FileStream file = new FileStream(Path.GetFullPath("../../../../TrashSoupContent/Materials/") + mat.Name + ".xml", FileMode.Create))
                     {
                         serializer.Serialize(file, mat);
                     }
