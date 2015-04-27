@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<Material>
+  <Name>testSBMat</Name>
+  <DiffusePath>DefaultDiffuse</DiffusePath>
+  <NormalPath>DefaultNormal</NormalPath>
+  <CubePath>Textures\Skyboxes\Sunset</CubePath>
+  <SpecularColor>
+    <X>0</X>
+    <Y>0</Y>
+    <Z>0</Z>
+  </SpecularColor>
+  <Glossiness>100</Glossiness>
+  <ReflectivityColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </ReflectivityColor>
+  <ReflectivityBias>0.2</ReflectivityBias>
+  <Transparency>1</Transparency>
+  <PerPixelLighting>false</PerPixelLighting>
+  <ReceiveShadows>false</ReceiveShadows>
+</Material>
