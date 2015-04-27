@@ -86,12 +86,24 @@ namespace TrashSoup.Engine
 
     public class Scene : IXmlSerializable
     {
+        #region constants
+
+        const int BLUR_FACTOR = 2;
+        const float BLUR_FACTOR_IN = 0.4f;
+
+        #endregion
+
         #region variables
 
         private Vector3[] tempPLColors;
         private Vector3[] tempPLSpeculars;
         private Vector3[] tempPLPositions;
         private float[] tempPLAttenuations;
+
+        private bool ifRenderShadows;
+        private RenderTarget2D globalShadowsRenderTarget;
+        private RenderTarget2D tempRenderTarget01;
+        private Matrix deferredOrthoMatrix;
 
         #endregion
 
@@ -124,30 +136,45 @@ namespace TrashSoup.Engine
                 tempPLPositions[i] = new Vector3(0.0f, 0.0f, 0.0f);
                 tempPLAttenuations[i] = 0.0f;
             }
-        }
-        public Scene(SceneParams par)
-        {
-            this.Params = par;
 
             DirectionalLights = new LightDirectional[ResourceManager.DIRECTIONAL_MAX_LIGHTS];
             for (int i = 0; i < ResourceManager.DIRECTIONAL_MAX_LIGHTS; ++i)
                 DirectionalLights[i] = null;
             PointLights = new List<LightPoint>();
 
-            tempPLColors = new Vector3[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
-            tempPLSpeculars = new Vector3[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
-            tempPLPositions = new Vector3[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
-            tempPLAttenuations = new float[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
-            for (int i = 0; i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i )
-            {
-                tempPLColors[i] = new Vector3(0.0f, 0.0f, 0.0f);
-                tempPLSpeculars[i] = new Vector3(0.0f, 0.0f, 0.0f);
-                tempPLPositions[i] = new Vector3(0.0f, 0.0f, 0.0f);
-                tempPLAttenuations[i] = 0.0f;
-            }
-
             ObjectsDictionary = new Dictionary<uint, GameObject>();
             ObjectsQT = new QuadTree<GameObject>();
+
+            globalShadowsRenderTarget = new RenderTarget2D(
+                        TrashSoupGame.Instance.GraphicsDevice,
+                        TrashSoupGame.Instance.Window.ClientBounds.Width / BLUR_FACTOR,
+                        TrashSoupGame.Instance.Window.ClientBounds.Height / BLUR_FACTOR,
+                        false,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
+                        RenderTargetUsage.DiscardContents
+                        );
+
+            tempRenderTarget01 = new RenderTarget2D(
+                        TrashSoupGame.Instance.GraphicsDevice,
+                        TrashSoupGame.Instance.Window.ClientBounds.Width / BLUR_FACTOR,
+                        TrashSoupGame.Instance.Window.ClientBounds.Height / BLUR_FACTOR,
+                        false,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
+                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
+                        RenderTargetUsage.DiscardContents
+                        );
+
+            deferredOrthoMatrix = Matrix.CreateOrthographicOffCenter(0.0f, (float)TrashSoupGame.Instance.Window.ClientBounds.Width,
+                    (float)TrashSoupGame.Instance.Window.ClientBounds.Height, 0, 0, 1);
+
+            ifRenderShadows = true;
+        }
+        public Scene(SceneParams par) : this()
+        {
+            this.Params = par;           
         }
 
         public void AddObject(GameObject obj)
@@ -198,14 +225,23 @@ namespace TrashSoup.Engine
         // draws all gameobjects linearly
         public void DrawAll(Camera cam, Effect effect, GameTime gameTime, bool ifGenerateShadowMaps)
         {
-            if(ifGenerateShadowMaps && Params.Shadows)
+            if(ifGenerateShadowMaps)
             {
-                if (DirectionalLights[0] != null && DirectionalLights[0].CastShadows)
-                    DirectionalLights[0].GenerateShadowMap(Params.SoftShadows);
-
-                if(PointLights.Count > 0 && PointLights[0].CastShadows)
+                if(Params.Shadows)
                 {
-                    PointLights[0].GenerateShadowMap(Params.SoftShadows);
+                    if (DirectionalLights[0] != null && DirectionalLights[0].CastShadows)
+                        DirectionalLights[0].GenerateShadowMap();
+
+                    if (PointLights.Count > 0 && PointLights[0].CastShadows)
+                    {
+                        PointLights[0].GenerateShadowMap();
+                    }
+
+                    if(Params.SoftShadows && ifRenderShadows)
+                    {
+                        RenderGlobalBlurredShadows();
+                        ifRenderShadows = false;
+                    }
                 }
             }
             
@@ -213,6 +249,11 @@ namespace TrashSoup.Engine
             foreach (GameObject obj in ObjectsDictionary.Values)
             {
                 obj.Draw(cam, effect, gameTime);
+            }
+
+            if(ifGenerateShadowMaps && !ifRenderShadows)
+            {
+                ifRenderShadows = true;
             }
         }
 
@@ -278,8 +319,30 @@ namespace TrashSoup.Engine
             return (PointLights.Count > 10 ? 10 : (uint)PointLights.Count);
         }
 
+        public Texture GetGlobalShadowMap()
+        {
+            if (this.Params.SoftShadows && (TrashSoupGame.Instance.ActualRenderTarget == TrashSoupGame.Instance.DefaultRenderTarget))
+            {
+                return (Texture)globalShadowsRenderTarget;
+            }
+
+            if(DirectionalLights[0] != null)
+            {
+                if(DirectionalLights[0].CastShadows)
+                {
+                    return (Texture)DirectionalLights[0].ShadowMapRenderTarget2048;
+                }
+            }
+            return null;
+        }
+
         public TextureCube GetPointLight0ShadowMap()
         {
+            if (this.Params.SoftShadows && (TrashSoupGame.Instance.ActualRenderTarget == TrashSoupGame.Instance.DefaultRenderTarget))
+            {
+                return null;
+            }
+
             if(PointLights.Count > 0)
             {
                 if(PointLights[0] != null && PointLights[0].CastShadows)
@@ -290,16 +353,53 @@ namespace TrashSoup.Engine
             return null;
         }
 
-        public Matrix GetPointLight0ViewProj(int which)
+        private void RenderGlobalBlurredShadows()
         {
-            if (PointLights.Count > 0)
-            {
-                if (PointLights[0] != null && PointLights[0].Cameras != null)
-                {
-                    return PointLights[0].Cameras[which].ViewProjMatrix;
-                }
-            }
-            return Matrix.Identity;
+            Effect myBlurEffect = ResourceManager.Instance.Effects[@"Effects\POSTBlurEffect"];
+            Effect myShadowBlurredEffect = ResourceManager.Instance.Effects[@"Effects\ShadowMapBlurredEffect"];
+
+            TrashSoupGame.Instance.ActualRenderTarget = globalShadowsRenderTarget;
+            TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
+            ResourceManager.Instance.CurrentScene.DrawAll(null, myShadowBlurredEffect, TrashSoupGame.Instance.TempGameTime, false);
+            TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
+
+            myBlurEffect.Parameters["WorldViewProj"].SetValue(deferredOrthoMatrix);
+            myBlurEffect.Parameters["ScreenWidth"].SetValue(BLUR_FACTOR_IN * (float)TrashSoupGame.Instance.Window.ClientBounds.Width);
+            myBlurEffect.Parameters["ScreenHeight"].SetValue(BLUR_FACTOR_IN * (float)TrashSoupGame.Instance.Window.ClientBounds.Height);
+
+            myBlurEffect.CurrentTechnique = myBlurEffect.Techniques["BlurHorizontal"];
+
+            TrashSoupGame.Instance.ActualRenderTarget = tempRenderTarget01;
+            TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
+            SpriteBatch batch = TrashSoupGame.Instance.GetSpriteBatch();
+            batch.Begin(SpriteSortMode.Texture, TrashSoupGame.Instance.GraphicsDevice.BlendState,
+                TrashSoupGame.Instance.GraphicsDevice.SamplerStates[1], TrashSoupGame.Instance.GraphicsDevice.DepthStencilState,
+                TrashSoupGame.Instance.GraphicsDevice.RasterizerState, myBlurEffect);
+
+            batch.Draw(globalShadowsRenderTarget, new Rectangle(0, 0, TrashSoupGame.Instance.Window.ClientBounds.Width, TrashSoupGame.Instance.Window.ClientBounds.Height), Color.White);
+
+            batch.End();
+
+            TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
+
+            myBlurEffect.CurrentTechnique = myBlurEffect.Techniques["BlurVertical"];
+
+            TrashSoupGame.Instance.ActualRenderTarget = globalShadowsRenderTarget;
+            TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
+
+            batch.Begin(SpriteSortMode.Texture, TrashSoupGame.Instance.GraphicsDevice.BlendState,
+                TrashSoupGame.Instance.GraphicsDevice.SamplerStates[1], TrashSoupGame.Instance.GraphicsDevice.DepthStencilState,
+                TrashSoupGame.Instance.GraphicsDevice.RasterizerState, myBlurEffect);
+
+            batch.Draw(tempRenderTarget01, new Rectangle(0, 0, TrashSoupGame.Instance.Window.ClientBounds.Width, TrashSoupGame.Instance.Window.ClientBounds.Height), Color.White);
+
+            batch.End();
+
+            TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
+
+            //System.IO.FileStream stream = new System.IO.FileStream("Dupa.jpg", System.IO.FileMode.Create);
+            //globalShadowsRenderTarget.SaveAsJpeg(stream, 1024, 1024);
+            //stream.Close();
         }
 
         public System.Xml.Schema.XmlSchema GetSchema()
@@ -361,6 +461,8 @@ namespace TrashSoup.Engine
                     LightPoint pl = new LightPoint(0, "");
                     ResourceManager.Instance.CurrentScene.PointLights.Add(pl);
                     (pl as IXmlSerializable).ReadXml(reader);
+
+                    if (pl.CastShadows) pl.SetupShadowRender();
                 }
             }
             reader.ReadEndElement();

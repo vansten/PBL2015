@@ -21,9 +21,6 @@ namespace TrashSoup.Engine
         #region variables
 
         private float attenuation;
-        private Effect myShadowEffect;
-        private Effect myShadowBlurredEffect;
-        private Effect myBlurEffect;
 
         #endregion
 
@@ -81,13 +78,16 @@ namespace TrashSoup.Engine
             }
         }
 
-        public void GenerateShadowMap(bool ifBlurred)
+        public void GenerateShadowMap()
         {
             if (!this.CastShadows || TrashSoupGame.Instance.ActualRenderTarget != TrashSoupGame.Instance.DefaultRenderTarget || Cameras == null)
             {
                 return;
             }
 
+            Effect myShadowEffect = ResourceManager.Instance.Effects[@"Effects\ShadowMapUnnormalizedEffect"];
+
+            myShadowEffect.Parameters["LightPos"].SetValue(MyTransform.Position);
             for(int i = 0; i < 6 ; ++i)
             {
                 TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(ShadowMapRenderTarget512, (CubeMapFace)i);
@@ -95,11 +95,6 @@ namespace TrashSoup.Engine
                 ResourceManager.Instance.CurrentScene.DrawAll(Cameras[i], myShadowEffect, TrashSoupGame.Instance.TempGameTime, false);
             }
             TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
-
-            if(ifBlurred)
-            {
-                // shit for blurred
-            }
         }
 
         public void SetupShadowRender()
@@ -132,10 +127,6 @@ namespace TrashSoup.Engine
                         );
 
             this.MyTransform.PositionChanged += new Transform.PositionChangedEventHandler(UpdateCameras);
-
-            myShadowEffect = ResourceManager.Instance.Effects[@"Effects\ShadowMapEffect"];
-            myShadowBlurredEffect = ResourceManager.Instance.Effects[@"Effects\ShadowMapBlurredEffect"];
-            myBlurEffect = ResourceManager.Instance.Effects[@"Effects\POSTBlurEffect"];
         }
 
         private void UpdateCameras(object sender, EventArgs e)
@@ -151,6 +142,7 @@ namespace TrashSoup.Engine
 
         public void ReadXml(System.Xml.XmlReader reader)
         {
+            CastShadows = reader.ReadElementContentAsBoolean("CastShadows", "");
             reader.ReadStartElement("Color");
             LightColor = new Vector3(reader.ReadElementContentAsFloat("R", ""),
                 reader.ReadElementContentAsFloat("G", ""),
@@ -170,6 +162,8 @@ namespace TrashSoup.Engine
 
         public void WriteXml(System.Xml.XmlWriter writer)
         {
+            writer.WriteElementString("CastShadows", XmlConvert.ToString(CastShadows));
+
             writer.WriteStartElement("Color");
             writer.WriteElementString("R", LightColor.X.ToString());
             writer.WriteElementString("G", LightColor.Y.ToString());

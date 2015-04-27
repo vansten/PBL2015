@@ -102,7 +102,7 @@ namespace TrashSoup.Gameplay
                     sprintM = MathHelper.Max(sprintM, 0.0f);
                 }
 
-                MyObject.MyTransform.Position += (MyObject.MyTransform.Forward * PLAYER_SPEED * sprint * (gameTime.ElapsedGameTime.Milliseconds / 1000.0f));
+                MyObject.MyTransform.Position += (MyObject.MyTransform.Forward * PLAYER_SPEED * sprint * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f));
             }
             else
             {

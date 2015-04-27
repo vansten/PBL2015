@@ -191,12 +191,12 @@ namespace TrashSoup.Engine
             // adding lights
             LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.05f, 0.05f, 0.1f));
             LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(0.5f, 0.4f, 0.3f), new Vector3(1.0f, 0.8f, 0.8f), new Vector3(-1.0f, -1.0f, -1.0f), true);
-            LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, false);
-            lp1.MyTransform = new Transform(lp1, new Vector3(-3.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
+            LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, true);
+            lp1.MyTransform = new Transform(lp1, new Vector3(-3.0f, 3.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
             lp1.SetupShadowRender();
 
             // loading scene
-            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), DateTime.Now, true, false, true));
+            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), DateTime.Now, true, true, true));
 
             Camera cam = null;
 
@@ -448,6 +448,8 @@ namespace TrashSoup.Engine
             path = @"Effects\ShadowMapBlurredEffect";
             LoadEffect(path);
             path = @"Effects\POSTBlurEffect";
+            LoadEffect(path);
+            path = @"Effects\ShadowMapUnnormalizedEffect";
             LoadEffect(path);
         }
 

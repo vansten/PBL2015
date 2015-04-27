@@ -1,8 +1,4 @@
-#define POINT_MAX_LIGHTS_PER_OBJECT 10
-#define MINIMUM_LENGTH_VALUE 0.00000000001f
-#define ATTENUATION_MULTIPLIER 8
-#define SKINNED_EFFECT_MAX_BONES 72
-#define WEIGHTS_PER_VERTEX 4
+#include "Constants.fxh"
 
 float4x4 World;
 float4x4 WorldViewProj;
@@ -38,7 +34,6 @@ float3 PointLightSpecularColors[POINT_MAX_LIGHTS_PER_OBJECT];
 float PointLightAttenuations[POINT_MAX_LIGHTS_PER_OBJECT];
 uint PointLightCount;
 
-float4x4 Point0WorldViewProj;
 textureCUBE Point0ShadowMap;
 samplerCUBE Point0ShadowMapSampler = sampler_state
 {
@@ -128,7 +123,6 @@ struct VertexShaderOutputShadows
 	float4 ClipPlanes : TEXCOORD4;
 	float CustomClipPlane : TEXCOORD5;
 	float4 PositionDLS : TEXCOORD6;
-	float4 PositionPLS : TEXCOORD7;
 	float4 PositionProj : TEXCOORD8;
 };
 
@@ -199,7 +193,7 @@ ColorPair ComputeLight(float3 posWS, float3 E, float3 N)
 	return result;
 }
 
-ColorPair ComputeLightShadows(float3 posWS, float3 E, float3 N, float4 dirPos, float4 pointPos)
+ColorPair ComputeLightShadows(float3 posWS, float3 E, float3 N, float4 dirPos)
 {
 	E = normalize(E);
 	N = normalize(N);
@@ -224,7 +218,7 @@ ColorPair ComputeLightShadows(float3 posWS, float3 E, float3 N, float4 dirPos, f
 	if ((saturate(projectedDLScoords.x) == projectedDLScoords.x) && (saturate(projectedDLScoords.y) == projectedDLScoords.y))
 	{
 		[branch]
-		if ((dist - 0.005f) <= depth || depth <= 0.0001f)
+		if ((dist - SHADOW_BIAS) <= depth || depth <= SHADOW_DEPTH_BIAS)
 		{
 			// DirLight0
 			ComputeSingleLight(-DirLight0Direction, DirLight0DiffuseColor,
@@ -308,15 +302,35 @@ ColorPair ComputeLightBlurredShadows(float3 posWS, float3 E, float3 N, float2 co
 	float3 L;
 	float Llength;
 	float att;
-	for (uint i = 0; i < PointLightCount; ++i)
+
+	if (PointLightCount < 1) return result;
+
+	// point light 01
+
+	L = PointLightPositions[0] - posWS;
+	L.z = -L.z;
+	Llength = length(L);
+	att = saturate(ATTENUATION_MULTIPLIER * length(PointLightDiffuseColors[0]) * PointLightAttenuations[0] / max(Llength * Llength, MINIMUM_LENGTH_VALUE));
+
+	ComputeSingleLight(normalize(L), PointLightDiffuseColors[0],
+		float3(PointLightSpecularColors[0].x * SpecularColor.x, PointLightSpecularColors[0].y * SpecularColor.y, PointLightSpecularColors[0].z * SpecularColor.z),
+		E, N, temp);
+
+	temp.Diffuse = temp.Diffuse * att;
+	temp.Specular = temp.Specular * att;
+	result.Diffuse += temp.Diffuse;
+	result.Specular += temp.Specular;
+
+	temp.Diffuse = 0;
+	temp.Specular = 0;
+
+	for (uint i = 1; i < PointLightCount; ++i)
 	{
 		L = PointLightPositions[i] - posWS;
 		Llength = length(L);
 		ComputeSingleLight(normalize(L), PointLightDiffuseColors[i],
 			float3(PointLightSpecularColors[i].x * SpecularColor.x, PointLightSpecularColors[i].y * SpecularColor.y, PointLightSpecularColors[i].z * SpecularColor.z),
 			E, N, temp);
-
-		// shadows for point light 0 - TBA
 
 		att = saturate(ATTENUATION_MULTIPLIER * length(PointLightDiffuseColors[i]) * PointLightAttenuations[i] / max(Llength * Llength, MINIMUM_LENGTH_VALUE));
 		temp.Diffuse = temp.Diffuse * att;
@@ -416,7 +430,6 @@ VertexShaderOutputShadows VertexShaderFunctionShadows(VertexShaderInput input)
 	output.CustomClipPlane = dot(output.PositionWS, CustomClippingPlane);
 
 	output.PositionDLS = mul(input.Position, DirLight0WorldViewProj);
-	output.PositionPLS = mul(input.Position, Point0WorldViewProj);
 
 	output.PositionProj = output.Position;
 
@@ -446,7 +459,6 @@ VertexShaderOutputShadows VertexShaderFunctionSkinnedShadows(VertexShaderInputSk
 	output.CustomClipPlane = dot(output.PositionWS, CustomClippingPlane);
 
 	output.PositionDLS = mul(input.Position, DirLight0WorldViewProj);
-	output.PositionPLS = mul(input.Position, Point0WorldViewProj);
 
 	output.PositionProj = output.Position;
 
@@ -537,7 +549,7 @@ float4 PixelShaderFunctionShadows(VertexShaderOutputShadows input) : COLOR0
 
 	////////
 
-	ColorPair computedLight = ComputeLightShadows(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal, input.PositionDLS, input.PositionPLS);
+	ColorPair computedLight = ComputeLightShadows(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal, input.PositionDLS);
 
 	color = (color * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f)) +
 		saturate(ReflectivityBias) * float4(computedLight.Diffuse, 1.0f) * (alpha * float4(reflection, 1.0f));

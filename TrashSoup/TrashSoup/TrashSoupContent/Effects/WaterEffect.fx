@@ -1,6 +1,4 @@
-#define POINT_MAX_LIGHTS_PER_OBJECT 10
-#define MINIMUM_LENGTH_VALUE 0.00000000001f
-#define ATTENUATION_MULTIPLIER 8
+#include "Constants.fxh"
 
 float4x4 World;
 float4x4 WorldViewProj;

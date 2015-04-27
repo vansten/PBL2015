@@ -1,8 +1,4 @@
-#define POINT_MAX_LIGHTS_PER_OBJECT 10
-#define MINIMUM_LENGTH_VALUE 0.00000000001f
-#define ATTENUATION_MULTIPLIER 8
-#define SKINNED_EFFECT_MAX_BONES 72
-#define WEIGHTS_PER_VERTEX 4
+#include "Constants.fxh"
 
 float4x4 World;
 float4x4 WorldViewProj;
@@ -18,7 +14,9 @@ sampler DirLight0ShadowMapSampler = sampler_state
 	AddressV = clamp;
 };
 
-float4x4 Point0WorldViewProj;
+uint PointLightCount;
+float3 PointLightPositions[POINT_MAX_LIGHTS_PER_OBJECT];
+float PointLightAttenuations[POINT_MAX_LIGHTS_PER_OBJECT];
 textureCUBE Point0ShadowMap;
 samplerCUBE Point0ShadowMapSampler = sampler_state
 {
@@ -48,11 +46,10 @@ struct VertexShaderInputSkinned
 struct VertexShaderOutput
 {
 	float4 Position : POSITION0;
-	float4 Position2D : TEXCOORD0;
+	float4 PositionWS : TEXCOORD0;
 	float4 ClipPlanes : TEXCOORD1;
 	float CustomClipPlane : TEXCOORD2;
 	float4 PositionDLS : TEXCOORD5;
-	float4 PositionPLS : TEXCOORD6;
 };
 
 inline void Skin(inout VertexShaderInputSkinned input)
@@ -73,17 +70,15 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
     VertexShaderOutput output;
 
 	output.Position = mul(input.Position, WorldViewProj);
-	output.Position2D = output.Position;
-	float4 positionWS = mul(input.Position, World);
+	output.PositionWS = mul(input.Position, World);
 
-	output.ClipPlanes.x = dot(positionWS, BoundingFrustum[0]);
-	output.ClipPlanes.y = dot(positionWS, BoundingFrustum[1]);
-	output.ClipPlanes.z = dot(positionWS, BoundingFrustum[2]);
-	output.ClipPlanes.w = dot(positionWS, BoundingFrustum[3]);
-	output.CustomClipPlane = dot(positionWS, CustomClippingPlane);
+	output.ClipPlanes.x = dot(output.PositionWS, BoundingFrustum[0]);
+	output.ClipPlanes.y = dot(output.PositionWS, BoundingFrustum[1]);
+	output.ClipPlanes.z = dot(output.PositionWS, BoundingFrustum[2]);
+	output.ClipPlanes.w = dot(output.PositionWS, BoundingFrustum[3]);
+	output.CustomClipPlane = dot(output.PositionWS, CustomClippingPlane);
 
 	output.PositionDLS = mul(input.Position, DirLight0WorldViewProj);
-	output.PositionPLS = mul(input.Position, Point0WorldViewProj);
 
     return output;
 }
@@ -95,17 +90,15 @@ VertexShaderOutput VertexShaderFunctionSkinned(VertexShaderInputSkinned input)
 	Skin(input);
 
 	output.Position = mul(input.Position, WorldViewProj);
-	output.Position2D = output.Position;
-	float4 positionWS = mul(input.Position, World);
+	output.PositionWS = mul(input.Position, World);
 
-		output.ClipPlanes.x = dot(positionWS, BoundingFrustum[0]);
-	output.ClipPlanes.y = dot(positionWS, BoundingFrustum[1]);
-	output.ClipPlanes.z = dot(positionWS, BoundingFrustum[2]);
-	output.ClipPlanes.w = dot(positionWS, BoundingFrustum[3]);
-	output.CustomClipPlane = dot(positionWS, CustomClippingPlane);
+	output.ClipPlanes.x = dot(output.PositionWS, BoundingFrustum[0]);
+	output.ClipPlanes.y = dot(output.PositionWS, BoundingFrustum[1]);
+	output.ClipPlanes.z = dot(output.PositionWS, BoundingFrustum[2]);
+	output.ClipPlanes.w = dot(output.PositionWS, BoundingFrustum[3]);
+	output.CustomClipPlane = dot(output.PositionWS, CustomClippingPlane);
 
 	output.PositionDLS = mul(input.Position, DirLight0WorldViewProj);
-	output.PositionPLS = mul(input.Position, Point0WorldViewProj);
 
 	return output;
 }
@@ -134,14 +127,36 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	if ((saturate(projectedDLScoords.x) == projectedDLScoords.x) && (saturate(projectedDLScoords.y) == projectedDLScoords.y))
 	{
 		[branch]
-		if ((dist - 0.005f) <= depth || depth <= 0.0001f)
+		if ((dist - SHADOW_BIAS) <= depth || depth <= SHADOW_DEPTH_BIAS)
 		{
-			color.xyzw = 1.0f;
+			color.r = 1.0f;
 		}
 	}
 	else
 	{
-		color.xyzw = 1.0f;
+		color.r = 1.0f;
+	}
+
+	// point lightz
+
+	[branch]
+	if (PointLightCount < 1) return color;
+
+	float3 L;
+	float Llength;
+	float att;
+
+	L = PointLightPositions[0] - input.PositionWS;
+	L.z = -L.z;
+	Llength = length(L);
+	att = saturate(ATTENUATION_MULTIPLIER * PointLightAttenuations[0] / max(Llength * Llength, MINIMUM_LENGTH_VALUE));
+
+	float shadowMapDepth = texCUBE(Point0ShadowMapSampler, normalize(-(L * att))).r;
+
+	[branch]
+	if ((Llength / SHADOW_POINT_MAX_DIST - SHADOW_BIAS) <= shadowMapDepth)
+	{
+		color.g = 1.0f;
 	}
 
 	return color;
