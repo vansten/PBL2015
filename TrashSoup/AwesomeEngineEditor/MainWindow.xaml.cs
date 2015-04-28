@@ -162,16 +162,21 @@ namespace AwesomeEngineEditor
             this.Components.ItemsSource = this.LoadedComponents;
             this.DataContext = this;
             this.Closing += MainWindow_Closing;
-            this.IsXYZVisible = System.Windows.Visibility.Hidden;
-            this.IsMoreLessVisible = System.Windows.Visibility.Hidden;
-            this.IsTranslateRotateScaleVisible = System.Windows.Visibility.Hidden;
-            this.DetailsInfo.Visibility = System.Windows.Visibility.Hidden;
+            this.SetInitialValues();
             this.FillObjectComponents();
             this.ObjectComponents.ItemsSource = this.objectComponents;
             this.myGame = new TrashSoup.TrashSoupGame();
             this.myGame.EditorMode = true;
             this.myGame.GraphicsManager.ApplyChanges();
             this.XNAImage.DrawFunction += Draw;
+        }
+
+        private void SetInitialValues()
+        {
+            this.IsXYZVisible = System.Windows.Visibility.Hidden;
+            this.IsMoreLessVisible = System.Windows.Visibility.Hidden;
+            this.IsTranslateRotateScaleVisible = System.Windows.Visibility.Hidden;
+            this.DetailsInfo.Visibility = System.Windows.Visibility.Hidden;
         }
 
         private void Draw(GraphicsDevice obj)
@@ -393,6 +398,22 @@ namespace AwesomeEngineEditor
 
         private void OpenSceneMI_Click(object sender, RoutedEventArgs e)
         {
+            if(this.isSaveSceneMIEnabled)
+            {
+                MessageBoxResult result = MessageBox.Show("Do you want to save scene?", "Warning", MessageBoxButton.YesNoCancel);
+                if (result == MessageBoxResult.Yes)
+                {
+                    this.SaveScene();
+                }
+                else if (result == MessageBoxResult.Cancel)
+                {
+                    return;
+                }
+
+                this.GameObjects.Clear();
+                this.GameObjects = new ObservableCollection<TrashSoup.Engine.GameObject>();
+                SetInitialValues();
+            }
             this.XNAImage.GraphicsDevice = this.myGame.GraphicsDevice;
 
             OpenFileDialog ofd = new OpenFileDialog();
@@ -402,14 +423,14 @@ namespace AwesomeEngineEditor
             {
                 filepath = ofd.FileName;
             }
+            else
+            {
+                this.IsSaveSceneMIEnabled = false;
+                return;
+            }
 
             if (filepath != "")
             {
-                if (this.IsSaveSceneMIEnabled)
-                {
-                    SaveSceneMI_Click(sender, e);
-                }
-
                 this.IsSaveSceneMIEnabled = true;
 
                 TrashSoup.Engine.SaveManager.Instance.EditorLoadFileAction(filepath);
@@ -547,6 +568,7 @@ namespace AwesomeEngineEditor
                         }
                     }
                     this.selectedObject.Components.Add((TrashSoup.Engine.ObjectComponent)obj);
+                    ((TrashSoup.Engine.ObjectComponent)obj).MyObject = this.selectedObject;
                 }
                 this.ObjectComponents.SelectedItem = null;
                 this.GenerateDetailsText();

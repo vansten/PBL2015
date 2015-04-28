@@ -32,7 +32,12 @@ namespace AwesomeEngineEditor.Components
             }
             set
             {
-                this.transform.Position = new Microsoft.Xna.Framework.Vector3(Convert.ToInt32(value), this.transform.Position.Y, this.transform.Position.Z);
+                float newX = this.transform.Position.X;
+                if (!float.TryParse(value, out newX))
+                {
+                    TrashSoup.Engine.Debug.Log("Wrong format of string!");
+                }
+                this.transform.Position = new Microsoft.Xna.Framework.Vector3(newX, this.transform.Position.Y, this.transform.Position.Z);
                 OnPropertyChanged();
             }
         }
@@ -45,7 +50,12 @@ namespace AwesomeEngineEditor.Components
             }
             set
             {
-                this.transform.Position = new Microsoft.Xna.Framework.Vector3(this.transform.Position.X, Convert.ToInt32(value), this.transform.Position.Z);
+                float newY = this.transform.Position.Y;
+                if(!float.TryParse(value, out newY))
+                {
+                    TrashSoup.Engine.Debug.Log("Wrong format of string!");
+                }
+                this.transform.Position = new Microsoft.Xna.Framework.Vector3(this.transform.Position.X, newY, this.transform.Position.Z);
                 OnPropertyChanged();
             }
         }
@@ -58,7 +68,12 @@ namespace AwesomeEngineEditor.Components
             }
             set
             {
-                this.transform.Position = new Microsoft.Xna.Framework.Vector3(this.transform.Position.X, this.transform.Position.Y, Convert.ToInt32(value));
+                float newZ = this.transform.Position.Z;
+                if (!float.TryParse(value, out newZ))
+                {
+                    TrashSoup.Engine.Debug.Log("Wrong format of string!");
+                }
+                this.transform.Position = new Microsoft.Xna.Framework.Vector3(this.transform.Position.X, this.transform.Position.Y, newZ);
                 OnPropertyChanged();
             }
         }
@@ -71,7 +86,12 @@ namespace AwesomeEngineEditor.Components
             }
             set
             {
-                this.transform.Rotation = new Microsoft.Xna.Framework.Vector3(Convert.ToInt32(value), this.transform.Rotation.Y, this.transform.Rotation.Z);
+                float newX = this.transform.Rotation.X;
+                if (!float.TryParse(value, out newX))
+                {
+                    TrashSoup.Engine.Debug.Log("Wrong format of string!");
+                }
+                this.transform.Rotation = new Microsoft.Xna.Framework.Vector3(newX, this.transform.Rotation.Y, this.transform.Rotation.Z);
                 OnPropertyChanged();
             }
         }
@@ -84,7 +104,12 @@ namespace AwesomeEngineEditor.Components
             }
             set
             {
-                this.transform.Rotation = new Microsoft.Xna.Framework.Vector3(this.transform.Rotation.X, Convert.ToInt32(value), this.transform.Rotation.Z);
+                float newY = this.transform.Rotation.Y;
+                if (!float.TryParse(value, out newY))
+                {
+                    TrashSoup.Engine.Debug.Log("Wrong format of string!");
+                }
+                this.transform.Rotation = new Microsoft.Xna.Framework.Vector3(this.transform.Rotation.X, newY, this.transform.Rotation.Z);
                 OnPropertyChanged();
             }
         }
@@ -97,7 +122,12 @@ namespace AwesomeEngineEditor.Components
             }
             set
             {
-                this.transform.Rotation = new Microsoft.Xna.Framework.Vector3(this.transform.Rotation.X, this.transform.Rotation.Y, Convert.ToInt32(value));
+                float newZ = this.transform.Rotation.Z;
+                if (!float.TryParse(value, out newZ))
+                {
+                    TrashSoup.Engine.Debug.Log("Wrong format of string!");
+                }
+                this.transform.Rotation = new Microsoft.Xna.Framework.Vector3(this.transform.Rotation.X, this.transform.Rotation.Y, newZ);
                 OnPropertyChanged();
             }
         }
@@ -110,7 +140,12 @@ namespace AwesomeEngineEditor.Components
             }
             set
             {
-                this.transform.Scale = (float)Convert.ToDouble(value);
+                float newScale = this.transform.Scale;
+                if (!float.TryParse(value, out newScale))
+                {
+                    TrashSoup.Engine.Debug.Log("Wrong format of string!");
+                }
+                this.transform.Scale = newScale;
                 OnPropertyChanged();
             }
         }

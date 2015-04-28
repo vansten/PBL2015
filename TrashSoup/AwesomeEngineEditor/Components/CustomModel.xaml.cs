@@ -54,6 +54,11 @@ namespace AwesomeEngineEditor.Components
         {
             get
             {
+                if(this.model.Paths.Count == 0)
+                {
+                    return "None";
+                }
+
                 string tmp = this.model.Paths[0];
                 if(tmp == null || tmp == "")
                 {

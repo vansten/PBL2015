@@ -15,7 +15,7 @@ namespace TrashSoup.Engine
 
         private int acceleration = 1;
         private float maxYRot = 89.99f;
-        private float maxXRot = 360.0f;
+        private float maxXRot = float.PositiveInfinity;
         private float curXRot = 0.0f;
         private float curYRot = 0.0f;
 
