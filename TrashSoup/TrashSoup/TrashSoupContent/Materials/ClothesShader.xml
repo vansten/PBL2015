@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <Material>
   <Name>ClothesShader</Name>
+  <EffectPath>Effects\NormalEffect</EffectPath>
   <DiffusePath>Textures\Test\TheGuy\GC_Clothes_COL_2kNEW_0</DiffusePath>
   <NormalPath>Textures\Test\TheGuy\GC_Clothes_NM_2k</NormalPath>
   <SpecularColor>

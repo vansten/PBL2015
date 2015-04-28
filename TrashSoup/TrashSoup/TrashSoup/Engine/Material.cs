@@ -834,6 +834,7 @@ namespace TrashSoup.Engine
             reader.ReadStartElement();
 
             Name = reader.ReadElementString("Name", "");
+            MyEffect = ResourceManager.Instance.LoadEffect(reader.ReadElementString("EffectPath", ""));
 
             uint normColor = 0xFFFF0F0F;
             uint blackColor = 0xFF000000;
@@ -890,12 +891,15 @@ namespace TrashSoup.Engine
             PerPixelLighting = reader.ReadElementContentAsBoolean("PerPixelLighting", "");
             RecieveShadows = reader.ReadElementContentAsBoolean("ReceiveShadows", "");
 
+            AssignParamsInitialize();
+
             reader.ReadEndElement();
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)
         {
             writer.WriteElementString("Name", Name);
+            writer.WriteElementString("EffectPath", ResourceManager.Instance.Effects.FirstOrDefault(x => x.Value == MyEffect).Key);
 
             writer.WriteElementString("DiffusePath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == DiffuseMap).Key);
             writer.WriteElementString("NormalPath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == NormalMap).Key);

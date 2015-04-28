@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <Material>
   <Name>testTerMat</Name>
+  <EffectPath>Effects\DefaultEffect</EffectPath>
   <DiffusePath>Textures\Test\metal01_d</DiffusePath>
   <NormalPath>DefaultNormal</NormalPath>
   <SpecularColor>

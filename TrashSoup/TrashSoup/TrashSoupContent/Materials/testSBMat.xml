@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <Material>
   <Name>testSBMat</Name>
+  <EffectPath>Effects\SkyboxEffect</EffectPath>
   <DiffusePath>DefaultDiffuse</DiffusePath>
   <NormalPath>DefaultNormal</NormalPath>
   <CubePath>Textures\Skyboxes\Sunset</CubePath>

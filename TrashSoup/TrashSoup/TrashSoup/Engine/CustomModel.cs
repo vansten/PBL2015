@@ -197,20 +197,20 @@ namespace TrashSoup.Engine
                     {
 
                         String newName = reader.ReadElementString("Name", "");
-                        Effect newEf = ResourceManager.Instance.LoadEffect(reader.ReadElementString("EffectPath", ""));
+                        //Effect newEf = ResourceManager.Instance.LoadEffect(reader.ReadElementString("EffectPath", ""));
 
-                        Material m = new Material(newName, newEf);
+                        Material m = new Material();
 
                         if (!ResourceManager.Instance.Materials.TryGetValue(newName, out m))
                         {
-                            Material tmp = new Material(newName, newEf);
+                            Material tmp = new Material();
                             XmlSerializer serializer = new XmlSerializer(typeof(Material));
                             using (FileStream file = new FileStream(Path.GetFullPath(contentPath) + newName + ".xml", FileMode.Open))
                             {
                                 tmp = (Material)serializer.Deserialize(file);
                                 tmp.Name = newName;
-                                tmp.MyEffect = newEf;
-                                tmp.AssignParamsInitialize();
+                                //tmp.MyEffect = newEf;
+                                //tmp.AssignParamsInitialize();
                                 //ResourceManager.Instance.CurrentScene = (Scene)serializer.Deserialize(file);
                             }
                             //(tmp as IXmlSerializable).ReadXml(reader);
@@ -224,8 +224,8 @@ namespace TrashSoup.Engine
                             {
                                 m = (Material)serializer.Deserialize(file);
                                 m.Name = newName;
-                                m.MyEffect = newEf;
-                                m.AssignParamsInitialize();
+                                //m.MyEffect = newEf;
+                                //m.AssignParamsInitialize();
                                 //ResourceManager.Instance.CurrentScene = (Scene)serializer.Deserialize(file);
                             }
                             if (!ResourceManager.Instance.Materials.ContainsKey(newName))
@@ -283,7 +283,7 @@ namespace TrashSoup.Engine
 
                     writer.WriteElementString("Name", mat.Name);
 
-                    writer.WriteElementString("EffectPath", ResourceManager.Instance.Effects.FirstOrDefault(x => x.Value == mat.MyEffect).Key);
+                    //writer.WriteElementString("EffectPath", ResourceManager.Instance.Effects.FirstOrDefault(x => x.Value == mat.MyEffect).Key);
 
                     //(mat as IXmlSerializable).WriteXml(writer);
                     //writer.WriteEndElement();

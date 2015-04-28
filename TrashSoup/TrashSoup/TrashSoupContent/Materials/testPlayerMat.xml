@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <Material>
   <Name>testPlayerMat</Name>
+  <EffectPath>Effects\NormalEffect</EffectPath>
   <DiffusePath>Textures\Test\cargo</DiffusePath>
   <NormalPath>Textures\Test\cargo_NRM</NormalPath>
   <SpecularColor>
