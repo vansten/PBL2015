@@ -420,7 +420,7 @@ namespace TrashSoup.Engine
         /// IMPORTANT!!! SET NAME FOR EVERY ELEMENT
         /// </summary>
         /// <param name="game"></param>
-        private void LoadEffects(Game game)
+        public void LoadEffects(Game game)
         {
             if(!Effects.ContainsKey("BasicEffect"))
             {
