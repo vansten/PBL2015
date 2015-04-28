@@ -95,7 +95,6 @@
     <Compile Include="Engine\Debug.cs" />
     <Compile Include="Engine\LightPoint.cs" />
     <Compile Include="Engine\Material.cs" />
-    <Compile Include="Engine\MinkowskiDifference.cs" />
     <Compile Include="Engine\MirrorMaterial.cs" />
     <Compile Include="Engine\ParticleSystem.cs" />
     <Compile Include="Engine\ParticleVertex.cs" />
