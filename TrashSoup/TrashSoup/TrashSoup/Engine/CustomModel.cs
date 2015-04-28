@@ -241,7 +241,7 @@ namespace TrashSoup.Engine
                
                 reader.ReadEndElement();
             }
-            ResourceManager.Instance.LoadEffects(TrashSoupGame.Instance);
+            //ResourceManager.Instance.LoadEffects(TrashSoupGame.Instance);
             reader.ReadEndElement();
         }
 

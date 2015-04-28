@@ -371,15 +371,7 @@ namespace TrashSoup.Engine
 
             TrashSoupGame.Instance.ActualRenderTarget = tempRenderTarget01;
             TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
-            SpriteBatch batch;
-            if(TrashSoupGame.Instance.EditorMode)
-            {
-                batch = new SpriteBatch(TrashSoupGame.Instance.GraphicsDevice);   
-            }
-            else
-            {
-                batch = TrashSoupGame.Instance.GetSpriteBatch();
-            }
+            SpriteBatch batch = TrashSoupGame.Instance.GetSpriteBatch();
             batch.Begin(SpriteSortMode.Texture, TrashSoupGame.Instance.GraphicsDevice.BlendState,
                 TrashSoupGame.Instance.GraphicsDevice.SamplerStates[1], TrashSoupGame.Instance.GraphicsDevice.DepthStencilState,
                 TrashSoupGame.Instance.GraphicsDevice.RasterizerState, myBlurEffect);
