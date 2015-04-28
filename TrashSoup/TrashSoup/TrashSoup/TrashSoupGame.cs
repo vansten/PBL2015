@@ -82,7 +82,10 @@ namespace TrashSoup
 
         public void EditorLoadContent()
         {
-            this.LoadContent();
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            ResourceManager.Instance.LoadEffects(this);
+            //this.LoadContent();
         }
 
         protected override void LoadContent()

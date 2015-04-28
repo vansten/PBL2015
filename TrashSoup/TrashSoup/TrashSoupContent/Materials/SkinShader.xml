@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<Material>
+  <Name>SkinShader</Name>
+  <DiffusePath>Textures\Test\TheGuy\GC_Skin_COL_2k_diffuseNEW_0</DiffusePath>
+  <NormalPath>Textures\Test\TheGuy\GC_Skin_NM_2k</NormalPath>
+  <SpecularColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </SpecularColor>
+  <Glossiness>50</Glossiness>
+  <ReflectivityColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </ReflectivityColor>
+  <ReflectivityBias>0.2</ReflectivityBias>
+  <Transparency>1</Transparency>
+  <PerPixelLighting>false</PerPixelLighting>
+  <ReceiveShadows>false</ReceiveShadows>
+</Material>

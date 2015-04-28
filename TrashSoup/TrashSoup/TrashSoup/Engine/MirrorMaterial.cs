@@ -73,7 +73,7 @@ namespace TrashSoup.Engine
         }
 
          public override void UpdateEffect(Effect effect, Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
-            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, TextureCube point0SM, Matrix point0Mat, Vector3 eyeVector, BoundingFrustumExtended frustum,
+            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Texture gSM, TextureCube point0SM, Vector3 eyeVector, BoundingFrustumExtended frustum,
              Matrix[] bones, GameTime gameTime)
         {
             if (epMirrorMap != null)
@@ -109,7 +109,7 @@ namespace TrashSoup.Engine
                 }
             }
 
-            base.UpdateEffect(effect, world, worldViewProj, amb, dirs, pointColors, pointSpeculars, pointAttenuations, pointPositions, pointCount, point0SM, point0Mat, eyeVector, frustum, bones, gameTime);
+            base.UpdateEffect(effect, world, worldViewProj, amb, dirs, pointColors, pointSpeculars, pointAttenuations, pointPositions, pointCount, gSM, point0SM, eyeVector, frustum, bones, gameTime);
         }
 
         protected void SetupCamera(Matrix wm)

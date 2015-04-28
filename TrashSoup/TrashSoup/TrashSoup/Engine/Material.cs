@@ -63,7 +63,6 @@ namespace TrashSoup.Engine
         protected EffectParameter epPointLightAttenuations;
         protected EffectParameter epPointLightCount;
         protected EffectParameter epPoint0ShadowMap;
-        protected EffectParameter epPoint0WorldViewProj;
 
         protected EffectParameter epEyePosition;
         protected EffectParameter epBoundingFrustum;
@@ -282,7 +281,7 @@ namespace TrashSoup.Engine
         }
 
         public virtual void UpdateEffect(Effect effect, Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
-            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, TextureCube point0SM, Matrix point0Mat, 
+            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Texture gSM, TextureCube point0SM, 
             Vector3 eyeVector, BoundingFrustumExtended frustum, Matrix[] bones, GameTime gameTime)
         {
             if (effect != null && tempEffect == null)
@@ -360,9 +359,9 @@ namespace TrashSoup.Engine
                 {
                     epDirLight0SpecularColor.SetValue(dirs[0].LightSpecularColor);
                 }
-                if (epDirLight0ShadowMap != null && dirs[0].ShadowMapRenderTarget2048 != null)
+                if (epDirLight0ShadowMap != null && gSM != null)
                 {
-                    epDirLight0ShadowMap.SetValue(dirs[0].ShadowMapRenderTarget2048);
+                    epDirLight0ShadowMap.SetValue(gSM);
                 }
                 if (epDirLight0WorldViewProj != null && dirs[0].ShadowDrawCamera != null)
                 {
@@ -440,10 +439,6 @@ namespace TrashSoup.Engine
                 if (epPoint0ShadowMap != null && point0SM != null)
                 {
                     epPoint0ShadowMap.SetValue(point0SM);
-                }
-                if (epPoint0WorldViewProj != null)
-                {
-                    epPoint0WorldViewProj.SetValue(world * point0Mat);
                 }
             }
 
@@ -596,7 +591,6 @@ namespace TrashSoup.Engine
             epPointLightAttenuations = null;
             epPointLightCount = null;
             epPoint0ShadowMap = null;
-            epPoint0WorldViewProj = null;
 
             epEyePosition = null;
             epBoundingFrustum = null;
@@ -779,10 +773,6 @@ namespace TrashSoup.Engine
                 else if (pNameHash == p0sm)
                 {
                     epPoint0ShadowMap = p;
-                }
-                else if (pNameHash == p0WVP)
-                {
-                    epPoint0WorldViewProj = p;
                 }
                 else if (pNameHash == eyeP)
                 {

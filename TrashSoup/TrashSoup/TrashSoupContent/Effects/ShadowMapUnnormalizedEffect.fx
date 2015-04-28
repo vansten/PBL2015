@@ -8,6 +8,8 @@ float4 CustomClippingPlane;
 
 float4x3 Bones[SKINNED_EFFECT_MAX_BONES];
 
+float3 LightPos;
+
 struct VertexShaderInput
 {
     float4 Position : POSITION0;
@@ -16,7 +18,7 @@ struct VertexShaderInput
 struct VertexShaderOutput
 {
 	float4 Position : POSITION0;
-	float4 Position2D : TEXCOORD0;
+	float4 PositionWS : TEXCOORD0;
 	float4 ClipPlanes : TEXCOORD1;
 	float CustomClipPlane : TEXCOORD2;
 };
@@ -27,14 +29,13 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
     VertexShaderOutput output;
 
 	output.Position = mul(input.Position, WorldViewProj);
-	output.Position2D = output.Position;
-	float4 positionWS = mul(input.Position, World);
+	output.PositionWS = mul(input.Position, World);
 
-	output.ClipPlanes.x = dot(positionWS, BoundingFrustum[0]);
-	output.ClipPlanes.y = dot(positionWS, BoundingFrustum[1]);
-	output.ClipPlanes.z = dot(positionWS, BoundingFrustum[2]);
-	output.ClipPlanes.w = dot(positionWS, BoundingFrustum[3]);
-	output.CustomClipPlane = dot(positionWS, CustomClippingPlane);
+	output.ClipPlanes.x = dot(output.PositionWS, BoundingFrustum[0]);
+	output.ClipPlanes.y = dot(output.PositionWS, BoundingFrustum[1]);
+	output.ClipPlanes.z = dot(output.PositionWS, BoundingFrustum[2]);
+	output.ClipPlanes.w = dot(output.PositionWS, BoundingFrustum[3]);
+	output.CustomClipPlane = dot(output.PositionWS, CustomClippingPlane);
 
     return output;
 }
@@ -50,7 +51,8 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	clip(input.CustomClipPlane);
 
 	//////
-	float4 color = (input.Position2D.z / (input.Position2D.w));
+	float4 color = 0.0f;
+		color.r = (length(LightPos - input.PositionWS.xyz) / 50.0f);
 	color.a = 1.0f;
 
 	return color;
@@ -92,14 +94,13 @@ VertexShaderOutput VertexShaderFunctionSkinned(VertexShaderInputSkinned input)
 	Skin(input);
 
 	output.Position = mul(input.Position, WorldViewProj);
-	output.Position2D = output.Position;
-	float4 positionWS = mul(input.Position, World);
+	output.PositionWS = mul(input.Position, World);
 
-	output.ClipPlanes.x = dot(positionWS, BoundingFrustum[0]);
-	output.ClipPlanes.y = dot(positionWS, BoundingFrustum[1]);
-	output.ClipPlanes.z = dot(positionWS, BoundingFrustum[2]);
-	output.ClipPlanes.w = dot(positionWS, BoundingFrustum[3]);
-	output.CustomClipPlane = dot(positionWS, CustomClippingPlane);
+	output.ClipPlanes.x = dot(output.PositionWS, BoundingFrustum[0]);
+	output.ClipPlanes.y = dot(output.PositionWS, BoundingFrustum[1]);
+	output.ClipPlanes.z = dot(output.PositionWS, BoundingFrustum[2]);
+	output.ClipPlanes.w = dot(output.PositionWS, BoundingFrustum[3]);
+	output.CustomClipPlane = dot(output.PositionWS, CustomClippingPlane);
 
 	return output;
 }

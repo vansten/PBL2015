@@ -33,6 +33,8 @@ namespace TrashSoup.Engine
         // material doesn't change with LOD, but with MeshPart !!!
         public List<Material> Mat { get; set; }
 
+        private string contentPath;
+
         #endregion
 
         #region methods
@@ -107,8 +109,8 @@ namespace TrashSoup.Engine
                                  ResourceManager.Instance.CurrentScene.GetPointLightAttenuations(),
                                  ResourceManager.Instance.CurrentScene.GetPointLightPositions(),
                                  ResourceManager.Instance.CurrentScene.GetPointLightCount(),
+                                 ResourceManager.Instance.CurrentScene.GetGlobalShadowMap(),
                                  ResourceManager.Instance.CurrentScene.GetPointLight0ShadowMap(),
-                                 ResourceManager.Instance.CurrentScene.GetPointLight0ViewProj(0),
                                  camera.Position + camera.Translation,
                                  camera.Bounds,
                                  bones,
@@ -180,6 +182,14 @@ namespace TrashSoup.Engine
 
             if(reader.Name == "Materials")
             {
+                if(!TrashSoupGame.Instance.EditorMode)
+                {
+                    contentPath = "../../../../TrashSoupContent/Materials/";
+                }
+                else
+                {
+                    contentPath = "../../../TrashSoup/TrashSoupContent/Materials/";
+                }
                 reader.ReadStartElement();
                 while(reader.NodeType != System.Xml.XmlNodeType.EndElement)
                 {
@@ -195,7 +205,7 @@ namespace TrashSoup.Engine
                         {
                             Material tmp = new Material(newName, newEf);
                             XmlSerializer serializer = new XmlSerializer(typeof(Material));
-                            using (FileStream file = new FileStream(newName + ".xml", FileMode.Open))
+                            using (FileStream file = new FileStream(Path.GetFullPath(contentPath) + newName + ".xml", FileMode.Open))
                             {
                                 tmp = (Material)serializer.Deserialize(file);
                                 tmp.Name = newName;
@@ -210,7 +220,7 @@ namespace TrashSoup.Engine
                         else
                         {
                             XmlSerializer serializer = new XmlSerializer(typeof(Material));
-                            using (FileStream file = new FileStream(newName + ".xml", FileMode.Open))
+                            using (FileStream file = new FileStream(Path.GetFullPath(contentPath) + newName + ".xml", FileMode.Open))
                             {
                                 m = (Material)serializer.Deserialize(file);
                                 m.Name = newName;
@@ -231,12 +241,20 @@ namespace TrashSoup.Engine
                
                 reader.ReadEndElement();
             }
-
+            //ResourceManager.Instance.LoadEffects(TrashSoupGame.Instance);
             reader.ReadEndElement();
         }
 
         public override void WriteXml(System.Xml.XmlWriter writer)
         {
+            if (!TrashSoupGame.Instance.EditorMode)
+            {
+                contentPath = "../../../../TrashSoupContent/Materials/";
+            }
+            else
+            {
+                contentPath = "../../../TrashSoup/TrashSoupContent/Materials/";
+            }
             base.WriteXml(writer);
 
             writer.WriteElementString("LODState", LODState.ToString());
@@ -257,7 +275,7 @@ namespace TrashSoup.Engine
                 if(mat != null)
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(Material));
-                    using (FileStream file = new FileStream(mat.Name + ".xml", FileMode.Create))
+                    using (FileStream file = new FileStream(Path.GetFullPath(contentPath) + mat.Name + ".xml", FileMode.Create))
                     {
                         serializer.Serialize(file, mat);
                     }
