@@ -51,7 +51,7 @@ namespace TrashSoup.Engine
         /// </summary>
         public override void Draw(Camera cam, Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
         {
-            if(!TrashSoupGame.Instance.EditorMode)
+            if(TrashSoupGame.Instance.EditorMode)
             {
                 short[] bBoxIndices = {
                                     0, 1, 1, 2, 2, 3, 3, 0, // Front edges
@@ -386,6 +386,24 @@ namespace TrashSoup.Engine
             }
             this.Box.Min = min;
             this.Box.Max = max;
+        }
+
+        public override System.Xml.Schema.XmlSchema GetSchema()
+        {
+            return base.GetSchema();
+        }
+
+        public override void ReadXml(System.Xml.XmlReader reader)
+        {
+            reader.MoveToContent();
+            reader.ReadStartElement();
+            base.ReadXml(reader);
+            reader.ReadEndElement();
+        }
+
+        public override void WriteXml(System.Xml.XmlWriter writer)
+        {
+            base.WriteXml(writer);
         }
 
         #endregion
