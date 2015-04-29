@@ -395,10 +395,10 @@ namespace TrashSoup.Engine
 
         public override void ReadXml(System.Xml.XmlReader reader)
         {
-            reader.MoveToContent();
-            reader.ReadStartElement();
+            //reader.MoveToContent();
+            //reader.ReadStartElement();
             base.ReadXml(reader);
-            reader.ReadEndElement();
+            //reader.ReadEndElement();
         }
 
         public override void WriteXml(System.Xml.XmlWriter writer)

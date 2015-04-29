@@ -203,12 +203,9 @@ namespace TrashSoup.Engine
                 switch (s)
                 {
                     //commented because Collider system will be changed
-                    //case "TrashSoup.Engine.BoxCollider":
-                    //    MyCollider = new BoxCollider(this);
-                    //    break;
-                    //case "TrashSoup.Engine.SphereCollider":
-                    //    MyCollider = new BoxCollider(this);
-                    //    break;
+                    case "TrashSoup.Engine.BoxCollider":
+                        MyCollider = new BoxCollider(this);
+                        break;
                     default:
                         MyCollider = new Collider(this);
                         break;
