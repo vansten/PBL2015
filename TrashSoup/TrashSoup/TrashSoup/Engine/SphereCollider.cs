@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace TrashSoup.Engine
 {
-    class SphereCollider : Collider
+    public class SphereCollider : Collider
     {
         #region Variables
 
