@@ -580,7 +580,7 @@ namespace AwesomeEngineEditor
             }
         }
 
-        private void GenerateDetailsText()
+        public void GenerateDetailsText()
         {
             if (this.selectedObject == null) return;
             this.LoadedComponents.Clear();
@@ -615,6 +615,8 @@ namespace AwesomeEngineEditor
                     {
                         Components.CustomModel cm = new Components.CustomModel(((TrashSoup.Engine.CustomModel)oc));
                         this.LoadedComponents.Add(cm);
+                        Components.Materials m = new Components.Materials(((TrashSoup.Engine.CustomModel)oc).Mat, this);
+                        this.LoadedComponents.Add(m);
                     }
                     else
                     {
