@@ -67,7 +67,10 @@ namespace TrashSoup.Engine
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             this.worldMatrix = this.MyObject.MyTransform.GetWorldMatrix();
-            this.UpdateCollider();
+            if(this.MyObject.MyTransform.PositionChangeNormal != Vector3.Zero)
+            {
+                this.UpdateCollider();
+            }
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
@@ -118,7 +121,7 @@ namespace TrashSoup.Engine
             worldMatrix = this.MyObject.MyTransform.GetWorldMatrix();
 
             IsTrigger = reader.ReadElementContentAsBoolean("IsTrigger", "");
-            //MyObject = ResourceManager.Instance.CurrentScene.GetObject(tmp);
+            MyObject = ResourceManager.Instance.CurrentScene.GetObject(tmp);
 
             //reader.ReadEndElement();
         }

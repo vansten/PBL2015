@@ -73,6 +73,12 @@ namespace TrashSoup.Engine
             this.allColliders.Remove(col);
         }
 
+        public void Reload()
+        {
+            this.allColliders.Clear();
+            this.physicalObjects.Clear();
+        }
+
         /// <summary>
         /// 
         /// Checking for collision, detectig them, deciding if they are trigger enters or collisions, preventing object from colliding with itself
