@@ -38,6 +38,11 @@ namespace TrashSoup.Engine
 
         }
 
+        public SphereCollider(GameObject go, SphereCollider sc) : base(go, sc)
+        {
+
+        }
+
         public override void Draw(Camera cam, Effect effect, GameTime gameTime)
         {
             if(TrashSoupGame.Instance.EditorMode)

@@ -77,6 +77,16 @@ namespace TrashSoup.Engine
             NewState = null;
         }
 
+        public Animator(GameObject go, Animator anim) : base(go)
+        {
+            this.CurrentInterpolation = anim.CurrentInterpolation;
+            this.BaseAnim = anim.BaseAnim;
+            this.SkinningData = anim.SkinningData;
+            this.AvailableStates = anim.AvailableStates;
+            this.CurrentState = anim.CurrentState;
+            this.NewState = null;
+        }
+
         public override void Update(GameTime gameTime)
         {
             if(ifInterpolate)
