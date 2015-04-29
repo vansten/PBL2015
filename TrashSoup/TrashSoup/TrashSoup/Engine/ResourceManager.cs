@@ -212,7 +212,6 @@ namespace TrashSoup.Engine
             cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 1.0f, -0.1f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)) + new Vector3(0.0f, 0.4f, 0.0f),
                     new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 1.5f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f,
                     (float)TrashSoupGame.Instance.Window.ClientBounds.Width / (float)TrashSoupGame.Instance.Window.ClientBounds.Height, 0.1f, 2000.0f);
-            cam.CreateCameraCollider();
             cam.Components.Add(new CameraBehaviourComponent(cam, testBox));
 
             CurrentScene.Cam = cam;

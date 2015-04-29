@@ -13,13 +13,13 @@ namespace TrashSoup.Engine
         #region Variables
 
         private List<GameObject> physicalObjects;
-        private List<Collider> allColliders;
 
         #endregion
 
         #region Properties
 
         public Vector3 Gravity { get; set; }
+        public List<Collider> AllColliders { get; private set; }
 
         #endregion
 
@@ -28,7 +28,7 @@ namespace TrashSoup.Engine
         public PhysicsManager()
         {
             this.physicalObjects = new List<GameObject>();
-            this.allColliders = new List<Collider>();
+            this.AllColliders = new List<Collider>();
             this.Gravity = new Vector3(0.0f, -9.81f, 0.0f);
         }
 
@@ -61,7 +61,7 @@ namespace TrashSoup.Engine
         /// </summary>
         public void AddCollider(Collider col)
         {
-            this.allColliders.Add(col);
+            this.AllColliders.Add(col);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace TrashSoup.Engine
         /// </summary>
         public void RemoveCollider(Collider col)
         {
-            this.allColliders.Remove(col);
+            this.AllColliders.Remove(col);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace TrashSoup.Engine
         public void Update(GameTime gameTime)
         {
             if (gameTime.TotalGameTime.Ticks < 1) return;
-            foreach(Collider col in this.allColliders)
+            foreach(Collider col in this.AllColliders)
             {
                 foreach(GameObject po in this.physicalObjects)
                 {
