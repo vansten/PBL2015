@@ -38,6 +38,11 @@ namespace TrashSoup.Gameplay
 
         protected bool moving = false;
 
+        private bool collisionWithTrash = false;
+        private bool collectedTrash = false;
+        private double collisionFakeTime = 0.0;
+        private double collectedFakeTime = 0.0;
+
         #endregion
 
         #region methods
@@ -130,6 +135,32 @@ namespace TrashSoup.Gameplay
                     }
                 }
             }
+
+            if(this.collisionWithTrash)
+            {
+                if(!this.collectedTrash)
+                {
+                    this.collisionFakeTime = gameTime.TotalGameTime.TotalSeconds;
+                    GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"), "Click X on pad to collect trash", new Vector2(0.6f, 0.1f), Color.Red);
+                }
+            }
+
+            if(!this.collectedTrash && this.collisionWithTrash && InputHandler.Instance.Action())
+            {
+                this.collectedTrash = true;
+                this.collectedFakeTime = gameTime.TotalGameTime.TotalSeconds;
+            }
+
+            if(this.collectedTrash)
+            {
+                GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"), "Trash collected", new Vector2(0.6f, 0.1f), Color.Red);
+                if(gameTime.TotalGameTime.TotalSeconds - this.collectedFakeTime > 2.0)
+                {
+                    this.collectedTrash = false;
+                }
+            }
+
+            this.collisionWithTrash = false;
         }
 
         public override void Draw(Camera cam, Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
@@ -158,6 +189,12 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["Idle"];
                 //MyObject.MyAnimator.SetBlendState("Walk");
             }
+        }
+
+        public override void OnTrigger(GameObject other)
+        {
+            this.collisionWithTrash = true;
+            base.OnTrigger(other);
         }
 
         protected Vector3 RotateAsForward(Vector3 forward, Vector3 rotation)
