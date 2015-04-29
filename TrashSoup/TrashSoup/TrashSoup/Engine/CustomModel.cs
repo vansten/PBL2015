@@ -182,7 +182,7 @@ namespace TrashSoup.Engine
 
             if(reader.Name == "Materials")
             {
-                if(!TrashSoupGame.Instance.EditorMode)
+                if (!TrashSoupGame.Instance.EditorMode)
                 {
                     contentPath = "../../../../TrashSoupContent/Materials/";
                 }
@@ -197,43 +197,9 @@ namespace TrashSoup.Engine
                     {
 
                         String newName = reader.ReadElementString("Name", "");
-                        //Effect newEf = ResourceManager.Instance.LoadEffect(reader.ReadElementString("EffectPath", ""));
 
                         Material m = new Material();
-
-                        if (!ResourceManager.Instance.Materials.TryGetValue(newName, out m))
-                        {
-                            Material tmp = new Material();
-                            XmlSerializer serializer = new XmlSerializer(typeof(Material));
-                            using (FileStream file = new FileStream(Path.GetFullPath(contentPath) + newName + ".xml", FileMode.Open))
-                            {
-                                tmp = (Material)serializer.Deserialize(file);
-                                tmp.Name = newName;
-                                //tmp.MyEffect = newEf;
-                                //tmp.AssignParamsInitialize();
-                                //ResourceManager.Instance.CurrentScene = (Scene)serializer.Deserialize(file);
-                            }
-                            //(tmp as IXmlSerializable).ReadXml(reader);
-                            m = tmp;
-                            Debug.Log("Material successfully loaded - " + newName);
-                        }
-                        else
-                        {
-                            XmlSerializer serializer = new XmlSerializer(typeof(Material));
-                            using (FileStream file = new FileStream(Path.GetFullPath(contentPath) + newName + ".xml", FileMode.Open))
-                            {
-                                m = (Material)serializer.Deserialize(file);
-                                m.Name = newName;
-                                //m.MyEffect = newEf;
-                                //m.AssignParamsInitialize();
-                                //ResourceManager.Instance.CurrentScene = (Scene)serializer.Deserialize(file);
-                            }
-                            if (!ResourceManager.Instance.Materials.ContainsKey(newName))
-                            {
-                                ResourceManager.Instance.Materials.Add(newName, m);
-                            }
-                            Debug.Log("New material successfully loaded - " + newName);
-                        }
+                        m = ResourceManager.Instance.LoadMaterial(Path.GetFullPath(contentPath) + newName + ".xml");
 
                         Mat.Add(m);
                     }

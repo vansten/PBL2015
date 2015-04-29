@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using TrashSoup;
 using TrashSoup.Gameplay;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace TrashSoup.Engine
 {
@@ -314,6 +316,40 @@ namespace TrashSoup.Engine
                 Debug.Log("New animation successfully loaded - " + path);
             }
             return output;
+        }
+
+        public Material LoadMaterial(String path)
+        {
+            string newName = Path.GetFileNameWithoutExtension(path);
+            Material output = new Material();
+            if (!ResourceManager.Instance.Materials.TryGetValue(newName, out output))
+            {
+                Material tmp = new Material();
+                XmlSerializer serializer = new XmlSerializer(typeof(Material));
+                using (FileStream file = new FileStream(path, FileMode.Open))
+                {
+                    tmp = (Material)serializer.Deserialize(file);
+                    tmp.Name = newName;
+                }
+                output = tmp;
+                Debug.Log("Material successfully loaded - " + newName);
+                return output;
+            }
+            else
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(Material));
+                using (FileStream file = new FileStream(path, FileMode.Open))
+                {
+                    output = (Material)serializer.Deserialize(file);
+                    output.Name = newName;
+                }
+                if (!ResourceManager.Instance.Materials.ContainsKey(newName))
+                {
+                    ResourceManager.Instance.Materials.Add(newName, output);
+                }
+                Debug.Log("New material successfully loaded - " + newName);
+                return output;
+            }
         }
 
         /// <summary>
