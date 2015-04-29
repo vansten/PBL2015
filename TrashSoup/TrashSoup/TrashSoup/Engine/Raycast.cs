@@ -56,6 +56,11 @@ namespace TrashSoup.Engine
 
                 foreach (Collider collider in allColliders)
                 {
+                    if(!collider.MyObject.Enabled)
+                    {
+                        continue;
+                    }
+
                     if (collider is SphereCollider)
                     {
                         SphereCollider sc = (SphereCollider)collider;
