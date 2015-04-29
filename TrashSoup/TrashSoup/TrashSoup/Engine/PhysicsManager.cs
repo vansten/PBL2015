@@ -84,7 +84,7 @@ namespace TrashSoup.Engine
             {
                 foreach(GameObject po in this.physicalObjects)
                 {
-                    if(col.MyObject != po)
+                    if(col.MyObject != po && col.MyObject.Enabled && po.Enabled)
                     {
                         if(col.Intersects(po.MyPhysicalObject))
                         {

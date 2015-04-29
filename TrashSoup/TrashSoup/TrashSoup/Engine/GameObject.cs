@@ -94,7 +94,7 @@ namespace TrashSoup.Engine
 
         public virtual void Draw(Camera cam, Effect effect, GameTime gameTime)
         {
-            if(this.Visible)
+            if(this.Visible && this.Enabled)
             {
                 foreach (ObjectComponent obj in Components)
                 {
