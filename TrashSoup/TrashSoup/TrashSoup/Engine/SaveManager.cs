@@ -98,7 +98,7 @@ namespace TrashSoup.Engine
             using (StreamReader reader = new StreamReader("config.txt"))
             {
                 this.XmlPath = reader.ReadToEnd();
-                Debug.Log("Saving to file: " + this.XmlPath);
+                Debug.Log("Actual scene file: " + this.XmlPath);
             }
         }
 
