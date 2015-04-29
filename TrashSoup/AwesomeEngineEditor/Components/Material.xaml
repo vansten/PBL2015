@@ -8,5 +8,6 @@
     <Grid>
         <TextBlock Name="MaterialName" Text="Material"/>
         <Button Name="AddMaterial" Content="+" Margin="170, 0, 0, 0" Click="AddMaterial_Click"/>
+        <Button Name="RemoveMaterial" Content="-" Margin="170, 0, 0, 0" Click="RemoveMaterial_Click"/>
     </Grid>
 </UserControl>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -38,6 +39,7 @@ namespace AwesomeEngineEditor.Components
             else
             {
                 this.MaterialName.Text = "None";
+                this.RemoveMaterial.Visibility = System.Windows.Visibility.Hidden;
             }
             this.mw = mw;
         }
@@ -47,9 +49,25 @@ namespace AwesomeEngineEditor.Components
             //Load material from disk
             //Load metarial in game
             //Add material to list
-            TrashSoup.Engine.Material m = new TrashSoup.Engine.Material();
-            m.Name = "Testing";
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "XML files (*xml) | *.xml";
+            string path = "";
+            if (ofd.ShowDialog() == true)
+            {
+               path = ofd.FileName;
+            }
+            else
+            {
+                return;
+            }
+            TrashSoup.Engine.Material m = TrashSoup.Engine.ResourceManager.Instance.LoadMaterial(path);
             this.materialsCollection.Add(m);
+            this.mw.GenerateDetailsText();
+        }
+
+        private void RemoveMaterial_Click(object sender, RoutedEventArgs e)
+        {
+            this.materialsCollection.Remove(this.material);
             this.mw.GenerateDetailsText();
         }
     }
