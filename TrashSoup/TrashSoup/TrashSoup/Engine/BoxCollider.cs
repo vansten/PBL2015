@@ -51,7 +51,7 @@ namespace TrashSoup.Engine
         /// </summary>
         public override void Draw(Camera cam, Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
         {
-            if(TrashSoupGame.Instance.EditorMode)
+            if(!TrashSoupGame.Instance.EditorMode)
             {
                 short[] bBoxIndices = {
                                     0, 1, 1, 2, 2, 3, 3, 0, // Front edges
@@ -148,6 +148,11 @@ namespace TrashSoup.Engine
                     }
                 }
             }
+            else
+            {
+                this.min = new Vector3(-1.0f, -1.0f, -1.0f);
+                this.max = new Vector3(1.0f, 1.0f, 1.0f);
+            }
 
             this.Box = new BoundingBox(min, max);
             this.corners = this.Box.GetCorners();
@@ -186,13 +191,182 @@ namespace TrashSoup.Engine
 
         private bool IntersectsWithSphere(PhysicalObject po, BoundingSphere boundingSphere)
         {
+            if (this.Box.Intersects(boundingSphere))
+            {
+                float intersectionPointMaxX = boundingSphere.Center.X + boundingSphere.Radius;
+                float intersectionPointMaxY = boundingSphere.Center.Y + boundingSphere.Radius;
+                float intersectionPointMaxZ = boundingSphere.Center.Z + boundingSphere.Radius;
+                float intersectionPointMinX = boundingSphere.Center.X - boundingSphere.Radius;
+                float intersectionPointMinY = boundingSphere.Center.Y - boundingSphere.Radius;
+                float intersectionPointMinZ = boundingSphere.Center.Z - boundingSphere.Radius;
+
+                Vector3 min = new Vector3(intersectionPointMinX, intersectionPointMinY, intersectionPointMinZ);
+                Vector3 max = new Vector3(intersectionPointMaxX, intersectionPointMaxY, intersectionPointMaxZ);
+
+                Vector3 positionChange = po.MyObject.MyTransform.PositionChangeNormal;
+                if (positionChange != Vector3.Zero)
+                {
+                    positionChange.Normalize();
+                }
+
+                float x, y, z;
+                float x1, x2, y1, y2, z1, z2;
+                x1 = x2 = y1 = y2 = z1 = z2 = 0.0f;
+                x = y = z = 0.0f;
+
+                x1 = this.Box.Max.X - min.X;
+                if (x1 < 0.0f || this.Box.Max.X > max.X)
+                {
+                    x1 = 0.0f;
+                }
+
+                x2 = this.Box.Min.X - max.X;
+                if (x2 > 0.0f || this.Box.Min.X < min.X)
+                {
+                    x2 = 0.0f;
+                }
+
+                y1 = this.Box.Max.Y - min.Y;
+                if (y1 < 0.0f || this.Box.Max.Y > max.Y)
+                {
+                    y1 = 0.0f;
+                }
+
+                y2 = this.Box.Min.Y - max.Y;
+                if (y2 > 0.0f || this.Box.Min.Y < min.Y)
+                {
+                    y2 = 0.0f;
+                }
+
+                z1 = this.Box.Max.Z - min.Z;
+                if (z1 < 0.0f || this.Box.Max.Z > max.Z)
+                {
+                    z1 = 0.0f;
+                }
+
+                z2 = this.Box.Min.Z - max.Z;
+                if (z2 > 0.0f || this.Box.Min.Z < min.Z)
+                {
+                    z2 = 0.0f;
+                }
+
+                x = Math.Abs(x1) > Math.Abs(x2) ? x1 : x2;
+                y = Math.Abs(y1) > Math.Abs(y2) ? y1 : y2;
+                z = Math.Abs(z1) > Math.Abs(z2) ? z1 : z2;
+
+                if (po.Velocity.X == 0.0f)
+                {
+                    x *= positionChange.X;
+                }
+                if (po.Velocity.Y == 0.0f)
+                {
+                    y *= positionChange.Y;
+                }
+                if (po.Velocity.Z == 0.0f)
+                {
+                    z *= positionChange.Z;
+                }
+
+                this.IntersectionVector = new Vector3(x, y, z);
+                this.IntersectionVector *= -1.0f;
+
+                return true;
+            }
+
             return false;
         }
 
         private bool IntersectsWithAABB(PhysicalObject po, BoundingBox boundingBox)
         {
+            if (this.Box.Intersects(boundingBox))
+            {
+                Vector3 positionChange = po.MyObject.MyTransform.PositionChangeNormal;
+                if (positionChange != Vector3.Zero)
+                {
+                    positionChange.Normalize();
+                }
+
+                float x, y, z;
+                float x1, x2, y1, y2, z1, z2;
+                x1 = x2 = y1 = y2 = z1 = z2 = 0.0f;
+                x = y = z = 0.0f;
+
+                x1 = boundingBox.Max.X - this.Box.Min.X;
+                if (x1 < 0.0f || boundingBox.Max.X > this.Box.Max.X)
+                {
+                    x1 = 0.0f;
+                }
+
+                x2 = boundingBox.Min.X - this.Box.Max.X;
+                if (x2 > 0.0f || boundingBox.Min.X < this.Box.Min.X)
+                {
+                    x2 = 0.0f;
+                }
+
+                if (x1 != 0.0f && x2 != 0.0f)
+                {
+                    x1 = x2 = 0.0f;
+                }
+
+                y1 = boundingBox.Max.Y - this.Box.Min.Y;
+                if (y1 < 0.0f || boundingBox.Max.Y > this.Box.Max.Y)
+                {
+                    y1 = 0.0f;
+                }
+
+                y2 = boundingBox.Min.Y - this.Box.Max.Y;
+                if (y2 > 0.0f || boundingBox.Min.Y < this.Box.Min.Y)
+                {
+                    y2 = 0.0f;
+                }
+
+                if (y1 != 0.0f && y2 != 0.0f)
+                {
+                    y1 = y2 = 0.0f;
+                }
+
+                z1 = boundingBox.Max.Z - this.Box.Min.Z;
+                if (z1 < 0.0f || boundingBox.Max.Z > this.Box.Max.Z)
+                {
+                    z1 = 0.0f;
+                }
+
+                z2 = boundingBox.Min.Z - this.Box.Max.Z;
+                if (z2 > 0.0f || boundingBox.Min.Z < this.Box.Min.Z)
+                {
+                    z2 = 0.0f;
+                }
+
+                if (z1 != 0.0f && z2 != 0.0f)
+                {
+                    z1 = z2 = 0.0f;
+                }
+
+                x = Math.Abs(x1) > Math.Abs(x2) ? x1 : x2;
+                y = Math.Abs(y1) > Math.Abs(y2) ? y1 : y2;
+                z = Math.Abs(z1) > Math.Abs(z2) ? z1 : z2;
+
+                if (po.Velocity.X == 0.0f)
+                {
+                    x *= positionChange.X;
+                }
+                if (po.Velocity.Y == 0.0f)
+                {
+                    y *= positionChange.Y;
+                }
+                if (po.Velocity.Z == 0.0f)
+                {
+                    z *= positionChange.Z;
+                }
+
+                this.IntersectionVector = new Vector3(x, y, z);
+
+                return true;
+            }
+
             return false;
         }
+
 
         /// <summary>
         /// 
