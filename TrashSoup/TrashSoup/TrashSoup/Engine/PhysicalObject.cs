@@ -129,7 +129,7 @@ namespace TrashSoup.Engine
             //Find a better way to slowing down (decreasing acceleration)
 
 #if DEBUG
-            if(InputManager.Instance.GetGamePadButtonDown(Microsoft.Xna.Framework.Input.Buttons.DPadDown))
+            if(InputManager.Instance.GetGamePadButtonDown(Microsoft.Xna.Framework.Input.Buttons.DPadDown) || InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.G))
             {
                 this.IsUsingGravity = !this.IsUsingGravity;
                 if(!this.IsUsingGravity)
