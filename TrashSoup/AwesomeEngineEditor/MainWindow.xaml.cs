@@ -475,25 +475,42 @@ namespace AwesomeEngineEditor
         private void SaveSceneMI_Click(object sender, RoutedEventArgs e)
         {
             //Scene save
+            this.SaveScene();
+        }
+
+        private void SaveScene()
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "XML files (*.xml) | *.xml";
+            string filepath = "";
+            if (sfd.ShowDialog() == true)
+            {
+                filepath = sfd.FileName;
+            }
+            else
+            {
+                return;
+            }
+
             TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary = new Dictionary<uint, TrashSoup.Engine.GameObject>();
             this.GameObjects.Remove(this.normalCamera);
 
             List<TrashSoup.Engine.GameObject> toRemove = new List<TrashSoup.Engine.GameObject>();
 
-            foreach(TrashSoup.Engine.GameObject go in this.GameObjects)
+            foreach (TrashSoup.Engine.GameObject go in this.GameObjects)
             {
-                if(go.GetType() == typeof(TrashSoup.Engine.LightAmbient) || go.GetType() == typeof(TrashSoup.Engine.LightDirectional) || go.GetType() == typeof(TrashSoup.Engine.LightPoint))
+                if (go.GetType() == typeof(TrashSoup.Engine.LightAmbient) || go.GetType() == typeof(TrashSoup.Engine.LightDirectional) || go.GetType() == typeof(TrashSoup.Engine.LightPoint))
                 {
                     toRemove.Add(go);
                 }
             }
 
-            foreach(TrashSoup.Engine.GameObject go in toRemove)
+            foreach (TrashSoup.Engine.GameObject go in toRemove)
             {
                 this.GameObjects.Remove(go);
             }
 
-            foreach(TrashSoup.Engine.GameObject go in this.GameObjects)
+            foreach (TrashSoup.Engine.GameObject go in this.GameObjects)
             {
                 if (!TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.ContainsKey(go.UniqueID))
                 {
@@ -507,21 +524,16 @@ namespace AwesomeEngineEditor
 
             TrashSoup.Engine.ResourceManager.Instance.CurrentScene.Cam = this.normalCamera;
 
-            TrashSoup.Engine.SaveManager.Instance.SaveFileAction();
-
+            //TrashSoup.Engine.SaveManager.Instance.SaveFileAction();
+            TrashSoup.Engine.SaveManager.Instance.EditorSaveFileAction(filepath);
             TrashSoup.Engine.Debug.Log("Save completed");
 
             TrashSoup.Engine.ResourceManager.Instance.CurrentScene.Cam = TrashSoup.Engine.ResourceManager.Instance.CurrentScene.EditorCam;
             this.GameObjects.Add(this.normalCamera);
-            foreach(TrashSoup.Engine.GameObject go in toRemove)
+            foreach (TrashSoup.Engine.GameObject go in toRemove)
             {
                 this.GameObjects.Add(go);
             }
-        }
-
-        private void SaveScene()
-        {
-
         }
 
         private void QuitMI_Click(object sender, RoutedEventArgs e)

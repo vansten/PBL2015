@@ -82,6 +82,12 @@ namespace TrashSoup.Engine
             LoadFileAction();
         }
 
+        public void EditorSaveFileAction(string filepath)
+        {
+            this.XmlPath = filepath;
+            SaveFileAction();
+        }
+
         public void GetXmlPath()
         {
             if(!File.Exists("config.txt"))

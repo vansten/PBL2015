@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="About" Height="150" Width="300" Background="Gray">
     <Grid>
-        <TextBlock Text="Awesome Engine Editor v. 0.3.1.0" HorizontalAlignment="Center" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock Text="Awesome Engine Editor v. 0.3.1.1" HorizontalAlignment="Center" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16"/>
         <TextBlock Text="Copyrights © TrashSoup Team 2015" HorizontalAlignment="Center" Margin="10,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16"/>
         <Button Content="Close" Width ="60" Height="20" Click="Button_Click" Margin="0, 60, 0, 0"/>
     </Grid>
