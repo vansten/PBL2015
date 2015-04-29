@@ -102,13 +102,13 @@ namespace TrashSoup.Gameplay
                 if (InputHandler.Instance.IsSprinting() && tempMove.Length() >= 0.8f)
                 {
                     sprint = MathHelper.Lerp(1.0f, SPRINT_MULTIPLIER, sprintM);
-                    sprintM += SPRINT_ACCELERATION * (gameTime.ElapsedGameTime.Milliseconds / 1000.0f);
+                    sprintM += SPRINT_ACCELERATION * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f);
                     sprintM = MathHelper.Min(sprintM, 1.0f);
                 }
                 else if(sprintM != 0.0f || sprint != 1.0f)
                 {
                     sprint = MathHelper.Lerp(1.0f, SPRINT_MULTIPLIER, sprintM);
-                    sprintM -= SPRINT_DECELERATION * (gameTime.ElapsedGameTime.Milliseconds / 1000.0f);
+                    sprintM -= SPRINT_DECELERATION * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f);
                     sprintM = MathHelper.Max(sprintM, 0.0f);
                 }
 
@@ -141,7 +141,7 @@ namespace TrashSoup.Gameplay
                 if(!this.collectedTrash)
                 {
                     this.collisionFakeTime = gameTime.TotalGameTime.TotalSeconds;
-                    GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"), "Click X on pad to collect trash", new Vector2(0.6f, 0.1f), Color.Red);
+                    GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"), "Click X on pad to collect trash", new Vector2(0.55f, 0.1f), Color.Red);
                 }
             }
 
