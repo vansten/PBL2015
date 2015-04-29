@@ -133,6 +133,7 @@ namespace TrashSoup.Gameplay
                         // jump!
                         //Debug.Log("Jump!");
                         MyObject.MyAnimator.ChangeState("Jump");
+                        this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 80.0f);
                     }
                 }
             }
@@ -195,8 +196,11 @@ namespace TrashSoup.Gameplay
 
         public override void OnTrigger(GameObject other)
         {
-            this.collisionWithTrash = true;
-            this.trash = other;
+            if(other.Name == "Trash")
+            {
+                this.collisionWithTrash = true;
+                this.trash = other;
+            }
             base.OnTrigger(other);
         }
 
