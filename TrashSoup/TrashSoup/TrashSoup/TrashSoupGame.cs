@@ -156,6 +156,7 @@ namespace TrashSoup
                 //TESTING SAVE
                 if (Keyboard.GetState().IsKeyDown(Keys.F5) && !f5pressed)
                 {
+                    SaveManager.Instance.GetXmlPath();
                     SaveManager.Instance.SaveFileAction();
                     Debug.Log("Save Completed");
                     f5pressed = true;
@@ -166,6 +167,7 @@ namespace TrashSoup
                 }
                 if (Keyboard.GetState().IsKeyDown(Keys.F6) && !f6pressed)
                 {
+                    SaveManager.Instance.GetXmlPath();
                     SaveManager.Instance.LoadFileAction();
                     Debug.Log("Load Completed");
                     f6pressed = true;

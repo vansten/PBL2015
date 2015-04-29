@@ -65,6 +65,7 @@ namespace TrashSoup.Engine
 
         public void LoadFileAction()
         {
+            Debug.Log("Loading file: " + this.XmlPath);
             XmlSerializer serializer = new XmlSerializer(typeof(Scene));
             using(FileStream file = new FileStream(this.XmlPath, FileMode.Open))
             {
@@ -79,6 +80,26 @@ namespace TrashSoup.Engine
         {
             this.XmlPath = filepath;
             LoadFileAction();
+        }
+
+        public void GetXmlPath()
+        {
+            if(!File.Exists("config.txt"))
+            {
+                using(FileStream fs = new FileStream("config.txt", FileMode.CreateNew))
+                {
+                    using(StreamWriter writer = new StreamWriter(fs))
+                    {
+                        writer.Write(this.XmlPath);
+                    }
+                    Debug.Log("config.txt created");
+                }
+            }
+            using (StreamReader reader = new StreamReader("config.txt"))
+            {
+                this.XmlPath = reader.ReadToEnd();
+                Debug.Log("Actual scene file: " + this.XmlPath);
+            }
         }
 
         #endregion
