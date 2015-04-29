@@ -94,7 +94,7 @@ namespace TrashSoup.Engine
 
         public virtual void Draw(Camera cam, Effect effect, GameTime gameTime)
         {
-            if(this.Visible)
+            if(this.Visible && this.Enabled)
             {
                 foreach (ObjectComponent obj in Components)
                 {
@@ -203,12 +203,9 @@ namespace TrashSoup.Engine
                 switch (s)
                 {
                     //commented because Collider system will be changed
-                    //case "TrashSoup.Engine.BoxCollider":
-                    //    MyCollider = new BoxCollider(this);
-                    //    break;
-                    //case "TrashSoup.Engine.SphereCollider":
-                    //    MyCollider = new BoxCollider(this);
-                    //    break;
+                    case "TrashSoup.Engine.BoxCollider":
+                        MyCollider = new BoxCollider(this);
+                        break;
                     default:
                         MyCollider = new Collider(this);
                         break;

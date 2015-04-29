@@ -222,6 +222,11 @@ namespace TrashSoup.Engine
                     }
                 }
             }
+            else
+            {
+                this.center = this.MyObject.MyTransform.Position;
+                this.radius = 1.0f;
+            }
 
             this.initialSphere = new BoundingSphere(this.center, this.radius);
 

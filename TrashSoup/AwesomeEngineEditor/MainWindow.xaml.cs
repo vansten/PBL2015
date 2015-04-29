@@ -584,6 +584,14 @@ namespace AwesomeEngineEditor
                         this.selectedObject.MyPhysicalObject = new TrashSoup.Engine.PhysicalObject(this.selectedObject);
                     }
                 }
+                else if(this.ObjectComponents.SelectedItem.GetType() == typeof(TrashSoup.Engine.BoxCollider))
+                {
+                    this.selectedObject.MyCollider = new TrashSoup.Engine.BoxCollider(this.selectedObject);
+                }
+                else if(this.ObjectComponents.SelectedItem.GetType() == typeof(TrashSoup.Engine.SphereCollider))
+                {
+                    this.selectedObject.MyCollider = new TrashSoup.Engine.SphereCollider(this.selectedObject);
+                }
                 else
                 {
                     int i = this.ObjectComponents.SelectedIndex;
@@ -722,6 +730,12 @@ namespace AwesomeEngineEditor
             {
                 Components.Animator animatorWindow = new Components.Animator(this.selectedObject.MyAnimator);
                 this.LoadedComponents.Add(animatorWindow);
+            }
+
+            if(this.selectedObject.MyCollider != null)
+            {
+                Components.ComponentWindow cw = new Components.ComponentWindow(this.selectedObject.MyCollider);
+                this.LoadedComponents.Add(cw);
             }
 
             if (this.selectedObject.Components.Count > 0)

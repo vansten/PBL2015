@@ -124,7 +124,7 @@ namespace TrashSoup.Engine
             worldMatrix = this.MyObject.MyTransform.GetWorldMatrix();
 
             IsTrigger = reader.ReadElementContentAsBoolean("IsTrigger", "");
-            //MyObject = ResourceManager.Instance.CurrentScene.GetObject(tmp);
+            MyObject = ResourceManager.Instance.CurrentScene.GetObject(tmp);
 
             //reader.ReadEndElement();
         }

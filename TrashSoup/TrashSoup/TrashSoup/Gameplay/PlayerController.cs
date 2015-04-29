@@ -42,6 +42,7 @@ namespace TrashSoup.Gameplay
         private bool collectedTrash = false;
         private double collisionFakeTime = 0.0;
         private double collectedFakeTime = 0.0;
+        private GameObject trash;
 
         #endregion
 
@@ -149,6 +150,7 @@ namespace TrashSoup.Gameplay
             {
                 this.collectedTrash = true;
                 this.collectedFakeTime = gameTime.TotalGameTime.TotalSeconds;
+                this.trash.Enabled = false;
             }
 
             if(this.collectedTrash)
@@ -194,6 +196,7 @@ namespace TrashSoup.Gameplay
         public override void OnTrigger(GameObject other)
         {
             this.collisionWithTrash = true;
+            this.trash = other;
             base.OnTrigger(other);
         }
 
