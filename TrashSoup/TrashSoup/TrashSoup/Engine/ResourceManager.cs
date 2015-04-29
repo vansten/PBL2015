@@ -161,7 +161,7 @@ namespace TrashSoup.Engine
             testBox.MyAnimator = playerAnimator;
             testBox.Components.Add(new PlayerController(testBox));
             testBox.MyPhysicalObject = new PhysicalObject(testBox, 1.0f, 0.05f, false);
-            testBox.MyCollider = new SphereCollider(testBox);  //Add a box collider to test collisions
+            testBox.MyCollider = new BoxCollider(testBox);  //Add a box collider to test collisions
 
             GameObject testTer = new GameObject(2, "testTer");
             testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
@@ -170,7 +170,7 @@ namespace TrashSoup.Engine
             GameObject testBox2 = new GameObject(3, "testBox2");
             testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 2.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.4f);
             testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Test/TestSphere"], null, null }, 3, testPlayerMats));
-            testBox2.MyCollider = new SphereCollider(testBox2);
+            testBox2.MyCollider = new BoxCollider(testBox2);
 
             GameObject testBox3 = new GameObject(5, "testBox3");
             testBox3.MyTransform = new Transform(testBox3, new Vector3(3.0f, 2.0f, 2.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, MathHelper.Pi, 0.0f), 1.2f);

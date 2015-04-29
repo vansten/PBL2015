@@ -97,6 +97,8 @@ namespace TrashSoup.Engine
                             else
                             {
                                 Debug.Log("Collision found: " + col.MyObject.Name + " vs. " + po.Name + " at time: " + gameTime.TotalGameTime.Seconds + " s.");
+                                po.MyTransform.Position -= col.IntersectionVector;
+                                po.MyPhysicalObject.Velocity = Vector3.Zero;
                                 col.MyObject.OnCollision(po);
                                 po.OnCollision(col.MyObject);
                             }
