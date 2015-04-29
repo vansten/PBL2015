@@ -299,7 +299,89 @@ namespace TrashSoup.Engine
 
         private bool IntersectsWithAABB(PhysicalObject po, BoundingBox boundingBox)
         {
+            if (this.Sphere.Intersects(boundingBox))
+            {
+                float intersectionPointMaxX = this.Sphere.Center.X + this.Sphere.Radius;
+                float intersectionPointMaxY = this.Sphere.Center.Y + this.Sphere.Radius;
+                float intersectionPointMaxZ = this.Sphere.Center.Z + this.Sphere.Radius;
+                float intersectionPointMinX = this.Sphere.Center.X - this.Sphere.Radius;
+                float intersectionPointMinY = this.Sphere.Center.Y - this.Sphere.Radius;
+                float intersectionPointMinZ = this.Sphere.Center.Z - this.Sphere.Radius;
+
+                Vector3 min = new Vector3(intersectionPointMinX, intersectionPointMinY, intersectionPointMinZ);
+                Vector3 max = new Vector3(intersectionPointMaxX, intersectionPointMaxY, intersectionPointMaxZ);
+
+                Vector3 positionChange = po.MyObject.MyTransform.PositionChangeNormal;
+                if (positionChange != Vector3.Zero)
+                {
+                    positionChange.Normalize();
+                }
+
+                float x, y, z;
+                float x1, x2, y1, y2, z1, z2;
+                x1 = x2 = y1 = y2 = z1 = z2 = 0.0f;
+                x = y = z = 0.0f;
+
+                x1 = boundingBox.Max.X - min.X;
+                if (x1 < 0.0f || boundingBox.Max.X > max.X)
+                {
+                    x1 = 0.0f;
+                }
+
+                x2 = boundingBox.Min.X - max.X;
+                if (x2 > 0.0f || boundingBox.Min.X < min.X)
+                {
+                    x2 = 0.0f;
+                }
+
+                y1 = boundingBox.Max.Y - min.Y;
+                if (y1 < 0.0f || boundingBox.Max.Y > max.Y)
+                {
+                    y1 = 0.0f;
+                }
+
+                y2 = boundingBox.Min.Y - max.Y;
+                if (y2 > 0.0f || boundingBox.Min.Y < min.Y)
+                {
+                    y2 = 0.0f;
+                }
+
+                z1 = boundingBox.Max.Z - min.Z;
+                if (z1 < 0.0f || boundingBox.Max.Z > max.Z)
+                {
+                    z1 = 0.0f;
+                }
+
+                z2 = boundingBox.Min.Z - max.Z;
+                if (z2 > 0.0f || boundingBox.Min.Z < min.Z)
+                {
+                    z2 = 0.0f;
+                }
+
+                x = Math.Abs(x1) > Math.Abs(x2) ? x1 : x2;
+                y = Math.Abs(y1) > Math.Abs(y2) ? y1 : y2;
+                z = Math.Abs(z1) > Math.Abs(z2) ? z1 : z2;
+
+                if (po.Velocity.X == 0.0f)
+                {
+                    x *= positionChange.X;
+                }
+                if (po.Velocity.Y == 0.0f)
+                {
+                    y *= positionChange.Y;
+                }
+                if (po.Velocity.Z == 0.0f)
+                {
+                    z *= positionChange.Z;
+                }
+
+                this.IntersectionVector = new Vector3(x, y, z);
+
+                return true;
+            }
+
             return false;
+
         }
 
         #endregion
