@@ -30,6 +30,8 @@ namespace TrashSoup.Gameplay
         protected float tempPitch;
 
         protected GameObject target;
+        protected Transform transform;
+        protected SphereCollider collider;
 
         #endregion
 
@@ -37,14 +39,13 @@ namespace TrashSoup.Gameplay
         public CameraBehaviourComponent(GameObject obj) : base(obj)
         {
             this.target = null;
-
+            
             Start();
         }
 
         public CameraBehaviourComponent(GameObject obj, GameObject target) : base(obj)
         {
             this.target = target;
-
             Start();
         }
 
@@ -75,6 +76,8 @@ namespace TrashSoup.Gameplay
                     Matrix.CreateFromAxisAngle(cam.Up, tempYaw));
 
             cam.Translation = new Vector3(target.MyTransform.Position.X, target.MyTransform.Position.Y, -target.MyTransform.Position.Z);
+
+            SolveCollisions();
         }
 
         public override void Draw(Camera cam, Effect effect, GameTime gameTime)
@@ -85,6 +88,19 @@ namespace TrashSoup.Gameplay
         protected override void Start()
         {
             cam = (Camera)MyObject;
+        }
+
+        protected void SolveCollisions()
+        {
+            SphereCollider collider = (SphereCollider)cam.MyCollider;
+            Transform transform = cam.MyTransform;
+
+            if (collider == null || transform == null) return;
+
+            if(collider.IntersectionVector != Vector3.Zero)
+            {
+
+            }
         }
 
         public override System.Xml.Schema.XmlSchema GetSchema()
