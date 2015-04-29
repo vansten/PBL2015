@@ -732,6 +732,12 @@ namespace AwesomeEngineEditor
                 this.LoadedComponents.Add(animatorWindow);
             }
 
+            if(this.selectedObject.MyCollider != null)
+            {
+                Components.ComponentWindow cw = new Components.ComponentWindow(this.selectedObject.MyCollider);
+                this.LoadedComponents.Add(cw);
+            }
+
             if (this.selectedObject.Components.Count > 0)
             {
                 this.LoadedComponents.Add(new Components.AttachedComponentText());
