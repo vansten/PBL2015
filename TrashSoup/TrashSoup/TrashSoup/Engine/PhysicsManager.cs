@@ -75,7 +75,7 @@ namespace TrashSoup.Engine
 
         public void Reload()
         {
-            this.allColliders.Clear();
+            this.AllColliders.Clear();
             this.physicalObjects.Clear();
         }
 
