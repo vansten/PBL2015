@@ -442,8 +442,26 @@ namespace AwesomeEngineEditor
 
             foreach(TrashSoup.Engine.GameObject go in TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.Values)
             {
-                this.GameObjects.Add(go);
+                if(go != null)
+                {
+                    this.GameObjects.Add(go);
+                }
             }
+            foreach(TrashSoup.Engine.LightDirectional l in TrashSoup.Engine.ResourceManager.Instance.CurrentScene.DirectionalLights)
+            {
+                if(l != null)
+                {
+                    this.GameObjects.Add(l);
+                }
+            }
+            foreach (TrashSoup.Engine.LightPoint l in TrashSoup.Engine.ResourceManager.Instance.CurrentScene.PointLights)
+            {
+                if(l != null)
+                {
+                    this.GameObjects.Add(l);
+                }
+            }
+            this.GameObjects.Add(TrashSoup.Engine.ResourceManager.Instance.CurrentScene.AmbientLight);
 
             this.normalCamera = TrashSoup.Engine.ResourceManager.Instance.CurrentScene.Cam;
 
@@ -459,6 +477,22 @@ namespace AwesomeEngineEditor
             //Scene save
             TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary = new Dictionary<uint, TrashSoup.Engine.GameObject>();
             this.GameObjects.Remove(this.normalCamera);
+
+            List<TrashSoup.Engine.GameObject> toRemove = new List<TrashSoup.Engine.GameObject>();
+
+            foreach(TrashSoup.Engine.GameObject go in this.GameObjects)
+            {
+                if(go.GetType() == typeof(TrashSoup.Engine.LightAmbient) || go.GetType() == typeof(TrashSoup.Engine.LightDirectional) || go.GetType() == typeof(TrashSoup.Engine.LightPoint))
+                {
+                    toRemove.Add(go);
+                }
+            }
+
+            foreach(TrashSoup.Engine.GameObject go in toRemove)
+            {
+                this.GameObjects.Remove(go);
+            }
+
             foreach(TrashSoup.Engine.GameObject go in this.GameObjects)
             {
                 if (!TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.ContainsKey(go.UniqueID))
@@ -479,6 +513,10 @@ namespace AwesomeEngineEditor
 
             TrashSoup.Engine.ResourceManager.Instance.CurrentScene.Cam = TrashSoup.Engine.ResourceManager.Instance.CurrentScene.EditorCam;
             this.GameObjects.Add(this.normalCamera);
+            foreach(TrashSoup.Engine.GameObject go in toRemove)
+            {
+                this.GameObjects.Add(go);
+            }
         }
 
         private void SaveScene()
@@ -585,28 +623,96 @@ namespace AwesomeEngineEditor
             if (this.selectedObject == null) return;
             this.LoadedComponents.Clear();
             this.LoadedComponents.Add(new Components.ObjectInfo(this.selectedObject));
-            if(this.selectedObject.GetType().IsSubclassOf(typeof(TrashSoup.Engine.Camera)) || this.selectedObject.GetType() == typeof(TrashSoup.Engine.Camera))
+            if (this.selectedObject.GetType().IsSubclassOf(typeof(TrashSoup.Engine.Camera)) || this.selectedObject.GetType() == typeof(TrashSoup.Engine.Camera))
             {
-                Components.Camera cameraWindow = new Components.Camera();
-                this.LoadedComponents.Add(cameraWindow);
+                this.GenerateDetailsForCamera();
+            }
+            else if(this.selectedObject.GetType() == typeof(TrashSoup.Engine.LightPoint) || this.selectedObject.GetType() == typeof(TrashSoup.Engine.LightDirectional) || this.selectedObject.GetType() == typeof(TrashSoup.Engine.LightAmbient))
+            {
+                System.Type t = this.selectedObject.GetType();
+                if(t == typeof(TrashSoup.Engine.LightAmbient))
+                {
+                    this.GenerateDetailsForAmbientLight();
+                }
+                else if(t == typeof(TrashSoup.Engine.LightDirectional))
+                {
+                    this.GenerateDetailsForDirectionalLight();
+                }
+                else if(t == typeof(TrashSoup.Engine.LightPoint))
+                {
+                    this.GenerateDetailsForPointLight();
+                }
             }
             else
             {
-                Components.Transform transformWindow = new Components.Transform(this.selectedObject.MyTransform);
-                this.LoadedComponents.Add(transformWindow);
+                this.GenerateDetailsForGameObject();
             }
-            if(this.selectedObject.MyPhysicalObject != null)
+        }
+
+        private void GenerateDetailsForCamera()
+        {
+            Components.Camera cameraWindow = new Components.Camera();
+            this.LoadedComponents.Add(cameraWindow);
+        }
+
+        private void GenerateDetailsForAmbientLight()
+        {
+            TrashSoup.Engine.LightAmbient al = ((TrashSoup.Engine.LightAmbient)this.selectedObject);
+            if (al == null) return;
+
+            if(al.MyTransform != null)
+            {
+                Components.Transform t = new Components.Transform(al.MyTransform);
+                this.LoadedComponents.Add(t);
+            }
+            this.LoadedComponents.Add(new Components.AttachedComponentText());
+            this.LoadedComponents.Add(new Components.AmbientLight(al));
+        }
+
+        private void GenerateDetailsForDirectionalLight()
+        {
+            TrashSoup.Engine.LightDirectional dl = ((TrashSoup.Engine.LightDirectional)this.selectedObject);
+            if (dl == null) return;
+
+            if (dl.MyTransform != null)
+            {
+                Components.Transform t = new Components.Transform(dl.MyTransform);
+                this.LoadedComponents.Add(t);
+            }
+            this.LoadedComponents.Add(new Components.AttachedComponentText());
+            this.LoadedComponents.Add(new Components.DirectionalLight(dl));
+        }
+
+        private void GenerateDetailsForPointLight()
+        {
+            TrashSoup.Engine.LightPoint pl = ((TrashSoup.Engine.LightPoint)this.selectedObject);
+            if (pl == null) return;
+
+            if (pl.MyTransform != null)
+            {
+                Components.Transform t = new Components.Transform(pl.MyTransform);
+                this.LoadedComponents.Add(t);
+            }
+            this.LoadedComponents.Add(new Components.AttachedComponentText());
+            this.LoadedComponents.Add(new Components.PointLight(pl));
+        }
+
+        private void GenerateDetailsForGameObject()
+        {
+            Components.Transform transformWindow = new Components.Transform(this.selectedObject.MyTransform);
+            this.LoadedComponents.Add(transformWindow);
+            if (this.selectedObject.MyPhysicalObject != null)
             {
                 Components.PhysicalObject po = new Components.PhysicalObject(this.selectedObject.MyPhysicalObject);
                 this.LoadedComponents.Add(po);
             }
-            if(this.selectedObject.MyAnimator != null)
+            if (this.selectedObject.MyAnimator != null)
             {
                 Components.Animator animatorWindow = new Components.Animator(this.selectedObject.MyAnimator);
                 this.LoadedComponents.Add(animatorWindow);
             }
 
-            if(this.selectedObject.Components.Count > 0)
+            if (this.selectedObject.Components.Count > 0)
             {
                 this.LoadedComponents.Add(new Components.AttachedComponentText());
                 foreach (TrashSoup.Engine.ObjectComponent oc in this.selectedObject.Components)

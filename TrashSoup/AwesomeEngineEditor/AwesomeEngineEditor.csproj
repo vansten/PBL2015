@@ -60,6 +60,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Components\AmbientLight.xaml.cs">
+      <DependentUpon>AmbientLight.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\Animator.xaml.cs">
       <DependentUpon>Animator.xaml</DependentUpon>
     </Compile>
@@ -75,6 +78,9 @@
     <Compile Include="Components\CustomModel.xaml.cs">
       <DependentUpon>CustomModel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\DirectionalLight.xaml.cs">
+      <DependentUpon>DirectionalLight.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\Material.xaml.cs">
       <DependentUpon>Material.xaml</DependentUpon>
     </Compile>
@@ -87,6 +93,9 @@
     <Compile Include="Components\PhysicalObject.xaml.cs">
       <DependentUpon>PhysicalObject.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\PointLight.xaml.cs">
+      <DependentUpon>PointLight.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\Transform.xaml.cs">
       <DependentUpon>Transform.xaml</DependentUpon>
     </Compile>
@@ -96,6 +105,10 @@
     </Compile>
     <Compile Include="XNAImageSource.cs" />
     <Page Include="About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\AmbientLight.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -119,6 +132,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Components\DirectionalLight.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\Material.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -132,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\PhysicalObject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\PointLight.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
