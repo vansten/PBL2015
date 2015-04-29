@@ -584,6 +584,14 @@ namespace AwesomeEngineEditor
                         this.selectedObject.MyPhysicalObject = new TrashSoup.Engine.PhysicalObject(this.selectedObject);
                     }
                 }
+                else if(this.ObjectComponents.SelectedItem.GetType() == typeof(TrashSoup.Engine.BoxCollider))
+                {
+                    this.selectedObject.MyCollider = new TrashSoup.Engine.BoxCollider(this.selectedObject);
+                }
+                else if(this.ObjectComponents.SelectedItem.GetType() == typeof(TrashSoup.Engine.SphereCollider))
+                {
+                    this.selectedObject.MyCollider = new TrashSoup.Engine.SphereCollider(this.selectedObject);
+                }
                 else
                 {
                     int i = this.ObjectComponents.SelectedIndex;
