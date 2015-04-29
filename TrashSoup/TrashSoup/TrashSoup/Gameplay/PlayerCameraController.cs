@@ -17,7 +17,7 @@ namespace TrashSoup.Gameplay
         protected const float CAM_YAW_SENSITIVITY = MathHelper.PiOver4 / 30.0f;
         protected const float CAM_PITCH_SENSITIVITY = MathHelper.PiOver4 / 30.0f;
         protected const float CAM_TOTAL_PITCH = MathHelper.PiOver2 - MathHelper.PiOver4;
-        protected const float CAM_DISTANCE = 3.0f;
+        protected const float CAM_PROBE_VALUE = 0.01f;
 
         #endregion
 
@@ -26,12 +26,17 @@ namespace TrashSoup.Gameplay
         protected Camera cam;
 
         protected float tempYaw;
-        protected float currentPitch = 0.0f;
         protected float tempPitch;
+        protected float distance = 3.0f;
+        protected Vector3 collisionDisplacement = Vector3.Zero;
+        protected Vector3 tempPos;
+        float zoom = 1.0f;
 
         protected GameObject target;
         protected Transform transform;
         protected SphereCollider collider;
+        protected GameTime tempGameTime;
+        protected GameObject otherColl;
 
         #endregion
 
@@ -39,19 +44,21 @@ namespace TrashSoup.Gameplay
         public CameraBehaviourComponent(GameObject obj) : base(obj)
         {
             this.target = null;
-            
+            tempGameTime = new GameTime();
             Start();
         }
 
         public CameraBehaviourComponent(GameObject obj, GameObject target) : base(obj)
         {
             this.target = target;
+            tempGameTime = new GameTime();
             Start();
         }
 
         public CameraBehaviourComponent(GameObject obj, CameraBehaviourComponent cbc) : base(obj)
         {
             this.target = cbc.target;
+            tempGameTime = new GameTime();
             Start();
         }
 
@@ -60,24 +67,49 @@ namespace TrashSoup.Gameplay
             Vector2 camVector = InputHandler.Instance.GetCameraVector();
             tempYaw = -CAM_YAW_SENSITIVITY * (camVector.X);
             tempPitch = CAM_PITCH_SENSITIVITY * (camVector.Y);
+            
+            tempPos = cam.Position;
+            tempPos = tempPos / Math.Max(tempPos.Length(), 0.000001f);
+            tempPos = distance * tempPos;
+            tempPos = Vector3.Transform(tempPos,
+                Matrix.CreateFromAxisAngle(cam.Right, tempPitch));
 
-            // TODO: secure this differently, probably counting up actual pitch angle from vectors
+            Vector3 dir = Vector3.Normalize(cam.Target - tempPos);
+            float angle = (float)Math.Atan2((double)dir.Y, Math.Sqrt((double)(dir.X * dir.X + dir.Z * dir.Z)));
 
-            if (Math.Abs(currentPitch + tempPitch) < CAM_TOTAL_PITCH)
+            if (angle > -1.2f && angle < 0.4f)
             {
-                currentPitch += tempPitch;
-                cam.Position = cam.Position / Math.Max(cam.Position.Length(), 0.000001f);
-                cam.Position = CAM_DISTANCE * cam.Position;
-                cam.Position = Vector3.Transform(cam.Position,
-                    Matrix.CreateFromAxisAngle(cam.Right, tempPitch));
+                cam.Position = tempPos;
             }
 
             cam.Position = Vector3.Transform(cam.Position,
                     Matrix.CreateFromAxisAngle(cam.Up, tempYaw));
 
-            cam.Translation = new Vector3(target.MyTransform.Position.X, target.MyTransform.Position.Y, -target.MyTransform.Position.Z);
+            Raycast ray = new Raycast(cam.Target + cam.Translation,
+                (cam.Position - cam.Target), 
+                Vector3.Distance(cam.Target, cam.Position), 0.1f);
+            if (ray.Cast())
+            {
+                cam.Position = ray.PositionHit - cam.Translation;
+            }
+            //Debug.Log(ray.PositionHit.ToString());
 
-            SolveCollisions();
+            //if(otherColl != null)
+            //{
+            //    //cam.Position -= new Vector3(collisionDisplacement.X, collisionDisplacement.Y, -collisionDisplacement.Z);
+
+            //    do
+            //    {
+                    
+            //        cam.MyTransform.Position = cam.Position + cam.Translation;
+            //        this.MyObject.MyPhysicalObject.Update(tempGameTime);
+            //        this.MyObject.MyCollider.Update(tempGameTime);
+            //    } while (otherColl.MyCollider.Intersects(this.MyObject.MyPhysicalObject));
+
+            //    otherColl = null;
+            //}
+
+            cam.Translation = new Vector3(target.MyTransform.Position.X, target.MyTransform.Position.Y, -target.MyTransform.Position.Z);
         }
 
         public override void Draw(Camera cam, Effect effect, GameTime gameTime)
@@ -85,22 +117,21 @@ namespace TrashSoup.Gameplay
             // do nothing since it's camera
         }
 
+        public override void OnCollision(GameObject other)
+        {
+            base.OnCollision(other);
+
+            otherColl = other;
+
+            if (other.MyCollider.IntersectionVector != Vector3.Zero)
+            {
+                collisionDisplacement = other.MyCollider.IntersectionVector;
+            }
+        }
+
         protected override void Start()
         {
             cam = (Camera)MyObject;
-        }
-
-        protected void SolveCollisions()
-        {
-            SphereCollider collider = (SphereCollider)cam.MyCollider;
-            Transform transform = cam.MyTransform;
-
-            if (collider == null || transform == null) return;
-
-            if(collider.IntersectionVector != Vector3.Zero)
-            {
-
-            }
         }
 
         public override System.Xml.Schema.XmlSchema GetSchema()

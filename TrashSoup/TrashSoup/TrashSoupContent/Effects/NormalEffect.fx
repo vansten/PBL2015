@@ -299,8 +299,8 @@ ColorPair ComputeLightBlurredShadows(float3 posWS, float3 E, float3 N, float2 co
 	// computin shadows
 	float3 shadowCol = tex2D(DirLight0ShadowMapSampler, coords).xyz;
 
-		result.Diffuse *= shadowCol + AmbientLightColor;
-	result.Specular *= shadowCol;
+		result.Diffuse *= shadowCol.r + AmbientLightColor;
+	result.Specular *= shadowCol.r;
 
 	// DirLight1
 	ComputeSingleLight(-DirLight1Direction, DirLight1DiffuseColor,
@@ -328,8 +328,8 @@ ColorPair ComputeLightBlurredShadows(float3 posWS, float3 E, float3 N, float2 co
 		float3(PointLightSpecularColors[0].x * SpecularColor.x, PointLightSpecularColors[0].y * SpecularColor.y, PointLightSpecularColors[0].z * SpecularColor.z),
 		E, N, temp);
 
-	temp.Diffuse = temp.Diffuse * att;
-	temp.Specular = temp.Specular * att;
+	temp.Diffuse = temp.Diffuse * att * shadowCol.g;
+	temp.Specular = temp.Specular * att * shadowCol.g;
 	result.Diffuse += temp.Diffuse;
 	result.Specular += temp.Specular;
 

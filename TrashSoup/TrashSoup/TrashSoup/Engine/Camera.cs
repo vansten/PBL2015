@@ -102,10 +102,9 @@ namespace TrashSoup.Engine
             this.Right = Vector3.Cross(this.Direction, this.Up);
             this.Right = this.Right / this.Right.Length();
 
-            CreateLookAt();
+            UpdateViewProj();
 
-            ViewProjMatrix = ViewMatrix * ProjectionMatrix;
-            this.Bounds.Matrix = ViewProjMatrix;
+            //Debug.Log(this.Direction.ToString());
 
             if(this.MyTransform != null)
             {
@@ -117,6 +116,14 @@ namespace TrashSoup.Engine
         protected virtual void OnUpdate(GameTime gameTime)
         {
             //Do nothing, it's for editor camera that derieves from this class
+        }
+
+        public void UpdateViewProj()
+        {
+            CreateLookAt();
+
+            ViewProjMatrix = ViewMatrix * ProjectionMatrix;
+            this.Bounds.Matrix = ViewProjMatrix;
         }
 
         public Vector3 GetDirection() { return Direction; }
@@ -149,6 +156,7 @@ namespace TrashSoup.Engine
         public void CreateCameraCollider()
         {
             this.MyTransform = new Transform(this);
+            this.MyTransform.Scale = 0.5f;
             this.Components.Add(new CustomModel(this, new Model[] {ResourceManager.Instance.Models["Models/Test/TestSphere"], null, null }, 3, null));
             this.MyPhysicalObject = new PhysicalObject(this, 1.0f, 0.05f, false);
             this.MyCollider = new SphereCollider(this);

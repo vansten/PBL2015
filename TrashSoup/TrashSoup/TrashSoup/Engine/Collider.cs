@@ -35,6 +35,12 @@ namespace TrashSoup.Engine
             protected set;
         }
 
+        public bool IsCollision
+        {
+            get;
+            protected set;
+        }
+
         #endregion
 
         #region Methods

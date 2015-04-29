@@ -100,6 +100,7 @@
     <Compile Include="Engine\ParticleVertex.cs" />
     <Compile Include="Engine\PhysicalObject.cs" />
     <Compile Include="Engine\PhysicsManager.cs" />
+    <Compile Include="Engine\Raycast.cs" />
     <Compile Include="Engine\SaveManager.cs" />
     <Compile Include="Engine\SphereCollider.cs" />
     <Compile Include="Engine\Transform.cs" />
