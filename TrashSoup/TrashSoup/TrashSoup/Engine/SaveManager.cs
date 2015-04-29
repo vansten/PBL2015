@@ -49,7 +49,6 @@ namespace TrashSoup.Engine
 
         public void SaveFileAction()
         {
-            GetXmlPath();
             if(TrashSoupGame.Instance.EditorMode)
             {
                 this.scene = ResourceManager.Instance.CurrentScene;
