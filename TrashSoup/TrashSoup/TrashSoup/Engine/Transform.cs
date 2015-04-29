@@ -106,9 +106,9 @@ namespace TrashSoup.Engine
 
         public Transform(GameObject obj) : base(obj)
         {
-            this.Position = new Vector3(0.0f, 0.0f, 0.0f);
+            this.Position = Vector3.Zero;
             this.prevPosition = Vector3.Zero;
-            this.Rotation = new Vector3(0.0f, 0.0f, 0.0f);
+            this.Rotation = Vector3.Zero;
             this.Scale = 1.0f;
         }
 

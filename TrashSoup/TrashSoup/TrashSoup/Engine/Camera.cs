@@ -106,6 +106,12 @@ namespace TrashSoup.Engine
 
             ViewProjMatrix = ViewMatrix * ProjectionMatrix;
             this.Bounds.Matrix = ViewProjMatrix;
+
+            if(this.MyTransform != null)
+            {
+                MyTransform.Position = this.Position + this.Translation;
+                MyTransform.Position = new Vector3(MyTransform.Position.X, MyTransform.Position.Y, -MyTransform.Position.Z);
+            }
         }
 
         protected virtual void OnUpdate(GameTime gameTime)
@@ -138,6 +144,14 @@ namespace TrashSoup.Engine
                 );
             }
             
+        }
+
+        public void CreateCameraCollider()
+        {
+            this.MyTransform = new Transform(this);
+            this.Components.Add(new CustomModel(this, new Model[] {ResourceManager.Instance.Models["Models/Test/TestSphere"], null, null }, 3, null));
+            this.MyPhysicalObject = new PhysicalObject(this, 1.0f, 0.05f, false);
+            this.Components.Add(new SphereCollider(this));
         }
 
         protected void CreateLookAt()

@@ -245,6 +245,8 @@ namespace TrashSoup.Engine
                 }
             }
             
+
+
             // then objects
             foreach (GameObject obj in ObjectsDictionary.Values)
             {
