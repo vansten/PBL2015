@@ -57,6 +57,13 @@ namespace TrashSoup.Engine
             this.CreateCollider();
         }
 
+        public Collider(GameObject go, Collider c) : base(go)
+        {
+            this.worldMatrix = c.worldMatrix;
+            this.IsTrigger = c.IsTrigger;
+            this.CreateCollider();
+        }
+
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             this.worldMatrix = this.MyObject.MyTransform.GetWorldMatrix();

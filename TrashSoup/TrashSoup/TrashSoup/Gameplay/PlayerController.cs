@@ -49,6 +49,11 @@ namespace TrashSoup.Gameplay
             Start();
         }
 
+        public PlayerController(GameObject obj, PlayerController pc) : base(obj)
+        {
+            Start();
+        }
+
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             Vector2 movementVector = InputHandler.Instance.GetMovementVector();

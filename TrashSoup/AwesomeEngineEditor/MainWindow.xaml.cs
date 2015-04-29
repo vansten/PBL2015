@@ -131,7 +131,7 @@ namespace AwesomeEngineEditor
             Type[] types = typeof(TrashSoup.Engine.ObjectComponent).Assembly.GetTypes();
             foreach (Type t in types)
             {
-                if (t.IsSubclassOf(typeof(TrashSoup.Engine.ObjectComponent)) && t != typeof(TrashSoup.Engine.Transform))
+                if (t.IsSubclassOf(typeof(TrashSoup.Engine.ObjectComponent)) && t != typeof(TrashSoup.Engine.Transform) && t != typeof(TrashSoup.Gameplay.CameraBehaviourComponent))
                 {
                     ConstructorInfo[] ci = t.GetConstructors();
                     ConstructorInfo ciWithLeastParameters = ci[0];
@@ -494,12 +494,17 @@ namespace AwesomeEngineEditor
         private void AddGameObjectMI_Click(object sender, RoutedEventArgs e)
         {
             Random rnd = new Random();
-            uint r = (uint)rnd.Next(0,1000);
+            uint r = (uint)rnd.Next(0, 1000);
+            while(TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.ContainsKey(r))
+            {
+                r = (uint)rnd.Next(0, 1000);
+            }
             TrashSoup.Engine.GameObject go = new TrashSoup.Engine.GameObject(r, "GameObject " + r);
             go.MyTransform = new TrashSoup.Engine.Transform(go);
             go.Components = new List<TrashSoup.Engine.ObjectComponent>();
             go.Components.Add(new TrashSoup.Engine.Transform(go));
             this.GameObjects.Add(go);
+            TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.Add(go.UniqueID, go);
         }
 
         private void RemoveGameObjectMI_Click(object sender, RoutedEventArgs e)
@@ -575,7 +580,7 @@ namespace AwesomeEngineEditor
             }
         }
 
-        private void GenerateDetailsText()
+        public void GenerateDetailsText()
         {
             if (this.selectedObject == null) return;
             this.LoadedComponents.Clear();
@@ -610,6 +615,8 @@ namespace AwesomeEngineEditor
                     {
                         Components.CustomModel cm = new Components.CustomModel(((TrashSoup.Engine.CustomModel)oc));
                         this.LoadedComponents.Add(cm);
+                        Components.Materials m = new Components.Materials(((TrashSoup.Engine.CustomModel)oc).Mat, this);
+                        this.LoadedComponents.Add(m);
                     }
                     else
                     {
@@ -672,6 +679,71 @@ namespace AwesomeEngineEditor
             }
 
             this.CurrentlyAddedComponents.ItemsSource = ocs;
+        }
+
+        private void DuplicateGameObjectMI_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.selectedObject == null) return;
+            if (this.selectedObject.GetType() == typeof(TrashSoup.Engine.Camera))
+            {
+                TrashSoup.Engine.Debug.Log("CAN'T DUPLICATE CAMERA!!!!!!!!!!!!!!!!!!!!!");
+                return;
+            }
+
+            Random r = new Random();
+            uint uid = (uint)r.Next(0, 1000);
+            while (TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.ContainsKey(uid))
+            {
+                uid = (uint)r.Next(0, 1000);
+            }
+
+            TrashSoup.Engine.GameObject newGo = new TrashSoup.Engine.GameObject(uid, this.selectedObject.Name + " (clone)");
+            newGo.MyTransform = new TrashSoup.Engine.Transform(newGo, this.selectedObject.MyTransform);
+            newGo.Enabled = this.selectedObject.Enabled;
+            newGo.Visible = this.selectedObject.Visible;
+            newGo.Tags = new List<string>();
+            if(this.selectedObject.Tags != null)
+            {
+                foreach (string tag in this.selectedObject.Tags)
+                {
+                    newGo.Tags.Add(tag);
+                }
+            }
+
+            if(this.selectedObject.MyAnimator != null)
+            {
+                newGo.MyAnimator = new TrashSoup.Engine.Animator(newGo, this.selectedObject.MyAnimator);
+            }
+            if(this.selectedObject.MyCollider != null)
+            {
+                newGo.MyCollider = new TrashSoup.Engine.Collider(newGo);
+            }
+            if(this.selectedObject.MyPhysicalObject != null)
+            {
+                newGo.MyPhysicalObject = new TrashSoup.Engine.PhysicalObject(newGo, this.selectedObject.MyPhysicalObject);
+            }
+            TrashSoup.Engine.CustomModel cm = (TrashSoup.Engine.CustomModel)(this.selectedObject.GetComponent<TrashSoup.Engine.CustomModel>());
+            if(cm != null)
+            {
+                newGo.Components.Add(new TrashSoup.Engine.CustomModel(newGo, cm));
+            }
+
+            foreach(TrashSoup.Engine.ObjectComponent oc in this.selectedObject.Components)
+            {
+                if(oc.GetType() != typeof(TrashSoup.Engine.CustomModel))
+                {
+                    Type t = oc.GetType();
+                    List<object> parameters = new List<object>();
+                    parameters.Add(newGo);
+                    parameters.Add(oc);
+                    object obj = Activator.CreateInstance(t, parameters.ToArray());
+                    newGo.Components.Add((TrashSoup.Engine.ObjectComponent)obj);
+                    ((TrashSoup.Engine.ObjectComponent)obj).MyObject = newGo;
+                }
+            }
+
+            this.GameObjects.Add(newGo);
+            TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.Add(uid, newGo);
         }
     }
 }

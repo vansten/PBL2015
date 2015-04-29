@@ -305,10 +305,9 @@ namespace TrashSoup.Engine
             }
         }
 
-        public ObjectComponent GetComponent<T>() where T : System.Type
+        public ObjectComponent GetComponent<T>()
         {
-            T tmpVariable = default(T);
-            System.Type t = tmpVariable.GetType();
+            System.Type t = typeof(T);
 
             if(t == typeof(Transform) && this.MyTransform != null)
             {
@@ -341,13 +340,11 @@ namespace TrashSoup.Engine
             return null;
         }
 
-        public List<ObjectComponent> GetComponents<T>() where T : System.Type
+        public List<ObjectComponent> GetComponents<T>()
         {
             List<ObjectComponent> componentsList = new List<ObjectComponent>();
 
-
-            T tmpVariable = default(T);
-            System.Type t = tmpVariable.GetType();
+            System.Type t = typeof(T);
 
             if (t == typeof(Transform) && this.MyTransform != null)
             {

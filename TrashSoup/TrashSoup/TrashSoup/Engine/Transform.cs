@@ -122,6 +122,15 @@ namespace TrashSoup.Engine
             this.Forward = forward;
         }
 
+        public Transform(GameObject obj, Transform t) : base(obj)
+        {
+            this.Position = t.Position;
+            this.Rotation = t.Rotation;
+            this.prevPosition = t.prevPosition;
+            this.Scale = t.Scale;
+            this.Forward = t.Forward;
+        }
+
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             // do nothing since we change worldMatrix in properties

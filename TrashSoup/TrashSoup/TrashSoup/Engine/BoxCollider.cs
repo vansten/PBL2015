@@ -40,6 +40,11 @@ namespace TrashSoup.Engine
 
         }
 
+        public BoxCollider(GameObject go, BoxCollider bc) : base(go, bc)
+        {
+
+        }
+
         /// <summary>
         /// 
         /// Debug drawing collider, no one draws colliders in game :D

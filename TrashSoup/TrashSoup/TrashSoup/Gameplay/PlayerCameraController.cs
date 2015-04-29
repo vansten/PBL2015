@@ -48,6 +48,12 @@ namespace TrashSoup.Gameplay
             Start();
         }
 
+        public CameraBehaviourComponent(GameObject obj, CameraBehaviourComponent cbc) : base(obj)
+        {
+            this.target = cbc.target;
+            Start();
+        }
+
         public override void Update(GameTime gameTime)
         {
             Vector2 camVector = InputHandler.Instance.GetCameraVector();

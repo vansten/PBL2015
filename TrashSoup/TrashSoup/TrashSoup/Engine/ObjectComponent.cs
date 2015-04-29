@@ -39,6 +39,13 @@ namespace TrashSoup.Engine
             this.Visible = true;
         }
 
+        public ObjectComponent(GameObject myObj, ObjectComponent oc)
+        {
+            this.MyObject = myObj;
+            this.Enabled = oc.Enabled;
+            this.Visible = oc.Visible;
+        }
+
         public abstract void Update(GameTime gameTime);
 
         public abstract void Draw(Camera cam, Effect effect, GameTime gameTime);

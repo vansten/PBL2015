@@ -77,6 +77,17 @@ namespace TrashSoup.Engine
             this.Velocity = Vector3.Zero;
         }
 
+        public PhysicalObject(GameObject gameObj, PhysicalObject po) : base(gameObj)
+        {
+            this.Mass = po.Mass;
+            this.DragFactor = po.DragFactor;
+            this.IsUsingGravity = po.IsUsingGravity;
+            this.Sleeping = po.Sleeping;
+            this.RotationConstraints = po.RotationConstraints;
+            this.PositionConstraints = po.PositionConstraints;
+            this.Velocity = po.Velocity;
+        }
+
         protected override void Start()
         {
 

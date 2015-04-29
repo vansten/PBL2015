@@ -68,6 +68,26 @@ namespace TrashSoup.Engine
             Mat = matList;
         }
 
+        public CustomModel(GameObject obj, CustomModel cm) : base(obj)
+        {
+            this.LODs = new Model[LOD_COUNT];
+            this.Paths = new List<String>();
+            this.Mat = new List<Material>();
+            for(int i = 0; i < LOD_COUNT; ++i)
+            {
+                this.LODs[i] = cm.LODs[i];
+            }
+            foreach(string path in cm.Paths)
+            {
+                this.Paths.Add(path);
+            }
+            foreach(Material m in cm.Mat)
+            {
+                this.Mat.Add(m);
+            }
+            this.LODState = LODStateEnum.HI;
+        }
+
         public override void Update(GameTime gameTime)
         {
             if(this.Enabled)
@@ -98,6 +118,10 @@ namespace TrashSoup.Engine
                     {
                         for (int i = 0; i < mm.MeshParts.Count; ++i)
                         {
+                            if(this.Mat.Count == 0 || this.Mat.Count < ctr - 1)
+                            {
+                                return;
+                            }
                             this.Mat[ctr].UpdateEffect(
                                  effect,
                                  mm.ParentBone.Transform * transform.GetWorldMatrix(), 
