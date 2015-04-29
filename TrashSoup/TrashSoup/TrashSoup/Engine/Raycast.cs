@@ -56,7 +56,7 @@ namespace TrashSoup.Engine
 
                 foreach (Collider collider in allColliders)
                 {
-                    if(!collider.MyObject.Enabled)
+                    if(!collider.MyObject.Enabled || collider.IsTrigger)
                     {
                         continue;
                     }
