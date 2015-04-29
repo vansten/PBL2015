@@ -68,7 +68,18 @@ namespace TrashSoup.Engine
                     }
                     else if (collider is BoxCollider)
                     {
-                        // not implemented yet
+                        BoxCollider bc = (BoxCollider)collider;
+                        if(currentPos.X >= bc.Box.Min.X &&
+                            currentPos.Y >= bc.Box.Min.Y &&
+                            currentPos.Z >= bc.Box.Min.Z &&
+                            currentPos.X <= bc.Box.Max.X &&
+                            currentPos.Y <= bc.Box.Max.Y &&
+                            currentPos.Z <= bc.Box.Max.Z)
+                        {
+                            PositionHit = currentPos;
+                            ColliderHit = collider;
+                            return true;
+                        }
                     }
                 }
             }

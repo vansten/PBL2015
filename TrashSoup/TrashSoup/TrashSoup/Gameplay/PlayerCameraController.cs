@@ -85,9 +85,11 @@ namespace TrashSoup.Gameplay
             cam.Position = Vector3.Transform(cam.Position,
                     Matrix.CreateFromAxisAngle(cam.Up, tempYaw));
 
-            Raycast ray = new Raycast(cam.Target + cam.Translation,
-                (cam.Position - cam.Target), 
-                Vector3.Distance(cam.Target, cam.Position), 0.1f);
+            Vector3 tgt = Vector3.Normalize((cam.Position - cam.Target));
+
+            Raycast ray = new Raycast(cam.Target + cam.Translation + tgt,
+                tgt, 
+                1.5f, 0.01f);
             if (ray.Cast())
             {
                 cam.Position = ray.PositionHit - cam.Translation;
