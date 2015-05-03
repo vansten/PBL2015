@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<Material>
+  <Name>testMirrorMat</Name>
+  <EffectPath>Effects\MirrorEffect</EffectPath>
+  <DiffusePath>DefaultDiffuse</DiffusePath>
+  <NormalPath>DefaultNormal</NormalPath>
+  <SpecularColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </SpecularColor>
+  <Glossiness>100</Glossiness>
+  <ReflectivityColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </ReflectivityColor>
+  <ReflectivityBias>1</ReflectivityBias>
+  <Transparency>1</Transparency>
+  <PerPixelLighting>false</PerPixelLighting>
+  <ReceiveShadows>false</ReceiveShadows>
+</Material>

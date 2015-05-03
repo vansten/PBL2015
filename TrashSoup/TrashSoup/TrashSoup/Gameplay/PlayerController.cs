@@ -44,6 +44,8 @@ namespace TrashSoup.Gameplay
         private double collectedFakeTime = 0.0;
         private GameObject trash;
 
+        private bool collisionWithGround = false;
+
         #endregion
 
         #region methods
@@ -133,7 +135,8 @@ namespace TrashSoup.Gameplay
                         // jump!
                         //Debug.Log("Jump!");
                         MyObject.MyAnimator.ChangeState("Jump");
-                        this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 80.0f);
+                        this.MyObject.MyPhysicalObject.IsUsingGravity = true;
+                        this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 40.0f);
                     }
                 }
             }
@@ -163,7 +166,13 @@ namespace TrashSoup.Gameplay
                 }
             }
 
+            if(!this.collisionWithGround)
+            {
+                this.MyObject.MyPhysicalObject.IsUsingGravity = true;
+            }
+
             this.collisionWithTrash = false;
+            this.collisionWithGround = false;
         }
 
         public override void Draw(Camera cam, Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
@@ -202,6 +211,16 @@ namespace TrashSoup.Gameplay
                 this.trash = other;
             }
             base.OnTrigger(other);
+        }
+
+        public override void OnCollision(GameObject other)
+        {
+            if(other.Name.Contains("Terrain"))
+            {
+                this.MyObject.MyPhysicalObject.IsUsingGravity = false;
+                this.collisionWithGround = true;
+            }
+            base.OnCollision(other);
         }
 
         protected Vector3 RotateAsForward(Vector3 forward, Vector3 rotation)

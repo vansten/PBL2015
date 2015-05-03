@@ -22,6 +22,8 @@ namespace TrashSoup.Engine
         private Vector3 max;
         private Vector3[] corners;
 
+        private Face[] faces = new Face[6];
+
         #endregion
 
         #region Properties
@@ -124,6 +126,7 @@ namespace TrashSoup.Engine
 
             min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
             max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
+            float minX, minY, minZ, maxX, maxY, maxZ;
 
             if (this.model != null)
             {
@@ -145,6 +148,24 @@ namespace TrashSoup.Engine
                         }
                         min = Vector3.Transform(min, mesh.ParentBone.Transform);
                         max = Vector3.Transform(max, mesh.ParentBone.Transform);
+                        if(min.X > max.X)
+                        {
+                            float tmp = min.X;
+                            min.X = max.X;
+                            max.X = tmp;
+                        }
+                        if(min.Y > max.Y)
+                        {
+                            float tmp = min.Y;
+                            min.Y = max.Y;
+                            max.Y = tmp;
+                        }
+                        if(min.Z > max.Z)
+                        {
+                            float tmp = min.Z;
+                            min.Z = max.Z;
+                            max.Z = tmp;
+                        }
                     }
                 }
             }
@@ -156,6 +177,23 @@ namespace TrashSoup.Engine
 
             this.Box = new BoundingBox(min, max);
             this.corners = this.Box.GetCorners();
+
+            Vector3[] tmpCorners = new Vector3[8];
+            tmpCorners[0] = this.Box.Min;
+            tmpCorners[1] = new Vector3(this.Box.Min.X, this.Box.Min.Y, this.Box.Max.Z);
+            tmpCorners[2] = new Vector3(this.Box.Min.X, this.Box.Max.Y, this.Box.Min.Z);
+            tmpCorners[3] = new Vector3(this.Box.Min.X, this.Box.Max.Y, this.Box.Max.Z);
+            tmpCorners[4] = new Vector3(this.Box.Max.X, this.Box.Min.Y, this.Box.Min.Z);
+            tmpCorners[5] = new Vector3(this.Box.Max.X, this.Box.Min.Y, this.Box.Max.Z);
+            tmpCorners[6] = new Vector3(this.Box.Max.X, this.Box.Max.Y, this.Box.Min.Z);
+            tmpCorners[7] = this.Box.Max;
+
+            this.faces[0] = new Face(tmpCorners[2], tmpCorners[3], tmpCorners[6], tmpCorners[7], FaceType.MaxY);
+            this.faces[1] = new Face(tmpCorners[0], tmpCorners[1], tmpCorners[4], tmpCorners[5], FaceType.MinY);
+            this.faces[2] = new Face(tmpCorners[4], tmpCorners[5], tmpCorners[6], tmpCorners[7], FaceType.MaxX);
+            this.faces[3] = new Face(tmpCorners[0], tmpCorners[1], tmpCorners[2], tmpCorners[3], FaceType.MinX);
+            this.faces[4] = new Face(tmpCorners[1], tmpCorners[3], tmpCorners[5], tmpCorners[7], FaceType.MaxZ);
+            this.faces[5] = new Face(tmpCorners[0], tmpCorners[2], tmpCorners[4], tmpCorners[6], FaceType.MinZ);
 
             base.CreateCollider();
         }
@@ -179,7 +217,7 @@ namespace TrashSoup.Engine
             
             if(poCollider.GetType() == typeof(BoxCollider))
             {
-                return this.IntersectsWithAABB(po, ((BoxCollider)poCollider).Box);   
+                return this._OldIntersectsWithAABB(po, ((BoxCollider)poCollider).Box);   
             }
             else if(poCollider.GetType() == typeof(SphereCollider))
             {
@@ -277,6 +315,17 @@ namespace TrashSoup.Engine
         }
 
         private bool IntersectsWithAABB(PhysicalObject po, BoundingBox boundingBox)
+        {
+            if (this.Box.Intersects(boundingBox))
+            {
+
+
+                return true;
+            }
+            return false;
+        }
+
+        private bool _OldIntersectsWithAABB(PhysicalObject po, BoundingBox boundingBox)
         {
             if (this.Box.Intersects(boundingBox))
             {

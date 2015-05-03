@@ -90,11 +90,11 @@ namespace TrashSoup.Engine
             foreach (GameObject po in this.physicalObjects)
             {
                 this.intersectionVector = Vector3.Zero;
-                foreach(Collider col in this.AllColliders)
+                foreach (Collider col in this.AllColliders)
                 {
-                    if(col.MyObject != po && col.MyObject.Enabled && po.Enabled)
+                    if (col.MyObject != po && col.MyObject.Enabled && po.Enabled)
                     {
-                        if(col.Intersects(po.MyPhysicalObject))
+                        if (col.Intersects(po.MyPhysicalObject))
                         {
                             if (col.IsTrigger || po.MyCollider.IsTrigger)
                             {
@@ -105,7 +105,6 @@ namespace TrashSoup.Engine
                             else
                             {
                                 Debug.Log("Collision found: " + col.MyObject.Name + " vs. " + po.Name + " at time: " + gameTime.TotalGameTime.Seconds + " s.");
-                                //po.MyTransform.Position -= col.IntersectionVector;
                                 this.intersectionVector -= col.IntersectionVector;
                                 po.MyPhysicalObject.Velocity = Vector3.Zero;
                                 col.MyObject.OnCollision(po);
