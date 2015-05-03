@@ -322,10 +322,48 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\Weapons\NoFreePlaceSign\NoFreePlaceSign.FBX">
+      <Name>NoFreePlaceSign</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\NoFreePlaceSign\NoFrePlaceSign.FBX">
+      <Name>NoFrePlaceSign</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\Brak Wolnych miejsc\" />
-    <Folder Include="Textures\Brak wolnych miejsc\" />
+    <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
+      <Name>slupek_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_N.dds">
+      <Name>slupek_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\NoFreePlaceSign\tablica1_D.dds">
+      <Name>tablica1_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\NoFreePlaceSign\tablica1_N.dds">
+      <Name>tablica1_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\NoFreePlaceSign\tablica2_D.dds">
+      <Name>tablica2_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\NoFreePlaceSign\tablica2_N.dds">
+      <Name>tablica2_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 

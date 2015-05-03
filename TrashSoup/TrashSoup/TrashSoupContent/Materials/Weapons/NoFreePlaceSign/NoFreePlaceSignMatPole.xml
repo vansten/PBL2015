@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <Material>
-  <Name>testMatMajster</Name>
+  <Name>NoFreePlaceSignMatPole</Name>
   <EffectPath>Effects\DefaultEffect</EffectPath>
-  <DiffusePath>Textures\Brak wolnych miejsc\brakMiejsc1_Dif</DiffusePath>
-  <NormalPath>Textures\Brak wolnych miejsc\brakMiejsc1_NM</NormalPath>
+  <DiffusePath>Textures\Weapons\NoFreePlaceSign\slupek_D</DiffusePath>
+  <NormalPath>Textures\Weapons\NoFreePlaceSign\slupek_N</NormalPath>
   <SpecularColor>
     <X>0.1</X>
     <Y>0.1</Y>
