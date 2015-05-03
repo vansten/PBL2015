@@ -13,6 +13,7 @@ namespace TrashSoup.Engine
         #region Variables
 
         private List<GameObject> physicalObjects;
+        private Vector3 intersectionVector;
 
         #endregion
 
@@ -86,9 +87,10 @@ namespace TrashSoup.Engine
         public void Update(GameTime gameTime)
         {
             if (gameTime.TotalGameTime.Ticks < 1) return;
-            foreach(Collider col in this.AllColliders)
+            foreach (GameObject po in this.physicalObjects)
             {
-                foreach(GameObject po in this.physicalObjects)
+                this.intersectionVector = Vector3.Zero;
+                foreach(Collider col in this.AllColliders)
                 {
                     if(col.MyObject != po && col.MyObject.Enabled && po.Enabled)
                     {
@@ -103,7 +105,8 @@ namespace TrashSoup.Engine
                             else
                             {
                                 Debug.Log("Collision found: " + col.MyObject.Name + " vs. " + po.Name + " at time: " + gameTime.TotalGameTime.Seconds + " s.");
-                                po.MyTransform.Position -= col.IntersectionVector;
+                                //po.MyTransform.Position -= col.IntersectionVector;
+                                this.intersectionVector -= col.IntersectionVector;
                                 po.MyPhysicalObject.Velocity = Vector3.Zero;
                                 col.MyObject.OnCollision(po);
                                 po.OnCollision(col.MyObject);
@@ -111,6 +114,7 @@ namespace TrashSoup.Engine
                         }
                     }
                 }
+                po.MyTransform.Position += this.intersectionVector;
             }
         }
 
