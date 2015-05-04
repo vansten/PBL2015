@@ -48,6 +48,7 @@ namespace TrashSoup.Gameplay
         private bool collisionWithGround = false;
 
         private float hitPoints = MAX_HEALTH;
+        private bool isDead = false;
 
         #endregion
 
@@ -57,6 +58,12 @@ namespace TrashSoup.Gameplay
         { 
             get { return hitPoints; }
             set { hitPoints = value; }
+        }
+
+        public bool IsDead
+        { 
+            get { return isDead; }
+            set { isDead = value; }
         }
 
         #endregion
@@ -77,8 +84,13 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            //FOR TETIN
+            
             GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"), "HEALTH: " + HitPoints.ToString(), new Vector2(0.1f, 0.3f), Color.Red);
+
+            if (isDead)
+                return;
+
+            //FOR TETIN
             if (InputManager.Instance.GetKeyboardButtonDown(Keys.PageDown))
                 DecreaseHealth(1);
             if (InputManager.Instance.GetKeyboardButtonDown(Keys.PageUp))
@@ -304,6 +316,11 @@ namespace TrashSoup.Gameplay
         public void DecreaseHealth(float value)
         {
             HitPoints -= value;
+            if (HitPoints <= 0)
+            {
+                Debug.Log("YOU'RE DEAD");
+                isDead = true;
+            }
         }
 
         public override System.Xml.Schema.XmlSchema GetSchema()
