@@ -322,20 +322,40 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
-    <Compile Include="Models\Brak Wolnych miejsc\Tablica1_brakwolnych.FBX">
-      <Name>Tablica1_brakwolnych</Name>
+    <Compile Include="Models\Weapons\NoFreePlaceSign\NoFreePlaceSign.FBX">
+      <Name>NoFreePlaceSign</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\Brak wolnych miejsc\brakMiejsc1_Dif.dds">
-      <Name>brakMiejsc1_Dif</Name>
+    <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
+      <Name>slupek_D</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\Brak wolnych miejsc\brakMiejsc1_NM.dds">
-      <Name>brakMiejsc1_NM</Name>
+    <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_N.dds">
+      <Name>slupek_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\NoFreePlaceSign\tablica1_D.dds">
+      <Name>tablica1_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\NoFreePlaceSign\tablica1_N.dds">
+      <Name>tablica1_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\NoFreePlaceSign\tablica2_D.dds">
+      <Name>tablica2_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\NoFreePlaceSign\tablica2_N.dds">
+      <Name>tablica2_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
