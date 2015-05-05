@@ -19,6 +19,7 @@ namespace TrashSoup.Gameplay
         protected const float SPRINT_ACCELERATION = 3.0f;
         protected const float SPRINT_DECELERATION = 2.5f*SPRINT_ACCELERATION;
         protected const float ROTATION_SPEED = 0.2f;
+        protected const float MAX_HEALTH = 50.0f;
 
         #endregion
 
@@ -44,6 +45,27 @@ namespace TrashSoup.Gameplay
         private double collectedFakeTime = 0.0;
         private GameObject trash;
 
+        private bool collisionWithGround = false;
+
+        private float hitPoints = MAX_HEALTH;
+        private bool isDead = false;
+
+        #endregion
+
+        #region properties
+
+        public float HitPoints 
+        { 
+            get { return hitPoints; }
+            set { hitPoints = value; }
+        }
+
+        public bool IsDead
+        { 
+            get { return isDead; }
+            set { isDead = value; }
+        }
+
         #endregion
 
         #region methods
@@ -62,6 +84,18 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
+            
+            GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"), "HEALTH: " + HitPoints.ToString(), new Vector2(0.1f, 0.3f), Color.Red);
+
+            if (isDead)
+                return;
+
+            //FOR TETIN
+            if (InputManager.Instance.GetKeyboardButtonDown(Keys.PageDown))
+                DecreaseHealth(1);
+            if (InputManager.Instance.GetKeyboardButtonDown(Keys.PageUp))
+                IncreaseHealth(20);
+            
             Vector2 movementVector = InputHandler.Instance.GetMovementVector();
             tempMove = new Vector3(movementVector.X,
                 (InputManager.Instance.GetKeyboardButton(Keys.Q) ? 1.0f : 0.0f) - (InputManager.Instance.GetKeyboardButton(Keys.Z) ? 1.0f : 0.0f),
@@ -133,7 +167,8 @@ namespace TrashSoup.Gameplay
                         // jump!
                         //Debug.Log("Jump!");
                         MyObject.MyAnimator.ChangeState("Jump");
-                        this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 80.0f);
+                        this.MyObject.MyPhysicalObject.IsUsingGravity = true;
+                        this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 40.0f);
                     }
                 }
             }
@@ -163,7 +198,13 @@ namespace TrashSoup.Gameplay
                 }
             }
 
+            if(!this.collisionWithGround)
+            {
+                this.MyObject.MyPhysicalObject.IsUsingGravity = true;
+            }
+
             this.collisionWithTrash = false;
+            this.collisionWithGround = false;
         }
 
         public override void Draw(Camera cam, Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
@@ -202,6 +243,16 @@ namespace TrashSoup.Gameplay
                 this.trash = other;
             }
             base.OnTrigger(other);
+        }
+
+        public override void OnCollision(GameObject other)
+        {
+            if(other.Name.Contains("Terrain"))
+            {
+                this.MyObject.MyPhysicalObject.IsUsingGravity = false;
+                this.collisionWithGround = true;
+            }
+            base.OnCollision(other);
         }
 
         protected Vector3 RotateAsForward(Vector3 forward, Vector3 rotation)
@@ -254,6 +305,23 @@ namespace TrashSoup.Gameplay
             return toReturn;
         }
 
+        public void IncreaseHealth(float value)
+        {
+            if (value > MAX_HEALTH - HitPoints)
+                HitPoints = MAX_HEALTH;
+            else
+                HitPoints += value;
+        }
+
+        public void DecreaseHealth(float value)
+        {
+            HitPoints -= value;
+            if (HitPoints <= 0)
+            {
+                Debug.Log("YOU'RE DEAD");
+                isDead = true;
+            }
+        }
 
         public override System.Xml.Schema.XmlSchema GetSchema()
         {

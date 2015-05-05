@@ -161,9 +161,9 @@ namespace TrashSoup.Engine
             testBox.MyAnimator = playerAnimator;
             testBox.Components.Add(new PlayerController(testBox));
             testBox.MyPhysicalObject = new PhysicalObject(testBox, 1.0f, 0.05f, false);
-            testBox.MyCollider = new BoxCollider(testBox);  //Add a box collider to test collisions
+            testBox.MyCollider = new SphereCollider(testBox);  //Add a box collider to test collisions
 
-            GameObject testTer = new GameObject(2, "testTer");
+            GameObject testTer = new GameObject(2, "Terrain");
             testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
             testTer.Components.Add(new CustomModel(testTer, new Model[] { Models["Models/Test/TestTerrain"], null, null }, 3, testTerMats));
 
@@ -222,8 +222,8 @@ namespace TrashSoup.Engine
             CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);
             CurrentScene.ObjectsDictionary.Add(testBox2.UniqueID, testBox2);
             CurrentScene.ObjectsDictionary.Add(testBox3.UniqueID, testBox3);
-            //CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror);
-            //CurrentScene.ObjectsDictionary.Add(testWater.UniqueID, testWater);
+            CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror);
+            CurrentScene.ObjectsDictionary.Add(testWater.UniqueID, testWater);
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;

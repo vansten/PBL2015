@@ -83,6 +83,7 @@
   <ItemGroup>
     <Compile Include="Engine\BoundingFrustumExtended.cs" />
     <Compile Include="Engine\EditorCamera.cs" />
+    <Compile Include="Engine\Face.cs" />
     <Compile Include="Engine\LightDirectional.cs" />
     <Compile Include="Engine\LightAmbient.cs" />
     <Compile Include="Engine\Animator.cs" />

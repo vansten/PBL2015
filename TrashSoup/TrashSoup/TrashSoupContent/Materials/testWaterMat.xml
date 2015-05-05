@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<Material>
+  <Name>testWaterMat</Name>
+  <EffectPath>Effects\WaterEffect</EffectPath>
+  <DiffusePath>Textures\Test\dirtywater</DiffusePath>
+  <NormalPath>Textures\Test\water</NormalPath>
+  <SpecularColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </SpecularColor>
+  <Glossiness>200</Glossiness>
+  <ReflectivityColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </ReflectivityColor>
+  <ReflectivityBias>0.6</ReflectivityBias>
+  <Transparency>1</Transparency>
+  <PerPixelLighting>false</PerPixelLighting>
+  <ReceiveShadows>false</ReceiveShadows>
+</Material>

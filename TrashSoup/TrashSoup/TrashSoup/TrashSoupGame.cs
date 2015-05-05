@@ -54,14 +54,17 @@ namespace TrashSoup
         public TrashSoupGame()
         {
             GraphicsManager = new GraphicsDeviceManager(this);
+            GraphicsManager.PreferredBackBufferHeight = 900;
+            GraphicsManager.PreferredBackBufferWidth = 1600;
             GraphicsManager.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(SetToPreserve);
 #if DEBUG
             //Turning of lock to 60 fps :) only in debug mode
             this.IsFixedTimeStep = false;
             this.GraphicsManager.SynchronizeWithVerticalRetrace = false;
 #endif
+            GraphicsManager.ApplyChanges();
             Content.RootDirectory = ROOT_DIRECTIORY;
-            this.IsMouseVisible = true;
+            this.IsMouseVisible = false;
             Instance = this;
 
             Debug.Log("Engine start");
