@@ -113,6 +113,7 @@
     <Compile Include="Engine\InputManager.cs" />
     <Compile Include="Engine\ObjectComponent.cs" />
     <Compile Include="Gameplay\PlayerController.cs" />
+    <Compile Include="Gameplay\PlayerTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="TrashSoupGame.cs" />
