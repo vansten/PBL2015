@@ -51,8 +51,6 @@ namespace TrashSoup.Gameplay
         private bool isDead = false;
 
         //for tetin
-        private int hours;
-        private int minutes;
         private PlayerTime playerTime;
 
         #endregion
