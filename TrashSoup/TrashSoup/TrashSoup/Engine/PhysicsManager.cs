@@ -87,7 +87,7 @@ namespace TrashSoup.Engine
 
             foreach(Collider col in this.AllColliders)
             {
-                if(col != go.MyCollider)
+                if(col != go.MyCollider && col.MyObject.Enabled && go.Enabled)
                 {
                     if(col.Intersects(go.MyCollider))
                     {
@@ -98,6 +98,8 @@ namespace TrashSoup.Engine
                         }
                         else
                         {
+                            if (go.MyPhysicalObject != null) go.MyPhysicalObject.Velocity = Vector3.Zero;
+                            if (col.MyObject.MyPhysicalObject != null) col.MyObject.MyPhysicalObject.Velocity = Vector3.Zero;
                             col.MyObject.OnCollision(go);
                             go.OnCollision(col.MyObject);
                             return false;

@@ -154,7 +154,7 @@ namespace TrashSoup.Engine
                 //Add a gravity
                 if(this.IsUsingGravity)
                 {
-                    this.Velocity += PhysicsManager.Instance.Gravity * (float)gameTime.ElapsedGameTime.Milliseconds / 1000.0f;
+                    this.Velocity += this.Mass * PhysicsManager.Instance.Gravity * (float)gameTime.ElapsedGameTime.Milliseconds / 1000.0f;
                 }
 
 

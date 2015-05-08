@@ -181,7 +181,7 @@ namespace TrashSoup.Gameplay
                         // jump!
                         //Debug.Log("Jump!");
                         MyObject.MyAnimator.ChangeState("Jump");
-                        this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 40.0f);
+                        this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 50.0f);
                     }
                 }
             }
