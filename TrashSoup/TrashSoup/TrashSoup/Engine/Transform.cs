@@ -39,7 +39,7 @@ namespace TrashSoup.Engine
                 Vector3 tmp = this.prevPosition;
                 this.positionChangeNormal = value - this.position;
                 this.prevPosition = this.position;
-                position = value;
+                position.X = value.X;
                 CalculateWorldMatrix();
                 if (!TrashSoupGame.Instance.EditorMode)
                 {
@@ -48,6 +48,37 @@ namespace TrashSoup.Engine
                     {
                         this.position = this.prevPosition;
                         this.prevPosition = tmp;
+                        this.positionChangeNormal = Vector3.Zero;
+                        if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
+                        CalculateWorldMatrix();
+                    }
+                }
+                this.prevPosition = this.position;
+                position.Y = value.Y;
+                CalculateWorldMatrix();
+                if (!TrashSoupGame.Instance.EditorMode)
+                {
+                    if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
+                    if (!PhysicsManager.Instance.CanMove(this.MyObject))
+                    {
+                        this.position = this.prevPosition;
+                        this.prevPosition = tmp;
+                        this.positionChangeNormal = Vector3.Zero;
+                        if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
+                        CalculateWorldMatrix();
+                    }
+                }
+                this.prevPosition = this.position;
+                position.Z = value.Z;
+                CalculateWorldMatrix();
+                if (!TrashSoupGame.Instance.EditorMode)
+                {
+                    if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
+                    if (!PhysicsManager.Instance.CanMove(this.MyObject))
+                    {
+                        this.position = this.prevPosition;
+                        this.prevPosition = tmp;
+                        this.positionChangeNormal = Vector3.Zero;
                         if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
                         CalculateWorldMatrix();
                     }
