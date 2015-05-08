@@ -48,9 +48,6 @@ namespace TrashSoup.Gameplay
         private float hitPoints = MAX_HEALTH;
         private bool isDead = false;
 
-        //for tetin
-        private PlayerTime playerTime;
-
         #endregion
 
         #region properties
@@ -76,29 +73,18 @@ namespace TrashSoup.Gameplay
         public PlayerController(GameObject obj) : base(obj)
         {
             Start();
-            playerTime = new PlayerTime(20, 55);
         }
 
         public PlayerController(GameObject obj, PlayerController pc) : base(obj)
         {
             Start();
-            playerTime = new PlayerTime(20, 55);
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             if(!TrashSoupGame.Instance.EditorMode)
             {
-                playerTime.Start(gameTime);
-                //for tetin if dynamical change of time works
-                if (playerTime.Hours == 21)
-                {
-                    playerTime.Stop();
-                    playerTime.SetTime(22, 50);
-                    playerTime.Start(gameTime);
-                }
                 GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"), "HEALTH: " + HitPoints.ToString(), new Vector2(0.1f, 0.3f), Color.Red);
-                playerTime.Draw();
             }
 
             if (isDead)
