@@ -40,13 +40,15 @@ namespace TrashSoup.Engine
                 this.positionChangeNormal = value - this.position;
                 this.prevPosition = this.position;
                 position = value;
+                CalculateWorldMatrix();
                 if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
                 if(!PhysicsManager.Instance.CanMove(this.MyObject))
                 {
-                    this.position = tmp - this.positionChangeNormal;
+                    this.position = this.prevPosition;
                     this.prevPosition = tmp;
+                    if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
+                    CalculateWorldMatrix();
                 }
-                CalculateWorldMatrix();
                 if(PositionChanged != null) PositionChanged(this, null);
             }
         }
