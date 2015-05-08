@@ -131,7 +131,7 @@ namespace AwesomeEngineEditor
             Type[] types = typeof(TrashSoup.Engine.ObjectComponent).Assembly.GetTypes();
             foreach (Type t in types)
             {
-                if (t.IsSubclassOf(typeof(TrashSoup.Engine.ObjectComponent)) && t != typeof(TrashSoup.Engine.Transform) && t != typeof(TrashSoup.Gameplay.CameraBehaviourComponent))
+                if (t.IsSubclassOf(typeof(TrashSoup.Engine.ObjectComponent)) && t != typeof(TrashSoup.Engine.Transform) && t != typeof(TrashSoup.Gameplay.CameraBehaviourComponent) && !t.IsAbstract) 
                 {
                     ConstructorInfo[] ci = t.GetConstructors();
                     ConstructorInfo ciWithLeastParameters = ci[0];

@@ -60,7 +60,7 @@ namespace TrashSoup.Gameplay
         public bool IsJumping()
         {
             return (InputManager.Instance.GetGamePadButtonDown(Microsoft.Xna.Framework.Input.Buttons.A) ||
-                InputManager.Instance.GetKeyboardButtonDown(Keys.LeftAlt));
+                InputManager.Instance.GetKeyboardButtonDown(Keys.Space));
         }
 
         /// <summary>
