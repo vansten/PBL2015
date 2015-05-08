@@ -848,7 +848,14 @@ namespace AwesomeEngineEditor
             }
             if(this.selectedObject.MyCollider != null)
             {
-                newGo.MyCollider = new TrashSoup.Engine.Collider(newGo);
+                if(this.selectedObject.MyCollider.GetType() == typeof(TrashSoup.Engine.BoxCollider))
+                {
+                    newGo.MyCollider = new TrashSoup.Engine.BoxCollider(newGo);
+                }
+                else if(this.selectedObject.MyCollider.GetType() == typeof(TrashSoup.Engine.SphereCollider))
+                {
+                    newGo.MyCollider = new TrashSoup.Engine.SphereCollider(newGo);
+                }
             }
             if(this.selectedObject.MyPhysicalObject != null)
             {

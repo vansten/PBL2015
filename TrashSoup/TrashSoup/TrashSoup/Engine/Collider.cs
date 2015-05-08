@@ -12,7 +12,7 @@ namespace TrashSoup.Engine
     /// 
     /// Base class for every colliders we will have
     /// </summary>
-    public class Collider : ObjectComponent, IXmlSerializable
+    public abstract class Collider : ObjectComponent, IXmlSerializable
     {
         #region Variables
 
@@ -72,7 +72,7 @@ namespace TrashSoup.Engine
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            this.worldMatrix = this.MyObject.MyTransform.GetWorldMatrix();
+            //this.worldMatrix = this.MyObject.MyTransform.GetWorldMatrix();
             this.UpdateCollider();
         }
 
@@ -95,11 +95,7 @@ namespace TrashSoup.Engine
             PhysicsManager.Instance.AddCollider(this);
         }
 
-        /// <summary>
-        /// 
-        /// Checks if collision was detected
-        /// </summary>
-        public virtual bool Intersects(PhysicalObject po)
+        public virtual bool Intersects(Collider col)
         {
             return false;
         }
@@ -108,9 +104,19 @@ namespace TrashSoup.Engine
         /// 
         /// Updates position of collider
         /// </summary>
-        protected virtual void UpdateCollider()
+        public virtual void UpdateCollider()
         {
 
+        }
+
+        protected abstract Vector3 GetFarthestPointInDirection(Vector3 direction);
+
+        protected Vector3 SupportFunction(Collider a, Collider b, Vector3 direction)
+        {
+            Vector3 p1 = a.GetFarthestPointInDirection(direction);
+            Vector3 p2 = b.GetFarthestPointInDirection(-direction);
+
+            return (p1 - p2);
         }
 
         public override System.Xml.Schema.XmlSchema GetSchema() { return null; }
@@ -128,12 +134,12 @@ namespace TrashSoup.Engine
 
             //reader.ReadEndElement();
         }
+        
         public override void WriteXml(System.Xml.XmlWriter writer)
         {
             base.WriteXml(writer);
             writer.WriteElementString("IsTrigger", XmlConvert.ToString(IsTrigger));
         }
-
         #endregion
     }
 }

@@ -80,41 +80,33 @@ namespace TrashSoup.Engine
             this.physicalObjects.Clear();
         }
 
-        /// <summary>
-        /// 
-        /// Checking for collision, detectig them, deciding if they are trigger enters or collisions, preventing object from colliding with itself
-        /// </summary>
-        public void Update(GameTime gameTime)
+        public bool CanMove(GameObject go)
         {
-            if (gameTime.TotalGameTime.Ticks < 1) return;
-            foreach (GameObject po in this.physicalObjects)
+            if (go.MyTransform == null) return true;
+            if (go.MyCollider == null) return true;
+
+            foreach(Collider col in this.AllColliders)
             {
-                this.intersectionVector = Vector3.Zero;
-                foreach (Collider col in this.AllColliders)
+                if(col != go.MyCollider)
                 {
-                    if (col.MyObject != po && col.MyObject.Enabled && po.Enabled)
+                    if(col.Intersects(go.MyCollider))
                     {
-                        if (col.Intersects(po.MyPhysicalObject))
+                        if(col.IsTrigger || go.MyCollider.IsTrigger)
                         {
-                            if (col.IsTrigger || po.MyCollider.IsTrigger)
-                            {
-                                Debug.Log("Trigger found: " + col.MyObject.Name + " vs. " + po.Name + " at time: " + gameTime.TotalGameTime.Seconds + " s.");
-                                col.MyObject.OnTrigger(po);
-                                po.OnTrigger(col.MyObject);
-                            }
-                            else
-                            {
-                                Debug.Log("Collision found: " + col.MyObject.Name + " vs. " + po.Name + " at time: " + gameTime.TotalGameTime.Seconds + " s.");
-                                this.intersectionVector -= col.IntersectionVector;
-                                po.MyPhysicalObject.Velocity = Vector3.Zero;
-                                col.MyObject.OnCollision(po);
-                                po.OnCollision(col.MyObject);
-                            }
+                            col.MyObject.OnTrigger(go);
+                            go.OnTrigger(col.MyObject);
+                        }
+                        else
+                        {
+                            col.MyObject.OnCollision(go);
+                            go.OnCollision(col.MyObject);
+                            return false;
                         }
                     }
                 }
-                po.MyTransform.Position += this.intersectionVector;
             }
+
+            return true;
         }
 
         #endregion

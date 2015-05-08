@@ -70,12 +70,13 @@ namespace TrashSoup.Engine
         {
             if(this.Enabled)
             {
-                if(this.MyPhysicalObject != null)
+
+                if (this.MyPhysicalObject != null)
                 {
                     this.MyPhysicalObject.Update(gameTime);
                 }
 
-                if(this.MyCollider != null)
+                if (this.MyCollider != null)
                 {
                     this.MyCollider.Update(gameTime);
                 }
@@ -207,7 +208,7 @@ namespace TrashSoup.Engine
                         MyCollider = new BoxCollider(this);
                         break;
                     default:
-                        MyCollider = new Collider(this);
+                        //MyCollider = new Collider(this);
                         break;
                 }
                 (MyCollider as IXmlSerializable).ReadXml(reader);
@@ -291,11 +292,6 @@ namespace TrashSoup.Engine
         /// </summary>
         public void OnCollision(GameObject otherGO)
         {
-            if(this.MyPhysicalObject != null)
-            {
-                this.MyPhysicalObject.OnCollision(otherGO);
-            }
-
             foreach (ObjectComponent oc in this.Components)
             {
                 oc.OnCollision(otherGO);

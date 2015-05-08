@@ -36,12 +36,26 @@ namespace TrashSoup.Engine
             }
             set
             {
+                Vector3 tmp = this.prevPosition;
+                this.positionChangeNormal = value - this.position;
                 this.prevPosition = this.position;
                 position = value;
-                this.CalculatePositionChange();
+                if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
+                if(!PhysicsManager.Instance.CanMove(this.MyObject))
+                {
+                    this.position = tmp - this.positionChangeNormal;
+                    this.prevPosition = tmp;
+                }
                 CalculateWorldMatrix();
-
                 if(PositionChanged != null) PositionChanged(this, null);
+            }
+        }
+
+        public Vector3 PreviousPosition
+        {
+            get
+            {
+                return this.prevPosition;
             }
         }
 
@@ -166,11 +180,6 @@ namespace TrashSoup.Engine
             this.positionChangeNormal.X = Math.Abs(this.position.X - this.prevPosition.X);// < 0.01f ? 0.0f : 1.0f;
             this.positionChangeNormal.Y = Math.Abs(this.position.Y - this.prevPosition.Y);// < 0.01f ? 0.0f : 1.0f;
             this.positionChangeNormal.Z = Math.Abs(this.position.Z - this.prevPosition.Z);// < 0.01f ? 0.0f : 1.0f;
-            if(this.positionChangeNormal.Length() > 0.0f)
-            {
-                this.positionChangeNormal.Normalize();
-            }
-            this.positionChangeNormal.Z *= -1.0f;
         }
 
         public override System.Xml.Schema.XmlSchema GetSchema() { return null; }
