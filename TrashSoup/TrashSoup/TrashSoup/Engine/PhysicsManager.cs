@@ -80,6 +80,30 @@ namespace TrashSoup.Engine
             this.physicalObjects.Clear();
         }
 
+        public void CheckForTriggers()
+        {
+            foreach(GameObject po in this.physicalObjects)
+            {
+                if(po.Enabled)
+                {
+                    foreach (Collider col in this.AllColliders)
+                    {
+                        if(col.MyObject.Enabled)
+                        {
+                            if (po.MyCollider.IsTrigger || col.IsTrigger)
+                            {
+                                if(po.MyCollider.Intersects(col))
+                                {
+                                    po.OnTrigger(col.MyObject);
+                                    col.MyObject.OnTrigger(po);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         public bool CanMove(GameObject go)
         {
             if (go.MyTransform == null) return true;

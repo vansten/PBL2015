@@ -41,13 +41,16 @@ namespace TrashSoup.Engine
                 this.prevPosition = this.position;
                 position = value;
                 CalculateWorldMatrix();
-                if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
-                if(!PhysicsManager.Instance.CanMove(this.MyObject))
+                if (!TrashSoupGame.Instance.EditorMode)
                 {
-                    this.position = this.prevPosition;
-                    this.prevPosition = tmp;
                     if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
-                    CalculateWorldMatrix();
+                    if (!PhysicsManager.Instance.CanMove(this.MyObject))
+                    {
+                        this.position = this.prevPosition;
+                        this.prevPosition = tmp;
+                        if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
+                        CalculateWorldMatrix();
+                    }
                 }
                 if(PositionChanged != null) PositionChanged(this, null);
             }
