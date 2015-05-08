@@ -70,7 +70,6 @@ namespace TrashSoup.Engine
         {
             if(this.Enabled)
             {
-
                 if (this.MyPhysicalObject != null)
                 {
                     this.MyPhysicalObject.Update(gameTime);
