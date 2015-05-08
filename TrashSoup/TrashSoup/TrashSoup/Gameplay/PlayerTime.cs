@@ -4,11 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 using TrashSoup.Engine;
 
 namespace TrashSoup.Gameplay
 {
-    public class PlayerTime
+    public class PlayerTime : ObjectComponent, IXmlSerializable
     {
         #region variables
         private int initHours;
@@ -33,7 +34,7 @@ namespace TrashSoup.Gameplay
         #endregion
 
         #region methods
-        public PlayerTime()
+        public PlayerTime(GameObject obj) : base(obj)
         {
             this.initHours = 12;
             this.initMinutes = 0;
@@ -41,7 +42,7 @@ namespace TrashSoup.Gameplay
             Minutes = initMinutes;
         }
 
-        public PlayerTime(int initHours, int initMinutes)
+        public PlayerTime(GameObject obj, int initHours, int initMinutes) : base(obj)
         {
             this.initHours = initHours;
             this.initMinutes = initMinutes;
@@ -49,13 +50,13 @@ namespace TrashSoup.Gameplay
             Minutes = initMinutes;
         }
 
-        public void Start(Microsoft.Xna.Framework.GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             Minutes = (initMinutes + gameTime.TotalGameTime.Seconds) % 60;
             Hours = initHours;
             if (Minutes == 0)
             {
-                if(isTime)
+                if (isTime)
                 {
                     initHours += 1;
                     isTime = false;
@@ -65,22 +66,36 @@ namespace TrashSoup.Gameplay
                 isTime = true;
         }
 
-        public void Stop()
-        {
-            Minutes = 0;
-            Hours = 0;
-        }
-
-        public void SetTime(int hours, int minutes)
-        {
-            this.initHours = hours;
-            this.initMinutes = minutes;
-        }
-
-        public void Draw()
+        public override void Draw(Camera cam, Effect effect, GameTime gameTime)
         {
             GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"), "TIME: " + Hours.ToString("00") + ":" + Minutes.ToString("00"), new Vector2(0.1f, 0.4f), Color.Red);
         }
+
+        protected override void Start()
+        {
+            // do nothing
+        }
+
+        public override System.Xml.Schema.XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public override void ReadXml(System.Xml.XmlReader reader)
+        {
+            reader.MoveToContent();
+            reader.ReadStartElement();
+
+            base.ReadXml(reader);
+
+            reader.ReadEndElement();
+        }
+
+        public override void WriteXml(System.Xml.XmlWriter writer)
+        {
+            base.WriteXml(writer);
+        }
+
         #endregion
     }
 }
