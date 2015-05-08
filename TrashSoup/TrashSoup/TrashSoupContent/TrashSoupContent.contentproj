@@ -312,6 +312,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animations\Enemies\rat_walk.FBX">
+      <Name>rat_walk</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
     <None Include="Effects\Constants.fxh">
       <Name>Constants</Name>
       <Importer>EffectImporter</Importer>
@@ -326,6 +331,16 @@
       <Name>NoFreePlaceSign</Name>
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enemies\Rat.FBX">
+      <Name>Rat</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enemies\rat_bones.FBX">
+      <Name>rat_bones</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -356,6 +371,18 @@
     </Compile>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\tablica2_N.dds">
       <Name>tablica2_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enemies\rat_D.dds">
+      <Name>rat_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enemies\rat_N.dds">
+      <Name>rat_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
