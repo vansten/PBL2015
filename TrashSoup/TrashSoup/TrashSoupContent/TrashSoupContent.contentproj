@@ -312,10 +312,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animations\Enemies\rat_walk.FBX">
-      <Name>rat_walk</Name>
+    <Compile Include="Animations\Enemies\rat_fuck_walk.FBX">
+      <Name>rat_fuck_walk</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>SkinnedModelProcessor</Processor>
     </Compile>
     <None Include="Effects\Constants.fxh">
       <Name>Constants</Name>
@@ -332,15 +332,10 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
-    <Compile Include="Models\Enemies\Rat.FBX">
-      <Name>Rat</Name>
+    <Compile Include="Models\Enemies\Rat_2.FBX">
+      <Name>Rat_2</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\Enemies\rat_bones.FBX">
-      <Name>rat_bones</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>SkinnedModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>

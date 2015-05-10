@@ -65,9 +65,11 @@ namespace TrashSoup.Engine
             AddModel("Models/Test/TestSphere");
             AddModel("Models/Test/TestMirror");
             AddModel("Models/Test/TestSquarePlane");
+            AddModel("Models/Enemies/Rat_2");
             AddAnimation("Animations/Test/walking_1");
             AddAnimation("Animations/Test/idle_1");
             AddAnimation("Animations/Test/jump_1");
+            AddAnimation("Animations/Enemies/rat_fuck_walk");
 
             // loading materials
             List<Material> testPlayerMats = new List<Material>();
@@ -163,6 +165,17 @@ namespace TrashSoup.Engine
             testBox.MyPhysicalObject = new PhysicalObject(testBox, 1.0f, 0.05f, false);
             testBox.MyCollider = new SphereCollider(testBox);  //Add a box collider to test collisions
 
+            GameObject rat = new GameObject(10, "Rat");
+            rat.MyTransform = new Transform(rat, new Vector3(0.0f, 1.0f, -4.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.0001f);
+            CustomModel ratModel = new CustomModel(rat, new Model[] { Models["Models/Enemies/Rat_2"], null, null }, 3, testTerMats);
+            Animator ratAnimator = new Animator(rat, ratModel.LODs[0]);
+            ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], this.Animations["Animations/Enemies/rat_fuck_walk"], "rat_fuck_walk"));
+            rat.Components.Add(ratModel);
+            rat.MyAnimator = ratAnimator;
+            rat.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", rat.MyAnimator.GetAnimationPlayer("rat_fuck_walk")));
+            rat.MyAnimator.CurrentState = rat.MyAnimator.AvailableStates["Walk"];
+            rat.MyAnimator.StartAnimation();
+
             GameObject testTer = new GameObject(2, "Terrain");
             testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
             testTer.Components.Add(new CustomModel(testTer, new Model[] { Models["Models/Test/TestTerrain"], null, null }, 3, testTerMats));
@@ -224,6 +237,7 @@ namespace TrashSoup.Engine
             CurrentScene.ObjectsDictionary.Add(testBox3.UniqueID, testBox3);
             CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror);
             CurrentScene.ObjectsDictionary.Add(testWater.UniqueID, testWater);
+            CurrentScene.ObjectsDictionary.Add(rat.UniqueID, rat);
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;
