@@ -312,11 +312,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animations\Enemies\rat_fuck_walk.FBX">
-      <Name>rat_fuck_walk</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>SkinnedModelProcessor</Processor>
-    </Compile>
     <None Include="Effects\Constants.fxh">
       <Name>Constants</Name>
       <Importer>EffectImporter</Importer>
@@ -332,10 +327,50 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
-    <Compile Include="Models\Enemies\Rat_2.FBX">
-      <Name>Rat_2</Name>
+    <Compile Include="Models\Enemies\Rat.FBX">
+      <Name>Rat</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>SkinnedModelProcessor</Processor>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Ground\street_cross.FBX">
+      <Name>street_cross</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Ground\street_cross_kerb.FBX">
+      <Name>street_cross_kerb</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Ground\street_cruve.FBX">
+      <Name>street_cruve</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Ground\street_cruve_kerb1.FBX">
+      <Name>street_cruve_kerb1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Ground\street_cruve_kerb2.FBX">
+      <Name>street_cruve_kerb2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Ground\street_straight.FBX">
+      <Name>street_straight</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Ground\street_straight_kerb.FBX">
+      <Name>street_straight_kerb</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Pipe\pipe.FBX">
+      <Name>pipe</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -378,6 +413,59 @@
     </Compile>
     <Compile Include="Textures\Enemies\rat_N.dds">
       <Name>rat_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Animations\Enemies\" />
+    <Folder Include="Models\Home\" />
+    <Folder Include="Models\Weapons\Bottle\" />
+    <Folder Include="Textures\Home\" />
+    <Folder Include="Textures\Weapons\Bottle\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Ground\streets_blood_D.dds">
+      <Name>streets_blood_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Ground\streets_blood_N.dds">
+      <Name>streets_blood_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Ground\streets_corner_D.dds">
+      <Name>streets_corner_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Ground\streets_corner_N.dds">
+      <Name>streets_corner_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Ground\streets_D.dds">
+      <Name>streets_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Ground\streets_N.dds">
+      <Name>streets_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Weapons\Pipe\pipe_D.dds">
+      <Name>pipe_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\Pipe\pipe_N.dds">
+      <Name>pipe_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
