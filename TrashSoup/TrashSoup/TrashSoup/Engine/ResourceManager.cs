@@ -68,7 +68,7 @@ namespace TrashSoup.Engine
             AddAnimation("Animations/Test/walking_1");
             AddAnimation("Animations/Test/idle_1");
             AddAnimation("Animations/Test/jump_1");
-            AddModel("Models/Weapons/Pipe/pipe");    //Wika i Kasia
+            AddModel("Models/Weapons/Stones/brick");    //Wika i Kasia
 
             // loading materials
             List<Material> testPlayerMats = new List<Material>();
@@ -153,12 +153,12 @@ namespace TrashSoup.Engine
 
             //WIKA I KASIA Testowanie modeli
             List<Material> awsomeTestMats = new List<Material>();
-            Material awsomeTestMat = new Material("awsomeTestMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Weapons\Pipe\pipe_D"]);
+            Material awsomeTestMat = new Material("awsomeTestMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Weapons\Stones\stones_blood_D"]);
             awsomeTestMats.Add(awsomeTestMat);
-            awsomeTestMat.NormalMap = Textures[@"Textures\Weapons\Pipe\pipe_N"];
+            awsomeTestMat.NormalMap = Textures[@"Textures\Weapons\Stones\stones_blood_N"];
             awsomeTestMat.Glossiness = 40.0f;
             awsomeTestMat.ReflectivityColor = new Vector3(1.0f, 0.0f, 1.0f);
-            awsomeTestMat.ReflectivityBias = 0.7f;
+            awsomeTestMat.ReflectivityBias = 0.0f;
             awsomeTestMat.Transparency = 1.0f;
             awsomeTestMat.RecieveShadows = true;
             if (!this.Materials.ContainsKey(awsomeTestMat.Name))
@@ -213,8 +213,8 @@ namespace TrashSoup.Engine
 
             //Wika i Kasia testowanie modeli
             GameObject awsomeTest = new GameObject(8, "testground");
-            awsomeTest.MyTransform = new Transform(awsomeTest, new Vector3(-3.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.4f);
-            awsomeTest.Components.Add(new CustomModel(awsomeTest, new Model[] { Models["Models/Weapons/Pipe/pipe"], null, null }, 3, awsomeTestMats));
+            awsomeTest.MyTransform = new Transform(awsomeTest, new Vector3(10.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.4f);
+            awsomeTest.Components.Add(new CustomModel(awsomeTest, new Model[] { Models["Models/Weapons/Stones/brick"], null, null }, 3, awsomeTestMats));
             awsomeTest.MyCollider = new BoxCollider(awsomeTest, true);
 
             // adding lights
@@ -478,8 +478,8 @@ namespace TrashSoup.Engine
             LoadTexture(@"Textures\ParticleTest\Particle");
 
             //Wika i Kasia
-            LoadTexture(@"Textures\Weapons\Pipe\pipe_N");
-            LoadTexture(@"Textures\Weapons\Pipe\pipe_D");
+            LoadTexture(@"Textures\Weapons\Stones\stones_blood_N");
+            LoadTexture(@"Textures\Weapons\Stones\stones_blood_D");
         }
 
         /// <summary>

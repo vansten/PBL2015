@@ -372,6 +372,26 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\Weapons\Bottle\bottle.FBX">
+      <Name>bottle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Stones\block.FBX">
+      <Name>block</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Stones\block2.FBX">
+      <Name>block2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Stones\brick.FBX">
+      <Name>brick</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -419,10 +439,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Animations\Enemies\" />
-    <Folder Include="Models\Home\" />
-    <Folder Include="Models\Weapons\Bottle\" />
-    <Folder Include="Textures\Home\" />
-    <Folder Include="Textures\Weapons\Bottle\" />
+    <Folder Include="Models\Home\CorkBoard\" />
+    <Folder Include="Models\MainCharacter\" />
+    <Folder Include="Models\Weapons\Hammer\" />
+    <Folder Include="Models\Weapons\Knife\" />
+    <Folder Include="Models\Weapons\Machete\" />
+    <Folder Include="Models\Weapons\Newspaper\" />
+    <Folder Include="Models\Weapons\Signs\" />
+    <Folder Include="Textures\Home\CorkBoard\" />
+    <Folder Include="Textures\MainCharacter\" />
+    <Folder Include="Textures\Weapons\Hammer\" />
+    <Folder Include="Textures\Weapons\Machete\" />
+    <Folder Include="Textures\Weapons\Newspaper\" />
+    <Folder Include="Textures\Weapons\Signs\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Enviro\Ground\streets_blood_D.dds">
@@ -466,6 +495,40 @@
     </Compile>
     <Compile Include="Textures\Weapons\Pipe\pipe_N.dds">
       <Name>pipe_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Weapons\Bottle\bottle_D.dds">
+      <Name>bottle_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\Bottle\bottle_N.dds">
+      <Name>bottle_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Weapons\Stones\stones_blood_D.dds">
+      <Name>stones_blood_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\Stones\stones_blood_N.dds">
+      <Name>stones_blood_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\Stones\stones_D.dds">
+      <Name>stones_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\Stones\stones_N.dds">
+      <Name>stones_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
