@@ -65,11 +65,10 @@ namespace TrashSoup.Engine
             AddModel("Models/Test/TestSphere");
             AddModel("Models/Test/TestMirror");
             AddModel("Models/Test/TestSquarePlane");
-            AddModel("Models/Enemies/Rat_2");
             AddAnimation("Animations/Test/walking_1");
             AddAnimation("Animations/Test/idle_1");
             AddAnimation("Animations/Test/jump_1");
-            AddAnimation("Animations/Enemies/rat_fuck_walk");
+            AddModel("Models/Weapons/Pipe/pipe");    //Wika i Kasia
 
             // loading materials
             List<Material> testPlayerMats = new List<Material>();
@@ -151,6 +150,23 @@ namespace TrashSoup.Engine
                 testSBMats.Add(testSBMat);
             }
 
+
+            //WIKA I KASIA Testowanie modeli
+            List<Material> awsomeTestMats = new List<Material>();
+            Material awsomeTestMat = new Material("awsomeTestMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Weapons\Pipe\pipe_D"]);
+            awsomeTestMats.Add(awsomeTestMat);
+            awsomeTestMat.NormalMap = Textures[@"Textures\Weapons\Pipe\pipe_N"];
+            awsomeTestMat.Glossiness = 40.0f;
+            awsomeTestMat.ReflectivityColor = new Vector3(1.0f, 0.0f, 1.0f);
+            awsomeTestMat.ReflectivityBias = 0.7f;
+            awsomeTestMat.Transparency = 1.0f;
+            awsomeTestMat.RecieveShadows = true;
+            if (!this.Materials.ContainsKey(awsomeTestMat.Name))
+            {
+                this.Materials.Add(awsomeTestMat.Name, awsomeTestMat);
+            }
+
+
             // loading gameobjects
             GameObject testBox = new GameObject(1, "Player");
             testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, -4.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
@@ -165,16 +181,7 @@ namespace TrashSoup.Engine
             testBox.MyPhysicalObject = new PhysicalObject(testBox, 1.0f, 0.05f, false);
             testBox.MyCollider = new SphereCollider(testBox);  //Add a box collider to test collisions
 
-            GameObject rat = new GameObject(10, "Rat");
-            rat.MyTransform = new Transform(rat, new Vector3(0.0f, 1.0f, -4.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.0001f);
-            CustomModel ratModel = new CustomModel(rat, new Model[] { Models["Models/Enemies/Rat_2"], null, null }, 3, testTerMats);
-            Animator ratAnimator = new Animator(rat, ratModel.LODs[0]);
-            ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], this.Animations["Animations/Enemies/rat_fuck_walk"], "rat_fuck_walk"));
-            rat.Components.Add(ratModel);
-            rat.MyAnimator = ratAnimator;
-            rat.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", rat.MyAnimator.GetAnimationPlayer("rat_fuck_walk")));
-            rat.MyAnimator.CurrentState = rat.MyAnimator.AvailableStates["Walk"];
-            rat.MyAnimator.StartAnimation();
+           
 
             GameObject testTer = new GameObject(2, "Terrain");
             testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
@@ -184,6 +191,7 @@ namespace TrashSoup.Engine
             testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 2.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.4f);
             testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Test/TestSphere"], null, null }, 3, testPlayerMats));
             testBox2.MyCollider = new BoxCollider(testBox2, true);
+
 
             GameObject testBox3 = new GameObject(5, "testBox3");
             testBox3.MyTransform = new Transform(testBox3, new Vector3(3.0f, 2.0f, 2.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, MathHelper.Pi, 0.0f), 1.2f);
@@ -202,6 +210,12 @@ namespace TrashSoup.Engine
             GameObject skyBox = new GameObject(4, "skyBox");
             skyBox.MyTransform = new Transform(skyBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1000.0f);
             skyBox.Components.Add(new CustomModel(skyBox, new Model[] { Models["Models/Test/TestCube"], null, null }, 3, testSBMats));
+
+            //Wika i Kasia testowanie modeli
+            GameObject awsomeTest = new GameObject(8, "testground");
+            awsomeTest.MyTransform = new Transform(awsomeTest, new Vector3(-3.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.4f);
+            awsomeTest.Components.Add(new CustomModel(awsomeTest, new Model[] { Models["Models/Weapons/Pipe/pipe"], null, null }, 3, awsomeTestMats));
+            awsomeTest.MyCollider = new BoxCollider(awsomeTest, true);
 
             // adding lights
             LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.05f, 0.05f, 0.1f));
@@ -237,7 +251,7 @@ namespace TrashSoup.Engine
             CurrentScene.ObjectsDictionary.Add(testBox3.UniqueID, testBox3);
             CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror);
             CurrentScene.ObjectsDictionary.Add(testWater.UniqueID, testWater);
-            CurrentScene.ObjectsDictionary.Add(rat.UniqueID, rat);
+            CurrentScene.ObjectsDictionary.Add(awsomeTest.UniqueID, awsomeTest);//Wika i kasia
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;
@@ -462,6 +476,10 @@ namespace TrashSoup.Engine
             LoadTexture(@"Textures\Test\cargo_NRM");
             LoadTexture(@"Textures\Test\metal01_d");
             LoadTexture(@"Textures\ParticleTest\Particle");
+
+            //Wika i Kasia
+            LoadTexture(@"Textures\Weapons\Pipe\pipe_N");
+            LoadTexture(@"Textures\Weapons\Pipe\pipe_D");
         }
 
         /// <summary>
