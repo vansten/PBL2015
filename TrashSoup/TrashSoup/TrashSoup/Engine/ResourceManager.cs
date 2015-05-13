@@ -68,7 +68,7 @@ namespace TrashSoup.Engine
             AddAnimation("Animations/Test/walking_1");
             AddAnimation("Animations/Test/idle_1");
             AddAnimation("Animations/Test/jump_1");
-            AddModel("Models/Weapons/Signs/DeadEndSign");    //Wika i Kasia
+            AddModel("Models/Weapons/Signs/StopSign");    //Wika i Kasia
 
             // loading materials
             List<Material> testPlayerMats = new List<Material>();
@@ -153,9 +153,9 @@ namespace TrashSoup.Engine
 
             //WIKA I KASIA Testowanie modeli
             List<Material> awsomeTestMats = new List<Material>();
-            Material awsomeTestMat = new Material("awsomeTestMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Weapons\Signs\DeadEndSign_D"]);
+            Material awsomeTestMat = new Material("awsomeTestMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Weapons\Signs\StopSign_D"]);
             awsomeTestMats.Add(awsomeTestMat);
-            awsomeTestMat.NormalMap = Textures[@"Textures\Weapons\Signs\DeadEndSign_N"];
+            awsomeTestMat.NormalMap = Textures[@"Textures\Weapons\Signs\StopSign_N"];
             awsomeTestMat.Glossiness = 40.0f;
             awsomeTestMat.ReflectivityColor = new Vector3(1.0f, 0.0f, 1.0f);
             awsomeTestMat.ReflectivityBias = 0.0f;
@@ -214,7 +214,7 @@ namespace TrashSoup.Engine
             //Wika i Kasia testowanie modeli
             GameObject awsomeTest = new GameObject(8, "testground");
             awsomeTest.MyTransform = new Transform(awsomeTest, new Vector3(10.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.4f);
-            awsomeTest.Components.Add(new CustomModel(awsomeTest, new Model[] { Models["Models/Weapons/Signs/DeadEndSign"], null, null }, 3, awsomeTestMats));
+            awsomeTest.Components.Add(new CustomModel(awsomeTest, new Model[] { Models["Models/Weapons/Signs/StopSign"], null, null }, 3, awsomeTestMats));
             awsomeTest.MyCollider = new BoxCollider(awsomeTest, true);
 
             // adding lights
@@ -478,8 +478,8 @@ namespace TrashSoup.Engine
             LoadTexture(@"Textures\ParticleTest\Particle");
 
             //Wika i Kasia
-            LoadTexture(@"Textures\Weapons\Signs\DeadEndSign_D");
-            LoadTexture(@"Textures\Weapons\Signs\DeadEndSign_N");
+            LoadTexture(@"Textures\Weapons\Signs\StopSign_D");
+            LoadTexture(@"Textures\Weapons\Signs\StopSign_N");
         }
 
         /// <summary>
