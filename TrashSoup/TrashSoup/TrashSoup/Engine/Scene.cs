@@ -215,6 +215,7 @@ namespace TrashSoup.Engine
         public void UpdateAll(GameTime gameTime)
         {
             //[vansten] Added testing code for physics simulation
+            AI.BehaviorTree.BehaviorTreeManager.Instance.Update(gameTime);
             foreach (GameObject obj in ObjectsDictionary.Values)
             {
                 obj.Update(gameTime);
