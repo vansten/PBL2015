@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<BehaviorTree>
+  <OwnerID>359</OwnerID>
+  <Blackboard>
+    <intObjects>
+      <Target>30</Target>
+      <Target2>50</Target2>
+      <Meh>1020</Meh>
+    </intObjects>
+    <floatObjects>
+      <TestFloat>15.3</TestFloat>
+      <TestFloat2>18</TestFloat2>
+      <TestFloat3>120.33</TestFloat3>
+      <TestFloat4>120.33</TestFloat4>
+      <TestFloat5>120.33</TestFloat5>
+      <TestFloat6>120.33</TestFloat6>
+      <TestFloat7>120.33</TestFloat7>
+      <TestFloat8>120.33</TestFloat8>
+    </floatObjects>
+    <boolObjects>
+      <TestBool>true</TestBool>
+      <TestBool2>false</TestBool2>
+    </boolObjects>
+  </Blackboard>
+  <BTRoot>
+    <Child>
+      <Type>TrashSoup.Engine.AI.BehaviorTree.Sequence</Type>
+      <Children>
+        <Type>TrashSoup.Engine.AI.BehaviorTree.Selector</Type>
+        <Children>
+          <Type>TrashSoup.Engine.AI.BehaviorTree.Action</Type>
+        </Children>
+        <Type>TrashSoup.Engine.AI.BehaviorTree.Action</Type>
+      </Children>
+    </Child>
+  </BTRoot>
+</BehaviorTree>

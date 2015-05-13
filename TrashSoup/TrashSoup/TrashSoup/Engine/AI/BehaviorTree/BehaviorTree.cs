@@ -1,0 +1,105 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Xml.Serialization;
+
+namespace TrashSoup.Engine.AI.BehaviorTree
+{
+    [XmlRoot("BehaviorTree")]
+    public class BehaviorTree : IXmlSerializable
+    {
+        public INode CurrentRunning = null;
+
+        public Blackboard Blackboard
+        {
+            get;
+            set;
+        }
+
+        public Root BTRoot
+        {
+            get;
+            set;
+        }
+
+        public bool Enabled = false;
+
+        public BehaviorTree()
+        {
+            this.Blackboard = null;
+            BehaviorTreeManager.Instance.AddBehaviorTree(this);
+        }
+
+        public BehaviorTree(Blackboard b)
+        {
+            this.Blackboard = b;
+            BehaviorTreeManager.Instance.AddBehaviorTree(this);
+        }
+
+        public BehaviorTree(Blackboard b, Root btRoot)
+        {
+            this.Blackboard = b;
+            this.BTRoot = btRoot;
+            this.BTRoot.SetBlackboard(this.Blackboard);
+            BehaviorTreeManager.Instance.AddBehaviorTree(this);
+        }
+
+        public void SetRoot(Root root)
+        {
+            this.BTRoot = root;
+            this.BTRoot.SetBlackboard(this.Blackboard);
+        }
+
+        public void Run()
+        {
+            this.Enabled = true;
+        }
+
+        public void Stop()
+        {
+            this.Enabled = false;
+        }
+
+        public TickStatus Tick()
+        {
+            return this.BTRoot.Tick(out this.CurrentRunning);
+        }
+
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(System.Xml.XmlReader reader)
+        {
+            reader.MoveToContent();
+            reader.ReadStartElement();
+
+            int ownerID = reader.ReadElementContentAsInt("OwnerID", "");
+            GameObject owner = ResourceManager.Instance.CurrentScene.GetObject((uint)ownerID);
+
+            Blackboard = new Blackboard(owner);
+            (Blackboard as IXmlSerializable).ReadXml(reader);
+
+            BTRoot = new Root();
+            (BTRoot as IXmlSerializable).ReadXml(reader);
+            BTRoot.SetBlackboard(Blackboard);
+
+            reader.ReadEndElement();
+        }
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
+            writer.WriteElementString("OwnerX", Blackboard.Owner.UniqueID.ToString());
+
+            writer.WriteStartElement("Blackboard");
+            (Blackboard as IXmlSerializable).WriteXml(writer);
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("BTRoot");
+            (BTRoot as IXmlSerializable).WriteXml(writer);
+            writer.WriteEndElement();
+        }
+    }
+}
