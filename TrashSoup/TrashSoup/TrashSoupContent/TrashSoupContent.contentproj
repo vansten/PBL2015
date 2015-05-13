@@ -402,6 +402,16 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\Weapons\Signs\StopSign.FBX">
+      <Name>StopSign</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Signs\DeadEndSign.FBX">
+      <Name>DeadEndSign</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -455,13 +465,11 @@
     <Folder Include="Models\Weapons\Knife\" />
     <Folder Include="Models\Weapons\Machete\" />
     <Folder Include="Models\Weapons\Newspaper\" />
-    <Folder Include="Models\Weapons\Signs\" />
     <Folder Include="Textures\Home\CorkBoard\" />
     <Folder Include="Textures\MainCharacter\" />
     <Folder Include="Textures\Weapons\Hammer\" />
     <Folder Include="Textures\Weapons\Machete\" />
     <Folder Include="Textures\Weapons\Newspaper\" />
-    <Folder Include="Textures\Weapons\Signs\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Enviro\Ground\streets_blood_D.dds">
@@ -539,6 +547,40 @@
     </Compile>
     <Compile Include="Textures\Weapons\Stones\stones_N.dds">
       <Name>stones_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Weapons\Signs\StopSign_D.dds">
+      <Name>StopSign_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\Signs\StopSign_N.dds">
+      <Name>StopSign_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Weapons\Signs\DeadEndSign_D.dds">
+      <Name>DeadEndSign_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\Signs\DeadEndSign_N.dds">
+      <Name>DeadEndSign_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\Signs\slupek_D.dds">
+      <Name>slupek_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\Signs\slupek_N.dds">
+      <Name>slupek_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
