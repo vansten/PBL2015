@@ -33,17 +33,24 @@ namespace TrashSoup.Gameplay
         {
             XmlSerializer serializer = new XmlSerializer(typeof(BehaviorTree));
             string path = "";
-            if(TrashSoupGame.Instance.EditorMode)
+            if(TrashSoupGame.Instance != null && TrashSoupGame.Instance.EditorMode)
             {
                 path += "../";
             }
             path += "../../../../TrashSoupContent/BehaviorTrees/Test.xml";
-            using (FileStream file = new FileStream(Path.GetFullPath(path), FileMode.Open))
+            try
             {
-                myBT = (BehaviorTree)serializer.Deserialize(file);
-                myBoard = myBT.Blackboard;
+                using (FileStream file = new FileStream(Path.GetFullPath(path), FileMode.Open))
+                {
+                    myBT = (BehaviorTree)serializer.Deserialize(file);
+                    myBoard = myBT.Blackboard;
+                }
+                myBT.Run();
             }
-            myBT.Run();
+            catch
+            {
+                
+            }
         }
 
         public override void ReadXml(System.Xml.XmlReader reader)
