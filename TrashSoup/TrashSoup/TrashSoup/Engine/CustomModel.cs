@@ -116,6 +116,10 @@ namespace TrashSoup.Engine
                     int ctr = 0;
                     foreach (ModelMesh mm in mod.Meshes)
                     {
+                        //TEMPORARY FIX -- Majster//
+                        if (mod.Tag == null)
+                            ctr = 0;
+                        ////////////////////////////
                         for (int i = 0; i < mm.MeshParts.Count; ++i)
                         {
                             if(this.Mat.Count == 0 || this.Mat.Count < ctr - 1)
