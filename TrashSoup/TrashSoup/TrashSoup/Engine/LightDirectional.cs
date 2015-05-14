@@ -13,7 +13,7 @@ namespace TrashSoup.Engine
     {
         #region constants
 
-        const float DIRECTIONAL_DISTANCE = 20.0f;
+        const float DIRECTIONAL_DISTANCE = 50.0f;
         const float DIRECTIONAL_CAM_NEAR_PLANE = 0.2f;
         const float DIRECTIONAL_CAM_FAR_PLANE = 50.0f;
         const float DIRECTIONAL_SHADOW_RANGE = 15.0f;
@@ -111,11 +111,14 @@ namespace TrashSoup.Engine
 
 
             TrashSoupGame.Instance.ActualRenderTarget = ShadowMapRenderTarget2048;
+            RasterizerState rs = TrashSoupGame.Instance.GraphicsDevice.RasterizerState;
+            TrashSoupGame.Instance.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
             TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
 
             ResourceManager.Instance.CurrentScene.DrawAll(this.ShadowDrawCamera, myShadowEffect, TrashSoupGame.Instance.TempGameTime, false);
 
             TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
+            TrashSoupGame.Instance.GraphicsDevice.RasterizerState = rs;
             
 
             //System.IO.FileStream stream = new System.IO.FileStream("Dupa.jpg", System.IO.FileMode.Create);
