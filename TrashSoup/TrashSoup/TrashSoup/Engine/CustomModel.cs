@@ -66,6 +66,11 @@ namespace TrashSoup.Engine
                 this.Paths.Add(ResourceManager.Instance.Models.FirstOrDefault(x => x.Value == lods[i]).Key);
             }
             Mat = matList;
+
+            if (this.Mat.Count != this.LODs[0].Meshes.Count)
+            {
+                Debug.Log("CustomModel ERROR: Number of materials is not the same as the number of MeshParts!!!");
+            }
         }
 
         public CustomModel(GameObject obj, CustomModel cm) : base(obj)
@@ -145,6 +150,10 @@ namespace TrashSoup.Engine
                             mm.MeshParts[i].Effect = this.Mat[ctr].MyEffect;
                             this.Mat[ctr].FlushMaterialEffect();
                             ++ctr;
+                            if(ctr >= this.Mat.Count)
+                            {
+                                break;
+                            }
                         }
 
                         mm.Draw();
