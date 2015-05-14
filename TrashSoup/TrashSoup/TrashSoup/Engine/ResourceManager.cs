@@ -65,6 +65,9 @@ namespace TrashSoup.Engine
             AddModel("Models/Test/TestSphere");
             AddModel("Models/Test/TestMirror");
             AddModel("Models/Test/TestSquarePlane");
+            AddModel("Models/Test/TestSquarePlane");
+            AddModel("Models/Enemies/Rat_2");
+            AddAnimation("Animations/Enemies/rat_fuck_walk");
             AddAnimation("Animations/Test/walking_1");
             AddAnimation("Animations/Test/idle_1");
             AddAnimation("Animations/Test/jump_1");
@@ -122,6 +125,8 @@ namespace TrashSoup.Engine
 
             List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"], this.Effects[@"Effects\NormalEffect"]);
 
+            //List<Material> ratMats = LoadBasicMaterialsFromModel(Models["Models/Enemies/Rat_2"], this.Effects[@"Effects\NormalEffect"]);
+
             List<Material> testTerMats = new List<Material>();
             Material testTerMat = new Material("testTerMat", this.Effects[@"Effects\DefaultEffect"], Textures[@"Textures\Test\metal01_d"]);
             testTerMat.SpecularColor = new Vector3(0.1f, 0.1f, 0.0f);
@@ -155,6 +160,7 @@ namespace TrashSoup.Engine
             List<Material> awsomeTestMats = new List<Material>();
             Material awsomeTestMat = new Material("awsomeTestMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Weapons\Signs\StopSign_D"]);
             awsomeTestMats.Add(awsomeTestMat);
+            awsomeTestMats.Add(awsomeTestMat);
             awsomeTestMat.NormalMap = Textures[@"Textures\Weapons\Signs\StopSign_N"];
             awsomeTestMat.Glossiness = 40.0f;
             awsomeTestMat.ReflectivityColor = new Vector3(1.0f, 0.0f, 1.0f);
@@ -181,7 +187,17 @@ namespace TrashSoup.Engine
             testBox.MyPhysicalObject = new PhysicalObject(testBox, 1.0f, 0.05f, false);
             testBox.MyCollider = new SphereCollider(testBox);  //Add a box collider to test collisions
 
-           
+            // loading gameobjects
+            GameObject rat = new GameObject(50, "Rat");
+            rat.MyTransform = new Transform(rat, new Vector3(5.0f, 5.0f, -15.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(MathHelper.Pi, 0.0f, MathHelper.PiOver4 / 3.0f), 0.1f);
+            CustomModel ratModel = new CustomModel(rat, new Model[] { Models["Models/Enemies/Rat_2"], null, null }, 3, testPlayerMats);
+            Animator ratAnimator = new Animator(rat, ratModel.LODs[0]);
+            ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], this.Animations["Animations/Enemies/rat_fuck_walk"], "Rat_TAnim"));
+            ratAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", ratAnimator.GetAnimationPlayer("Rat_TAnim")));
+            ratAnimator.CurrentState = ratAnimator.AvailableStates["Walk"];
+            rat.Components.Add(ratModel);
+            rat.MyAnimator = ratAnimator;
+                       
 
             GameObject testTer = new GameObject(2, "Terrain");
             testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
@@ -252,6 +268,7 @@ namespace TrashSoup.Engine
             CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror);
             CurrentScene.ObjectsDictionary.Add(testWater.UniqueID, testWater);
             CurrentScene.ObjectsDictionary.Add(awsomeTest.UniqueID, awsomeTest);//Wika i kasia
+            CurrentScene.ObjectsDictionary.Add(rat.UniqueID, rat);
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;

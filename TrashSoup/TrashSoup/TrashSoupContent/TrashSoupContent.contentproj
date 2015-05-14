@@ -312,6 +312,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animations\Enemies\rat_fuck_walk.FBX">
+      <Name>rat_fuck_walk</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
     <None Include="Effects\Constants.fxh">
       <Name>Constants</Name>
       <Importer>EffectImporter</Importer>
@@ -326,11 +331,6 @@
       <Name>NoFreePlaceSign</Name>
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\Enemies\Rat.FBX">
-      <Name>Rat</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Ground\street_cross.FBX">
       <Name>street_cross</Name>
@@ -417,6 +417,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\Enemies\Rat_2.FBX">
+      <Name>Rat_2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -463,7 +468,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Animations\Enemies\" />
     <Folder Include="Models\Home\CorkBoard\" />
     <Folder Include="Models\MainCharacter\" />
     <Folder Include="Models\Weapons\Hammer\" />
