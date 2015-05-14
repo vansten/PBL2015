@@ -49,7 +49,14 @@ namespace AwesomeEngineEditor.Components
             //Load material from disk
             //Load metarial in game
             //Add material to list
-            OpenFileDialog ofd = new OpenFileDialog();
+            OpenFileDialog ofd = new OpenFileDialog(); string initialDirectory = System.IO.Directory.GetCurrentDirectory();
+            for (int i = 0; i < 3; ++i)
+            {
+                System.IO.DirectoryInfo di = System.IO.Directory.GetParent(initialDirectory);
+                initialDirectory = di.FullName;
+            }
+            initialDirectory += "\\TrashSoup\\TrashSoupContent\\Materials";
+            ofd.InitialDirectory = initialDirectory;
             ofd.Filter = "XML files (*xml) | *.xml";
             string path = "";
             if (ofd.ShowDialog() == true)

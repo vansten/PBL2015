@@ -418,6 +418,14 @@ namespace AwesomeEngineEditor
 
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "XML files (scenes ofc) (*.xml) | *.xml";
+            string initialDirectory = System.IO.Directory.GetCurrentDirectory();
+            for(int i = 0; i < 3; ++i)
+            {
+                System.IO.DirectoryInfo di = System.IO.Directory.GetParent(initialDirectory);
+                initialDirectory = di.FullName;
+            }
+            initialDirectory += "\\TrashSoup\\TrashSoupContent\\Scenes";
+            ofd.InitialDirectory = initialDirectory;
             string filepath = "";
             if (ofd.ShowDialog() == true)
             {

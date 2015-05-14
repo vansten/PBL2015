@@ -201,7 +201,14 @@ namespace AwesomeEngineEditor.Components
         private string OpenFileDialogForFBXFile()
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "FBX files (*fbx) | *fbx";
+            ofd.Filter = "FBX files (*fbx) | *fbx"; string initialDirectory = System.IO.Directory.GetCurrentDirectory();
+            for (int i = 0; i < 3; ++i)
+            {
+                System.IO.DirectoryInfo di = System.IO.Directory.GetParent(initialDirectory);
+                initialDirectory = di.FullName;
+            }
+            initialDirectory += "\\TrashSoup\\TrashSoupContent\\Models";
+            ofd.InitialDirectory = initialDirectory;
             if (ofd.ShowDialog() == true)
             {
                 string path = ofd.FileName;
