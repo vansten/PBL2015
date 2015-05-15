@@ -320,7 +320,7 @@
     <Compile Include="Animations\Test\MainCharacter_testA.FBX">
       <Name>MainCharacter_testA</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>SkinnedModelProcessor</Processor>
     </Compile>
     <None Include="Effects\Constants.fxh">
       <Name>Constants</Name>
@@ -430,7 +430,7 @@
     <Compile Include="Models\MainCharacter\MainCharacter_testM.FBX">
       <Name>MainCharacter_testM</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>SkinnedModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -187,8 +187,8 @@ ColorPair ComputeLightShadows(float3 posWS, float3 E, float3 N, float4 dirPos)
 
 	// shadows for DirLight0
 	float2 projectedDLScoords;
-	projectedDLScoords.x = (dirPos.x / dirPos.w) / 2.0f + 0.5f;
-	projectedDLScoords.y = (-dirPos.y / dirPos.w) / 2.0f + 0.5f;
+	projectedDLScoords.x = clamp((dirPos.x / dirPos.w) / 2.0f + 0.5f, 0.1f, 0.9f);
+	projectedDLScoords.y = clamp((-dirPos.y / dirPos.w) / 2.0f + 0.5f, 0.1f, 0.9f);
 
 	float depth = tex2D(DirLight0ShadowMapSampler, projectedDLScoords).r;
 	float dist = dirPos.z / dirPos.w;

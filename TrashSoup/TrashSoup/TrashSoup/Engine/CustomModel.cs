@@ -157,6 +157,11 @@ namespace TrashSoup.Engine
                         }
 
                         mm.Draw();
+
+                        if (ctr >= this.Mat.Count)
+                        {
+                            break;
+                        }
                     }
                 }
             }
