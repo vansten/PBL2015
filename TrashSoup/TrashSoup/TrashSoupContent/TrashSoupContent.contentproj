@@ -312,13 +312,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animations\Enemies\rat_fuck_walk.FBX">
-      <Name>rat_fuck_walk</Name>
+    <Compile Include="Animations\Test\MainCharacter_testA.FBX">
+      <Name>MainCharacter_testA</Name>
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
-    <Compile Include="Animations\Test\MainCharacter_testA.FBX">
-      <Name>MainCharacter_testA</Name>
+    <Compile Include="Animations\Enemies\Rat_walk.FBX">
+      <Name>Rat_walk</Name>
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
@@ -422,13 +422,13 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
-    <Compile Include="Models\Enemies\Rat_2.FBX">
-      <Name>Rat_2</Name>
+    <Compile Include="Models\MainCharacter\MainCharacter_testM.FBX">
+      <Name>MainCharacter_testM</Name>
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
-    <Compile Include="Models\MainCharacter\MainCharacter_testM.FBX">
-      <Name>MainCharacter_testM</Name>
+    <Compile Include="Models\Enemies\Rat.FBX">
+      <Name>Rat</Name>
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>

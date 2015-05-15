@@ -104,6 +104,7 @@ namespace TrashSoup.Engine
         private RenderTarget2D globalShadowsRenderTarget;
         private RenderTarget2D tempRenderTarget01;
         private Matrix deferredOrthoMatrix;
+        private bool useQuadTree = false;
 
         #endregion
 
@@ -117,7 +118,7 @@ namespace TrashSoup.Engine
         public LightDirectional[] DirectionalLights { get; set; }
         public List<LightPoint> PointLights { get; set; }
         public Dictionary<uint, GameObject> ObjectsDictionary { get; set; }
-        public QuadTree<GameObject> ObjectsQT { get; protected set; }
+        public QuadTree ObjectsQT { get; protected set; }
         // place for bounding sphere tree
 
         #endregion
@@ -143,7 +144,7 @@ namespace TrashSoup.Engine
             PointLights = new List<LightPoint>();
 
             ObjectsDictionary = new Dictionary<uint, GameObject>();
-            ObjectsQT = new QuadTree<GameObject>();
+            ObjectsQT = new QuadTree(ObjectsDictionary, 3000.0f, 3000.0f);
 
             globalShadowsRenderTarget = new RenderTarget2D(
                         TrashSoupGame.Instance.GraphicsDevice,
@@ -175,6 +176,12 @@ namespace TrashSoup.Engine
         public Scene(SceneParams par) : this()
         {
             this.Params = par;           
+        }
+
+        public void GenerateQuadTree()
+        {
+            this.ObjectsQT.Generate();
+            this.useQuadTree = true;
         }
 
         public void AddObject(GameObject obj)
@@ -246,12 +253,16 @@ namespace TrashSoup.Engine
                 }
             }
             
-
-
-            // then objects
-            foreach (GameObject obj in ObjectsDictionary.Values)
+            if(useQuadTree)
             {
-                obj.Draw(cam, effect, gameTime);
+
+            }
+            else
+            {
+                foreach (GameObject obj in ObjectsDictionary.Values)
+                {
+                    obj.Draw(cam, effect, gameTime);
+                }
             }
 
             if(ifGenerateShadowMaps && !ifRenderShadows)
