@@ -317,6 +317,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
+    <Compile Include="Animations\Test\MainCharacter_testA.FBX">
+      <Name>MainCharacter_testA</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
     <None Include="Effects\Constants.fxh">
       <Name>Constants</Name>
       <Importer>EffectImporter</Importer>
@@ -422,6 +427,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\MainCharacter\MainCharacter_testM.FBX">
+      <Name>MainCharacter_testM</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -469,13 +479,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Home\CorkBoard\" />
-    <Folder Include="Models\MainCharacter\" />
     <Folder Include="Models\Weapons\Hammer\" />
     <Folder Include="Models\Weapons\Knife\" />
     <Folder Include="Models\Weapons\Machete\" />
     <Folder Include="Models\Weapons\Newspaper\" />
     <Folder Include="Textures\Home\CorkBoard\" />
-    <Folder Include="Textures\MainCharacter\" />
     <Folder Include="Textures\Weapons\Hammer\" />
     <Folder Include="Textures\Weapons\Machete\" />
     <Folder Include="Textures\Weapons\Newspaper\" />
@@ -602,6 +610,28 @@
     </Compile>
     <Compile Include="Textures\Enviro\Ground\pavament1_N.dds">
       <Name>pavament1_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\MainCharacter\Hair_D.dds">
+      <Name>Hair_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\MainCharacter\Hair_N.dds">
+      <Name>Hair_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\MainCharacter\MainCharacter_D.dds">
+      <Name>MainCharacter_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\MainCharacter\MainCharacter_N.dds">
+      <Name>MainCharacter_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
