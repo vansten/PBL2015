@@ -104,27 +104,22 @@ namespace TrashSoup.Engine
             Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Texture gSM, TextureCube point0SM, Vector3 eyeVector, BoundingFrustumExtended frustum,
             Matrix[] bones, GameTime gameTime)
         {
-            if (epReflectionMap != null)
-            {
-                epReflectionMap.SetValue(ResourceManager.Instance.Textures["DefaultDiffuse"]);
-            }
-            if (epRefractionMap != null)
-            {
-                epRefractionMap.SetValue(ResourceManager.Instance.Textures["DefaultDiffuse"]);
-            }
+            //if (epReflectionMap != null)
+            //{
+            //    epReflectionMap.SetValue(ResourceManager.Instance.Textures["DefaultDiffuse"]);
+            //}
+            //if (epRefractionMap != null)
+            //{
+            //    epRefractionMap.SetValue(ResourceManager.Instance.Textures["DefaultDiffuse"]);
+            //}
 
             if (!isRendering && TrashSoupGame.Instance.ActualRenderTarget == TrashSoupGame.Instance.DefaultRenderTarget && effect == null)
             {
                 isRendering = true;
 
-                bool currentShadows = ResourceManager.Instance.CurrentScene.Params.Shadows;
-                ResourceManager.Instance.CurrentScene.Params.Shadows = false;
-
                 DrawRefractionMap(effect, world);
 
                 DrawReflectionMap(effect, world);
-
-                ResourceManager.Instance.CurrentScene.Params.Shadows = currentShadows;
 
                 tempWind += ResourceManager.Instance.CurrentScene.Params.Wind * (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
                 
@@ -145,7 +140,7 @@ namespace TrashSoup.Engine
             Quaternion objectRotation;
             wm.Decompose(out objectScale, out objectRotation, out objectPosition);
 
-            float planeHeight = -objectPosition.Y - 0.00001f;
+            float planeHeight = -objectPosition.Y + 0.00001f;
             Vector3 normal = new Vector3(0.0f, 1.0f, 0.0f);
 
             Vector4 planeCoeffs = new Vector4(normal, planeHeight);
@@ -165,12 +160,19 @@ namespace TrashSoup.Engine
             ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.Normal.Z = refractionClip.Z;
 
             TrashSoupGame.Instance.ActualRenderTarget = RefractionRenderTarget;
+            bool ifShadowsAreEnabled = ResourceManager.Instance.CurrentScene.Params.Shadows;
+            ResourceManager.Instance.CurrentScene.Params.Shadows = false;
             ResourceManager.Instance.CurrentScene.DrawAll(null, effect, TrashSoupGame.Instance.TempGameTime, false);
             TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
+            ResourceManager.Instance.CurrentScene.Params.Shadows = ifShadowsAreEnabled;
 
             ResourceManager.Instance.CurrentScene.Cam.Bounds.ZeroAllAdditionals();
 
             this.RefractionMap = RefractionRenderTarget;
+
+            //System.IO.FileStream stream = new System.IO.FileStream("Dupa.jpg", System.IO.FileMode.Create);
+            //this.RefractionMap.SaveAsJpeg(stream, 800, 480);
+            //stream.Close();
 
             if(epRefractionMap != null)
             {

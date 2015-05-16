@@ -312,6 +312,36 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animations\Test\MainCharacter_testA.FBX">
+      <Name>MainCharacter_testA</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\Enemies\Rat_walk.FBX">
+      <Name>Rat_walk</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\Enemies\Rat_run.FBX">
+      <Name>Rat_run</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\Enemies\Rat_attack.FBX">
+      <Name>Rat_attack</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\Enemies\Rat_dying.FBX">
+      <Name>Rat_dying</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\Enemies\Rat_idle.FBX">
+      <Name>Rat_idle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
     <None Include="Effects\Constants.fxh">
       <Name>Constants</Name>
       <Importer>EffectImporter</Importer>
@@ -326,11 +356,6 @@
       <Name>NoFreePlaceSign</Name>
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\Enemies\Rat.FBX">
-      <Name>Rat</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Ground\street_cross.FBX">
       <Name>street_cross</Name>
@@ -417,6 +442,31 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\MainCharacter\MainCharacter_testM.FBX">
+      <Name>MainCharacter_testM</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enemies\Rat.FBX">
+      <Name>Rat</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Ground\pavement4x4.FBX">
+      <Name>pavement4x4</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Walls\Wall_1.FBX">
+      <Name>Wall_1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Walls\Wall_2.FBX">
+      <Name>Wall_2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -463,15 +513,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Animations\Enemies\" />
     <Folder Include="Models\Home\CorkBoard\" />
-    <Folder Include="Models\MainCharacter\" />
     <Folder Include="Models\Weapons\Hammer\" />
     <Folder Include="Models\Weapons\Knife\" />
     <Folder Include="Models\Weapons\Machete\" />
     <Folder Include="Models\Weapons\Newspaper\" />
     <Folder Include="Textures\Home\CorkBoard\" />
-    <Folder Include="Textures\MainCharacter\" />
     <Folder Include="Textures\Weapons\Hammer\" />
     <Folder Include="Textures\Weapons\Machete\" />
     <Folder Include="Textures\Weapons\Newspaper\" />
@@ -598,6 +645,40 @@
     </Compile>
     <Compile Include="Textures\Enviro\Ground\pavament1_N.dds">
       <Name>pavament1_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\MainCharacter\Hair_D.dds">
+      <Name>Hair_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\MainCharacter\Hair_N.dds">
+      <Name>Hair_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\MainCharacter\MainCharacter_D.dds">
+      <Name>MainCharacter_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\MainCharacter\MainCharacter_N.dds">
+      <Name>MainCharacter_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Walls\Wall_D.dds">
+      <Name>Wall_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Walls\Wall_N.dds">
+      <Name>Wall_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

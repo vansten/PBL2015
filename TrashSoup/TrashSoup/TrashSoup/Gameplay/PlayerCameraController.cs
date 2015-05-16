@@ -30,7 +30,6 @@ namespace TrashSoup.Gameplay
         protected float distance = 3.0f;
         protected Vector3 collisionDisplacement = Vector3.Zero;
         protected Vector3 tempPos;
-        float zoom = 1.0f;
 
         protected GameObject target;
         protected Transform transform;
@@ -92,24 +91,11 @@ namespace TrashSoup.Gameplay
                 1.5f, 0.01f);
             if (ray.Cast())
             {
-                cam.Position = ray.PositionHit - cam.Translation;
+                if(ray.ColliderHit.MyObject.UniqueID != this.MyObject.UniqueID)
+                {
+                    cam.Position = ray.PositionHit - cam.Translation;
+                }
             }
-            //Debug.Log(ray.PositionHit.ToString());
-
-            //if(otherColl != null)
-            //{
-            //    //cam.Position -= new Vector3(collisionDisplacement.X, collisionDisplacement.Y, -collisionDisplacement.Z);
-
-            //    do
-            //    {
-                    
-            //        cam.MyTransform.Position = cam.Position + cam.Translation;
-            //        this.MyObject.MyPhysicalObject.Update(tempGameTime);
-            //        this.MyObject.MyCollider.Update(tempGameTime);
-            //    } while (otherColl.MyCollider.Intersects(this.MyObject.MyPhysicalObject));
-
-            //    otherColl = null;
-            //}
 
             cam.Translation = new Vector3(target.MyTransform.Position.X, target.MyTransform.Position.Y, -target.MyTransform.Position.Z);
         }

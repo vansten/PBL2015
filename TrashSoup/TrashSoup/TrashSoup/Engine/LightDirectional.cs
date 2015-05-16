@@ -13,9 +13,9 @@ namespace TrashSoup.Engine
     {
         #region constants
 
-        const float DIRECTIONAL_DISTANCE = 20.0f;
-        const float DIRECTIONAL_CAM_NEAR_PLANE = 0.2f;
-        const float DIRECTIONAL_CAM_FAR_PLANE = 50.0f;
+        const float DIRECTIONAL_DISTANCE = 60.0f;
+        const float DIRECTIONAL_CAM_NEAR_PLANE = 0.02f;
+        const float DIRECTIONAL_CAM_FAR_PLANE = 120.0f;
         const float DIRECTIONAL_SHADOW_RANGE = 15.0f;
         const int DIRECTIONAL_SHADOW_MAP_SIZE = 2048;
         
@@ -25,7 +25,9 @@ namespace TrashSoup.Engine
 
         private Vector3 lightDirection;
         private Camera shadowDrawCamera;
-
+        private Matrix myProj;
+        private BoundingFrustumExtended bf;
+        private bool varsSet = false;
         #endregion
 
         #region properties
@@ -81,6 +83,7 @@ namespace TrashSoup.Engine
                         TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
                         RenderTargetUsage.DiscardContents
                         );
+
         }
 
         public LightDirectional(uint uniqueID, string name, Vector3 color, Vector3 specular, Vector3 direction, bool castShadows)
@@ -99,28 +102,120 @@ namespace TrashSoup.Engine
                 return;
             }
 
+                SetCamera();
+
             Effect myShadowEffect = ResourceManager.Instance.Effects[@"Effects\ShadowMapEffect"];
 
             // setting up camera properly
             Camera cam = ResourceManager.Instance.CurrentScene.Cam;
 
-            shadowDrawCamera.Target = cam.Direction * DIRECTIONAL_SHADOW_RANGE + (cam.Target + cam.Translation);
-            shadowDrawCamera.Position = DIRECTIONAL_DISTANCE * new Vector3(-LightDirection.X, -LightDirection.Y, -LightDirection.Z) + (cam.Target + cam.Translation) + cam.Direction * DIRECTIONAL_SHADOW_RANGE;
-            shadowDrawCamera.Update(null);
+            //shadowDrawCamera.Target = cam.Direction * DIRECTIONAL_SHADOW_RANGE + (cam.Target + cam.Translation);
+            //shadowDrawCamera.Position = DIRECTIONAL_DISTANCE * new Vector3(-LightDirection.X, -LightDirection.Y, -LightDirection.Z) + (cam.Target + cam.Translation) + cam.Direction * DIRECTIONAL_SHADOW_RANGE;
+            //rotM = rotation;
+            //rotation = (float) Math.Atan2((double) cam.Direction.X, (double) cam.Direction.Z);
+            ////rotation = CurveAngle(rotM, rotation, 1.0f);
+            ////shadowDrawCamera.Position = Vector3.Transform(shadowDrawCamera.Position, Matrix.CreateRotationY(rotation - rotM));
+            //shadowDrawCamera.Target = Vector3.Transform(shadowDrawCamera.Target, Matrix.CreateRotationY(rotation - rotM));
+            //shadowDrawCamera.Translation = cam.Translation;
+            //shadowDrawCamera.Update(null);
             ///////////////
 
 
             TrashSoupGame.Instance.ActualRenderTarget = ShadowMapRenderTarget2048;
+            RasterizerState rs = TrashSoupGame.Instance.GraphicsDevice.RasterizerState;
+            TrashSoupGame.Instance.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
             TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
 
             ResourceManager.Instance.CurrentScene.DrawAll(this.ShadowDrawCamera, myShadowEffect, TrashSoupGame.Instance.TempGameTime, false);
 
             TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
-            
+            TrashSoupGame.Instance.GraphicsDevice.RasterizerState = rs;
+
 
             //System.IO.FileStream stream = new System.IO.FileStream("Dupa.jpg", System.IO.FileMode.Create);
             //ShadowMapRenderTarget2048.SaveAsJpeg(stream, 1024, 1024);
             //stream.Close();
+        }
+
+        private void SetCamera()
+        {
+            Camera cam = ResourceManager.Instance.CurrentScene.Cam;
+            if (cam == null)
+                return;
+            else if(!varsSet)
+            {
+                myProj = Matrix.CreatePerspectiveFieldOfView(cam.FOV, cam.Ratio, cam.Near, 50.0f);
+                bf = new BoundingFrustumExtended(cam.ViewMatrix * myProj);
+                varsSet = true;
+            }
+
+            bf.Matrix = cam.ViewMatrix * myProj;
+
+            Vector3[] corners = bf.GetCorners();
+            uint cornerCount = (uint)corners.Count();
+
+            //for (uint i = 0; i < cornerCount; ++i )
+            //{
+            //    corners[i] = Vector3.Transform(corners[i], shadowDrawCamera.ViewMatrix);
+            //}
+            Vector3 middlePoint = Vector3.Zero;
+            for (uint i = 0; i < cornerCount; ++i)
+            {
+                middlePoint.X += corners[i].X;
+                middlePoint.Y += corners[i].Y;
+                middlePoint.Z += corners[i].Z;
+            }
+            middlePoint.X /= cornerCount;
+            middlePoint.Y = Math.Max(middlePoint.Y, 0.0f);
+            middlePoint.Y /= cornerCount;
+            middlePoint.Z /= cornerCount;
+
+            shadowDrawCamera.Position = middlePoint + DIRECTIONAL_DISTANCE * new Vector3(-LightDirection.X, -LightDirection.Y, -LightDirection.Z);
+            shadowDrawCamera.Target = middlePoint;
+            //shadowDrawCamera.Translation = cam.Translation;
+            shadowDrawCamera.Update(null);
+        }
+
+        private float CurveAngle(float from, float to, float step)
+        {
+            if (step == 0) return from;
+            if (from == to || step == 1) return to;
+
+            Vector2 fromVector = new Vector2((float)Math.Cos(from), (float)Math.Sin(from));
+            Vector2 toVector = new Vector2((float)Math.Cos(to), (float)Math.Sin(to));
+
+            Vector2 currentVector = Slerp(fromVector, toVector, step);
+
+            float toReturn = (float)Math.Atan2(currentVector.Y, currentVector.X);
+
+            return toReturn;
+        }
+
+        private Vector2 Slerp(Vector2 from, Vector2 to, float step)
+        {
+            if (step == 0) return from;
+            if (from == to || step == 1) return to;
+
+            double dot = (double)Vector2.Dot(from, to);
+
+            // clampin'!
+            if (dot > 1) dot = 1;
+            else if (dot < -1) dot = -1;
+
+            double theta = Math.Acos(dot);
+            if (theta == 0) return to;
+
+            double sinTheta = Math.Sin(theta);
+            
+            Vector2 toReturn = (float)(Math.Sin((1 - step) * theta) / sinTheta) * from + (float)(Math.Sin(step * theta) / sinTheta) * to;
+
+            if(float.IsNaN(toReturn.X) || float.IsNaN(toReturn.Y))
+            {
+                Debug.Log("PLAYERCONTROLLER ERROR: NaN detected in Slerp()");
+                throw new InvalidOperationException("PLAYERCONTROLLER ERROR: NaN detected in Slerp()");
+            }
+
+            return toReturn;
         }
        
         System.Xml.Schema.XmlSchema IXmlSerializable.GetSchema()

@@ -66,6 +66,11 @@ namespace TrashSoup.Engine
                 this.Paths.Add(ResourceManager.Instance.Models.FirstOrDefault(x => x.Value == lods[i]).Key);
             }
             Mat = matList;
+
+            if (this.Mat.Count != this.LODs[0].Meshes.Count)
+            {
+                Debug.Log("CustomModel ERROR: Number of materials is not the same as the number of MeshParts!!!");
+            }
         }
 
         public CustomModel(GameObject obj, CustomModel cm) : base(obj)
@@ -111,15 +116,14 @@ namespace TrashSoup.Engine
 
                     Transform transform = MyObject.MyTransform;
                     Matrix[] bones = null;
-                    if (MyObject.MyAnimator != null) bones = MyObject.MyAnimator.GetSkinTransforms();
+                    if (MyObject.MyAnimator != null)
+                    {
+                        bones = MyObject.MyAnimator.GetSkinTransforms();
+                    }
 
                     int ctr = 0;
                     foreach (ModelMesh mm in mod.Meshes)
                     {
-                        //TEMPORARY FIX -- Majster//
-                        if (mod.Tag == null)
-                            ctr = 0;
-                        ////////////////////////////
                         for (int i = 0; i < mm.MeshParts.Count; ++i)
                         {
                             if(this.Mat.Count == 0 || this.Mat.Count < ctr - 1)
@@ -146,9 +150,18 @@ namespace TrashSoup.Engine
                             mm.MeshParts[i].Effect = this.Mat[ctr].MyEffect;
                             this.Mat[ctr].FlushMaterialEffect();
                             ++ctr;
+                            if(ctr >= this.Mat.Count)
+                            {
+                                break;
+                            }
                         }
 
                         mm.Draw();
+
+                        if (ctr >= this.Mat.Count)
+                        {
+                            break;
+                        }
                     }
                 }
             }
