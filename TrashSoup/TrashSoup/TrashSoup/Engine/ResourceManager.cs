@@ -67,7 +67,7 @@ namespace TrashSoup.Engine
             AddModel("Models/Test/TestSquarePlane");
             AddModel("Models/Test/TestSquarePlane");
             AddModel("Models/Enemies/Rat");
-            AddAnimation("Animations/Enemies/Rat_walk");
+            AddAnimation("Animations/Enemies/Rat_attack");
             AddAnimation("Animations/Test/walking_1");
             AddAnimation("Animations/Test/idle_1");
             AddAnimation("Animations/Test/jump_1");
@@ -189,10 +189,10 @@ namespace TrashSoup.Engine
 
             // loading gameobjects
             GameObject rat = new GameObject(50, "Rat");
-            rat.MyTransform = new Transform(rat, new Vector3(5.0f, 5.0f, -15.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.001f);
+            rat.MyTransform = new Transform(rat, new Vector3(0.0f, 3.4f, -15.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.001f);
             CustomModel ratModel = new CustomModel(rat, new Model[] { Models["Models/Enemies/Rat"], null, null }, 3, ratMats);
             Animator ratAnimator = new Animator(rat, ratModel.LODs[0]);
-            ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], this.Animations["Animations/Enemies/Rat_walk"], "Rat_TAnim"));
+            ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], this.Animations["Animations/Enemies/Rat_attack"], "Rat_TAnim"));
             ratAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", ratAnimator.GetAnimationPlayer("Rat_TAnim")));
             ratAnimator.CurrentState = ratAnimator.AvailableStates["Walk"];
             rat.Components.Add(ratModel);

@@ -322,6 +322,26 @@
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
+    <Compile Include="Animations\Enemies\Rat_run.FBX">
+      <Name>Rat_run</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\Enemies\Rat_attack.FBX">
+      <Name>Rat_attack</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\Enemies\Rat_dying.FBX">
+      <Name>Rat_dying</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\Enemies\Rat_idle.FBX">
+      <Name>Rat_idle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
     <None Include="Effects\Constants.fxh">
       <Name>Constants</Name>
       <Importer>EffectImporter</Importer>
@@ -437,6 +457,16 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\Enviro\Walls\Wall_1.FBX">
+      <Name>Wall_1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Walls\Wall_2.FBX">
+      <Name>Wall_2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -483,7 +513,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\Enviro\Walls\" />
     <Folder Include="Models\Home\CorkBoard\" />
     <Folder Include="Models\Weapons\Hammer\" />
     <Folder Include="Models\Weapons\Knife\" />
@@ -638,6 +667,18 @@
     </Compile>
     <Compile Include="Textures\MainCharacter\MainCharacter_N.dds">
       <Name>MainCharacter_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Walls\Wall_D.dds">
+      <Name>Wall_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Walls\Wall_N.dds">
+      <Name>Wall_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
