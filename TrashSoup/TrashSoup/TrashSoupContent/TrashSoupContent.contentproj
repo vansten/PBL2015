@@ -432,6 +432,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\Enviro\Ground\pavement4x4.FBX">
+      <Name>pavement4x4</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -478,6 +483,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Models\Enviro\Walls\" />
     <Folder Include="Models\Home\CorkBoard\" />
     <Folder Include="Models\Weapons\Hammer\" />
     <Folder Include="Models\Weapons\Knife\" />
