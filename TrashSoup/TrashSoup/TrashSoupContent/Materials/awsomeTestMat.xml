@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<Material>
+  <Name>awsomeTestMat</Name>
+  <EffectPath>Effects\NormalEffect</EffectPath>
+  <DiffusePath>Textures\Weapons\Signs\StopSign_D</DiffusePath>
+  <NormalPath>Textures\Weapons\Signs\StopSign_N</NormalPath>
+  <SpecularColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </SpecularColor>
+  <Glossiness>40</Glossiness>
+  <ReflectivityColor>
+    <X>1</X>
+    <Y>0</Y>
+    <Z>1</Z>
+  </ReflectivityColor>
+  <ReflectivityBias>0</ReflectivityBias>
+  <Transparency>1</Transparency>
+  <PerPixelLighting>false</PerPixelLighting>
+  <ReceiveShadows>true</ReceiveShadows>
+</Material>

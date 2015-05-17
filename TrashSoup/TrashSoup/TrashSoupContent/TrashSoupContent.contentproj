@@ -467,6 +467,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\Enviro\Buildings\Big_house.FBX">
+      <Name>Big_house</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -679,6 +684,18 @@
     </Compile>
     <Compile Include="Textures\Enviro\Walls\Wall_N.dds">
       <Name>Wall_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Buildings\Big_house_D.dds">
+      <Name>Big_house_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Buildings\Big_house_N.dds">
+      <Name>Big_house_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
