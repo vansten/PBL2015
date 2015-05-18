@@ -22,10 +22,13 @@ namespace TrashSoup.Engine
         public List<string> Tags { get; set; }
         public bool Enabled { get; set; }
         public bool Visible { get; set; }
+        public bool Dynamic { get; set; }
 
         public Transform MyTransform { get; set; }
         public Animator MyAnimator { get; set; }
         public Collider MyCollider { get; set; }
+
+        public QuadTreeNode MyNode { get; set; }
 
         public PhysicalObject MyPhysicalObject 
         {

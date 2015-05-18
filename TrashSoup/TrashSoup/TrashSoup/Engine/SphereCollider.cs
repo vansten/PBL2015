@@ -14,13 +14,14 @@ namespace TrashSoup.Engine
         public BoundingSphere Sphere;
 
         private BoundingSphere initialSphere;
-        private Vector3 center;
-        private float radius;
         private CustomModel model;
         private List<Vector3> verticesToDraw = new List<Vector3>();
         private List<short> indices = new List<short>();
 
         #endregion
+
+        public Vector3 Center { get; private set; }
+        public float Radius { get; private set; }
 
         #region Properties
 
@@ -174,8 +175,8 @@ namespace TrashSoup.Engine
                 }
             }
 
-            this.radius = float.MinValue;
-            this.center = Vector3.Zero;
+            this.Radius = float.MinValue;
+            this.Center = Vector3.Zero;
             int verticesNum = 0;
 
             if(this.model != null)
@@ -193,13 +194,13 @@ namespace TrashSoup.Engine
                         {
                             Vector3 transformedPosition = Vector3.Transform(new Vector3(vertexData[i], vertexData[i + 1], vertexData[i + 2]), this.worldMatrix);
                             transformedPosition = Vector3.Transform(transformedPosition, mesh.ParentBone.Transform);
-                            this.center += transformedPosition;
+                            this.Center += transformedPosition;
                             ++verticesNum;
                         }
                     }
                 }
 
-                this.center /= verticesNum;
+                this.Center /= verticesNum;
 
                 foreach (ModelMesh mesh in this.model.LODs[0].Meshes)
                 {
@@ -214,9 +215,9 @@ namespace TrashSoup.Engine
                             Vector3 transformedPosition = Vector3.Transform(new Vector3(vertexData[i], vertexData[i + 1], vertexData[i + 2]), this.worldMatrix);
                             transformedPosition = Vector3.Transform(transformedPosition, mesh.ParentBone.Transform);
 
-                            if(Vector3.Distance(this.center, transformedPosition) > this.radius)
+                            if(Vector3.Distance(this.Center, transformedPosition) > this.Radius)
                             {
-                                this.radius = Vector3.Distance(this.center, transformedPosition);
+                                this.Radius = Vector3.Distance(this.Center, transformedPosition);
                             }
                         }
                     }
@@ -224,11 +225,11 @@ namespace TrashSoup.Engine
             }
             else
             {
-                this.center = this.MyObject.MyTransform.Position;
-                this.radius = 1.0f;
+                this.Center = this.MyObject.MyTransform.Position;
+                this.Radius = 1.0f;
             }
 
-            this.initialSphere = new BoundingSphere(this.center, this.radius);
+            this.initialSphere = new BoundingSphere(this.Center, this.Radius);
 
             base.CreateCollider();
         }
@@ -237,9 +238,11 @@ namespace TrashSoup.Engine
         {
             this.worldMatrix = this.MyObject.MyTransform.GetWorldMatrix();
             Vector3 newCenter = Vector3.Zero;
-            newCenter = Vector3.Transform(this.center, this.worldMatrix);
+            newCenter = Vector3.Transform(this.Center, this.worldMatrix);
             this.Sphere.Center = newCenter;
             this.Sphere = this.initialSphere.Transform(this.worldMatrix);
+            this.Radius = this.initialSphere.Radius * MyObject.MyTransform.Scale;
+            this.Sphere.Radius = this.Radius;
         }
 
         public override bool Intersects(Collider col)
@@ -280,7 +283,7 @@ namespace TrashSoup.Engine
         {
             Vector3 d = direction;
             d.Normalize();
-            return center + d * radius;
+            return Center + d * Radius;
         }
 
         #endregion

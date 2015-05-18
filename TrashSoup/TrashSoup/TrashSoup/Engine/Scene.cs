@@ -20,6 +20,7 @@ namespace TrashSoup.Engine
         public bool Shadows { get; set; }
         public bool SoftShadows { get; set; }
         public bool Bloom { get; set; }
+        public bool UseGraph { get; set; }
         #endregion
 
         #region methods
@@ -29,7 +30,7 @@ namespace TrashSoup.Engine
             this.Name = name;
         }
 
-        public SceneParams(uint uniqueID, string name, Vector2 wind, DateTime time, bool shadows, bool softShadows, bool bloom)
+        public SceneParams(uint uniqueID, string name, Vector2 wind, DateTime time, bool shadows, bool softShadows, bool bloom, bool graph)
             : this(uniqueID, name)
         {
             this.Wind = wind;
@@ -37,6 +38,7 @@ namespace TrashSoup.Engine
             this.Shadows = shadows;
             this.SoftShadows = softShadows;
             this.Bloom = bloom;
+            this.UseGraph = graph;
         }
 
         public System.Xml.Schema.XmlSchema GetSchema()
@@ -104,7 +106,6 @@ namespace TrashSoup.Engine
         private RenderTarget2D globalShadowsRenderTarget;
         private RenderTarget2D tempRenderTarget01;
         private Matrix deferredOrthoMatrix;
-        private bool useQuadTree = false;
 
         #endregion
 
@@ -118,7 +119,7 @@ namespace TrashSoup.Engine
         public LightDirectional[] DirectionalLights { get; set; }
         public List<LightPoint> PointLights { get; set; }
         public Dictionary<uint, GameObject> ObjectsDictionary { get; set; }
-        public QuadTree ObjectsQT { get; protected set; }
+        public QuadTree ObjectsQT { get; set; }
         // place for bounding sphere tree
 
         #endregion
@@ -144,7 +145,7 @@ namespace TrashSoup.Engine
             PointLights = new List<LightPoint>();
 
             ObjectsDictionary = new Dictionary<uint, GameObject>();
-            ObjectsQT = new QuadTree(ObjectsDictionary, 3000.0f, 3000.0f);
+            ObjectsQT = new QuadTree(ObjectsDictionary, 3000.0f);
 
             globalShadowsRenderTarget = new RenderTarget2D(
                         TrashSoupGame.Instance.GraphicsDevice,
@@ -178,20 +179,29 @@ namespace TrashSoup.Engine
             this.Params = par;           
         }
 
-        public void GenerateQuadTree()
-        {
-            this.ObjectsQT.Generate();
-            this.useQuadTree = true;
-        }
-
         public void AddObject(GameObject obj)
         {
-
+            this.ObjectsDictionary.Add(obj.UniqueID, obj);
+            if(Params.UseGraph)
+            {
+                ObjectsQT.Add(obj);
+            }
         }
 
         public bool DeleteObject(uint uniqueID)
         {
-            return false;
+            GameObject temp;
+            bool placek = ObjectsDictionary.TryGetValue(uniqueID, out temp);
+            if(temp != null)
+            {
+                if(Params.UseGraph)
+                {
+                    ObjectsQT.Remove(temp);
+                }
+                ObjectsDictionary.Remove(uniqueID);
+                return true;
+            }
+            else return false;
         }
 
         public GameObject GetObject(uint uniqueID)
@@ -253,9 +263,9 @@ namespace TrashSoup.Engine
                 }
             }
             
-            if(useQuadTree)
+            if(Params.UseGraph)
             {
-
+                ObjectsQT.Draw(Cam.Bounds);
             }
             else
             {

@@ -241,7 +241,7 @@ namespace TrashSoup.Engine
             lp1.SetupShadowRender();
 
             // loading scene
-            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), DateTime.Now, false, true, true));
+            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), DateTime.Now, false, true, true, true));
 
             Camera cam = null;
 
@@ -260,21 +260,19 @@ namespace TrashSoup.Engine
             CurrentScene.Cam = cam;
 
             // adding items to scene
-            CurrentScene.ObjectsDictionary.Add(skyBox.UniqueID, skyBox);
-            CurrentScene.ObjectsDictionary.Add(testTer.UniqueID, testTer);
-            CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);
-            CurrentScene.ObjectsDictionary.Add(testBox2.UniqueID, testBox2);
-            CurrentScene.ObjectsDictionary.Add(testBox3.UniqueID, testBox3);
-            CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror);
-            CurrentScene.ObjectsDictionary.Add(testWater.UniqueID, testWater);
-            CurrentScene.ObjectsDictionary.Add(awsomeTest.UniqueID, awsomeTest);//Wika i kasia
-            CurrentScene.ObjectsDictionary.Add(rat.UniqueID, rat);
+            CurrentScene.AddObject(skyBox);
+            CurrentScene.AddObject(testTer);
+            CurrentScene.AddObject(testBox);
+            CurrentScene.AddObject(testBox2);
+            CurrentScene.AddObject(testBox3);
+            CurrentScene.AddObject(testMirror);
+            CurrentScene.AddObject(testWater);
+            CurrentScene.AddObject(awsomeTest);//Wika i kasia
+            CurrentScene.AddObject(rat);
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;
             CurrentScene.PointLights.Add(lp1);
-
-            //CurrentScene.GenerateQuadTree();
 
             ////TESTING PARTICLES
             ps = new ParticleSystem(TrashSoupGame.Instance.GraphicsDevice, 
