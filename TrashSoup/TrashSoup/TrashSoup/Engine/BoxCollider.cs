@@ -54,7 +54,7 @@ namespace TrashSoup.Engine
         /// </summary>
         public override void Draw(Camera cam, Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
         {
-            if (TrashSoupGame.Instance.EditorMode)
+            if (!TrashSoupGame.Instance.EditorMode)
             {
                 short[] bBoxIndices = {
                                     0, 1, 1, 2, 2, 3, 3, 0, // Front edges
@@ -182,6 +182,7 @@ namespace TrashSoup.Engine
             this.Box = new BoundingBox(min, max);
             this.initialCorners = this.Box.GetCorners();
             this.corners = this.Box.GetCorners();
+            this.UpdateCollider();
 
             base.CreateCollider();
         }
@@ -292,8 +293,7 @@ namespace TrashSoup.Engine
                 min = Vector3.Min(min, this.corners[i]);
                 max = Vector3.Max(max, this.corners[i]);
             }
-            this.Box.Min = min;
-            this.Box.Max = max;
+            this.Box = new BoundingBox(min, max);
         }
 
         public override System.Xml.Schema.XmlSchema GetSchema()
