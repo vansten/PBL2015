@@ -7,6 +7,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using TrashSoup.Engine;
+using TrashSoup.Gameplay.Weapons;
 
 namespace TrashSoup.Gameplay
 {
@@ -43,9 +44,7 @@ namespace TrashSoup.Gameplay
         #region methods
         public Equipment(GameObject obj) : base(obj)
         {
-            currentJunkCount = 0;
-            currentFoodCount = 0;
-            currentWeapon = null; //będą pięści
+            Start();
         }
 
         public void AddJunk(int count)
@@ -68,10 +67,23 @@ namespace TrashSoup.Gameplay
             return;
         }
 
+        public void ChangeWeapon(Weapon newWeapon)
+        {
+            base.MyObject.Components.Remove(CurrentWeapon);
+            CurrentWeapon = newWeapon;
+            base.MyObject.Components.Add(CurrentWeapon);
+        }
+
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"),
                 "JUNK: " + JunkCount.ToString(), new Vector2(0.5f, 0.8f), Color.Red);
+            GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"),
+                "CURRENT WEAPON: " + CurrentWeapon.Name, new Vector2(0.5f, 0.9f), Color.Red);
+            if(currentWeapon.Durability == 0)
+            {
+                ChangeWeapon(new Fists(this.MyObject));
+            }
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
@@ -81,7 +93,9 @@ namespace TrashSoup.Gameplay
 
         protected override void Start()
         {
-
+            currentJunkCount = 0;
+            currentFoodCount = 0;
+            currentWeapon = new Fists(this.MyObject);
         }
 
         public override System.Xml.Schema.XmlSchema GetSchema()

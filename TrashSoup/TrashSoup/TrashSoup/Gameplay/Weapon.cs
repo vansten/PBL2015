@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using System.Xml.Serialization;
 using TrashSoup.Engine;
 
@@ -9,6 +10,7 @@ namespace TrashSoup.Gameplay
 {
     public enum WeaponType
     {
+        FISTS,
         LIGHT,
         MEDIUM,
         HEAVY
@@ -19,7 +21,10 @@ namespace TrashSoup.Gameplay
         #region variables
         protected int durability;
         protected int damage;
-        protected WeaponType type; 
+        protected WeaponType type;
+        protected bool isCraftable;
+        protected int craftingCost;
+        protected string name;
         #endregion
 
         #region properties
@@ -40,18 +45,29 @@ namespace TrashSoup.Gameplay
             get { return type; }
             set { type = value; }
         }
+
+        public bool IsCraftable
+        {
+            get { return isCraftable; }
+            set { isCraftable = value; }
+        }
+
+        public int CraftingCost
+        {
+            get { return craftingCost; }
+            set { craftingCost = value; }
+        }
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
         #endregion
 
         #region methods
-        public Weapon()
+        public Weapon(GameObject obj):base(obj)
         {
-        }
-
-        public Weapon(int durability, int damage, WeaponType type)
-        {
-            this.durability = durability;
-            this.damage = damage;
-            this.type = type;
         }
 
         public override void OnTrigger(GameObject other)
@@ -59,7 +75,8 @@ namespace TrashSoup.Gameplay
             if(other is Enemy)
             {
                 (other as Enemy).HitPoints -= Damage;
-                Durability--;
+                if(Type != WeaponType.FISTS && Durability > 0)
+                    Durability--;
             }
             base.OnTrigger(other);
         }
@@ -90,6 +107,24 @@ namespace TrashSoup.Gameplay
             reader.ReadStartElement();
 
             base.ReadXml(reader);
+            Durability = reader.ReadElementContentAsInt("Durability", "");
+            Damage = reader.ReadElementContentAsInt("Damage", "");
+            string s = reader.ReadElementString("Type", "");
+            switch(s)
+            {
+                case "FISTS":
+                    Type = WeaponType.FISTS;
+                    break;
+                case "LIGHT":
+                    Type = WeaponType.LIGHT;
+                    break;
+                case "MEDIUM":
+                    Type = WeaponType.MEDIUM;
+                    break;
+                case "HEAVY":
+                    Type = WeaponType.HEAVY;
+                    break;
+            }
 
             reader.ReadEndElement();
         }
@@ -97,6 +132,9 @@ namespace TrashSoup.Gameplay
         public override void WriteXml(System.Xml.XmlWriter writer)
         {
             base.WriteXml(writer);
+            writer.WriteElementString("Durability", XmlConvert.ToString(Durability));
+            writer.WriteElementString("Damage", XmlConvert.ToString(Damage));
+            writer.WriteElementString("Type", Type.ToString());
         }
         #endregion
     }
