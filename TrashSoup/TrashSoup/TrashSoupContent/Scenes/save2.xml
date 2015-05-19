@@ -10501,6 +10501,11 @@
           <MyObjectID>359</MyObjectID>
         </TrashSoup.Gameplay.AITest>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>250</GameObjectKey>
@@ -10557,6 +10562,11 @@
           </Materials>
         </TrashSoup.Engine.CustomModel>
       </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>915</GameObjectKey>
@@ -10628,6 +10638,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>62</GameObjectKey>
@@ -10684,6 +10699,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>109</GameObjectKey>
@@ -10740,6 +10760,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>490</GameObjectKey>
@@ -10796,6 +10821,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>487</GameObjectKey>
@@ -10852,6 +10882,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>304</GameObjectKey>
@@ -10908,6 +10943,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>13</GameObjectKey>
@@ -10964,6 +11004,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>101</GameObjectKey>
@@ -11020,6 +11065,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>211</GameObjectKey>
@@ -11076,6 +11126,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>572</GameObjectKey>
@@ -11132,6 +11187,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>979</GameObjectKey>
@@ -11188,6 +11248,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>143</GameObjectKey>
@@ -11244,6 +11309,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>421</GameObjectKey>
@@ -11300,6 +11370,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>967</GameObjectKey>
@@ -11356,6 +11431,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>448</GameObjectKey>
@@ -11412,6 +11492,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>104</GameObjectKey>
@@ -11468,6 +11553,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>634</GameObjectKey>
@@ -11524,6 +11614,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>510</GameObjectKey>
@@ -11580,6 +11675,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>539</GameObjectKey>
@@ -11636,6 +11736,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>907</GameObjectKey>
@@ -11692,6 +11797,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>176</GameObjectKey>
@@ -11748,6 +11858,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>823</GameObjectKey>
@@ -11804,6 +11919,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>714</GameObjectKey>
@@ -11860,6 +11980,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>155</GameObjectKey>
@@ -11916,6 +12041,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>795</GameObjectKey>
@@ -11972,6 +12102,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>850</GameObjectKey>
@@ -12028,6 +12163,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>33</GameObjectKey>
@@ -12084,6 +12224,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>528</GameObjectKey>
@@ -12140,6 +12285,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>47</GameObjectKey>
@@ -12196,6 +12346,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>334</GameObjectKey>
@@ -12252,6 +12407,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>610</GameObjectKey>
@@ -12308,6 +12468,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>319</GameObjectKey>
@@ -12364,6 +12529,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>692</GameObjectKey>
@@ -12420,6 +12590,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>741</GameObjectKey>
@@ -12476,6 +12651,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>218</GameObjectKey>
@@ -12532,6 +12712,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>371</GameObjectKey>
@@ -12588,6 +12773,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>284</GameObjectKey>
@@ -12644,6 +12834,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>863</GameObjectKey>
@@ -12700,6 +12895,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>221</GameObjectKey>
@@ -12756,6 +12956,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>17</GameObjectKey>
@@ -12812,6 +13017,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>815</GameObjectKey>
@@ -12868,6 +13078,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>738</GameObjectKey>
@@ -12924,6 +13139,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>821</GameObjectKey>
@@ -12980,6 +13200,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>426</GameObjectKey>
@@ -13036,6 +13261,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>886</GameObjectKey>
@@ -13092,6 +13322,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>259</GameObjectKey>
@@ -13148,6 +13383,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>625</GameObjectKey>
@@ -13204,6 +13444,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>843</GameObjectKey>
@@ -13260,6 +13505,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>701</GameObjectKey>
@@ -13316,6 +13566,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>911</GameObjectKey>
@@ -13372,6 +13627,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>16</GameObjectKey>
@@ -13428,6 +13688,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>962</GameObjectKey>
@@ -13484,6 +13749,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>479</GameObjectKey>
@@ -13540,6 +13810,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>116</GameObjectKey>
@@ -13596,6 +13871,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>995</GameObjectKey>
@@ -13652,6 +13932,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>742</GameObjectKey>
@@ -13708,6 +13993,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>607</GameObjectKey>
@@ -13764,6 +14054,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>756</GameObjectKey>
@@ -13820,6 +14115,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>879</GameObjectKey>
@@ -13876,6 +14176,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>480</GameObjectKey>
@@ -13932,6 +14237,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>309</GameObjectKey>
@@ -13988,6 +14298,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>891</GameObjectKey>
@@ -14044,6 +14359,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>227</GameObjectKey>
@@ -14100,6 +14420,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>430</GameObjectKey>
@@ -14156,6 +14481,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>24</GameObjectKey>
@@ -14212,6 +14542,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>53</GameObjectKey>
@@ -14268,6 +14603,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>32</GameObjectKey>
@@ -14324,6 +14664,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>520</GameObjectKey>
@@ -14380,6 +14725,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>420</GameObjectKey>
@@ -14436,6 +14786,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>46</GameObjectKey>
@@ -14492,6 +14847,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>267</GameObjectKey>
@@ -14548,6 +14908,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>379</GameObjectKey>
@@ -14604,6 +14969,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>568</GameObjectKey>
@@ -14660,6 +15030,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>85</GameObjectKey>
@@ -14716,6 +15091,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>578</GameObjectKey>
@@ -14772,6 +15152,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>31</GameObjectKey>
@@ -14828,6 +15213,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>489</GameObjectKey>
@@ -14884,6 +15274,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>660</GameObjectKey>
@@ -14940,6 +15335,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>2</GameObjectKey>
@@ -14996,6 +15396,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>80</GameObjectKey>
@@ -15052,6 +15457,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>137</GameObjectKey>
@@ -15108,6 +15518,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>675</GameObjectKey>
@@ -15164,6 +15579,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>550</GameObjectKey>
@@ -15220,6 +15640,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>144</GameObjectKey>
@@ -15276,6 +15701,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>524</GameObjectKey>
@@ -15332,6 +15762,11 @@
           </Materials>
         </TrashSoup.Engine.CustomModel>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>281</GameObjectKey>
@@ -15388,6 +15823,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>265</GameObjectKey>
@@ -15444,6 +15884,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>983</GameObjectKey>
@@ -15500,6 +15945,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>838</GameObjectKey>
@@ -15556,6 +16006,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>367</GameObjectKey>
@@ -15612,6 +16067,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>495</GameObjectKey>
@@ -15668,6 +16128,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>10</GameObjectKey>
@@ -15724,6 +16189,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>909</GameObjectKey>
@@ -15780,6 +16250,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>428</GameObjectKey>
@@ -15836,6 +16311,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>648</GameObjectKey>
@@ -15892,6 +16372,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>890</GameObjectKey>
@@ -15948,6 +16433,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>882</GameObjectKey>
@@ -16004,6 +16494,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>877</GameObjectKey>
@@ -16060,6 +16555,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>655</GameObjectKey>
@@ -16116,6 +16616,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>72</GameObjectKey>
@@ -16172,6 +16677,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>52</GameObjectKey>
@@ -16228,6 +16738,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>356</GameObjectKey>
@@ -16284,6 +16799,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>990</GameObjectKey>
@@ -16340,6 +16860,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>444</GameObjectKey>
@@ -16396,6 +16921,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>465</GameObjectKey>
@@ -16452,6 +16982,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>757</GameObjectKey>
@@ -16508,6 +17043,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>946</GameObjectKey>
@@ -16564,6 +17104,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>704</GameObjectKey>
@@ -16620,6 +17165,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>178</GameObjectKey>
@@ -16676,6 +17226,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>433</GameObjectKey>
@@ -16732,6 +17287,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>615</GameObjectKey>
@@ -16788,6 +17348,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>245</GameObjectKey>
@@ -16844,6 +17409,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>409</GameObjectKey>
@@ -16900,6 +17470,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>274</GameObjectKey>
@@ -16956,6 +17531,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>403</GameObjectKey>
@@ -17012,6 +17592,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>58</GameObjectKey>
@@ -17068,6 +17653,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>639</GameObjectKey>
@@ -17124,6 +17714,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>505</GameObjectKey>
@@ -17180,6 +17775,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>354</GameObjectKey>
@@ -17251,6 +17851,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>344</GameObjectKey>
@@ -17322,6 +17927,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>42</GameObjectKey>
@@ -17393,6 +18003,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>43</GameObjectKey>
@@ -17464,6 +18079,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>897</GameObjectKey>
@@ -17535,6 +18155,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>377</GameObjectKey>
@@ -17606,6 +18231,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>978</GameObjectKey>
@@ -17677,6 +18307,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>715</GameObjectKey>
@@ -17748,6 +18383,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>620</GameObjectKey>
@@ -17819,6 +18459,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>577</GameObjectKey>
@@ -17890,6 +18535,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>223</GameObjectKey>
@@ -17961,6 +18611,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>929</GameObjectKey>
@@ -18032,6 +18687,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>561</GameObjectKey>
@@ -18103,6 +18763,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>534</GameObjectKey>
@@ -18174,6 +18839,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>431</GameObjectKey>
@@ -18245,6 +18915,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>156</GameObjectKey>
@@ -18316,6 +18991,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>148</GameObjectKey>
@@ -18387,6 +19067,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>922</GameObjectKey>
@@ -18458,6 +19143,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>471</GameObjectKey>
@@ -18529,6 +19219,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>362</GameObjectKey>
@@ -18600,6 +19295,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>802</GameObjectKey>
@@ -18671,6 +19371,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>597</GameObjectKey>
@@ -18742,6 +19447,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>690</GameObjectKey>
@@ -18813,6 +19523,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>401</GameObjectKey>
@@ -18884,6 +19599,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>775</GameObjectKey>
@@ -18955,6 +19675,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>994</GameObjectKey>
@@ -19026,6 +19751,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>372</GameObjectKey>
@@ -19097,6 +19827,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>830</GameObjectKey>
@@ -19168,6 +19903,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>107</GameObjectKey>
@@ -19239,6 +19979,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>851</GameObjectKey>
@@ -19310,6 +20055,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>641</GameObjectKey>
@@ -19381,6 +20131,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>410</GameObjectKey>
@@ -19452,6 +20207,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>84</GameObjectKey>
@@ -19523,6 +20283,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>969</GameObjectKey>
@@ -19594,6 +20359,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>570</GameObjectKey>
@@ -19665,6 +20435,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>633</GameObjectKey>
@@ -19736,6 +20511,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>168</GameObjectKey>
@@ -19807,6 +20587,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>938</GameObjectKey>
@@ -19878,6 +20663,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>835</GameObjectKey>
@@ -19949,6 +20739,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>574</GameObjectKey>
@@ -20020,6 +20815,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>6</GameObjectKey>
@@ -20091,6 +20891,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>910</GameObjectKey>
@@ -20162,6 +20967,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>70</GameObjectKey>
@@ -20233,6 +21043,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>244</GameObjectKey>
@@ -20304,6 +21119,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>111</GameObjectKey>
@@ -20375,6 +21195,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>696</GameObjectKey>
@@ -20446,6 +21271,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>619</GameObjectKey>
@@ -20517,6 +21347,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>275</GameObjectKey>
@@ -20588,6 +21423,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>912</GameObjectKey>
@@ -20659,6 +21499,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>163</GameObjectKey>
@@ -20730,6 +21575,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>867</GameObjectKey>
@@ -20801,6 +21651,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>21</GameObjectKey>
@@ -20872,6 +21727,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>317</GameObjectKey>
@@ -20943,6 +21803,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>944</GameObjectKey>
@@ -21014,6 +21879,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>437</GameObjectKey>
@@ -21085,6 +21955,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>514</GameObjectKey>
@@ -21156,6 +22031,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>772</GameObjectKey>
@@ -21227,6 +22107,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>887</GameObjectKey>
@@ -21298,6 +22183,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>686</GameObjectKey>
@@ -21369,6 +22259,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>180</GameObjectKey>
@@ -21440,6 +22335,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>586</GameObjectKey>
@@ -21511,6 +22411,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>34</GameObjectKey>
@@ -21582,6 +22487,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>829</GameObjectKey>
@@ -21653,6 +22563,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>38</GameObjectKey>
@@ -21724,6 +22639,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>49</GameObjectKey>
@@ -21795,6 +22715,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>695</GameObjectKey>
@@ -21866,6 +22791,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>458</GameObjectKey>
@@ -21937,6 +22867,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>460</GameObjectKey>
@@ -22008,6 +22943,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>888</GameObjectKey>
@@ -22079,6 +23019,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>801</GameObjectKey>
@@ -22150,6 +23095,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>340</GameObjectKey>
@@ -22221,6 +23171,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>559</GameObjectKey>
@@ -22292,6 +23247,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>190</GameObjectKey>
@@ -22363,6 +23323,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>14</GameObjectKey>
@@ -22434,6 +23399,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>547</GameObjectKey>
@@ -22505,6 +23475,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>183</GameObjectKey>
@@ -22576,6 +23551,11 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
       </Components>
+            <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
   </ObjectsDictionary>
   <Camera>
