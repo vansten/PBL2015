@@ -20,6 +20,7 @@ namespace TrashSoup.Gameplay
         protected const float SPRINT_DECELERATION = 2.5f*SPRINT_ACCELERATION;
         protected const float ROTATION_SPEED = 0.2f;
         protected const float MAX_HEALTH = 50.0f;
+        protected const float MAX_POPULARITY = 100.0f;
 
         #endregion
 
@@ -48,7 +49,12 @@ namespace TrashSoup.Gameplay
         private Equipment equipment;
 
         private float hitPoints = MAX_HEALTH;
+        private float popularity = 0.0f;
+        private float popularityDecreaseSpeed = 3.0f;
+
         private bool isDead = false;
+
+        private Texture2D interactionTexture;
 
         #endregion
 
@@ -60,10 +66,21 @@ namespace TrashSoup.Gameplay
             set { hitPoints = value; }
         }
 
+        public float Popularity
+        {
+            get { return popularity; }
+            set { popularity = value; }
+        }
+
         public bool IsDead
         { 
             get { return isDead; }
             set { isDead = value; }
+        }
+
+        public Equipment Equipment
+        {
+            get { return this.equipment; }
         }
 
         #endregion
@@ -84,11 +101,6 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            if(!TrashSoupGame.Instance.EditorMode)
-            {
-                GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"), "HEALTH: " + HitPoints.ToString(), new Vector2(0.1f, 0.3f), Color.Red);
-            }
-
             if (isDead)
                 return;
 
@@ -181,7 +193,7 @@ namespace TrashSoup.Gameplay
                 if(!this.collectedTrash)
                 {
                     this.collisionFakeTime = gameTime.TotalGameTime.TotalSeconds;
-                    GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"), "Click X on pad to collect trash", new Vector2(0.55f, 0.1f), Color.Red);
+                    GUIManager.Instance.DrawTexture(this.interactionTexture, new Vector2(0.475f, 0.775f), 0.05f, 0.05f);
                 }
             }
 
@@ -195,7 +207,6 @@ namespace TrashSoup.Gameplay
 
             if(this.collectedTrash)
             {
-                GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"), "Trash collected", new Vector2(0.6f, 0.1f), Color.Red);
                 if(gameTime.TotalGameTime.TotalSeconds - this.collectedFakeTime > 2.0)
                 {
                     this.collectedTrash = false;
@@ -203,6 +214,20 @@ namespace TrashSoup.Gameplay
             }
 
             this.collisionWithTrash = false;
+
+            if(InputManager.Instance.GetKeyboardButtonDown(Keys.F))
+            {
+                this.Popularity += 10.0f;
+            }
+
+            this.Popularity -= gameTime.ElapsedGameTime.Milliseconds * 0.001f * this.popularityDecreaseSpeed;
+            this.Popularity = MathHelper.Clamp(this.Popularity, 0.0f, MAX_POPULARITY);
+        }
+
+        public override void Initialize()
+        {
+            this.interactionTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/x_button");
+            base.Initialize();
         }
 
         public override void Draw(Camera cam, Effect effect, Microsoft.Xna.Framework.GameTime gameTime)

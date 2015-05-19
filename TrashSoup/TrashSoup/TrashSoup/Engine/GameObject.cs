@@ -70,6 +70,30 @@ namespace TrashSoup.Engine
             this.Visible = true;
         }
 
+        public void Initialize()
+        {
+            foreach (ObjectComponent component in this.Components)
+            {
+                component.Initialize();
+            }
+            if (this.MyCollider != null)
+            {
+                this.MyCollider.Initialize();
+            }
+            if (this.MyAnimator != null)
+            {
+                this.MyAnimator.Initialize();
+            }
+            if (this.MyPhysicalObject != null)
+            {
+                this.MyPhysicalObject.Initialize();
+            }
+            if (this.MyTransform != null)
+            {
+                this.MyTransform.Initialize();
+            }
+        }
+
         public virtual void Update(GameTime gameTime)
         {
             if(this.Enabled)
@@ -111,7 +135,7 @@ namespace TrashSoup.Engine
 #if DEBUG
                 if (this.MyCollider != null)
                 {
-                    this.MyCollider.Draw(cam, effect, gameTime);
+                    //this.MyCollider.Draw(cam, effect, gameTime);
                 }
 
 #endif
@@ -218,6 +242,8 @@ namespace TrashSoup.Engine
                 (MyCollider as IXmlSerializable).ReadXml(reader);
                 reader.ReadEndElement();
             }
+
+            this.Initialize();
 
             //reader.ReadEndElement();
         }

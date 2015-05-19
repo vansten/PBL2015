@@ -184,6 +184,7 @@ namespace TrashSoup.Engine
             testBox.Components.Add(skModel);
             testBox.MyAnimator = playerAnimator;
             testBox.Components.Add(new PlayerController(testBox));
+
             testBox.MyPhysicalObject = new PhysicalObject(testBox, 1.0f, 0.05f, false);
             testBox.MyCollider = new SphereCollider(testBox);  //Add a box collider to test collisions
 
@@ -278,6 +279,11 @@ namespace TrashSoup.Engine
             ////TESTING PARTICLES
             ps = new ParticleSystem(TrashSoupGame.Instance.GraphicsDevice, 
                 TrashSoupGame.Instance.Content.Load<Texture2D>(@"Textures/ParticleTest/Particle"), 400, new Vector2(2), 1, Vector3.Zero, 0.5f);
+
+            foreach(GameObject go in this.CurrentScene.ObjectsDictionary.Values)
+            {
+                go.Initialize();
+            }
         }
 
         /// <summary>
