@@ -54,8 +54,8 @@ namespace TrashSoup
         public TrashSoupGame()
         {
             GraphicsManager = new GraphicsDeviceManager(this);
-            GraphicsManager.PreferredBackBufferHeight = 900;
-            GraphicsManager.PreferredBackBufferWidth = 1600;
+            GraphicsManager.PreferredBackBufferHeight = 720;
+            GraphicsManager.PreferredBackBufferWidth = 1280;
             GraphicsManager.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(SetToPreserve);
 #if DEBUG
             //Turning of lock to 60 fps :) only in debug mode
@@ -128,7 +128,7 @@ namespace TrashSoup
                     timer = 0.0f;
                     frames = 0;
                 }
-                GUIManager.Instance.DrawText(this.font, fps.ToString(), new Vector2(0.1f, 0.1f), Color.Red);
+                GUIManager.Instance.DrawText(this.font, "FPS: " + fps.ToString(), new Vector2(0.45f, 0.1f), Color.Lime);
 #endif
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                     this.Exit();
