@@ -129,6 +129,55 @@
       </Components>
     </GameObject>
     <GameObject>
+      <GameObjectKey>355</GameObjectKey>
+      <UniqueID>355</UniqueID>
+      <Name>PlayerTime</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>355</MyObjectID>
+        <Position>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.Transform>
+          <MyObjectID>355</MyObjectID>
+          <Position>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Position>
+          <Rotation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Rotation>
+          <Forward>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Forward>
+          <Scale>1</Scale>
+        </TrashSoup.Engine.Transform>
+        <TrashSoup.Gameplay.PlayerTime>
+          <MyObjectID>355</MyObjectID>
+        </TrashSoup.Gameplay.PlayerTime>
+      </Components>
+    </GameObject>
+    <GameObject>
       <GameObjectKey>1</GameObjectKey>
       <UniqueID>1</UniqueID>
       <Name>Player</Name>
@@ -6736,55 +6785,6 @@
         <MyObjectID>957</MyObjectID>
         <IsTrigger>false</IsTrigger>
       </MyCollider>
-    </GameObject>
-    <GameObject>
-      <GameObjectKey>355</GameObjectKey>
-      <UniqueID>355</UniqueID>
-      <Name>PlayerTime</Name>
-      <Dynamic>false</Dynamic>
-      <MyTransform>
-        <MyObjectID>355</MyObjectID>
-        <Position>
-          <X>0</X>
-          <Y>0</Y>
-          <Z>0</Z>
-        </Position>
-        <Rotation>
-          <X>0</X>
-          <Y>0</Y>
-          <Z>0</Z>
-        </Rotation>
-        <Forward>
-          <X>0</X>
-          <Y>0</Y>
-          <Z>0</Z>
-        </Forward>
-        <Scale>1</Scale>
-      </MyTransform>
-      <Components>
-        <TrashSoup.Engine.Transform>
-          <MyObjectID>355</MyObjectID>
-          <Position>
-            <X>0</X>
-            <Y>0</Y>
-            <Z>0</Z>
-          </Position>
-          <Rotation>
-            <X>0</X>
-            <Y>0</Y>
-            <Z>0</Z>
-          </Rotation>
-          <Forward>
-            <X>0</X>
-            <Y>0</Y>
-            <Z>0</Z>
-          </Forward>
-          <Scale>1</Scale>
-        </TrashSoup.Engine.Transform>
-        <TrashSoup.Gameplay.PlayerTime>
-          <MyObjectID>355</MyObjectID>
-        </TrashSoup.Gameplay.PlayerTime>
-      </Components>
     </GameObject>
     <GameObject>
       <GameObjectKey>374</GameObjectKey>
