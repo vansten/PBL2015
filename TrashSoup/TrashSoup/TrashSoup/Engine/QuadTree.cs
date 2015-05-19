@@ -160,7 +160,7 @@ namespace TrashSoup.Engine
             {
                 planesToCheck[i].Normal.X = - planesToCheck[i].Normal.X;
                 planesToCheck[i].Normal.Y = 0.0f;
-                planesToCheck[i].Normal.Z = -planesToCheck[i].Normal.Z;
+                //planesToCheck[i].Normal.Z = -planesToCheck[i].Normal.Z;
             }
 
             QuadTreeNode current;
@@ -353,6 +353,8 @@ namespace TrashSoup.Engine
                 rectObj.Max = tempBoxCollider.Box.Max;
                 rectObj.Min.Y = 0.0f;
                 rectObj.Max.Y = 0.0f;
+                rectObj.Max.Z = -rectObj.Max.Z;
+                rectObj.Min.Z = -rectObj.Min.Z;
             }
             else if (obj.MyCollider is SphereCollider)
             {
@@ -361,9 +363,9 @@ namespace TrashSoup.Engine
                 rectObj.Max = Vector3.Zero;
 
                 rectObj.Min.X = tempSphereCollider.Sphere.Center.X - tempSphereCollider.Sphere.Radius;
-                rectObj.Min.Z = tempSphereCollider.Sphere.Center.Z - tempSphereCollider.Sphere.Radius;
+                rectObj.Min.Z = -tempSphereCollider.Sphere.Center.Z - tempSphereCollider.Sphere.Radius;
                 rectObj.Max.X = tempSphereCollider.Sphere.Center.X + tempSphereCollider.Sphere.Radius;
-                rectObj.Max.Z = tempSphereCollider.Sphere.Center.Z + tempSphereCollider.Sphere.Radius;
+                rectObj.Max.Z = -tempSphereCollider.Sphere.Center.Z + tempSphereCollider.Sphere.Radius;
             }
             else
             {
