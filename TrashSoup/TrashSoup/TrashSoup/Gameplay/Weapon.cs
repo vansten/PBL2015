@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 using TrashSoup.Engine;
 
 namespace TrashSoup.Gameplay
@@ -13,7 +14,7 @@ namespace TrashSoup.Gameplay
         HEAVY
     }
 
-    class Weapon : ObjectComponent
+    public class Weapon : ObjectComponent, IXmlSerializable
     {
         #region variables
         protected int durability;
@@ -57,26 +58,46 @@ namespace TrashSoup.Gameplay
         {
             if(other is Enemy)
             {
-                //decrease amount of enemy health equal to damage
+                (other as Enemy).HitPoints -= Damage;
                 Durability--;
             }
             base.OnTrigger(other);
         }
-        #endregion
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            
+
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
         {
-            
+
         }
 
         protected override void Start()
         {
-            
+
         }
+
+        public override System.Xml.Schema.XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public override void ReadXml(System.Xml.XmlReader reader)
+        {
+            reader.MoveToContent();
+            reader.ReadStartElement();
+
+            base.ReadXml(reader);
+
+            reader.ReadEndElement();
+        }
+
+        public override void WriteXml(System.Xml.XmlWriter writer)
+        {
+            base.WriteXml(writer);
+        }
+        #endregion
     }
 }
