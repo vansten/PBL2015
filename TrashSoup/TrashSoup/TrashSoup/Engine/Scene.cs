@@ -17,6 +17,7 @@ namespace TrashSoup.Engine
         public string Name { get; set; }
         public Vector2 Wind { get; set; }
         public DateTime Time { get; set; }
+        public float MaxSize { get; set; }
         public bool Shadows { get; set; }
         public bool SoftShadows { get; set; }
         public bool Bloom { get; set; }
@@ -30,11 +31,12 @@ namespace TrashSoup.Engine
             this.Name = name;
         }
 
-        public SceneParams(uint uniqueID, string name, Vector2 wind, DateTime time, bool shadows, bool softShadows, bool bloom, bool graph)
+        public SceneParams(uint uniqueID, string name, Vector2 wind, DateTime time, float maxSize, bool shadows, bool softShadows, bool bloom, bool graph)
             : this(uniqueID, name)
         {
             this.Wind = wind;
             this.Time = time;
+            this.MaxSize = maxSize;
             this.Shadows = shadows;
             this.SoftShadows = softShadows;
             this.Bloom = bloom;
@@ -54,9 +56,11 @@ namespace TrashSoup.Engine
             this.UniqueID = (uint)reader.ReadElementContentAsInt("UniqueID", "");
             this.Name = reader.ReadElementString("Name", "");
 
+            this.MaxSize = reader.ReadElementContentAsFloat("MaxSize", "");
             this.Shadows = reader.ReadElementContentAsBoolean("Shadows", "");
             this.SoftShadows = reader.ReadElementContentAsBoolean("SoftShadows", "");
             this.Bloom = reader.ReadElementContentAsBoolean("Bloom", "");
+            this.UseGraph = reader.ReadElementContentAsBoolean("UseGraph", "");
 
             if(reader.Name == "Wind")
             {
@@ -74,9 +78,11 @@ namespace TrashSoup.Engine
             writer.WriteElementString("UniqueID", UniqueID.ToString());
             writer.WriteElementString("Name", Name);
 
+            writer.WriteElementString("MaxSize", XmlConvert.ToString(MaxSize));
             writer.WriteElementString("Shadows", XmlConvert.ToString(Shadows));
             writer.WriteElementString("SoftShadows", XmlConvert.ToString(SoftShadows));
             writer.WriteElementString("Bloom", XmlConvert.ToString(Bloom));
+            writer.WriteElementString("UseGraph", XmlConvert.ToString(UseGraph));
 
             writer.WriteStartElement("Wind");
             writer.WriteElementString("X", XmlConvert.ToString(Wind.X));
@@ -265,7 +271,7 @@ namespace TrashSoup.Engine
             
             if(Params.UseGraph)
             {
-                ObjectsQT.Draw(Cam.Bounds);
+                ObjectsQT.Draw(cam != null ? cam : this.Cam, effect, gameTime);
             }
             else
             {

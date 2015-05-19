@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace TrashSoup.Engine
 {
@@ -17,8 +18,28 @@ namespace TrashSoup.Engine
             this.Max = max;
         }
 
-        public bool IntersectsPlane(Plane plane)
+        public bool IntersectsPlane(ref Plane plane)
         {
+            Vector3 planePoint = plane.Normal * plane.D;
+            Vector3[] points = new Vector3[4];
+            Vector3 pointBR = new Vector3(this.Min.X + Math.Abs(this.Max.X - this.Min.X), this.Min.Y, this.Min.Z);
+            Vector3 pointTL = new Vector3(this.Max.X - Math.Abs(this.Max.X - this.Min.X), this.Max.Y, this.Max.Z);
+
+            points[0] = Vector3.Normalize(planePoint - this.Min);
+            points[1] = Vector3.Normalize(planePoint - this.Max);
+            points[2] = Vector3.Normalize(planePoint - pointBR);
+            points[3] = Vector3.Normalize(planePoint - pointTL);
+
+            for (int i = 0; i < 4; ++i)
+            {
+                float angle = Math.Abs((float)Math.Acos((double)Vector3.Dot(plane.Normal, points[i])));
+
+                if (angle >= MathHelper.PiOver2)
+                {
+                    return true;
+                }
+            }
+
             return false;
         }
     }
@@ -106,7 +127,8 @@ namespace TrashSoup.Engine
         private float sceneSize;
         private Dictionary<uint, GameObject> objs;
         private List<GameObject> dynamicObjects;
-        Plane[] planesToCheck;
+        private Plane[] planesToCheck;
+        Stack<QuadTreeNode> nodesToCheck;
         #endregion
 
         #region methods
@@ -116,6 +138,7 @@ namespace TrashSoup.Engine
             this.sceneSize = sceneSize;
             this.dynamicObjects = new List<GameObject>();
             this.planesToCheck = new Plane[PLANE_COUNT];
+            this.nodesToCheck = new Stack<QuadTreeNode>();
             root = new QuadTreeNode(null, new RectangleWS(new Vector3(-sceneSize / 2.0f, 0.0f, -sceneSize / 2.0f), new Vector3(sceneSize / 2.0f, 0.0f, sceneSize / 2.0f)));
         }
 
@@ -125,12 +148,82 @@ namespace TrashSoup.Engine
 
         }
 
-        public void Draw(BoundingFrustum frustum)
+        public void Draw(Camera cam, Effect effect, GameTime gameTime)
         {
-            planesToCheck[0] = frustum.Near;
-            planesToCheck[1] = frustum.Far;
-            planesToCheck[2] = frustum.Left;
-            planesToCheck[3] = frustum.Right;
+            planesToCheck[0] = cam.Bounds.Near;
+            planesToCheck[1] = cam.Bounds.Far;
+            planesToCheck[2] = cam.Bounds.Left;
+            planesToCheck[3] = cam.Bounds.Right;
+
+
+            for(int i = 0; i < PLANE_COUNT; ++i)
+            {
+                planesToCheck[i].Normal.X = - planesToCheck[i].Normal.X;
+                planesToCheck[i].Normal.Y = 0.0f;
+                planesToCheck[i].Normal.Z = -planesToCheck[i].Normal.Z;
+            }
+
+            QuadTreeNode current;
+            nodesToCheck.Clear();
+            nodesToCheck.Push(root);
+
+            uint ctr = 0;
+
+            while(nodesToCheck.Count > 0)
+            {
+                // pop from stack
+                current = nodesToCheck.Pop();
+
+                // draw all objects of current node
+
+                if(current.Objects.Count != 0)
+                {
+                    foreach(GameObject obj in current.Objects)
+                    {
+                        obj.Draw(cam, effect, gameTime);
+                        ++ctr;
+                    }
+                }
+
+                // check collision for each child node
+                if(current.ChildBL != null && 
+                    current.ChildBL.Rect.IntersectsPlane(ref planesToCheck[0]) &&
+                    current.ChildBL.Rect.IntersectsPlane(ref planesToCheck[1]) &&
+                    current.ChildBL.Rect.IntersectsPlane(ref planesToCheck[2]) &&
+                    current.ChildBL.Rect.IntersectsPlane(ref planesToCheck[3]))
+                {
+                    nodesToCheck.Push(current.ChildBL);
+                }
+
+                if (current.ChildBR != null &&
+                    current.ChildBR.Rect.IntersectsPlane(ref planesToCheck[0]) &&
+                    current.ChildBR.Rect.IntersectsPlane(ref planesToCheck[1]) &&
+                    current.ChildBR.Rect.IntersectsPlane(ref planesToCheck[2]) &&
+                    current.ChildBR.Rect.IntersectsPlane(ref planesToCheck[3]))
+                {
+                    nodesToCheck.Push(current.ChildBR);
+                }
+
+                if (current.ChildTL != null &&
+                    current.ChildTL.Rect.IntersectsPlane(ref planesToCheck[0]) &&
+                    current.ChildTL.Rect.IntersectsPlane(ref planesToCheck[1]) &&
+                    current.ChildTL.Rect.IntersectsPlane(ref planesToCheck[2]) &&
+                    current.ChildTL.Rect.IntersectsPlane(ref planesToCheck[3]))
+                {
+                    nodesToCheck.Push(current.ChildTL);
+                }
+
+                if (current.ChildTR != null &&
+                    current.ChildTR.Rect.IntersectsPlane(ref planesToCheck[0]) &&
+                    current.ChildTR.Rect.IntersectsPlane(ref planesToCheck[1]) &&
+                    current.ChildTR.Rect.IntersectsPlane(ref planesToCheck[2]) &&
+                    current.ChildTR.Rect.IntersectsPlane(ref planesToCheck[3]))
+                {
+                    nodesToCheck.Push(current.ChildTR);
+                }
+            }
+
+            //Debug.Log("QUADTREE: Objects drawn: " + ctr.ToString());
         }
 
         private bool CheckIfObjectFits(ref RectangleWS rectOut, ref RectangleWS rectIn)
@@ -256,10 +349,8 @@ namespace TrashSoup.Engine
             {
                 tempBoxCollider = (BoxCollider)obj.MyCollider;
 
-                Vector3 pos, scl; Quaternion rot;
-                obj.MyTransform.GetWorldMatrix().Decompose(out scl, out rot, out pos);
-                rectObj.Min = Vector3.Transform(tempBoxCollider.Box.Min, Matrix.CreateScale(scl) * Matrix.CreateTranslation(pos));
-                rectObj.Max = Vector3.Transform(tempBoxCollider.Box.Max, Matrix.CreateScale(scl) * Matrix.CreateTranslation(pos));
+                rectObj.Min = tempBoxCollider.Box.Min;
+                rectObj.Max = tempBoxCollider.Box.Max;
                 rectObj.Min.Y = 0.0f;
                 rectObj.Max.Y = 0.0f;
             }
@@ -269,15 +360,10 @@ namespace TrashSoup.Engine
                 rectObj.Min = Vector3.Zero;
                 rectObj.Max = Vector3.Zero;
 
-                Vector3 pos, scl; Quaternion rot;
-                obj.MyTransform.GetWorldMatrix().Decompose(out scl, out rot, out pos);
-                Vector3 center = Vector3.Transform(tempSphereCollider.Sphere.Center, Matrix.CreateTranslation(pos));
-                float newRadius = tempSphereCollider.Radius * obj.MyTransform.Scale;
-
-                rectObj.Min.X = center.X - newRadius;
-                rectObj.Min.Z = center.Z - newRadius;
-                rectObj.Max.X = center.X + newRadius;
-                rectObj.Max.Z = center.Z + newRadius;
+                rectObj.Min.X = tempSphereCollider.Sphere.Center.X - tempSphereCollider.Sphere.Radius;
+                rectObj.Min.Z = tempSphereCollider.Sphere.Center.Z - tempSphereCollider.Sphere.Radius;
+                rectObj.Max.X = tempSphereCollider.Sphere.Center.X + tempSphereCollider.Sphere.Radius;
+                rectObj.Max.Z = tempSphereCollider.Sphere.Center.Z + tempSphereCollider.Sphere.Radius;
             }
             else
             {
@@ -295,11 +381,14 @@ namespace TrashSoup.Engine
             Vector3 vecMin = planePoint - rect.Min;
             Vector3 vecMax = planePoint - rect.Max;
 
-            Vector3.Normalize(vecMin);
-            Vector3.Normalize(vecMax);
+            vecMin = Vector3.Normalize(vecMin);
+            vecMax = Vector3.Normalize(vecMax);
 
             float angleMin = Math.Abs( (float) Math.Acos((double)Vector3.Dot(plane.Normal, vecMin)));
             float angleMax = Math.Abs( (float) Math.Acos((double)Vector3.Dot(plane.Normal, vecMax)));
+
+            bool ifMin = angleMin >= MathHelper.PiOver2;
+            bool ifMax = angleMax >= MathHelper.PiOver2;
 
             if(angleMin >= MathHelper.PiOver2 || angleMax >= MathHelper.PiOver2)
             {
