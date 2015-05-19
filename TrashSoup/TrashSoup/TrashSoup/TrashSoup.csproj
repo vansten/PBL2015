@@ -119,6 +119,8 @@
     <Compile Include="Gameplay\Enemy.cs" />
     <Compile Include="Gameplay\Equipment.cs" />
     <Compile Include="Gameplay\InputHandler.cs" />
+    <Compile Include="Gameplay\Weapons\Fists.cs" />
+    <Compile Include="Gameplay\Weapons\NoFreePlaceSign.cs" />
     <Compile Include="Gameplay\PlayerCameraController.cs" />
     <Compile Include="Engine\GameObject.cs" />
     <Compile Include="Engine\GUIManager.cs" />
@@ -127,6 +129,14 @@
     <Compile Include="Gameplay\PlayerController.cs" />
     <Compile Include="Gameplay\PlayerTime.cs" />
     <Compile Include="Gameplay\Weapon.cs" />
+    <Compile Include="Gameplay\Weapons\Bottle.cs" />
+    <Compile Include="Gameplay\Weapons\Hammer.cs" />
+    <Compile Include="Gameplay\Weapons\Knife.cs" />
+    <Compile Include="Gameplay\Weapons\Machete.cs" />
+    <Compile Include="Gameplay\Weapons\Newspaper.cs" />
+    <Compile Include="Gameplay\Weapons\Pipe.cs" />
+    <Compile Include="Gameplay\Weapons\Signs.cs" />
+    <Compile Include="Gameplay\Weapons\Stones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="TrashSoupGame.cs" />
