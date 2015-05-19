@@ -225,8 +225,8 @@ namespace TrashSoup.Engine
                 }
             }
 
-            if (effect == null)
-                Debug.Log("QUADTREE: Objects drawn: " + ctr.ToString() + ", objects total: " + ResourceManager.Instance.CurrentScene.ObjectsDictionary.Count.ToString());
+            //if (effect == null)
+            //    Debug.Log("QUADTREE: Objects drawn: " + ctr.ToString() + ", objects total: " + ResourceManager.Instance.CurrentScene.ObjectsDictionary.Count.ToString());
         }
 
         private bool CheckIfObjectFits(ref RectangleWS rectOut, ref RectangleWS rectIn)
