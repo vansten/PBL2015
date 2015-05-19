@@ -240,7 +240,8 @@ namespace TrashSoup.Gameplay
             sprint = 1.0f;
             sprintM = 0.0f;
             equipment = new Equipment(this.MyObject);
-            this.MyObject.Components.Add(equipment.CurrentWeapon);
+            if(this.MyObject.GetComponent<Weapons.Fists>() == null)
+                this.MyObject.Components.Add(equipment.CurrentWeapon);
 
             if (MyObject == null) return;
 
