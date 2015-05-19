@@ -3,7 +3,7 @@
   <SceneParams>
     <UniqueID>0</UniqueID>
     <Name>test</Name>
-    <MaxSize>5000.0</MaxSize>
+    <MaxSize>50000.0</MaxSize>
     <Shadows>true</Shadows>
     <SoftShadows>true</SoftShadows>
     <Bloom>true</Bloom>
@@ -161,7 +161,7 @@
         </Acceleration>
         <Mass>1</Mass>
         <DragFactor>0.05</DragFactor>
-        <IsUsingGravity>true</IsUsingGravity>
+        <IsUsingGravity>false</IsUsingGravity>
         <Velocity>
           <X>0</X>
           <Y>0</Y>

@@ -39,13 +39,13 @@ namespace TrashSoup.Engine.AI.BehaviorTree
                 {
                     if (this.milisecondsTillLastTick >= this.btTickFrequency)
                     {
-                        Debug.Log("Normal tick of BT");
+                        //Debug.Log("Normal tick of BT");
                         bt.Tick();
                         this.milisecondsTillLastTick = 0;
                     }
                     else
                     {
-                        Debug.Log("Wait for next normal tick of BT");
+                        //Debug.Log("Wait for next normal tick of BT");
                         if (bt.CurrentRunning != null)
                         {
                             bt.CurrentRunning.Tick(out bt.CurrentRunning);
