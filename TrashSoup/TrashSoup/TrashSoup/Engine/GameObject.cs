@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Xml.Serialization;
+using System.Xml;
 
 namespace TrashSoup.Engine
 {
@@ -129,6 +130,7 @@ namespace TrashSoup.Engine
 
             UniqueID = (uint)reader.ReadElementContentAsInt("UniqueID", "");
             Name = reader.ReadElementString("Name", "");
+            Dynamic = reader.ReadElementContentAsBoolean("Dynamic", "");
 
             if(reader.Name == "MyTransform")
             {
@@ -224,6 +226,7 @@ namespace TrashSoup.Engine
         {
             writer.WriteElementString("UniqueID", UniqueID.ToString());
             writer.WriteElementString("Name", Name);
+            writer.WriteElementString("Dynamic", XmlConvert.ToString(Dynamic));
 
             if(MyTransform != null)
             {
