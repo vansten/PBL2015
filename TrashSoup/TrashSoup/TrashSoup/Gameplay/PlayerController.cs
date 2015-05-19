@@ -55,6 +55,7 @@ namespace TrashSoup.Gameplay
         private bool isDead = false;
 
         private Texture2D interactionTexture;
+        private Vector2 textPosition = new Vector2(0.43f, 0.35f);
 
         #endregion
 
@@ -207,10 +208,13 @@ namespace TrashSoup.Gameplay
 
             if(this.collectedTrash)
             {
+                GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"),
+                    "Trash collected", textPosition, Color.Red);
                 if(gameTime.TotalGameTime.TotalSeconds - this.collectedFakeTime > 2.0)
                 {
                     this.collectedTrash = false;
                 }
+                textPosition.Y -= 0.002f;
             }
 
             this.collisionWithTrash = false;
