@@ -231,6 +231,8 @@ namespace TrashSoup.Engine
 
             this.initialSphere = new BoundingSphere(this.Center, this.Radius);
 
+            UpdateCollider();
+
             base.CreateCollider();
         }
 
