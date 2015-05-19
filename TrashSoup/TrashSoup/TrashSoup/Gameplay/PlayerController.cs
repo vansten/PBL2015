@@ -45,6 +45,8 @@ namespace TrashSoup.Gameplay
         private double collectedFakeTime = 0.0;
         private GameObject trash;
 
+        private Equipment equipment;
+
         private float hitPoints = MAX_HEALTH;
         private bool isDead = false;
 
@@ -95,6 +97,8 @@ namespace TrashSoup.Gameplay
                 DecreaseHealth(1);
             if (InputManager.Instance.GetKeyboardButtonDown(Keys.PageUp))
                 IncreaseHealth(20);
+
+            equipment.Update(gameTime);
             
             Vector2 movementVector = InputHandler.Instance.GetMovementVector();
             tempMove = new Vector3(movementVector.X,
@@ -186,6 +190,7 @@ namespace TrashSoup.Gameplay
                 this.collectedTrash = true;
                 this.collectedFakeTime = gameTime.TotalGameTime.TotalSeconds;
                 this.trash.Enabled = false;
+                equipment.AddJunk(1);
             }
 
             if(this.collectedTrash)
@@ -209,6 +214,7 @@ namespace TrashSoup.Gameplay
         {
             sprint = 1.0f;
             sprintM = 0.0f;
+            equipment = new Equipment(this.MyObject);
 
             if (MyObject == null) return;
 

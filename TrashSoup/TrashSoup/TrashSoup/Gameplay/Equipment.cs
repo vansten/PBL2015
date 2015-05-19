@@ -48,10 +48,10 @@ namespace TrashSoup.Gameplay
             currentWeapon = null; //będą pięści
         }
 
-        public void AddJunk()
+        public void AddJunk(int count)
         {
-            if (JunkCount < MAX_JUNK_CAPACITY)
-                JunkCount++;
+            if (JunkCount+count < MAX_JUNK_CAPACITY)
+                JunkCount+=count;
             else
                 GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"), 
                     "Can't carry any more junk", new Vector2(0.5f, 0.8f), Color.Red);
@@ -70,7 +70,8 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-
+            GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"),
+                "JUNK: " + JunkCount.ToString(), new Vector2(0.5f, 0.8f), Color.Red);
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
