@@ -14,8 +14,8 @@ namespace TrashSoup.Gameplay
     public class Equipment : ObjectComponent, IXmlSerializable
     {
         #region variables
-        private const int MAX_JUNK_CAPACITY = 20;
-        private const int MAX_FOOD_CAPACITY = 5;
+        public const int MAX_JUNK_CAPACITY = 20;
+        public const int MAX_FOOD_CAPACITY = 5;
         private int currentJunkCount;
         private int currentFoodCount;
         private Weapon currentWeapon;
@@ -76,10 +76,6 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"),
-                "JUNK: " + JunkCount.ToString(), new Vector2(0.5f, 0.8f), Color.Red);
-            GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"),
-                "CURRENT WEAPON: " + CurrentWeapon.Name, new Vector2(0.5f, 0.9f), Color.Red);
             if(currentWeapon.Durability == 0)
             {
                 ChangeWeapon(new Fists(this.MyObject));

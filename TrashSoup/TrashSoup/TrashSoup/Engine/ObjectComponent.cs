@@ -52,6 +52,11 @@ namespace TrashSoup.Engine
 
         protected abstract void Start();
 
+        public virtual void Initialize()
+        {
+
+        }
+
         public virtual void OnCollision(GameObject other)
         {
 

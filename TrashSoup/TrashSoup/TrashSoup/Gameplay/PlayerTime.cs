@@ -68,7 +68,7 @@ namespace TrashSoup.Gameplay
 
         public override void Draw(Camera cam, Effect effect, GameTime gameTime)
         {
-            GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"), "TIME: " + Hours.ToString("00") + ":" + Minutes.ToString("00"), new Vector2(0.1f, 0.4f), Color.Red);
+            GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/digital-7"), "TIME: " + Hours.ToString("00") + ":" + Minutes.ToString("00"), new Vector2(0.1f, 0.4f), Color.Red);
         }
 
         protected override void Start()
