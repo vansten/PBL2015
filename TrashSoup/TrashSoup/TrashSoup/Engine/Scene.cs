@@ -18,10 +18,13 @@ namespace TrashSoup.Engine
         public Vector2 Wind { get; set; }
         public DateTime Time { get; set; }
         public float MaxSize { get; set; }
+        public float Lod1Distance { get; set; }
+        public float Lod2Distance { get; set; }
         public bool Shadows { get; set; }
         public bool SoftShadows { get; set; }
         public bool Bloom { get; set; }
         public bool UseGraph { get; set; }
+        public bool UseLods { get; set; }
         #endregion
 
         #region methods
@@ -31,16 +34,19 @@ namespace TrashSoup.Engine
             this.Name = name;
         }
 
-        public SceneParams(uint uniqueID, string name, Vector2 wind, DateTime time, float maxSize, bool shadows, bool softShadows, bool bloom, bool graph)
+        public SceneParams(uint uniqueID, string name, Vector2 wind, DateTime time, float maxSize, float lod1distance, float lod2distance, bool shadows, bool softShadows, bool bloom, bool graph, bool lods)
             : this(uniqueID, name)
         {
             this.Wind = wind;
             this.Time = time;
             this.MaxSize = maxSize;
+            this.Lod1Distance = lod1distance;
+            this.Lod2Distance = lod2distance;
             this.Shadows = shadows;
             this.SoftShadows = softShadows;
             this.Bloom = bloom;
             this.UseGraph = graph;
+            this.UseLods = lods;
         }
 
         public System.Xml.Schema.XmlSchema GetSchema()
@@ -57,10 +63,13 @@ namespace TrashSoup.Engine
             this.Name = reader.ReadElementString("Name", "");
 
             this.MaxSize = reader.ReadElementContentAsFloat("MaxSize", "");
+            this.Lod1Distance = reader.ReadElementContentAsFloat("Lod1Distance", "");
+            this.Lod2Distance = reader.ReadElementContentAsFloat("Lod2Distance", "");
             this.Shadows = reader.ReadElementContentAsBoolean("Shadows", "");
             this.SoftShadows = reader.ReadElementContentAsBoolean("SoftShadows", "");
             this.Bloom = reader.ReadElementContentAsBoolean("Bloom", "");
             this.UseGraph = reader.ReadElementContentAsBoolean("UseGraph", "");
+            this.UseLods = reader.ReadElementContentAsBoolean("UseLods", "");
 
             if(reader.Name == "Wind")
             {
@@ -79,10 +88,13 @@ namespace TrashSoup.Engine
             writer.WriteElementString("Name", Name);
 
             writer.WriteElementString("MaxSize", XmlConvert.ToString(MaxSize));
+            writer.WriteElementString("Lod1Distance", XmlConvert.ToString(Lod1Distance));
+            writer.WriteElementString("Lod2Distance", XmlConvert.ToString(Lod2Distance));
             writer.WriteElementString("Shadows", XmlConvert.ToString(Shadows));
             writer.WriteElementString("SoftShadows", XmlConvert.ToString(SoftShadows));
             writer.WriteElementString("Bloom", XmlConvert.ToString(Bloom));
             writer.WriteElementString("UseGraph", XmlConvert.ToString(UseGraph));
+            writer.WriteElementString("UseLods", XmlConvert.ToString(UseLods));
 
             writer.WriteStartElement("Wind");
             writer.WriteElementString("X", XmlConvert.ToString(Wind.X));

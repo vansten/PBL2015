@@ -4,10 +4,13 @@
     <UniqueID>0</UniqueID>
     <Name>test</Name>
     <MaxSize>5000</MaxSize>
+    <Lod1Distance>40</Lod1Distance>
+    <Lod2Distance>80</Lod2Distance>
     <Shadows>true</Shadows>
     <SoftShadows>true</SoftShadows>
     <Bloom>true</Bloom>
     <UseGraph>true</UseGraph>
+    <UseLods>true</UseLods>
     <Wind>
       <X>0</X>
       <Y>0.1</Y>
@@ -125,6 +128,7 @@
           <Materials>
             <Name>testSBMat</Name>
           </Materials>
+          <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
     </GameObject>
@@ -186,7 +190,7 @@
         <MyObjectID>1</MyObjectID>
         <Position>
           <X>-160</X>
-          <Y>3</Y>
+          <Y>0.2637358</Y>
           <Z>-28</Z>
         </Position>
         <Rotation>
@@ -239,6 +243,7 @@
             <Name>SkinShader</Name>
             <Name>SkinShader</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.Weapons.Fists>
           <MyObjectID>1</MyObjectID>
@@ -312,6 +317,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -354,6 +360,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>900</MyObjectID>
@@ -415,6 +422,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>918</MyObjectID>
@@ -476,6 +484,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>432</MyObjectID>
@@ -537,6 +546,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>788</MyObjectID>
@@ -598,6 +608,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>387</MyObjectID>
@@ -659,6 +670,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>126</MyObjectID>
@@ -720,6 +732,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>366</MyObjectID>
@@ -781,6 +794,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>255</MyObjectID>
@@ -861,6 +875,7 @@
           <Materials>
             <Name>SkinShader</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -903,6 +918,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>644</MyObjectID>
@@ -964,6 +980,7 @@
           <Materials>
             <Name>bigHouseMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>855</MyObjectID>
@@ -1025,6 +1042,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>860</MyObjectID>
@@ -1086,6 +1104,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>288</MyObjectID>
@@ -1147,6 +1166,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>725</MyObjectID>
@@ -1208,6 +1228,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>993</MyObjectID>
@@ -1269,6 +1290,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>441</MyObjectID>
@@ -1330,6 +1352,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>751</MyObjectID>
@@ -1391,6 +1414,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>702</MyObjectID>
@@ -1452,6 +1476,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>311</MyObjectID>
@@ -1513,6 +1538,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>45</MyObjectID>
@@ -1574,6 +1600,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>273</MyObjectID>
@@ -1635,6 +1662,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>173</MyObjectID>
@@ -1696,6 +1724,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>819</MyObjectID>
@@ -1757,6 +1786,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>209</MyObjectID>
@@ -1818,6 +1848,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>924</MyObjectID>
@@ -1879,6 +1910,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>499</MyObjectID>
@@ -1940,6 +1972,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>652</MyObjectID>
@@ -2001,6 +2034,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>405</MyObjectID>
@@ -2062,6 +2096,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>552</MyObjectID>
@@ -2123,6 +2158,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>914</MyObjectID>
@@ -2184,6 +2220,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>665</MyObjectID>
@@ -2245,6 +2282,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>252</MyObjectID>
@@ -2306,6 +2344,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>723</MyObjectID>
@@ -2367,6 +2406,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>389</MyObjectID>
@@ -2428,6 +2468,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>368</MyObjectID>
@@ -2489,6 +2530,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>333</MyObjectID>
@@ -2550,6 +2592,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>132</MyObjectID>
@@ -2611,6 +2654,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>783</MyObjectID>
@@ -2672,6 +2716,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>92</MyObjectID>
@@ -2733,6 +2778,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>584</MyObjectID>
@@ -2794,6 +2840,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>224</MyObjectID>
@@ -2855,6 +2902,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>149</MyObjectID>
@@ -2916,6 +2964,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>826</MyObjectID>
@@ -2977,6 +3026,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>939</MyObjectID>
@@ -3038,6 +3088,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>254</MyObjectID>
@@ -3099,6 +3150,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>903</MyObjectID>
@@ -3160,6 +3212,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>901</MyObjectID>
@@ -3221,6 +3274,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>261</MyObjectID>
@@ -3282,6 +3336,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>582</MyObjectID>
@@ -3343,6 +3398,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>36</MyObjectID>
@@ -3404,6 +3460,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>917</MyObjectID>
@@ -3465,6 +3522,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>700</MyObjectID>
@@ -3526,6 +3584,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>100</MyObjectID>
@@ -3587,6 +3646,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>712</MyObjectID>
@@ -3648,6 +3708,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>497</MyObjectID>
@@ -3709,6 +3770,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>956</MyObjectID>
@@ -3770,6 +3832,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>614</MyObjectID>
@@ -3831,6 +3894,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>557</MyObjectID>
@@ -3892,6 +3956,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>804</MyObjectID>
@@ -3953,6 +4018,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>822</MyObjectID>
@@ -4014,6 +4080,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>198</MyObjectID>
@@ -4075,6 +4142,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>854</MyObjectID>
@@ -4136,6 +4204,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>974</MyObjectID>
@@ -4197,6 +4266,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>923</MyObjectID>
@@ -4258,6 +4328,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>370</MyObjectID>
@@ -4319,6 +4390,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>337</MyObjectID>
@@ -4380,6 +4452,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>913</MyObjectID>
@@ -4441,6 +4514,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>494</MyObjectID>
@@ -4502,6 +4576,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>237</MyObjectID>
@@ -4563,6 +4638,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>580</MyObjectID>
@@ -4624,6 +4700,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>991</MyObjectID>
@@ -4685,6 +4762,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>189</MyObjectID>
@@ -4746,6 +4824,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>102</MyObjectID>
@@ -4807,6 +4886,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>357</MyObjectID>
@@ -4868,6 +4948,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>628</MyObjectID>
@@ -4929,6 +5010,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>533</MyObjectID>
@@ -4990,6 +5072,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>263</MyObjectID>
@@ -5051,6 +5134,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>450</MyObjectID>
@@ -5112,6 +5196,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>921</MyObjectID>
@@ -5173,6 +5258,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>630</MyObjectID>
@@ -5234,6 +5320,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>54</MyObjectID>
@@ -5295,6 +5382,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>807</MyObjectID>
@@ -5356,6 +5444,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>753</MyObjectID>
@@ -5417,6 +5506,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>791</MyObjectID>
@@ -5478,6 +5568,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>694</MyObjectID>
@@ -5539,6 +5630,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>436</MyObjectID>
@@ -5600,6 +5692,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>204</MyObjectID>
@@ -5661,6 +5754,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>857</MyObjectID>
@@ -5722,6 +5816,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>988</MyObjectID>
@@ -5783,6 +5878,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>247</MyObjectID>
@@ -5844,6 +5940,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>509</MyObjectID>
@@ -5905,6 +6002,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>531</MyObjectID>
@@ -5966,6 +6064,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>233</MyObjectID>
@@ -6027,6 +6126,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>446</MyObjectID>
@@ -6088,6 +6188,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>771</MyObjectID>
@@ -6149,6 +6250,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>3</MyObjectID>
@@ -6210,6 +6312,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>529</MyObjectID>
@@ -6271,6 +6374,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>475</MyObjectID>
@@ -6332,6 +6436,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>404</MyObjectID>
@@ -6393,6 +6498,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>390</MyObjectID>
@@ -6454,6 +6560,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>341</MyObjectID>
@@ -6515,6 +6622,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>121</MyObjectID>
@@ -6576,6 +6684,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>734</MyObjectID>
@@ -6637,6 +6746,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>781</MyObjectID>
@@ -6698,6 +6808,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>761</MyObjectID>
@@ -6759,6 +6870,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>957</MyObjectID>
@@ -6820,6 +6932,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>374</MyObjectID>
@@ -6881,6 +6994,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>493</MyObjectID>
@@ -6942,6 +7056,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>631</MyObjectID>
@@ -7003,6 +7118,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>691</MyObjectID>
@@ -7064,6 +7180,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>266</MyObjectID>
@@ -7125,6 +7242,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>992</MyObjectID>
@@ -7186,6 +7304,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>186</MyObjectID>
@@ -7247,6 +7366,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>122</MyObjectID>
@@ -7308,6 +7428,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>307</MyObjectID>
@@ -7369,6 +7490,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>731</MyObjectID>
@@ -7430,6 +7552,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>164</MyObjectID>
@@ -7491,6 +7614,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>674</MyObjectID>
@@ -7552,6 +7676,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>670</MyObjectID>
@@ -7613,6 +7738,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>837</MyObjectID>
@@ -7674,6 +7800,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>383</MyObjectID>
@@ -7735,6 +7862,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>491</MyObjectID>
@@ -7796,6 +7924,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>115</MyObjectID>
@@ -7857,6 +7986,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>467</MyObjectID>
@@ -7918,6 +8048,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>744</MyObjectID>
@@ -7979,6 +8110,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>767</MyObjectID>
@@ -8040,6 +8172,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>289</MyObjectID>
@@ -8101,6 +8234,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>212</MyObjectID>
@@ -8162,6 +8296,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>79</MyObjectID>
@@ -8223,6 +8358,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>931</MyObjectID>
@@ -8284,6 +8420,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>708</MyObjectID>
@@ -8345,6 +8482,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>635</MyObjectID>
@@ -8406,6 +8544,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>74</MyObjectID>
@@ -8467,6 +8606,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>93</MyObjectID>
@@ -8528,6 +8668,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>477</MyObjectID>
@@ -8589,6 +8730,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>358</MyObjectID>
@@ -8650,6 +8792,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>662</MyObjectID>
@@ -8711,6 +8854,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>305</MyObjectID>
@@ -8772,6 +8916,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>671</MyObjectID>
@@ -8833,6 +8978,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>61</MyObjectID>
@@ -8894,6 +9040,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>689</MyObjectID>
@@ -8955,6 +9102,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>205</MyObjectID>
@@ -9016,6 +9164,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>171</MyObjectID>
@@ -9077,6 +9226,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>323</MyObjectID>
@@ -9138,6 +9288,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>709</MyObjectID>
@@ -9199,6 +9350,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>987</MyObjectID>
@@ -9260,6 +9412,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>790</MyObjectID>
@@ -9321,6 +9474,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>647</MyObjectID>
@@ -9382,6 +9536,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>684</MyObjectID>
@@ -9443,6 +9598,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>139</MyObjectID>
@@ -9504,6 +9660,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>324</MyObjectID>
@@ -9565,6 +9722,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>483</MyObjectID>
@@ -9626,6 +9784,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>442</MyObjectID>
@@ -9687,6 +9846,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>231</MyObjectID>
@@ -9767,6 +9927,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -9809,6 +9970,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>796</MyObjectID>
@@ -9870,6 +10032,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>925</MyObjectID>
@@ -9931,6 +10094,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>258</MyObjectID>
@@ -9992,6 +10156,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>67</MyObjectID>
@@ -10053,6 +10218,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>793</MyObjectID>
@@ -10114,6 +10280,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>613</MyObjectID>
@@ -10175,6 +10342,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>870</MyObjectID>
@@ -10236,6 +10404,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>768</MyObjectID>
@@ -10297,6 +10466,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>786</MyObjectID>
@@ -10358,6 +10528,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>792</MyObjectID>
@@ -10419,6 +10590,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>805</MyObjectID>
@@ -10499,6 +10671,7 @@
           <Materials>
             <Name>testPlayerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.AITest>
           <MyObjectID>359</MyObjectID>
@@ -10563,6 +10736,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -10620,6 +10794,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>915</MyObjectID>
@@ -10681,6 +10856,7 @@
           <Materials>
             <Name>streets_bloodMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>62</MyObjectID>
@@ -10742,6 +10918,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>109</MyObjectID>
@@ -10803,6 +10980,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>490</MyObjectID>
@@ -10864,6 +11042,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>487</MyObjectID>
@@ -10925,6 +11104,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>304</MyObjectID>
@@ -10986,6 +11166,7 @@
           <Materials>
             <Name>streets_bloodMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>13</MyObjectID>
@@ -11047,6 +11228,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>101</MyObjectID>
@@ -11108,6 +11290,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>211</MyObjectID>
@@ -11169,6 +11352,7 @@
           <Materials>
             <Name>streets_bloodMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>572</MyObjectID>
@@ -11230,6 +11414,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>979</MyObjectID>
@@ -11291,6 +11476,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>143</MyObjectID>
@@ -11352,6 +11538,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>421</MyObjectID>
@@ -11413,6 +11600,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>967</MyObjectID>
@@ -11474,6 +11662,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>448</MyObjectID>
@@ -11535,6 +11724,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>104</MyObjectID>
@@ -11596,6 +11786,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>634</MyObjectID>
@@ -11657,6 +11848,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>510</MyObjectID>
@@ -11718,6 +11910,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>539</MyObjectID>
@@ -11779,6 +11972,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>907</MyObjectID>
@@ -11840,6 +12034,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>176</MyObjectID>
@@ -11901,6 +12096,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>823</MyObjectID>
@@ -11962,6 +12158,7 @@
           <Materials>
             <Name>streets_bloodMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>714</MyObjectID>
@@ -12023,6 +12220,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>155</MyObjectID>
@@ -12084,6 +12282,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>795</MyObjectID>
@@ -12145,6 +12344,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>850</MyObjectID>
@@ -12206,6 +12406,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>33</MyObjectID>
@@ -12267,6 +12468,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>528</MyObjectID>
@@ -12328,6 +12530,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>47</MyObjectID>
@@ -12389,6 +12592,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>334</MyObjectID>
@@ -12450,6 +12654,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>610</MyObjectID>
@@ -12511,6 +12716,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>319</MyObjectID>
@@ -12572,6 +12778,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>692</MyObjectID>
@@ -12633,6 +12840,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>741</MyObjectID>
@@ -12694,6 +12902,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>218</MyObjectID>
@@ -12755,6 +12964,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>371</MyObjectID>
@@ -12816,6 +13026,7 @@
           <Materials>
             <Name>streets_bloodMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>284</MyObjectID>
@@ -12877,6 +13088,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>863</MyObjectID>
@@ -12938,6 +13150,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>221</MyObjectID>
@@ -12999,6 +13212,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>17</MyObjectID>
@@ -13060,6 +13274,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>815</MyObjectID>
@@ -13121,6 +13336,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>738</MyObjectID>
@@ -13182,6 +13398,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>821</MyObjectID>
@@ -13243,6 +13460,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>426</MyObjectID>
@@ -13304,6 +13522,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>886</MyObjectID>
@@ -13365,6 +13584,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>259</MyObjectID>
@@ -13426,6 +13646,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>625</MyObjectID>
@@ -13487,6 +13708,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>843</MyObjectID>
@@ -13548,6 +13770,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>701</MyObjectID>
@@ -13609,6 +13832,7 @@
           <Materials>
             <Name>streets_bloodMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>911</MyObjectID>
@@ -13670,6 +13894,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>16</MyObjectID>
@@ -13731,6 +13956,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>962</MyObjectID>
@@ -13792,6 +14018,7 @@
           <Materials>
             <Name>streets_bloodMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>479</MyObjectID>
@@ -13853,6 +14080,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>116</MyObjectID>
@@ -13914,6 +14142,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>995</MyObjectID>
@@ -13975,6 +14204,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>742</MyObjectID>
@@ -14036,6 +14266,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>607</MyObjectID>
@@ -14097,6 +14328,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>756</MyObjectID>
@@ -14158,6 +14390,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>879</MyObjectID>
@@ -14219,6 +14452,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>480</MyObjectID>
@@ -14280,6 +14514,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>309</MyObjectID>
@@ -14341,6 +14576,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>891</MyObjectID>
@@ -14402,6 +14638,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>227</MyObjectID>
@@ -14463,6 +14700,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>430</MyObjectID>
@@ -14524,6 +14762,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>24</MyObjectID>
@@ -14585,6 +14824,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>53</MyObjectID>
@@ -14646,6 +14886,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>32</MyObjectID>
@@ -14707,6 +14948,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>520</MyObjectID>
@@ -14768,6 +15010,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>420</MyObjectID>
@@ -14829,6 +15072,7 @@
           <Materials>
             <Name>streets_bloodMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>46</MyObjectID>
@@ -14890,6 +15134,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>267</MyObjectID>
@@ -14951,6 +15196,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>379</MyObjectID>
@@ -15012,6 +15258,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>568</MyObjectID>
@@ -15073,6 +15320,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>85</MyObjectID>
@@ -15134,6 +15382,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>578</MyObjectID>
@@ -15195,6 +15444,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>31</MyObjectID>
@@ -15256,6 +15506,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>489</MyObjectID>
@@ -15317,6 +15568,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>660</MyObjectID>
@@ -15378,6 +15630,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>2</MyObjectID>
@@ -15439,6 +15692,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>80</MyObjectID>
@@ -15500,6 +15754,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>137</MyObjectID>
@@ -15561,6 +15816,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>675</MyObjectID>
@@ -15622,6 +15878,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>550</MyObjectID>
@@ -15683,6 +15940,7 @@
           <Materials>
             <Name>streets_bloodMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>144</MyObjectID>
@@ -15763,6 +16021,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -15805,6 +16064,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>281</MyObjectID>
@@ -15866,6 +16126,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>265</MyObjectID>
@@ -15927,6 +16188,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>983</MyObjectID>
@@ -15988,6 +16250,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>838</MyObjectID>
@@ -16049,6 +16312,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>367</MyObjectID>
@@ -16110,6 +16374,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>495</MyObjectID>
@@ -16171,6 +16436,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>10</MyObjectID>
@@ -16232,6 +16498,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>909</MyObjectID>
@@ -16293,6 +16560,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>428</MyObjectID>
@@ -16354,6 +16622,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>648</MyObjectID>
@@ -16415,6 +16684,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>890</MyObjectID>
@@ -16476,6 +16746,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>882</MyObjectID>
@@ -16537,6 +16808,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>877</MyObjectID>
@@ -16598,6 +16870,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>655</MyObjectID>
@@ -16659,6 +16932,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>72</MyObjectID>
@@ -16720,6 +16994,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>52</MyObjectID>
@@ -16781,6 +17056,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>356</MyObjectID>
@@ -16842,6 +17118,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>990</MyObjectID>
@@ -16903,6 +17180,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>444</MyObjectID>
@@ -16964,6 +17242,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>465</MyObjectID>
@@ -17025,6 +17304,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>757</MyObjectID>
@@ -17086,6 +17366,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>946</MyObjectID>
@@ -17147,6 +17428,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>704</MyObjectID>
@@ -17208,6 +17490,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>178</MyObjectID>
@@ -17269,6 +17552,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>433</MyObjectID>
@@ -17330,6 +17614,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>615</MyObjectID>
@@ -17391,6 +17676,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>245</MyObjectID>
@@ -17452,6 +17738,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>409</MyObjectID>
@@ -17513,6 +17800,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>274</MyObjectID>
@@ -17574,6 +17862,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>403</MyObjectID>
@@ -17635,6 +17924,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>58</MyObjectID>
@@ -17696,6 +17986,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>639</MyObjectID>
@@ -17757,6 +18048,7 @@
           <Materials>
             <Name>testTerMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>505</MyObjectID>
@@ -17833,6 +18125,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>354</MyObjectID>
@@ -17909,6 +18202,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>344</MyObjectID>
@@ -17985,6 +18279,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>42</MyObjectID>
@@ -18061,6 +18356,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>43</MyObjectID>
@@ -18137,6 +18433,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>897</MyObjectID>
@@ -18213,6 +18510,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>377</MyObjectID>
@@ -18289,6 +18587,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>978</MyObjectID>
@@ -18365,6 +18664,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>715</MyObjectID>
@@ -18441,6 +18741,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>620</MyObjectID>
@@ -18517,6 +18818,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>577</MyObjectID>
@@ -18593,6 +18895,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>223</MyObjectID>
@@ -18669,6 +18972,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>929</MyObjectID>
@@ -18745,6 +19049,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>561</MyObjectID>
@@ -18821,6 +19126,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>534</MyObjectID>
@@ -18897,6 +19203,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>431</MyObjectID>
@@ -18973,6 +19280,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>156</MyObjectID>
@@ -19049,6 +19357,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>148</MyObjectID>
@@ -19125,6 +19434,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>922</MyObjectID>
@@ -19201,6 +19511,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>471</MyObjectID>
@@ -19277,6 +19588,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>362</MyObjectID>
@@ -19353,6 +19665,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>802</MyObjectID>
@@ -19429,6 +19742,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>597</MyObjectID>
@@ -19505,6 +19819,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>690</MyObjectID>
@@ -19581,6 +19896,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>401</MyObjectID>
@@ -19657,6 +19973,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>775</MyObjectID>
@@ -19733,6 +20050,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>994</MyObjectID>
@@ -19809,6 +20127,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>372</MyObjectID>
@@ -19885,6 +20204,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>830</MyObjectID>
@@ -19961,6 +20281,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>107</MyObjectID>
@@ -20037,6 +20358,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>851</MyObjectID>
@@ -20113,6 +20435,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>641</MyObjectID>
@@ -20189,6 +20512,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>410</MyObjectID>
@@ -20265,6 +20589,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>84</MyObjectID>
@@ -20341,6 +20666,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>969</MyObjectID>
@@ -20417,6 +20743,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>570</MyObjectID>
@@ -20493,6 +20820,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>633</MyObjectID>
@@ -20569,6 +20897,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>168</MyObjectID>
@@ -20645,6 +20974,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>938</MyObjectID>
@@ -20721,6 +21051,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>835</MyObjectID>
@@ -20797,6 +21128,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>574</MyObjectID>
@@ -20873,6 +21205,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>6</MyObjectID>
@@ -20949,6 +21282,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>910</MyObjectID>
@@ -21025,6 +21359,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>70</MyObjectID>
@@ -21101,6 +21436,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>244</MyObjectID>
@@ -21177,6 +21513,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>111</MyObjectID>
@@ -21253,6 +21590,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>696</MyObjectID>
@@ -21329,6 +21667,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>619</MyObjectID>
@@ -21405,6 +21744,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>275</MyObjectID>
@@ -21481,6 +21821,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>912</MyObjectID>
@@ -21557,6 +21898,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>163</MyObjectID>
@@ -21633,6 +21975,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>867</MyObjectID>
@@ -21709,6 +22052,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>21</MyObjectID>
@@ -21785,6 +22129,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>317</MyObjectID>
@@ -21861,6 +22206,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>944</MyObjectID>
@@ -21937,6 +22283,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>437</MyObjectID>
@@ -22013,6 +22360,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>514</MyObjectID>
@@ -22089,6 +22437,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>772</MyObjectID>
@@ -22165,6 +22514,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>887</MyObjectID>
@@ -22241,6 +22591,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>686</MyObjectID>
@@ -22317,6 +22668,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>180</MyObjectID>
@@ -22393,6 +22745,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>586</MyObjectID>
@@ -22469,6 +22822,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>34</MyObjectID>
@@ -22545,6 +22899,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>829</MyObjectID>
@@ -22621,6 +22976,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>38</MyObjectID>
@@ -22697,6 +23053,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>49</MyObjectID>
@@ -22773,6 +23130,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>695</MyObjectID>
@@ -22849,6 +23207,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>458</MyObjectID>
@@ -22925,6 +23284,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>460</MyObjectID>
@@ -23001,6 +23361,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>888</MyObjectID>
@@ -23077,6 +23438,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>801</MyObjectID>
@@ -23153,6 +23515,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>340</MyObjectID>
@@ -23229,6 +23592,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>559</MyObjectID>
@@ -23305,6 +23669,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>190</MyObjectID>
@@ -23381,6 +23746,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>14</MyObjectID>
@@ -23457,6 +23823,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>547</MyObjectID>
@@ -23533,6 +23900,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>183</MyObjectID>
@@ -23563,19 +23931,19 @@
   </ObjectsDictionary>
   <Camera>
     <CameraPosition>
-      <X>-0.12209221</X>
-      <Y>1.8862114</Y>
-      <Z>2.32965636</Z>
+      <X>-2.14875746</X>
+      <Y>2.00571918</Y>
+      <Z>0.5999435</Z>
     </CameraPosition>
     <CameraTranslation>
-      <X>0</X>
-      <Y>0</Y>
-      <Z>4</Z>
+      <X>-160</X>
+      <Y>0.2637358</Y>
+      <Z>28</Z>
     </CameraTranslation>
     <CameraDirection>
-      <X>0.0516332</X>
-      <Y>-0.163330078</Y>
-      <Z>-0.9852194</Z>
+      <X>0.939330757</X>
+      <Y>-0.221075475</Y>
+      <Z>-0.2622657</Z>
     </CameraDirection>
     <CameraUp>
       <X>0</X>
@@ -23588,9 +23956,9 @@
       <Z>0</Z>
     </CameraTarget>
     <CameraRight>
-      <X>0.99862957</X>
+      <X>0.268919677</X>
       <Y>-0</Y>
-      <Z>0.0523359962</Z>
+      <Z>0.9631626</Z>
     </CameraRight>
     <FOV>1.04719758</FOV>
     <Ratio>1.66666663</Ratio>
@@ -23605,7 +23973,7 @@
         <TargetID>1</TargetID>
         <TargetPosition>
           <X>-160</X>
-          <Y>3</Y>
+          <Y>0.2637358</Y>
           <Z>-28</Z>
         </TargetPosition>
       </TrashSoup.Gameplay.CameraBehaviourComponent>

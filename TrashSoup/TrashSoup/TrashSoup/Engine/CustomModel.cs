@@ -38,6 +38,7 @@ namespace TrashSoup.Engine
         public List<String> Paths { get; set; }
         // material doesn't change with LOD, but with MeshPart !!!
         public List<Material> Mat { get; set; }
+        public bool LodControlled { get; set; }
 
         #endregion
 
@@ -47,6 +48,7 @@ namespace TrashSoup.Engine
             this.LODs = new Model[LOD_COUNT];
             this.Paths = new List<string>();
             this.Mat = new List<Material>();
+            this.LodControlled = true;
         }
 
         public CustomModel(GameObject obj) : base(obj)
@@ -59,15 +61,24 @@ namespace TrashSoup.Engine
                 this.LODs[i] = null;
             }
             this.Mat = new List<Material>();
+            this.LodControlled = true;
         }
 
-        public CustomModel(GameObject obj, Model[] lods, uint lodCount, List<Material> matList)
+        public CustomModel(GameObject obj, Model[] lods, List<Material> matList)
             : this(obj)
         {
-            for(int i = 0; i < lodCount && i < LOD_COUNT; i++)
+            for(int i = 0; i < LOD_COUNT; i++)
             {
-                this.LODs[i] = lods[i];
-                this.Paths.Add(ResourceManager.Instance.Models.FirstOrDefault(x => x.Value == lods[i]).Key);
+                if(lods[i] != null)
+                {
+                    this.LODs[i] = lods[i];
+                    this.Paths.Add(ResourceManager.Instance.Models.FirstOrDefault(x => x.Value == lods[i]).Key);
+                }
+                else
+                {
+                    this.LODs[i] = lods[0];
+                    this.Paths.Add("");
+                }
             }
             Mat = matList;
 
@@ -109,14 +120,35 @@ namespace TrashSoup.Engine
         {
             if(this.Visible)
             {
-                Model mod = LODs[(uint)LODState];
-                if(mod != null)
-                {
-                    Camera camera;
+                Camera camera;
                     if (cam == null)
                         camera = ResourceManager.Instance.CurrentScene.Cam;
                     else
                         camera = cam;
+
+                float distance = Math.Abs(Vector3.Distance((camera.Position + camera.Translation), new Vector3(MyObject.MyTransform.Position.X, MyObject.MyTransform.Position.Y, -MyObject.MyTransform.Position.Z)));
+                if(!ResourceManager.Instance.CurrentScene.Params.UseLods || !this.LodControlled)
+                {
+                    LODState = LODStateEnum.HI;
+                }
+                else if(distance >= ResourceManager.Instance.CurrentScene.Params.Lod1Distance && 
+                    distance < ResourceManager.Instance.CurrentScene.Params.Lod2Distance)
+                {
+                    LODState = LODStateEnum.MED;
+                }
+                else if(distance >= ResourceManager.Instance.CurrentScene.Params.Lod2Distance)
+                {
+                    LODState = LODStateEnum.LO;
+                }
+                else
+                {
+                    LODState = LODStateEnum.HI;
+                }
+
+                Model mod = LODs[(uint)LODState];
+                if(mod != null)
+                {
+                    
 
                     Transform transform = MyObject.MyTransform;
                     Matrix[] bones = null;
@@ -254,7 +286,14 @@ namespace TrashSoup.Engine
 
             for(int j = 0; j<Paths.Count(); ++j)
             {
-                LODs[j] = ResourceManager.Instance.LoadModel(Paths[j]);
+                if(Paths[j] != "")
+                {
+                    LODs[j] = ResourceManager.Instance.LoadModel(Paths[j]);
+                }
+                else
+                {
+                    LODs[j] = LODs[0];
+                }
             }
 
             if(reader.Name == "Materials")
@@ -284,6 +323,8 @@ namespace TrashSoup.Engine
                
                 reader.ReadEndElement();
             }
+
+            this.LodControlled = reader.ReadElementContentAsBoolean("LodControlled", "");
             //ResourceManager.Instance.LoadEffects(TrashSoupGame.Instance);
             reader.ReadEndElement();
         }
@@ -333,6 +374,8 @@ namespace TrashSoup.Engine
                 }
             }
             writer.WriteEndElement();
+
+            writer.WriteElementString("LodControlled", XmlConvert.ToString(LodControlled));
         }
 
         private void EffectParametersSerialization(System.Xml.XmlWriter writer, EffectParameter param)
