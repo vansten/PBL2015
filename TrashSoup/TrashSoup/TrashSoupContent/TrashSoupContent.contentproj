@@ -430,12 +430,12 @@
     <Compile Include="Models\Weapons\Signs\StopSign.FBX">
       <Name>StopSign</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Weapons\Signs\DeadEndSign.FBX">
       <Name>DeadEndSign</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Ground\pavement1.FBX">
       <Name>pavement1</Name>

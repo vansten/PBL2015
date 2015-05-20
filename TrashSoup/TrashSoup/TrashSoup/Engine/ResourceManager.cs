@@ -64,7 +64,7 @@ namespace TrashSoup.Engine
             AddModel("Models/Test/TestGuy");
             AddModel("Models/Test/TestSphere");
             AddModel("Models/Test/TestMirror");
-            AddModel("Models/Test/stairs");
+            AddModel("Models/Weapons/Signs/DeadEndSign");
             AddModel("Models/Test/TestSquarePlane");
             AddModel("Models/Test/TestSquarePlane");
             AddModel("Models/Enemies/Rat");
@@ -127,6 +127,8 @@ namespace TrashSoup.Engine
             List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"], this.Effects[@"Effects\NormalEffect"]);
 
             List<Material> ratMats = LoadBasicMaterialsFromModel(Models["Models/Enemies/Rat"], this.Effects[@"Effects\NormalEffect"]);
+
+            List<Material> deSign = LoadBasicMaterialsFromModel(Models["Models/Weapons/Signs/DeadEndSign"], this.Effects[@"Effects\NormalEffect"]);
 
             List<Material> testTerMats = new List<Material>();
             Material testTerMat = new Material("testTerMat", this.Effects[@"Effects\DefaultEffect"], Textures[@"Textures\Test\metal01_d"]);
@@ -206,10 +208,11 @@ namespace TrashSoup.Engine
             testTer.Components.Add(new CustomModel(testTer, new Model[] { Models["Models/Test/TestTerrain"], null, null }, 3, testTerMats));
 
             GameObject testBox2 = new GameObject(3, "testBox2");
-            testBox2.MyTransform = new Transform(testBox2, new Vector3(10.0f, 2.0f, -10.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.4f);
-            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Test/stairs"], null, null }, 3, testPlayerMats));
+            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 0.1f, -0.01f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(-MathHelper.PiOver4 + 0.6f, -MathHelper.PiOver2, 0.0f), 1.0f);
+            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Weapons/Signs/DeadEndSign"], null, null }, 3, deSign));
             testBox2.MyCollider = new BoxCollider(testBox2, true);
             testBox2.Dynamic = true;
+            testBox2.MyCarrierSocket = new Socket(testBox, testBox2, null, "mixamorig:RightHand");
 
 
             GameObject testBox3 = new GameObject(5, "testBox3");
@@ -244,7 +247,7 @@ namespace TrashSoup.Engine
             lp1.SetupShadowRender();
 
             // loading scene
-            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), DateTime.Now, 3000.0f, false, true, true, true));
+            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), DateTime.Now, 3000.0f, false, true, true, false));
 
             Camera cam = null;
 

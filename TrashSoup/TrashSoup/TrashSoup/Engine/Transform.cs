@@ -183,7 +183,10 @@ namespace TrashSoup.Engine
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            // do nothing since we change worldMatrix in properties
+            if(MyObject.Dynamic)
+            {
+                CalculateWorldMatrix();
+            }
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
@@ -203,12 +206,23 @@ namespace TrashSoup.Engine
 
         protected void CalculateWorldMatrix()
         {
-            Matrix translation, rotation, scale;
+            Matrix translation, rotation, scale, fromSocket;
             translation = Matrix.CreateTranslation(new Vector3(this.Position.X, this.Position.Y, -this.Position.Z));
             rotation = Matrix.CreateFromYawPitchRoll(Rotation.Y, Rotation.X, Rotation.Z);
             scale = Matrix.CreateScale(this.Scale);
+            fromSocket = Matrix.Identity;
 
-            this.worldMatrix = preRotationMatrix * scale * rotation * translation;
+            if(MyObject.MyCarrierSocket != null)
+            {
+                fromSocket = MyObject.MyCarrierSocket.BoneTransform;
+
+                Vector3 trans, scl;
+                Quaternion quat;
+                MyObject.MyCarrierSocket.Carrier.MyTransform.GetWorldMatrix().Decompose(out scl, out quat, out trans);
+                fromSocket = fromSocket * Matrix.CreateFromQuaternion(quat) * Matrix.CreateTranslation(trans);
+            }
+
+            this.worldMatrix = preRotationMatrix * scale * rotation * translation * fromSocket;
         }
 
         protected void CalculatePositionChange()

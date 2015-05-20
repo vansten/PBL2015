@@ -14,6 +14,7 @@ namespace TrashSoup.Engine
         #region variables
 
         private PhysicalObject myPhisicalObject;
+        private Socket myCarrierSocket;
 
         #endregion
 
@@ -28,6 +29,28 @@ namespace TrashSoup.Engine
         public Transform MyTransform { get; set; }
         public Animator MyAnimator { get; set; }
         public Collider MyCollider { get; set; }
+
+        public Socket MyCarrierSocket
+        { 
+            get
+            {
+                return myCarrierSocket;
+            }
+            set
+            {
+                if(myCarrierSocket != null)
+                {
+                    Debug.Log("GameObject WARNING! " + this.Name + ", ID " + this.UniqueID.ToString() + " already had assigned socket!");
+                }
+                if(myCarrierSocket == value)
+                {
+                    Debug.Log("GameObject ERROR: " + this.Name + ", ID " + this.UniqueID.ToString() + " is already assigned to this socket! Aborting.");
+                    return;
+                }
+                value.Carrier.Components.Add(value);
+                myCarrierSocket = value;
+            }
+        }
 
         public QuadTreeNode MyNode { get; set; }
 
@@ -98,6 +121,11 @@ namespace TrashSoup.Engine
         {
             if(this.Enabled)
             {
+                if(this.MyTransform != null)
+                {
+                    this.MyTransform.Update(gameTime);
+                }
+
                 if (this.MyPhysicalObject != null)
                 {
                     this.MyPhysicalObject.Update(gameTime);

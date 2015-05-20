@@ -25,6 +25,12 @@ namespace TrashSoup.Engine
 
         #endregion
 
+        #region variables
+
+        private string contentPath;
+
+        #endregion
+
         #region properties
 
         public LODStateEnum LODState { get; set; }
@@ -32,8 +38,6 @@ namespace TrashSoup.Engine
         public List<String> Paths { get; set; }
         // material doesn't change with LOD, but with MeshPart !!!
         public List<Material> Mat { get; set; }
-
-        private string contentPath;
 
         #endregion
 
@@ -116,6 +120,8 @@ namespace TrashSoup.Engine
 
                     Transform transform = MyObject.MyTransform;
                     Matrix[] bones = null;
+                    Matrix socketMatrix = Matrix.Identity;
+
                     if (MyObject.MyAnimator != null)
                     {
                         bones = MyObject.MyAnimator.GetSkinTransforms();
@@ -169,6 +175,36 @@ namespace TrashSoup.Engine
 
         protected override void Start()
         {
+        }
+
+        public void GetBoneMatrix(string name, out Matrix mat)
+        {
+            SkinningModelLibrary.SkinningData data = (SkinningModelLibrary.SkinningData)((object[])this.LODs[0].Tag)[0];
+            if(data == null)
+            {
+                mat = Matrix.Identity;
+                Debug.Log("CUSTOMMODEL: Error, trying to get bone matrix for non-skinned model.");
+                return;
+            }
+
+            Dictionary<string, int> dic = data.BoneNameToID;
+            int id;
+            bool result = dic.TryGetValue(name, out id);
+            if(!result)
+            {
+                mat = Matrix.Identity;
+                Debug.Log("CUSTOMMODEL: Given bone name not present in bone dictionary.");
+                return;
+            }
+
+            if(MyObject.MyAnimator == null)
+            {
+                mat = data.BindPose[id];
+            }
+            else
+            {
+                mat = MyObject.MyAnimator.GetWorldTransforms()[id];
+            }
         }
 
         //protected virtual void FlipZAxis()

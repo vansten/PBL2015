@@ -195,6 +195,21 @@ namespace TrashSoup.Engine
             }
         }
 
+        public Matrix[] GetWorldTransforms()
+        {
+            Matrix[] toReturn = GetTransformsInterpolated((CurrentState != null) ? CurrentState.Animation.GetWorldTransforms() : null,
+                (NewState != null) ? NewState.Animation.GetWorldTransforms() : null, currentInterpolation);
+
+            if (ThirdState != null)
+            {
+                return GetTransformsInterpolated(toReturn, ThirdState.Animation.GetWorldTransforms(), hCurrentInterpolation);
+            }
+            else
+            {
+                return toReturn;
+            }
+        }
+
         public void AddAnimationClip(KeyValuePair<string, AnimationClip> newClip)
         {
             if(!this.SkinningData.AnimationClips.ContainsKey(newClip.Key))

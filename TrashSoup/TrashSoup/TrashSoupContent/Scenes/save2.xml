@@ -15,8 +15,8 @@
   </SceneParams>
   <AmbientLight>
     <LightColor>
-      <X>0.05</X>
-      <Y>0.05</Y>
+      <X>0.3</X>
+      <Y>0.2</Y>
       <Z>0.1</Z>
     </LightColor>
     <UniqueID>100</UniqueID>

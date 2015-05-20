@@ -26,18 +26,22 @@ namespace SkinningModelLibrary
         [ContentSerializer]
         public List<int> SkeletonHierarchy { get; private set; }
 
+        [ContentSerializer]
+        public Dictionary<string, int> BoneNameToID { get; private set; }
+
         #endregion
 
         #region methods
 
         public SkinningData(Dictionary<string, AnimationClip> animationClips,
                             List<Matrix> bindPose, List<Matrix> inverseBindPose,
-                            List<int> skeletonHierarchy)
+                            List<int> skeletonHierarchy, Dictionary<string, int> boneNameToID)
         {
             this.AnimationClips = animationClips;
             this.BindPose = bindPose;
             this.InverseBindPose = inverseBindPose;
             this.SkeletonHierarchy = skeletonHierarchy;
+            this.BoneNameToID = boneNameToID;
         }
 
         private SkinningData()
