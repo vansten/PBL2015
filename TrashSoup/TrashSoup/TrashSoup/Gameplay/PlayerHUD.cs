@@ -33,6 +33,8 @@ namespace TrashSoup.Gameplay
         private int maxJunkCount = Equipment.MAX_JUNK_CAPACITY;
         private int maxFoodCount = Equipment.MAX_FOOD_CAPACITY;
         private Equipment myEq;
+        private Color junkColor = Color.White;
+        private Color foodColor = Color.White;
 
         public PlayerHUD(GameObject go) : base(go)
         {
@@ -69,9 +71,11 @@ namespace TrashSoup.Gameplay
             this.currentFoodCount = this.myEq.FoodCount;
             this.currentJunkCount = this.myEq.JunkCount;
             GUIManager.Instance.DrawTexture(this.backpackTexture, new Vector2(0.75f, 0.15f), 0.03f, 0.03f);
-            GUIManager.Instance.DrawText(this.equipmentFont, this.currentJunkCount + "/" + this.maxJunkCount, new Vector2(0.79f, 0.16f), Color.White);
+            this.junkColor = this.currentJunkCount == Equipment.MAX_JUNK_CAPACITY ? Color.Red : Color.White;
+            GUIManager.Instance.DrawText(this.equipmentFont, this.currentJunkCount + "/" + this.maxJunkCount, new Vector2(0.79f, 0.16f), this.junkColor);
             GUIManager.Instance.DrawTexture(this.burgerTexture, new Vector2(0.87f, 0.14f), 0.035f, 0.045f);
-            GUIManager.Instance.DrawText(this.equipmentFont, this.currentFoodCount + "/" + this.maxFoodCount, new Vector2(0.91f, 0.16f), Color.White);
+            this.foodColor = this.currentFoodCount == Equipment.MAX_FOOD_CAPACITY ? Color.Red : Color.White;
+            GUIManager.Instance.DrawText(this.equipmentFont, this.currentFoodCount + "/" + this.maxFoodCount, new Vector2(0.91f, 0.16f), this.foodColor);
 
             GUIManager.Instance.DrawText(this.equipmentFont, "DAY 1", new Vector2(0.88f, 0.1f), Color.Red);
         }
