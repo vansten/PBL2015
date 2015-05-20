@@ -287,7 +287,7 @@ ColorPair ComputeLightBlurredShadows(float3 posWS, float3 E, float3 N, float2 co
 	ColorPair result;
 	ColorPair temp;
 
-	result.Diffuse = 0;
+	result.Diffuse = AmbientLightColor;
 	result.Specular = 0;
 	temp.Diffuse = 0;
 	temp.Specular = 0;

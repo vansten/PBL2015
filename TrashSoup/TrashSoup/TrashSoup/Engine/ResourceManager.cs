@@ -125,13 +125,18 @@ namespace TrashSoup.Engine
             }
 
             List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"], this.Effects[@"Effects\NormalEffect"]);
+            foreach(Material mat in playerMats)
+            {
+                mat.RecieveShadows = true;
+            }
 
             List<Material> ratMats = LoadBasicMaterialsFromModel(Models["Models/Enemies/Rat"], this.Effects[@"Effects\NormalEffect"]);
 
             List<Material> deSign = LoadBasicMaterialsFromModel(Models["Models/Weapons/Signs/DeadEndSign"], this.Effects[@"Effects\NormalEffect"]);
 
             List<Material> testTerMats = new List<Material>();
-            Material testTerMat = new Material("testTerMat", this.Effects[@"Effects\DefaultEffect"], Textures[@"Textures\Test\metal01_d"]);
+            Material testTerMat = new Material("testTerMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Test\metal01_d"]);
+            testTerMat.NormalMap = LoadTexture(@"Textures\Test\water");
             testTerMat.SpecularColor = new Vector3(0.1f, 0.1f, 0.0f);
             testTerMat.Glossiness = 10.0f;
             testTerMat.RecieveShadows = true;
@@ -214,7 +219,6 @@ namespace TrashSoup.Engine
             testBox2.Dynamic = true;
             testBox2.MyCarrierSocket = new Socket(testBox, testBox2, null, "mixamorig:RightHand");
 
-
             GameObject testBox3 = new GameObject(5, "testBox3");
             testBox3.MyTransform = new Transform(testBox3, new Vector3(-8.0f, 2.0f, -6.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, MathHelper.Pi, 0.0f), 1.2f);
             testBox3.Components.Add(new CustomModel(testBox3, new Model[] { Models["Models/Test/TestSphere"], null, null }, 3, testPlayerMats2));
@@ -240,14 +244,14 @@ namespace TrashSoup.Engine
             awsomeTest.MyCollider = new BoxCollider(awsomeTest, false);
 
             // adding lights
-            LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.05f, 0.05f, 0.1f));
+            LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.2f, 0.2f, 0.1f));
             LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(0.5f, 0.4f, 0.3f), new Vector3(1.0f, 0.8f, 0.8f), new Vector3(-1.0f, -1.0f, -1.0f), true);
             LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, true);
             lp1.MyTransform = new Transform(lp1, new Vector3(-3.0f, 3.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
             lp1.SetupShadowRender();
 
             // loading scene
-            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), DateTime.Now, 3000.0f, false, true, true, false));
+            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), DateTime.Now, 3000.0f, true, true, true, false));
 
             Camera cam = null;
 
