@@ -23,10 +23,10 @@ namespace TrashSoup.Gameplay
 
         private PlayerController myPlayerController;
 
-        private float maxHP = 100.0f;
+        private float maxHP = PlayerController.MAX_HEALTH;
         private float currentHP = 0.0f;
         private float maxWidth = 0.2f;
-        private float maxPopularity = 100.0f;
+        private float maxPopularity = PlayerController.MAX_POPULARITY;
         private float currentPopularity = 0.0f;
         private int currentJunkCount = 0;
         private int currentFoodCount = 0;
