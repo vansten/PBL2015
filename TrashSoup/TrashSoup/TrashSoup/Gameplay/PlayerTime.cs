@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -70,7 +70,8 @@ namespace TrashSoup.Gameplay
 
         public override void Draw(Camera cam, Effect effect, GameTime gameTime)
         {
-        }
+
+	   }
 
         protected override void Start()
         {

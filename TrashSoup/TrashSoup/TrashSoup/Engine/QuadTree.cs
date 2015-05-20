@@ -32,7 +32,7 @@ namespace TrashSoup.Engine
 
             for (int i = 0; i < 4; ++i)
             {
-                float angle = Math.Abs((float)Math.Acos((double)Vector3.Dot(plane.Normal, points[i])));
+                float angle = Math.Abs((float)Math.Acos(MathHelper.Clamp(Vector3.Dot(plane.Normal, points[i]), -1.0f, 1.0f)));
 
                 if (angle >= MathHelper.PiOver2)
                 {
@@ -159,8 +159,10 @@ namespace TrashSoup.Engine
             for(int i = 0; i < PLANE_COUNT; ++i)
             {
                 planesToCheck[i].Normal.X = - planesToCheck[i].Normal.X;
-                planesToCheck[i].Normal.Y = 0.0f;
-                //planesToCheck[i].Normal.Z = -planesToCheck[i].Normal.Z;
+                planesToCheck[i].Normal.Y = -planesToCheck[i].Normal.Y;
+                planesToCheck[i].Normal.Z = -planesToCheck[i].Normal.Z;
+                //planesToCheck[i].D = planesToCheck[i].D + 0.5f;
+                planesToCheck[i].Normal = Vector3.Normalize(planesToCheck[i].Normal);
             }
 
             QuadTreeNode current;
@@ -223,15 +225,16 @@ namespace TrashSoup.Engine
                 }
             }
 
-            //Debug.Log("QUADTREE: Objects drawn: " + ctr.ToString());
+            //if (effect == null)
+            //    Debug.Log("QUADTREE: Objects drawn: " + ctr.ToString() + ", objects total: " + ResourceManager.Instance.CurrentScene.ObjectsDictionary.Count.ToString());
         }
 
         private bool CheckIfObjectFits(ref RectangleWS rectOut, ref RectangleWS rectIn)
         {
-            if (rectIn.Min.X > rectOut.Min.X &&
-                rectIn.Min.Z > rectOut.Min.Z &&
-                rectIn.Max.X < rectOut.Max.X &&
-                rectIn.Max.Z < rectOut.Max.Z)
+            if (rectIn.Min.X >= rectOut.Min.X &&
+                rectIn.Min.Z >= rectOut.Min.Z &&
+                rectIn.Max.X <= rectOut.Max.X &&
+                rectIn.Max.Z <= rectOut.Max.Z)
             {
                 return true;
             }
@@ -353,8 +356,11 @@ namespace TrashSoup.Engine
                 rectObj.Max = tempBoxCollider.Box.Max;
                 rectObj.Min.Y = 0.0f;
                 rectObj.Max.Y = 0.0f;
-                rectObj.Max.Z = -rectObj.Max.Z;
-                rectObj.Min.Z = -rectObj.Min.Z;
+                //if(rectObj.Min.Z > rectObj.Max.Z)
+                //{
+                //    rectObj.Max.Z = -rectObj.Max.Z;
+                //    rectObj.Min.Z = -rectObj.Min.Z;
+                //}
             }
             else if (obj.MyCollider is SphereCollider)
             {
@@ -363,16 +369,34 @@ namespace TrashSoup.Engine
                 rectObj.Max = Vector3.Zero;
 
                 rectObj.Min.X = tempSphereCollider.Sphere.Center.X - tempSphereCollider.Sphere.Radius;
-                rectObj.Min.Z = -tempSphereCollider.Sphere.Center.Z - tempSphereCollider.Sphere.Radius;
+                rectObj.Min.Z = tempSphereCollider.Sphere.Center.Z - tempSphereCollider.Sphere.Radius;
                 rectObj.Max.X = tempSphereCollider.Sphere.Center.X + tempSphereCollider.Sphere.Radius;
-                rectObj.Max.Z = -tempSphereCollider.Sphere.Center.Z + tempSphereCollider.Sphere.Radius;
+                rectObj.Max.Z = tempSphereCollider.Sphere.Center.Z + tempSphereCollider.Sphere.Radius;
             }
             else
             {
                 Debug.Log("QUADTREE: Collider not found for object: " + obj.Name + ", ID " + obj.UniqueID.ToString());
                 rectObj.Min = root.Rect.Min;
                 rectObj.Max = root.Rect.Max;
+
+                return rectObj;
             }
+
+            //float diffX = rectObj.Max.X - rectObj.Min.X;
+            //float diffZ = rectObj.Max.Z - rectObj.Min.Z;
+
+            //if (diffX > diffZ)
+            //{
+            //    float diffTotal = (diffX - diffZ) / 2.0f;
+            //    rectObj.Min.Z -= diffTotal;
+            //    rectObj.Max.Z += diffTotal;
+            //}
+            //else if (diffZ > diffX)
+            //{
+            //    float diffTotal = (diffZ - diffX) / 2.0f;
+            //    rectObj.Min.X -= diffTotal;
+            //    rectObj.Max.X += diffTotal;
+            //}
 
             return rectObj;
         }
