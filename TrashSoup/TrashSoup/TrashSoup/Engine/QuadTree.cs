@@ -145,7 +145,126 @@ namespace TrashSoup.Engine
 
         public void Update()
         {
+            int count = dynamicObjects.Count;
+            RectangleWS currentRect;
+            QuadTreeNode current;
+            for(int i = 0; i < count; ++i)
+            {
+                currentRect = GenerateRectangle(dynamicObjects[i]);
+                current = dynamicObjects[i].MyNode;
 
+                if(CheckIfObjectFits(ref current.Rect, ref currentRect))
+                {
+                    // we still fit - continue
+                    continue;
+                }
+                else
+                {
+                    // remove ourselves
+                    current.Objects.Remove(dynamicObjects[i]);
+                    dynamicObjects[i].MyNode = null;
+
+                    // check parents
+                    nodesToCheck.Clear();
+                    nodesToCheck.Push(current.Parent);
+                    while(nodesToCheck.Count > 0)
+                    {
+                        current = nodesToCheck.Pop();
+
+                        // check if we fit
+                        if(CheckIfObjectFits(ref current.Rect, ref currentRect))
+                        {
+                            // YESS! but let's check if we fit in children first
+                            if(current.ChildBL != null)
+                            {
+                                if (CheckIfObjectFits(ref current.ChildBL.Rect, ref currentRect))
+                                {
+                                    nodesToCheck.Push(current.ChildBL);
+                                    continue;
+                                }
+                            }
+                            else
+                            {
+                                RectangleWS tempRect = current.GetRectForChildBL();
+                                if(CheckIfObjectFits(ref tempRect, ref currentRect))
+                                {
+                                    current.ChildBL = new QuadTreeNode(current, tempRect);
+                                    nodesToCheck.Push(current.ChildBL);
+                                    continue;
+                                }
+                            }
+                            
+                            if(current.ChildBR != null)
+                            {
+                                if (CheckIfObjectFits(ref current.ChildBR.Rect, ref currentRect))
+                                {
+                                    nodesToCheck.Push(current.ChildBR);
+                                    continue;
+                                }
+                            }
+                            else
+                            {
+                                RectangleWS tempRect = current.GetRectForChildBR();
+                                if (CheckIfObjectFits(ref tempRect, ref currentRect))
+                                {
+                                    current.ChildBR = new QuadTreeNode(current, tempRect);
+                                    nodesToCheck.Push(current.ChildBR);
+                                    continue;
+                                }
+                            }
+
+                            if(current.ChildTL != null)
+                            {
+                                if (CheckIfObjectFits(ref current.ChildTL.Rect, ref currentRect))
+                                {
+                                    nodesToCheck.Push(current.ChildTL);
+                                    continue;
+                                }
+                            }
+                            else
+                            {
+                                RectangleWS tempRect = current.GetRectForChildTL();
+                                if (CheckIfObjectFits(ref tempRect, ref currentRect))
+                                {
+                                    current.ChildTL = new QuadTreeNode(current, tempRect);
+                                    nodesToCheck.Push(current.ChildTL);
+                                    continue;
+                                }
+                            }
+
+                            if(current.ChildTR != null)
+                            {
+                                if (CheckIfObjectFits(ref current.ChildTR.Rect, ref currentRect))
+                                {
+                                    nodesToCheck.Push(current.ChildTR);
+                                    continue;
+                                }
+                            }
+                            else
+                            {
+                                RectangleWS tempRect = current.GetRectForChildTR();
+                                if (CheckIfObjectFits(ref tempRect, ref currentRect))
+                                {
+                                    current.ChildTR = new QuadTreeNode(current, tempRect);
+                                    nodesToCheck.Push(current.ChildTR);
+                                    continue;
+                                }
+                            }
+
+                            // we don't fit in children, so that's the end of our beautiful journey
+                            current.Objects.Add(dynamicObjects[i]);
+                            dynamicObjects[i].MyNode = current;
+                            break;
+
+                        }
+                        else
+                        {
+                            // nope, let's push parent
+                            nodesToCheck.Push(current.Parent);
+                        }
+                    }
+                }
+            }
         }
 
         public void Draw(Camera cam, Effect effect, GameTime gameTime)

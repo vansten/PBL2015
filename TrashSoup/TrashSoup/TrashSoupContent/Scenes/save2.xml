@@ -181,7 +181,7 @@
       <GameObjectKey>1</GameObjectKey>
       <UniqueID>1</UniqueID>
       <Name>Player</Name>
-      <Dynamic>false</Dynamic>
+      <Dynamic>true</Dynamic>
       <MyTransform>
         <MyObjectID>1</MyObjectID>
         <Position>
