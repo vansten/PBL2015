@@ -20,10 +20,8 @@ namespace TrashSoup.Gameplay
         private Texture2D backpackTexture;
         private Texture2D burgerTexture;
         private SpriteFont equipmentFont;
-        private SpriteFont timeFont;
 
         private PlayerController myPlayerController;
-        private PlayerTime myPlayerTime;
 
         private float maxHP = 100.0f;
         private float currentHP = 0.0f;
@@ -78,8 +76,6 @@ namespace TrashSoup.Gameplay
             GUIManager.Instance.DrawTexture(this.burgerTexture, new Vector2(0.87f, 0.14f), 0.035f, 0.045f);
             this.foodColor = this.currentFoodCount == Equipment.MAX_FOOD_CAPACITY ? Color.Red : Color.White;
             GUIManager.Instance.DrawText(this.equipmentFont, this.currentFoodCount + "/" + this.maxFoodCount, new Vector2(0.91f, 0.16f), this.foodColor);
-
-            GUIManager.Instance.DrawText(this.timeFont, myPlayerTime.Hours.ToString("00") + ":" + myPlayerTime.Minutes.ToString("00"), new Vector2(0.8f, 0.08f), Color.Red);
             GUIManager.Instance.DrawText(this.equipmentFont, "DAY 1", new Vector2(0.88f, 0.1f), Color.Red);
         }
 
@@ -100,17 +96,6 @@ namespace TrashSoup.Gameplay
             {
                 Debug.Log("There is some error in getting player controller");
             }
-            foreach(GameObject obj in ResourceManager.Instance.CurrentScene.ObjectsDictionary.Values)
-            {
-                if(obj.GetComponent<PlayerTime>() != null)
-                {
-                    myPlayerTime = (PlayerTime)obj.GetComponent<PlayerTime>();
-                }
-            }
-            if(myPlayerTime == null)
-            {
-                Debug.Log("There is some error in getting player time");
-            }
             this.maxHP = this.myPlayerController.HitPoints;
             this.currentHP = this.maxHP;
             this.myEq = this.myPlayerController.Equipment;
@@ -124,7 +109,6 @@ namespace TrashSoup.Gameplay
             this.backpackTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/backpack"); ;
             this.burgerTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/burger");
             this.equipmentFont = TrashSoupGame.Instance.Content.Load<SpriteFont>(@"Fonts/FontTest");
-            this.timeFont = TrashSoupGame.Instance.Content.Load<SpriteFont>(@"Fonts/digital-7");
 
             base.Initialize();
         }
