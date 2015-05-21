@@ -573,6 +573,7 @@ namespace AwesomeEngineEditor
         {
             //Remove game object
             TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.Remove(((TrashSoup.Engine.GameObject)HierarchyTreeView.SelectedItem).UniqueID);
+            TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsQT.Remove(((TrashSoup.Engine.GameObject)HierarchyTreeView.SelectedItem));
             this.GameObjects.Remove(((TrashSoup.Engine.GameObject)this.HierarchyTreeView.SelectedItem));
             this.selectedObject = null;
             this.DetailsInfo.Visibility = System.Windows.Visibility.Hidden;
