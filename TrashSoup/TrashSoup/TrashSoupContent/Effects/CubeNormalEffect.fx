@@ -275,7 +275,7 @@ ColorPair ComputeLightBlurredShadows(float3 posWS, float3 E, float3 N, float2 co
 	ColorPair result;
 	ColorPair temp;
 
-	result.Diffuse = 0;
+	result.Diffuse = AmbientLightColor;
 	result.Specular = 0;
 	temp.Diffuse = 0;
 	temp.Specular = 0;
@@ -308,7 +308,7 @@ ColorPair ComputeLightBlurredShadows(float3 posWS, float3 E, float3 N, float2 co
 	// point light 01
 
 	L = PointLightPositions[0] - posWS;
-	L.z = -L.z;
+	//L.z = -L.z;
 	Llength = length(L);
 	att = saturate(ATTENUATION_MULTIPLIER * length(PointLightDiffuseColors[0]) * PointLightAttenuations[0] / max(Llength * Llength, MINIMUM_LENGTH_VALUE));
 
@@ -505,7 +505,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	ColorPair computedLight = ComputeLight(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal);
 
 	color =  (color * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f)) + 
-		saturate(ReflectivityBias) * float4(computedLight.Diffuse, 1.0f) * (alpha * float4(reflection, 1.0f));
+		ReflectivityBias * float4(computedLight.Diffuse, 1.0f) * (alpha * float4(reflection, 1.0f));
 
 	color *= Transparency;
 
@@ -552,7 +552,7 @@ float4 PixelShaderFunctionShadows(VertexShaderOutputShadows input) : COLOR0
 	ColorPair computedLight = ComputeLightShadows(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal, input.PositionDLS);
 
 	color = (color * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f)) +
-		saturate(ReflectivityBias) * float4(computedLight.Diffuse, 1.0f) * (alpha * float4(reflection, 1.0f));
+		ReflectivityBias * float4(computedLight.Diffuse, 1.0f) * (alpha * float4(reflection, 1.0f));
 
 	color *= Transparency;
 
@@ -600,7 +600,7 @@ float4 PixelShaderFunctionBlurredShadows(VertexShaderOutputShadows input) : COLO
 		float2((input.PositionProj.x / input.PositionProj.w) / 2.0f + 0.5f, (-input.PositionProj.y / input.PositionProj.w) / 2.0f + 0.5f));
 
 	color = (color * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f)) +
-		saturate(ReflectivityBias) * float4(computedLight.Diffuse, 1.0f) * (alpha * float4(reflection, 1.0f));
+		ReflectivityBias * float4(computedLight.Diffuse, 1.0f) * (alpha * float4(reflection, 1.0f));
 
 	color *= Transparency;
 
@@ -642,7 +642,7 @@ technique SkinnedShadows
 		PixelShader = compile ps_3_0 PixelShaderFunctionShadows();
 	}
 }
-
+ 
 technique MainBlurredShadows
 {
 	pass Pass1

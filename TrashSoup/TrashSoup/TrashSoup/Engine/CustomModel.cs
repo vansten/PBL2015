@@ -25,15 +25,21 @@ namespace TrashSoup.Engine
 
         #endregion
 
+        #region variables
+
+        private string contentPath;
+
+        #endregion
+
         #region properties
 
         public LODStateEnum LODState { get; set; }
         public Model[] LODs { get; set; }
-        public List<String> Paths { get; set; }
+        //public List<String> Paths { get; set; }
+        public String[] Paths { get; set; }
         // material doesn't change with LOD, but with MeshPart !!!
         public List<Material> Mat { get; set; }
-
-        private string contentPath;
+        public bool LodControlled { get; set; }
 
         #endregion
 
@@ -41,29 +47,43 @@ namespace TrashSoup.Engine
         public CustomModel() 
         {
             this.LODs = new Model[LOD_COUNT];
-            this.Paths = new List<string>();
+            this.Paths = new String[LOD_COUNT];
+            //this.Paths = new List<string>();
             this.Mat = new List<Material>();
+            this.LodControlled = true;
         }
 
         public CustomModel(GameObject obj) : base(obj)
         {
             this.LODState = LODStateEnum.HI;
             this.LODs = new Model[LOD_COUNT];
-            this.Paths = new List<String>();
-            for(int i = 0; i < LOD_COUNT; i++)
+            this.Paths = new String[LOD_COUNT];
+            //this.Paths = new List<String>();
+            for (int i = 0; i < LOD_COUNT; i++)
             {
                 this.LODs[i] = null;
+                this.Paths[i] = "";
             }
             this.Mat = new List<Material>();
+            this.LodControlled = true;
         }
 
-        public CustomModel(GameObject obj, Model[] lods, uint lodCount, List<Material> matList)
+        public CustomModel(GameObject obj, Model[] lods, List<Material> matList)
             : this(obj)
         {
-            for(int i = 0; i < lodCount && i < LOD_COUNT; i++)
+            for(int i = 0; i < LOD_COUNT; i++)
             {
-                this.LODs[i] = lods[i];
-                this.Paths.Add(ResourceManager.Instance.Models.FirstOrDefault(x => x.Value == lods[i]).Key);
+                if(lods[i] != null)
+                {
+                    this.LODs[i] = lods[i];
+                    this.Paths[i] = ResourceManager.Instance.Models.FirstOrDefault(x => x.Value == lods[i]).Key;
+                    //this.Paths.Add(ResourceManager.Instance.Models.FirstOrDefault(x => x.Value == lods[i]).Key);
+                }
+                else
+                {
+                    this.LODs[i] = lods[0];
+                    this.Paths[i] = "";
+                }
             }
             Mat = matList;
 
@@ -76,16 +96,18 @@ namespace TrashSoup.Engine
         public CustomModel(GameObject obj, CustomModel cm) : base(obj)
         {
             this.LODs = new Model[LOD_COUNT];
-            this.Paths = new List<String>();
+            this.Paths = new String[LOD_COUNT];
+            //this.Paths = new List<String>();
             this.Mat = new List<Material>();
             for(int i = 0; i < LOD_COUNT; ++i)
             {
                 this.LODs[i] = cm.LODs[i];
+                this.Paths[i] = cm.Paths[i];
             }
-            foreach(string path in cm.Paths)
-            {
-                this.Paths.Add(path);
-            }
+            //foreach(string path in cm.Paths)
+            //{
+            //    this.Paths.Add(path);
+            //}
             foreach(Material m in cm.Mat)
             {
                 this.Mat.Add(m);
@@ -105,17 +127,40 @@ namespace TrashSoup.Engine
         {
             if(this.Visible)
             {
-                Model mod = LODs[(uint)LODState];
-                if(mod != null)
-                {
-                    Camera camera;
+                Camera camera;
                     if (cam == null)
                         camera = ResourceManager.Instance.CurrentScene.Cam;
                     else
                         camera = cam;
 
+                float distance = Math.Abs(Vector3.Distance((camera.Position + camera.Translation), new Vector3(MyObject.MyTransform.Position.X, MyObject.MyTransform.Position.Y, -MyObject.MyTransform.Position.Z)));
+                if(!ResourceManager.Instance.CurrentScene.Params.UseLods || !this.LodControlled || this.LODs[1] == null)
+                {
+                    LODState = LODStateEnum.HI;
+                }
+                else if((distance >= ResourceManager.Instance.CurrentScene.Params.Lod1Distance && 
+                    distance < ResourceManager.Instance.CurrentScene.Params.Lod2Distance) || this.LODs[2] == null)
+                {
+                    LODState = LODStateEnum.MED;
+                }
+                else if((distance >= ResourceManager.Instance.CurrentScene.Params.Lod2Distance))
+                {
+                    LODState = LODStateEnum.LO;
+                }
+                else
+                {
+                    LODState = LODStateEnum.HI;
+                }
+
+                Model mod = LODs[(uint)LODState];
+                if(mod != null)
+                {
+                    
+
                     Transform transform = MyObject.MyTransform;
                     Matrix[] bones = null;
+                    Matrix socketMatrix = Matrix.Identity;
+
                     if (MyObject.MyAnimator != null)
                     {
                         bones = MyObject.MyAnimator.GetSkinTransforms();
@@ -136,11 +181,7 @@ namespace TrashSoup.Engine
                                  (mm.ParentBone.Transform * transform.GetWorldMatrix()) * camera.ViewProjMatrix,
                                  ResourceManager.Instance.CurrentScene.AmbientLight,
                                  ResourceManager.Instance.CurrentScene.DirectionalLights,
-                                 ResourceManager.Instance.CurrentScene.GetPointLightDiffuseColors(),
-                                 ResourceManager.Instance.CurrentScene.GetPointLightSpecularColors(),
-                                 ResourceManager.Instance.CurrentScene.GetPointLightAttenuations(),
-                                 ResourceManager.Instance.CurrentScene.GetPointLightPositions(),
-                                 ResourceManager.Instance.CurrentScene.GetPointLightCount(),
+                                 MyObject.LightsAffecting,
                                  ResourceManager.Instance.CurrentScene.GetGlobalShadowMap(),
                                  ResourceManager.Instance.CurrentScene.GetPointLight0ShadowMap(),
                                  camera.Position + camera.Translation,
@@ -169,6 +210,36 @@ namespace TrashSoup.Engine
 
         protected override void Start()
         {
+        }
+
+        public void GetBoneMatrix(string name, out Matrix mat)
+        {
+            SkinningModelLibrary.SkinningData data = (SkinningModelLibrary.SkinningData)((object[])this.LODs[0].Tag)[0];
+            if(data == null)
+            {
+                mat = Matrix.Identity;
+                Debug.Log("CUSTOMMODEL: Error, trying to get bone matrix for non-skinned model.");
+                return;
+            }
+
+            Dictionary<string, int> dic = data.BoneNameToID;
+            int id;
+            bool result = dic.TryGetValue(name, out id);
+            if(!result)
+            {
+                mat = Matrix.Identity;
+                Debug.Log("CUSTOMMODEL: Given bone name not present in bone dictionary.");
+                return;
+            }
+
+            if(MyObject.MyAnimator == null)
+            {
+                mat = data.BindPose[id];
+            }
+            else
+            {
+                mat = MyObject.MyAnimator.GetWorldTransforms()[id];
+            }
         }
 
         //protected virtual void FlipZAxis()
@@ -208,17 +279,26 @@ namespace TrashSoup.Engine
             if(reader.Name == "LODs")
             {
                 reader.ReadStartElement();
+                int counter = 0;
                 while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
                 {
                     String s = reader.ReadElementString("ModelPath", "");
-                    Paths.Add(s);
+                    Paths[counter] = s;
+                    counter++;
                 }
                 reader.ReadEndElement();
             }
 
             for(int j = 0; j<Paths.Count(); ++j)
             {
-                LODs[j] = ResourceManager.Instance.LoadModel(Paths[j]);
+                if(Paths[j] != "")
+                {
+                    LODs[j] = ResourceManager.Instance.LoadModel(Paths[j]);
+                }
+                else
+                {
+                    LODs[j] = LODs[0];
+                }
             }
 
             if(reader.Name == "Materials")
@@ -248,6 +328,8 @@ namespace TrashSoup.Engine
                
                 reader.ReadEndElement();
             }
+
+            this.LodControlled = reader.ReadElementContentAsBoolean("LodControlled", "");
             //ResourceManager.Instance.LoadEffects(TrashSoupGame.Instance);
             reader.ReadEndElement();
         }
@@ -273,6 +355,10 @@ namespace TrashSoup.Engine
                 {
                     writer.WriteElementString("ModelPath", path);
                 }
+                else
+                {
+                    writer.WriteElementString("ModelPath", "");
+                }
             }
             writer.WriteEndElement();
 
@@ -297,6 +383,8 @@ namespace TrashSoup.Engine
                 }
             }
             writer.WriteEndElement();
+
+            writer.WriteElementString("LodControlled", XmlConvert.ToString(LodControlled));
         }
 
         private void EffectParametersSerialization(System.Xml.XmlWriter writer, EffectParameter param)

@@ -20,7 +20,7 @@ namespace TrashSoup.Engine
 
         #region variables
 
-        private float attenuation;
+        private const float attenuation = 0.15f;
 
         #endregion
 
@@ -32,20 +32,17 @@ namespace TrashSoup.Engine
         { 
             get
             {
-                return attenuation;
+                return attenuation * MyTransform.Scale;
             }
             set
             {
-                attenuation = value;
-                if(MyTransform != null)
-                {
-                    attenuation *= MyTransform.Scale;
-                }
+                
             }
         }
         public bool CastShadows { get; set; }
         public RenderTargetCube ShadowMapRenderTarget512 { get; set; }
         public Camera[] Cameras { get; set; }
+        public List<GameObject> AffectedObjects { get; private set; }
 
         #endregion
 
@@ -54,11 +51,11 @@ namespace TrashSoup.Engine
         public LightPoint(uint uniqueID, string name)
             : base(uniqueID, name)
         {
-            
+            this.AffectedObjects = new List<GameObject>();
         }
 
         public LightPoint(uint uniqueID, string name, Vector3 lightColor, Vector3 lightSpecularColor, float attenuation, bool castShadows)
-            : base(uniqueID, name)
+            : this(uniqueID, name)
         {
             this.LightColor = lightColor;
             this.LightSpecularColor = lightSpecularColor;
@@ -138,6 +135,28 @@ namespace TrashSoup.Engine
             }
         }
 
+        public override void OnTriggerEnter(GameObject otherGO)
+        {
+            if(!otherGO.LightsAffecting.Contains(this))
+            {
+                otherGO.LightsAffecting.Add(this);
+                this.AffectedObjects.Add(otherGO);
+            }
+            
+            base.OnTriggerEnter(otherGO);
+        }
+
+        public override void OnTriggerExit(GameObject otherGO)
+        {
+            if (otherGO.LightsAffecting.Contains(this))
+            {
+                otherGO.LightsAffecting.Remove(this);
+                this.AffectedObjects.Remove(otherGO);
+            }
+
+            base.OnTriggerExit(otherGO);
+        }
+
         public System.Xml.Schema.XmlSchema GetSchema() { return null; }
 
         public void ReadXml(System.Xml.XmlReader reader)
@@ -158,6 +177,9 @@ namespace TrashSoup.Engine
             Attenuation = reader.ReadElementContentAsFloat("Attenuation", "");
 
             base.ReadXml(reader);
+
+            this.MyCollider = new SphereCollider(this, true);
+            this.MyPhysicalObject = new PhysicalObject(this, 0.0f, 0.0f, false);
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)

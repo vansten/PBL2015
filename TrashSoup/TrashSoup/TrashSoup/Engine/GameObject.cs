@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Xml.Serialization;
+using System.Xml;
 
 namespace TrashSoup.Engine
 {
@@ -13,6 +14,7 @@ namespace TrashSoup.Engine
         #region variables
 
         private PhysicalObject myPhisicalObject;
+        private Socket myCarrierSocket;
 
         #endregion
 
@@ -22,10 +24,35 @@ namespace TrashSoup.Engine
         public List<string> Tags { get; set; }
         public bool Enabled { get; set; }
         public bool Visible { get; set; }
+        public bool Dynamic { get; set; }
 
         public Transform MyTransform { get; set; }
         public Animator MyAnimator { get; set; }
         public Collider MyCollider { get; set; }
+
+        public Socket MyCarrierSocket
+        { 
+            get
+            {
+                return myCarrierSocket;
+            }
+            set
+            {
+                if(myCarrierSocket != null)
+                {
+                    Debug.Log("GameObject WARNING! " + this.Name + ", ID " + this.UniqueID.ToString() + " already had assigned socket!");
+                }
+                if(myCarrierSocket == value)
+                {
+                    Debug.Log("GameObject ERROR: " + this.Name + ", ID " + this.UniqueID.ToString() + " is already assigned to this socket! Aborting.");
+                    return;
+                }
+                value.Carrier.Components.Add(value);
+                myCarrierSocket = value;
+            }
+        }
+
+        public QuadTreeNode MyNode { get; set; }
 
         public PhysicalObject MyPhysicalObject 
         {
@@ -50,6 +77,7 @@ namespace TrashSoup.Engine
 
         public List<ObjectComponent> Components { get; set; }
         public GraphicsDeviceManager GraphicsManager { get; protected set; }
+        public List<LightPoint> LightsAffecting { get; protected set; }
 
         #endregion
 
@@ -60,16 +88,46 @@ namespace TrashSoup.Engine
             this.Name = name;
 
             this.Components = new List<ObjectComponent>();
+            this.LightsAffecting = new List<LightPoint>();
             this.GraphicsManager = TrashSoupGame.Instance.GraphicsManager;
 
             this.Enabled = true;
             this.Visible = true;
         }
 
+        public void Initialize()
+        {
+            foreach (ObjectComponent component in this.Components)
+            {
+                component.Initialize();
+            }
+            if (this.MyCollider != null)
+            {
+                this.MyCollider.Initialize();
+            }
+            if (this.MyAnimator != null)
+            {
+                this.MyAnimator.Initialize();
+            }
+            if (this.MyPhysicalObject != null)
+            {
+                this.MyPhysicalObject.Initialize();
+            }
+            if (this.MyTransform != null)
+            {
+                this.MyTransform.Initialize();
+            }
+        }
+
         public virtual void Update(GameTime gameTime)
         {
             if(this.Enabled)
             {
+                if(this.MyTransform != null)
+                {
+                    this.MyTransform.Update(gameTime);
+                }
+
                 if (this.MyPhysicalObject != null)
                 {
                     this.MyPhysicalObject.Update(gameTime);
@@ -107,7 +165,7 @@ namespace TrashSoup.Engine
 #if DEBUG
                 if (this.MyCollider != null)
                 {
-                    this.MyCollider.Draw(cam, effect, gameTime);
+                    //this.MyCollider.Draw(cam, effect, gameTime);
                 }
 
 #endif
@@ -126,6 +184,7 @@ namespace TrashSoup.Engine
 
             UniqueID = (uint)reader.ReadElementContentAsInt("UniqueID", "");
             Name = reader.ReadElementString("Name", "");
+            Dynamic = reader.ReadElementContentAsBoolean("Dynamic", "");
 
             if(reader.Name == "MyTransform")
             {
@@ -206,6 +265,9 @@ namespace TrashSoup.Engine
                     case "TrashSoup.Engine.BoxCollider":
                         MyCollider = new BoxCollider(this);
                         break;
+                    case "TrashSoup.Engine.SphereCollider":
+                        MyCollider = new SphereCollider(this);
+                        break;
                     default:
                         //MyCollider = new Collider(this);
                         break;
@@ -214,6 +276,8 @@ namespace TrashSoup.Engine
                 reader.ReadEndElement();
             }
 
+            this.Initialize();
+
             //reader.ReadEndElement();
         }
 
@@ -221,6 +285,7 @@ namespace TrashSoup.Engine
         {
             writer.WriteElementString("UniqueID", UniqueID.ToString());
             writer.WriteElementString("Name", Name);
+            writer.WriteElementString("Dynamic", XmlConvert.ToString(Dynamic));
 
             if(MyTransform != null)
             {
@@ -277,11 +342,29 @@ namespace TrashSoup.Engine
         /// 
         /// This function will call every OnTrigger(GameObject) in this game object components
         /// </summary>
-        public void OnTrigger(GameObject otherGO)
+        public virtual void OnTrigger(GameObject otherGO)
         {
             foreach(ObjectComponent oc in this.Components)
             {
                 oc.OnTrigger(otherGO);
+            }
+        }
+
+        public virtual void OnTriggerEnter(GameObject otherGO)
+        {
+            Debug.Log(this.Name + " trigger enter with " + otherGO.Name);
+            foreach (ObjectComponent oc in this.Components)
+            {
+                oc.OnTriggerEnter(otherGO);
+            }
+        }
+
+        public virtual void OnTriggerExit(GameObject otherGO)
+        {
+            Debug.Log(this.Name + " trigger exit with " + otherGO.Name);
+            foreach (ObjectComponent oc in this.Components)
+            {
+                oc.OnTriggerExit(otherGO);
             }
         }
 

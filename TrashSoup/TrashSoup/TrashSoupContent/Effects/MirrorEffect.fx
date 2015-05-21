@@ -206,7 +206,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	ColorPair computedLight = ComputeLight(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal);
 
 	color =  (color * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f)) + 
-		saturate(ReflectivityBias) * (alpha * float4(reflection, 1.0f));
+		ReflectivityBias * (alpha * float4(reflection, 1.0f));
 
 	color *= Transparency;
 

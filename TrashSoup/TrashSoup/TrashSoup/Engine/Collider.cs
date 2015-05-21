@@ -41,6 +41,12 @@ namespace TrashSoup.Engine
             protected set;
         }
 
+        public List<Collider> TriggerReasons
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region Methods
@@ -52,7 +58,7 @@ namespace TrashSoup.Engine
         public Collider(GameObject go) : base(go)
         {
             worldMatrix = Matrix.Identity;
-            this.IsTrigger = false;
+            this.TriggerReasons = new List<Collider>();
             this.CreateCollider();
         }
 
@@ -60,6 +66,7 @@ namespace TrashSoup.Engine
         {
             worldMatrix = Matrix.Identity;
             this.IsTrigger = isTrigger;
+            this.TriggerReasons = new List<Collider>();
             this.CreateCollider();
         }
 
@@ -67,13 +74,16 @@ namespace TrashSoup.Engine
         {
             this.worldMatrix = c.worldMatrix;
             this.IsTrigger = c.IsTrigger;
+            this.TriggerReasons = new List<Collider>();
             this.CreateCollider();
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            //this.worldMatrix = this.MyObject.MyTransform.GetWorldMatrix();
-            this.UpdateCollider();
+            if(this.Enabled)
+            {
+                this.UpdateCollider();
+            }
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)

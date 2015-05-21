@@ -157,7 +157,7 @@ namespace TrashSoup.Engine
         {
             this.MyTransform = new Transform(this);
             this.MyTransform.Scale = 0.5f;
-            this.Components.Add(new CustomModel(this, new Model[] {ResourceManager.Instance.Models["Models/Test/TestSphere"], null, null }, 3, null));
+            this.Components.Add(new CustomModel(this, new Model[] {ResourceManager.Instance.Models["Models/Test/TestSphere"], null, null }, null));
             this.MyPhysicalObject = new PhysicalObject(this, 1.0f, 0.05f, false);
             this.MyCollider = new SphereCollider(this);
         }

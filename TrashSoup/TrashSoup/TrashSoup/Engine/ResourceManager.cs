@@ -63,7 +63,10 @@ namespace TrashSoup.Engine
             AddModel("Models/Test/TestTerrain");
             AddModel("Models/Test/TestGuy");
             AddModel("Models/Test/TestSphere");
+            AddModel("Models/Test/TestSphere_LOD1");
+            AddModel("Models/Test/TestSphere_LOD2");
             AddModel("Models/Test/TestMirror");
+            AddModel("Models/Weapons/Signs/DeadEndSign");
             AddModel("Models/Test/TestSquarePlane");
             AddModel("Models/Test/TestSquarePlane");
             AddModel("Models/Enemies/Rat");
@@ -124,11 +127,18 @@ namespace TrashSoup.Engine
             }
 
             List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"], this.Effects[@"Effects\NormalEffect"]);
+            foreach(Material mat in playerMats)
+            {
+                mat.RecieveShadows = true;
+            }
 
             List<Material> ratMats = LoadBasicMaterialsFromModel(Models["Models/Enemies/Rat"], this.Effects[@"Effects\NormalEffect"]);
 
+            List<Material> deSign = LoadBasicMaterialsFromModel(Models["Models/Weapons/Signs/DeadEndSign"], this.Effects[@"Effects\NormalEffect"]);
+
             List<Material> testTerMats = new List<Material>();
-            Material testTerMat = new Material("testTerMat", this.Effects[@"Effects\DefaultEffect"], Textures[@"Textures\Test\metal01_d"]);
+            Material testTerMat = new Material("testTerMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Test\metal01_d"]);
+            testTerMat.NormalMap = LoadTexture(@"Textures\Test\water");
             testTerMat.SpecularColor = new Vector3(0.1f, 0.1f, 0.0f);
             testTerMat.Glossiness = 10.0f;
             testTerMat.RecieveShadows = true;
@@ -175,8 +185,8 @@ namespace TrashSoup.Engine
 
             // loading gameobjects
             GameObject testBox = new GameObject(1, "Player");
-            testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, -4.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
-            CustomModel skModel = new CustomModel(testBox, new Model[] { Models["Models/Test/TestGuy"], null, null }, 3, playerMats);
+            testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, -28.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
+            CustomModel skModel = new CustomModel(testBox, new Model[] { Models["Models/Test/TestGuy"], null, null }, playerMats);
             Animator playerAnimator = new Animator(testBox, skModel.LODs[0]);
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/Test/walking_1"], "walking_1"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/Test/idle_1"], "idle_1"));
@@ -184,13 +194,14 @@ namespace TrashSoup.Engine
             testBox.Components.Add(skModel);
             testBox.MyAnimator = playerAnimator;
             testBox.Components.Add(new PlayerController(testBox));
+
             testBox.MyPhysicalObject = new PhysicalObject(testBox, 1.0f, 0.05f, false);
             testBox.MyCollider = new SphereCollider(testBox);  //Add a box collider to test collisions
 
             // loading gameobjects
             GameObject rat = new GameObject(50, "Rat");
             rat.MyTransform = new Transform(rat, new Vector3(0.0f, 3.4f, -15.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.001f);
-            CustomModel ratModel = new CustomModel(rat, new Model[] { Models["Models/Enemies/Rat"], null, null }, 3, ratMats);
+            CustomModel ratModel = new CustomModel(rat, new Model[] { Models["Models/Enemies/Rat"], null, null }, ratMats);
             Animator ratAnimator = new Animator(rat, ratModel.LODs[0]);
             ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], this.Animations["Animations/Enemies/Rat_attack"], "Rat_TAnim"));
             ratAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", ratAnimator.GetAnimationPlayer("Rat_TAnim")));
@@ -201,47 +212,55 @@ namespace TrashSoup.Engine
 
             GameObject testTer = new GameObject(2, "Terrain");
             testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
-            testTer.Components.Add(new CustomModel(testTer, new Model[] { Models["Models/Test/TestTerrain"], null, null }, 3, testTerMats));
+            CustomModel terModel = new CustomModel(testTer, new Model[] { Models["Models/Test/TestTerrain"], null, null }, testTerMats);
+            terModel.LodControlled = false;
+            testTer.MyCollider = new BoxCollider(testTer, true);
+            testTer.Components.Add(terModel);
 
             GameObject testBox2 = new GameObject(3, "testBox2");
-            testBox2.MyTransform = new Transform(testBox2, new Vector3(10.0f, 2.0f, -10.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.4f);
-            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Test/TestSphere"], null, null }, 3, testPlayerMats));
-            testBox2.MyCollider = new BoxCollider(testBox2, false);
-
+            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 0.1f, -0.01f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(-MathHelper.PiOver4 + 0.6f, -MathHelper.PiOver2, 0.0f), 1.0f);
+            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Weapons/Signs/DeadEndSign"], null, null }, deSign));
+            testBox2.MyCollider = new BoxCollider(testBox2, true);
+            testBox2.Dynamic = true;
+            testBox2.MyCarrierSocket = new Socket(testBox, testBox2, null, "mixamorig:RightHand");
 
             GameObject testBox3 = new GameObject(5, "testBox3");
-            testBox3.MyTransform = new Transform(testBox3, new Vector3(8.0f, 2.0f, 6.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, MathHelper.Pi, 0.0f), 1.2f);
-            testBox3.Components.Add(new CustomModel(testBox3, new Model[] { Models["Models/Test/TestSphere"], null, null }, 3, testPlayerMats2));
-            testBox3.MyCollider = new SphereCollider(testBox3);
+            testBox3.MyTransform = new Transform(testBox3, new Vector3(5.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, MathHelper.Pi, 0.0f), 1.0f);
+            testBox3.Components.Add(new CustomModel(testBox3, new Model[] { Models["Models/Test/TestSphere"], Models["Models/Test/TestSphere_LOD1"], Models["Models/Test/TestSphere_LOD2"] }, testPlayerMats2));
+            testBox3.MyCollider = new SphereCollider(testBox3, true);
 
             GameObject testMirror = new GameObject(6, "testMirror");
             testMirror.MyTransform = new Transform(testMirror, new Vector3(-10.0f, 2.0f, -10.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, -MathHelper.PiOver2, 0.0f), 1.0f);
-            testMirror.Components.Add(new CustomModel(testMirror, new Model[] { Models["Models/Test/TestMirror"], null, null }, 3, testMirrorMats));
+            testMirror.Components.Add(new CustomModel(testMirror, new Model[] { Models["Models/Test/TestMirror"], null, null }, testMirrorMats));
             testMirror.MyCollider = new BoxCollider(testMirror, false);
 
             GameObject testWater = new GameObject(7, "tesWtater");
             testWater.MyTransform = new Transform(testWater, new Vector3(0.0f, -1.5f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
-            testWater.Components.Add(new CustomModel(testWater, new Model[] { Models["Models/Test/TestSquarePlane"], null, null }, 3, testWaterMats));
+            testWater.Components.Add(new CustomModel(testWater, new Model[] { Models["Models/Test/TestSquarePlane"], null, null }, testWaterMats));
 
             GameObject skyBox = new GameObject(4, "skyBox");
             skyBox.MyTransform = new Transform(skyBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1000.0f);
-            skyBox.Components.Add(new CustomModel(skyBox, new Model[] { Models["Models/Test/TestCube"], null, null }, 3, testSBMats));
+            CustomModel sbModel = new CustomModel(skyBox, new Model[] { Models["Models/Test/TestCube"], null, null }, testSBMats);
+            sbModel.LodControlled = false;
+            skyBox.Components.Add(sbModel);
 
             //Wika i Kasia testowanie modeli
             GameObject awsomeTest = new GameObject(8, "testground");
-            awsomeTest.MyTransform = new Transform(awsomeTest, new Vector3(10.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.4f);
-            awsomeTest.Components.Add(new CustomModel(awsomeTest, new Model[] { Models["Models/Enviro/Billboard/Billboard"], null, null }, 3, awsomeTestMats));
+            awsomeTest.MyTransform = new Transform(awsomeTest, new Vector3(-10.0f, 0.0f, -5.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.4f);
+            awsomeTest.Components.Add(new CustomModel(awsomeTest, new Model[] { Models["Models/Enviro/Billboard/Billboard"], null, null }, awsomeTestMats));
             awsomeTest.MyCollider = new BoxCollider(awsomeTest, false);
 
             // adding lights
-            LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.05f, 0.05f, 0.1f));
+            LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.2f, 0.2f, 0.1f));
             LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(0.5f, 0.4f, 0.3f), new Vector3(1.0f, 0.8f, 0.8f), new Vector3(-1.0f, -1.0f, -1.0f), true);
             LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, true);
-            lp1.MyTransform = new Transform(lp1, new Vector3(-3.0f, 3.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
+            lp1.MyTransform = new Transform(lp1, new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
+            lp1.MyCollider = new SphereCollider(lp1, true);
+            lp1.MyPhysicalObject = new PhysicalObject(lp1, 0.0f, 0.0f, false);
             lp1.SetupShadowRender();
 
             // loading scene
-            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), DateTime.Now, false, true, true));
+            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), DateTime.Now, 3000.0f, 35.0f, 50.0f, true, true, true, false, true));
 
             Camera cam = null;
 
@@ -260,25 +279,28 @@ namespace TrashSoup.Engine
             CurrentScene.Cam = cam;
 
             // adding items to scene
-            CurrentScene.ObjectsDictionary.Add(skyBox.UniqueID, skyBox);
-            CurrentScene.ObjectsDictionary.Add(testTer.UniqueID, testTer);
-            CurrentScene.ObjectsDictionary.Add(testBox.UniqueID, testBox);
-            CurrentScene.ObjectsDictionary.Add(testBox2.UniqueID, testBox2);
-            CurrentScene.ObjectsDictionary.Add(testBox3.UniqueID, testBox3);
-            CurrentScene.ObjectsDictionary.Add(testMirror.UniqueID, testMirror);
-            CurrentScene.ObjectsDictionary.Add(testWater.UniqueID, testWater);
-            CurrentScene.ObjectsDictionary.Add(awsomeTest.UniqueID, awsomeTest);//Wika i kasia
-            CurrentScene.ObjectsDictionary.Add(rat.UniqueID, rat);
+            CurrentScene.AddObject(skyBox);
+            CurrentScene.AddObject(testTer);
+            CurrentScene.AddObject(testBox);
+            CurrentScene.AddObject(testBox2);
+            CurrentScene.AddObject(testBox3);
+            CurrentScene.AddObject(testMirror);
+            CurrentScene.AddObject(testWater);
+            CurrentScene.AddObject(awsomeTest);//Wika i kasia
+            CurrentScene.AddObject(rat);
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;
             CurrentScene.PointLights.Add(lp1);
 
-            //CurrentScene.GenerateQuadTree();
-
             ////TESTING PARTICLES
             ps = new ParticleSystem(TrashSoupGame.Instance.GraphicsDevice, 
                 TrashSoupGame.Instance.Content.Load<Texture2D>(@"Textures/ParticleTest/Particle"), 400, new Vector2(2), 1, Vector3.Zero, 0.5f);
+
+            foreach(GameObject go in this.CurrentScene.ObjectsDictionary.Values)
+            {
+                go.Initialize();
+            }
         }
 
         /// <summary>

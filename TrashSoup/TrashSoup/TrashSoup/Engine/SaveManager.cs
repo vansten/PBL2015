@@ -74,6 +74,13 @@ namespace TrashSoup.Engine
                 //Scene tmp = (Scene)serializer.Deserialize(file);
                 ResourceManager.Instance.CurrentScene = new Scene();
                 ResourceManager.Instance.CurrentScene = (Scene)serializer.Deserialize(file);
+                if (ResourceManager.Instance.CurrentScene.Params.UseGraph)
+                {
+                    foreach (KeyValuePair<uint, GameObject> val in ResourceManager.Instance.CurrentScene.ObjectsDictionary)
+                    {
+                        ResourceManager.Instance.CurrentScene.ObjectsQT.Add(val.Value);
+                    }
+                }
             }
         }
 

@@ -74,6 +74,11 @@ namespace TrashSoup.Engine
 
         protected static bool isRendering = false;
 
+        protected static Vector3[] tempPLColors = new Vector3[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
+        protected static Vector3[] tempPLSpeculars = new Vector3[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
+        protected static Vector3[] tempPLPositions = new Vector3[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
+        protected static float[] tempPLAttenuations = new float[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
+
         protected Texture2D diffuseMap;
         protected Texture2D normalMap;
         protected TextureCube cubeMap;
@@ -182,7 +187,7 @@ namespace TrashSoup.Engine
             }
             set
             {
-                reflectivityBias = value;
+                reflectivityBias = MathHelper.Clamp(value, 0.0f, 1.0f);
             }
         }
 
@@ -280,8 +285,7 @@ namespace TrashSoup.Engine
             this.DiffuseMap = diffuse;
         }
 
-        public virtual void UpdateEffect(Effect effect, Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, Vector3[] pointColors,
-            Vector3[] pointSpeculars, float[] pointAttenuations, Vector3[] pointPositions, uint pointCount, Texture gSM, TextureCube point0SM, 
+        public virtual void UpdateEffect(Effect effect, Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, List<LightPoint> points, Texture gSM, TextureCube point0SM, 
             Vector3 eyeVector, BoundingFrustumExtended frustum, Matrix[] bones, GameTime gameTime)
         {
             if (effect != null && tempEffect == null)
@@ -401,40 +405,44 @@ namespace TrashSoup.Engine
                 }
             }
 
-
-            if (pointColors != null)
+            if(points != null)
             {
+                for (int i = 0; i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i)
+                {
+                    tempPLColors[i] = new Vector3(0.0f, 0.0f, 0.0f);
+                    tempPLSpeculars[i] = new Vector3(0.0f, 0.0f, 0.0f);
+                    tempPLPositions[i] = new Vector3(0.0f, 0.0f, 0.0f);
+                    tempPLAttenuations[i] = 0.00000001f;
+                }
+
+                int pCount = points.Count;
+                for (int i = 0; i < pCount; ++i )
+                {
+                    tempPLColors[i] = points[i].LightColor;
+                    tempPLSpeculars[i] = points[i].LightSpecularColor;
+                    tempPLPositions[i] = points[i].MyTransform.Position;
+                    tempPLAttenuations[i] = points[i].Attenuation;
+                }
+
                 if (epPointLightDiffuseColors != null)
                 {
-                    epPointLightDiffuseColors.SetValue(pointColors);
+                    epPointLightDiffuseColors.SetValue(tempPLColors);
                 }
-            }
-            if (pointSpeculars != null)
-            {
                 if (epPointLightSpecularColors != null)
                 {
-                    epPointLightSpecularColors.SetValue(pointSpeculars);
+                    epPointLightSpecularColors.SetValue(tempPLSpeculars);
                 }
-            }
-            if (pointPositions != null)
-            {
                 if (epPointLightPositions != null)
                 {
-                    epPointLightPositions.SetValue(pointPositions);
+                    epPointLightPositions.SetValue(tempPLPositions);
                 }
-            }
-            if (pointAttenuations != null)
-            {
                 if (epPointLightAttenuations != null)
                 {
-                    epPointLightAttenuations.SetValue(pointAttenuations);
+                    epPointLightAttenuations.SetValue(tempPLAttenuations);
                 }
-            }
-            if (pointCount != 0)
-            {
                 if (epPointLightCount != null)
                 {
-                    epPointLightCount.SetValue(pointCount);
+                    epPointLightCount.SetValue(points.Count);
                 }
                 if (epPoint0ShadowMap != null && point0SM != null)
                 {

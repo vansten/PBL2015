@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -64,12 +64,14 @@ namespace TrashSoup.Gameplay
             }
             else
                 isTime = true;
+
+            GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/digital-7"), Hours.ToString("00") + ":" + Minutes.ToString("00"), new Vector2(0.77f, 0.08f), Color.Red);
         }
 
         public override void Draw(Camera cam, Effect effect, GameTime gameTime)
         {
-            GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"), "TIME: " + Hours.ToString("00") + ":" + Minutes.ToString("00"), new Vector2(0.1f, 0.4f), Color.Red);
-        }
+
+	   }
 
         protected override void Start()
         {

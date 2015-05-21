@@ -69,12 +69,16 @@ namespace SkinnedModelPipeline
             List<Matrix> bindPose = new List<Matrix>();
             List<Matrix> inverseBindPose = new List<Matrix>();
             List<int> skeletonHierarchy = new List<int>();
+            Dictionary<string, int> assignement = new Dictionary<string, int>();
 
+            int ctr = 0;
             foreach(BoneContent bone in bones)
             {
+                assignement.Add(bone.Name, ctr);
                 bindPose.Add(bone.Transform);
                 inverseBindPose.Add(Matrix.Invert(bone.AbsoluteTransform));
                 skeletonHierarchy.Add(bones.IndexOf(bone.Parent as BoneContent));
+                ++ctr;
             }
 
             // Convert animation data to our runtime format
@@ -96,7 +100,7 @@ namespace SkinnedModelPipeline
                 model.Tag = null;
                 return model;
             }
-            intoTag[0] = new SkinningData(animationClips, bindPose, inverseBindPose, skeletonHierarchy);
+            intoTag[0] = new SkinningData(animationClips, bindPose, inverseBindPose, skeletonHierarchy, assignement);
             model.Tag = intoTag;
 
             return model;

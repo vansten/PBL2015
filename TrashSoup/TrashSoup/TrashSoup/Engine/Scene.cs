@@ -17,9 +17,14 @@ namespace TrashSoup.Engine
         public string Name { get; set; }
         public Vector2 Wind { get; set; }
         public DateTime Time { get; set; }
+        public float MaxSize { get; set; }
+        public float Lod1Distance { get; set; }
+        public float Lod2Distance { get; set; }
         public bool Shadows { get; set; }
         public bool SoftShadows { get; set; }
         public bool Bloom { get; set; }
+        public bool UseGraph { get; set; }
+        public bool UseLods { get; set; }
         #endregion
 
         #region methods
@@ -29,14 +34,19 @@ namespace TrashSoup.Engine
             this.Name = name;
         }
 
-        public SceneParams(uint uniqueID, string name, Vector2 wind, DateTime time, bool shadows, bool softShadows, bool bloom)
+        public SceneParams(uint uniqueID, string name, Vector2 wind, DateTime time, float maxSize, float lod1distance, float lod2distance, bool shadows, bool softShadows, bool bloom, bool graph, bool lods)
             : this(uniqueID, name)
         {
             this.Wind = wind;
             this.Time = time;
+            this.MaxSize = maxSize;
+            this.Lod1Distance = lod1distance;
+            this.Lod2Distance = lod2distance;
             this.Shadows = shadows;
             this.SoftShadows = softShadows;
             this.Bloom = bloom;
+            this.UseGraph = graph;
+            this.UseLods = lods;
         }
 
         public System.Xml.Schema.XmlSchema GetSchema()
@@ -52,9 +62,14 @@ namespace TrashSoup.Engine
             this.UniqueID = (uint)reader.ReadElementContentAsInt("UniqueID", "");
             this.Name = reader.ReadElementString("Name", "");
 
+            this.MaxSize = reader.ReadElementContentAsFloat("MaxSize", "");
+            this.Lod1Distance = reader.ReadElementContentAsFloat("Lod1Distance", "");
+            this.Lod2Distance = reader.ReadElementContentAsFloat("Lod2Distance", "");
             this.Shadows = reader.ReadElementContentAsBoolean("Shadows", "");
             this.SoftShadows = reader.ReadElementContentAsBoolean("SoftShadows", "");
             this.Bloom = reader.ReadElementContentAsBoolean("Bloom", "");
+            this.UseGraph = reader.ReadElementContentAsBoolean("UseGraph", "");
+            this.UseLods = reader.ReadElementContentAsBoolean("UseLods", "");
 
             if(reader.Name == "Wind")
             {
@@ -72,9 +87,14 @@ namespace TrashSoup.Engine
             writer.WriteElementString("UniqueID", UniqueID.ToString());
             writer.WriteElementString("Name", Name);
 
+            writer.WriteElementString("MaxSize", XmlConvert.ToString(MaxSize));
+            writer.WriteElementString("Lod1Distance", XmlConvert.ToString(Lod1Distance));
+            writer.WriteElementString("Lod2Distance", XmlConvert.ToString(Lod2Distance));
             writer.WriteElementString("Shadows", XmlConvert.ToString(Shadows));
             writer.WriteElementString("SoftShadows", XmlConvert.ToString(SoftShadows));
             writer.WriteElementString("Bloom", XmlConvert.ToString(Bloom));
+            writer.WriteElementString("UseGraph", XmlConvert.ToString(UseGraph));
+            writer.WriteElementString("UseLods", XmlConvert.ToString(UseLods));
 
             writer.WriteStartElement("Wind");
             writer.WriteElementString("X", XmlConvert.ToString(Wind.X));
@@ -95,16 +115,10 @@ namespace TrashSoup.Engine
 
         #region variables
 
-        private Vector3[] tempPLColors;
-        private Vector3[] tempPLSpeculars;
-        private Vector3[] tempPLPositions;
-        private float[] tempPLAttenuations;
-
         private bool ifRenderShadows;
         private RenderTarget2D globalShadowsRenderTarget;
         private RenderTarget2D tempRenderTarget01;
         private Matrix deferredOrthoMatrix;
-        private bool useQuadTree = false;
 
         #endregion
 
@@ -118,7 +132,7 @@ namespace TrashSoup.Engine
         public LightDirectional[] DirectionalLights { get; set; }
         public List<LightPoint> PointLights { get; set; }
         public Dictionary<uint, GameObject> ObjectsDictionary { get; set; }
-        public QuadTree ObjectsQT { get; protected set; }
+        public QuadTree ObjectsQT { get; set; }
         // place for bounding sphere tree
 
         #endregion
@@ -126,25 +140,13 @@ namespace TrashSoup.Engine
         #region methods
         public Scene()
         {
-            tempPLColors = new Vector3[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
-            tempPLSpeculars = new Vector3[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
-            tempPLPositions = new Vector3[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
-            tempPLAttenuations = new float[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
-            for (int i = 0; i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i)
-            {
-                tempPLColors[i] = new Vector3(0.0f, 0.0f, 0.0f);
-                tempPLSpeculars[i] = new Vector3(0.0f, 0.0f, 0.0f);
-                tempPLPositions[i] = new Vector3(0.0f, 0.0f, 0.0f);
-                tempPLAttenuations[i] = 0.0f;
-            }
-
             DirectionalLights = new LightDirectional[ResourceManager.DIRECTIONAL_MAX_LIGHTS];
             for (int i = 0; i < ResourceManager.DIRECTIONAL_MAX_LIGHTS; ++i)
                 DirectionalLights[i] = null;
             PointLights = new List<LightPoint>();
 
             ObjectsDictionary = new Dictionary<uint, GameObject>();
-            ObjectsQT = new QuadTree(ObjectsDictionary, 3000.0f, 3000.0f);
+            ObjectsQT = new QuadTree(ObjectsDictionary, 3000.0f);
 
             globalShadowsRenderTarget = new RenderTarget2D(
                         TrashSoupGame.Instance.GraphicsDevice,
@@ -178,20 +180,33 @@ namespace TrashSoup.Engine
             this.Params = par;           
         }
 
-        public void GenerateQuadTree()
-        {
-            this.ObjectsQT.Generate();
-            this.useQuadTree = true;
-        }
-
         public void AddObject(GameObject obj)
         {
-
+            if (this.ObjectsDictionary.ContainsKey(obj.UniqueID))
+            {
+                Debug.Log("That ID exists");
+            }
+            this.ObjectsDictionary.Add(obj.UniqueID, obj);
+            if(Params.UseGraph)
+            {
+                ObjectsQT.Add(obj);
+            }
         }
 
         public bool DeleteObject(uint uniqueID)
         {
-            return false;
+            GameObject temp;
+            bool placek = ObjectsDictionary.TryGetValue(uniqueID, out temp);
+            if(temp != null)
+            {
+                if(Params.UseGraph)
+                {
+                    ObjectsQT.Remove(temp);
+                }
+                ObjectsDictionary.Remove(uniqueID);
+                return true;
+            }
+            else return false;
         }
 
         public GameObject GetObject(uint uniqueID)
@@ -201,26 +216,68 @@ namespace TrashSoup.Engine
 
         public List<GameObject> GetObjectsOfType(Type type)
         {
-            return null;
+            List<GameObject> ret = new List<GameObject>();
+            int count = ObjectsDictionary.Count;
+            GameObject temp;
+            for(int i = 0; i < count; ++i)
+            {
+                temp = ObjectsDictionary.ElementAt(i).Value;
+                if(temp.GetType() == type)
+                {
+                    ret.Add(temp);
+                }
+            }
+
+            return ret;
         }
 
         public List<ObjectComponent> GetComponentsOfType(Type type)
         {
-            return null;
-        }
+            List<ObjectComponent> ret = new List<ObjectComponent>();
+            int count = ObjectsDictionary.Count;
+            GameObject temp;
+            ObjectComponent tempC;
+            for (int i = 0; i < count; ++i)
+            {
+                temp = ObjectsDictionary.ElementAt(i).Value;
+                if(temp.MyAnimator.GetType() == type)
+                {
+                    ret.Add(temp.MyAnimator);
+                }
+                if (temp.MyCarrierSocket.GetType() == type)
+                {
+                    ret.Add(temp.MyCarrierSocket);
+                }
+                if (temp.MyCollider.GetType() == type)
+                {
+                    ret.Add(temp.MyCollider);
+                }
+                if (temp.MyPhysicalObject.GetType() == type)
+                {
+                    ret.Add(temp.MyPhysicalObject);
+                }
+                if (temp.MyTransform.GetType() == type)
+                {
+                    ret.Add(temp.MyTransform);
+                }
+                int countC = temp.Components.Count;
+                for(int j = 0; j < countC; ++j)
+                {
+                    tempC = temp.Components[j];
+                    if(tempC.GetType() == type)
+                    {
+                        ret.Add(tempC);
+                    }
+                }
+            }
 
-        public List<GameObject> GetObjectsWithinFrustum(BoundingFrustum frustum)
-        {
-            return null;
-        }
-
-        public List<GameObject> GetObjectsWhichCollide(BoundingSphere bSphere)
-        {
-            return null;
+            return ret;
         }
 
         public void UpdateAll(GameTime gameTime)
         {
+            ObjectsQT.Update();
+
             //[vansten] Added testing code for physics simulation
             AI.BehaviorTree.BehaviorTreeManager.Instance.Update(gameTime);
             foreach (GameObject obj in ObjectsDictionary.Values)
@@ -253,9 +310,9 @@ namespace TrashSoup.Engine
                 }
             }
             
-            if(useQuadTree)
+            if(Params.UseGraph)
             {
-
+                ObjectsQT.Draw(cam != null ? cam : this.Cam, effect, gameTime);
             }
             else
             {
@@ -269,68 +326,6 @@ namespace TrashSoup.Engine
             {
                 ifRenderShadows = true;
             }
-        }
-
-        public void FlushTempPointLightData()
-        {
-            for (int i = 0; i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i)
-            {
-                tempPLColors[i].X = 0.0f;
-                tempPLColors[i].Y = 0.0f;
-                tempPLColors[i].Z = 0.0f;
-                tempPLPositions[i].X = 0.0f;
-                tempPLPositions[i].Y = 0.0f;
-                tempPLPositions[i].Z = 0.0f;
-                tempPLSpeculars[i].X = 0.0f;
-                tempPLSpeculars[i].Y = 0.0f;
-                tempPLSpeculars[i].Z = 0.0f;
-                tempPLAttenuations[i] = 0.0f;
-            }
-        }
-
-        public Vector3[] GetPointLightDiffuseColors()
-        {
-            for (int i = 0; i < PointLights.Count && i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i)
-            {
-                tempPLColors[i] = PointLights[i].LightColor;
-            }
-
-            return tempPLColors;
-        }
-
-        public Vector3[] GetPointLightSpecularColors()
-        {
-            for (int i = 0; i < PointLights.Count && i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i)
-            {
-                tempPLSpeculars[i] = PointLights[i].LightSpecularColor;
-            }
-
-            return tempPLSpeculars;
-        }
-
-        public Vector3[] GetPointLightPositions()
-        {
-            for (int i = 0; i < PointLights.Count && i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i)
-            {
-                tempPLPositions[i] = PointLights[i].MyTransform.Position;
-            }
-
-            return tempPLPositions;
-        }
-
-        public float[] GetPointLightAttenuations()
-        {
-            for (int i = 0; i < PointLights.Count && i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i)
-            {
-                tempPLAttenuations[i] = PointLights[i].Attenuation;
-            }
-
-            return tempPLAttenuations;
-        }
-
-        public uint GetPointLightCount()
-        {
-            return (PointLights.Count > 10 ? 10 : (uint)PointLights.Count);
         }
 
         public Texture GetGlobalShadowMap()

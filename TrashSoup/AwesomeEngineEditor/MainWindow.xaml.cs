@@ -42,6 +42,7 @@ namespace AwesomeEngineEditor
         private ObservableCollection<TrashSoup.Engine.GameObject> gameObjects = new ObservableCollection<TrashSoup.Engine.GameObject>();
         private TrashSoup.TrashSoupGame myGame;
         private TrashSoup.Engine.Camera normalCamera;
+        private uint maxID = 0;
 
         public ObservableCollection<TrashSoup.Engine.GameObject> GameObjects
         {
@@ -478,6 +479,14 @@ namespace AwesomeEngineEditor
             this.GameObjects.Add(this.normalCamera);
 
             this.IsSaveSceneMIEnabled = true;
+
+            foreach(TrashSoup.Engine.GameObject go in TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.Values)
+            {
+                if(go.UniqueID >= this.maxID)
+                {
+                    this.maxID = go.UniqueID + 1;
+                }
+            }
         }
 
         private void SaveSceneMI_Click(object sender, RoutedEventArgs e)
@@ -551,24 +560,20 @@ namespace AwesomeEngineEditor
 
         private void AddGameObjectMI_Click(object sender, RoutedEventArgs e)
         {
-            Random rnd = new Random();
-            uint r = (uint)rnd.Next(0, 1000);
-            while(TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.ContainsKey(r))
-            {
-                r = (uint)rnd.Next(0, 1000);
-            }
+            uint r = this.maxID;
+            this.maxID += 1;
             TrashSoup.Engine.GameObject go = new TrashSoup.Engine.GameObject(r, "GameObject " + r);
             go.MyTransform = new TrashSoup.Engine.Transform(go);
             go.Components = new List<TrashSoup.Engine.ObjectComponent>();
-            go.Components.Add(new TrashSoup.Engine.Transform(go));
             this.GameObjects.Add(go);
-            TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.Add(go.UniqueID, go);
+            TrashSoup.Engine.ResourceManager.Instance.CurrentScene.AddObject(go);
         }
 
         private void RemoveGameObjectMI_Click(object sender, RoutedEventArgs e)
         {
             //Remove game object
             TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.Remove(((TrashSoup.Engine.GameObject)HierarchyTreeView.SelectedItem).UniqueID);
+            TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsQT.Remove(((TrashSoup.Engine.GameObject)HierarchyTreeView.SelectedItem));
             this.GameObjects.Remove(((TrashSoup.Engine.GameObject)this.HierarchyTreeView.SelectedItem));
             this.selectedObject = null;
             this.DetailsInfo.Visibility = System.Windows.Visibility.Hidden;
@@ -830,13 +835,8 @@ namespace AwesomeEngineEditor
                 return;
             }
 
-            Random r = new Random();
-            uint uid = (uint)r.Next(0, 1000);
-            while (TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.ContainsKey(uid))
-            {
-                uid = (uint)r.Next(0, 1000);
-            }
-
+            uint uid = this.maxID;
+            this.maxID += 1;
             TrashSoup.Engine.GameObject newGo = new TrashSoup.Engine.GameObject(uid, this.selectedObject.Name + " (clone)");
             newGo.MyTransform = new TrashSoup.Engine.Transform(newGo, this.selectedObject.MyTransform);
             newGo.Enabled = this.selectedObject.Enabled;
@@ -890,7 +890,7 @@ namespace AwesomeEngineEditor
             }
 
             this.GameObjects.Add(newGo);
-            TrashSoup.Engine.ResourceManager.Instance.CurrentScene.ObjectsDictionary.Add(uid, newGo);
+            TrashSoup.Engine.ResourceManager.Instance.CurrentScene.AddObject(newGo);
         }
     }
 }

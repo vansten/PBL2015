@@ -52,12 +52,27 @@ namespace TrashSoup.Engine
 
         protected abstract void Start();
 
+        public virtual void Initialize()
+        {
+
+        }
+
         public virtual void OnCollision(GameObject other)
         {
 
         }
 
         public virtual void OnTrigger(GameObject other)
+        {
+
+        }
+
+        public virtual void OnTriggerEnter(GameObject other)
+        {
+
+        }
+
+        public virtual void OnTriggerExit(GameObject other)
         {
 
         }

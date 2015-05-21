@@ -19,7 +19,8 @@ namespace TrashSoup.Gameplay
         protected const float SPRINT_ACCELERATION = 3.0f;
         protected const float SPRINT_DECELERATION = 2.5f*SPRINT_ACCELERATION;
         protected const float ROTATION_SPEED = 0.2f;
-        protected const float MAX_HEALTH = 50.0f;
+        public const float MAX_HEALTH = 50.0f;
+        public const float MAX_POPULARITY = 100.0f;
 
         #endregion
 
@@ -45,8 +46,16 @@ namespace TrashSoup.Gameplay
         private double collectedFakeTime = 0.0;
         private GameObject trash;
 
+        private Equipment equipment;
+
         private float hitPoints = MAX_HEALTH;
+        private float popularity = 0.0f;
+        private float popularityDecreaseSpeed = 3.0f;
+
         private bool isDead = false;
+
+        private Texture2D interactionTexture;
+        private Vector2 textPosition = new Vector2(0.43f, 0.35f);
 
         #endregion
 
@@ -58,10 +67,21 @@ namespace TrashSoup.Gameplay
             set { hitPoints = value; }
         }
 
+        public float Popularity
+        {
+            get { return popularity; }
+            set { popularity = value; }
+        }
+
         public bool IsDead
         { 
             get { return isDead; }
             set { isDead = value; }
+        }
+
+        public Equipment Equipment
+        {
+            get { return this.equipment; }
         }
 
         #endregion
@@ -82,11 +102,6 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            if(!TrashSoupGame.Instance.EditorMode)
-            {
-                GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"), "HEALTH: " + HitPoints.ToString(), new Vector2(0.1f, 0.3f), Color.Red);
-            }
-
             if (isDead)
                 return;
 
@@ -95,6 +110,8 @@ namespace TrashSoup.Gameplay
                 DecreaseHealth(1);
             if (InputManager.Instance.GetKeyboardButtonDown(Keys.PageUp))
                 IncreaseHealth(20);
+
+            equipment.Update(gameTime);
             
             Vector2 movementVector = InputHandler.Instance.GetMovementVector();
             tempMove = new Vector3(movementVector.X,
@@ -177,7 +194,7 @@ namespace TrashSoup.Gameplay
                 if(!this.collectedTrash)
                 {
                     this.collisionFakeTime = gameTime.TotalGameTime.TotalSeconds;
-                    GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"), "Click X on pad to collect trash", new Vector2(0.55f, 0.1f), Color.Red);
+                    GUIManager.Instance.DrawTexture(this.interactionTexture, new Vector2(0.475f, 0.775f), 0.05f, 0.05f);
                 }
             }
 
@@ -186,18 +203,35 @@ namespace TrashSoup.Gameplay
                 this.collectedTrash = true;
                 this.collectedFakeTime = gameTime.TotalGameTime.TotalSeconds;
                 this.trash.Enabled = false;
+                equipment.AddJunk(1);
             }
 
             if(this.collectedTrash)
             {
-                GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"), "Trash collected", new Vector2(0.6f, 0.1f), Color.Red);
+                GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"),
+                    "Trash collected", textPosition, Color.Red);
                 if(gameTime.TotalGameTime.TotalSeconds - this.collectedFakeTime > 2.0)
                 {
                     this.collectedTrash = false;
                 }
+                textPosition.Y -= 0.002f;
             }
 
             this.collisionWithTrash = false;
+
+            if(InputManager.Instance.GetKeyboardButtonDown(Keys.F))
+            {
+                this.Popularity += 10.0f;
+            }
+
+            this.Popularity -= gameTime.ElapsedGameTime.Milliseconds * 0.001f * this.popularityDecreaseSpeed;
+            this.Popularity = MathHelper.Clamp(this.Popularity, 0.0f, MAX_POPULARITY);
+        }
+
+        public override void Initialize()
+        {
+            this.interactionTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/x_button");
+            base.Initialize();
         }
 
         public override void Draw(Camera cam, Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
@@ -209,6 +243,9 @@ namespace TrashSoup.Gameplay
         {
             sprint = 1.0f;
             sprintM = 0.0f;
+            equipment = new Equipment(this.MyObject);
+            if(this.MyObject.GetComponent<Weapons.Fists>() == null)
+                this.MyObject.Components.Add(equipment.CurrentWeapon);
 
             if (MyObject == null) return;
 

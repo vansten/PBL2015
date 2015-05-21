@@ -94,8 +94,32 @@ namespace TrashSoup.Engine
                             {
                                 if(po.MyCollider.Intersects(col))
                                 {
+                                    if(!po.MyCollider.TriggerReasons.Contains(col))
+                                    {
+                                        po.MyCollider.TriggerReasons.Add(col);
+                                        po.OnTriggerEnter(col.MyObject);
+                                    }
                                     po.OnTrigger(col.MyObject);
+
+                                    if (!col.TriggerReasons.Contains(po.MyCollider))
+                                    {
+                                        col.TriggerReasons.Add(po.MyCollider);
+                                        col.MyObject.OnTriggerEnter(po);
+                                    }
                                     col.MyObject.OnTrigger(po);
+                                }
+                                else
+                                {
+                                    if(po.MyCollider.TriggerReasons.Contains(col))
+                                    {
+                                        po.MyCollider.TriggerReasons.Remove(col);
+                                        po.OnTriggerExit(col.MyObject);
+                                    }
+                                    if(col.TriggerReasons.Contains(po.MyCollider))
+                                    {
+                                        col.TriggerReasons.Remove(po.MyCollider);
+                                        col.MyObject.OnTriggerExit(po);
+                                    }
                                 }
                             }
                         }

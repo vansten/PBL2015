@@ -54,7 +54,7 @@ namespace AwesomeEngineEditor.Components
         {
             get
             {
-                if(this.model.Paths.Count == 0)
+                if(this.model.Paths.Length == 0)
                 {
                     return "None";
                 }
@@ -81,7 +81,7 @@ namespace AwesomeEngineEditor.Components
         {
             get
             {
-                if(this.model.Paths.Count > 1)
+                if(this.model.Paths.Length > 1)
                 {
                     string tmp = this.model.Paths[1];
                     if (tmp == null || tmp == "")
@@ -108,7 +108,7 @@ namespace AwesomeEngineEditor.Components
             get
             {
 
-                if (this.model.Paths.Count > 2)
+                if (this.model.Paths.Length > 2)
                 {
                     string tmp = this.model.Paths[2];
                     if (tmp == null || tmp == "")
@@ -145,14 +145,16 @@ namespace AwesomeEngineEditor.Components
             }
             TrashSoup.Engine.ResourceManager.Instance.AddModel(path);
             this.model.LODs[0] = TrashSoup.Engine.ResourceManager.Instance.Models[path];
-            if(this.model.Paths.Count > 0)
-            {
-                this.model.Paths[0] = path;
-            }
-            else
-            {
-                this.model.Paths.Add(path);
-            }
+            //if(this.model.Paths.Length > 0)
+            //{
+            //    this.model.Paths[0] = path;
+            //}
+            //else
+            //{
+            //    //this.model.Paths.Add(path);
+                
+            //}
+            this.model.Paths[0] = path;
             OnPropertyChanged("LOD0Name");
             OnPropertyChanged("LOD1Visibility");
         }
@@ -166,14 +168,15 @@ namespace AwesomeEngineEditor.Components
             }
             TrashSoup.Engine.ResourceManager.Instance.AddModel(path);
             this.model.LODs[1] = TrashSoup.Engine.ResourceManager.Instance.Models[path];
-            if (this.model.Paths.Count > 1)
-            {
-                this.model.Paths[1] = path;
-            }
-            else
-            {
-                this.model.Paths.Add(path);
-            }
+            this.model.Paths[1] = path;
+            //if (this.model.Paths.Count > 1)
+            //{
+            //    this.model.Paths[1] = path;
+            //}
+            //else
+            //{
+            //    this.model.Paths.Add(path);
+            //}
             OnPropertyChanged("LOD1Name");
             OnPropertyChanged("LOD2Visibility");
         }
@@ -187,14 +190,15 @@ namespace AwesomeEngineEditor.Components
             }
             TrashSoup.Engine.ResourceManager.Instance.AddModel(path);
             this.model.LODs[2] = TrashSoup.Engine.ResourceManager.Instance.Models[path];
-            if (this.model.Paths.Count > 2)
-            {
-                this.model.Paths[2] = path;
-            }
-            else
-            {
-                this.model.Paths.Add(path);
-            }
+            this.model.Paths[2] = path;
+            //if (this.model.Paths.Count > 2)
+            //{
+            //    this.model.Paths[2] = path;
+            //}
+            //else
+            //{
+            //    this.model.Paths.Add(path);
+            //}
             OnPropertyChanged("LOD2Name");
         }
 
