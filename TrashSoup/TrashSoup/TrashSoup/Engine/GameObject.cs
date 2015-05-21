@@ -16,6 +16,9 @@ namespace TrashSoup.Engine
         private PhysicalObject myPhisicalObject;
         private Socket myCarrierSocket;
 
+        private GameObject parent;
+        private List<GameObject> children;
+
         #endregion
 
         #region properties
@@ -89,6 +92,8 @@ namespace TrashSoup.Engine
 
             this.Components = new List<ObjectComponent>();
             this.LightsAffecting = new List<LightPoint>();
+            this.children = new List<GameObject>();
+            this.parent = null;
             this.GraphicsManager = TrashSoupGame.Instance.GraphicsManager;
 
             this.Enabled = true;
@@ -97,10 +102,16 @@ namespace TrashSoup.Engine
 
         public void Initialize()
         {
-            foreach (ObjectComponent component in this.Components)
+            int cCount = children.Count;
+            for (int i = 0; i < cCount; ++i )
             {
-                component.Initialize();
+                children[i].Initialize();
             }
+
+                foreach (ObjectComponent component in this.Components)
+                {
+                    component.Initialize();
+                }
             if (this.MyCollider != null)
             {
                 this.MyCollider.Initialize();
@@ -123,6 +134,12 @@ namespace TrashSoup.Engine
         {
             if(this.Enabled)
             {
+                int cCount = children.Count;
+                for (int i = 0; i < cCount; ++i)
+                {
+                    children[i].Update(gameTime);
+                }
+
                 if(this.MyTransform != null)
                 {
                     this.MyTransform.Update(gameTime);
@@ -154,6 +171,12 @@ namespace TrashSoup.Engine
         {
             if(this.Visible && this.Enabled)
             {
+                int cCount = children.Count;
+                for (int i = 0; i < cCount; ++i)
+                {
+                    children[i].Draw(cam, effect, gameTime);
+                }
+
                 foreach (ObjectComponent obj in Components)
                 {
                     obj.Draw(cam, effect, gameTime);
@@ -169,6 +192,60 @@ namespace TrashSoup.Engine
                 }
 
 #endif
+            }
+        }
+
+        public void SetParent(GameObject parent)
+        {
+            this.parent = parent;
+        }
+
+        public GameObject GetParent()
+        {
+            return parent;
+        }
+
+        public List<GameObject> GetChildren()
+        {
+            return children;
+        }
+
+        public void AddChild(GameObject obj)
+        {
+            if(children.Contains(obj))
+            {
+                Debug.Log("GameObject ERRROR: Child is already here!");
+                return;
+            }
+            this.children.Add(obj);
+            obj.SetParent(this);
+
+            if(this.Dynamic && !obj.Dynamic)
+            {
+                obj.Dynamic = true;
+            }
+        }
+
+        public void RemoveChild(GameObject obj)
+        {
+            if (!children.Contains(obj))
+            {
+                Debug.Log("GameObject ERRROR: Child is not here!");
+                return;
+            }
+
+            int cCount = children.Count;
+            for(int i = 0; i < cCount; ++i)
+            {
+                if(children[i] == obj)
+                {
+                    int ccCount = children[i].children.Count;
+                    for(int j = 0; j < ccCount; ++j)
+                    {
+                        this.children.Add(children[i].children[j]);
+                    }
+                    children.Remove(obj);
+                }
             }
         }
 
