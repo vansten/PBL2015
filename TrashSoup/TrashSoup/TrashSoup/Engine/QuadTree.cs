@@ -439,6 +439,12 @@ namespace TrashSoup.Engine
                     }
                     finished = true;
                     Debug.Log("Object " + obj.Name + " is on level " + ctr.ToString());
+
+                    foreach(GameObject child in obj.GetChildren())
+                    {
+                        Add(child);
+                    }
+
                     break;
                 }
             }
@@ -448,7 +454,24 @@ namespace TrashSoup.Engine
         {
             if(obj.MyNode != null)
             {
-                obj.MyNode.Objects.Remove(obj);
+                Stack<GameObject> objStack = new Stack<GameObject>();
+                objStack.Push(obj);
+                GameObject temp;
+                while(objStack.Count > 0)
+                {
+                    temp = objStack.Pop();
+                    if(temp.MyNode != null)
+                    {
+                        temp.MyNode.Objects.Remove(obj);
+                        temp.MyNode = null;
+                    }
+
+                    foreach(GameObject child in temp.GetChildren())
+                    {
+                        objStack.Push(child);
+                    }
+                }
+                
             }
             else
             {

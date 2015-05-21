@@ -194,6 +194,7 @@ namespace TrashSoup.Engine
             testBox.Components.Add(skModel);
             testBox.MyAnimator = playerAnimator;
             testBox.Components.Add(new PlayerController(testBox));
+            testBox.Dynamic = true;
 
             testBox.MyPhysicalObject = new PhysicalObject(testBox, 1.0f, 0.05f, false);
             testBox.MyCollider = new SphereCollider(testBox);  //Add a box collider to test collisions
@@ -225,7 +226,7 @@ namespace TrashSoup.Engine
             testBox2.MyCarrierSocket = new Socket(testBox, testBox2, null, "mixamorig:RightHand");
 
             GameObject testBox3 = new GameObject(5, "testBox3");
-            testBox3.MyTransform = new Transform(testBox3, new Vector3(5.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, MathHelper.Pi, 0.0f), 1.0f);
+            testBox3.MyTransform = new Transform(testBox3, new Vector3(5.0f, 1.0f, 5.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, MathHelper.Pi, 0.0f), 1.0f);
             testBox3.Components.Add(new CustomModel(testBox3, new Model[] { Models["Models/Test/TestSphere"], Models["Models/Test/TestSphere_LOD1"], Models["Models/Test/TestSphere_LOD2"] }, testPlayerMats2));
             testBox3.MyCollider = new SphereCollider(testBox3, true);
 
@@ -279,11 +280,12 @@ namespace TrashSoup.Engine
             CurrentScene.Cam = cam;
 
             // adding items to scene
+            testBox.AddChild(testBox3);
             CurrentScene.AddObject(skyBox);
             CurrentScene.AddObject(testTer);
             CurrentScene.AddObject(testBox);
             CurrentScene.AddObject(testBox2);
-            CurrentScene.AddObject(testBox3);
+            //CurrentScene.AddObject(testBox3);
             CurrentScene.AddObject(testMirror);
             CurrentScene.AddObject(testWater);
             CurrentScene.AddObject(awsomeTest);//Wika i kasia

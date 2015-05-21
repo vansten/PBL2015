@@ -219,12 +219,26 @@ namespace TrashSoup.Engine
             List<GameObject> ret = new List<GameObject>();
             int count = ObjectsDictionary.Count;
             GameObject temp;
+            Stack<GameObject> objStack = new Stack<GameObject>();
             for(int i = 0; i < count; ++i)
             {
-                temp = ObjectsDictionary.ElementAt(i).Value;
-                if(temp.GetType() == type)
+                objStack.Push(ObjectsDictionary.ElementAt(i).Value);
+
+                while(objStack.Count > 0)
                 {
-                    ret.Add(temp);
+                    temp = objStack.Pop();
+
+                    if (temp.GetType() == type)
+                    {
+                        ret.Add(temp);
+                    }
+
+                    List<GameObject> children = temp.GetChildren();
+                    int cCount = children.Count;
+                    for(int j = 0; j < cCount; ++j)
+                    {
+                        objStack.Push(children[j]);
+                    }
                 }
             }
 
@@ -237,36 +251,49 @@ namespace TrashSoup.Engine
             int count = ObjectsDictionary.Count;
             GameObject temp;
             ObjectComponent tempC;
+            Stack<GameObject> objStack = new Stack<GameObject>();
             for (int i = 0; i < count; ++i)
             {
-                temp = ObjectsDictionary.ElementAt(i).Value;
-                if(temp.MyAnimator.GetType() == type)
+                objStack.Push(ObjectsDictionary.ElementAt(i).Value);
+
+                while(objStack.Count > 0)
                 {
-                    ret.Add(temp.MyAnimator);
-                }
-                if (temp.MyCarrierSocket.GetType() == type)
-                {
-                    ret.Add(temp.MyCarrierSocket);
-                }
-                if (temp.MyCollider.GetType() == type)
-                {
-                    ret.Add(temp.MyCollider);
-                }
-                if (temp.MyPhysicalObject.GetType() == type)
-                {
-                    ret.Add(temp.MyPhysicalObject);
-                }
-                if (temp.MyTransform.GetType() == type)
-                {
-                    ret.Add(temp.MyTransform);
-                }
-                int countC = temp.Components.Count;
-                for(int j = 0; j < countC; ++j)
-                {
-                    tempC = temp.Components[j];
-                    if(tempC.GetType() == type)
+                    temp = objStack.Pop();
+                    if (temp.MyAnimator.GetType() == type)
                     {
-                        ret.Add(tempC);
+                        ret.Add(temp.MyAnimator);
+                    }
+                    if (temp.MyCarrierSocket.GetType() == type)
+                    {
+                        ret.Add(temp.MyCarrierSocket);
+                    }
+                    if (temp.MyCollider.GetType() == type)
+                    {
+                        ret.Add(temp.MyCollider);
+                    }
+                    if (temp.MyPhysicalObject.GetType() == type)
+                    {
+                        ret.Add(temp.MyPhysicalObject);
+                    }
+                    if (temp.MyTransform.GetType() == type)
+                    {
+                        ret.Add(temp.MyTransform);
+                    }
+                    int countC = temp.Components.Count;
+                    for (int j = 0; j < countC; ++j)
+                    {
+                        tempC = temp.Components[j];
+                        if (tempC.GetType() == type)
+                        {
+                            ret.Add(tempC);
+                        }
+                    }
+
+                    List<GameObject> children = temp.GetChildren();
+                    int cCount = children.Count;
+                    for (int j = 0; j < cCount; ++j)
+                    {
+                        objStack.Push(children[j]);
                     }
                 }
             }

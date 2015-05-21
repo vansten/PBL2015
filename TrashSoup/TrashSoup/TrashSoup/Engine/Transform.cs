@@ -206,11 +206,13 @@ namespace TrashSoup.Engine
 
         protected void CalculateWorldMatrix()
         {
-            Matrix translation, rotation, scale, fromSocket;
+            Matrix translation, rotation, scale, fromSocket, parents, secondPreRot;
             translation = Matrix.CreateTranslation(new Vector3(this.Position.X, this.Position.Y, -this.Position.Z));
             rotation = Matrix.CreateFromYawPitchRoll(Rotation.Y, Rotation.X, Rotation.Z);
             scale = Matrix.CreateScale(this.Scale);
             fromSocket = Matrix.Identity;
+            parents = Matrix.Identity;
+            secondPreRot = Matrix.Identity;
 
             if(MyObject.MyCarrierSocket != null)
             {
@@ -222,7 +224,17 @@ namespace TrashSoup.Engine
                 fromSocket = fromSocket * Matrix.CreateFromQuaternion(quat) * Matrix.CreateTranslation(trans);
             }
 
-            this.worldMatrix = preRotationMatrix * scale * rotation * translation * fromSocket;
+            if(MyObject.GetParent() != null && MyObject.GetParent().MyTransform != null)
+            {
+                parents = MyObject.GetParent().MyTransform.GetWorldMatrix();
+                Vector3 trans, scl;
+                Quaternion quat;
+                parents.Decompose(out scl, out quat, out trans);
+                parents = Matrix.CreateFromQuaternion(quat) * Matrix.CreateTranslation(trans);
+                secondPreRot = preRotationMatrix;
+            }
+
+            this.worldMatrix = preRotationMatrix * scale * rotation * translation * fromSocket * secondPreRot * parents;
         }
 
         protected void CalculatePositionChange()
