@@ -42,6 +42,7 @@ namespace TrashSoup.Engine
         public bool CastShadows { get; set; }
         public RenderTargetCube ShadowMapRenderTarget512 { get; set; }
         public Camera[] Cameras { get; set; }
+        public List<GameObject> AffectedObjects { get; private set; }
 
         #endregion
 
@@ -50,7 +51,7 @@ namespace TrashSoup.Engine
         public LightPoint(uint uniqueID, string name)
             : base(uniqueID, name)
         {
-
+            this.AffectedObjects = new List<GameObject>();
         }
 
         public LightPoint(uint uniqueID, string name, Vector3 lightColor, Vector3 lightSpecularColor, float attenuation, bool castShadows)
@@ -139,6 +140,7 @@ namespace TrashSoup.Engine
             if(!otherGO.LightsAffecting.Contains(this))
             {
                 otherGO.LightsAffecting.Add(this);
+                this.AffectedObjects.Add(otherGO);
             }
             
             base.OnTriggerEnter(otherGO);
@@ -149,6 +151,7 @@ namespace TrashSoup.Engine
             if (otherGO.LightsAffecting.Contains(this))
             {
                 otherGO.LightsAffecting.Remove(this);
+                this.AffectedObjects.Remove(otherGO);
             }
 
             base.OnTriggerExit(otherGO);
@@ -176,6 +179,7 @@ namespace TrashSoup.Engine
             base.ReadXml(reader);
 
             this.MyCollider = new SphereCollider(this, true);
+            this.MyPhysicalObject = new PhysicalObject(this, 0.0f, 0.0f, false);
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)
