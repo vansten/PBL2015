@@ -244,15 +244,16 @@ namespace TrashSoup.Engine
                 parameters.Add(this);
                 reader.MoveToContent();
                 reader.ReadStartElement();
-                while(reader.NodeType != System.Xml.XmlNodeType.EndElement)
+                while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
                 {
                     Object obj = Activator.CreateInstance(Type.GetType(reader.Name), parameters.ToArray());
                     (obj as IXmlSerializable).ReadXml(reader);
                     Components.Add((ObjectComponent)obj);
                 }
 
-            }
 
+            }
+            if(reader.NodeType == System.Xml.XmlNodeType.EndElement)
             reader.ReadEndElement();
 
             if (reader.Name == "MyCollider")

@@ -472,6 +472,7 @@ namespace TrashSoup.Engine
                     (pl as IXmlSerializable).ReadXml(reader);
 
                     if (pl.CastShadows) pl.SetupShadowRender();
+                    reader.ReadEndElement();
                 }
             }
             reader.ReadEndElement();
