@@ -1,6 +1,7 @@
 #include "Constants.fxh"
 
 float4x4 World;
+float4x4 WorldInverseTranspose;
 float4x4 WorldViewProj;
 float4x4 DirLight0WorldViewProj;
 texture DirLight0ShadowMap;
@@ -26,6 +27,8 @@ samplerCUBE Point0ShadowMapSampler = sampler_state
 	MagFilter = Linear;
 };
 
+float3 DirLight0Direction;
+
 float4 BoundingFrustum[4];
 float4 CustomClippingPlane;
 
@@ -34,11 +37,13 @@ float4x3 Bones[SKINNED_EFFECT_MAX_BONES];
 struct VertexShaderInput
 {
     float4 Position : POSITION0;
+	float3 Normal : NORMAL;
 };
 
 struct VertexShaderInputSkinned
 {
 	float4 Position : POSITION0;
+	float3 Normal : NORMAL;
 	int4 Indices : BLENDINDICES0;
 	float4 Weights : BLENDWEIGHT0;
 };
@@ -48,15 +53,16 @@ struct VertexShaderOutput
 	float4 Position : POSITION0;
 	float4 PositionWS : TEXCOORD0;
 	float4 ClipPlanes : TEXCOORD1;
-	float CustomClipPlane : TEXCOORD2;
-	float4 PositionDLS : TEXCOORD5;
+	float4 PositionDLS : TEXCOORD2;
+	float3 Normal : TEXCOORD3;
+	float CustomClipPlane : TEXCOORD4;
 };
 
 inline void Skin(inout VertexShaderInputSkinned input)
 {
 	float4x3 skinning = 0;
 
-		[unroll]
+	[unroll]
 	for (int i = 0; i < WEIGHTS_PER_VERTEX; ++i)
 	{
 		skinning += Bones[input.Indices[i]] * input.Weights[i];
@@ -78,6 +84,8 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 	output.ClipPlanes.w = dot(output.PositionWS, BoundingFrustum[3]);
 	output.CustomClipPlane = dot(output.PositionWS, CustomClippingPlane);
 
+	output.Normal = mul(input.Normal, WorldInverseTranspose);
+
 	output.PositionDLS = mul(input.Position, DirLight0WorldViewProj);
 
     return output;
@@ -97,6 +105,8 @@ VertexShaderOutput VertexShaderFunctionSkinned(VertexShaderInputSkinned input)
 	output.ClipPlanes.z = dot(output.PositionWS, BoundingFrustum[2]);
 	output.ClipPlanes.w = dot(output.PositionWS, BoundingFrustum[3]);
 	output.CustomClipPlane = dot(output.PositionWS, CustomClippingPlane);
+
+	output.Normal = mul(input.Normal, WorldInverseTranspose);
 
 	output.PositionDLS = mul(input.Position, DirLight0WorldViewProj);
 
@@ -131,12 +141,23 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 		{
 			color.r = 1.0f;
 		}
+		else
+		{
+			float d = dot(normalize(input.Normal), normalize(-DirLight0Direction));
+			[branch]
+			if (d <= 0)
+			{
+				color.r = 1.0f;
+			}
+		}
 	}
 	else
 	{
 		color.r = 1.0f;
 	}
 
+
+	
 	// point lightz
 
 	[branch]
@@ -157,6 +178,15 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	if ((Llength / SHADOW_POINT_MAX_DIST - SHADOW_BIAS) <= shadowMapDepth)
 	{
 		color.g = 1.0f;
+	}
+	else
+	{
+		float d = dot(normalize(input.Normal), normalize(-DirLight0Direction));
+		[branch]
+		if (d <= 0)
+		{
+			color.r = 1.0f;
+		}
 	}
 
 	return color;
