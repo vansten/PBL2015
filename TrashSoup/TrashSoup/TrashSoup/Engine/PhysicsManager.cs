@@ -94,34 +94,30 @@ namespace TrashSoup.Engine
                             {
                                 if(po.MyCollider.Intersects(col))
                                 {
-                                    if(!po.MyCollider.IsTriggered)
+                                    if(!po.MyCollider.TriggerReasons.Contains(col))
                                     {
-                                        po.MyCollider.IsTriggered = true;
-                                        po.MyCollider.TriggerReason = col;
+                                        po.MyCollider.TriggerReasons.Add(col);
                                         po.OnTriggerEnter(col.MyObject);
                                     }
                                     po.OnTrigger(col.MyObject);
 
-                                    if (!col.IsTriggered)
+                                    if (!col.TriggerReasons.Contains(po.MyCollider))
                                     {
-                                        col.IsTriggered = true;
-                                        col.TriggerReason = po.MyCollider;
+                                        col.TriggerReasons.Add(po.MyCollider);
                                         col.MyObject.OnTriggerEnter(po);
                                     }
                                     col.MyObject.OnTrigger(po);
                                 }
                                 else
                                 {
-                                    if(po.MyCollider.IsTriggered && po.MyCollider.TriggerReason == col)
+                                    if(po.MyCollider.TriggerReasons.Contains(col))
                                     {
-                                        po.MyCollider.IsTriggered = false;
-                                        po.MyCollider.TriggerReason = null;
+                                        po.MyCollider.TriggerReasons.Remove(col);
                                         po.OnTriggerExit(col.MyObject);
                                     }
-                                    if(col.IsTriggered && col.TriggerReason == po.MyCollider)
+                                    if(col.TriggerReasons.Contains(po.MyCollider))
                                     {
-                                        col.IsTriggered = false;
-                                        col.TriggerReason = null;
+                                        col.TriggerReasons.Remove(po.MyCollider);
                                         col.MyObject.OnTriggerExit(po);
                                     }
                                 }

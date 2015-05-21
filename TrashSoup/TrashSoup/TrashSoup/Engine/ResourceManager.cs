@@ -227,7 +227,7 @@ namespace TrashSoup.Engine
             GameObject testBox3 = new GameObject(5, "testBox3");
             testBox3.MyTransform = new Transform(testBox3, new Vector3(5.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, MathHelper.Pi, 0.0f), 1.0f);
             testBox3.Components.Add(new CustomModel(testBox3, new Model[] { Models["Models/Test/TestSphere"], Models["Models/Test/TestSphere_LOD1"], Models["Models/Test/TestSphere_LOD2"] }, testPlayerMats2));
-            testBox3.MyCollider = new SphereCollider(testBox3);
+            testBox3.MyCollider = new SphereCollider(testBox3, true);
 
             GameObject testMirror = new GameObject(6, "testMirror");
             testMirror.MyTransform = new Transform(testMirror, new Vector3(-10.0f, 2.0f, -10.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, -MathHelper.PiOver2, 0.0f), 1.0f);
@@ -256,6 +256,7 @@ namespace TrashSoup.Engine
             LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, true);
             lp1.MyTransform = new Transform(lp1, new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
             lp1.MyCollider = new SphereCollider(lp1, true);
+            lp1.MyPhysicalObject = new PhysicalObject(lp1, 0.0f, 0.0f, false);
             lp1.SetupShadowRender();
 
             // loading scene

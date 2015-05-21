@@ -41,13 +41,7 @@ namespace TrashSoup.Engine
             protected set;
         }
 
-        public bool IsTriggered
-        {
-            get;
-            set;
-        }
-
-        public Collider TriggerReason
+        public List<Collider> TriggerReasons
         {
             get;
             set;
@@ -64,7 +58,7 @@ namespace TrashSoup.Engine
         public Collider(GameObject go) : base(go)
         {
             worldMatrix = Matrix.Identity;
-            this.IsTrigger = false;
+            this.TriggerReasons = new List<Collider>();
             this.CreateCollider();
         }
 
@@ -72,6 +66,7 @@ namespace TrashSoup.Engine
         {
             worldMatrix = Matrix.Identity;
             this.IsTrigger = isTrigger;
+            this.TriggerReasons = new List<Collider>();
             this.CreateCollider();
         }
 
@@ -79,6 +74,7 @@ namespace TrashSoup.Engine
         {
             this.worldMatrix = c.worldMatrix;
             this.IsTrigger = c.IsTrigger;
+            this.TriggerReasons = new List<Collider>();
             this.CreateCollider();
         }
 
