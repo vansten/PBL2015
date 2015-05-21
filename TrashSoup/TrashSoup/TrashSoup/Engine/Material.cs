@@ -182,7 +182,7 @@ namespace TrashSoup.Engine
             }
             set
             {
-                reflectivityBias = value;
+                reflectivityBias = MathHelper.Clamp(value, 0.0f, 1.0f);
             }
         }
 
