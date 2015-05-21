@@ -360,62 +360,62 @@
     <Compile Include="Models\Enviro\Ground\street_cross.FBX">
       <Name>street_cross</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Ground\street_cross_kerb.FBX">
       <Name>street_cross_kerb</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Ground\street_cruve.FBX">
       <Name>street_cruve</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Ground\street_cruve_kerb1.FBX">
       <Name>street_cruve_kerb1</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Ground\street_cruve_kerb2.FBX">
       <Name>street_cruve_kerb2</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Ground\street_straight.FBX">
       <Name>street_straight</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Ground\street_straight_kerb.FBX">
       <Name>street_straight_kerb</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Weapons\Pipe\pipe.FBX">
       <Name>pipe</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Weapons\Bottle\bottle.FBX">
       <Name>bottle</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Weapons\Stones\block.FBX">
       <Name>block</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Weapons\Stones\block2.FBX">
       <Name>block2</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Weapons\Stones\brick.FBX">
       <Name>brick</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Test\box2.FBX">
       <Name>box2</Name>
@@ -440,7 +440,7 @@
     <Compile Include="Models\Enviro\Ground\pavement1.FBX">
       <Name>pavement1</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\MainCharacter\MainCharacter_testM.FBX">
       <Name>MainCharacter_testM</Name>
@@ -455,27 +455,27 @@
     <Compile Include="Models\Enviro\Ground\pavement4x4.FBX">
       <Name>pavement4x4</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Walls\Wall_1.FBX">
       <Name>Wall_1</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Walls\Wall_2.FBX">
       <Name>Wall_2</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Buildings\Big_house.FBX">
       <Name>Big_house</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Billboard\Billboard.FBX">
       <Name>Billboard</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Test\TestSphere_LOD1.FBX">
       <Name>TestSphere_LOD1</Name>
