@@ -182,6 +182,10 @@ namespace TrashSoup.Engine
 
         public void AddObject(GameObject obj)
         {
+            if (this.ObjectsDictionary.ContainsKey(obj.UniqueID))
+            {
+                Debug.Log("That ID exists");
+            }
             this.ObjectsDictionary.Add(obj.UniqueID, obj);
             if(Params.UseGraph)
             {

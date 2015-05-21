@@ -134,16 +134,16 @@ namespace TrashSoup.Engine
                         camera = cam;
 
                 float distance = Math.Abs(Vector3.Distance((camera.Position + camera.Translation), new Vector3(MyObject.MyTransform.Position.X, MyObject.MyTransform.Position.Y, -MyObject.MyTransform.Position.Z)));
-                if(!ResourceManager.Instance.CurrentScene.Params.UseLods || !this.LodControlled)
+                if(!ResourceManager.Instance.CurrentScene.Params.UseLods || !this.LodControlled || this.LODs[1] == null)
                 {
                     LODState = LODStateEnum.HI;
                 }
-                else if(distance >= ResourceManager.Instance.CurrentScene.Params.Lod1Distance && 
-                    distance < ResourceManager.Instance.CurrentScene.Params.Lod2Distance)
+                else if((distance >= ResourceManager.Instance.CurrentScene.Params.Lod1Distance && 
+                    distance < ResourceManager.Instance.CurrentScene.Params.Lod2Distance) || this.LODs[2] == null)
                 {
                     LODState = LODStateEnum.MED;
                 }
-                else if(distance >= ResourceManager.Instance.CurrentScene.Params.Lod2Distance)
+                else if((distance >= ResourceManager.Instance.CurrentScene.Params.Lod2Distance))
                 {
                     LODState = LODStateEnum.LO;
                 }
