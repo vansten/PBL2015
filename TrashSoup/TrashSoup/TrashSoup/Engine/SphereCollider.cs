@@ -225,7 +225,7 @@ namespace TrashSoup.Engine
             }
             else
             {
-                this.Center = this.MyObject.MyTransform.Position;
+                this.Center = new Vector3(0.0f, 0.0f, 0.0f);
                 this.Radius = 1.0f;
             }
 

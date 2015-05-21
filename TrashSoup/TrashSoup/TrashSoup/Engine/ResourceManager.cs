@@ -185,7 +185,7 @@ namespace TrashSoup.Engine
 
             // loading gameobjects
             GameObject testBox = new GameObject(1, "Player");
-            testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, -4.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
+            testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, -28.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
             CustomModel skModel = new CustomModel(testBox, new Model[] { Models["Models/Test/TestGuy"], null, null }, playerMats);
             Animator playerAnimator = new Animator(testBox, skModel.LODs[0]);
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/Test/walking_1"], "walking_1"));
@@ -214,6 +214,7 @@ namespace TrashSoup.Engine
             testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
             CustomModel terModel = new CustomModel(testTer, new Model[] { Models["Models/Test/TestTerrain"], null, null }, testTerMats);
             terModel.LodControlled = false;
+            testTer.MyCollider = new BoxCollider(testTer, true);
             testTer.Components.Add(terModel);
 
             GameObject testBox2 = new GameObject(3, "testBox2");
@@ -224,9 +225,9 @@ namespace TrashSoup.Engine
             testBox2.MyCarrierSocket = new Socket(testBox, testBox2, null, "mixamorig:RightHand");
 
             GameObject testBox3 = new GameObject(5, "testBox3");
-            testBox3.MyTransform = new Transform(testBox3, new Vector3(-8.0f, 2.0f, -6.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, MathHelper.Pi, 0.0f), 1.2f);
+            testBox3.MyTransform = new Transform(testBox3, new Vector3(5.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, MathHelper.Pi, 0.0f), 1.0f);
             testBox3.Components.Add(new CustomModel(testBox3, new Model[] { Models["Models/Test/TestSphere"], Models["Models/Test/TestSphere_LOD1"], Models["Models/Test/TestSphere_LOD2"] }, testPlayerMats2));
-            testBox3.MyCollider = new BoxCollider(testBox3);
+            testBox3.MyCollider = new SphereCollider(testBox3);
 
             GameObject testMirror = new GameObject(6, "testMirror");
             testMirror.MyTransform = new Transform(testMirror, new Vector3(-10.0f, 2.0f, -10.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, -MathHelper.PiOver2, 0.0f), 1.0f);
@@ -253,7 +254,8 @@ namespace TrashSoup.Engine
             LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.2f, 0.2f, 0.1f));
             LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(0.5f, 0.4f, 0.3f), new Vector3(1.0f, 0.8f, 0.8f), new Vector3(-1.0f, -1.0f, -1.0f), true);
             LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, true);
-            lp1.MyTransform = new Transform(lp1, new Vector3(-3.0f, 3.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
+            lp1.MyTransform = new Transform(lp1, new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
+            lp1.MyCollider = new SphereCollider(lp1, true);
             lp1.SetupShadowRender();
 
             // loading scene

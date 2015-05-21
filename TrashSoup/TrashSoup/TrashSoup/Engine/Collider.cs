@@ -41,6 +41,18 @@ namespace TrashSoup.Engine
             protected set;
         }
 
+        public bool IsTriggered
+        {
+            get;
+            set;
+        }
+
+        public Collider TriggerReason
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region Methods
@@ -72,8 +84,10 @@ namespace TrashSoup.Engine
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            //this.worldMatrix = this.MyObject.MyTransform.GetWorldMatrix();
-            this.UpdateCollider();
+            if(this.Enabled)
+            {
+                this.UpdateCollider();
+            }
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)

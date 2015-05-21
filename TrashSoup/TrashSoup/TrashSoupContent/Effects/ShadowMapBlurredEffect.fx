@@ -181,11 +181,11 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	}
 	else
 	{
-		float d = dot(normalize(input.Normal), normalize(-DirLight0Direction));
+		float d = dot(normalize(input.Normal), normalize(PointLightPositions[0] - input.PositionWS));
 		[branch]
 		if (d <= 0)
 		{
-			color.r = 1.0f;
+			color.g = 1.0f;
 		}
 	}
 

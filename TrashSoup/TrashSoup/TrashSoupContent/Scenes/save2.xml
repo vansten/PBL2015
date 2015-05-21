@@ -89,7 +89,7 @@
           <Y>1</Y>
           <Z>0</Z>
         </Forward>
-        <Scale>1</Scale>
+        <Scale>20</Scale>
       </MyTransform>
     </PointLight>
   </PointLights>

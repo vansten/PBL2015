@@ -77,6 +77,7 @@ namespace TrashSoup.Engine
 
         public List<ObjectComponent> Components { get; set; }
         public GraphicsDeviceManager GraphicsManager { get; protected set; }
+        public List<LightPoint> LightsAffecting { get; protected set; }
 
         #endregion
 
@@ -87,6 +88,7 @@ namespace TrashSoup.Engine
             this.Name = name;
 
             this.Components = new List<ObjectComponent>();
+            this.LightsAffecting = new List<LightPoint>();
             this.GraphicsManager = TrashSoupGame.Instance.GraphicsManager;
 
             this.Enabled = true;
@@ -263,6 +265,9 @@ namespace TrashSoup.Engine
                     case "TrashSoup.Engine.BoxCollider":
                         MyCollider = new BoxCollider(this);
                         break;
+                    case "TrashSoup.Engine.SphereCollider":
+                        MyCollider = new SphereCollider(this);
+                        break;
                     default:
                         //MyCollider = new Collider(this);
                         break;
@@ -337,11 +342,29 @@ namespace TrashSoup.Engine
         /// 
         /// This function will call every OnTrigger(GameObject) in this game object components
         /// </summary>
-        public void OnTrigger(GameObject otherGO)
+        public virtual void OnTrigger(GameObject otherGO)
         {
             foreach(ObjectComponent oc in this.Components)
             {
                 oc.OnTrigger(otherGO);
+            }
+        }
+
+        public virtual void OnTriggerEnter(GameObject otherGO)
+        {
+            Debug.Log(this.Name + " trigger enter with " + otherGO.Name);
+            foreach (ObjectComponent oc in this.Components)
+            {
+                oc.OnTriggerEnter(otherGO);
+            }
+        }
+
+        public virtual void OnTriggerExit(GameObject otherGO)
+        {
+            Debug.Log(this.Name + " trigger exit with " + otherGO.Name);
+            foreach (ObjectComponent oc in this.Components)
+            {
+                oc.OnTriggerExit(otherGO);
             }
         }
 

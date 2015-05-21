@@ -236,7 +236,7 @@ ColorPair ComputeLightShadows(float3 posWS, float3 E, float3 N, float4 dirPos, f
 	// point light 01
 
 	L = PointLightPositions[0] - posWS;
-	L.z = -L.z;
+	//L.z = -L.z;
 	Llength = length(L);
 	att = saturate(ATTENUATION_MULTIPLIER * length(PointLightDiffuseColors[0]) * PointLightAttenuations[0] / max(Llength * Llength, MINIMUM_LENGTH_VALUE));
 
@@ -320,7 +320,7 @@ ColorPair ComputeLightBlurredShadows(float3 posWS, float3 E, float3 N, float2 co
 	// point light 01
 
 	L = PointLightPositions[0] - posWS;
-	L.z = -L.z;
+	//L.z = -L.z;
 	Llength = length(L);
 	att = saturate(ATTENUATION_MULTIPLIER * length(PointLightDiffuseColors[0]) * PointLightAttenuations[0] / max(Llength * Llength, MINIMUM_LENGTH_VALUE));
 

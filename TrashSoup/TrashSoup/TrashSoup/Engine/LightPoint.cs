@@ -20,7 +20,7 @@ namespace TrashSoup.Engine
 
         #region variables
 
-        private float attenuation;
+        private const float attenuation = 0.15f;
 
         #endregion
 
@@ -32,15 +32,11 @@ namespace TrashSoup.Engine
         { 
             get
             {
-                return attenuation;
+                return attenuation * MyTransform.Scale;
             }
             set
             {
-                attenuation = value;
-                if(MyTransform != null)
-                {
-                    attenuation *= MyTransform.Scale;
-                }
+                
             }
         }
         public bool CastShadows { get; set; }
@@ -54,11 +50,11 @@ namespace TrashSoup.Engine
         public LightPoint(uint uniqueID, string name)
             : base(uniqueID, name)
         {
-            
+
         }
 
         public LightPoint(uint uniqueID, string name, Vector3 lightColor, Vector3 lightSpecularColor, float attenuation, bool castShadows)
-            : base(uniqueID, name)
+            : this(uniqueID, name)
         {
             this.LightColor = lightColor;
             this.LightSpecularColor = lightSpecularColor;
@@ -138,6 +134,26 @@ namespace TrashSoup.Engine
             }
         }
 
+        public override void OnTriggerEnter(GameObject otherGO)
+        {
+            if(!otherGO.LightsAffecting.Contains(this))
+            {
+                otherGO.LightsAffecting.Add(this);
+            }
+            
+            base.OnTriggerEnter(otherGO);
+        }
+
+        public override void OnTriggerExit(GameObject otherGO)
+        {
+            if (otherGO.LightsAffecting.Contains(this))
+            {
+                otherGO.LightsAffecting.Remove(this);
+            }
+
+            base.OnTriggerExit(otherGO);
+        }
+
         public System.Xml.Schema.XmlSchema GetSchema() { return null; }
 
         public void ReadXml(System.Xml.XmlReader reader)
@@ -158,6 +174,8 @@ namespace TrashSoup.Engine
             Attenuation = reader.ReadElementContentAsFloat("Attenuation", "");
 
             base.ReadXml(reader);
+
+            this.MyCollider = new SphereCollider(this, true);
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)

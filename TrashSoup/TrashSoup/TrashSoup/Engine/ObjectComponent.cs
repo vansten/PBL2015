@@ -67,6 +67,16 @@ namespace TrashSoup.Engine
 
         }
 
+        public virtual void OnTriggerEnter(GameObject other)
+        {
+
+        }
+
+        public virtual void OnTriggerExit(GameObject other)
+        {
+
+        }
+
         public virtual System.Xml.Schema.XmlSchema GetSchema() { return null; }
         public virtual void ReadXml(System.Xml.XmlReader reader)
         {
