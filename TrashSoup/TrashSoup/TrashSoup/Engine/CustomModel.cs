@@ -35,7 +35,8 @@ namespace TrashSoup.Engine
 
         public LODStateEnum LODState { get; set; }
         public Model[] LODs { get; set; }
-        public List<String> Paths { get; set; }
+        //public List<String> Paths { get; set; }
+        public String[] Paths { get; set; }
         // material doesn't change with LOD, but with MeshPart !!!
         public List<Material> Mat { get; set; }
         public bool LodControlled { get; set; }
@@ -46,7 +47,8 @@ namespace TrashSoup.Engine
         public CustomModel() 
         {
             this.LODs = new Model[LOD_COUNT];
-            this.Paths = new List<string>();
+            this.Paths = new String[LOD_COUNT];
+            //this.Paths = new List<string>();
             this.Mat = new List<Material>();
             this.LodControlled = true;
         }
@@ -55,10 +57,12 @@ namespace TrashSoup.Engine
         {
             this.LODState = LODStateEnum.HI;
             this.LODs = new Model[LOD_COUNT];
-            this.Paths = new List<String>();
-            for(int i = 0; i < LOD_COUNT; i++)
+            this.Paths = new String[LOD_COUNT];
+            //this.Paths = new List<String>();
+            for (int i = 0; i < LOD_COUNT; i++)
             {
                 this.LODs[i] = null;
+                this.Paths[i] = "";
             }
             this.Mat = new List<Material>();
             this.LodControlled = true;
@@ -72,12 +76,13 @@ namespace TrashSoup.Engine
                 if(lods[i] != null)
                 {
                     this.LODs[i] = lods[i];
-                    this.Paths.Add(ResourceManager.Instance.Models.FirstOrDefault(x => x.Value == lods[i]).Key);
+                    this.Paths[i] = ResourceManager.Instance.Models.FirstOrDefault(x => x.Value == lods[i]).Key;
+                    //this.Paths.Add(ResourceManager.Instance.Models.FirstOrDefault(x => x.Value == lods[i]).Key);
                 }
                 else
                 {
                     this.LODs[i] = lods[0];
-                    this.Paths.Add("");
+                    this.Paths[i] = "";
                 }
             }
             Mat = matList;
@@ -91,16 +96,18 @@ namespace TrashSoup.Engine
         public CustomModel(GameObject obj, CustomModel cm) : base(obj)
         {
             this.LODs = new Model[LOD_COUNT];
-            this.Paths = new List<String>();
+            this.Paths = new String[LOD_COUNT];
+            //this.Paths = new List<String>();
             this.Mat = new List<Material>();
             for(int i = 0; i < LOD_COUNT; ++i)
             {
                 this.LODs[i] = cm.LODs[i];
+                this.Paths[i] = cm.Paths[i];
             }
-            foreach(string path in cm.Paths)
-            {
-                this.Paths.Add(path);
-            }
+            //foreach(string path in cm.Paths)
+            //{
+            //    this.Paths.Add(path);
+            //}
             foreach(Material m in cm.Mat)
             {
                 this.Mat.Add(m);
@@ -276,10 +283,12 @@ namespace TrashSoup.Engine
             if(reader.Name == "LODs")
             {
                 reader.ReadStartElement();
+                int counter = 0;
                 while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
                 {
                     String s = reader.ReadElementString("ModelPath", "");
-                    Paths.Add(s);
+                    Paths[counter] = s;
+                    counter++;
                 }
                 reader.ReadEndElement();
             }
@@ -349,6 +358,10 @@ namespace TrashSoup.Engine
                 if(path != null)
                 {
                     writer.WriteElementString("ModelPath", path);
+                }
+                else
+                {
+                    writer.WriteElementString("ModelPath", "");
                 }
             }
             writer.WriteEndElement();
