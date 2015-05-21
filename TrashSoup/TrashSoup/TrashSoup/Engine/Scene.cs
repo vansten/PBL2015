@@ -115,11 +115,6 @@ namespace TrashSoup.Engine
 
         #region variables
 
-        private Vector3[] tempPLColors;
-        private Vector3[] tempPLSpeculars;
-        private Vector3[] tempPLPositions;
-        private float[] tempPLAttenuations;
-
         private bool ifRenderShadows;
         private RenderTarget2D globalShadowsRenderTarget;
         private RenderTarget2D tempRenderTarget01;
@@ -145,18 +140,6 @@ namespace TrashSoup.Engine
         #region methods
         public Scene()
         {
-            tempPLColors = new Vector3[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
-            tempPLSpeculars = new Vector3[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
-            tempPLPositions = new Vector3[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
-            tempPLAttenuations = new float[ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT];
-            for (int i = 0; i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i)
-            {
-                tempPLColors[i] = new Vector3(0.0f, 0.0f, 0.0f);
-                tempPLSpeculars[i] = new Vector3(0.0f, 0.0f, 0.0f);
-                tempPLPositions[i] = new Vector3(0.0f, 0.0f, 0.0f);
-                tempPLAttenuations[i] = 0.0f;
-            }
-
             DirectionalLights = new LightDirectional[ResourceManager.DIRECTIONAL_MAX_LIGHTS];
             for (int i = 0; i < ResourceManager.DIRECTIONAL_MAX_LIGHTS; ++i)
                 DirectionalLights[i] = null;
@@ -229,22 +212,62 @@ namespace TrashSoup.Engine
 
         public List<GameObject> GetObjectsOfType(Type type)
         {
-            return null;
+            List<GameObject> ret = new List<GameObject>();
+            int count = ObjectsDictionary.Count;
+            GameObject temp;
+            for(int i = 0; i < count; ++i)
+            {
+                temp = ObjectsDictionary.ElementAt(i).Value;
+                if(temp.GetType() == type)
+                {
+                    ret.Add(temp);
+                }
+            }
+
+            return ret;
         }
 
         public List<ObjectComponent> GetComponentsOfType(Type type)
         {
-            return null;
-        }
+            List<ObjectComponent> ret = new List<ObjectComponent>();
+            int count = ObjectsDictionary.Count;
+            GameObject temp;
+            ObjectComponent tempC;
+            for (int i = 0; i < count; ++i)
+            {
+                temp = ObjectsDictionary.ElementAt(i).Value;
+                if(temp.MyAnimator.GetType() == type)
+                {
+                    ret.Add(temp.MyAnimator);
+                }
+                if (temp.MyCarrierSocket.GetType() == type)
+                {
+                    ret.Add(temp.MyCarrierSocket);
+                }
+                if (temp.MyCollider.GetType() == type)
+                {
+                    ret.Add(temp.MyCollider);
+                }
+                if (temp.MyPhysicalObject.GetType() == type)
+                {
+                    ret.Add(temp.MyPhysicalObject);
+                }
+                if (temp.MyTransform.GetType() == type)
+                {
+                    ret.Add(temp.MyTransform);
+                }
+                int countC = temp.Components.Count;
+                for(int j = 0; j < countC; ++j)
+                {
+                    tempC = temp.Components[j];
+                    if(tempC.GetType() == type)
+                    {
+                        ret.Add(tempC);
+                    }
+                }
+            }
 
-        public List<GameObject> GetObjectsWithinFrustum(BoundingFrustum frustum)
-        {
-            return null;
-        }
-
-        public List<GameObject> GetObjectsWhichCollide(BoundingSphere bSphere)
-        {
-            return null;
+            return ret;
         }
 
         public void UpdateAll(GameTime gameTime)
@@ -299,68 +322,6 @@ namespace TrashSoup.Engine
             {
                 ifRenderShadows = true;
             }
-        }
-
-        public void FlushTempPointLightData()
-        {
-            for (int i = 0; i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i)
-            {
-                tempPLColors[i].X = 0.0f;
-                tempPLColors[i].Y = 0.0f;
-                tempPLColors[i].Z = 0.0f;
-                tempPLPositions[i].X = 0.0f;
-                tempPLPositions[i].Y = 0.0f;
-                tempPLPositions[i].Z = 0.0f;
-                tempPLSpeculars[i].X = 0.0f;
-                tempPLSpeculars[i].Y = 0.0f;
-                tempPLSpeculars[i].Z = 0.0f;
-                tempPLAttenuations[i] = 0.0f;
-            }
-        }
-
-        public Vector3[] GetPointLightDiffuseColors()
-        {
-            for (int i = 0; i < PointLights.Count && i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i)
-            {
-                tempPLColors[i] = PointLights[i].LightColor;
-            }
-
-            return tempPLColors;
-        }
-
-        public Vector3[] GetPointLightSpecularColors()
-        {
-            for (int i = 0; i < PointLights.Count && i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i)
-            {
-                tempPLSpeculars[i] = PointLights[i].LightSpecularColor;
-            }
-
-            return tempPLSpeculars;
-        }
-
-        public Vector3[] GetPointLightPositions()
-        {
-            for (int i = 0; i < PointLights.Count && i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i)
-            {
-                tempPLPositions[i] = PointLights[i].MyTransform.Position;
-            }
-
-            return tempPLPositions;
-        }
-
-        public float[] GetPointLightAttenuations()
-        {
-            for (int i = 0; i < PointLights.Count && i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i)
-            {
-                tempPLAttenuations[i] = PointLights[i].Attenuation;
-            }
-
-            return tempPLAttenuations;
-        }
-
-        public uint GetPointLightCount()
-        {
-            return (PointLights.Count > 10 ? 10 : (uint)PointLights.Count);
         }
 
         public Texture GetGlobalShadowMap()
