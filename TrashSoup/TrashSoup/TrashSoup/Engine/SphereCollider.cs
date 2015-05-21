@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Xml.Serialization;
 
 namespace TrashSoup.Engine
 {
-    public class SphereCollider : Collider
+    public class SphereCollider : Collider, IXmlSerializable
     {
         #region Variables
 
@@ -286,6 +287,24 @@ namespace TrashSoup.Engine
             Vector3 d = direction;
             d.Normalize();
             return Center + d * Radius;
+        }
+
+        public override System.Xml.Schema.XmlSchema GetSchema()
+        {
+            return base.GetSchema();
+        }
+
+        public override void ReadXml(System.Xml.XmlReader reader)
+        {
+            //reader.MoveToContent();
+            //reader.ReadStartElement();
+            base.ReadXml(reader);
+            //reader.ReadEndElement();
+        }
+
+        public override void WriteXml(System.Xml.XmlWriter writer)
+        {
+            base.WriteXml(writer);
         }
 
         #endregion
