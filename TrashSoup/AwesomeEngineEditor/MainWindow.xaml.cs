@@ -747,8 +747,8 @@ namespace AwesomeEngineEditor
 
             if(this.selectedObject.MyCollider != null)
             {
-                Components.ComponentWindow cw = new Components.ComponentWindow(this.selectedObject.MyCollider);
-                this.LoadedComponents.Add(cw);
+                Components.Collider c = new Components.Collider(this.selectedObject.MyCollider);
+                this.LoadedComponents.Add(c);
             }
 
             if (this.selectedObject.Components.Count > 0)

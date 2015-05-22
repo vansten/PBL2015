@@ -26,7 +26,7 @@ namespace TrashSoup.Engine
         public bool IsTrigger
         {
             get;
-            protected set;
+            set;
         }
 
         public Vector3 IntersectionVector

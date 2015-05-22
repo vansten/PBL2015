@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="AwesomeEngineEditor.Components.Collider"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Width="260" Height="auto">
+    <Grid>
+        <TextBlock Margin="15,10,32,85" FontSize="25" FontWeight="Bold">Collider</TextBlock>
+        <TextBlock Margin="10,48,178,48" Background="Transparent" FontSize="16">IsTrigger</TextBlock>
+        <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="87,43,0,0" IsChecked="{Binding IsTrigger}" Height="32" Width="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    </Grid>
+</UserControl>

@@ -197,7 +197,7 @@ namespace TrashSoup.Engine
             testBox.Dynamic = true;
 
             testBox.MyPhysicalObject = new PhysicalObject(testBox, 1.0f, 0.05f, false);
-            testBox.MyCollider = new SphereCollider(testBox);  //Add a box collider to test collisions
+            testBox.MyCollider = new BoxCollider(testBox);  //Add a box collider to test collisions
 
             // loading gameobjects
             GameObject rat = new GameObject(50, "Rat");

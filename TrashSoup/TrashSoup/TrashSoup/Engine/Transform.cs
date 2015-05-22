@@ -28,6 +28,7 @@ namespace TrashSoup.Engine
 
         #region properties
 
+        private int version = 1;
         public Vector3 Position
         { 
             get
@@ -36,54 +37,132 @@ namespace TrashSoup.Engine
             }
             set
             {
-                Vector3 tmp = this.prevPosition;
-                this.positionChangeNormal = value - this.position;
-                this.prevPosition = this.position;
-                position.X = value.X;
-                CalculateWorldMatrix();
-                if (!TrashSoupGame.Instance.EditorMode)
+                if(version == 1)
                 {
-                    if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
-                    if (!PhysicsManager.Instance.CanMove(this.MyObject))
+                    Vector3 tmp = this.prevPosition;
+                    this.positionChangeNormal = value - this.position;
+                    this.prevPosition = this.position;
+                    position.X = value.X;
+                    CalculateWorldMatrix();
+                    if (!TrashSoupGame.Instance.EditorMode)
                     {
-                        this.position = this.prevPosition;
-                        this.prevPosition = tmp;
-                        this.positionChangeNormal = Vector3.Zero;
                         if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
-                        CalculateWorldMatrix();
+                        if (!PhysicsManager.Instance.CanMove(this.MyObject))
+                        {
+                            this.position = this.prevPosition;
+                            this.prevPosition = tmp;
+                            this.positionChangeNormal = Vector3.Zero;
+                            if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
+                            CalculateWorldMatrix();
+                        }
                     }
+                    this.prevPosition = this.position;
+                    position.Y = value.Y;
+                    CalculateWorldMatrix();
+                    if (!TrashSoupGame.Instance.EditorMode)
+                    {
+                        if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
+                        if (!PhysicsManager.Instance.CanMove(this.MyObject))
+                        {
+                            this.position = this.prevPosition;
+                            this.prevPosition = tmp;
+                            this.positionChangeNormal = Vector3.Zero;
+                            if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
+                            CalculateWorldMatrix();
+                        }
+                    }
+                    this.prevPosition = this.position;
+                    position.Z = value.Z;
+                    CalculateWorldMatrix();
+                    if (!TrashSoupGame.Instance.EditorMode)
+                    {
+                        if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
+                        if (!PhysicsManager.Instance.CanMove(this.MyObject))
+                        {
+                            this.position = this.prevPosition;
+                            this.prevPosition = tmp;
+                            this.positionChangeNormal = Vector3.Zero;
+                            if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
+                            CalculateWorldMatrix();
+                        }
+                    }
+                    if (PositionChanged != null) PositionChanged(this, null);
                 }
-                this.prevPosition = this.position;
-                position.Y = value.Y;
-                CalculateWorldMatrix();
-                if (!TrashSoupGame.Instance.EditorMode)
+                else
                 {
-                    if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
-                    if (!PhysicsManager.Instance.CanMove(this.MyObject))
+                    if (TrashSoupGame.Instance.EditorMode)
                     {
-                        this.position = this.prevPosition;
-                        this.prevPosition = tmp;
-                        this.positionChangeNormal = Vector3.Zero;
-                        if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
+                        this.prevPosition = this.position;
+                        this.position = value;
+                        this.positionChangeNormal = this.position - this.prevPosition;
                         CalculateWorldMatrix();
+                        if (this.MyObject.MyCollider != null)
+                        {
+                            this.MyObject.MyCollider.UpdateCollider();
+                        }
                     }
-                }
-                this.prevPosition = this.position;
-                position.Z = value.Z;
-                CalculateWorldMatrix();
-                if (!TrashSoupGame.Instance.EditorMode)
-                {
-                    if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
-                    if (!PhysicsManager.Instance.CanMove(this.MyObject))
+                    else
                     {
-                        this.position = this.prevPosition;
-                        this.prevPosition = tmp;
+                        int i = 0;
+                        int maxI = 6;
+                        this.prevPosition = this.position;
                         this.positionChangeNormal = Vector3.Zero;
-                        if (this.MyObject.MyCollider != null) this.MyObject.MyCollider.UpdateCollider();
+                        this.positionChangeNormal = value - this.position;
+                        this.position.X = value.X;
                         CalculateWorldMatrix();
+                        if (this.MyObject.MyCollider != null)
+                        {
+                            this.MyObject.MyCollider.UpdateCollider();
+                        }
+                        while (!PhysicsManager.Instance.CanMove(this.MyObject) && i < maxI)
+                        {
+                            this.position.X -= this.positionChangeNormal.X / (float)maxI;
+                            CalculateWorldMatrix();
+                            if (this.MyObject.MyCollider != null)
+                            {
+                                this.MyObject.MyCollider.UpdateCollider();
+                            }
+                            ++i;
+                        }
+                        i = 0;
+                        this.prevPosition = this.position;
+                        this.position.Y = value.Y;
+                        CalculateWorldMatrix();
+                        if (this.MyObject.MyCollider != null)
+                        {
+                            this.MyObject.MyCollider.UpdateCollider();
+                        }
+                        while (!PhysicsManager.Instance.CanMove(this.MyObject) && i < maxI)
+                        {
+                            this.position.Y -= this.positionChangeNormal.Y / (float)maxI;
+                            CalculateWorldMatrix();
+                            if (this.MyObject.MyCollider != null)
+                            {
+                                this.MyObject.MyCollider.UpdateCollider();
+                            }
+                            ++i;
+                        }
+                        i = 0;
+                        this.prevPosition = this.position;
+                        this.position.Z = value.Z;
+                        CalculateWorldMatrix();
+                        if (this.MyObject.MyCollider != null)
+                        {
+                            this.MyObject.MyCollider.UpdateCollider();
+                        }
+                        while (!PhysicsManager.Instance.CanMove(this.MyObject) && i < maxI)
+                        {
+                            this.position.Z -= this.positionChangeNormal.Z / (float)maxI;
+                            CalculateWorldMatrix();
+                            if (this.MyObject.MyCollider != null)
+                            {
+                                this.MyObject.MyCollider.UpdateCollider();
+                            }
+                            ++i;
+                        }
                     }
+                    if (PositionChanged != null) PositionChanged(this, null);
                 }
-                if(PositionChanged != null) PositionChanged(this, null);
             }
         }
 
@@ -186,6 +265,10 @@ namespace TrashSoup.Engine
             if(MyObject.Dynamic)
             {
                 CalculateWorldMatrix();
+            }
+            if(InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.I))
+            {
+                this.version = this.version == 1 ? 2 : 1;
             }
         }
 
