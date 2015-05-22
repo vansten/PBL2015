@@ -50,7 +50,8 @@ namespace TrashSoup.Gameplay
         /// </summary>
         public bool IsAttacking()
         {
-            return InputManager.Instance.GetGamePadButtonDown(Microsoft.Xna.Framework.Input.Buttons.RightTrigger);
+            return (InputManager.Instance.GetGamePadButtonDown(Microsoft.Xna.Framework.Input.Buttons.RightTrigger) ||
+                InputManager.Instance.GetLeftMouseButtonDown());
         }
 
         /// <summary>

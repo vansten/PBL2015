@@ -189,6 +189,17 @@ namespace TrashSoup.Gameplay
                 }
             }
 
+            if(InputHandler.Instance.IsAttacking())
+            {
+                if(MyObject.MyAnimator != null)
+                {
+                    if(MyObject.MyAnimator.ThirdState == null)
+                    {
+                        MyObject.MyAnimator.ChangeState("Jump");
+                    }
+                }
+            }
+
             if(this.collisionWithTrash)
             {
                 if(!this.collectedTrash)
