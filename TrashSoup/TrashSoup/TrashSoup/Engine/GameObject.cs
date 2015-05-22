@@ -235,15 +235,33 @@ namespace TrashSoup.Engine
             }
 
             int cCount = children.Count;
+            for (int i = 0; i < cCount; ++i)
+            {
+                if (children[i] == obj)
+                {
+                    int ccCount = children[i].children.Count;
+                    for (int j = 0; j < ccCount; ++j)
+                    {
+                        this.children.Add(children[i].children[j]);
+                    }
+                    children.Remove(obj);
+                }
+            }
+        }
+
+        public void RemoveChildWithoutHierarchy(GameObject obj)
+        {
+            if (!children.Contains(obj))
+            {
+                Debug.Log("GameObject ERRROR: Child is not here!");
+                return;
+            }
+
+            int cCount = children.Count;
             for(int i = 0; i < cCount; ++i)
             {
                 if(children[i] == obj)
                 {
-                    int ccCount = children[i].children.Count;
-                    for(int j = 0; j < ccCount; ++j)
-                    {
-                        this.children.Add(children[i].children[j]);
-                    }
                     children.Remove(obj);
                 }
             }

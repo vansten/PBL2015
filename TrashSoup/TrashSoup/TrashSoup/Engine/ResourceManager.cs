@@ -247,7 +247,7 @@ namespace TrashSoup.Engine
 
             //Wika i Kasia testowanie modeli
             GameObject awsomeTest = new GameObject(8, "testground");
-            awsomeTest.MyTransform = new Transform(awsomeTest, new Vector3(-10.0f, 0.0f, -5.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.4f);
+            awsomeTest.MyTransform = new Transform(awsomeTest, new Vector3(-10.0f, 0.0f, -5.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(MathHelper.PiOver2, 0.0f, 0.0f), 0.01f);
             awsomeTest.Components.Add(new CustomModel(awsomeTest, new Model[] { Models["Models/Enviro/Minor/barell"], null, null }, awsomeTestMats));
             awsomeTest.MyCollider = new BoxCollider(awsomeTest, false);
 
