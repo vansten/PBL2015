@@ -542,6 +542,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\Weapons\Machete\Machete.FBX">
+      <Name>Machete</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -589,10 +594,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Home\CorkBoard\" />
-    <Folder Include="Models\Weapons\Machete\" />
     <Folder Include="Models\Weapons\Newspaper\" />
     <Folder Include="Textures\Home\CorkBoard\" />
-    <Folder Include="Textures\Weapons\Machete\" />
     <Folder Include="Textures\Weapons\Newspaper\" />
   </ItemGroup>
   <ItemGroup>
@@ -947,6 +950,18 @@
     </Compile>
     <Compile Include="Textures\Enviro\Nature\TreeBig_N.dds">
       <Name>TreeBig_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Weapons\Machete\Machete_D.dds">
+      <Name>Machete_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\Machete\Machete_N.dds">
+      <Name>Machete_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
