@@ -990,7 +990,9 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\Weapons\Newspaper\Newspaper_N.png">
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Weapons\Newspaper\Newspaper_N.dds">
       <Name>Newspaper_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
