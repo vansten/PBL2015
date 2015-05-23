@@ -502,7 +502,6 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Models\Enviro\Minor\TrashBin.FBX">
       <Name>TrashBin</Name>
       <Importer>FbxImporter</Importer>
@@ -512,12 +511,11 @@
       <Name>Knife</Name>
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
-=======
+    </Compile>
     <Compile Include="Models\MainCharacter\MainCharacter.FBX">
       <Name>MainCharacter</Name>
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
->>>>>>> 69153069cd436e78254a3e65730c51bc44be870a
     </Compile>
   </ItemGroup>
   <ItemGroup>
