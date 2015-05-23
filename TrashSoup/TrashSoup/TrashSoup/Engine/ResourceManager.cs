@@ -67,6 +67,7 @@ namespace TrashSoup.Engine
             AddModel("Models/Test/TestSphere_LOD2");
             AddModel("Models/Test/TestMirror");
             AddModel("Models/Weapons/Signs/StopSign");
+            AddModel("Models/Weapons/Stones/brick");
             AddModel("Models/Test/TestSquarePlane");
             AddModel("Models/Test/TestSquarePlane");
             AddModel("Models/MainCharacter/MainCharacter");
@@ -136,6 +137,8 @@ namespace TrashSoup.Engine
 
             List<Material> deSign = LoadBasicMaterialsFromModel(Models["Models/Weapons/Signs/StopSign"], this.Effects[@"Effects\NormalEffect"]);
 
+            List<Material> bb = LoadBasicMaterialsFromModel(Models["Models/Weapons/Stones/brick"], Effects[@"Effects\NormalEffect"]);
+
             List<Material> testTerMats = new List<Material>();
             Material testTerMat = new Material("testTerMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Test\metal01_d"]);
             testTerMat.NormalMap = LoadTexture(@"Textures\Test\water");
@@ -185,7 +188,7 @@ namespace TrashSoup.Engine
 
             // loading gameobjects
             GameObject testBox = new GameObject(1, "Player");
-            testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, -28.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
+            testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, -5.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
             CustomModel skModel = new CustomModel(testBox, new Model[] { Models["Models/Test/TestGuy"], null, null }, playerMats);
             Animator playerAnimator = new Animator(testBox, skModel.LODs[0]);
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/Test/walking_1"], "walking_1"));
@@ -215,7 +218,6 @@ namespace TrashSoup.Engine
             testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
             CustomModel terModel = new CustomModel(testTer, new Model[] { Models["Models/Test/TestTerrain"], null, null }, testTerMats);
             terModel.LodControlled = false;
-            testTer.MyCollider = new BoxCollider(testTer, true);
             testTer.Components.Add(terModel);
 
             GameObject testBox2 = new GameObject(3, "testBox2");
@@ -245,6 +247,16 @@ namespace TrashSoup.Engine
             sbModel.LodControlled = false;
             skyBox.Components.Add(sbModel);
 
+            // moje na pagi
+            GameObject cegla = new GameObject(14, "cegla");
+            cegla.MyTransform = new Transform(cegla, new Vector3(0.0f, 2.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
+            cegla.Components.Add(new CustomModel(cegla, new Model[] { Models["Models/Weapons/Stones/brick"], null, null }, bb));
+            cegla.MyCollider = new BoxCollider(cegla);
+            Destructible destr = new Destructible(cegla);
+            destr.PartsPath = "Models/Weapons/Stones/brick_destructible";
+            destr.PartCount = 9;
+            cegla.Components.Add(destr);
+
             //Wika i Kasia testowanie modeli
             GameObject awsomeTest = new GameObject(8, "testground");
             awsomeTest.MyTransform = new Transform(awsomeTest, new Vector3(-12.0f, 1.0f, -5.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(MathHelper.PiOver2, 0.0f, 0.0f), 1.0f);
@@ -261,7 +273,7 @@ namespace TrashSoup.Engine
             lp1.SetupShadowRender();
 
             // loading scene
-            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), DateTime.Now, 3000.0f, 35.0f, 50.0f, true, true, true, false, true));
+            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), DateTime.Now, 3000.0f, 35.0f, 50.0f, false, true, true, false, true));
 
             Camera cam = null;
 
@@ -280,16 +292,17 @@ namespace TrashSoup.Engine
             CurrentScene.Cam = cam;
 
             // adding items to scene
-            testBox.AddChild(testBox3);
+            //testBox.AddChild(testBox3);
             CurrentScene.AddObject(skyBox);
             CurrentScene.AddObject(testTer);
             CurrentScene.AddObject(testBox);
             CurrentScene.AddObject(testBox2);
-            //CurrentScene.AddObject(testBox3);
+            CurrentScene.AddObject(testBox3);
             CurrentScene.AddObject(testMirror);
             CurrentScene.AddObject(testWater);
             CurrentScene.AddObject(awsomeTest);//Wika i kasia
             CurrentScene.AddObject(rat);
+            CurrentScene.AddObject(cegla);
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;
@@ -571,7 +584,7 @@ namespace TrashSoup.Engine
         /// <param name="animation"></param>
         /// <param name="newName"></param>
         /// <returns></returns>
-        private KeyValuePair<string, SkinningModelLibrary.AnimationClip> LoadAnimationFromModel(Model model, Model animation, string newName)
+        public KeyValuePair<string, SkinningModelLibrary.AnimationClip> LoadAnimationFromModel(Model model, Model animation, string newName)
         {
             // need to extract AnimationClips from animation and save it into new SkinningData with the rest
             // of the data from original skinned Model. 
@@ -590,7 +603,7 @@ namespace TrashSoup.Engine
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        private List<Material> LoadBasicMaterialsFromModel(Model model, Effect toBeAdded)
+        public List<Material> LoadBasicMaterialsFromModel(Model model, Effect toBeAdded)
         {
             List<Material> materials = new List<Material>();
 
