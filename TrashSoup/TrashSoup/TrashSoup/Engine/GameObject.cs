@@ -13,6 +13,8 @@ namespace TrashSoup.Engine
     {
         #region variables
 
+        private bool visible;
+
         private PhysicalObject myPhisicalObject;
         private Socket myCarrierSocket;
 
@@ -26,7 +28,23 @@ namespace TrashSoup.Engine
         public string Name { get; set; }
         public List<string> Tags { get; set; }
         public bool Enabled { get; set; }
-        public bool Visible { get; set; }
+        public bool Visible 
+        { 
+            get
+            {
+                return visible;
+            }
+            set
+            {
+                visible = value;
+                ChildrenVisible = value;
+            }
+        }
+
+        /// <summary>
+        /// The value of this property is also modified by Visible property!!!
+        /// </summary>
+        public bool ChildrenVisible { get; set; }
         public bool Dynamic { get; set; }
 
         public Transform MyTransform { get; set; }
@@ -171,12 +189,6 @@ namespace TrashSoup.Engine
         {
             if(this.Visible && this.Enabled)
             {
-                int cCount = children.Count;
-                for (int i = 0; i < cCount; ++i)
-                {
-                    children[i].Draw(cam, effect, gameTime);
-                }
-
                 foreach (ObjectComponent obj in Components)
                 {
                     obj.Draw(cam, effect, gameTime);
@@ -188,10 +200,19 @@ namespace TrashSoup.Engine
 #if DEBUG
                 if (this.MyCollider != null)
                 {
-                    //this.MyCollider.Draw(cam, effect, gameTime);
+                   // this.MyCollider.Draw(cam, effect, gameTime);
                 }
 
 #endif
+            }
+
+            if(this.ChildrenVisible && this.Enabled)
+            {
+                int cCount = children.Count;
+                for (int i = 0; i < cCount; ++i)
+                {
+                    children[i].Draw(cam, effect, gameTime);
+                }
             }
         }
 
