@@ -542,17 +542,15 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Models\Enviro\Nature\TreeBig2.FBX">
       <Name>TreeBig2</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
-=======
+    </Compile>
     <Compile Include="Models\Weapons\Machete\Machete.FBX">
       <Name>Machete</Name>
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
->>>>>>> b68326f5669a414bc6b4cd21c542c405ae370785
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -962,7 +960,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="Textures\Enviro\Nature\TreeBig2_D.dds">
       <Name>TreeBig2_D</Name>
       <Importer>TextureImporter</Importer>
@@ -970,7 +967,9 @@
     </Compile>
     <Compile Include="Textures\Enviro\Nature\TreeBig2_N.dds">
       <Name>TreeBig2_N</Name>
-=======
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Compile Include="Textures\Weapons\Machete\Machete_D.dds">
       <Name>Machete_D</Name>
       <Importer>TextureImporter</Importer>
@@ -978,7 +977,6 @@
     </Compile>
     <Compile Include="Textures\Weapons\Machete\Machete_N.dds">
       <Name>Machete_N</Name>
->>>>>>> b68326f5669a414bc6b4cd21c542c405ae370785
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
