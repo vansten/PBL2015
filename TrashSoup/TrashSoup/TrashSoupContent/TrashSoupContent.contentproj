@@ -597,6 +597,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\Weapons\Newspaper\Newspaper.FBX">
+      <Name>Newspaper</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -644,9 +649,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Home\CorkBoard\" />
-    <Folder Include="Models\Weapons\Newspaper\" />
     <Folder Include="Textures\Home\CorkBoard\" />
-    <Folder Include="Textures\Weapons\Newspaper\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Enviro\Ground\streets_blood_D.dds">
@@ -1022,6 +1025,18 @@
     </Compile>
     <Compile Include="Textures\Weapons\Machete\Machete_N.dds">
       <Name>Machete_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Weapons\Newspaper\Newspaper_D.dds">
+      <Name>Newspaper_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\Newspaper\Newspaper_N.png">
+      <Name>Newspaper_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
