@@ -517,6 +517,21 @@
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\Weapons\Hammer\Hammer.FBX">
+      <Name>Hammer</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Buildings\Big_house2.FBX">
+      <Name>Big_house2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Minor\GasBottle.FBX">
+      <Name>GasBottle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -564,11 +579,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Home\CorkBoard\" />
-    <Folder Include="Models\Weapons\Hammer\" />
     <Folder Include="Models\Weapons\Machete\" />
     <Folder Include="Models\Weapons\Newspaper\" />
     <Folder Include="Textures\Home\CorkBoard\" />
-    <Folder Include="Textures\Weapons\Hammer\" />
     <Folder Include="Textures\Weapons\Machete\" />
     <Folder Include="Textures\Weapons\Newspaper\" />
   </ItemGroup>
@@ -876,6 +889,30 @@
     </Compile>
     <Compile Include="Textures\Weapons\Knife\knife_N.dds">
       <Name>knife_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Buildings\Big_house2_D.dds">
+      <Name>Big_house2_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Buildings\Big_house2_N.dds">
+      <Name>Big_house2_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Minor\GasBottle_D.dds">
+      <Name>GasBottle_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Minor\GasBottle_N.dds">
+      <Name>GasBottle_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
