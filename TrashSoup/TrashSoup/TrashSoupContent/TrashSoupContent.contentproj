@@ -497,6 +497,16 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\Enviro\Minor\TrashBin.FBX">
+      <Name>TrashBin</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Knife\Knife.FBX">
+      <Name>Knife</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -545,7 +555,6 @@
   <ItemGroup>
     <Folder Include="Models\Home\CorkBoard\" />
     <Folder Include="Models\Weapons\Hammer\" />
-    <Folder Include="Models\Weapons\Knife\" />
     <Folder Include="Models\Weapons\Machete\" />
     <Folder Include="Models\Weapons\Newspaper\" />
     <Folder Include="Textures\Home\CorkBoard\" />
@@ -833,6 +842,30 @@
     </Compile>
     <Compile Include="Textures\Enviro\Minor\barell_N.dds">
       <Name>barell_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Minor\TrashBin_D.dds">
+      <Name>TrashBin_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Minor\TrashBin_N.dds">
+      <Name>TrashBin_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Weapons\Knife\knife_D.dds">
+      <Name>knife_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\Knife\knife_N.dds">
+      <Name>knife_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
