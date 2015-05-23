@@ -342,6 +342,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
+    <Compile Include="Animations\MainCharacter\walk_1.FBX">
+      <Name>walk_1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
     <None Include="Effects\Constants.fxh">
       <Name>Constants</Name>
       <Importer>EffectImporter</Importer>
@@ -497,6 +502,7 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Models\Enviro\Minor\TrashBin.FBX">
       <Name>TrashBin</Name>
       <Importer>FbxImporter</Importer>
@@ -506,6 +512,12 @@
       <Name>Knife</Name>
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
+=======
+    <Compile Include="Models\MainCharacter\MainCharacter.FBX">
+      <Name>MainCharacter</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+>>>>>>> 69153069cd436e78254a3e65730c51bc44be870a
     </Compile>
   </ItemGroup>
   <ItemGroup>

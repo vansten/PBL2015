@@ -66,11 +66,11 @@ namespace TrashSoup.Engine
             AddModel("Models/Test/TestSphere_LOD1");
             AddModel("Models/Test/TestSphere_LOD2");
             AddModel("Models/Test/TestMirror");
-            AddModel("Models/Weapons/Signs/DeadEndSign");
+            AddModel("Models/Weapons/Signs/StopSign");
             AddModel("Models/Test/TestSquarePlane");
             AddModel("Models/Test/TestSquarePlane");
-            AddModel("Models/Enemies/Rat");
-            AddAnimation("Animations/Enemies/Rat_attack");
+            AddModel("Models/MainCharacter/MainCharacter");
+            AddAnimation("Animations/MainCharacter/walk_1");
             AddAnimation("Animations/Test/walking_1");
             AddAnimation("Animations/Test/idle_1");
             AddAnimation("Animations/Test/jump_1");
@@ -132,9 +132,9 @@ namespace TrashSoup.Engine
                 mat.RecieveShadows = true;
             }
 
-            List<Material> ratMats = LoadBasicMaterialsFromModel(Models["Models/Enemies/Rat"], this.Effects[@"Effects\NormalEffect"]);
+            List<Material> ratMats = LoadBasicMaterialsFromModel(Models["Models/MainCharacter/MainCharacter"], this.Effects[@"Effects\NormalEffect"]);
 
-            List<Material> deSign = LoadBasicMaterialsFromModel(Models["Models/Weapons/Signs/DeadEndSign"], this.Effects[@"Effects\NormalEffect"]);
+            List<Material> deSign = LoadBasicMaterialsFromModel(Models["Models/Weapons/Signs/StopSign"], this.Effects[@"Effects\NormalEffect"]);
 
             List<Material> testTerMats = new List<Material>();
             Material testTerMat = new Material("testTerMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Test\metal01_d"]);
@@ -201,13 +201,13 @@ namespace TrashSoup.Engine
 
             // loading gameobjects
             GameObject rat = new GameObject(50, "Rat");
-            rat.MyTransform = new Transform(rat, new Vector3(0.0f, 3.4f, -15.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.001f);
-            CustomModel ratModel = new CustomModel(rat, new Model[] { Models["Models/Enemies/Rat"], null, null }, ratMats);
+            rat.MyTransform = new Transform(rat, new Vector3(0.0f, 0.0f, -15.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.05f);
+            CustomModel ratModel = new CustomModel(rat, new Model[] { Models["Models/MainCharacter/MainCharacter"], null, null }, ratMats);
+            rat.Components.Add(ratModel);
             Animator ratAnimator = new Animator(rat, ratModel.LODs[0]);
-            ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], this.Animations["Animations/Enemies/Rat_attack"], "Rat_TAnim"));
+            ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], this.Animations["Animations/MainCharacter/walk_1"], "Rat_TAnim"));
             ratAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", ratAnimator.GetAnimationPlayer("Rat_TAnim")));
             ratAnimator.CurrentState = ratAnimator.AvailableStates["Walk"];
-            rat.Components.Add(ratModel);
             rat.MyAnimator = ratAnimator;
                        
 
@@ -219,8 +219,8 @@ namespace TrashSoup.Engine
             testTer.Components.Add(terModel);
 
             GameObject testBox2 = new GameObject(3, "testBox2");
-            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 0.1f, -0.01f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(-MathHelper.PiOver4 + 0.6f, -MathHelper.PiOver2, 0.0f), 1.0f);
-            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Weapons/Signs/DeadEndSign"], null, null }, deSign));
+            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, -1.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(MathHelper.Pi, 0.0f, 0.0f), 1.0f);
+            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Weapons/Signs/StopSign"], null, null }, deSign));
             testBox2.MyCollider = new BoxCollider(testBox2, true);
             testBox2.Dynamic = true;
             testBox2.MyCarrierSocket = new Socket(testBox, testBox2, null, "mixamorig:RightHand");
