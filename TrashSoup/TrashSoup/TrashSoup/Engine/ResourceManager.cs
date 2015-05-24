@@ -75,7 +75,7 @@ namespace TrashSoup.Engine
             AddAnimation("Animations/Test/walking_1");
             AddAnimation("Animations/Test/idle_1");
             AddAnimation("Animations/Test/jump_1");
-            AddModel("Models/Weapons/Mace/Mace");    //Wika i Kasia
+            AddModel("Models/Weapons/Maczuga/Mace");    //Wika i Kasia
 
             // loading materials
             List<Material> testPlayerMats = new List<Material>();
@@ -171,10 +171,10 @@ namespace TrashSoup.Engine
 
             //WIKA I KASIA Testowanie modeli
             List<Material> awsomeTestMats = new List<Material>();
-            Material awsomeTestMat = new Material("awsomeTestMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Weapons\Mace\Mace_D"]);
+            Material awsomeTestMat = new Material("awsomeTestMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Weapons\Maczuga\Mace_D"]);
             awsomeTestMats.Add(awsomeTestMat);
             awsomeTestMats.Add(awsomeTestMat);
-            awsomeTestMat.NormalMap = Textures[@"Textures\Weapons\Mace\Mace_N"];
+            awsomeTestMat.NormalMap = Textures[@"Textures\Weapons\Maczuga\Mace_N"];
             awsomeTestMat.Glossiness = 40.0f;
             awsomeTestMat.ReflectivityColor = new Vector3(1.0f, 0.0f, 1.0f);
             awsomeTestMat.ReflectivityBias = 0.0f;
@@ -260,7 +260,7 @@ namespace TrashSoup.Engine
             //Wika i Kasia testowanie modeli
             GameObject awsomeTest = new GameObject(8, "testground");
             awsomeTest.MyTransform = new Transform(awsomeTest, new Vector3(-12.0f, 1.0f, -5.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(MathHelper.PiOver2, 0.0f, 0.0f), 1.0f);
-            awsomeTest.Components.Add(new CustomModel(awsomeTest, new Model[] { Models["Models/Weapons/Mace/Mace"], null, null }, awsomeTestMats));
+            awsomeTest.Components.Add(new CustomModel(awsomeTest, new Model[] { Models["Models/Weapons/Maczuga/Mace"], null, null }, awsomeTestMats));
             awsomeTest.MyCollider = new BoxCollider(awsomeTest, false);
 
             // adding lights
@@ -534,8 +534,8 @@ namespace TrashSoup.Engine
             LoadTexture(@"Textures\ParticleTest\Particle");
 
             //Wika i Kasia
-            LoadTexture(@"Textures\Weapons\Mace\Mace_D");
-            LoadTexture(@"Textures\Weapons\Mace\Mace_N");
+            LoadTexture(@"Textures\Weapons\Maczuga\Mace_D");
+            LoadTexture(@"Textures\Weapons\Maczuga\Mace_N");
         }
 
         /// <summary>

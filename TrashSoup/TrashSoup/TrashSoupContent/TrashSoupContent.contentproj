@@ -630,7 +630,12 @@
     <Compile Include="Models\Storyline\Food.FBX">
       <Name>Food</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Maczuga\Mace.FBX">
+      <Name>Mace</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -1139,6 +1144,18 @@
     </Compile>
     <Compile Include="Textures\Storyline\Food_N.dds">
       <Name>Food_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Weapons\Maczuga\Mace_D.dds">
+      <Name>Mace_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\Maczuga\Mace_N.dds">
+      <Name>Mace_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
