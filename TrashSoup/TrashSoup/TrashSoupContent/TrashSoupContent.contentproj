@@ -617,6 +617,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\Weapons\Mace\Mace.FBX">
+      <Name>Mace</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -1088,6 +1093,18 @@
     </Compile>
     <Compile Include="Textures\Enviro\Minor\bench_N.dds">
       <Name>bench_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Weapons\Mace\Mace_D.dds">
+      <Name>Mace_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\Mace\Mace_N.dds">
+      <Name>Mace_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
