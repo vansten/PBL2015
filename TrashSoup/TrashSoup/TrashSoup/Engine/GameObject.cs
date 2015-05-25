@@ -200,7 +200,7 @@ namespace TrashSoup.Engine
 #if DEBUG
                 if (this.MyCollider != null)
                 {
-                   // this.MyCollider.Draw(cam, effect, gameTime);
+                   //this.MyCollider.Draw(cam, effect, gameTime);
                 }
 
 #endif
@@ -264,9 +264,41 @@ namespace TrashSoup.Engine
                     for (int j = 0; j < ccCount; ++j)
                     {
                         this.children.Add(children[i].children[j]);
+                        children[i].children[j].parent = this;
                     }
                     children.Remove(obj);
                 }
+            }
+        }
+
+        public void RemoveChildAddHigher(GameObject obj)
+        {
+            if (!children.Contains(obj))
+            {
+                Debug.Log("GameObject ERRROR: Child is not here!");
+                return;
+            }
+
+            int cCount = children.Count;
+            for (int i = 0; i < cCount; ++i)
+            {
+                if (children[i] == obj)
+                {
+                    if (parent != null)
+                    {
+                        parent.children.Add(obj);
+                        obj.parent = parent;
+                    }
+                    else
+                    {
+                        ResourceManager.Instance.CurrentScene.AddObjectRuntime(obj);
+                        obj.parent = null;
+                    }
+                }
+            }
+            for(int i = 0; i < cCount; ++i)
+            {
+                children.Remove(obj);
             }
         }
 

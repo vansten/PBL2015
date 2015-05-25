@@ -682,6 +682,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\Weapons\HammerSmall\HammerSmall.FBX">
+      <Name>HammerSmall</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -1300,6 +1305,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Textures\Weapons\HammerSmall\HammerSmall_D.dds">
+      <Name>HammerSmall_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\HammerSmall\HammerSmall_N.dds">
+      <Name>HammerSmall_N</Name>
+       <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+ </Compile>
     <Compile Include="Fonts\manaspace.bmp">
       <Name>manaspace</Name>
       <Importer>TextureImporter</Importer>

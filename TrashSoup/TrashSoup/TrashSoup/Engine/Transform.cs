@@ -190,9 +190,35 @@ namespace TrashSoup.Engine
             }
             set
             {
-                rotation.X = MathHelper.Clamp(value.X, -MathHelper.Pi, MathHelper.Pi);
-                rotation.Y = MathHelper.Clamp(value.Y, -MathHelper.Pi, MathHelper.Pi);
-                rotation.Z = MathHelper.Clamp(value.Z, -MathHelper.Pi, MathHelper.Pi);
+                rotation = value;
+
+                if(rotation.X > MathHelper.TwoPi)
+                {
+                    rotation.X -= MathHelper.TwoPi;
+                }
+                else if (rotation.X < -MathHelper.TwoPi)
+                {
+                    rotation.X += MathHelper.TwoPi;
+                }
+
+                if (rotation.Y > MathHelper.TwoPi)
+                {
+                    rotation.Y -= MathHelper.TwoPi;
+                }
+                else if (rotation.Y < -MathHelper.TwoPi)
+                {
+                    rotation.Y += MathHelper.TwoPi;
+                }
+
+                if (rotation.Z > MathHelper.TwoPi)
+                {
+                    rotation.Z -= MathHelper.TwoPi;
+                }
+                else if (rotation.Z < -MathHelper.TwoPi)
+                {
+                    rotation.Z += MathHelper.TwoPi;
+                }
+
                 CalculateWorldMatrix();
             }
         }
@@ -280,6 +306,21 @@ namespace TrashSoup.Engine
         public Matrix GetWorldMatrix()
         {
             return worldMatrix;
+        }
+
+        public void BakeTransformFromParent()
+        {
+            GameObject parent = MyObject.GetParent();
+            if (parent != null && parent.MyTransform != null)
+            {
+                Matrix parents = MyObject.GetParent().MyTransform.GetWorldMatrix();
+                Vector3 trans, scl;
+                Quaternion quat;
+                parents.Decompose(out scl, out quat, out trans);
+
+                this.position = Vector3.Transform(this.position, Matrix.CreateFromQuaternion(quat) * Matrix.CreateTranslation(trans));
+                this.rotation += parent.MyTransform.rotation;
+            }
         }
 
         protected override void Start()

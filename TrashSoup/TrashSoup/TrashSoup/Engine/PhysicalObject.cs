@@ -149,19 +149,19 @@ namespace TrashSoup.Engine
                 if (this.acceleration.Length() < 0.001f) this.acceleration = Vector3.Zero;
 
                 //Accelerate
-                this.Velocity += this.acceleration * (float)gameTime.ElapsedGameTime.Milliseconds / 1000.0f;
+                this.Velocity += this.acceleration * (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
 
                 //Add a gravity
                 if(this.IsUsingGravity)
                 {
-                    this.Velocity += this.Mass * PhysicsManager.Instance.Gravity * (float)gameTime.ElapsedGameTime.Milliseconds / 1000.0f;
+                    this.Velocity += this.Mass * PhysicsManager.Instance.Gravity * (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
                 }
 
 
                 //Change game object position because of velocity
                 if (this.MyObject.MyTransform != null)
                 {
-                    this.MyObject.MyTransform.Position += Velocity * (float)gameTime.ElapsedGameTime.Milliseconds / 1000.0f;
+                    this.MyObject.MyTransform.Position += Velocity * (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
                 }
             }
         }
