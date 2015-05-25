@@ -10,6 +10,8 @@ namespace TrashSoup.Gameplay
 {
     class PlayerHUD : ObjectComponent
     {
+        private string[] messages = new string[] { "#trashsoup: check dis out!", "#trashsoup: love my bf! Eric <3", "#trashsoup: TUL is awesome!", "#trashsoup: he's gonna win!", "#trashsoup: nailed it!", "#trashsoup: I love him <3", "#trashsoup: so #yolo !", "#trashsoup: more on social media!" };
+
         private Texture2D hpTexture;
         private Texture2D hpBGTexture;
         private Texture2D heartTexture;
@@ -20,6 +22,23 @@ namespace TrashSoup.Gameplay
         private Texture2D backpackTexture;
         private Texture2D burgerTexture;
         private SpriteFont equipmentFont;
+        private Texture2D liveBGTexture;
+        private Texture2D liveTexture;
+
+        //Positioning, like CSS -,-'
+        private Vector2 hpPos = new Vector2(0.09f, 0.0875f);
+        private Vector2 heartPos = new Vector2(0.06f, 0.05f);
+        private Vector2 popularityPos = new Vector2(0.05f, 0.9f);
+        private Vector2 popularityFacePos = new Vector2(0.03f, 0.875f);
+        private Vector2 backpackPos = new Vector2(0.75f, 0.075f);
+        private Vector2 burgerPos = new Vector2(0.87f, 0.065f);
+        private Vector2 eqTextPos = new Vector2(0.79f, 0.085f);
+        private Vector2 foodTextPos = new Vector2(0.91f, 0.085f);
+        private Vector2 liveBGPos = new Vector2(0.001f, 0.94f);
+        private Vector2 livePos = new Vector2(0.02f, 0.9475f);
+        private Vector2 dayInfoPos = new Vector2(0.15f, 0.82f);
+        private Vector2 initialLiveTextPos = new Vector2(0.15f, 0.9475f);
+        private Vector2 liveTextPos;
 
         private PlayerController myPlayerController;
 
@@ -36,6 +55,10 @@ namespace TrashSoup.Gameplay
         private Color junkColor = Color.White;
         private Color foodColor = Color.White;
 
+        private float timer = 0.0f;
+        private float changeMessageCooldown = 5.0f;
+        private int currentMessage = 0;
+
         public PlayerHUD(GameObject go) : base(go)
         {
             Start();
@@ -49,34 +72,49 @@ namespace TrashSoup.Gameplay
             }
             this.currentHP = this.myPlayerController.HitPoints;
             this.currentPopularity = this.myPlayerController.Popularity;
+            this.timer += 0.001f * gameTime.ElapsedGameTime.Milliseconds;
+            this.liveTextPos.X -= 0.08f * gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+            if(this.timer > this.changeMessageCooldown)
+            {
+                this.liveTextPos = this.initialLiveTextPos;
+                this.timer = 0.0f;
+                this.currentMessage += 1;
+                this.currentMessage %= messages.Length;
+            }
 
             //Drawing HP
-            GUIManager.Instance.DrawTexture(this.hpBGTexture, new Vector2(0.09f, 0.0875f), this.maxWidth * 1.001f, 0.0125f);
-            GUIManager.Instance.DrawTexture(this.hpTexture, new Vector2(0.09f, 0.0875f), this.maxWidth * this.currentHP / this.maxHP, 0.0125f);
-            GUIManager.Instance.DrawTexture(this.heartTexture, new Vector2(0.06f, 0.05f), 0.04f, 0.05f);
+            GUIManager.Instance.DrawTexture(this.hpBGTexture, this.hpPos, this.maxWidth, 0.0125f);
+            GUIManager.Instance.DrawTexture(this.hpTexture, this.hpPos, this.maxWidth * this.currentHP / this.maxHP, 0.0125f);
+            GUIManager.Instance.DrawTexture(this.heartTexture,this.heartPos, 0.04f, 0.05f);
 
             //Drawing popularity bar
-            GUIManager.Instance.DrawTexture(this.popularityBGTexture, new Vector2(0.11f, 0.175f), this.maxWidth * 1.001f, 0.0125f);
-            GUIManager.Instance.DrawTexture(this.popularityFillTexture, new Vector2(0.11f, 0.175f), this.maxWidth * this.currentPopularity / this.maxPopularity, 0.0125f);
+            GUIManager.Instance.DrawTexture(this.popularityBGTexture, this.popularityPos, this.maxWidth, 0.0125f);
+            GUIManager.Instance.DrawTexture(this.popularityFillTexture, this.popularityPos, this.maxWidth * this.currentPopularity / this.maxPopularity, 0.0125f);
             if(this.currentPopularity > 0.0f)
             {
-                GUIManager.Instance.DrawTexture(this.populartiyHappyTexture, new Vector2(0.09f, 0.15f), 0.03f, 0.03f);
+                GUIManager.Instance.DrawTexture(this.populartiyHappyTexture, this.popularityFacePos, 0.03f, 0.03f);
             }
             else
             {
-                GUIManager.Instance.DrawTexture(this.popularitySadTexture, new Vector2(0.09f, 0.15f), 0.03f, 0.03f);
+                GUIManager.Instance.DrawTexture(this.popularitySadTexture, this.popularityFacePos, 0.03f, 0.03f);
             }
 
             //Equipment
             this.currentFoodCount = this.myEq.FoodCount;
             this.currentJunkCount = this.myEq.JunkCount;
-            GUIManager.Instance.DrawTexture(this.backpackTexture, new Vector2(0.75f, 0.15f), 0.03f, 0.03f);
+            GUIManager.Instance.DrawTexture(this.backpackTexture, this.backpackPos, 0.03f, 0.03f);
             this.junkColor = this.currentJunkCount == Equipment.MAX_JUNK_CAPACITY ? Color.Red : Color.White;
-            GUIManager.Instance.DrawText(this.equipmentFont, this.currentJunkCount + "/" + this.maxJunkCount, new Vector2(0.79f, 0.16f), this.junkColor);
-            GUIManager.Instance.DrawTexture(this.burgerTexture, new Vector2(0.87f, 0.14f), 0.035f, 0.045f);
+            GUIManager.Instance.DrawText(this.equipmentFont, this.currentJunkCount + "/" + this.maxJunkCount, this.eqTextPos, this.junkColor);
+            GUIManager.Instance.DrawTexture(this.burgerTexture, this.burgerPos, 0.035f, 0.045f);
             this.foodColor = this.currentFoodCount == Equipment.MAX_FOOD_CAPACITY ? Color.Red : Color.White;
-            GUIManager.Instance.DrawText(this.equipmentFont, this.currentFoodCount + "/" + this.maxFoodCount, new Vector2(0.91f, 0.16f), this.foodColor);
-            GUIManager.Instance.DrawText(this.equipmentFont, "DAY 1", new Vector2(0.88f, 0.1f), Color.Red);
+            GUIManager.Instance.DrawText(this.equipmentFont, this.currentFoodCount + "/" + this.maxFoodCount, this.foodTextPos, this.foodColor);
+            GUIManager.Instance.DrawText(this.equipmentFont, "DAY 1", this.dayInfoPos, Color.Red);
+
+            //Live messages drawing
+            GUIManager.Instance.DrawTexture(this.liveBGTexture, this.liveBGPos, 0.4f, 0.03f);
+            GUIManager.Instance.DrawText(this.equipmentFont, this.messages[currentMessage], this.liveTextPos, Color.Black);
+            GUIManager.Instance.DrawTexture(this.liveTexture, this.livePos, 0.05f, 0.02f);
+            
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
@@ -86,7 +124,7 @@ namespace TrashSoup.Gameplay
 
         protected override void Start()
         {
-
+            this.liveTextPos = this.initialLiveTextPos;
         }
 
         public override void Initialize()
@@ -109,6 +147,8 @@ namespace TrashSoup.Gameplay
             this.backpackTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/backpack"); ;
             this.burgerTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/burger");
             this.equipmentFont = TrashSoupGame.Instance.Content.Load<SpriteFont>(@"Fonts/FontTest");
+            this.liveBGTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/LIVEBG");
+            this.liveTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/LIVE");
 
             base.Initialize();
         }
