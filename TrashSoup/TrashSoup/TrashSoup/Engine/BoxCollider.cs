@@ -198,6 +198,11 @@ namespace TrashSoup.Engine
                 return false;
             }
 
+            if(this.IgnoredColliders.Count > 0 && this.IgnoredColliders.Contains(col))
+            {
+                return false;
+            }
+
             if (!this.MyBoundingSphere.Intersects(col.MyBoundingSphere))
             {
                 return false;

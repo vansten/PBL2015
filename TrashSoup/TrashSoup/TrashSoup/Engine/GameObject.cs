@@ -469,7 +469,7 @@ namespace TrashSoup.Engine
 
         public virtual void OnTriggerEnter(GameObject otherGO)
         {
-            Debug.Log(this.Name + " trigger enter with " + otherGO.Name);
+            //Debug.Log(this.Name + " trigger enter with " + otherGO.Name);
             foreach (ObjectComponent oc in this.Components)
             {
                 oc.OnTriggerEnter(otherGO);
@@ -478,7 +478,7 @@ namespace TrashSoup.Engine
 
         public virtual void OnTriggerExit(GameObject otherGO)
         {
-            Debug.Log(this.Name + " trigger exit with " + otherGO.Name);
+            //Debug.Log(this.Name + " trigger exit with " + otherGO.Name);
             foreach (ObjectComponent oc in this.Components)
             {
                 oc.OnTriggerExit(otherGO);

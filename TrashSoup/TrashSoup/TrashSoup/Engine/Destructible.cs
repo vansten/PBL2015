@@ -100,6 +100,14 @@ namespace TrashSoup.Engine
 
             for (int i = 0; i < PartCount; ++i )
             {
+                for(int j = 0; j < PartCount; ++j)
+                {
+                    if (parts[j] != parts[i])
+                    {
+                        parts[i].MyCollider.IgnoredColliders.Add(parts[j].MyCollider);
+                    }
+                }
+                parts[i].MyCollider.IgnoredColliders.Add(MyObject.MyCollider);
                 Vector3 vec = offsetVectors[i];
                 parts[i].MyTransform.Position = vec;
             }

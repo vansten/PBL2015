@@ -41,6 +41,8 @@ namespace TrashSoup.Engine
             protected set;
         }
 
+        public List<Collider> IgnoredColliders;
+
         public List<Collider> TriggerReasons
         {
             get;
@@ -59,6 +61,7 @@ namespace TrashSoup.Engine
         {
             worldMatrix = Matrix.Identity;
             this.TriggerReasons = new List<Collider>();
+            this.IgnoredColliders = new List<Collider>();
             this.CreateCollider();
         }
 
@@ -67,6 +70,7 @@ namespace TrashSoup.Engine
             worldMatrix = Matrix.Identity;
             this.IsTrigger = isTrigger;
             this.TriggerReasons = new List<Collider>();
+            this.IgnoredColliders = new List<Collider>();
             this.CreateCollider();
         }
 
@@ -75,6 +79,7 @@ namespace TrashSoup.Engine
             this.worldMatrix = c.worldMatrix;
             this.IsTrigger = c.IsTrigger;
             this.TriggerReasons = new List<Collider>();
+            this.IgnoredColliders = new List<Collider>();
             this.CreateCollider();
         }
 

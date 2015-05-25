@@ -137,7 +137,11 @@ namespace TrashSoup.Engine
             {
                 if(col != go.MyCollider && col.MyObject.Enabled && go.Enabled)
                 {
-                    if(col.Intersects(go.MyCollider))
+                    if(go.MyCollider.IgnoredColliders.Count > 0 && go.MyCollider.IgnoredColliders.Contains(col))
+                    {
+                        continue;
+                    }
+                    else if(col.Intersects(go.MyCollider))
                     {
                         if(col.IsTrigger || go.MyCollider.IsTrigger)
                         {
