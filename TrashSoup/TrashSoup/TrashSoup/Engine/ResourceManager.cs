@@ -75,7 +75,7 @@ namespace TrashSoup.Engine
             AddAnimation("Animations/Test/walking_1");
             AddAnimation("Animations/Test/idle_1");
             AddAnimation("Animations/Test/jump_1");
-            AddModel("Models/Enviro/Cars/car1");    //Wika i Kasia
+            AddModel("Models/Weapons/HammerSmall/HammerSmall");    //Wika i Kasia
 
             // loading materials
             List<Material> testPlayerMats = new List<Material>();
@@ -171,10 +171,10 @@ namespace TrashSoup.Engine
 
             //WIKA I KASIA Testowanie modeli
             List<Material> awsomeTestMats = new List<Material>();
-            Material awsomeTestMat = new Material("awsomeTestMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Enviro\Cars\car1_D"]);
+            Material awsomeTestMat = new Material("awsomeTestMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Weapons\HammerSmall\HammerSmall_D"]);
             awsomeTestMats.Add(awsomeTestMat);
             awsomeTestMats.Add(awsomeTestMat);
-            awsomeTestMat.NormalMap = Textures[@"Textures\Enviro\Cars\car1_N"];
+            awsomeTestMat.NormalMap = Textures[@"Textures\Weapons\HammerSmall\HammerSmall_N"];
             awsomeTestMat.Glossiness = 40.0f;
             awsomeTestMat.ReflectivityColor = new Vector3(1.0f, 0.0f, 1.0f);
             awsomeTestMat.ReflectivityBias = 0.0f;
@@ -260,7 +260,7 @@ namespace TrashSoup.Engine
             //Wika i Kasia testowanie modeli
             GameObject awsomeTest = new GameObject(8, "testground");
             awsomeTest.MyTransform = new Transform(awsomeTest, new Vector3(-12.0f, 1.0f, -5.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(MathHelper.PiOver2, 0.0f, 0.0f), 1.0f);
-            awsomeTest.Components.Add(new CustomModel(awsomeTest, new Model[] { Models["Models/Enviro/Cars/car1"], null, null }, awsomeTestMats));
+            awsomeTest.Components.Add(new CustomModel(awsomeTest, new Model[] { Models["Models/Weapons/HammerSmall/HammerSmall"], null, null }, awsomeTestMats));
             awsomeTest.MyCollider = new BoxCollider(awsomeTest, false);
 
             // adding lights
@@ -534,8 +534,8 @@ namespace TrashSoup.Engine
             LoadTexture(@"Textures\ParticleTest\Particle");
 
             //Wika i Kasia
-            LoadTexture(@"Textures\Enviro\Cars\car1_D");
-            LoadTexture(@"Textures\Enviro\Cars\car1_N");
+            LoadTexture(@"Textures\Weapons\HammerSmall\HammerSmall_D");
+            LoadTexture(@"Textures\Weapons\HammerSmall\HammerSmall_N");
         }
 
         /// <summary>
