@@ -35,10 +35,13 @@ namespace TrashSoup.Gameplay
         private Vector2 eqTextPos = new Vector2(0.79f, 0.085f);
         private Vector2 foodTextPos = new Vector2(0.91f, 0.085f);
         private Vector2 liveBGPos = new Vector2(0.001f, 0.94f);
-        private Vector2 livePos = new Vector2(0.02f, 0.9475f);
+        private Vector2 livePos = new Vector2(0.01f, 0.9475f);
         private Vector2 dayInfoPos = new Vector2(0.15f, 0.82f);
-        private Vector2 initialLiveTextPos = new Vector2(0.15f, 0.9475f);
+        private Vector2 initialLiveTextPos = new Vector2(0.38f, 0.9475f);
         private Vector2 liveTextPos;
+
+        private string currentLiveText = "";
+        private int index = 0;
 
         private PlayerController myPlayerController;
 
@@ -56,7 +59,7 @@ namespace TrashSoup.Gameplay
         private Color foodColor = Color.White;
 
         private float timer = 0.0f;
-        private float changeMessageCooldown = 5.0f;
+        private float changeMessageCooldown = 8.0f;
         private int currentMessage = 0;
 
         public PlayerHUD(GameObject go) : base(go)
@@ -74,8 +77,15 @@ namespace TrashSoup.Gameplay
             this.currentPopularity = this.myPlayerController.Popularity;
             this.timer += 0.001f * gameTime.ElapsedGameTime.Milliseconds;
             this.liveTextPos.X -= 0.08f * gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+            if(this.index < this.messages[this.currentMessage].Length  && this.timer > (0.32f * this.messages[this.currentMessage].Length / this.messages[0].Length) * (index + 1) * this.changeMessageCooldown / (float)this.messages[this.currentMessage].Length)
+            {
+                this.currentLiveText += this.messages[this.currentMessage][this.index];
+                this.index += 1;
+            }
             if(this.timer > this.changeMessageCooldown)
             {
+                this.currentLiveText = "";
+                this.index = 0;
                 this.liveTextPos = this.initialLiveTextPos;
                 this.timer = 0.0f;
                 this.currentMessage += 1;
@@ -112,7 +122,7 @@ namespace TrashSoup.Gameplay
 
             //Live messages drawing
             GUIManager.Instance.DrawTexture(this.liveBGTexture, this.liveBGPos, 0.4f, 0.03f);
-            GUIManager.Instance.DrawText(this.equipmentFont, this.messages[currentMessage], this.liveTextPos, Color.Black);
+            GUIManager.Instance.DrawText(this.equipmentFont, this.currentLiveText, this.liveTextPos, Color.Black);
             GUIManager.Instance.DrawTexture(this.liveTexture, this.livePos, 0.05f, 0.02f);
             
         }
