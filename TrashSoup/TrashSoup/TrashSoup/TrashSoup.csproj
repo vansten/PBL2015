@@ -121,6 +121,7 @@
     <Compile Include="Gameplay\Enemy.cs" />
     <Compile Include="Gameplay\Equipment.cs" />
     <Compile Include="Gameplay\InputHandler.cs" />
+    <Compile Include="Gameplay\MenuController.cs" />
     <Compile Include="Gameplay\PlayerHUD.cs" />
     <Compile Include="Gameplay\Weapons\Fists.cs" />
     <Compile Include="Gameplay\Weapons\NoFreePlaceSign.cs" />

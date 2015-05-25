@@ -150,9 +150,9 @@ namespace TrashSoup
                     -offset.Y + (float)SingleRandom.Instance.rnd.NextDouble() * (offset.Y - (-offset.Y)),
                     -offset.Z + (float)SingleRandom.Instance.rnd.NextDouble() * (offset.Z - (-offset.Z))
                     );
-                ResourceManager.Instance.ps.AddParticle(new Vector3(0.0f, 10.0f, -5.0f),
-                    randAngle, 20.0f);
-                ResourceManager.Instance.ps.Update();
+                //ResourceManager.Instance.ps.AddParticle(new Vector3(0.0f, 10.0f, -5.0f),
+                    //randAngle, 20.0f);
+                //ResourceManager.Instance.ps.Update();
 
                 //TESTING SAVE
                 if (Keyboard.GetState().IsKeyDown(Keys.F5) && !f5pressed)
@@ -213,7 +213,7 @@ namespace TrashSoup
 
             if(ResourceManager.Instance.ps != null)
             {
-            ResourceManager.Instance.ps.Draw();
+                ResourceManager.Instance.ps.Draw();
             }
             GUIManager.Instance.Render(this.spriteBatch);
         }
@@ -225,7 +225,10 @@ namespace TrashSoup
 
             ResourceManager.Instance.CurrentScene.DrawAll(null, null, gameTime, true);
 
-            ResourceManager.Instance.ps.Draw();
+            if (ResourceManager.Instance.ps != null)
+            {
+                //ResourceManager.Instance.ps.Draw();
+            }
 
             base.Draw(gameTime);
 
