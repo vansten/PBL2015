@@ -1,22 +1,22 @@
 <?xml version="1.0"?>
 <Material>
-  <Name>awsomeTestMat</Name>
+  <Name>09 - Default</Name>
   <EffectPath>Effects\NormalEffect</EffectPath>
-  <DiffusePath>Textures\Weapons\HammerSmall\HammerSmall_D</DiffusePath>
-  <NormalPath>Textures\Weapons\HammerSmall\HammerSmall_N</NormalPath>
+  <DiffusePath>Textures\Enviro\Ground\streets_D_0</DiffusePath>
+  <NormalPath>Textures\Enviro\Ground\streets_N</NormalPath>
   <SpecularColor>
     <X>1</X>
     <Y>1</Y>
     <Z>1</Z>
   </SpecularColor>
-  <Glossiness>40</Glossiness>
+  <Glossiness>50</Glossiness>
   <ReflectivityColor>
     <X>1</X>
-    <Y>0</Y>
+    <Y>1</Y>
     <Z>1</Z>
   </ReflectivityColor>
-  <ReflectivityBias>0</ReflectivityBias>
+  <ReflectivityBias>0.2</ReflectivityBias>
   <Transparency>1</Transparency>
   <PerPixelLighting>false</PerPixelLighting>
-  <ReceiveShadows>true</ReceiveShadows>
+  <ReceiveShadows>false</ReceiveShadows>
 </Material>
