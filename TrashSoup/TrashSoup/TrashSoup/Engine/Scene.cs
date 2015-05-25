@@ -119,6 +119,8 @@ namespace TrashSoup.Engine
         private RenderTarget2D globalShadowsRenderTarget;
         private RenderTarget2D tempRenderTarget01;
         private Matrix deferredOrthoMatrix;
+        private List<GameObject> runtimeAdded;
+        private List<GameObject> runtimeRemoved;
 
         #endregion
 
@@ -147,6 +149,8 @@ namespace TrashSoup.Engine
 
             ObjectsDictionary = new Dictionary<uint, GameObject>();
             ObjectsQT = new QuadTree(ObjectsDictionary, 3000.0f);
+            runtimeAdded = new List<GameObject>();
+            runtimeRemoved = new List<GameObject>();
 
             globalShadowsRenderTarget = new RenderTarget2D(
                         TrashSoupGame.Instance.GraphicsDevice,
@@ -190,6 +194,23 @@ namespace TrashSoup.Engine
             if(Params.UseGraph)
             {
                 ObjectsQT.Add(obj);
+            }
+        }
+
+        public void AddObjectRuntime(GameObject obj)
+        {
+            runtimeAdded.Add(obj);
+        }
+
+        public void DeleteObjectRuntime(GameObject obj)
+        {
+            if(runtimeAdded.Contains(obj))
+            {
+                runtimeAdded.Remove(obj);
+            }
+            else
+            {
+                runtimeRemoved.Add(obj);
             }
         }
 
@@ -312,6 +333,11 @@ namespace TrashSoup.Engine
                 obj.Update(gameTime);
             }
             Cam.Update(gameTime);
+
+            if(runtimeRemoved.Count > 0 || runtimeAdded.Count > 0)
+            {
+                SolveRuntimeAdditions();
+            }
         }
 
         // draws all gameobjects linearly
@@ -387,6 +413,24 @@ namespace TrashSoup.Engine
                 }
             }
             return null;
+        }
+
+        private void SolveRuntimeAdditions()
+        {
+            int aCount = runtimeAdded.Count;
+            int rCount = runtimeRemoved.Count;
+
+            for(int i = 0; i < aCount; ++i)
+            {
+                AddObject(runtimeAdded[i]);
+            }
+            for (int i = 0; i < rCount; ++i)
+            {
+                DeleteObject(runtimeRemoved[i].UniqueID);
+            }
+
+            runtimeAdded.Clear();
+            runtimeRemoved.Clear();
         }
 
         private void RenderGlobalBlurredShadows()

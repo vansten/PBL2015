@@ -252,28 +252,34 @@ namespace TrashSoup.Engine
         {
             if (col == null)
             {
+                IsCollision = false;
                 return false;
             }
 
             if (this.IgnoredColliders.Count > 0 && this.IgnoredColliders.Contains(col))
             {
+                IsCollision = false;
                 return false;
             }
 
             if (!this.MyBoundingSphere.Intersects(col.MyBoundingSphere))
             {
+                IsCollision = false;
                 return false;
             }
 
             if (col.GetType() == typeof(BoxCollider))
             {
-                return this.IntersectsWithAABB(((BoxCollider)col).Box);
+                IsCollision = IntersectsWithAABB(((BoxCollider)col).Box);
+                return IsCollision;
             }
             else if (col.GetType() == typeof(SphereCollider))
             {
-                return this.IntersectsWithSphere(((SphereCollider)col).Sphere);
+                IsCollision = IntersectsWithSphere(((SphereCollider)col).Sphere);
+                return IsCollision;
             }
 
+            IsCollision = false;
             return false;
         }
 

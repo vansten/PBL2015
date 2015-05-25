@@ -68,6 +68,7 @@ namespace TrashSoup.Engine
             AddModel("Models/Test/TestMirror");
             AddModel("Models/Weapons/Signs/StopSign");
             AddModel("Models/Weapons/Stones/brick");
+            AddModel("Models/Enviro/Ground/street_cross");
             AddModel("Models/Test/TestSquarePlane");
             AddModel("Models/Test/TestSquarePlane");
             AddModel("Models/MainCharacter/MainCharacter");
@@ -135,7 +136,7 @@ namespace TrashSoup.Engine
 
             List<Material> ratMats = LoadBasicMaterialsFromModel(Models["Models/MainCharacter/MainCharacter"], this.Effects[@"Effects\NormalEffect"]);
 
-            List<Material> deSign = LoadBasicMaterialsFromModel(Models["Models/Weapons/Signs/StopSign"], this.Effects[@"Effects\NormalEffect"]);
+            List<Material> deSign = LoadBasicMaterialsFromModel(Models["Models/Enviro/Ground/street_cross"], this.Effects[@"Effects\NormalEffect"]);
 
             List<Material> bb = LoadBasicMaterialsFromModel(Models["Models/Weapons/Stones/brick"], Effects[@"Effects\NormalEffect"]);
 
@@ -188,7 +189,7 @@ namespace TrashSoup.Engine
 
             // loading gameobjects
             GameObject testBox = new GameObject(1, "Player");
-            testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 0.0f, -5.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
+            testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 5.0f, -5.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
             CustomModel skModel = new CustomModel(testBox, new Model[] { Models["Models/Test/TestGuy"], null, null }, playerMats);
             Animator playerAnimator = new Animator(testBox, skModel.LODs[0]);
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/Test/walking_1"], "walking_1"));
@@ -221,11 +222,12 @@ namespace TrashSoup.Engine
             testTer.Components.Add(terModel);
 
             GameObject testBox2 = new GameObject(3, "testBox2");
-            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, -1.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(MathHelper.Pi, 0.0f, 0.0f), 1.0f);
-            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Weapons/Signs/StopSign"], null, null }, deSign));
-            testBox2.MyCollider = new BoxCollider(testBox2, true);
-            testBox2.Dynamic = true;
-            testBox2.MyCarrierSocket = new Socket(testBox, testBox2, null, "mixamorig:RightHand");
+            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
+            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Enviro/Ground/street_cross"], null, null }, deSign));
+            testBox2.MyCollider = new BoxCollider(testBox2, false);
+            //testBox2.MyPhysicalObject = new PhysicalObject(testBox2, 1.0f, 1.0f, false);
+            //testBox2.Dynamic = true;
+            //testBox2.MyCarrierSocket = new Socket(testBox, testBox2, null, "mixamorig:RightHand");
 
             GameObject testBox3 = new GameObject(5, "testBox3");
             testBox3.MyTransform = new Transform(testBox3, new Vector3(5.0f, 1.0f, 5.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, MathHelper.Pi, 0.0f), 1.0f);
@@ -249,12 +251,15 @@ namespace TrashSoup.Engine
 
             // moje na pagi
             GameObject cegla = new GameObject(14, "cegla");
-            cegla.MyTransform = new Transform(cegla, new Vector3(0.0f, 2.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
+            cegla.MyTransform = new Transform(cegla, new Vector3(5.0f, 5.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
             cegla.Components.Add(new CustomModel(cegla, new Model[] { Models["Models/Weapons/Stones/brick"], null, null }, bb));
             cegla.MyCollider = new BoxCollider(cegla);
+            //cegla.MyPhysicalObject = new PhysicalObject(cegla, 5.0f, 0.01f, true);
             Destructible destr = new Destructible(cegla);
             destr.PartsPath = "Models/Weapons/Stones/brick_destructible";
             destr.PartCount = 9;
+            destr.MaxHealth = 100;
+            destr.HitDamage = 50;
             cegla.Components.Add(destr);
 
             //Wika i Kasia testowanie modeli
@@ -292,12 +297,12 @@ namespace TrashSoup.Engine
             CurrentScene.Cam = cam;
 
             // adding items to scene
-            //testBox.AddChild(testBox3);
+            testBox.AddChild(testBox3);
             CurrentScene.AddObject(skyBox);
             CurrentScene.AddObject(testTer);
             CurrentScene.AddObject(testBox);
             CurrentScene.AddObject(testBox2);
-            CurrentScene.AddObject(testBox3);
+            //CurrentScene.AddObject(testBox3);
             CurrentScene.AddObject(testMirror);
             CurrentScene.AddObject(testWater);
             CurrentScene.AddObject(awsomeTest);//Wika i kasia
