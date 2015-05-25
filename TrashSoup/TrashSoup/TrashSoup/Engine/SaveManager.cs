@@ -21,7 +21,7 @@ namespace TrashSoup.Engine
         {
             this.scene = ResourceManager.Instance.CurrentScene;
             //FOR TETIN
-            this.XmlPath = "save.xml";
+            this.XmlPath = "menu.xml";
         }
 
         public System.Xml.Schema.XmlSchema GetSchema()
