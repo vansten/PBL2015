@@ -1305,6 +1305,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Textures\Weapons\HammerSmall\HammerSmall_D.dds">
       <Name>HammerSmall_D</Name>
       <Importer>TextureImporter</Importer>
@@ -1312,6 +1313,29 @@
     </Compile>
     <Compile Include="Textures\Weapons\HammerSmall\HammerSmall_N.dds">
       <Name>HammerSmall_N</Name>
+=======
+    <Compile Include="Fonts\manaspace.bmp">
+      <Name>manaspace</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\HUD\pixelatedLogo.png">
+      <Name>pixelatedLogo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\HUD\LIVE.png">
+      <Name>LIVE</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\HUD\LIVEBG.png">
+      <Name>LIVEBG</Name>
+>>>>>>> f9fbd2d6531c5ace47f66d6db69b7932de3d735e
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

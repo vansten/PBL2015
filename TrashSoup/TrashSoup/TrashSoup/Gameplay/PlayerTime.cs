@@ -17,6 +17,8 @@ namespace TrashSoup.Gameplay
         private int hours;
         private int minutes;
         private bool isTime;
+
+        private Vector2 timePos = new Vector2(0.05f, 0.8f);
         #endregion
 
         #region properties
@@ -65,7 +67,7 @@ namespace TrashSoup.Gameplay
             else
                 isTime = true;
 
-            GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/digital-7"), Hours.ToString("00") + ":" + Minutes.ToString("00"), new Vector2(0.77f, 0.08f), Color.Red);
+            GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/digital-7"), Hours.ToString("00") + ":" + Minutes.ToString("00"), this.timePos, Color.Red);
         }
 
         public override void Draw(Camera cam, Effect effect, GameTime gameTime)
