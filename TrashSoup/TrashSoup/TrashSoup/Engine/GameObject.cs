@@ -21,6 +21,9 @@ namespace TrashSoup.Engine
         private GameObject parent;
         private List<GameObject> children;
 
+        private List<ObjectComponent> runtimeAdded;
+        private List<ObjectComponent> runtimeRemoved;
+
         #endregion
 
         #region properties
@@ -68,7 +71,7 @@ namespace TrashSoup.Engine
                     Debug.Log("GameObject ERROR: " + this.Name + ", ID " + this.UniqueID.ToString() + " is already assigned to this socket! Aborting.");
                     return;
                 }
-                value.Carrier.Components.Add(value);
+                value.Carrier.AddComponentRuntime(value);
                 myCarrierSocket = value;
             }
         }
@@ -113,6 +116,9 @@ namespace TrashSoup.Engine
             this.children = new List<GameObject>();
             this.parent = null;
             this.GraphicsManager = TrashSoupGame.Instance.GraphicsManager;
+
+            this.runtimeAdded = new List<ObjectComponent>();
+            this.runtimeRemoved = new List<ObjectComponent>();
 
             this.Enabled = true;
             this.Visible = true;
@@ -181,6 +187,11 @@ namespace TrashSoup.Engine
                 foreach (ObjectComponent obj in Components)
                 {
                     obj.Update(gameTime);
+                }
+
+                if (runtimeRemoved.Count > 0 || runtimeAdded.Count > 0)
+                {
+                    SolveRuntimeAdditions();
                 }
             }
         }
@@ -318,6 +329,41 @@ namespace TrashSoup.Engine
                     children.Remove(obj);
                 }
             }
+        }
+
+        public void AddComponentRuntime(ObjectComponent obj)
+        {
+            this.runtimeAdded.Add(obj);
+        }
+
+        public void RemoveComponentRuntime(ObjectComponent obj)
+        {
+            if(runtimeAdded.Contains(obj))
+            {
+                this.runtimeAdded.Remove(obj);
+            }
+            else
+            {
+                this.runtimeRemoved.Add(obj);
+            }
+        }
+
+        private void SolveRuntimeAdditions()
+        {
+            int aCount = runtimeAdded.Count;
+            int rCount = runtimeRemoved.Count;
+
+            for (int i = 0; i < aCount; ++i)
+            {
+                this.Components.Add(this.runtimeAdded[i]);
+            }
+            for (int i = 0; i < rCount; ++i)
+            {
+                this.Components.Remove(this.runtimeRemoved[i]);
+            }
+
+            runtimeAdded.Clear();
+            runtimeRemoved.Clear();
         }
 
         public System.Xml.Schema.XmlSchema GetSchema()
