@@ -69,6 +69,7 @@ namespace TrashSoup.Engine
             AddModel("Models/Weapons/Signs/StopSign");
             AddModel("Models/Weapons/Stones/brick");
             AddModel("Models/Enviro/Ground/street_cross");
+            AddModel("Models/Weapons/Stones/brick_destructible/4");
             AddModel("Models/Test/TestSquarePlane");
             AddModel("Models/Test/TestSquarePlane");
             AddModel("Models/MainCharacter/MainCharacter");

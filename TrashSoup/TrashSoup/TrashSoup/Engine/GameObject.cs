@@ -521,7 +521,7 @@ namespace TrashSoup.Engine
         /// 
         /// This function will call every OnCollision(GameObject) in this game object components
         /// </summary>
-        public void OnCollision(GameObject otherGO)
+        public virtual void OnCollision(GameObject otherGO)
         {
             foreach (ObjectComponent oc in this.Components)
             {

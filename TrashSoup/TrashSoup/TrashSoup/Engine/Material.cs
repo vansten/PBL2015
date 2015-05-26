@@ -199,7 +199,7 @@ namespace TrashSoup.Engine
             }
             set
             {
-                transparency = value;
+                transparency = MathHelper.Clamp(value, 0.0f, 1.0f);
             }
         }
 
