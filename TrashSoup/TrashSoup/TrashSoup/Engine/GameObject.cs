@@ -211,7 +211,7 @@ namespace TrashSoup.Engine
 #if DEBUG
                 if (this.MyCollider != null)
                 {
-                   this.MyCollider.Draw(cam, effect, gameTime);
+                   //this.MyCollider.Draw(cam, effect, gameTime);
                 }
 
 #endif
