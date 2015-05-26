@@ -279,7 +279,7 @@ namespace TrashSoup.Engine
             lp1.SetupShadowRender();
 
             // loading scene
-            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), DateTime.Now, 3000.0f, 35.0f, 50.0f, false, true, true, false, true));
+            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), DateTime.Now, 3000.0f, 35.0f, 50.0f, true, false, true, false, true));
 
             Camera cam = null;
 
@@ -580,6 +580,8 @@ namespace TrashSoup.Engine
             path = @"Effects\POSTBlurEffect";
             LoadEffect(path);
             path = @"Effects\ShadowMapUnnormalizedEffect";
+            LoadEffect(path);
+            path = @"Effects\POSTLogBlurEffect";
             LoadEffect(path);
         }
 

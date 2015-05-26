@@ -194,22 +194,18 @@ ColorPair ComputeLightShadows(float3 posWS, float3 E, float3 N, float4 dirPos)
 	float dist = dirPos.z / dirPos.w;
 
 	[branch]
-	if ((saturate(projectedDLScoords.x) == projectedDLScoords.x) && (saturate(projectedDLScoords.y) == projectedDLScoords.y))
-	{
-		[branch]
-		if ((dist - SHADOW_BIAS) <= depth || depth <= SHADOW_DEPTH_BIAS)
-		{
-			// DirLight0
-			ComputeSingleLight(-DirLight0Direction, DirLight0DiffuseColor,
-				float3(DirLight0SpecularColor.x * SpecularColor.x, DirLight0SpecularColor.y * SpecularColor.y, DirLight0SpecularColor.z * SpecularColor.z), E, N, result);
-		}
-	}
-	else
-	{
-		// DirLight0
-		ComputeSingleLight(-DirLight0Direction, DirLight0DiffuseColor,
-			float3(DirLight0SpecularColor.x * SpecularColor.x, DirLight0SpecularColor.y * SpecularColor.y, DirLight0SpecularColor.z * SpecularColor.z), E, N, result);
-	}
+	if (depth < 0.001f || depth > 0.8f)
+		depth = 1000000000.0f;
+
+	// DirLight0
+	ComputeSingleLight(-DirLight0Direction, DirLight0DiffuseColor,
+		float3(DirLight0SpecularColor.x * SpecularColor.x, DirLight0SpecularColor.y * SpecularColor.y, DirLight0SpecularColor.z * SpecularColor.z), E, N, result);
+
+	float shadow = saturate(exp(max(ESM_MIN, ESM_K * (depth - (dist - SHADOW_BIAS)))));
+	shadow = 1.0f - (ESM_DIFFUSE_SCALE * (1.0f - shadow));
+	result.Diffuse = lerp(AmbientLightColor, result.Diffuse, saturate(shadow));
+	result.Specular = result.Specular * shadow;
+
 	// DirLight1
 	ComputeSingleLight(-DirLight1Direction, DirLight1DiffuseColor, 
 		float3(DirLight1SpecularColor.x * SpecularColor.x, DirLight1SpecularColor.y * SpecularColor.y, DirLight1SpecularColor.z * SpecularColor.z), E, N, result);
@@ -232,22 +228,22 @@ ColorPair ComputeLightShadows(float3 posWS, float3 E, float3 N, float4 dirPos)
 	Llength = length(L);
 	att = saturate(ATTENUATION_MULTIPLIER * length(PointLightDiffuseColors[0]) * PointLightAttenuations[0] / max(Llength * Llength, MINIMUM_LENGTH_VALUE));
 
-	float shadowMapDepth = texCUBE(Point0ShadowMapSampler, normalize(-(L * att))).r;
+	float shadowMapDepth = texCUBE(Point0ShadowMapSampler, normalize(-(float3(L.x, L.y, -L.z) * att))).r;
 
-	if ((Llength / SHADOW_POINT_MAX_DIST - SHADOW_BIAS) <= shadowMapDepth)
-	{
-		ComputeSingleLight(normalize(L), PointLightDiffuseColors[0],
-			float3(PointLightSpecularColors[0].x * SpecularColor.x, PointLightSpecularColors[0].y * SpecularColor.y, PointLightSpecularColors[0].z * SpecularColor.z),
-			E, N, temp);
+	ComputeSingleLight(normalize(L), PointLightDiffuseColors[0],
+		float3(PointLightSpecularColors[0].x * SpecularColor.x, PointLightSpecularColors[0].y * SpecularColor.y, PointLightSpecularColors[0].z * SpecularColor.z),
+		E, N, temp);
 
-		temp.Diffuse = temp.Diffuse * att;
-		temp.Specular = temp.Specular * att;
-		result.Diffuse += temp.Diffuse;
-		result.Specular += temp.Specular;
+	float shadowP = saturate(exp(max(ESM_MIN, ESM_K * (shadowMapDepth - (Llength / SHADOW_POINT_MAX_DIST - SHADOW_BIAS)))));
+	shadowP = 1.0f - (ESM_DIFFUSE_SCALE * (1.0f - shadowP));
+	temp.Diffuse = temp.Diffuse * att;
+	temp.Diffuse = lerp(0.0f, temp.Diffuse, saturate(shadowP));
+	temp.Specular = temp.Specular * att;
+	result.Diffuse += temp.Diffuse;
+	result.Specular += temp.Specular;
 
-		temp.Diffuse = 0;
-		temp.Specular = 0;
-	}
+	temp.Diffuse = 0;
+	temp.Specular = 0;
 
 	for (uint i = 1; i < PointLightCount; ++i)
 	{
