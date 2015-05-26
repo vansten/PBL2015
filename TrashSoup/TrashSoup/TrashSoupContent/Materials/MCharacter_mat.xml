@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<Material>
+  <Name>MCharacter_mat</Name>
+  <EffectPath>Effects\NormalEffect</EffectPath>
+  <DiffusePath>Textures\MainCharacter\MainCharacter_D_0</DiffusePath>
+  <NormalPath>Textures\MainCharacter\MainCharacter_N</NormalPath>
+  <SpecularColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </SpecularColor>
+  <Glossiness>50</Glossiness>
+  <ReflectivityColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </ReflectivityColor>
+  <ReflectivityBias>0.2</ReflectivityBias>
+  <Transparency>1</Transparency>
+  <PerPixelLighting>false</PerPixelLighting>
+  <ReceiveShadows>false</ReceiveShadows>
+</Material>

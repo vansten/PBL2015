@@ -2,8 +2,8 @@
 <Material>
   <Name>awsomeTestMat</Name>
   <EffectPath>Effects\NormalEffect</EffectPath>
-  <DiffusePath>Textures\Enviro\Buildings\Big_house_D</DiffusePath>
-  <NormalPath>Textures\Enviro\Buildings\Big_house_N</NormalPath>
+  <DiffusePath>Textures\Weapons\HammerSmall\HammerSmall_D</DiffusePath>
+  <NormalPath>Textures\Weapons\HammerSmall\HammerSmall_N</NormalPath>
   <SpecularColor>
     <X>1</X>
     <Y>1</Y>

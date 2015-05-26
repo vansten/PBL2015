@@ -17,6 +17,6 @@
   </ReflectivityColor>
   <ReflectivityBias>0.2</ReflectivityBias>
   <Transparency>1</Transparency>
-  <PerPixelLighting>true</PerPixelLighting>
+  <PerPixelLighting>false</PerPixelLighting>
   <ReceiveShadows>true</ReceiveShadows>
 </Material>

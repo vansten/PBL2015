@@ -128,6 +128,7 @@ namespace TrashSoup.Engine
         private SpriteFont font;
         private string text;
         private Color color;
+        private float scale;
 
         #endregion
 
@@ -139,11 +140,20 @@ namespace TrashSoup.Engine
             this.font = font;
             this.text = text;
             this.color = color;
+            this.scale = 1.0f;
+        }
+
+        public GUIText(SpriteFont font, string text, Color color, Vector2 position, float scale) : base(position, 0.0f, 0.0f)
+        {
+            this.font = font;
+            this.text = text;
+            this.color = color;
+            this.scale = scale;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(this.font, this.text, this.position, this.color);
+            spriteBatch.DrawString(this.font, this.text, this.position, this.color, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1);
             base.Draw(spriteBatch);
         }
 
@@ -472,6 +482,16 @@ namespace TrashSoup.Engine
         public void DrawText(SpriteFont font, string text, Vector2 position, Color color)
         {
             GUIText newText = new GUIText(font, text, color, position);
+            this.elementsToDraw.Add(newText);
+        }
+
+        /// <summary>
+        /// 
+        /// Draws text on top of everything, should be called per frame for each text that has to be drawn
+        /// </summary>
+        public void DrawText(SpriteFont font, string text, Vector2 position, Color color, float scale)
+        {
+            GUIText newText = new GUIText(font, text, color, position, scale);
             this.elementsToDraw.Add(newText);
         }
 

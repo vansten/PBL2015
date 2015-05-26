@@ -37,7 +37,7 @@ namespace TrashSoup.Gameplay
         private Vector2 liveBGPos = new Vector2(0.001f, 0.94f);
         private Vector2 livePos = new Vector2(0.01f, 0.9475f);
         private Vector2 dayInfoPos = new Vector2(0.15f, 0.82f);
-        private Vector2 initialLiveTextPos = new Vector2(0.38f, 0.9475f);
+        private Vector2 initialLiveTextPos = new Vector2(0.395f, 0.9475f);
         private Vector2 liveTextPos;
 
         private string currentLiveText = "";
