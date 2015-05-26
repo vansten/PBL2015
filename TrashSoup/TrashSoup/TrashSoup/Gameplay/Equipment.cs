@@ -67,18 +67,29 @@ namespace TrashSoup.Gameplay
             return;
         }
 
-        public void ChangeWeapon(Weapon newWeapon)
+        public void PickUpWeapon(GameObject newWeapon)
         {
-            base.MyObject.Components.Remove(CurrentWeapon);
-            CurrentWeapon = newWeapon;
-            base.MyObject.Components.Add(CurrentWeapon);
+            newWeapon.Dynamic = true;
+            newWeapon.MyCarrierSocket = new Socket(base.MyObject, newWeapon, null, "mixamorig:RightHand");
+            newWeapon.MyTransform.Position = new Vector3(0, 0, 0);
+            newWeapon.MyTransform.Scale = 1;
+            base.MyObject.MyCollider.IgnoredColliders.Add(newWeapon.MyCollider);
+        }
+
+        public void DropWeapon(GameObject weapon)
+        {
+            weapon.Dynamic = false;
+            weapon.MyCarrierSocket = new Socket(weapon, weapon, null, "");
+            weapon.MyTransform.Position = new Vector3(0, 0, 0);
+            weapon.MyTransform.Scale = 4;
+            base.MyObject.MyCollider.IgnoredColliders.Remove(weapon.MyCollider);
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             if(currentWeapon.Durability == 0)
             {
-                ChangeWeapon(new Fists(this.MyObject));
+                this.CurrentWeapon = new Fists(this.MyObject);
             }
         }
 
