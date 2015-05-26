@@ -26,6 +26,13 @@ namespace TrashSoup.Gameplay
 
         #region variables
 
+        private SpriteFont font;
+        private bool drawFoodWarning = false;
+        private float foodWarningTimer = 0.0f;
+        private Vector2 foodWarningPos = new Vector2(0.35f, 0.7f);
+        private Vector2 weaponInfoPos = new Vector2(0.4f, 0.8f);
+        private Vector2 deadPos = new Vector2(0.31f, 0.2f);
+
         protected Vector3 tempMove;
         protected Vector3 tempMoveRotated;
         protected Vector3 prevForward;
@@ -46,6 +53,13 @@ namespace TrashSoup.Gameplay
         private double collectedFakeTime = 0.0;
         private GameObject trash;
 
+        private bool collisionWithWeapon = false;
+        private bool collectedWeapon = false;
+        //private double weaponCollisionFakeTime = 0.0;
+        //private double weaponCollectedFakeTime = 0.0;
+        private GameObject anotherWeapon;
+        private GameObject weapon;
+
         private Equipment equipment;
 
         private float hitPoints = MAX_HEALTH;
@@ -55,7 +69,8 @@ namespace TrashSoup.Gameplay
         private bool isDead = false;
 
         private Texture2D interactionTexture;
-        private Vector2 textPosition = new Vector2(0.43f, 0.35f);
+        private Vector2 trashTextPosition = new Vector2(0.43f, 0.35f);
+        private Vector2 weaponTextPosition = new Vector2(0.43f, 0.35f);
 
         #endregion
 
@@ -102,14 +117,67 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
+#if DEBUG
+            GUIManager.Instance.DrawText(this.font,
+                    "Weapon: " + equipment.CurrentWeapon.Name, this.weaponInfoPos, Color.Red);
+#endif
             if (isDead)
+            {
+                GUIManager.Instance.DrawText(this.font, "YOU'RE DEAD!", this.deadPos, Color.Red, 4.0f);
                 return;
+            }
 
-            //FOR TETIN
-            if (InputManager.Instance.GetKeyboardButtonDown(Keys.PageDown))
-                DecreaseHealth(1);
-            if (InputManager.Instance.GetKeyboardButtonDown(Keys.PageUp))
-                IncreaseHealth(20);
+            //TETIN SO HARD
+            if(InputManager.Instance.GetKeyboardButtonDown(Keys.M))
+            {
+                this.DecreaseHealth(30);
+            }
+            if(InputManager.Instance.GetKeyboardButtonDown(Keys.N))
+            {
+                this.Equipment.FoodCount += 1;
+            }
+            //END OF HARD TETIN
+
+            if (InputHandler.Instance.Eat())
+            {
+                if(this.Equipment.FoodCount > 0)
+                {
+                    this.Equipment.FoodCount -= 1;
+                    IncreaseHealth(MAX_HEALTH);
+                }
+                else
+                {
+                    drawFoodWarning = true;
+                }
+            }
+
+            if(drawFoodWarning)
+            {
+                if(this.Equipment.FoodCount > 0)
+                {
+                    drawFoodWarning = false;
+                    foodWarningTimer = 0.0f;
+                }
+                else
+                {
+                    GUIManager.Instance.DrawText(this.font, "You have no food. Find one", this.foodWarningPos, Color.Red);
+                    foodWarningTimer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+                    if (foodWarningTimer > 4.0f)
+                    {
+                        foodWarningTimer = 0.0f;
+                        drawFoodWarning = false;
+                    }
+                }
+            }
+
+            if (InputManager.Instance.GetKeyboardButtonDown(Keys.U))
+            {
+                if(equipment.CurrentWeapon.Name != "Fists")
+                {
+                    equipment.CurrentWeapon = new Weapons.Fists(this.MyObject);
+                    equipment.DropWeapon(this.anotherWeapon);
+                }
+            }
 
             equipment.Update(gameTime);
             
@@ -200,9 +268,14 @@ namespace TrashSoup.Gameplay
                 }
             }
 
-            if(this.collisionWithTrash)
+            if(this.collisionWithTrash || this.collisionWithWeapon)
             {
                 if(!this.collectedTrash)
+                {
+                    this.collisionFakeTime = gameTime.TotalGameTime.TotalSeconds;
+                    GUIManager.Instance.DrawTexture(this.interactionTexture, new Vector2(0.475f, 0.775f), 0.05f, 0.05f);
+                }
+                if(!this.collectedWeapon)
                 {
                     this.collisionFakeTime = gameTime.TotalGameTime.TotalSeconds;
                     GUIManager.Instance.DrawTexture(this.interactionTexture, new Vector2(0.475f, 0.775f), 0.05f, 0.05f);
@@ -220,15 +293,41 @@ namespace TrashSoup.Gameplay
             if(this.collectedTrash)
             {
                 GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"),
-                    "Trash collected", textPosition, Color.Red);
+                    "Trash collected", trashTextPosition, Color.Red);
                 if(gameTime.TotalGameTime.TotalSeconds - this.collectedFakeTime > 2.0)
                 {
                     this.collectedTrash = false;
                 }
-                textPosition.Y -= 0.002f;
+                trashTextPosition.Y -= 0.002f;
+            }
+
+            if (!this.collectedWeapon && this.collisionWithWeapon && InputHandler.Instance.Action())
+            {
+                this.collectedWeapon = true;
+                this.collectedFakeTime = gameTime.TotalGameTime.TotalSeconds;
+                if(this.anotherWeapon != null)
+                {
+                    equipment.DropWeapon(this.anotherWeapon);
+                }
+                equipment.CurrentWeapon = this.weapon.Components.First(x => x is Weapon) as Weapon;
+                equipment.PickUpWeapon(this.weapon);
+                this.anotherWeapon = this.weapon;
+                //PICKING ANIMATION + SOUNDS
+            }
+
+            if(this.collectedWeapon)
+            {
+                GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"),
+                    "Weapon collected", weaponTextPosition, Color.Red);
+                if (gameTime.TotalGameTime.TotalSeconds - this.collectedFakeTime > 2.0)
+                {
+                    this.collectedWeapon = false;
+                }
+                weaponTextPosition.Y -= 0.002f;
             }
 
             this.collisionWithTrash = false;
+            this.collisionWithWeapon = false;
 
             if(InputManager.Instance.GetKeyboardButtonDown(Keys.F))
             {
@@ -241,7 +340,9 @@ namespace TrashSoup.Gameplay
 
         public override void Initialize()
         {
+            this.font = TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest");
             this.interactionTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/x_button");
+            this.weapon = new GameObject(0, "");
             base.Initialize();
         }
 
@@ -255,8 +356,8 @@ namespace TrashSoup.Gameplay
             sprint = 1.0f;
             sprintM = 0.0f;
             equipment = new Equipment(this.MyObject);
-            if(this.MyObject.GetComponent<Weapons.Fists>() == null)
-                this.MyObject.Components.Add(equipment.CurrentWeapon);
+            //if(this.MyObject.GetComponent<Weapons.Fists>() == null)
+                //this.MyObject.Components.Add(equipment.CurrentWeapon);
 
             if (MyObject == null) return;
 
@@ -282,6 +383,11 @@ namespace TrashSoup.Gameplay
             {
                 this.collisionWithTrash = true;
                 this.trash = other;
+            }
+            if(other.Components.Exists(x => x is Weapon))
+            {
+                this.collisionWithWeapon = true;
+                this.weapon = other;
             }
             base.OnTrigger(other);
         }

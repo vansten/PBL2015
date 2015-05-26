@@ -91,6 +91,7 @@
     <Compile Include="Engine\AI\BehaviorTree\Sequence.cs" />
     <Compile Include="Engine\BoundingFrustumExtended.cs" />
     <Compile Include="Engine\Destructible.cs" />
+    <Compile Include="Engine\DestructiblePart.cs" />
     <Compile Include="Engine\EditorCamera.cs" />
     <Compile Include="Engine\Face.cs" />
     <Compile Include="Engine\LightDirectional.cs" />

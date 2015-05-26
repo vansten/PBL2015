@@ -152,6 +152,15 @@ namespace TrashSoup.Engine
                         {
                             if (go.MyPhysicalObject != null) go.MyPhysicalObject.Velocity = Vector3.Zero;
                             if (col.MyObject.MyPhysicalObject != null) col.MyObject.MyPhysicalObject.Velocity = Vector3.Zero;
+                            if(go.MyCollider.IntersectionVector == Vector3.Zero)
+                            {
+                                go.MyCollider.IntersectionVector = col.IntersectionVector;
+                            }
+                            else if(col.IntersectionVector == Vector3.Zero)
+                            {
+                                col.IntersectionVector = go.MyCollider.IntersectionVector;
+                            }
+                            Debug.Log(go.MyCollider.IntersectionVector.ToString());
                             col.MyObject.OnCollision(go);
                             go.OnCollision(col.MyObject);
                             return false;

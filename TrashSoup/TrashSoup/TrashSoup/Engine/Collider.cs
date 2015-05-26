@@ -32,7 +32,7 @@ namespace TrashSoup.Engine
         public Vector3 IntersectionVector
         {
             get;
-            protected set;
+            set;
         }
 
         public bool IsCollision

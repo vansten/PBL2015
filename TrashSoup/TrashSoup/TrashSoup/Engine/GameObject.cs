@@ -21,6 +21,11 @@ namespace TrashSoup.Engine
         private GameObject parent;
         private List<GameObject> children;
 
+        private List<ObjectComponent> runtimeAdded;
+        private List<ObjectComponent> runtimeRemoved;
+
+        private bool drawCollider = false;
+
         #endregion
 
         #region properties
@@ -39,6 +44,12 @@ namespace TrashSoup.Engine
                 visible = value;
                 ChildrenVisible = value;
             }
+        }
+
+        public bool DrawCollider
+        {
+            protected get { return this.drawCollider; }
+            set { this.drawCollider = value; }
         }
 
         /// <summary>
@@ -68,7 +79,7 @@ namespace TrashSoup.Engine
                     Debug.Log("GameObject ERROR: " + this.Name + ", ID " + this.UniqueID.ToString() + " is already assigned to this socket! Aborting.");
                     return;
                 }
-                value.Carrier.Components.Add(value);
+                value.Carrier.AddComponentRuntime(value);
                 myCarrierSocket = value;
             }
         }
@@ -113,6 +124,9 @@ namespace TrashSoup.Engine
             this.children = new List<GameObject>();
             this.parent = null;
             this.GraphicsManager = TrashSoupGame.Instance.GraphicsManager;
+
+            this.runtimeAdded = new List<ObjectComponent>();
+            this.runtimeRemoved = new List<ObjectComponent>();
 
             this.Enabled = true;
             this.Visible = true;
@@ -182,6 +196,11 @@ namespace TrashSoup.Engine
                 {
                     obj.Update(gameTime);
                 }
+
+                if (runtimeRemoved.Count > 0 || runtimeAdded.Count > 0)
+                {
+                    SolveRuntimeAdditions();
+                }
             }
         }
 
@@ -198,9 +217,9 @@ namespace TrashSoup.Engine
                 //[vansten] It won't be build if we build a release version
                 //[vansten] COMMENT DRAWING COLLIDER TO GET HIGHER FPS RATE!!!!!!!!!!!!!
 #if DEBUG
-                if (this.MyCollider != null)
+                if (this.MyCollider != null && this.DrawCollider)
                 {
-                   //this.MyCollider.Draw(cam, effect, gameTime);
+                   this.MyCollider.Draw(cam, effect, gameTime);
                 }
 
 #endif
@@ -318,6 +337,41 @@ namespace TrashSoup.Engine
                     children.Remove(obj);
                 }
             }
+        }
+
+        public void AddComponentRuntime(ObjectComponent obj)
+        {
+            this.runtimeAdded.Add(obj);
+        }
+
+        public void RemoveComponentRuntime(ObjectComponent obj)
+        {
+            if(runtimeAdded.Contains(obj))
+            {
+                this.runtimeAdded.Remove(obj);
+            }
+            else
+            {
+                this.runtimeRemoved.Add(obj);
+            }
+        }
+
+        private void SolveRuntimeAdditions()
+        {
+            int aCount = runtimeAdded.Count;
+            int rCount = runtimeRemoved.Count;
+
+            for (int i = 0; i < aCount; ++i)
+            {
+                this.Components.Add(this.runtimeAdded[i]);
+            }
+            for (int i = 0; i < rCount; ++i)
+            {
+                this.Components.Remove(this.runtimeRemoved[i]);
+            }
+
+            runtimeAdded.Clear();
+            runtimeRemoved.Clear();
         }
 
         public System.Xml.Schema.XmlSchema GetSchema()
@@ -521,7 +575,7 @@ namespace TrashSoup.Engine
         /// 
         /// This function will call every OnCollision(GameObject) in this game object components
         /// </summary>
-        public void OnCollision(GameObject otherGO)
+        public virtual void OnCollision(GameObject otherGO)
         {
             foreach (ObjectComponent oc in this.Components)
             {

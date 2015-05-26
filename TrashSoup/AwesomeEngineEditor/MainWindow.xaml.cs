@@ -208,10 +208,15 @@ namespace AwesomeEngineEditor
 
         private void HierarchyTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
+            if(this.selectedObject != null)
+            {
+                this.selectedObject.DrawCollider = false;
+            }
             this.selectedObject = ((TrashSoup.Engine.GameObject)this.HierarchyTreeView.SelectedItem);
             if(this.selectedObject != null)
             {
                 OnPropertyChanged("IsRemoveModelMIEnabled");
+                this.selectedObject.DrawCollider = true;
                 this.DetailsInfo.Visibility = System.Windows.Visibility.Visible;
                 this.IsTranslateRotateScaleVisible = System.Windows.Visibility.Visible;
                 this.GenerateRemovableComponentsList();
@@ -235,6 +240,7 @@ namespace AwesomeEngineEditor
                     item.IsSelected = false;
                     this.DetailsInfo.Visibility = System.Windows.Visibility.Hidden;
                     this.IsTranslateRotateScaleVisible = System.Windows.Visibility.Hidden;
+                    this.selectedObject.DrawCollider = false;
                     this.selectedObject = null;
                 }
                 treeView.Focus();
