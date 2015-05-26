@@ -10,5 +10,8 @@
 #define SHADOW_BIAS 0.004f
 #define SHADOW_DEPTH_BIAS 0.0001f
 #define SHADOW_POINT_MAX_DIST 50.0f
+#define ESM_K					80.0f // Range [0, 80]
+#define ESM_MIN					-0.5f // Range [0, -oo]
+#define ESM_DIFFUSE_SCALE		5.79f // Range [1, 10]
 
 #endif
