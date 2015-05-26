@@ -54,50 +54,47 @@ namespace TrashSoup.Engine
         /// </summary>
         public override void Draw(Camera cam, Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
         {
-            if (!TrashSoupGame.Instance.EditorMode)
+            short[] bBoxIndices = {
+                                0, 1, 1, 2, 2, 3, 3, 0, // Front edges
+                                4, 5, 5, 6, 6, 7, 7, 4, // Back edges
+                                0, 4, 1, 5, 2, 6, 3, 7 // Side edges connecting front and back
+                                };
+
+            Vector3[] corners = this.Box.GetCorners();
+            VertexPositionColor[] primitiveList = new VertexPositionColor[corners.Length];
+
+            // Assign the 8 box vertices
+            for (int i = 0; i < corners.Length; i++)
             {
-                short[] bBoxIndices = {
-                                    0, 1, 1, 2, 2, 3, 3, 0, // Front edges
-                                    4, 5, 5, 6, 6, 7, 7, 4, // Back edges
-                                    0, 4, 1, 5, 2, 6, 3, 7 // Side edges connecting front and back
-                                  };
-
-                Vector3[] corners = this.Box.GetCorners();
-                VertexPositionColor[] primitiveList = new VertexPositionColor[corners.Length];
-
-                // Assign the 8 box vertices
-                for (int i = 0; i < corners.Length; i++)
-                {
-                    primitiveList[i] = new VertexPositionColor(corners[i], Color.White);
-                }
-
-                BasicEffect lineEffect = new BasicEffect(TrashSoupGame.Instance.GraphicsDevice);
-                lineEffect.LightingEnabled = false;
-                lineEffect.TextureEnabled = false;
-                lineEffect.VertexColorEnabled = true;
-
-                GraphicsDevice gd = TrashSoupGame.Instance.GraphicsDevice;
-                VertexBuffer buffer = new VertexBuffer(gd, typeof(VertexPositionColor), primitiveList.Length, BufferUsage.None);
-                buffer.SetData(primitiveList);
-                IndexBuffer ib = new IndexBuffer(gd, IndexElementSize.SixteenBits, bBoxIndices.Length, BufferUsage.WriteOnly);
-                ib.SetData(bBoxIndices);
-                gd.SetVertexBuffer(buffer);
-                gd.Indices = ib;
-
-                if (cam == null)
-                    cam = ResourceManager.Instance.CurrentScene.Cam;
-
-                lineEffect.World = Matrix.Identity;
-                lineEffect.View = cam.ViewMatrix;
-                lineEffect.Projection = cam.ProjectionMatrix;
-                foreach (EffectPass pass in lineEffect.CurrentTechnique.Passes)
-                {
-                    pass.Apply();
-                    gd.DrawUserIndexedPrimitives(PrimitiveType.LineList, primitiveList, 0, 8, bBoxIndices, 0, 12);
-                }
-
-                base.Draw(cam, effect, gameTime);
+                primitiveList[i] = new VertexPositionColor(corners[i], Color.White);
             }
+
+            BasicEffect lineEffect = new BasicEffect(TrashSoupGame.Instance.GraphicsDevice);
+            lineEffect.LightingEnabled = false;
+            lineEffect.TextureEnabled = false;
+            lineEffect.VertexColorEnabled = true;
+
+            GraphicsDevice gd = TrashSoupGame.Instance.GraphicsDevice;
+            VertexBuffer buffer = new VertexBuffer(gd, typeof(VertexPositionColor), primitiveList.Length, BufferUsage.None);
+            buffer.SetData(primitiveList);
+            IndexBuffer ib = new IndexBuffer(gd, IndexElementSize.SixteenBits, bBoxIndices.Length, BufferUsage.WriteOnly);
+            ib.SetData(bBoxIndices);
+            gd.SetVertexBuffer(buffer);
+            gd.Indices = ib;
+
+            if (cam == null)
+                cam = ResourceManager.Instance.CurrentScene.Cam;
+
+            lineEffect.World = Matrix.Identity;
+            lineEffect.View = cam.ViewMatrix;
+            lineEffect.Projection = cam.ProjectionMatrix;
+            foreach (EffectPass pass in lineEffect.CurrentTechnique.Passes)
+            {
+                pass.Apply();
+                gd.DrawUserIndexedPrimitives(PrimitiveType.LineList, primitiveList, 0, 8, bBoxIndices, 0, 12);
+            }
+
+            base.Draw(cam, effect, gameTime);
         }
 
         protected override void Start()
@@ -284,9 +281,122 @@ namespace TrashSoup.Engine
 
         private bool _OldIntersectsWithAABB(BoundingBox boundingBox)
         {
-            return this.Box.Intersects(boundingBox);
+            if(this.Box.Intersects(boundingBox))
+            {
+                float x1, x2, y1, y2, z1, z2;
+                x1 = x2 = y1 = y2 = z1 = z2 = 0.0f;
+
+                float a, b;
+                a = b = 0.0f;
+                a = this.Box.Min.X - boundingBox.Min.X;
+                b = this.Box.Min.X - boundingBox.Max.X;
+                if(a > 0.0f && b < 0.0f)
+                {
+                    if(Math.Abs(a) < Math.Abs(b))
+                    {
+                        x1 = a;
+                    }
+                    else
+                    {
+                        x1 = b;
+                    }
+                }
+                a = this.Box.Max.X - boundingBox.Max.X;
+                b = this.Box.Max.X - boundingBox.Min.X;
+                if(a < 0.0f && b > 0.0f)
+                {
+                    if (Math.Abs(a) < Math.Abs(b))
+                    {
+                        x2 = a;
+                    }
+                    else
+                    {
+                        x2 = b;
+                    }
+                }
+
+                a = this.Box.Min.Y - boundingBox.Min.Y;
+                b = this.Box.Min.Y - boundingBox.Max.Y;
+                if (a > 0.0f && b < 0.0f)
+                {
+                    if (Math.Abs(a) < Math.Abs(b))
+                    {
+                        y1 = a;
+                    }
+                    else
+                    {
+                        y1 = b;
+                    }
+                }
+                a = this.Box.Max.Y - boundingBox.Max.Y;
+                b = this.Box.Max.Y - boundingBox.Min.Y;
+                if (a < 0.0f && b > 0.0f)
+                {
+                    if (Math.Abs(a) < Math.Abs(b))
+                    {
+                        y2 = a;
+                    }
+                    else
+                    {
+                        y2 = b;
+                    }
+                }
+
+                a = this.Box.Min.Z - boundingBox.Min.Z;
+                b = this.Box.Min.Z - boundingBox.Max.Z;
+                if (a > 0.0f && b < 0.0f)
+                {
+                    if (Math.Abs(a) < Math.Abs(b))
+                    {
+                        z1 = a;
+                    }
+                    else
+                    {
+                        z1 = b;
+                    }
+                }
+                a = this.Box.Max.Z - boundingBox.Max.Z;
+                b = this.Box.Max.Z - boundingBox.Min.Z;
+                if (a < 0.0f && b > 0.0f)
+                {
+                    if (Math.Abs(a) < Math.Abs(b))
+                    {
+                        z2 = a;
+                    }
+                    else
+                    {
+                        z2 = b;
+                    }
+                }
+
+                float x, y, z;
+                x = y = z = 0.0f;
+                x = FindValue(x1, x2);
+                y = FindValue(y1, y2);
+                z = FindValue(z1, z2);
+
+                this.IntersectionVector = new Vector3(x, y, z);
+
+                return true;
+            }
+            return false;
         }
 
+        private float FindValue(float v1, float v2)
+        {
+            if (v1 == 0.0f)
+            {
+                return v2;
+            }
+            else if (v2 == 0.0f)
+            {
+                return v1;
+            }
+            else
+            {
+                return Math.Min(Math.Abs(v1), Math.Abs(v2));
+            }
+        }
 
         /// <summary>
         /// 

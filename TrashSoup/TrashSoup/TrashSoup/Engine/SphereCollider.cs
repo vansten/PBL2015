@@ -47,111 +47,108 @@ namespace TrashSoup.Engine
 
         public override void Draw(Camera cam, Effect effect, GameTime gameTime)
         {
-            if(TrashSoupGame.Instance.EditorMode)
+            verticesToDraw.Clear();
+            indices.Clear();
+            Vector3 right = Vector3.Right * this.Sphere.Radius;
+            Vector3 verticalCirclePoint;
+            Vector3 horizontalCirclePoint;
+            Vector3 rightUp = Vector3.Right + Vector3.Up;
+            Vector3 rightDown = Vector3.Right + Vector3.Down;
+            rightUp.Normalize();
+            rightDown.Normalize();
+            rightDown *= this.Sphere.Radius;
+            rightUp *= this.Sphere.Radius;
+            Vector3 pointToAdd;
+            for (short i = 0; i < 360; ++i)
             {
-                verticesToDraw.Clear();
-                indices.Clear();
-                Vector3 right = Vector3.Right * this.Sphere.Radius;
-                Vector3 verticalCirclePoint;
-                Vector3 horizontalCirclePoint;
-                Vector3 rightUp = Vector3.Right + Vector3.Up;
-                Vector3 rightDown = Vector3.Right + Vector3.Down;
-                rightUp.Normalize();
-                rightDown.Normalize();
-                rightDown *= this.Sphere.Radius;
-                rightUp *= this.Sphere.Radius;
-                Vector3 pointToAdd;
-                for (short i = 0; i < 360; ++i)
+                if (i - 1 > 0)
                 {
-                    if (i - 1 > 0)
-                    {
-                        indices.Add((short)(i - 1));
-                    }
-                    verticalCirclePoint = Vector3.Transform(right, Matrix.CreateRotationZ(MathHelper.ToRadians(i)));
-                    indices.Add(i);
-                    verticalCirclePoint.X += this.MyObject.MyTransform.Position.X;
-                    verticalCirclePoint.Y += this.MyObject.MyTransform.Position.Y;
-                    verticalCirclePoint.Z -= this.MyObject.MyTransform.Position.Z;
-                    verticesToDraw.Add(verticalCirclePoint);
+                    indices.Add((short)(i - 1));
                 }
-
-                for (short i = 0; i < 360; ++i)
-                {
-                    if (i - 1 > 0)
-                    {
-                        indices.Add((short)(360 + i - 1));
-                    }
-                    horizontalCirclePoint = Vector3.Transform(right, Matrix.CreateRotationY(MathHelper.ToRadians(i)));
-                    indices.Add((short)(360 + i));
-                    horizontalCirclePoint.X += this.MyObject.MyTransform.Position.X;
-                    horizontalCirclePoint.Y += this.MyObject.MyTransform.Position.Y;
-                    horizontalCirclePoint.Z -= this.MyObject.MyTransform.Position.Z;
-                    verticesToDraw.Add(horizontalCirclePoint);
-                }
-
-                for (short i = 0; i < 360; ++i)
-                {
-                    if (i - 1 > 0)
-                    {
-                        indices.Add((short)(720 + i - 1));
-                    }
-                    pointToAdd = Vector3.Transform(rightUp, Matrix.CreateRotationZ(MathHelper.ToRadians(i)) * Matrix.CreateRotationY(MathHelper.ToRadians(45.0f)));
-                    indices.Add((short)(720 + i));
-                    pointToAdd.X += this.MyObject.MyTransform.Position.X;
-                    pointToAdd.Y += this.MyObject.MyTransform.Position.Y;
-                    pointToAdd.Z -= this.MyObject.MyTransform.Position.Z;
-                    verticesToDraw.Add(pointToAdd);
-                }
-
-                for (short i = 0; i < 360; ++i)
-                {
-                    if (i - 1 > 0)
-                    {
-                        indices.Add((short)(1080 + i - 1));
-                    }
-                    pointToAdd = Vector3.Transform(rightDown, Matrix.CreateRotationZ(MathHelper.ToRadians(i)) * Matrix.CreateRotationY(MathHelper.ToRadians(-45.0f)));
-                    indices.Add((short)(1080 + i));
-                    pointToAdd.X += this.MyObject.MyTransform.Position.X;
-                    pointToAdd.Y += this.MyObject.MyTransform.Position.Y;
-                    pointToAdd.Z -= this.MyObject.MyTransform.Position.Z;
-                    verticesToDraw.Add(pointToAdd);
-                }
-
-                Vector3[] vertices = verticesToDraw.ToArray();
-                VertexPositionColor[] primitiveList = new VertexPositionColor[vertices.Length];
-                for (int i = 0; i < vertices.Length; ++i)
-                {
-                    primitiveList[i] = new VertexPositionColor(vertices[i], Color.White);
-                }
-
-                BasicEffect lineEffect = new BasicEffect(TrashSoupGame.Instance.GraphicsDevice);
-                lineEffect.LightingEnabled = false;
-                lineEffect.TextureEnabled = false;
-                lineEffect.VertexColorEnabled = true;
-
-                GraphicsDevice gd = TrashSoupGame.Instance.GraphicsDevice;
-                VertexBuffer buffer = new VertexBuffer(gd, typeof(VertexPositionColor), primitiveList.Length, BufferUsage.None);
-                buffer.SetData(primitiveList);
-                short[] indicesArray = indices.ToArray();
-                IndexBuffer ib = new IndexBuffer(gd, IndexElementSize.SixteenBits, indicesArray.Length, BufferUsage.WriteOnly);
-                ib.SetData(indicesArray);
-                gd.SetVertexBuffer(buffer);
-                gd.Indices = ib;
-
-                if (cam == null)
-                    cam = ResourceManager.Instance.CurrentScene.Cam;
-
-                lineEffect.World = Matrix.Identity;
-                lineEffect.View = cam.ViewMatrix;
-                lineEffect.Projection = cam.ProjectionMatrix;
-                foreach (EffectPass pass in lineEffect.CurrentTechnique.Passes)
-                {
-                    pass.Apply();
-                    gd.DrawUserIndexedPrimitives(PrimitiveType.LineList, primitiveList, 0, 1440, indicesArray, 0, 4 * 359);
-                }
-
-                base.Draw(cam, effect, gameTime);
+                verticalCirclePoint = Vector3.Transform(right, Matrix.CreateRotationZ(MathHelper.ToRadians(i)));
+                indices.Add(i);
+                verticalCirclePoint.X += this.MyObject.MyTransform.Position.X;
+                verticalCirclePoint.Y += this.MyObject.MyTransform.Position.Y;
+                verticalCirclePoint.Z -= this.MyObject.MyTransform.Position.Z;
+                verticesToDraw.Add(verticalCirclePoint);
             }
+
+            for (short i = 0; i < 360; ++i)
+            {
+                if (i - 1 > 0)
+                {
+                    indices.Add((short)(360 + i - 1));
+                }
+                horizontalCirclePoint = Vector3.Transform(right, Matrix.CreateRotationY(MathHelper.ToRadians(i)));
+                indices.Add((short)(360 + i));
+                horizontalCirclePoint.X += this.MyObject.MyTransform.Position.X;
+                horizontalCirclePoint.Y += this.MyObject.MyTransform.Position.Y;
+                horizontalCirclePoint.Z -= this.MyObject.MyTransform.Position.Z;
+                verticesToDraw.Add(horizontalCirclePoint);
+            }
+
+            for (short i = 0; i < 360; ++i)
+            {
+                if (i - 1 > 0)
+                {
+                    indices.Add((short)(720 + i - 1));
+                }
+                pointToAdd = Vector3.Transform(rightUp, Matrix.CreateRotationZ(MathHelper.ToRadians(i)) * Matrix.CreateRotationY(MathHelper.ToRadians(45.0f)));
+                indices.Add((short)(720 + i));
+                pointToAdd.X += this.MyObject.MyTransform.Position.X;
+                pointToAdd.Y += this.MyObject.MyTransform.Position.Y;
+                pointToAdd.Z -= this.MyObject.MyTransform.Position.Z;
+                verticesToDraw.Add(pointToAdd);
+            }
+
+            for (short i = 0; i < 360; ++i)
+            {
+                if (i - 1 > 0)
+                {
+                    indices.Add((short)(1080 + i - 1));
+                }
+                pointToAdd = Vector3.Transform(rightDown, Matrix.CreateRotationZ(MathHelper.ToRadians(i)) * Matrix.CreateRotationY(MathHelper.ToRadians(-45.0f)));
+                indices.Add((short)(1080 + i));
+                pointToAdd.X += this.MyObject.MyTransform.Position.X;
+                pointToAdd.Y += this.MyObject.MyTransform.Position.Y;
+                pointToAdd.Z -= this.MyObject.MyTransform.Position.Z;
+                verticesToDraw.Add(pointToAdd);
+            }
+
+            Vector3[] vertices = verticesToDraw.ToArray();
+            VertexPositionColor[] primitiveList = new VertexPositionColor[vertices.Length];
+            for (int i = 0; i < vertices.Length; ++i)
+            {
+                primitiveList[i] = new VertexPositionColor(vertices[i], Color.White);
+            }
+
+            BasicEffect lineEffect = new BasicEffect(TrashSoupGame.Instance.GraphicsDevice);
+            lineEffect.LightingEnabled = false;
+            lineEffect.TextureEnabled = false;
+            lineEffect.VertexColorEnabled = true;
+
+            GraphicsDevice gd = TrashSoupGame.Instance.GraphicsDevice;
+            VertexBuffer buffer = new VertexBuffer(gd, typeof(VertexPositionColor), primitiveList.Length, BufferUsage.None);
+            buffer.SetData(primitiveList);
+            short[] indicesArray = indices.ToArray();
+            IndexBuffer ib = new IndexBuffer(gd, IndexElementSize.SixteenBits, indicesArray.Length, BufferUsage.WriteOnly);
+            ib.SetData(indicesArray);
+            gd.SetVertexBuffer(buffer);
+            gd.Indices = ib;
+
+            if (cam == null)
+                cam = ResourceManager.Instance.CurrentScene.Cam;
+
+            lineEffect.World = Matrix.Identity;
+            lineEffect.View = cam.ViewMatrix;
+            lineEffect.Projection = cam.ProjectionMatrix;
+            foreach (EffectPass pass in lineEffect.CurrentTechnique.Passes)
+            {
+                pass.Apply();
+                gd.DrawUserIndexedPrimitives(PrimitiveType.LineList, primitiveList, 0, 1440, indicesArray, 0, 4 * 359);
+            }
+
+            base.Draw(cam, effect, gameTime);
         }
 
         protected override void Start()

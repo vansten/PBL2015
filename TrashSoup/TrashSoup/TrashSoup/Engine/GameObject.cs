@@ -24,6 +24,8 @@ namespace TrashSoup.Engine
         private List<ObjectComponent> runtimeAdded;
         private List<ObjectComponent> runtimeRemoved;
 
+        private bool drawCollider = false;
+
         #endregion
 
         #region properties
@@ -42,6 +44,12 @@ namespace TrashSoup.Engine
                 visible = value;
                 ChildrenVisible = value;
             }
+        }
+
+        public bool DrawCollider
+        {
+            protected get { return this.drawCollider; }
+            set { this.drawCollider = value; }
         }
 
         /// <summary>
@@ -209,9 +217,9 @@ namespace TrashSoup.Engine
                 //[vansten] It won't be build if we build a release version
                 //[vansten] COMMENT DRAWING COLLIDER TO GET HIGHER FPS RATE!!!!!!!!!!!!!
 #if DEBUG
-                if (this.MyCollider != null)
+                if (this.MyCollider != null && this.DrawCollider)
                 {
-                   //this.MyCollider.Draw(cam, effect, gameTime);
+                   this.MyCollider.Draw(cam, effect, gameTime);
                 }
 
 #endif
