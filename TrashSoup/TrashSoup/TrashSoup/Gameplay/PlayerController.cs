@@ -26,6 +26,13 @@ namespace TrashSoup.Gameplay
 
         #region variables
 
+        private SpriteFont font;
+        private bool drawFoodWarning = false;
+        private float foodWarningTimer = 0.0f;
+        private Vector2 foodWarningPos = new Vector2(0.35f, 0.7f);
+        private Vector2 weaponInfoPos = new Vector2(0.4f, 0.8f);
+        private Vector2 deadPos = new Vector2(0.31f, 0.2f);
+
         protected Vector3 tempMove;
         protected Vector3 tempMoveRotated;
         protected Vector3 prevForward;
@@ -111,17 +118,58 @@ namespace TrashSoup.Gameplay
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
 #if DEBUG
-            GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"),
-                    "Weapon: " + equipment.CurrentWeapon.Name, new Vector2(0.4f, 0.8f), Color.Red);
+            GUIManager.Instance.DrawText(this.font,
+                    "Weapon: " + equipment.CurrentWeapon.Name, this.weaponInfoPos, Color.Red);
 #endif
             if (isDead)
+            {
+                GUIManager.Instance.DrawText(this.font, "YOU'RE DEAD!", this.deadPos, Color.Red, 4.0f);
                 return;
+            }
 
-            //FOR TETIN
-            if (InputManager.Instance.GetKeyboardButtonDown(Keys.PageDown))
-                DecreaseHealth(1);
-            if (InputManager.Instance.GetKeyboardButtonDown(Keys.PageUp))
-                IncreaseHealth(20);
+            //TETIN SO HARD
+            if(InputManager.Instance.GetKeyboardButtonDown(Keys.M))
+            {
+                this.DecreaseHealth(30);
+            }
+            if(InputManager.Instance.GetKeyboardButtonDown(Keys.N))
+            {
+                this.Equipment.FoodCount += 1;
+            }
+            //END OF HARD TETIN
+
+            if (InputHandler.Instance.Eat())
+            {
+                if(this.Equipment.FoodCount > 0)
+                {
+                    this.Equipment.FoodCount -= 1;
+                    IncreaseHealth(MAX_HEALTH);
+                }
+                else
+                {
+                    drawFoodWarning = true;
+                }
+            }
+
+            if(drawFoodWarning)
+            {
+                if(this.Equipment.FoodCount > 0)
+                {
+                    drawFoodWarning = false;
+                    foodWarningTimer = 0.0f;
+                }
+                else
+                {
+                    GUIManager.Instance.DrawText(this.font, "You have no food. Find one", this.foodWarningPos, Color.Red);
+                    foodWarningTimer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+                    if (foodWarningTimer > 4.0f)
+                    {
+                        foodWarningTimer = 0.0f;
+                        drawFoodWarning = false;
+                    }
+                }
+            }
+
             if (InputManager.Instance.GetKeyboardButtonDown(Keys.U))
             {
                 if(equipment.CurrentWeapon.Name != "Fists")
@@ -292,6 +340,7 @@ namespace TrashSoup.Gameplay
 
         public override void Initialize()
         {
+            this.font = TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest");
             this.interactionTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/x_button");
             this.weapon = new GameObject(0, "");
             base.Initialize();
