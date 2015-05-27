@@ -99,7 +99,7 @@ namespace TrashSoup.Gameplay
             GUIManager.Instance.DrawText(this.font, "$", this.creditsDollarTwoPos, Color.Green);
             for(int i = 0; i < 6; ++i)
             {
-                GUIManager.Instance.DrawText(this.font, this.names[i], this.firstNamePos + new Vector2(0.0f, i * 0.033f), Color.Green, 0.55f);
+                GUIManager.Instance.DrawText(this.font, this.names[i], this.firstNamePos + new Vector2(0.0f, i * 0.033f), Color.White, 0.55f);
             }
         }
 
