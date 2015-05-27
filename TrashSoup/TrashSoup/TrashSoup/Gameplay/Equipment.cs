@@ -146,7 +146,10 @@ namespace TrashSoup.Gameplay
             currentJunkCount = 0;
             currentFoodCount = 0;
             currentWeapon = new Fists(this.MyObject);
-            this.font = TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest");
+            if(TrashSoupGame.Instance != null)
+            {
+                this.font = TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest");
+            }
         }
 
         public override System.Xml.Schema.XmlSchema GetSchema()

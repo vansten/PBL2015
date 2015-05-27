@@ -160,7 +160,7 @@ namespace TrashSoup.Engine
                             {
                                 col.IntersectionVector = go.MyCollider.IntersectionVector;
                             }
-                            Debug.Log(go.MyCollider.IntersectionVector.ToString());
+                            //Debug.Log(go.MyCollider.IntersectionVector.ToString());
                             col.MyObject.OnCollision(go);
                             go.OnCollision(col.MyObject);
                             return false;

@@ -240,7 +240,10 @@ namespace AwesomeEngineEditor
                     item.IsSelected = false;
                     this.DetailsInfo.Visibility = System.Windows.Visibility.Hidden;
                     this.IsTranslateRotateScaleVisible = System.Windows.Visibility.Hidden;
-                    this.selectedObject.DrawCollider = false;
+                    if(this.selectedObject != null)
+                    {
+                        this.selectedObject.DrawCollider = false;
+                    }
                     this.selectedObject = null;
                 }
                 treeView.Focus();

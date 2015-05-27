@@ -136,19 +136,35 @@ namespace TrashSoup.Engine
                 float distance = Math.Abs(Vector3.Distance((camera.Position + camera.Translation), MyObject.MyTransform.GetWorldMatrix().Translation));
                 if(!ResourceManager.Instance.CurrentScene.Params.UseLods || !this.LodControlled || this.LODs[1] == null)
                 {
+                    if(effect == null && this.MyObject.UniqueID == 664)
+                    {
+                        Debug.Log(this.MyObject.Name + " LOD HIGH");
+                    }
                     LODState = LODStateEnum.HI;
                 }
                 else if((distance >= ResourceManager.Instance.CurrentScene.Params.Lod1Distance && 
                     distance < ResourceManager.Instance.CurrentScene.Params.Lod2Distance) || this.LODs[2] == null)
                 {
+                    if (effect == null && this.MyObject.UniqueID == 664)
+                    {
+                        Debug.Log(this.MyObject.Name + " LOD MID");
+                    } 
                     LODState = LODStateEnum.MED;
                 }
                 else if((distance >= ResourceManager.Instance.CurrentScene.Params.Lod2Distance))
                 {
+                    if (effect == null && this.MyObject.UniqueID == 664)
+                    {
+                        Debug.Log(this.MyObject.Name + " LOD LOW");
+                    } 
                     LODState = LODStateEnum.LO;
                 }
                 else
                 {
+                    if (effect == null && this.MyObject.UniqueID == 664)
+                    {
+                        Debug.Log(this.MyObject.Name + " LOD HIGH");
+                    } 
                     LODState = LODStateEnum.HI;
                 }
 
