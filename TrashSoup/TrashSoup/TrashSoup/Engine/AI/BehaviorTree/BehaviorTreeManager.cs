@@ -39,14 +39,18 @@ namespace TrashSoup.Engine.AI.BehaviorTree
                 {
                     if (this.milisecondsTillLastTick >= this.btTickFrequency)
                     {
-                        bt.Tick();
+                        bt.Tick(gameTime);
                         this.milisecondsTillLastTick = 0;
                     }
                     else
                     {
                         if (bt.CurrentRunning != null)
                         {
-                            bt.CurrentRunning.Tick(out bt.CurrentRunning);
+                            TickStatus ts = bt.CurrentRunning.Tick(gameTime, out bt.CurrentRunning);
+                            if(ts != TickStatus.RUNNING)
+                            {
+                                this.milisecondsTillLastTick = this.btTickFrequency;
+                            }
                         }
                     }
                     this.milisecondsTillLastTick += (int)gameTime.ElapsedGameTime.TotalMilliseconds;

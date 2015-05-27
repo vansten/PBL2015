@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -61,9 +62,9 @@ namespace TrashSoup.Engine.AI.BehaviorTree
             this.Enabled = false;
         }
 
-        public TickStatus Tick()
+        public TickStatus Tick(GameTime gameTime)
         {
-            return this.BTRoot.Tick(out this.CurrentRunning);
+            return this.BTRoot.Tick(gameTime, out this.CurrentRunning);
         }
 
         public System.Xml.Schema.XmlSchema GetSchema()
@@ -91,7 +92,7 @@ namespace TrashSoup.Engine.AI.BehaviorTree
 
         public void WriteXml(System.Xml.XmlWriter writer)
         {
-            writer.WriteElementString("OwnerX", Blackboard.Owner.UniqueID.ToString());
+            writer.WriteElementString("OwnerID", Blackboard.Owner.UniqueID.ToString());
 
             writer.WriteStartElement("Blackboard");
             (Blackboard as IXmlSerializable).WriteXml(writer);

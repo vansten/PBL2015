@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace TrashSoup.Engine.AI.BehaviorTree
 
         }
 
-        public virtual TickStatus Tick(out INode node)
+        public virtual TickStatus Tick(GameTime gameTime, out INode node)
         {
             node = null;
             return TickStatus.FAILURE;

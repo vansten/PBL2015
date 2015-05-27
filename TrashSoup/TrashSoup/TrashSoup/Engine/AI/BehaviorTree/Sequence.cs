@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,14 +23,14 @@ namespace TrashSoup.Engine.AI.BehaviorTree
 
         }
 
-        public TickStatus Tick(out INode node)
+        public TickStatus Tick(GameTime gameTime, out INode node)
         {
             node = null;
             if (children.Count == 0) return TickStatus.FAILURE;
 
             foreach (INode child in children)
             {
-                TickStatus tickStatus = child.Tick(out node);
+                TickStatus tickStatus = child.Tick(gameTime, out node);
                 if (tickStatus != TickStatus.SUCCESS)
                 {
                     return tickStatus;
