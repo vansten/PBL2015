@@ -125,6 +125,10 @@
     <Compile Include="Gameplay\InputHandler.cs" />
     <Compile Include="Gameplay\MenuController.cs" />
     <Compile Include="Gameplay\PlayerHUD.cs" />
+    <Compile Include="Gameplay\Rat.cs" />
+    <Compile Include="Gameplay\RatAI\RatStay.cs" />
+    <Compile Include="Gameplay\RatAI\RatWalk.cs" />
+    <Compile Include="Gameplay\RatTrigger.cs" />
     <Compile Include="Gameplay\Weapons\Fists.cs" />
     <Compile Include="Gameplay\Weapons\NoFreePlaceSign.cs" />
     <Compile Include="Gameplay\PlayerCameraController.cs" />

@@ -80,6 +80,8 @@ namespace TrashSoup.Gameplay
 
         public void PickUpWeapon(GameObject newWeapon)
         {
+            if (TrashSoupGame.Instance.EditorMode)
+                return;
             newWeapon.Dynamic = true;
             newWeapon.MyCarrierSocket = new Socket(base.MyObject, newWeapon, null, "mixamorig:RightHand");
             newWeapon.MyTransform.Position = new Vector3(0, 0, 0);
@@ -132,7 +134,8 @@ namespace TrashSoup.Gameplay
 
             if(currentWeapon.Durability == 0)
             {
-                this.CurrentWeapon = new Fists(this.MyObject);
+                this.CurrentWeapon = (ResourceManager.Instance.CurrentScene.GetObject(1144).Components.First(x => x.GetType() == typeof(Weapons.Fists)) as Weapon);
+                this.PickUpWeapon(ResourceManager.Instance.CurrentScene.GetObject(1144));
             }
         }
 

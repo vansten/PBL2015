@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace TrashSoup.Engine.AI.BehaviorTree
     {
         void Initialize();
 
-        TickStatus Tick(out INode running);
+        TickStatus Tick(GameTime gameTime, out INode running);
 
         void SetBlackboard(Blackboard bb);
 

@@ -232,6 +232,8 @@ namespace TrashSoup.Engine
 
         public GameObject GetObject(uint uniqueID)
         {
+            if (!ObjectsDictionary.Keys.Contains(uniqueID))
+                return null;
             return ObjectsDictionary[uniqueID];
         }
 
