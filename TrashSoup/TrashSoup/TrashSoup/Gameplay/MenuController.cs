@@ -56,7 +56,7 @@ namespace TrashSoup.Gameplay
         private int currentOption = 0;
 
         private Color activeColor = Color.Yellow;
-        private Color normalColor = Color.Green;
+        private Color normalColor = Color.Lime;
 
         private MenuStateEnum menuState = MenuStateEnum.MainMenu;
 
@@ -68,7 +68,7 @@ namespace TrashSoup.Gameplay
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             GUIManager.Instance.DrawTexture(this.backgroundTexture, Vector2.Zero, 1.0f, this.invertedAspectRatio);
-            GUIManager.Instance.DrawText(this.font, "11 - DEATH TV", this.channelPos, Color.Green);
+            GUIManager.Instance.DrawText(this.font, "11 - DEATH TV", this.channelPos, this.normalColor);
             GUIManager.Instance.DrawTexture(this.logoTexture, this.logoOnePos, 0.05f, 0.07f);
             GUIManager.Instance.DrawTexture(this.logoTexture, this.logoTwoPos, 0.05f, 0.07f);
             GUIManager.Instance.DrawText(this.font, "TRASH SOUP", this.namePos, Color.Red);
@@ -95,11 +95,11 @@ namespace TrashSoup.Gameplay
                 this.menuState = MenuStateEnum.MainMenu;
             }
             GUIManager.Instance.DrawText(this.font, "BACK", this.backPos, Color.Yellow);
-            GUIManager.Instance.DrawText(this.font, "$", this.creditsDollarOnePos, Color.Green);
-            GUIManager.Instance.DrawText(this.font, "$", this.creditsDollarTwoPos, Color.Green);
+            GUIManager.Instance.DrawText(this.font, "$", this.creditsDollarOnePos, this.normalColor);
+            GUIManager.Instance.DrawText(this.font, "$", this.creditsDollarTwoPos, this.normalColor);
             for(int i = 0; i < 6; ++i)
             {
-                GUIManager.Instance.DrawText(this.font, this.names[i], this.firstNamePos + new Vector2(0.0f, i * 0.033f), Color.White, 0.55f);
+                GUIManager.Instance.DrawText(this.font, this.names[i], this.firstNamePos + new Vector2(0.0f, i * 0.033f), this.normalColor, 0.55f);
             }
         }
 
@@ -148,8 +148,8 @@ namespace TrashSoup.Gameplay
             GUIManager.Instance.DrawText(this.font, "CONTINUE", this.continuePos, Color.Gray);
             GUIManager.Instance.DrawText(this.font, "CREDITS", this.creditsPos, this.currentOption == 2 ? this.activeColor : this.normalColor);
             GUIManager.Instance.DrawText(this.font, "EXIT", this.exitPos, this.currentOption == 3 ? this.activeColor : this.normalColor);
-            GUIManager.Instance.DrawText(this.font, "$", new Vector2(this.dollarOneXPos, this.currentDollarYPos), Color.Green);
-            GUIManager.Instance.DrawText(this.font, "$", new Vector2(this.dollarTwoXPos, this.currentDollarYPos), Color.Green);
+            GUIManager.Instance.DrawText(this.font, "$", new Vector2(this.dollarOneXPos, this.currentDollarYPos), this.normalColor);
+            GUIManager.Instance.DrawText(this.font, "$", new Vector2(this.dollarTwoXPos, this.currentDollarYPos), this.normalColor);
 
             if (InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.Enter) || InputManager.Instance.GetGamePadButtonDown(Microsoft.Xna.Framework.Input.Buttons.A))
             {
