@@ -447,11 +447,6 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
-    <Compile Include="Models\MainCharacter\MainCharacter_testM.FBX">
-      <Name>MainCharacter_testM</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>SkinnedModelProcessor</Processor>
-    </Compile>
     <Compile Include="Models\Enemies\Rat.FBX">
       <Name>Rat</Name>
       <Importer>FbxImporter</Importer>
