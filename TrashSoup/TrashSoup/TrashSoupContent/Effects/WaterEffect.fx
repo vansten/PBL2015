@@ -71,6 +71,7 @@ float3 EyePosition;
 float2 WindVector;
 float DeltaTime;
 
+float3 DiffuseColor;
 float3 SpecularColor;
 float Glossiness;
 float3 ReflectivityColor;
@@ -249,7 +250,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	float4 startColor = color * float4(computedLight.Diffuse, 1.0f);
 	color =  lerp(startColor, alpha * float4(finalWater, 1.0f), ReflectivityBias);
 	float3 specular = alpha * computedLight.Specular;
-	color = color + float4(specular, 1.0f);
+		color = float4(DiffuseColor, 1.0f) * color + float4(specular, 1.0f);
 
 	color *= Transparency;
 

@@ -18,6 +18,7 @@ samplerCUBE CubeSampler = sampler_state
 	AddressV = Mirror;
 };
 
+float3 DiffuseColor;
 float3 EyePosition;
 
 struct VertexShaderInput
@@ -63,7 +64,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
 	//////
 
-	float4 color = texCUBE(CubeSampler, normalize(input.TexCoord));
+	float4 color = float4(DiffuseColor, 1.0f) * texCUBE(CubeSampler, normalize(input.TexCoord));
 	color.a = 1;
     return color;
 }

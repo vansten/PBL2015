@@ -4,6 +4,11 @@
   <EffectPath>Effects\WaterEffect</EffectPath>
   <DiffusePath>Textures\Test\dirtywater</DiffusePath>
   <NormalPath>Textures\Test\water</NormalPath>
+  <DiffuseColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </DiffuseColor>
   <SpecularColor>
     <X>1</X>
     <Y>1</Y>

@@ -35,6 +35,7 @@ namespace TrashSoup.Engine
         protected EffectParameter epDiffuseMap;
         protected EffectParameter epNormalMap;
         protected EffectParameter epCubeMap;
+        protected EffectParameter epDiffuseColor;
         protected EffectParameter epSpecularColor;
         protected EffectParameter epGlossiness;
         protected EffectParameter epReflectivityColor;
@@ -82,6 +83,8 @@ namespace TrashSoup.Engine
         protected Texture2D diffuseMap;
         protected Texture2D normalMap;
         protected TextureCube cubeMap;
+
+        protected Vector3 diffuseColor;
 
         protected Vector3 specularColor;
         protected float glossiness;
@@ -140,6 +143,18 @@ namespace TrashSoup.Engine
             set
             {
                 cubeMap = value;
+            }
+        }
+
+        public Vector3 DiffuseColor
+        {
+            get
+            {
+                return diffuseColor;
+            }
+            set
+            {
+                diffuseColor = value;
             }
         }
 
@@ -238,6 +253,7 @@ namespace TrashSoup.Engine
             {
                 this.CubeMap = ResourceManager.Instance.TexturesCube["DefaultCube"];
             }
+            this.DiffuseColor = new Vector3(1.0f, 1.0f, 1.0f);
             this.SpecularColor = new Vector3(1.0f, 1.0f, 1.0f);
             this.Glossiness = 50.0f;
             this.ReflectivityColor = new Vector3(1.0f, 1.0f, 1.0f);
@@ -267,6 +283,7 @@ namespace TrashSoup.Engine
             {
                 this.CubeMap = ResourceManager.Instance.TexturesCube["DefaultCube"];
             }
+            this.DiffuseColor = new Vector3(1.0f, 1.0f, 1.0f);
             this.SpecularColor = new Vector3(1.0f, 1.0f, 1.0f);
             this.Glossiness = 50.0f;
             this.ReflectivityColor = new Vector3(1.0f, 1.0f, 1.0f);
@@ -318,6 +335,10 @@ namespace TrashSoup.Engine
             if (epCubeMap != null)
             {
                 epCubeMap.SetValue(CubeMap);
+            }
+            if (epDiffuseColor != null)
+            {
+                epDiffuseColor.SetValue(diffuseColor);
             }
             if (epSpecularColor != null)
             {
@@ -572,6 +593,7 @@ namespace TrashSoup.Engine
             epDiffuseMap = null;
             epNormalMap = null;
             epCubeMap = null;
+            epDiffuseColor = null;
             epSpecularColor = null;
             epGlossiness = null;
             epReflectivityColor = null;
@@ -613,6 +635,7 @@ namespace TrashSoup.Engine
             int hDiff2 = ("Texture").GetHashCode();
             int hNorm = ("NormalMap").GetHashCode();
             int hCube = ("CubeMap").GetHashCode();
+            int hDiffCol = ("DiffuseColor").GetHashCode();
             int hSpecCol = ("SpecularColor").GetHashCode();
             int hGloss = ("Glossiness").GetHashCode();
             int hRefl = ("ReflectivityColor").GetHashCode();
@@ -681,6 +704,10 @@ namespace TrashSoup.Engine
                 else if (pNameHash == hCube)
                 {
                     epCubeMap = p;
+                }
+                else if (pNameHash == hDiffCol)
+                {
+                    epDiffuseColor = p;
                 }
                 else if (pNameHash == hSpecCol)
                 {
@@ -880,6 +907,12 @@ namespace TrashSoup.Engine
                 CubeMap = ResourceManager.Instance.LoadTextureCube(reader.ReadElementString("CubePath", ""));
             }
 
+            reader.ReadStartElement("DiffuseColor");
+            DiffuseColor = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                                           reader.ReadElementContentAsFloat("Y", ""),
+                                           reader.ReadElementContentAsFloat("Z", ""));
+            reader.ReadEndElement();
+
             reader.ReadStartElement("SpecularColor");
             SpecularColor = new Vector3(reader.ReadElementContentAsFloat("X", ""),
                                            reader.ReadElementContentAsFloat("Y", ""),
@@ -915,6 +948,12 @@ namespace TrashSoup.Engine
             {
                 writer.WriteElementString("CubePath", ResourceManager.Instance.TexturesCube.FirstOrDefault(x => x.Value == CubeMap).Key);   
             }
+
+            writer.WriteStartElement("DiffuseColor");
+            writer.WriteElementString("X", XmlConvert.ToString(DiffuseColor.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(DiffuseColor.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(DiffuseColor.Z));
+            writer.WriteEndElement();
 
             writer.WriteStartElement("SpecularColor");
             writer.WriteElementString("X", XmlConvert.ToString(SpecularColor.X));

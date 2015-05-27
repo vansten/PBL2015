@@ -5,6 +5,11 @@
   <DiffusePath>DefaultDiffuse</DiffusePath>
   <NormalPath>DefaultNormal</NormalPath>
   <CubePath>Textures\Skyboxes\Sunset</CubePath>
+  <DiffuseColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </DiffuseColor>
   <SpecularColor>
     <X>0</X>
     <Y>0</Y>

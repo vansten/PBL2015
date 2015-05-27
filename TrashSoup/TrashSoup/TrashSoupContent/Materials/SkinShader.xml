@@ -4,6 +4,11 @@
   <EffectPath>Effects\NormalEffect</EffectPath>
   <DiffusePath>Textures\Test\TheGuy\GC_Skin_COL_2k_diffuseNEW_0</DiffusePath>
   <NormalPath>Textures\Test\TheGuy\GC_Skin_NM_2k</NormalPath>
+  <DiffuseColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </DiffuseColor>
   <SpecularColor>
     <X>1</X>
     <Y>1</Y>
