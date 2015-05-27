@@ -25,6 +25,8 @@ namespace TrashSoup.Gameplay
         protected bool isCraftable;
         protected int craftingCost;
         protected string name;
+        protected bool isAttacking = false;
+        public double timerOn;
         #endregion
 
         #region properties
@@ -63,6 +65,12 @@ namespace TrashSoup.Gameplay
             get { return name; }
             set { name = value; }
         }
+
+        public bool IsAttacking
+        {
+            get { return isAttacking; }
+            set { isAttacking = value; }
+        }
         #endregion
 
         #region methods
@@ -70,20 +78,25 @@ namespace TrashSoup.Gameplay
         {
         }
 
-        public override void OnTrigger(GameObject other)
+        public override void OnTriggerEnter(GameObject other)
         {
-            if(other is Enemy)
+            if(isAttacking)
             {
-                (other as Enemy).HitPoints -= Damage;
-                if(Type != WeaponType.FISTS && Durability > 0)
-                    Durability--;
+                if (other.Components.Exists(x => x is Enemy))
+                {
+                    (other.GetComponent<Enemy>() as Enemy).HitPoints -= Damage;
+                    if (Type != WeaponType.FISTS && Durability > 0)
+                        Durability--;
+                }
             }
-            base.OnTrigger(other);
+            base.OnTriggerEnter(other);
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-
+            
+                if(gameTime.TotalGameTime.TotalSeconds - timerOn > 1.0f)
+                isAttacking = false;
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
