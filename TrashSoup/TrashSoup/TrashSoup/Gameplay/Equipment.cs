@@ -19,6 +19,19 @@ namespace TrashSoup.Gameplay
         private int currentJunkCount;
         private int currentFoodCount;
         private Weapon currentWeapon;
+
+        private SpriteFont font;
+
+        private bool showFoodWarning = false;
+        private float foodWarningTimer = 0.0f;
+        private Vector2 foodWarningPos = new Vector2(0.4f, 0.7f);
+
+        private bool showJunkWarning = false;
+        private float junkWarningTimer = 0.0f;
+        private Vector2 junkWarningPos = new Vector2(0.4f, 0.7f);
+
+        private bool junkWarningCurrentlyShowing = false;
+        private bool foodWarningCurrentlyShowing = false;
         #endregion
 
         #region properties
@@ -49,11 +62,10 @@ namespace TrashSoup.Gameplay
 
         public void AddJunk(int count)
         {
-            if (JunkCount+count < MAX_JUNK_CAPACITY)
-                JunkCount+=count;
+            if (JunkCount + count <= MAX_JUNK_CAPACITY)
+                JunkCount += count;
             else
-                GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"), 
-                    "Can't carry any more junk", new Vector2(0.5f, 0.8f), Color.Red);
+                showJunkWarning = true;
             return;
         }
 
@@ -62,8 +74,7 @@ namespace TrashSoup.Gameplay
             if (FoodCount < MAX_FOOD_CAPACITY)
                 FoodCount++;
             else
-                GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"),
-                    "Can't carry any more food", new Vector2(0.5f, 0.8f), Color.Red);
+                this.showFoodWarning = true;
             return;
         }
 
@@ -87,6 +98,38 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
+            if((showFoodWarning && !showJunkWarning) || foodWarningCurrentlyShowing)
+            {
+                foodWarningTimer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+                this.foodWarningCurrentlyShowing = true;
+                if(foodWarningTimer < 2.3f)
+                {
+                    GUIManager.Instance.DrawText(this.font, "Can't carry any more food", this.foodWarningPos, Color.Red);
+                }
+                if(foodWarningTimer > 2.5f)
+                {
+                    showFoodWarning = false;
+                    this.foodWarningCurrentlyShowing = false;
+                    foodWarningTimer = 0.0f;
+                }
+            }
+
+            if ((!showFoodWarning && showJunkWarning) || junkWarningCurrentlyShowing)
+            {
+                junkWarningTimer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+                this.junkWarningCurrentlyShowing = true;
+                if(junkWarningTimer < 2.3f)
+                {
+                    GUIManager.Instance.DrawText(this.font, "Can't carry any more junk", this.junkWarningPos, Color.Red);
+                }
+                if (junkWarningTimer > 2.5f)
+                {
+                    this.junkWarningCurrentlyShowing = false;
+                    showJunkWarning = false;
+                    junkWarningTimer = 0.0f;
+                }
+            }
+
             if(currentWeapon.Durability == 0)
             {
                 this.CurrentWeapon = new Fists(this.MyObject);
@@ -103,6 +146,7 @@ namespace TrashSoup.Gameplay
             currentJunkCount = 0;
             currentFoodCount = 0;
             currentWeapon = new Fists(this.MyObject);
+            this.font = TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest");
         }
 
         public override System.Xml.Schema.XmlSchema GetSchema()

@@ -134,7 +134,11 @@ namespace TrashSoup.Gameplay
             }
             if(InputManager.Instance.GetKeyboardButtonDown(Keys.N))
             {
-                this.Equipment.FoodCount += 1;
+                this.Equipment.AddFood();
+            }
+            if(InputManager.Instance.GetKeyboardButtonDown(Keys.B))
+            {
+                this.Equipment.AddJunk(1);
             }
             //END OF HARD TETIN
 
