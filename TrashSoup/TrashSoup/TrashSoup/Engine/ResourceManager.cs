@@ -224,7 +224,11 @@ namespace TrashSoup.Engine
 
             GameObject testBox2 = new GameObject(3, "testBox2");
             testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
-            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Enviro/Ground/street_cross"], null, null }, deSign));
+            //testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Enviro/Ground/street_cross"], null, null }, deSign));
+            Billboard billboard = new Billboard(testBox2);
+            billboard.Mat = new Material("billboard", Effects[@"Effects\BillboardEffect"], Textures[@"Textures\Test\cargo"]);
+            billboard.Size = new Vector2(1.0f, 1.0f);
+            testBox2.Components.Add(billboard);
             testBox2.MyCollider = new BoxCollider(testBox2, false);
             //testBox2.MyPhysicalObject = new PhysicalObject(testBox2, 1.0f, 1.0f, false);
             //testBox2.Dynamic = true;
@@ -582,6 +586,8 @@ namespace TrashSoup.Engine
             path = @"Effects\ShadowMapUnnormalizedEffect";
             LoadEffect(path);
             path = @"Effects\POSTLogBlurEffect";
+            LoadEffect(path);
+            path = @"Effects\BillboardEffect";
             LoadEffect(path);
         }
 

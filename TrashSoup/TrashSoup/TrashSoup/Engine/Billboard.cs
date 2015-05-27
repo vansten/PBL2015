@@ -32,6 +32,7 @@ namespace TrashSoup.Engine
 
         #region properties
         public Material Mat { get; set; }
+        public Vector2 Size { get; set; }
         #endregion
 
         #region methods
@@ -64,6 +65,8 @@ namespace TrashSoup.Engine
                     camera = cam;
 
                 Transform transform = MyObject.MyTransform;
+                GraphicsDevice device = TrashSoupGame.Instance.GraphicsDevice;
+
                 if (transform == null)
                     return;
 
@@ -80,6 +83,17 @@ namespace TrashSoup.Engine
                                  camera.Bounds,
                                  null,
                                  gameTime);
+                SetAdditionalParameters(camera);
+
+                Mat.MyEffect.CurrentTechnique.Passes[0].Apply();
+
+                device.SetVertexBuffer(vertexBuffer);
+                device.Indices = indexBuffer;
+
+                device.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, vertexBuffer.VertexCount, 0, indexBuffer.IndexCount);
+
+                device.SetVertexBuffer(null);
+                device.Indices = null;
                 Mat.FlushMaterialEffect();
             }
         }
@@ -104,6 +118,23 @@ namespace TrashSoup.Engine
             indexBuffer.SetData<int>(indices);
 
             base.Initialize();
+        }
+
+        private void SetAdditionalParameters(Camera cam)
+        {
+            EffectParameter ep;
+
+            ep = Mat.MyEffect.Parameters["Size"];
+            if (ep != null)
+                ep.SetValue(this.Size);
+
+            ep = Mat.MyEffect.Parameters["CameraUp"];
+            if (ep != null)
+                ep.SetValue(cam.Up);
+
+            ep = Mat.MyEffect.Parameters["CameraRight"];
+            if (ep != null)
+                ep.SetValue(cam.Right);
         }
 
         #endregion
