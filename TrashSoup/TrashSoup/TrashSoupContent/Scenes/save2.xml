@@ -33961,6 +33961,44 @@
         <IsTrigger>true</IsTrigger>
       </MyCollider>
     </GameObject>
+    <GameObject>
+      <GameObjectKey>1144</GameObjectKey>
+      <UniqueID>1144</UniqueID>
+      <Name>Fists</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1144</MyObjectID>
+        <Position>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>0.25</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Gameplay.Weapons.Fists>
+          <MyObjectID>1144</MyObjectID>
+          <Durability>-1</Durability>
+          <Damage>5</Damage>
+          <Type>FISTS</Type>
+        </TrashSoup.Gameplay.Weapons.Fists>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1144</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
+    </GameObject>
   </ObjectsDictionary>
   <Camera>
     <CameraPosition>

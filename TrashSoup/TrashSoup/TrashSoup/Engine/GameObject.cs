@@ -183,6 +183,7 @@ namespace TrashSoup.Engine
             {
                 this.MyTransform.Initialize();
             }
+            this.drawCollider = this.UniqueID == 1144;
         }
 
         public virtual void Update(GameTime gameTime)
@@ -502,7 +503,7 @@ namespace TrashSoup.Engine
                 reader.ReadEndElement();
             }
 
-            this.Initialize();
+            //this.Initialize();
 
             //reader.ReadEndElement();
         }

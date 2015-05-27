@@ -82,6 +82,11 @@ namespace TrashSoup.Engine
                     }
                 }
             }
+
+            foreach(GameObject go in ResourceManager.Instance.CurrentScene.ObjectsDictionary.Values)
+            {
+                go.Initialize();
+            }
         }
 
         public void EditorLoadFileAction(string filepath)

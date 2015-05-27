@@ -160,6 +160,10 @@ namespace TrashSoup.Engine
                 }
                 else
                 {
+                    if (current.Parent == null)
+                    {
+                        continue;
+                    }
                     // remove ourselves
                     current.Objects.Remove(dynamicObjects[i]);
                     dynamicObjects[i].MyNode = null;

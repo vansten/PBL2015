@@ -178,8 +178,9 @@ namespace TrashSoup.Gameplay
             {
                 if(equipment.CurrentWeapon.Name != "Fists")
                 {
-                    equipment.CurrentWeapon = new Weapons.Fists(this.MyObject);
                     equipment.DropWeapon(this.anotherWeapon);
+                    equipment.CurrentWeapon = (ResourceManager.Instance.CurrentScene.GetObject(1144).Components.First(x => x.GetType() == typeof(Weapons.Fists)) as Weapon);
+                    equipment.PickUpWeapon(ResourceManager.Instance.CurrentScene.GetObject(1144));
                 }
             }
 
@@ -349,6 +350,11 @@ namespace TrashSoup.Gameplay
             this.font = TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest");
             this.interactionTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/x_button");
             this.weapon = new GameObject(0, "");
+            if (ResourceManager.Instance.CurrentScene.GetObject(1144) != null)
+            {
+                equipment.CurrentWeapon = (ResourceManager.Instance.CurrentScene.GetObject(1144).Components.First(x => x.GetType() == typeof(Weapons.Fists)) as Weapon);
+                equipment.PickUpWeapon(ResourceManager.Instance.CurrentScene.GetObject(1144));
+            }
             base.Initialize();
         }
 
