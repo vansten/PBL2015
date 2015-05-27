@@ -4,6 +4,11 @@
   <EffectPath>Effects\NormalEffect</EffectPath>
   <DiffusePath>Textures\Enemies\rat_D</DiffusePath>
   <NormalPath>Textures\Enemies\rat_N</NormalPath>
+  <DiffuseColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </DiffuseColor>
   <SpecularColor>
     <X>0.3</X>
     <Y>0.3</Y>
