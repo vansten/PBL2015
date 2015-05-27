@@ -264,6 +264,7 @@ namespace TrashSoup.Engine
             this.Position = Vector3.Zero;
             this.prevPosition = Vector3.Zero;
             this.Rotation = Vector3.Zero;
+            this.Forward = Vector3.Forward;
             this.Scale = 1.0f;
         }
 

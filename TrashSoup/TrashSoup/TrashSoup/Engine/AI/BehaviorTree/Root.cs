@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,10 +29,10 @@ namespace TrashSoup.Engine.AI.BehaviorTree
             if (this.child == null) Console.WriteLine("Caution! The child of root is null");
         }
 
-        public TickStatus Tick(out INode node)
+        public TickStatus Tick(GameTime gameTime, out INode node)
         {
             node = null;
-            return this.child.Tick(out node);
+            return this.child.Tick(gameTime, out node);
         }
 
         public void SetBlackboard(Blackboard bb)

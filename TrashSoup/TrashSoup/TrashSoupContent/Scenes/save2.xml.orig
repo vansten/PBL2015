@@ -33962,41 +33962,7 @@
       </MyCollider>
     </GameObject>
     <GameObject>
-      <GameObjectKey>1143</GameObjectKey>
-      <UniqueID>1143</UniqueID>
-      <Name>RatTrigger</Name>
-      <Dynamic>true</Dynamic>
-      <MyTransform>
-        <MyObjectID>1143</MyObjectID>
-        <Position>
-          <X>9</X>
-          <Y>2</Y>
-          <Z>0</Z>
-        </Position>
-        <Rotation>
-          <X>0</X>
-          <Y>0</Y>
-          <Z>0</Z>
-        </Rotation>
-        <Forward>
-          <X>0</X>
-          <Y>0</Y>
-          <Z>0</Z>
-        </Forward>
-        <Scale>6</Scale>
-      </MyTransform>
-      <Components>
-        <TrashSoup.Gameplay.RatTrigger>
-          <MyObjectID>1143</MyObjectID>
-        </TrashSoup.Gameplay.RatTrigger>
-      </Components>
-      <MyCollider>
-        <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1143</MyObjectID>
-        <IsTrigger>true</IsTrigger>
-      </MyCollider>
-    </GameObject>
-    <GameObject>
+<<<<<<< HEAD
       <GameObjectKey>1144</GameObjectKey>
       <UniqueID>1144</UniqueID>
       <Name>Fists</Name>
@@ -34006,6 +33972,17 @@
         <Position>
           <X>0</X>
           <Y>0</Y>
+=======
+      <GameObjectKey>1143</GameObjectKey>
+      <UniqueID>1143</UniqueID>
+      <Name>RatTrigger</Name>
+      <Dynamic>true</Dynamic>
+      <MyTransform>
+        <MyObjectID>1143</MyObjectID>
+        <Position>
+          <X>9</X>
+          <Y>2</Y>
+>>>>>>> 46fdf15c0cd5c9cc3a8551576b35d44953b7ca3e
           <Z>0</Z>
         </Position>
         <Rotation>
@@ -34018,6 +33995,7 @@
           <Y>0</Y>
           <Z>0</Z>
         </Forward>
+<<<<<<< HEAD
         <Scale>0.25</Scale>
       </MyTransform>
       <Components>
@@ -34031,6 +34009,18 @@
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1144</MyObjectID>
+=======
+        <Scale>6</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Gameplay.RatTrigger>
+          <MyObjectID>1143</MyObjectID>
+        </TrashSoup.Gameplay.RatTrigger>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1143</MyObjectID>
+>>>>>>> 46fdf15c0cd5c9cc3a8551576b35d44953b7ca3e
         <IsTrigger>true</IsTrigger>
       </MyCollider>
     </GameObject>
