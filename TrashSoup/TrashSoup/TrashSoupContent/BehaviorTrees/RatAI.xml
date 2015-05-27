@@ -21,8 +21,14 @@
       <Children>
         <Type>TrashSoup.Engine.AI.BehaviorTree.Selector</Type>
         <Children>
+          <Type>TrashSoup.Gameplay.RatAI.RatTurn</Type>
           <Type>TrashSoup.Gameplay.RatAI.RatWalk</Type>
           <Type>TrashSoup.Gameplay.RatAI.RatStay</Type>
+        </Children>
+        <Type>TrashSoup.Engine.AI.BehaviorTree.Sequence</Type>
+        <Children>
+          <Type>TrashSoup.Gameplay.RatAI.RatChase</Type>
+          <Type>TrashSoup.Gameplay.RatAI.RatAttack</Type>
         </Children>
       </Children>
     </Child>

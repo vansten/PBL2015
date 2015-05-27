@@ -76,6 +76,7 @@ namespace TrashSoup.Engine
 
         public void Reload()
         {
+            TrashSoup.Engine.AI.BehaviorTree.BehaviorTreeManager.Instance.Reload();
             this.AllColliders.Clear();
             this.physicalObjects.Clear();
         }

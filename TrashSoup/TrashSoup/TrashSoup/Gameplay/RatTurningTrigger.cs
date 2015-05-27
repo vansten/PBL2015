@@ -7,23 +7,19 @@ using TrashSoup.Engine;
 
 namespace TrashSoup.Gameplay
 {
-    class RatTrigger : ObjectComponent
+    class RatTurningTrigger : ObjectComponent
     {
         private Rat myRat;
-        private bool targetSeen = false;
-        private GameObject target;
 
-        public RatTrigger(GameObject go) : base(go)
+        public RatTurningTrigger(GameObject go)
+            : base(go)
         {
 
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            if(targetSeen && target != null)
-            {
-                myRat.MyBlackBoard.SetVector3("TargetPosition", target.MyTransform.Position);
-            }
+            
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
@@ -41,28 +37,13 @@ namespace TrashSoup.Gameplay
             base.Initialize();
         }
 
-        public override void OnTriggerEnter(GameObject other)
+        public override void OnTrigger(GameObject other)
         {
-            if(other.UniqueID == 1)
+            if(other.UniqueID != 1 && other.UniqueID != this.myRat.MyObject.UniqueID)
             {
-                myRat.MyBlackBoard.SetBool("TargetSeen", true);
-                targetSeen = true;
-                target = other;
-                myRat.MyBlackBoard.SetVector3("TargetPosition", other.MyTransform.Position);
+                this.myRat.MyBlackBoard.SetBool("ShouldTurn", true);
             }
-            base.OnTriggerEnter(other);
-        }
-
-        public override void OnTriggerExit(GameObject other)
-        {
-            if (other.UniqueID == 1)
-            {
-                myRat.MyBlackBoard.SetBool("TargetSeen", false);
-                targetSeen = false;
-                target = null;
-                myRat.MyBlackBoard.SetVector3("TargetPosition", Vector3.Zero);
-            }
-            base.OnTriggerExit(other);
+            base.OnTrigger(other);
         }
 
         public override void ReadXml(System.Xml.XmlReader reader)

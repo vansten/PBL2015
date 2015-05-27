@@ -48,7 +48,7 @@ namespace TrashSoup.Engine
             allColliders = PhysicsManager.Instance.AllColliders;
         }
 
-        public bool Cast()
+        public bool Cast(Collider ignored = null)
         {
             while (Vector3.Distance(currentPos, Origin) < MaxDistance)
             {
@@ -56,7 +56,7 @@ namespace TrashSoup.Engine
 
                 foreach (Collider collider in allColliders)
                 {
-                    if(!collider.MyObject.Enabled || collider.IsTrigger)
+                    if(!collider.MyObject.Enabled || collider.IsTrigger || collider == ignored)
                     {
                         continue;
                     }

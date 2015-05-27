@@ -63,6 +63,11 @@ namespace TrashSoup.Gameplay
             base.Initialize();
         }
 
+        public override void OnCollision(GameObject other)
+        {
+            base.OnCollision(other);
+        }
+
         public override void ReadXml(System.Xml.XmlReader reader)
         {
             reader.ReadStartElement();

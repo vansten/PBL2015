@@ -126,8 +126,12 @@
     <Compile Include="Gameplay\MenuController.cs" />
     <Compile Include="Gameplay\PlayerHUD.cs" />
     <Compile Include="Gameplay\Rat.cs" />
+    <Compile Include="Gameplay\RatAI\RatAttack.cs" />
+    <Compile Include="Gameplay\RatAI\RatChase.cs" />
     <Compile Include="Gameplay\RatAI\RatStay.cs" />
+    <Compile Include="Gameplay\RatAI\RatTurn.cs" />
     <Compile Include="Gameplay\RatAI\RatWalk.cs" />
+    <Compile Include="Gameplay\RatTurningTrigger.cs" />
     <Compile Include="Gameplay\RatTrigger.cs" />
     <Compile Include="Gameplay\Weapons\Fists.cs" />
     <Compile Include="Gameplay\Weapons\NoFreePlaceSign.cs" />

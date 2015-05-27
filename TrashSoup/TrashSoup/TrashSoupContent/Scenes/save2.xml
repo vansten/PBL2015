@@ -3832,7 +3832,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>497</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Test/TestBox</ModelPath>
             <ModelPath />
@@ -10808,7 +10808,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>786</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Test/TestBox</ModelPath>
             <ModelPath />
@@ -10936,7 +10936,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>805</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Test/TestBox</ModelPath>
             <ModelPath />
@@ -13215,7 +13215,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>692</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -14111,7 +14111,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>625</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -14943,7 +14943,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>480</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -15007,7 +15007,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>309</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -21721,7 +21721,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>835</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -21800,7 +21800,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>574</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -33969,7 +33969,7 @@
       <MyTransform>
         <MyObjectID>1143</MyObjectID>
         <Position>
-          <X>9</X>
+          <X>8</X>
           <Y>2</Y>
           <Z>0</Z>
         </Position>
@@ -34031,6 +34031,59 @@
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1144</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1145</GameObjectKey>
+      <UniqueID>1145</UniqueID>
+      <Name>RatTurningTrigger</Name>
+      <Dynamic>true</Dynamic>
+      <MyTransform>
+        <MyObjectID>1145</MyObjectID>
+        <Position>
+          <X>7</X>
+          <Y>1.7</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>3</Scale>
+      </MyTransform>
+      <MyPhysicalObject>
+        <MyObjectID>1145</MyObjectID>
+        <Acceleration>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Acceleration>
+        <Mass>0</Mass>
+        <DragFactor>0</DragFactor>
+        <IsUsingGravity>false</IsUsingGravity>
+        <Velocity>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Velocity>
+        <RotationConstraints>None</RotationConstraints>
+        <PositionConstraints>None</PositionConstraints>
+      </MyPhysicalObject>
+      <Components>
+        <TrashSoup.Gameplay.RatTurningTrigger>
+          <MyObjectID>1145</MyObjectID>
+        </TrashSoup.Gameplay.RatTurningTrigger>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1145</MyObjectID>
         <IsTrigger>true</IsTrigger>
       </MyCollider>
     </GameObject>
