@@ -484,6 +484,22 @@ namespace TrashSoup.Engine
             return root;
         }
 
+        public void AddDynamic(GameObject obj)
+        {
+            if(!dynamicObjects.Contains(obj) && obj.MyNode != null)
+            {
+                dynamicObjects.Add(obj);
+            }
+        }
+
+        public void RemoveDynamic(GameObject obj)
+        {
+            if (dynamicObjects.Contains(obj) && obj.MyNode != null)
+            {
+                dynamicObjects.Remove(obj);
+            }
+        }
+
         private RectangleWS GenerateRectangle(GameObject obj)
         {
             RectangleWS rectObj = new RectangleWS();
