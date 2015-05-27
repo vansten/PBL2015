@@ -270,6 +270,8 @@ namespace TrashSoup.Gameplay
                         MyObject.MyAnimator.ChangeState("Jump");
                     }
                 }
+                equipment.CurrentWeapon.IsAttacking = true;
+                equipment.CurrentWeapon.timerOn = gameTime.TotalGameTime.TotalSeconds;
             }
 
             if(this.collisionWithTrash || this.collisionWithWeapon)

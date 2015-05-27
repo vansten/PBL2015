@@ -298,12 +298,12 @@ namespace TrashSoup.Engine
             CurrentScene.Cam = cam;
 
             // adding items to scene
-            testBox.AddChild(testBox3);
+            //testBox.AddChild(testBox3);
             CurrentScene.AddObject(skyBox);
             CurrentScene.AddObject(testTer);
             CurrentScene.AddObject(testBox);
             CurrentScene.AddObject(testBox2);
-            //CurrentScene.AddObject(testBox3);
+            CurrentScene.AddObject(testBox3);
             CurrentScene.AddObject(testMirror);
             CurrentScene.AddObject(testWater);
             CurrentScene.AddObject(awsomeTest);//Wika i kasia

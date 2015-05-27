@@ -5,6 +5,11 @@
   <DiffusePath>Textures\Test\cargo</DiffusePath>
   <NormalPath>Textures\Test\cargo_NRM</NormalPath>
   <CubePath>Textures\Skyboxes\Sunset</CubePath>
+  <DiffuseColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </DiffuseColor>
   <SpecularColor>
     <X>1</X>
     <Y>1</Y>

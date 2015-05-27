@@ -79,6 +79,7 @@ samplerCUBE CubeSampler = sampler_state
 
 float3 EyePosition;
 
+float3 DiffuseColor;
 float3 SpecularColor;
 float Glossiness;
 float3 ReflectivityColor;
@@ -383,6 +384,11 @@ inline void Skin(inout VertexShaderInputSkinned input)
 	input.Normal = mul(input.Normal, (float3x3)skinning);
 }
 
+inline float3 PrawieNormalize(in float3 arg)
+{
+	return (arg * 0.9999f) / length(arg);
+}
+
 VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 {
     VertexShaderOutput output;
@@ -395,7 +401,7 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 
 	output.Normal = normalize(mul(input.Normal, WorldInverseTranspose));
 
-	output.Reflection = reflect(normalize(output.PositionWS - EyePosition), normalize(output.Normal));
+	output.Reflection = reflect(PrawieNormalize(output.PositionWS.xyz - EyePosition), PrawieNormalize(output.Normal));
 
 	output.ClipPlanes.x = dot(output.PositionWS, BoundingFrustum[0]);
 	output.ClipPlanes.y = dot(output.PositionWS, BoundingFrustum[1]);
@@ -420,7 +426,7 @@ VertexShaderOutput VertexShaderFunctionSkinned(VertexShaderInputSkinned input)
 
 	output.Normal = normalize(mul(input.Normal, WorldInverseTranspose));
 
-	output.Reflection = reflect(normalize(output.PositionWS - EyePosition), normalize(output.Normal));
+	output.Reflection = reflect(PrawieNormalize(output.PositionWS.xyz - EyePosition), PrawieNormalize(output.Normal));
 
 	output.ClipPlanes.x = dot(output.PositionWS, BoundingFrustum[0]);
 	output.ClipPlanes.y = dot(output.PositionWS, BoundingFrustum[1]);
@@ -443,7 +449,7 @@ VertexShaderOutputShadows VertexShaderFunctionShadows(VertexShaderInput input)
 
 	output.Normal = normalize(mul(input.Normal, WorldInverseTranspose));
 
-	output.Reflection = reflect(normalize(output.PositionWS - EyePosition), normalize(output.Normal));
+	output.Reflection = reflect(PrawieNormalize(output.PositionWS.xyz - EyePosition), PrawieNormalize(output.Normal));
 
 	output.ClipPlanes.x = dot(output.PositionWS, BoundingFrustum[0]);
 	output.ClipPlanes.y = dot(output.PositionWS, BoundingFrustum[1]);
@@ -472,7 +478,7 @@ VertexShaderOutputShadows VertexShaderFunctionSkinnedShadows(VertexShaderInputSk
 
 	output.Normal = normalize(mul(input.Normal, WorldInverseTranspose));
 
-	output.Reflection = reflect(normalize(output.PositionWS - EyePosition), normalize(output.Normal));
+	output.Reflection = reflect(PrawieNormalize(output.PositionWS.xyz - EyePosition), PrawieNormalize(output.Normal));
 
 	output.ClipPlanes.x = dot(output.PositionWS, BoundingFrustum[0]);
 	output.ClipPlanes.y = dot(output.PositionWS, BoundingFrustum[1]);
@@ -526,7 +532,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
 	ColorPair computedLight = ComputeLight(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal);
 
-	color =  (color * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f)) + 
+	color = (color * float4(DiffuseColor, 1.0f) * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f)) +
 		ReflectivityBias * float4(computedLight.Diffuse, 1.0f) * (alpha * float4(reflection, 1.0f));
 
 	color *= Transparency;
@@ -573,7 +579,7 @@ float4 PixelShaderFunctionShadows(VertexShaderOutputShadows input) : COLOR0
 
 	ColorPair computedLight = ComputeLightShadows(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal, input.PositionDLS);
 
-	color = (color * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f)) +
+	color = (color * float4(DiffuseColor, 1.0f) * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f)) +
 		ReflectivityBias * float4(computedLight.Diffuse, 1.0f) * (alpha * float4(reflection, 1.0f));
 
 	color *= Transparency;
@@ -621,7 +627,7 @@ float4 PixelShaderFunctionBlurredShadows(VertexShaderOutputShadows input) : COLO
 	ColorPair computedLight = ComputeLightBlurredShadows(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal,
 		float2((input.PositionProj.x / input.PositionProj.w) / 2.0f + 0.5f, (-input.PositionProj.y / input.PositionProj.w) / 2.0f + 0.5f));
 
-	color = (color * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f)) +
+	color = (color * float4(DiffuseColor, 1.0f) * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f)) +
 		ReflectivityBias * float4(computedLight.Diffuse, 1.0f) * (alpha * float4(reflection, 1.0f));
 
 	color *= Transparency;

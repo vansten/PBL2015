@@ -4,6 +4,11 @@
   <EffectPath>Effects\DefaultEffect</EffectPath>
   <DiffusePath>Textures\Enviro\Ground\streets_corner_D</DiffusePath>
   <NormalPath>Textures\Enviro\Ground\streets_corner_N</NormalPath>
+  <DiffuseColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </DiffuseColor>
   <SpecularColor>
     <X>0.1</X>
     <Y>0.1</Y>

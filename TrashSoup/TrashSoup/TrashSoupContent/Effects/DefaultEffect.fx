@@ -60,6 +60,7 @@ sampler DiffuseSampler = sampler_state
 
 float3 EyePosition;
 
+float3 DiffuseColor;
 float3 SpecularColor;
 float Glossiness;
 float Transparency;
@@ -474,7 +475,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
 	ColorPair computedLight = ComputeLight(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal);
 
-	color = color * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f);
+	color = color * float4(DiffuseColor, 1.0f) * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f);
 
 	color *= Transparency;
 
@@ -499,7 +500,7 @@ float4 PixelShaderFunctionShadows(VertexShaderOutputShadows input) : COLOR0
 
 	ColorPair computedLight = ComputeLightShadows(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal, input.PositionDLS);
 
-	color = color * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f);
+	color = color * float4(DiffuseColor, 1.0f) * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f);
 
 	color *= Transparency;
 
@@ -525,7 +526,7 @@ float4 PixelShaderFunctionBlurredShadows(VertexShaderOutputShadows input) : COLO
 	ColorPair computedLight = ComputeLightBlurredShadows(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal, 
 		float2((input.PositionProj.x / input.PositionProj.w) / 2.0f + 0.5f, (-input.PositionProj.y / input.PositionProj.w) / 2.0f + 0.5f));
 
-	color = color * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f);
+	color = color * float4(DiffuseColor, 1.0f) * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f);
 
 	color *= Transparency;
 
