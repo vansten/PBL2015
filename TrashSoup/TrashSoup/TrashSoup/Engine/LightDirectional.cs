@@ -103,8 +103,8 @@ namespace TrashSoup.Engine
             deferredOrthoMatrix = Matrix.CreateOrthographicOffCenter(0.0f, (float)TrashSoupGame.Instance.Window.ClientBounds.Width,
                     (float)TrashSoupGame.Instance.Window.ClientBounds.Height, 0, 0, 1);
 
-            tempRenderTarget02 = ShadowMapRenderTarget2048;
-            ShadowMapRenderTarget2048 = tempRenderTarget01;
+            //tempRenderTarget02 = ShadowMapRenderTarget2048;
+            //ShadowMapRenderTarget2048 = tempRenderTarget01;
 
         }
 
@@ -124,11 +124,11 @@ namespace TrashSoup.Engine
                 return;
             }
 
-            // tu bedzie if
-            {
-                tempRenderTarget01 = ShadowMapRenderTarget2048;
-                ShadowMapRenderTarget2048 = tempRenderTarget02;
-            }
+            //// tu bedzie if
+            //{
+            //    tempRenderTarget01 = ShadowMapRenderTarget2048;
+            //    ShadowMapRenderTarget2048 = tempRenderTarget02;
+            //}
 
             SetCamera();
 
@@ -147,30 +147,30 @@ namespace TrashSoup.Engine
             TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
             TrashSoupGame.Instance.GraphicsDevice.RasterizerState = rs;
 
-            // tu bedzie if
-            {
-                Effect myBlurEffect = ResourceManager.Instance.Effects[@"Effects\POSTLogBlurEffect"];
+            //// tu bedzie if
+            //{
+            //    Effect myBlurEffect = ResourceManager.Instance.Effects[@"Effects\POSTLogBlurEffect"];
 
-                myBlurEffect.Parameters["WorldViewProj"].SetValue(deferredOrthoMatrix);
-                myBlurEffect.Parameters["ScreenWidth"].SetValue((float)TrashSoupGame.Instance.Window.ClientBounds.Width);
-                myBlurEffect.Parameters["ScreenHeight"].SetValue((float)TrashSoupGame.Instance.Window.ClientBounds.Height);
+            //    myBlurEffect.Parameters["WorldViewProj"].SetValue(deferredOrthoMatrix);
+            //    myBlurEffect.Parameters["ScreenWidth"].SetValue((float)TrashSoupGame.Instance.Window.ClientBounds.Width);
+            //    myBlurEffect.Parameters["ScreenHeight"].SetValue((float)TrashSoupGame.Instance.Window.ClientBounds.Height);
 
-                TrashSoupGame.Instance.ActualRenderTarget = tempRenderTarget01;
-                TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
-                SpriteBatch batch = TrashSoupGame.Instance.GetSpriteBatch();
-                batch.Begin(SpriteSortMode.Texture, TrashSoupGame.Instance.GraphicsDevice.BlendState,
-                    TrashSoupGame.Instance.GraphicsDevice.SamplerStates[1], TrashSoupGame.Instance.GraphicsDevice.DepthStencilState,
-                    TrashSoupGame.Instance.GraphicsDevice.RasterizerState, myBlurEffect);
+            //    TrashSoupGame.Instance.ActualRenderTarget = tempRenderTarget01;
+            //    TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
+            //    SpriteBatch batch = TrashSoupGame.Instance.GetSpriteBatch();
+            //    batch.Begin(SpriteSortMode.Texture, TrashSoupGame.Instance.GraphicsDevice.BlendState,
+            //        TrashSoupGame.Instance.GraphicsDevice.SamplerStates[1], TrashSoupGame.Instance.GraphicsDevice.DepthStencilState,
+            //        TrashSoupGame.Instance.GraphicsDevice.RasterizerState, myBlurEffect);
 
-                batch.Draw(ShadowMapRenderTarget2048, new Rectangle(0, 0, TrashSoupGame.Instance.Window.ClientBounds.Width, TrashSoupGame.Instance.Window.ClientBounds.Height), Color.White);
+            //    batch.Draw(ShadowMapRenderTarget2048, new Rectangle(0, 0, TrashSoupGame.Instance.Window.ClientBounds.Width, TrashSoupGame.Instance.Window.ClientBounds.Height), Color.White);
 
-                batch.End();
+            //    batch.End();
 
-                TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
+            //    TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
 
-                tempRenderTarget02 = ShadowMapRenderTarget2048;
-                ShadowMapRenderTarget2048 = tempRenderTarget01;
-            }
+            //    tempRenderTarget02 = ShadowMapRenderTarget2048;
+            //    ShadowMapRenderTarget2048 = tempRenderTarget01;
+            //}
 
             //System.IO.FileStream stream = new System.IO.FileStream("Dupa.jpg", System.IO.FileMode.Create);
             //ShadowMapRenderTarget2048.SaveAsJpeg(stream, 1024, 1024);
