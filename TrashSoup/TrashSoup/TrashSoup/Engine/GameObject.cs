@@ -14,6 +14,7 @@ namespace TrashSoup.Engine
         #region variables
 
         private bool visible;
+        private bool dynamic;
 
         private PhysicalObject myPhisicalObject;
         private Socket myCarrierSocket;
@@ -56,7 +57,29 @@ namespace TrashSoup.Engine
         /// The value of this property is also modified by Visible property!!!
         /// </summary>
         public bool ChildrenVisible { get; set; }
-        public bool Dynamic { get; set; }
+        public bool Dynamic 
+        { 
+            get
+            {
+                return dynamic;
+            }
+            set
+            {
+                if(value != dynamic)
+                {
+                    dynamic = value;
+                    Scene myScene = ResourceManager.Instance.CurrentScene;
+                    if(myScene != null && myScene.ObjectsDictionary != null && myScene.ObjectsQT != null && myScene.Params != null && myScene.Params.UseGraph && 
+                        myScene.ObjectsDictionary.Contains(new KeyValuePair<uint,GameObject>(UniqueID, this)))
+                    {
+                        if (dynamic == true)
+                            myScene.ObjectsQT.AddDynamic(this);
+                        else
+                            myScene.ObjectsQT.RemoveDynamic(this);
+                    }
+                }
+            }
+        }
 
         public Transform MyTransform { get; set; }
         public Animator MyAnimator { get; set; }
