@@ -342,9 +342,9 @@
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
-    <Compile Include="Animations\MainCharacter\walk_1.FBX">
+    <Compile Include="Animations\MainCharacter\walk_1.X">
       <Name>walk_1</Name>
-      <Importer>FbxImporter</Importer>
+      <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
     <None Include="Effects\Constants.fxh">
@@ -447,11 +447,6 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
-    <Compile Include="Models\MainCharacter\MainCharacter_testM.FBX">
-      <Name>MainCharacter_testM</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>SkinnedModelProcessor</Processor>
-    </Compile>
     <Compile Include="Models\Enemies\Rat.FBX">
       <Name>Rat</Name>
       <Importer>FbxImporter</Importer>
@@ -511,11 +506,6 @@
       <Name>Knife</Name>
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\MainCharacter\MainCharacter.FBX">
-      <Name>MainCharacter</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>SkinnedModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Weapons\Stones\brick_destructible\1.FBX">
       <Name>1</Name>
@@ -692,6 +682,31 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\MainCharacter\MainCharacter.X">
+      <Name>MainCharacter</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\MainCharacter\Hair_N.dds">
+      <Name>Hair_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\MainCharacter\Hair_D.dds">
+      <Name>Hair_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\MainCharacter\MainCharacter_D.dds">
+      <Name>MainCharacter_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\MainCharacter\MainCharacter_N.dds">
+      <Name>MainCharacter_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -863,28 +878,6 @@
     </Compile>
     <Compile Include="Textures\Enviro\Ground\pavament1_N.dds">
       <Name>pavament1_N</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Textures\MainCharacter\Hair_D.dds">
-      <Name>Hair_D</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Textures\MainCharacter\Hair_N.dds">
-      <Name>Hair_N</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Textures\MainCharacter\MainCharacter_D.dds">
-      <Name>MainCharacter_D</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Textures\MainCharacter\MainCharacter_N.dds">
-      <Name>MainCharacter_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

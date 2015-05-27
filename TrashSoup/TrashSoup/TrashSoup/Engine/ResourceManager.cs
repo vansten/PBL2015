@@ -135,7 +135,15 @@ namespace TrashSoup.Engine
                 mat.RecieveShadows = true;
             }
 
-            List<Material> ratMats = LoadBasicMaterialsFromModel(Models["Models/MainCharacter/MainCharacter"], this.Effects[@"Effects\NormalEffect"]);
+            List<Material> ratMats = new List<Material>();
+            Material ratMat01 = new Material("PlayerMat", this.Effects[@"Effects\NormalEffect"]);
+            ratMat01.DiffuseMap = LoadTexture(@"Models\MainCharacter\MainCharacter_D");
+            ratMat01.NormalMap = LoadTexture(@"Models\MainCharacter\MainCharacter_N");
+            ratMats.Add(ratMat01);
+            Material ratMat02 = new Material("PlayerMatHair", this.Effects[@"Effects\NormalEffect"]);
+            ratMat02.DiffuseMap = LoadTexture(@"Models\MainCharacter\Hair_D");
+            ratMat02.NormalMap = LoadTexture(@"Models\MainCharacter\Hair_N");
+            ratMats.Add(ratMat02);
 
             List<Material> deSign = LoadBasicMaterialsFromModel(Models["Models/Enviro/Ground/street_cross"], this.Effects[@"Effects\NormalEffect"]);
 
@@ -206,11 +214,11 @@ namespace TrashSoup.Engine
 
             // loading gameobjects
             GameObject rat = new GameObject(50, "Rat");
-            rat.MyTransform = new Transform(rat, new Vector3(0.0f, 0.0f, -15.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.05f);
+            rat.MyTransform = new Transform(rat, new Vector3(0.0f, 0.0f, -15.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
             CustomModel ratModel = new CustomModel(rat, new Model[] { Models["Models/MainCharacter/MainCharacter"], null, null }, ratMats);
             rat.Components.Add(ratModel);
             Animator ratAnimator = new Animator(rat, ratModel.LODs[0]);
-            ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], this.Animations["Animations/MainCharacter/walk_1"], "Rat_TAnim"));
+            ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], Animations["Animations/MainCharacter/walk_1"], "Rat_TAnim"));
             ratAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", ratAnimator.GetAnimationPlayer("Rat_TAnim")));
             ratAnimator.CurrentState = ratAnimator.AvailableStates["Walk"];
             rat.MyAnimator = ratAnimator;
