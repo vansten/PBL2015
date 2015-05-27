@@ -383,6 +383,11 @@ inline void Skin(inout VertexShaderInputSkinned input)
 	input.Normal = mul(input.Normal, (float3x3)skinning);
 }
 
+inline float3 PrawieNormalize(in float3 arg)
+{
+	return (arg * 0.9999f) / length(arg);
+}
+
 VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 {
     VertexShaderOutput output;
@@ -395,7 +400,7 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 
 	output.Normal = normalize(mul(input.Normal, WorldInverseTranspose));
 
-	output.Reflection = reflect(normalize(output.PositionWS - EyePosition), normalize(output.Normal));
+	output.Reflection = reflect(PrawieNormalize(output.PositionWS.xyz - EyePosition), PrawieNormalize(output.Normal));
 
 	output.ClipPlanes.x = dot(output.PositionWS, BoundingFrustum[0]);
 	output.ClipPlanes.y = dot(output.PositionWS, BoundingFrustum[1]);
@@ -420,7 +425,7 @@ VertexShaderOutput VertexShaderFunctionSkinned(VertexShaderInputSkinned input)
 
 	output.Normal = normalize(mul(input.Normal, WorldInverseTranspose));
 
-	output.Reflection = reflect(normalize(output.PositionWS - EyePosition), normalize(output.Normal));
+	output.Reflection = reflect(PrawieNormalize(output.PositionWS.xyz - EyePosition), PrawieNormalize(output.Normal));
 
 	output.ClipPlanes.x = dot(output.PositionWS, BoundingFrustum[0]);
 	output.ClipPlanes.y = dot(output.PositionWS, BoundingFrustum[1]);
@@ -443,7 +448,7 @@ VertexShaderOutputShadows VertexShaderFunctionShadows(VertexShaderInput input)
 
 	output.Normal = normalize(mul(input.Normal, WorldInverseTranspose));
 
-	output.Reflection = reflect(normalize(output.PositionWS - EyePosition), normalize(output.Normal));
+	output.Reflection = reflect(PrawieNormalize(output.PositionWS.xyz - EyePosition), PrawieNormalize(output.Normal));
 
 	output.ClipPlanes.x = dot(output.PositionWS, BoundingFrustum[0]);
 	output.ClipPlanes.y = dot(output.PositionWS, BoundingFrustum[1]);
@@ -472,7 +477,7 @@ VertexShaderOutputShadows VertexShaderFunctionSkinnedShadows(VertexShaderInputSk
 
 	output.Normal = normalize(mul(input.Normal, WorldInverseTranspose));
 
-	output.Reflection = reflect(normalize(output.PositionWS - EyePosition), normalize(output.Normal));
+	output.Reflection = reflect(PrawieNormalize(output.PositionWS.xyz - EyePosition), PrawieNormalize(output.Normal));
 
 	output.ClipPlanes.x = dot(output.PositionWS, BoundingFrustum[0]);
 	output.ClipPlanes.y = dot(output.PositionWS, BoundingFrustum[1]);
