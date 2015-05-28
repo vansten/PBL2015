@@ -106,6 +106,7 @@ namespace TrashSoup.Gameplay
                 initHours = value;
                 current = ((double)initHours) * 60 * 60 * 1000;
                 initMillis += current;
+                millis = initMillis;
             }
         }
         public int InitMinutes 
@@ -121,6 +122,7 @@ namespace TrashSoup.Gameplay
                 initMinutes = value;
                 current = ((double)initMinutes) * 60 * 1000;
                 initMillis += current;
+                millis = initMillis;
             }
         }
         public double InitMillis 
@@ -134,6 +136,7 @@ namespace TrashSoup.Gameplay
                 initMillis = value;
                 initHours = (int)(initMillis / (1000 * 60 * 60)) % 24;
                 initMinutes = (int)(initMillis / (1000 * 60)) % 60;
+                millis = initMillis;
             }
         }
         #endregion
@@ -182,8 +185,8 @@ namespace TrashSoup.Gameplay
 
             base.ReadXml(reader);
 
-            Hours = reader.ReadElementContentAsInt("initHours", "");
-            Minutes = reader.ReadElementContentAsInt("initMinutes", "");
+            InitHours = reader.ReadElementContentAsInt("initHours", "");
+            InitMinutes = reader.ReadElementContentAsInt("initMinutes", "");
 
             reader.ReadEndElement();
         }
