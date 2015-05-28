@@ -21,6 +21,7 @@ namespace TrashSoup.Gameplay
         protected const float ROTATION_SPEED = 0.2f;
         public const float MAX_HEALTH = 50.0f;
         public const float MAX_POPULARITY = 100.0f;
+        protected const float POPULARITY_STOP_COOLDOWN = 1.0f;
 
         #endregion
 
@@ -65,6 +66,8 @@ namespace TrashSoup.Gameplay
         private float hitPoints = MAX_HEALTH;
         private float popularity = 0.0f;
         private float popularityDecreaseSpeed = 3.0f;
+        private bool popularityEarned = false;
+        private float popularityEarnedTimer = 0.0f;
 
         private bool isDead = false;
 
@@ -338,11 +341,24 @@ namespace TrashSoup.Gameplay
 
             if(InputManager.Instance.GetKeyboardButtonDown(Keys.F))
             {
-                this.Popularity += 10.0f;
+                this.AddPopularity();
+            }
+            
+            if(this.popularityEarned)
+            {
+                this.popularityEarnedTimer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+                if(this.popularityEarnedTimer > POPULARITY_STOP_COOLDOWN)
+                {
+                    this.popularityEarnedTimer = 0.0f;
+                    this.popularityEarned = false;
+                }
+            }
+            else
+            {
+                this.Popularity -= gameTime.ElapsedGameTime.Milliseconds * 0.001f * this.popularityDecreaseSpeed;
+                this.Popularity = MathHelper.Clamp(this.Popularity, 0.0f, MAX_POPULARITY);
             }
 
-            this.Popularity -= gameTime.ElapsedGameTime.Milliseconds * 0.001f * this.popularityDecreaseSpeed;
-            this.Popularity = MathHelper.Clamp(this.Popularity, 0.0f, MAX_POPULARITY);
         }
 
         public override void Initialize()
@@ -361,6 +377,14 @@ namespace TrashSoup.Gameplay
         public override void Draw(Camera cam, Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
         {
             // Draw nothing
+        }
+
+        private void AddPopularity(float amount = 10.0f)
+        {
+            this.popularityEarned = true;
+            this.popularityEarnedTimer = 0.0f;
+            this.Popularity += amount;
+            this.Popularity = MathHelper.Clamp(this.Popularity, 0.0f, MAX_POPULARITY);
         }
 
         protected override void Start()

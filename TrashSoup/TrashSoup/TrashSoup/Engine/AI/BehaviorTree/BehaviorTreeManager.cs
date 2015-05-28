@@ -46,7 +46,7 @@ namespace TrashSoup.Engine.AI.BehaviorTree
                     {
                         if (bt.CurrentRunning != null)
                         {
-                            Debug.Log("Current Running: " + bt.CurrentRunning.GetType().Name);
+                            //Debug.Log("Current Running: " + bt.CurrentRunning.GetType().Name);
                             TickStatus ts = bt.CurrentRunning.Tick(gameTime, out bt.CurrentRunning);
                             if(ts != TickStatus.RUNNING)
                             {

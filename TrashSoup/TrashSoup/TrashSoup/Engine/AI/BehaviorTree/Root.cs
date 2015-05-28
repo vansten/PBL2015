@@ -26,7 +26,14 @@ namespace TrashSoup.Engine.AI.BehaviorTree
 
         public void Initialize()
         {
-            if (this.child == null) Console.WriteLine("Caution! The child of root is null");
+            if (this.child == null)
+            {
+                Console.WriteLine("Caution! The child of root is null");
+            }
+            else
+            {
+                this.child.Initialize();
+            }
         }
 
         public TickStatus Tick(GameTime gameTime, out INode node)
