@@ -13,15 +13,15 @@ namespace TrashSoup.Engine
         #region constants
         private static VertexPositionTexture[] vertices = 
         {
-            new VertexPositionTexture(new Vector3(-1.0f, 1.0f, 0.0f), new Vector2(0.0f, 0.0f)),
-            new VertexPositionTexture(new Vector3(1.0f, 1.0f, 0.0f), new Vector2(1.0f, 0.0f)),
-            new VertexPositionTexture(new Vector3(1.0f, -1.0f, 0.0f), new Vector2(1.0f, 1.0f)),
-            new VertexPositionTexture(new Vector3(1.0f, -1.0f, 0.0f), new Vector2(0.0f, 1.0f))
+            new VertexPositionTexture(new Vector3(0.0f, 0.0f, 0.0f), new Vector2(0.0f, 0.0f)),
+            new VertexPositionTexture(new Vector3(0.0f, 0.0f, 0.0f), new Vector2(1.0f, 0.0f)),
+            new VertexPositionTexture(new Vector3(0.0f, 0.0f, 0.0f), new Vector2(1.0f, 1.0f)),
+            new VertexPositionTexture(new Vector3(0.0f, 0.0f, 0.0f), new Vector2(0.0f, 1.0f))
         };
 
         private static int[] indices = 
         {
-            0, 1, 2, 0, 2, 3
+            2, 1, 0, 3, 2, 0
         };
         #endregion
 
@@ -90,7 +90,7 @@ namespace TrashSoup.Engine
                 device.SetVertexBuffer(vertexBuffer);
                 device.Indices = indexBuffer;
 
-                device.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, vertexBuffer.VertexCount, 0, indexBuffer.IndexCount);
+                device.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, vertexBuffer.VertexCount, 0, indexBuffer.IndexCount / 3);
 
                 device.SetVertexBuffer(null);
                 device.Indices = null;
@@ -130,7 +130,11 @@ namespace TrashSoup.Engine
 
             ep = Mat.MyEffect.Parameters["CameraUp"];
             if (ep != null)
-                ep.SetValue(cam.Up);
+            {
+                Vector3 up = -Vector3.Cross(cam.Direction, -cam.Right);
+                up.Y = -up.Y;
+                ep.SetValue(up);
+            }
 
             ep = Mat.MyEffect.Parameters["CameraRight"];
             if (ep != null)
