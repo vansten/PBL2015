@@ -33,6 +33,7 @@ namespace TrashSoup.Gameplay
         private int prevTime;
         private Vector3 startDaylightColor;
         private Vector3 startDaylightSpecular;
+        private Vector3 rotationAxe;
         #endregion
 
         #region properties
@@ -50,11 +51,22 @@ namespace TrashSoup.Gameplay
         public DaytimeChange(GameObject go)
             : base(go)
         {
+            rotationAxe = new Vector3(-1.0f, 0.2f, 1.0f);
+            rotationAxe.Normalize();
         }
 
         public DaytimeChange(GameObject go, DaytimeChange cc)
             : base(go, cc)
         {
+            SunID = cc.SunID;
+            LightDayID = cc.LightDayID;
+            LightNightID = cc.LightNightID;
+            TextureNames = cc.TextureNames;
+            SunriseMinutes = cc.SunriseMinutes;
+            SunsetMinutes = cc.SunsetMinutes;
+            StateChangeMinutes = cc.StateChangeMinutes;
+            rotationAxe = new Vector3(-1.0f, 0.2f, 1.0f);
+            rotationAxe.Normalize();
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
@@ -188,7 +200,6 @@ namespace TrashSoup.Gameplay
             Vector4 state1 = new Vector4(0.0f, 1.0f, 0.0f, 0.0f);
             Vector4 state2 = new Vector4(0.0f, 0.0f, 1.0f, 0.0f);
             Vector4 state3 = new Vector4(0.0f, 0.0f, 0.0f, 1.0f);
-            Vector4 lerp1, lerp2;
             float lerpValue;
 
             if (minutes < ((SunriseMinutes - StateChangeMinutes) % MINUTES_MAX) || minutes > (SunsetMinutes + StateChangeMinutes))
@@ -248,9 +259,12 @@ namespace TrashSoup.Gameplay
 
         private void ConvertTimeToLightDirection(int minutes, out Vector3 direction)
         {
-            direction = new Vector3(-1.0f, -1.0f, 1.0f);
+            direction = new Vector3(-1.0f, -1.0f, -1.0f);   // dla minutes = 720
+            //direction = Vector3.Transform(direction, Matrix.CreateRotationY(-MathHelper.PiOver4 / 1.5f));
 
-
+            float rotation = ((float)((minutes - MINUTES_MAX / 2) % MINUTES_MAX) / (float)MINUTES_MAX) * MathHelper.Pi;
+            //Debug.Log(rotation.ToString());
+            direction = Vector3.Transform(direction, Matrix.CreateFromAxisAngle(rotationAxe, rotation));
 
             direction.Z = -direction.Z;
             direction.Normalize();
