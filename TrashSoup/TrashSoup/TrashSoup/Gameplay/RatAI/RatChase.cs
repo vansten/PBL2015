@@ -14,7 +14,14 @@ namespace TrashSoup.Gameplay.RatAI
         private Vector3 myPos;
         private float chaseSpeed = 8.0f;
         private Vector3 chaseVector = Vector3.Zero;
-        private Vector3 forward = Vector3.Forward;
+        private float prevRotY;
+        private float rotY;
+
+        public override void Initialize()
+        {
+            this.prevRotY = this.blackboard.Owner.MyTransform.Rotation.Y;
+            base.Initialize();
+        }
 
         public override TickStatus Tick(Microsoft.Xna.Framework.GameTime gameTime, out INode node)
         {
@@ -37,23 +44,58 @@ namespace TrashSoup.Gameplay.RatAI
             this.chaseVector = this.targetPos - this.myPos;
             this.chaseVector.Y = 0.0f;
             this.chaseVector.Normalize();
-            this.forward = Vector3.Transform(Vector3.Right, Matrix.CreateRotationY(-this.blackboard.Owner.MyTransform.Rotation.Y));
-            this.forward.Y = 0.0f;
-            this.forward.Normalize();
-            float angle = (float)Math.Atan2(-(this.chaseVector.Z - this.forward.Z), -(this.chaseVector.X - this.forward.X));
-            float sign = Math.Sign(angle);
-
-            while (Vector3.Dot(this.forward, this.chaseVector) < 0.99f)
-            {
-                this.blackboard.Owner.MyTransform.Rotation += sign * Vector3.Up * 0.01f;
-                this.forward = Vector3.Transform(Vector3.Right, Matrix.CreateRotationY(-this.blackboard.Owner.MyTransform.Rotation.Y));
-                this.forward.Y = 0.0f;
-                this.forward.Normalize();
-            }
+            this.prevRotY = this.blackboard.Owner.MyTransform.Rotation.Y;
+            this.rotY = (float)Math.Atan2(this.chaseVector.Z, this.chaseVector.X);
+            this.rotY = this.CurveAngle(this.prevRotY, this.rotY, 0.1f);
+            Vector3 rot = this.blackboard.Owner.MyTransform.Rotation;
+            rot.Y = rotY;
+            this.blackboard.Owner.MyTransform.Rotation = rot;
 
             this.blackboard.Owner.MyTransform.Position += this.chaseVector * gameTime.ElapsedGameTime.Milliseconds * 0.001f * chaseSpeed;
             node = this;
             return TickStatus.RUNNING;
+        }
+
+        private float CurveAngle(float from, float to, float step)
+        {
+            if (step == 0) return from;
+            if (from == to || step == 1) return to;
+
+            Vector2 fromVector = new Vector2((float)Math.Cos(from), (float)Math.Sin(from));
+            Vector2 toVector = new Vector2((float)Math.Cos(to), (float)Math.Sin(to));
+
+            Vector2 currentVector = Slerp(fromVector, toVector, step);
+
+            float toReturn = (float)Math.Atan2(currentVector.Y, currentVector.X);
+
+            return toReturn;
+        }
+
+        private Vector2 Slerp(Vector2 from, Vector2 to, float step)
+        {
+            if (step == 0) return from;
+            if (from == to || step == 1) return to;
+
+            double dot = (double)Vector2.Dot(from, to);
+
+            // clampin'!
+            if (dot > 1) dot = 1;
+            else if (dot < -1) dot = -1;
+
+            double theta = Math.Acos(dot);
+            if (theta == 0) return to;
+
+            double sinTheta = Math.Sin(theta);
+
+            Vector2 toReturn = (float)(Math.Sin((1 - step) * theta) / sinTheta) * from + (float)(Math.Sin(step * theta) / sinTheta) * to;
+
+            if (float.IsNaN(toReturn.X) || float.IsNaN(toReturn.Y))
+            {
+                Debug.Log("PLAYERCONTROLLER ERROR: NaN detected in Slerp()");
+                throw new InvalidOperationException("PLAYERCONTROLLER ERROR: NaN detected in Slerp()");
+            }
+
+            return toReturn;
         }
     }
 }
