@@ -17,6 +17,7 @@ namespace TrashSoup.Engine
         public string Name { get; set; }
         public Vector2 Wind { get; set; }
         public DateTime Time { get; set; }
+        public float TimeMultiplier { get; set; }
         public float MaxSize { get; set; }
         public float Lod1Distance { get; set; }
         public float Lod2Distance { get; set; }
@@ -34,11 +35,12 @@ namespace TrashSoup.Engine
             this.Name = name;
         }
 
-        public SceneParams(uint uniqueID, string name, Vector2 wind, DateTime time, float maxSize, float lod1distance, float lod2distance, bool shadows, bool softShadows, bool bloom, bool graph, bool lods)
+        public SceneParams(uint uniqueID, string name, Vector2 wind, DateTime time, float timeM, float maxSize, float lod1distance, float lod2distance, bool shadows, bool softShadows, bool bloom, bool graph, bool lods)
             : this(uniqueID, name)
         {
             this.Wind = wind;
             this.Time = time;
+            this.TimeMultiplier = timeM;
             this.MaxSize = maxSize;
             this.Lod1Distance = lod1distance;
             this.Lod2Distance = lod2distance;
@@ -237,6 +239,18 @@ namespace TrashSoup.Engine
             return ObjectsDictionary[uniqueID];
         }
 
+        public GameObject GetObject(string name)
+        {
+            foreach(KeyValuePair<uint, GameObject> pair in ObjectsDictionary)
+            {
+                if(pair.Value.Name == name)
+                {
+                    return pair.Value;
+                }
+            }
+            return null;
+        }
+
         public List<GameObject> GetObjectsOfType(Type type)
         {
             List<GameObject> ret = new List<GameObject>();
@@ -327,6 +341,8 @@ namespace TrashSoup.Engine
         public void UpdateAll(GameTime gameTime)
         {
             ObjectsQT.Update();
+
+            Params.Time = Params.Time.AddMilliseconds(Params.TimeMultiplier * gameTime.ElapsedGameTime.TotalMilliseconds);
 
             //[vansten] Added testing code for physics simulation
             AI.BehaviorTree.BehaviorTreeManager.Instance.Update(gameTime);
