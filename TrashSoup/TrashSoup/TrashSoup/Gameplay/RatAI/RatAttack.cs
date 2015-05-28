@@ -16,6 +16,8 @@ namespace TrashSoup.Gameplay.RatAI
         private float timer = 0.0f;
         private float damage = 5.0f;
         private PlayerController target;
+        private Vector3 difference;
+        private Vector3 forward;
 
         public override void Initialize()
         {
@@ -47,7 +49,22 @@ namespace TrashSoup.Gameplay.RatAI
                 return TickStatus.FAILURE;
             }
 
-            //Powinien sie obracac w dobra strone (w strone gracza)
+            this.difference = this.targetPos - this.myPos;
+            this.difference.Y = 0.0f;
+            this.difference.Normalize();
+            this.forward = Vector3.Transform(Vector3.Right, Matrix.CreateRotationY(-this.blackboard.Owner.MyTransform.Rotation.Y));
+            this.forward.Y = 0.0f;
+            this.forward.Normalize();
+            float angle = (float)Math.Atan2(-(this.difference.Z - this.forward.Z), -(this.difference.X - this.forward.X));
+            float sign = Math.Sign(angle);
+
+            while (Vector3.Dot(this.forward, this.difference) < 0.99f)
+            {
+                this.blackboard.Owner.MyTransform.Rotation += sign * Vector3.Up * 0.01f;
+                this.forward = Vector3.Transform(Vector3.Right, Matrix.CreateRotationY(-this.blackboard.Owner.MyTransform.Rotation.Y));
+                this.forward.Y = 0.0f;
+                this.forward.Normalize();
+            }
 
             if(timer > attackCooldown)
             {
