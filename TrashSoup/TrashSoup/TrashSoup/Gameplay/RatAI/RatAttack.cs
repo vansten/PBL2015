@@ -18,9 +18,12 @@ namespace TrashSoup.Gameplay.RatAI
         private PlayerController target;
         private Vector3 difference;
         private Vector3 forward;
+        private float prevRotY;
+        private float rotY;
 
         public override void Initialize()
         {
+            this.prevRotY = this.blackboard.Owner.MyTransform.Rotation.Y;
             GameObject go = ResourceManager.Instance.CurrentScene.GetObject(1);
             if(go != null)
             {
@@ -52,19 +55,12 @@ namespace TrashSoup.Gameplay.RatAI
             this.difference = this.targetPos - this.myPos;
             this.difference.Y = 0.0f;
             this.difference.Normalize();
-            this.forward = Vector3.Transform(Vector3.Right, Matrix.CreateRotationY(-this.blackboard.Owner.MyTransform.Rotation.Y));
-            this.forward.Y = 0.0f;
-            this.forward.Normalize();
-            float angle = (float)Math.Atan2(-(this.difference.Z - this.forward.Z), -(this.difference.X - this.forward.X));
-            float sign = Math.Sign(angle);
-
-            while (Vector3.Dot(this.forward, this.difference) < 0.99f)
-            {
-                this.blackboard.Owner.MyTransform.Rotation += sign * Vector3.Up * 0.01f;
-                this.forward = Vector3.Transform(Vector3.Right, Matrix.CreateRotationY(-this.blackboard.Owner.MyTransform.Rotation.Y));
-                this.forward.Y = 0.0f;
-                this.forward.Normalize();
-            }
+            this.prevRotY = this.blackboard.Owner.MyTransform.Rotation.Y;
+            this.rotY = (float)Math.Atan2(this.difference.Z, this.difference.X);
+            this.rotY = this.CurveAngle(this.prevRotY, this.rotY, 0.1f);
+            Vector3 rot = this.blackboard.Owner.MyTransform.Rotation;
+            rot.Y = rotY;
+            this.blackboard.Owner.MyTransform.Rotation = rot;
 
             if(timer > attackCooldown)
             {
@@ -80,6 +76,48 @@ namespace TrashSoup.Gameplay.RatAI
 
             node = this;
             return TickStatus.RUNNING;
+        }
+
+        private float CurveAngle(float from, float to, float step)
+        {
+            if (step == 0) return from;
+            if (from == to || step == 1) return to;
+
+            Vector2 fromVector = new Vector2((float)Math.Cos(from), (float)Math.Sin(from));
+            Vector2 toVector = new Vector2((float)Math.Cos(to), (float)Math.Sin(to));
+
+            Vector2 currentVector = Slerp(fromVector, toVector, step);
+
+            float toReturn = (float)Math.Atan2(currentVector.Y, currentVector.X);
+
+            return toReturn;
+        }
+
+        private Vector2 Slerp(Vector2 from, Vector2 to, float step)
+        {
+            if (step == 0) return from;
+            if (from == to || step == 1) return to;
+
+            double dot = (double)Vector2.Dot(from, to);
+
+            // clampin'!
+            if (dot > 1) dot = 1;
+            else if (dot < -1) dot = -1;
+
+            double theta = Math.Acos(dot);
+            if (theta == 0) return to;
+
+            double sinTheta = Math.Sin(theta);
+
+            Vector2 toReturn = (float)(Math.Sin((1 - step) * theta) / sinTheta) * from + (float)(Math.Sin(step * theta) / sinTheta) * to;
+
+            if (float.IsNaN(toReturn.X) || float.IsNaN(toReturn.Y))
+            {
+                Debug.Log("PLAYERCONTROLLER ERROR: NaN detected in Slerp()");
+                throw new InvalidOperationException("PLAYERCONTROLLER ERROR: NaN detected in Slerp()");
+            }
+
+            return toReturn;
         }
     }
 }
