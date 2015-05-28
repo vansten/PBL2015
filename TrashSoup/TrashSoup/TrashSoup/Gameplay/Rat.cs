@@ -14,6 +14,7 @@ namespace TrashSoup.Gameplay
     {
         private BehaviorTree myBehavior;
         public Blackboard MyBlackBoard;
+        private Enemy myEnemyScript;
 
         public Rat(GameObject go) : base(go)
         {
@@ -60,7 +61,14 @@ namespace TrashSoup.Gameplay
             {
 
             }
+            this.myEnemyScript = (Enemy)this.MyObject.GetComponent<Enemy>();
+            this.myEnemyScript.OnDead += this.OnDead;
             base.Initialize();
+        }
+
+        void OnDead()
+        {
+            this.myBehavior.Stop();
         }
 
         public override void OnCollision(GameObject other)

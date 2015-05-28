@@ -20,7 +20,10 @@ namespace TrashSoup.Engine.AI.BehaviorTree
 
         public void Initialize()
         {
-
+            foreach (INode child in children)
+            {
+                child.Initialize();
+            }
         }
 
         public TickStatus Tick(GameTime gameTime, out INode node)

@@ -14,6 +14,19 @@ namespace TrashSoup.Gameplay.RatAI
         private Vector3 myPos;
         private float attackCooldown = 2.0f;
         private float timer = 0.0f;
+        private float damage = 5.0f;
+        private PlayerController target;
+
+        public override void Initialize()
+        {
+            GameObject go = ResourceManager.Instance.CurrentScene.GetObject(1);
+            if(go != null)
+            {
+                target = (PlayerController)go.GetComponent<PlayerController>();
+                Debug.Log("Target: " + (target != null).ToString());
+            }
+            base.Initialize();
+        } 
 
         public override TickStatus Tick(GameTime gameTime, out INode node)
         {
@@ -29,6 +42,7 @@ namespace TrashSoup.Gameplay.RatAI
 
             if(distance > 5.0f)
             {
+                this.blackboard.SetBool("TargetSeen", false);
                 node = null;
                 return TickStatus.FAILURE;
             }
@@ -38,6 +52,10 @@ namespace TrashSoup.Gameplay.RatAI
             if(timer > attackCooldown)
             {
                 Debug.Log("Attacking");
+                if(target != null)
+                {
+                    target.DecreaseHealth(this.damage);
+                }
                 timer = 0.0f;
             }
 

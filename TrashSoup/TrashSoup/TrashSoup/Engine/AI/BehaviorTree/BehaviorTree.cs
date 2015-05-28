@@ -55,6 +55,10 @@ namespace TrashSoup.Engine.AI.BehaviorTree
         public void Run()
         {
             this.Enabled = true;
+            if(this.BTRoot != null)
+            {
+                this.BTRoot.Initialize();
+            }
         }
 
         public void Stop()

@@ -14,6 +14,8 @@ namespace TrashSoup.Gameplay
         #region variables
         protected int hitPoints;
         protected bool isDead;
+
+        public Action OnDead;
         #endregion
 
         #region properties
@@ -44,11 +46,22 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
+            if (this.HitPoints <= 0)
+                IsDead = true;
             if (IsDead)
+            {
+                if(OnDead != null)
+                {
+                    OnDead();
+                }
+                this.MyObject.Enabled = false;
                 return;
+            }
 
+#if DEBUG
             GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"),
                 "RAT: " + this.HitPoints, new Vector2(0.8f, 0.8f), Color.Red);
+#endif
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)

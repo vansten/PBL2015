@@ -62,6 +62,14 @@ namespace TrashSoup.Gameplay
         private float changeMessageCooldown = 8.0f;
         private int currentMessage = 0;
 
+        private bool drawLive = false;
+        private float popularityFirstStepAmount = 30.0f;
+        private float popularitySecondStepAmount = 60.0f;
+        private bool popularityFirstStepReached = false;
+        private bool popularitySecondStepReached = false;
+        private bool popularityThirdStepReached = false;
+        private float popularityThirdStepAmount = 90.0f;
+
         public PlayerHUD(GameObject go) : base(go)
         {
             Start();
@@ -75,22 +83,6 @@ namespace TrashSoup.Gameplay
             }
             this.currentHP = this.myPlayerController.HitPoints;
             this.currentPopularity = this.myPlayerController.Popularity;
-            this.timer += 0.001f * gameTime.ElapsedGameTime.Milliseconds;
-            this.liveTextPos.X -= 0.08f * gameTime.ElapsedGameTime.Milliseconds * 0.001f;
-            if(this.index < this.messages[this.currentMessage].Length  && this.timer > (0.32f * this.messages[this.currentMessage].Length / this.messages[0].Length) * (index + 1) * this.changeMessageCooldown / (float)this.messages[this.currentMessage].Length)
-            {
-                this.currentLiveText += this.messages[this.currentMessage][this.index];
-                this.index += 1;
-            }
-            if(this.timer > this.changeMessageCooldown)
-            {
-                this.currentLiveText = "";
-                this.index = 0;
-                this.liveTextPos = this.initialLiveTextPos;
-                this.timer = 0.0f;
-                this.currentMessage += 1;
-                this.currentMessage %= messages.Length;
-            }
 
             //Drawing HP
             GUIManager.Instance.DrawTexture(this.hpBGTexture, this.hpPos, this.maxWidth, 0.0125f);
@@ -121,10 +113,60 @@ namespace TrashSoup.Gameplay
             GUIManager.Instance.DrawText(this.equipmentFont, "DAY 1", this.dayInfoPos, Color.Red);
 
             //Live messages drawing
-            GUIManager.Instance.DrawTexture(this.liveBGTexture, this.liveBGPos, 0.4f, 0.03f);
-            GUIManager.Instance.DrawText(this.equipmentFont, this.currentLiveText, this.liveTextPos, Color.Black);
-            GUIManager.Instance.DrawTexture(this.liveTexture, this.livePos, 0.05f, 0.02f);
+
+
+            if(!this.popularityFirstStepReached && this.currentPopularity >= this.popularityFirstStepAmount)
+            {
+                this.popularityFirstStepReached = true;
+                this.drawLive = true;
+            }
+            if(!this.popularitySecondStepReached && this.currentPopularity >= this.popularitySecondStepAmount)
+            {
+                this.popularitySecondStepReached = true;
+                this.drawLive = true;
+            }
+            else if(!this.popularityThirdStepReached && this.currentPopularity >= this.popularityThirdStepAmount)
+            {
+                this.popularityThirdStepReached = true;
+                this.drawLive = true;
+            }
+
+            if(this.currentPopularity < this.popularityFirstStepAmount)
+            {
+                this.popularityFirstStepReached = false;
+            }
+            if(this.currentPopularity < this.popularitySecondStepAmount)
+            {
+                this.popularitySecondStepReached = false;
+            }
+            if(this.currentPopularity < this.popularityThirdStepAmount)
+            {
+                this.popularityThirdStepReached = false;
+            }
             
+
+            if (this.drawLive)
+            {
+                GUIManager.Instance.DrawTexture(this.liveBGTexture, this.liveBGPos, 0.4f, 0.03f);
+                GUIManager.Instance.DrawText(this.equipmentFont, this.currentLiveText, this.liveTextPos, Color.Black);
+                GUIManager.Instance.DrawTexture(this.liveTexture, this.livePos, 0.05f, 0.02f);
+                this.timer += 0.001f * gameTime.ElapsedGameTime.Milliseconds;
+                this.liveTextPos.X -= 0.08f * gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+                if (this.index < this.messages[this.currentMessage].Length && this.timer > (0.32f * this.messages[this.currentMessage].Length / this.messages[0].Length) * (index + 1) * this.changeMessageCooldown / (float)this.messages[this.currentMessage].Length)
+                {
+                    this.currentLiveText += this.messages[this.currentMessage][this.index];
+                    this.index += 1;
+                }
+                if (this.timer > this.changeMessageCooldown)
+                {
+                    this.currentLiveText = "";
+                    this.index = 0;
+                    this.liveTextPos = this.initialLiveTextPos;
+                    this.timer = 0.0f;
+                    this.currentMessage = SingleRandom.Instance.rnd.Next(0, this.messages.Length - 1);
+                    this.drawLive = false;
+                }
+            }
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)

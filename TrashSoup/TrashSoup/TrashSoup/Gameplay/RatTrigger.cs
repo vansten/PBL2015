@@ -41,7 +41,7 @@ namespace TrashSoup.Gameplay
             base.Initialize();
         }
 
-        public override void OnTriggerEnter(GameObject other)
+        public override void OnTrigger(GameObject other)
         {
             if(other.UniqueID == 1)
             {
@@ -50,7 +50,7 @@ namespace TrashSoup.Gameplay
                 target = other;
                 myRat.MyBlackBoard.SetVector3("TargetPosition", other.MyTransform.Position);
             }
-            base.OnTriggerEnter(other);
+            base.OnTrigger(other);
         }
 
         public override void OnTriggerExit(GameObject other)
