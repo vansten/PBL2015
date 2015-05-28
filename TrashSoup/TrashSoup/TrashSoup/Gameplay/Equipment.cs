@@ -84,7 +84,8 @@ namespace TrashSoup.Gameplay
                 return;
             newWeapon.Dynamic = true;
             newWeapon.MyCarrierSocket = new Socket(base.MyObject, newWeapon, null, "mixamorig:RightHand");
-            newWeapon.MyTransform.Position = new Vector3(0, 0, 0);
+            newWeapon.MyTransform.Position = Vector3.Zero;
+            newWeapon.MyTransform.Rotation = new Vector3(0, 0, 55);
             newWeapon.MyTransform.Scale = 1;
             base.MyObject.MyCollider.IgnoredColliders.Add(newWeapon.MyCollider);
         }
@@ -93,7 +94,8 @@ namespace TrashSoup.Gameplay
         {
             weapon.Dynamic = false;
             weapon.MyCarrierSocket = new Socket(weapon, weapon, null, "");
-            weapon.MyTransform.Position = new Vector3(0, 0, 0);
+            weapon.MyTransform.Position = Vector3.Zero;
+            weapon.MyTransform.Rotation = Vector3.Zero;
             weapon.MyTransform.Scale = 4;
             base.MyObject.MyCollider.IgnoredColliders.Remove(weapon.MyCollider);
         }
