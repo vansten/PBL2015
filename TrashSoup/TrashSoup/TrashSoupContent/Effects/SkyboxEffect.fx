@@ -18,6 +18,40 @@ samplerCUBE CubeSampler = sampler_state
 	AddressV = Mirror;
 };
 
+texture CubeMap1;
+samplerCUBE CubeSampler1 = sampler_state
+{
+	texture = <CubeMap1>;
+	MipFilter = Linear;
+	MinFilter = Linear;
+	MagFilter = Linear;
+	AddressU = Mirror;
+	AddressV = Mirror;
+};
+
+texture CubeMap2;
+samplerCUBE CubeSampler2 = sampler_state
+{
+	texture = <CubeMap2>;
+	MipFilter = Linear;
+	MinFilter = Linear;
+	MagFilter = Linear;
+	AddressU = Mirror;
+	AddressV = Mirror;
+};
+
+texture CubeMap3;
+samplerCUBE CubeSampler3 = sampler_state
+{
+	texture = <CubeMap3>;
+	MipFilter = Linear;
+	MinFilter = Linear;
+	MagFilter = Linear;
+	AddressU = Mirror;
+	AddressV = Mirror;
+};
+
+float4 Probes;
 float3 DiffuseColor;
 float3 EyePosition;
 
@@ -64,7 +98,12 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
 	//////
 
-	float4 color = float4(DiffuseColor, 1.0f) * texCUBE(CubeSampler, normalize(input.TexCoord));
+	float4 probe0 = texCUBE(CubeSampler, normalize(input.TexCoord)) * Probes.x;
+	float4 probe1 = texCUBE(CubeSampler1, normalize(input.TexCoord)) * Probes.y;
+	float4 probe2 = texCUBE(CubeSampler2, normalize(input.TexCoord)) * Probes.z;
+	float4 probe3 = texCUBE(CubeSampler3, normalize(input.TexCoord)) * Probes.w;
+
+	float4 color = float4(DiffuseColor, 1.0f) * (probe0 + probe1 + probe2 + probe3);
 	color.a = 1;
     return color;
 }
