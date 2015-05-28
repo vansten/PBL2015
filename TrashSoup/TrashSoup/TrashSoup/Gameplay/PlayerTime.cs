@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using System.Xml.Serialization;
 using TrashSoup.Engine;
 
@@ -100,12 +101,18 @@ namespace TrashSoup.Gameplay
 
             base.ReadXml(reader);
 
+            Hours = reader.ReadElementContentAsInt("initHours", "");
+            Minutes = reader.ReadElementContentAsInt("initMinutes", "");
+
             reader.ReadEndElement();
         }
 
         public override void WriteXml(System.Xml.XmlWriter writer)
         {
             base.WriteXml(writer);
+
+            writer.WriteElementString("initHours", XmlConvert.ToString(initHours));
+            writer.WriteElementString("initMinutes", XmlConvert.ToString(initMinutes));
         }
 
         #endregion
