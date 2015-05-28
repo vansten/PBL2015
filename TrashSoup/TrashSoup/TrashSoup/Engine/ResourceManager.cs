@@ -165,8 +165,12 @@ namespace TrashSoup.Engine
             }
 
             List<Material> testSBMats = new List<Material>();
-            Material testSBMat = new Material("testSBMat", this.Effects[@"Effects\SkyboxEffect"]);
-            testSBMat.CubeMap = LoadTextureCube(@"Textures\Skyboxes\Dusk");
+            SkyboxMaterial testSBMat = new SkyboxMaterial("testSBMat", this.Effects[@"Effects\SkyboxEffect"]);
+            testSBMat.CubeMap = LoadTextureCube(@"Textures\Skyboxes\Dawn");
+            testSBMat.CubeMap1 = LoadTextureCube(@"Textures\Skyboxes\Daylight");
+            testSBMat.CubeMap2 = LoadTextureCube(@"Textures\Skyboxes\Dusk");
+            testSBMat.CubeMap3 = LoadTextureCube(@"Textures\Skyboxes\Night");
+            testSBMat.Probes = new Vector4(0.0f, 0.0f, 0.0f, 1.0f);
             testSBMat.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
             testSBMat.Glossiness = 100.0f;
             if(!this.Materials.ContainsKey(testSBMat.Name))
@@ -231,7 +235,7 @@ namespace TrashSoup.Engine
             testTer.Components.Add(terModel);
 
             GameObject testBox2 = new GameObject(3, "testBox2");
-            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 6.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
+            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
             //testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Enviro/Ground/street_cross"], null, null }, deSign));
             Billboard billboard = new Billboard(testBox2);
             billboard.Mat = new Material("billboard", Effects[@"Effects\BillboardEffect"], Textures[@"Textures\Test\cargo"]);
@@ -261,6 +265,11 @@ namespace TrashSoup.Engine
             CustomModel sbModel = new CustomModel(skyBox, new Model[] { Models["Models/Test/TestCube"], null, null }, testSBMats);
             sbModel.LodControlled = false;
             skyBox.Components.Add(sbModel);
+            DaytimeChange dc = new DaytimeChange(skyBox);
+            dc.LightID = 0;
+            dc.SunID = 3;
+            dc.TextureNames = new string[] { @"Textures\Skyboxes\Dawn", @"Textures\Skyboxes\Daylight", @"Textures\Skyboxes\Dusk", @"Textures\Skyboxes\Night" };
+            skyBox.Components.Add(dc);
 
             // moje na pagi
             GameObject cegla = new GameObject(14, "cegla");
@@ -274,6 +283,9 @@ namespace TrashSoup.Engine
             destr.MaxHealth = 100;
             destr.HitDamage = 50;
             cegla.Components.Add(destr);
+
+            GameObject pt = new GameObject(355, "PlayerTime");
+            pt.Components.Add(new PlayerTime(pt));
 
             //Wika i Kasia testowanie modeli
             GameObject awsomeTest = new GameObject(8, "testground");
@@ -291,7 +303,8 @@ namespace TrashSoup.Engine
             lp1.SetupShadowRender();
 
             // loading scene
-            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), DateTime.Now, 3000.0f, 35.0f, 50.0f, true, false, true, false, true));
+            CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), new DateTime(2015, 5, 28, 12, 0, 0, 0, new System.Globalization.GregorianCalendar(), DateTimeKind.Unspecified),
+                60.0f, 3000.0f, 35.0f, 50.0f, true, false, true, false, true));
 
             Camera cam = null;
 
@@ -321,6 +334,7 @@ namespace TrashSoup.Engine
             CurrentScene.AddObject(awsomeTest);//Wika i kasia
             CurrentScene.AddObject(rat);
             CurrentScene.AddObject(cegla);
+            CurrentScene.AddObject(pt);
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;

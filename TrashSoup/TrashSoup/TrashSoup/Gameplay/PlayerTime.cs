@@ -17,6 +17,7 @@ namespace TrashSoup.Gameplay
         private int hours;
         private int minutes;
         private bool isTime;
+        private int multiplier;
 
         private Vector2 timePos = new Vector2(0.05f, 0.8f);
         #endregion
@@ -33,6 +34,12 @@ namespace TrashSoup.Gameplay
             get { return minutes; }
             set { minutes = value; }
         }
+
+        public int Multiplier
+        {
+            get { return multiplier; }
+            set { multiplier = value; }
+        }
         #endregion
 
         #region methods
@@ -40,6 +47,7 @@ namespace TrashSoup.Gameplay
         {
             this.initHours = 12;
             this.initMinutes = 0;
+            this.multiplier = 1;
             Hours = initHours;
             Minutes = initMinutes;
         }
@@ -54,7 +62,7 @@ namespace TrashSoup.Gameplay
 
         public override void Update(GameTime gameTime)
         {
-            Minutes = (initMinutes + gameTime.TotalGameTime.Seconds) % 60;
+            Minutes = (initMinutes + gameTime.TotalGameTime.Seconds * multiplier) % 60;
             Hours = initHours;
             if (Minutes == 0)
             {
