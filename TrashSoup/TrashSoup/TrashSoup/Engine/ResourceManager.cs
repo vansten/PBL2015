@@ -96,7 +96,7 @@ namespace TrashSoup.Engine
             Material testPlayerMat2 = new Material("testPlayerMat2", this.Effects[@"Effects\CubeNormalEffect"], Textures[@"Textures\Test\cargo"]);
             testPlayerMats2.Add(testPlayerMat2);
             testPlayerMat2.NormalMap = Textures[@"Textures\Test\cargo_NRM"];
-            testPlayerMat2.CubeMap = TexturesCube[@"Textures\Skyboxes\Sunset"];
+            testPlayerMat2.CubeMap = LoadTextureCube(@"Textures\Skyboxes\Dusk");
             testPlayerMat2.Glossiness = 40.0f;
             testPlayerMat2.ReflectivityColor = new Vector3(1.0f, 0.0f, 1.0f);
             testPlayerMat2.ReflectivityBias = 0.7f;
@@ -166,7 +166,7 @@ namespace TrashSoup.Engine
 
             List<Material> testSBMats = new List<Material>();
             Material testSBMat = new Material("testSBMat", this.Effects[@"Effects\SkyboxEffect"]);
-            testSBMat.CubeMap = LoadTextureCube(@"Textures\Skyboxes\Daylight");
+            testSBMat.CubeMap = LoadTextureCube(@"Textures\Skyboxes\Dusk");
             testSBMat.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
             testSBMat.Glossiness = 100.0f;
             if(!this.Materials.ContainsKey(testSBMat.Name))
@@ -544,8 +544,6 @@ namespace TrashSoup.Engine
             ///////////////////////////////////////////
 
             // FOR TETIN
-
-            LoadTextureCube(@"Textures\Skyboxes\Sunset");
             LoadTexture(@"Textures\Test\cargo");
             LoadTexture(@"Textures\Test\cargo_NRM");
             LoadTexture(@"Textures\Test\metal01_d");
