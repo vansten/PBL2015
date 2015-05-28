@@ -25,6 +25,8 @@ namespace TrashSoup.Engine
 
         #region variables
 
+        private Vector3 lightColor;
+        private Vector3 lightSpecular;
         private Vector3 lightDirection;
         private Camera shadowDrawCamera;
         private Matrix myProj;
@@ -32,7 +34,6 @@ namespace TrashSoup.Engine
         private bool varsSet = false;
 
         private RenderTarget2D tempRenderTarget01;
-        private RenderTarget2D tempRenderTarget02;
         private Matrix deferredOrthoMatrix;
         #endregion
 
@@ -40,8 +41,42 @@ namespace TrashSoup.Engine
 
         public RenderTarget2D ShadowMapRenderTarget2048 { get; set; }
 
-        public Vector3 LightColor { get; set; }
-        public Vector3 LightSpecularColor { get; set; }
+        public Vector3 LightColor
+        { 
+            get
+            {
+                if(Enabled)
+                {
+                    return lightColor;
+                }
+                else
+                {
+                    return new Vector3(0.0f, 0.0f, 0.0f);
+                }
+            }
+            set
+            {
+                lightColor = value;
+            }
+        }
+        public Vector3 LightSpecularColor 
+        { 
+            get
+            {
+                if(Enabled)
+                {
+                    return lightSpecular;
+                }
+                else
+                {
+                    return new Vector3(0.0f, 0.0f, 0.0f);
+                }
+            }
+            set
+            {
+                lightSpecular = value;
+            }
+        }
         public Vector3 LightDirection 
         { 
             get
@@ -119,7 +154,7 @@ namespace TrashSoup.Engine
 
         public void GenerateShadowMap()
         {
-            if (!this.CastShadows || TrashSoupGame.Instance.ActualRenderTarget != TrashSoupGame.Instance.DefaultRenderTarget)
+            if (!this.CastShadows || TrashSoupGame.Instance.ActualRenderTarget != TrashSoupGame.Instance.DefaultRenderTarget || !this.Enabled)
             {
                 return;
             }

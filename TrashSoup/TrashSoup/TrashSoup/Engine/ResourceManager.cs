@@ -266,8 +266,12 @@ namespace TrashSoup.Engine
             sbModel.LodControlled = false;
             skyBox.Components.Add(sbModel);
             DaytimeChange dc = new DaytimeChange(skyBox);
-            dc.LightID = 0;
+            dc.LightDayID = 0;
+            dc.LightNightID = 1;
             dc.SunID = 3;
+            dc.SunriseMinutes = 60 * 6;
+            dc.SunsetMinutes = 60 * 20;
+            dc.StateChangeMinutes = 120;
             dc.TextureNames = new string[] { @"Textures\Skyboxes\Dawn", @"Textures\Skyboxes\Daylight", @"Textures\Skyboxes\Dusk", @"Textures\Skyboxes\Night" };
             skyBox.Components.Add(dc);
 
@@ -285,7 +289,9 @@ namespace TrashSoup.Engine
             cegla.Components.Add(destr);
 
             GameObject pt = new GameObject(355, "PlayerTime");
-            pt.Components.Add(new PlayerTime(pt));
+            PlayerTime ptc = new PlayerTime(pt);
+            ptc.Multiplier = 3600;
+            pt.Components.Add(ptc);
 
             //Wika i Kasia testowanie modeli
             GameObject awsomeTest = new GameObject(8, "testground");
@@ -294,8 +300,9 @@ namespace TrashSoup.Engine
             awsomeTest.MyCollider = new BoxCollider(awsomeTest, false);
 
             // adding lights
-            LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.2f, 0.2f, 0.1f));
+            LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.3f, 0.2f, 0.0f));
             LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(0.5f, 0.4f, 0.3f), new Vector3(1.0f, 0.8f, 0.8f), new Vector3(-1.0f, -1.0f, -1.0f), true);
+            LightDirectional ldrn = new LightDirectional(102, "LightDirectional2", new Vector3(0.2f, 0.2f, 0.4f), new Vector3(0.0f, 0.1f, 0.2f), new Vector3(1.0f, 1.0f, 1.0f), false);
             LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, true);
             lp1.MyTransform = new Transform(lp1, new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
             lp1.MyCollider = new SphereCollider(lp1, true);
@@ -338,6 +345,7 @@ namespace TrashSoup.Engine
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;
+            CurrentScene.DirectionalLights[1] = ldrn;
             CurrentScene.PointLights.Add(lp1);
 
             ////TESTING PARTICLES

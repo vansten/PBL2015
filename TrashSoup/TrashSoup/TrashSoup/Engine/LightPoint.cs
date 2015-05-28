@@ -20,14 +20,51 @@ namespace TrashSoup.Engine
 
         #region variables
 
+        private Vector3 lightColor;
+        private Vector3 lightSpecular;
         private const float attenuation = 0.15f;
 
         #endregion
 
         #region properties
 
-        public Vector3 LightColor { get; set; }
-        public Vector3 LightSpecularColor { get; set; }
+        public Vector3 LightColor
+        {
+            get
+            {
+                if (Enabled)
+                {
+                    return lightColor;
+                }
+                else
+                {
+                    return new Vector3(0.0f, 0.0f, 0.0f);
+                }
+            }
+            set
+            {
+                lightColor = value;
+            }
+        }
+        public Vector3 LightSpecularColor
+        {
+            get
+            {
+                if (Enabled)
+                {
+                    return lightSpecular;
+                }
+                else
+                {
+                    return new Vector3(0.0f, 0.0f, 0.0f);
+                }
+            }
+            set
+            {
+                lightSpecular = value;
+            }
+        }
+
         public float Attenuation 
         { 
             get
@@ -77,7 +114,7 @@ namespace TrashSoup.Engine
 
         public void GenerateShadowMap()
         {
-            if (!this.CastShadows || TrashSoupGame.Instance.ActualRenderTarget != TrashSoupGame.Instance.DefaultRenderTarget || Cameras == null)
+            if (!this.CastShadows || TrashSoupGame.Instance.ActualRenderTarget != TrashSoupGame.Instance.DefaultRenderTarget || Cameras == null || !this.Enabled)
             {
                 return;
             }
