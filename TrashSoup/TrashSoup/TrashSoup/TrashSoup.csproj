@@ -120,6 +120,7 @@
     <Compile Include="Engine\Transform.cs" />
     <Compile Include="Engine\WaterMaterial.cs" />
     <Compile Include="Gameplay\AITest.cs" />
+    <Compile Include="Gameplay\DaytimeChange.cs" />
     <Compile Include="Gameplay\Enemy.cs" />
     <Compile Include="Gameplay\Equipment.cs" />
     <Compile Include="Gameplay\InputHandler.cs" />

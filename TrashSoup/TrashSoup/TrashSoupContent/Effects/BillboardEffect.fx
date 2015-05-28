@@ -52,7 +52,7 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 
 	output.Position = mul(float4(position, 1.0f), WorldViewProj);
 
-	output.PositionWS = mul(input.Position, World);
+	output.PositionWS = mul(float4(position, 1.0f), World);
 
 	output.TexCoord = input.TexCoord;
 

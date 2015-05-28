@@ -166,7 +166,7 @@ namespace TrashSoup.Engine
 
             List<Material> testSBMats = new List<Material>();
             Material testSBMat = new Material("testSBMat", this.Effects[@"Effects\SkyboxEffect"]);
-            testSBMat.CubeMap = TexturesCube[@"Textures\Skyboxes\Sunset"];
+            testSBMat.CubeMap = LoadTextureCube(@"Textures\Skyboxes\Daylight");
             testSBMat.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
             testSBMat.Glossiness = 100.0f;
             if(!this.Materials.ContainsKey(testSBMat.Name))
