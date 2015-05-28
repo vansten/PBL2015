@@ -29,6 +29,7 @@ namespace TrashSoup.Gameplay.RatAI
 
             if(distance > 5.0f)
             {
+                this.blackboard.SetBool("TargetSeen", false);
                 node = null;
                 return TickStatus.FAILURE;
             }

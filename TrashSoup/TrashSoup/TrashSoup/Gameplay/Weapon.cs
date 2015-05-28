@@ -27,6 +27,8 @@ namespace TrashSoup.Gameplay
         protected string name;
         protected bool isAttacking = false;
         public double timerOn;
+
+        private GameObject player;
         #endregion
 
         #region properties
@@ -78,6 +80,12 @@ namespace TrashSoup.Gameplay
         {
         }
 
+        public override void Initialize()
+        {
+            this.player = ResourceManager.Instance.CurrentScene.GetObject(1);
+            base.Initialize();
+        }
+
         public override void OnTriggerEnter(GameObject other)
         {
             if(isAttacking)
@@ -85,6 +93,12 @@ namespace TrashSoup.Gameplay
                 if (other.Components.Exists(x => x is Enemy))
                 {
                     (other.GetComponent<Enemy>() as Enemy).HitPoints -= Damage;
+                    Rat r = other.GetComponent<Rat>() as Rat;
+                    if(r != null)
+                    {
+                        r.MyBlackBoard.SetBool("TargetSeen", true);
+                        r.MyBlackBoard.SetVector3("TargetPosition", player.MyTransform.Position);
+                    }
                     if (Type != WeaponType.FISTS && Durability > 0)
                         Durability--;
                 }
