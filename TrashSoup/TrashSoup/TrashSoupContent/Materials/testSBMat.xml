@@ -4,7 +4,7 @@
   <EffectPath>Effects\SkyboxEffect</EffectPath>
   <DiffusePath>DefaultDiffuse</DiffusePath>
   <NormalPath>DefaultNormal</NormalPath>
-  <CubePath>Textures\Skyboxes\Sunset</CubePath>
+  <CubePath>Textures\Skyboxes\Daylight</CubePath>
   <DiffuseColor>
     <X>1</X>
     <Y>1</Y>
