@@ -235,7 +235,7 @@ namespace TrashSoup.Engine
             testTer.Components.Add(terModel);
 
             GameObject testBox2 = new GameObject(3, "testBox2");
-            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
+            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 75.0f);
             //testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Enviro/Ground/street_cross"], null, null }, deSign));
             Billboard billboard = new Billboard(testBox2);
             billboard.Mat = new Material("billboard", Effects[@"Effects\BillboardEffect"], Textures[@"Textures\Test\cargo"]);
@@ -261,7 +261,7 @@ namespace TrashSoup.Engine
             testWater.Components.Add(new CustomModel(testWater, new Model[] { Models["Models/Test/TestSquarePlane"], null, null }, testWaterMats));
 
             GameObject skyBox = new GameObject(4, "skyBox");
-            skyBox.MyTransform = new Transform(skyBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1000.0f);
+            skyBox.MyTransform = new Transform(skyBox, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 2000.0f);
             CustomModel sbModel = new CustomModel(skyBox, new Model[] { Models["Models/Test/TestCube"], null, null }, testSBMats);
             sbModel.LodControlled = false;
             skyBox.Components.Add(sbModel);
@@ -300,9 +300,9 @@ namespace TrashSoup.Engine
             awsomeTest.MyCollider = new BoxCollider(awsomeTest, false);
 
             // adding lights
-            LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.3f, 0.2f, 0.0f));
-            LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(0.5f, 0.4f, 0.3f), new Vector3(1.0f, 0.8f, 0.8f), new Vector3(-1.0f, -1.0f, -1.0f), true);
-            LightDirectional ldrn = new LightDirectional(102, "LightDirectional2", new Vector3(0.2f, 0.2f, 0.4f), new Vector3(0.0f, 0.1f, 0.2f), new Vector3(1.0f, 1.0f, 1.0f), false);
+            LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.1f, 0.1f, 0.1f));
+            LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(1.0f, 0.9f, 0.8f), new Vector3(1.0f, 0.8f, 0.8f), new Vector3(-1.0f, -1.0f, -1.0f), true);
+            LightDirectional ldrn = new LightDirectional(102, "LightDirectional2", new Vector3(0.1f, 0.1f, 0.15f), new Vector3(0.0f, 0.1f, 0.2f), new Vector3(1.0f, 1.0f, 1.0f), true);
             LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, true);
             lp1.MyTransform = new Transform(lp1, new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
             lp1.MyCollider = new SphereCollider(lp1, true);
@@ -311,7 +311,7 @@ namespace TrashSoup.Engine
 
             // loading scene
             CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), new DateTime(2015, 5, 28, 12, 0, 0, 0, new System.Globalization.GregorianCalendar(), DateTimeKind.Unspecified),
-                60.0f, 3000.0f, 35.0f, 50.0f, true, false, true, false, true));
+                60.0f, 3000.0f, 35.0f, 50.0f, true, true, true, false, true));
 
             Camera cam = null;
 
@@ -324,7 +324,7 @@ namespace TrashSoup.Engine
                 //Game camera
             cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 1.0f, -0.1f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)) + new Vector3(0.0f, 0.4f, 0.0f),
                     new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 1.5f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f,
-                    (float)TrashSoupGame.Instance.Window.ClientBounds.Width / (float)TrashSoupGame.Instance.Window.ClientBounds.Height, 0.1f, 2000.0f);
+                    (float)TrashSoupGame.Instance.Window.ClientBounds.Width / (float)TrashSoupGame.Instance.Window.ClientBounds.Height, 0.1f, 4000.0f);
             cam.Components.Add(new CameraBehaviourComponent(cam, testBox));
 
             CurrentScene.Cam = cam;
