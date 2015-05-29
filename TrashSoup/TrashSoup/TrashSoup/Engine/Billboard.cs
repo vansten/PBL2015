@@ -2,8 +2,10 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace TrashSoup.Engine
@@ -28,6 +30,7 @@ namespace TrashSoup.Engine
         #region variables
         private VertexBuffer vertexBuffer;
         private IndexBuffer indexBuffer;
+        private string contentPath;
         #endregion
 
         #region properties
@@ -139,6 +142,93 @@ namespace TrashSoup.Engine
             ep = Mat.MyEffect.Parameters["CameraRight"];
             if (ep != null)
                 ep.SetValue(cam.Right);
+        }
+
+        public override System.Xml.Schema.XmlSchema GetSchema()
+        {
+            return base.GetSchema();
+        }
+
+        public override void ReadXml(System.Xml.XmlReader reader)
+        {
+            reader.MoveToContent();
+            reader.ReadStartElement();
+
+            base.ReadXml(reader);
+
+            if (reader.Name == "SkyboxMaterial")
+            {
+            if (!TrashSoupGame.Instance.EditorMode)
+            {
+                contentPath = "../../../../TrashSoupContent/Materials/";
+            }
+            else
+            {
+                contentPath = "../../../TrashSoup/TrashSoupContent/Materials/";
+            }
+            reader.ReadStartElement();
+            while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
+            {
+                if (reader.Name == "Name")
+                {
+
+                        String newName = reader.ReadElementString("Name", "");
+
+                        SkyboxMaterial m = new SkyboxMaterial();
+                        XmlSerializer serializer = new XmlSerializer(typeof(SkyboxMaterial));
+                        using (FileStream file = new FileStream(contentPath + newName + ".xml", FileMode.Open))
+                        {
+                            m = (SkyboxMaterial)serializer.Deserialize(file);
+                            m.Name = newName;
+                        }
+
+                        Mat = m;
+                    }
+                }
+
+                reader.ReadEndElement();
+            }
+
+            if (reader.Name == "Size")
+            {
+                reader.ReadStartElement();
+                Size = new Vector2(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""));
+                reader.ReadEndElement();
+            }
+
+            reader.ReadEndElement();
+        }
+
+        public override void WriteXml(System.Xml.XmlWriter writer)
+        {
+            if (!TrashSoupGame.Instance.EditorMode)
+            {
+                contentPath = "../../../../TrashSoupContent/Materials/";
+            }
+            else
+            {
+                contentPath = "../../../TrashSoup/TrashSoupContent/Materials/";
+            }
+            base.WriteXml(writer);
+
+            writer.WriteStartElement("SkyboxMaterial");
+            if(Mat != null)
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(SkyboxMaterial));
+                using (FileStream file = new FileStream(Path.GetFullPath(contentPath) + Mat.Name + ".xml", FileMode.Create))
+                {
+                    serializer.Serialize(file, Mat);
+                }
+                writer.WriteElementString("Name", Mat.Name);
+            }
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("Size");
+            writer.WriteElementString("X", XmlConvert.ToString(Size.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(Size.Y));
+            writer.WriteEndElement();
+
         }
 
         #endregion

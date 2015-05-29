@@ -934,7 +934,8 @@ namespace TrashSoup.Engine
 
             AssignParamsInitialize();
 
-            reader.ReadEndElement();
+            if(this.GetType() == typeof(Material))
+                reader.ReadEndElement();
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)

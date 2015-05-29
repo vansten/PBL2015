@@ -4,11 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
 using TrashSoup.Engine;
 
 namespace TrashSoup.Gameplay
 {
-    public class DaytimeChange : ObjectComponent
+    public class DaytimeChange : ObjectComponent, IXmlSerializable
     {
         #region constants
         private const int TEXTURE_COUNT = 4;
@@ -463,6 +465,59 @@ namespace TrashSoup.Gameplay
             float size = ResourceManager.Instance.CurrentScene.Params.MaxSize;
             float smallDiagonal = (size * (float) Math.Sqrt(2)) / 4.0f;
             sun.MyTransform.Position = new Vector3((pos * smallDiagonal).X, (pos * smallDiagonal).Y + HorizonOffset, (pos * smallDiagonal).Z);
+        }
+
+        public override System.Xml.Schema.XmlSchema GetSchema()
+        {
+            return base.GetSchema();
+        }
+
+        public override void ReadXml(System.Xml.XmlReader reader)
+        {
+            reader.MoveToContent();
+            reader.ReadStartElement();
+
+            base.ReadXml(reader);
+
+            SunID = (uint)reader.ReadElementContentAsInt("SunID", "");
+            LightDayID = (uint)reader.ReadElementContentAsInt("LightDayID", "");
+            LightNightID = (uint)reader.ReadElementContentAsInt("LightNightID", "");
+
+            if(reader.Name == "TextureNames")
+            {
+                reader.ReadStartElement();
+                for (int i = 0; i < TEXTURE_COUNT; ++i)
+                {
+                    TextureNames[i] = reader.ReadElementString("TextureName");
+                }
+                reader.ReadEndElement();
+            }
+
+            SunriseMinutes = reader.ReadElementContentAsInt("SunriseMinutes", "");
+            SunsetMinutes = reader.ReadElementContentAsInt("SunsetMinutes", "");
+            StateChangeMinutes = reader.ReadElementContentAsInt("StateChangeMinutes", "");
+            HorizonOffset = reader.ReadElementContentAsFloat("HorizonOffset", "");
+            
+            reader.ReadEndElement();
+        }
+
+        public override void WriteXml(System.Xml.XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            writer.WriteElementString("SunID", XmlConvert.ToString(SunID));
+            writer.WriteElementString("LightDayID", XmlConvert.ToString(LightDayID));
+            writer.WriteElementString("LightNightID", XmlConvert.ToString(LightNightID));
+            writer.WriteStartElement("TextureNames");
+            for(int i = 0; i<TEXTURE_COUNT; ++i)
+            {
+                writer.WriteElementString("TextureName", TextureNames[i]);
+            }
+            writer.WriteEndElement();
+            writer.WriteElementString("SunriseMinutes", XmlConvert.ToString(SunriseMinutes));
+            writer.WriteElementString("SunsetMinutes", XmlConvert.ToString(SunsetMinutes));
+            writer.WriteElementString("StateChangeMinutes", XmlConvert.ToString(StateChangeMinutes));
+            writer.WriteElementString("HorizonOffset", XmlConvert.ToString(HorizonOffset));
         }
 
         #endregion

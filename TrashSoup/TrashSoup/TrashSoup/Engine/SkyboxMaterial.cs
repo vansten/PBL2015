@@ -4,10 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace TrashSoup.Engine
 {
-    public class SkyboxMaterial : Material
+    public class SkyboxMaterial : Material, IXmlSerializable
     {
         #region effectParameters
         protected EffectParameter epCubeMap1;
@@ -25,6 +27,11 @@ namespace TrashSoup.Engine
         #endregion
 
         #region methods
+
+        public SkyboxMaterial() : base()
+        {
+
+        }
 
         public SkyboxMaterial(string name, Effect effect)
             : base(name, effect)
@@ -89,6 +96,83 @@ namespace TrashSoup.Engine
                     epProbes = p;
                 }
             }
+        }
+
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(System.Xml.XmlReader reader)
+        {
+            //reader.MoveToContent();
+            //reader.ReadStartElement();
+
+            base.ReadXml(reader);
+            //Name = reader.ReadElementString("Name", "");
+            //MyEffect = ResourceManager.Instance.LoadEffect(reader.ReadElementString("EffectPath", ""));
+
+            if(reader.Name == "CubeMaps")
+            {
+                reader.ReadStartElement();
+                CubeMap = ResourceManager.Instance.LoadTextureCube(reader.ReadElementString("CubeMap", ""));
+                CubeMap1 = ResourceManager.Instance.LoadTextureCube(reader.ReadElementString("CubeMap1", ""));
+                CubeMap2 = ResourceManager.Instance.LoadTextureCube(reader.ReadElementString("CubeMap2", ""));
+                CubeMap3 = ResourceManager.Instance.LoadTextureCube(reader.ReadElementString("CubeMap3", ""));
+                reader.ReadEndElement();
+            }
+
+            if(reader.Name == "Probes")
+            {
+                reader.ReadStartElement();
+                Probes = new Vector4(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""),
+                    reader.ReadElementContentAsFloat("Z", ""),
+                    reader.ReadElementContentAsFloat("W", ""));
+                reader.ReadEndElement();
+            }
+
+            //reader.ReadStartElement("SpecularColor");
+            //SpecularColor = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+            //                               reader.ReadElementContentAsFloat("Y", ""),
+            //                               reader.ReadElementContentAsFloat("Z", ""));
+            //reader.ReadEndElement();
+
+            //Glossiness = reader.ReadElementContentAsFloat("Glossiness", "");
+
+            AssignParamsInitialize();
+
+            //reader.ReadEndElement();
+        }
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            //writer.WriteElementString("Name", Name);
+            //writer.WriteElementString("EffectPath", ResourceManager.Instance.Effects.FirstOrDefault(x => x.Value == MyEffect).Key);
+
+            writer.WriteStartElement("CubeMaps");
+            writer.WriteElementString("CubeMap", ResourceManager.Instance.TexturesCube.FirstOrDefault(x => x.Value == base.CubeMap).Key);
+            writer.WriteElementString("CubeMap1", ResourceManager.Instance.TexturesCube.FirstOrDefault(x => x.Value == CubeMap1).Key);
+            writer.WriteElementString("CubeMap2", ResourceManager.Instance.TexturesCube.FirstOrDefault(x => x.Value == CubeMap2).Key);
+            writer.WriteElementString("CubeMap3", ResourceManager.Instance.TexturesCube.FirstOrDefault(x => x.Value == CubeMap3).Key);
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("Probes");
+            writer.WriteElementString("X", XmlConvert.ToString(Probes.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(Probes.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(Probes.Z));
+            writer.WriteElementString("W", XmlConvert.ToString(Probes.W));
+            writer.WriteEndElement();
+
+            //writer.WriteStartElement("SpecularColor");
+            //writer.WriteElementString("X", XmlConvert.ToString(SpecularColor.X));
+            //writer.WriteElementString("Y", XmlConvert.ToString(SpecularColor.Y));
+            //writer.WriteElementString("Z", XmlConvert.ToString(SpecularColor.Z));
+            //writer.WriteEndElement();
+
+            //writer.WriteElementString("Glossiness", XmlConvert.ToString(Glossiness));
         }
 
         #endregion
