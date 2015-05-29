@@ -22,6 +22,7 @@ namespace TrashSoup.Gameplay
         private const float SUN_DISTANCE = 100.0f;
 
         private Vector3 SUNRISE_COLOR = new Vector3(0.7f, 0.5f, 0.2f);
+        private Vector3 RED_COLOR = new Vector3(1.0f, 0.0f, 0.0f);
         private Vector3 DARK_COLOR = new Vector3(0.0f, 0.0f, 0.0f);
         #endregion
 
@@ -34,6 +35,7 @@ namespace TrashSoup.Gameplay
         private LightAmbient ambient;
         private CustomModel myModel;
         private SkyboxMaterial myMaterial;
+        private Material sunMaterial;
         private TextureCube[] textures = new TextureCube[TEXTURE_COUNT];
         private PlayerTime cTime;
         private int time;
@@ -43,6 +45,7 @@ namespace TrashSoup.Gameplay
         private Vector3 startNightColor;
         private Vector3 startNightSpecular;
         private Vector3 startAmbientColor;
+        private Vector3 startSunDiffuse;
         private Vector3 rotationAxe;
         #endregion
 
@@ -54,6 +57,7 @@ namespace TrashSoup.Gameplay
         public int SunriseMinutes { get; set; }
         public int SunsetMinutes { get; set; }
         public int StateChangeMinutes { get; set; }
+        public float HorizonOffset { get; set; }
         #endregion
 
         #region methods
@@ -75,6 +79,7 @@ namespace TrashSoup.Gameplay
             SunriseMinutes = cc.SunriseMinutes;
             SunsetMinutes = cc.SunsetMinutes;
             StateChangeMinutes = cc.StateChangeMinutes;
+            HorizonOffset = cc.HorizonOffset;
             rotationAxe = new Vector3(-0.5f, 0.2f, -1.5f);
             rotationAxe.Normalize();
         }
@@ -102,13 +107,14 @@ namespace TrashSoup.Gameplay
 
                 SetupSun(lightDir);
 
-                Vector3 lightCol, lightSpec, nCol, nSpec, ambCol;
-                ConvertTimeToDaylightColor(time, out lightCol, out lightSpec, out nCol, out nSpec, out ambCol);
+                Vector3 lightCol, lightSpec, nCol, nSpec, ambCol, sunDiff;
+                ConvertTimeToDaylightColor(time, out lightCol, out lightSpec, out nCol, out nSpec, out ambCol, out sunDiff);
                 lightDay.LightColor = lightCol;
                 lightDay.LightSpecularColor = lightSpec;
                 lightNight.LightColor = nCol;
                 lightNight.LightSpecularColor = nSpec;
                 ambient.LightColor = ambCol;
+                sunMaterial.DiffuseColor = sunDiff;
 
                 //Debug.Log(lightCol.ToString());
 
@@ -186,6 +192,17 @@ namespace TrashSoup.Gameplay
                 throw new ArgumentNullException("DaytimeChange: Some of the objects do not exist!");
             }
 
+            foreach (ObjectComponent comp in sun.Components)
+            {
+                if (comp.GetType() == typeof(Billboard))
+                {
+                    if(((Billboard)comp).Mat != null)
+                    {
+                        sunMaterial = ((Billboard)comp).Mat;
+                    }
+                }
+            }
+
             startDaylightColor = lightDay.LightColor;
             startDaylightSpecular = lightDay.LightSpecularColor;
             startNightColor = lightNight.LightColor;
@@ -231,6 +248,8 @@ namespace TrashSoup.Gameplay
                 switched = true;
             else 
                 switched = false;
+
+            startSunDiffuse = myMaterial.DiffuseColor;
 
             base.Initialize();
         }
@@ -311,7 +330,7 @@ namespace TrashSoup.Gameplay
             direction.Normalize();
         }
 
-        private void ConvertTimeToDaylightColor(int minutes, out Vector3 color, out Vector3 specular, out Vector3 nColor, out Vector3 nSpecular, out Vector3 ambientColor)
+        private void ConvertTimeToDaylightColor(int minutes, out Vector3 color, out Vector3 specular, out Vector3 nColor, out Vector3 nSpecular, out Vector3 ambientColor, out Vector3 sunDiff)
         {
             float lerpValue;
             Vector3 smallAmbient = startAmbientColor * 0.25f;
@@ -325,6 +344,7 @@ namespace TrashSoup.Gameplay
                 ambientColor = DARK_COLOR;
                 nColor = startNightColor;
                 nSpecular = startNightSpecular;
+                sunDiff = RED_COLOR;
             }
             else if(minutes >= (SunriseMinutes - (StateChangeMinutes + de)) && minutes < (SunriseMinutes - StateChangeMinutes))
             {
@@ -337,6 +357,7 @@ namespace TrashSoup.Gameplay
                 ambientColor = DARK_COLOR;
                 nColor = Vector3.Lerp(startNightColor, DARK_COLOR, lerpValue);
                 nSpecular = Vector3.Lerp(startNightSpecular, DARK_COLOR, lerpValue);
+                sunDiff = RED_COLOR;
             }
             else if (minutes <= (SunsetMinutes + (StateChangeMinutes + de)) && minutes > (SunsetMinutes + StateChangeMinutes))
             {
@@ -349,6 +370,7 @@ namespace TrashSoup.Gameplay
                 ambientColor = DARK_COLOR;
                 nColor = Vector3.Lerp(DARK_COLOR, startNightColor, lerpValue);
                 nSpecular = Vector3.Lerp(DARK_COLOR, startNightSpecular, lerpValue);
+                sunDiff = RED_COLOR;
             }
             else if (minutes > SunriseMinutes + StateChangeMinutes && minutes < SunsetMinutes - StateChangeMinutes)
             {
@@ -358,6 +380,7 @@ namespace TrashSoup.Gameplay
                 ambientColor = startAmbientColor;
                 nColor = DARK_COLOR;
                 nSpecular = DARK_COLOR;
+                sunDiff = startSunDiffuse;
             }
             else if (minutes == SunriseMinutes || minutes == SunsetMinutes)
             {
@@ -367,6 +390,7 @@ namespace TrashSoup.Gameplay
                 ambientColor = Vector3.Lerp(startAmbientColor, DARK_COLOR, 0.5f);
                 nColor = DARK_COLOR;
                 nSpecular = DARK_COLOR;
+                sunDiff = RED_COLOR;
             }
             else if (minutes >= SunriseMinutes - StateChangeMinutes && minutes < SunriseMinutes)
             {
@@ -379,6 +403,7 @@ namespace TrashSoup.Gameplay
                 ambientColor = Vector3.Lerp(smallAmbient, startAmbientColor, lerpValue / 2.0f);
                 nColor = DARK_COLOR;
                 nSpecular = DARK_COLOR;
+                sunDiff = RED_COLOR;
             }
             else if (minutes > SunriseMinutes && minutes <= SunriseMinutes + StateChangeMinutes)
             {
@@ -391,6 +416,7 @@ namespace TrashSoup.Gameplay
                 ambientColor = Vector3.Lerp(smallAmbient, startAmbientColor, lerpValue / 2.0f + 0.5f);
                 nColor = DARK_COLOR;
                 nSpecular = DARK_COLOR;
+                sunDiff = Vector3.Lerp(RED_COLOR, startSunDiffuse, lerpValue);
             }
             else if (minutes >= SunsetMinutes - StateChangeMinutes && minutes < SunsetMinutes)
             {
@@ -403,6 +429,7 @@ namespace TrashSoup.Gameplay
                 ambientColor = Vector3.Lerp(startAmbientColor, smallAmbient, lerpValue / 2.0f);
                 nColor = DARK_COLOR;
                 nSpecular = DARK_COLOR;
+                sunDiff = Vector3.Lerp(startSunDiffuse, RED_COLOR, lerpValue);
             }
             else if (minutes > SunsetMinutes && minutes <= SunsetMinutes + StateChangeMinutes)
             {
@@ -415,6 +442,7 @@ namespace TrashSoup.Gameplay
                 ambientColor = Vector3.Lerp(startAmbientColor, smallAmbient, lerpValue / 2.0f + 0.5f);
                 nColor = DARK_COLOR;
                 nSpecular = DARK_COLOR;
+                sunDiff = RED_COLOR;
             }
             else
             {
@@ -424,6 +452,7 @@ namespace TrashSoup.Gameplay
                 ambientColor = new Vector3(0.0f, 0.0f, 0.0f);
                 nColor = DARK_COLOR;
                 nSpecular = DARK_COLOR;
+                sunDiff = DARK_COLOR;
             }
         }
 
@@ -433,7 +462,7 @@ namespace TrashSoup.Gameplay
             pos.Y = -pos.Y;
             float size = ResourceManager.Instance.CurrentScene.Params.MaxSize;
             float smallDiagonal = (size * (float) Math.Sqrt(2)) / 4.0f;
-            sun.MyTransform.Position = new Vector3((pos * smallDiagonal).X, (pos * smallDiagonal).Y, (pos * smallDiagonal).Z);
+            sun.MyTransform.Position = new Vector3((pos * smallDiagonal).X, (pos * smallDiagonal).Y + HorizonOffset, (pos * smallDiagonal).Z);
         }
 
         #endregion

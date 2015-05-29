@@ -4,7 +4,7 @@ float4x4 World;
 float4x4 WorldViewProj;
 float4x4 WorldInverseTranspose;
 
-float3 AmbientLightColor;
+float3 DiffuseColor;
 
 float4 BoundingFrustum[4];
 float4 CustomClippingPlane;
@@ -77,9 +77,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
 	//////
 
-	float4 color = tex2D(DiffuseSampler, input.TexCoord);
-		float alpha = color.a;
-	color.a = 1.0f;
+	float4 color = float4(DiffuseColor, 1.0f) * tex2D(DiffuseSampler, input.TexCoord);
 
 	color *= Transparency;
 

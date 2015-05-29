@@ -235,10 +235,11 @@ namespace TrashSoup.Engine
             testTer.Components.Add(terModel);
 
             GameObject testBox2 = new GameObject(3, "testBox2");
-            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 75.0f);
+            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 150.0f);
             //testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Enviro/Ground/street_cross"], null, null }, deSign));
             Billboard billboard = new Billboard(testBox2);
-            billboard.Mat = new Material("billboard", Effects[@"Effects\BillboardEffect"], Textures[@"Textures\Test\cargo"]);
+            Material bbmat = new Material("billboard", Effects[@"Effects\BillboardEffect"], LoadTexture(@"Textures\Enviro\Nature\Sun"));
+            billboard.Mat = bbmat;
             billboard.Size = new Vector2(1.0f, 1.0f);
             testBox2.Components.Add(billboard);
             //testBox2.MyCollider = new BoxCollider(testBox2, false);
@@ -272,6 +273,7 @@ namespace TrashSoup.Engine
             dc.SunriseMinutes = 60 * 6;
             dc.SunsetMinutes = 60 * 20;
             dc.StateChangeMinutes = 120;
+            dc.HorizonOffset = 500.0f;
             dc.TextureNames = new string[] { @"Textures\Skyboxes\Dawn", @"Textures\Skyboxes\Daylight", @"Textures\Skyboxes\Dusk", @"Textures\Skyboxes\Night" };
             skyBox.Components.Add(dc);
 
