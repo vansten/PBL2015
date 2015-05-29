@@ -710,6 +710,16 @@
       <Processor>TextureProcessor</Processor>
       <ProcessorParameters_PremultiplyAlpha>False</ProcessorParameters_PremultiplyAlpha>
     </Compile>
+    <Compile Include="Models\Home\Fortifications\wood_fortif.FBX">
+      <Name>wood_fortif</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\CorkBoard\CorkBoard.FBX">
+      <Name>CorkBoard</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -755,10 +765,7 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Home\CorkBoard\" />
-    <Folder Include="Textures\Home\CorkBoard\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Compile Include="Textures\Enviro\Ground\streets_blood_D.dds">
       <Name>streets_blood_D</Name>
@@ -1390,6 +1397,40 @@
     </Compile>
     <Compile Include="Textures\Skyboxes\Night.dds">
       <Name>Night</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\Fortifications\wood_fortif_D.dds">
+      <Name>wood_fortif_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Fortifications\wood_fortif_N.dds">
+      <Name>wood_fortif_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\CorkBoard\CorkBoard_D.dds">
+      <Name>CorkBoard_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\CorkBoard\CorkBoard_N.dds">
+      <Name>CorkBoard_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\CorkBoard\Papers_D.dds">
+      <Name>Papers_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\CorkBoard\Papers_N.dds">
+      <Name>Papers_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
