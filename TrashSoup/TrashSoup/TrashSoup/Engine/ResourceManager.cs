@@ -478,6 +478,24 @@ namespace TrashSoup.Engine
             }
         }
 
+        public SkyboxMaterial LoadSkyboxMaterial(String path)
+        {
+            string newName = Path.GetFileNameWithoutExtension(path);
+            SkyboxMaterial output = new SkyboxMaterial();
+            XmlSerializer serializer = new XmlSerializer(typeof(SkyboxMaterial));
+            using (FileStream file = new FileStream(path, FileMode.Open))
+            {
+                output = (SkyboxMaterial)serializer.Deserialize(file);
+                output.Name = newName;
+            }
+            if (!ResourceManager.Instance.Materials.ContainsKey(newName))
+            {
+                ResourceManager.Instance.Materials.Add(newName, output);
+            }
+            Debug.Log("New skybox material successfully loaded - " + newName);
+            return output;
+        }
+
         /// <summary>
         /// Used to load a single texture. If it doesn't exist in resourceManager, Content.Load is called.
         /// </summary>

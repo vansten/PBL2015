@@ -88,60 +88,63 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            prevTime = time;
-            time = 60 * cTime.Hours + cTime.Minutes;
-            if(time < 0 || time > MINUTES_MAX)
+            if (!TrashSoupGame.Instance.EditorMode)
             {
-                Debug.Log("DaytimeChange: Time is invalid. Clamping.");
-                time = (int)MathHelper.Clamp((float)time, 0.0f, (float)MINUTES_MAX);
-            }
-
-            if(time != prevTime)
-            {
-                Vector4 probes;
-                ConvertTimeToProbes(time, out probes);
-                myMaterial.Probes = probes;
-
-                Vector3 lightDir;
-                ConvertTimeToLightDirection(time, out lightDir);
-                lightDay.LightDirection = lightDir;
-                lightNight.LightDirection = -lightDir;
-
-                SetupSun(lightDir);
-
-                Vector3 lightCol, lightSpec, nCol, nSpec, ambCol, sunDiff;
-                ConvertTimeToDaylightColor(time, out lightCol, out lightSpec, out nCol, out nSpec, out ambCol, out sunDiff);
-                lightDay.LightColor = lightCol;
-                lightDay.LightSpecularColor = lightSpec;
-                lightNight.LightColor = nCol;
-                lightNight.LightSpecularColor = nSpec;
-                ambient.LightColor = ambCol;
-                sunMaterial.DiffuseColor = sunDiff;
-
-                //Debug.Log(lightCol.ToString());
-
-                if (time >= SunriseMinutes - StateChangeMinutes && time <= SunsetMinutes + StateChangeMinutes)
+                prevTime = time;
+                time = 60 * cTime.Hours + cTime.Minutes;
+                if (time < 0 || time > MINUTES_MAX)
                 {
-                    if(!switched)
-                    {
-                        lightTemp = ResourceManager.Instance.CurrentScene.DirectionalLights[0];
-                        ResourceManager.Instance.CurrentScene.DirectionalLights[0] = ResourceManager.Instance.CurrentScene.DirectionalLights[1];
-                        ResourceManager.Instance.CurrentScene.DirectionalLights[1] = lightTemp;
-                        lightDay.Enabled = true;
-                        lightNight.Enabled = false;
-                        switched = true;
-                    }
+                    Debug.Log("DaytimeChange: Time is invalid. Clamping.");
+                    time = (int)MathHelper.Clamp((float)time, 0.0f, (float)MINUTES_MAX);
                 }
-                else
+
+                if (time != prevTime)
                 {
-                    if(switched)
+                    Vector4 probes;
+                    ConvertTimeToProbes(time, out probes);
+                    myMaterial.Probes = probes;
+
+                    Vector3 lightDir;
+                    ConvertTimeToLightDirection(time, out lightDir);
+                    lightDay.LightDirection = lightDir;
+                    lightNight.LightDirection = -lightDir;
+
+                    SetupSun(lightDir);
+
+                    Vector3 lightCol, lightSpec, nCol, nSpec, ambCol, sunDiff;
+                    ConvertTimeToDaylightColor(time, out lightCol, out lightSpec, out nCol, out nSpec, out ambCol, out sunDiff);
+                    lightDay.LightColor = lightCol;
+                    lightDay.LightSpecularColor = lightSpec;
+                    lightNight.LightColor = nCol;
+                    lightNight.LightSpecularColor = nSpec;
+                    ambient.LightColor = ambCol;
+                    sunMaterial.DiffuseColor = sunDiff;
+
+                    //Debug.Log(lightCol.ToString());
+
+                    if (time >= SunriseMinutes - StateChangeMinutes && time <= SunsetMinutes + StateChangeMinutes)
                     {
-                        lightTemp = ResourceManager.Instance.CurrentScene.DirectionalLights[0];
-                        ResourceManager.Instance.CurrentScene.DirectionalLights[0] = ResourceManager.Instance.CurrentScene.DirectionalLights[1];
-                        ResourceManager.Instance.CurrentScene.DirectionalLights[1] = lightTemp;
-                        lightDay.Enabled = false;
-                        lightNight.Enabled = true;
-                        switched = false;
+                        if (!switched)
+                        {
+                            lightTemp = ResourceManager.Instance.CurrentScene.DirectionalLights[0];
+                            ResourceManager.Instance.CurrentScene.DirectionalLights[0] = ResourceManager.Instance.CurrentScene.DirectionalLights[1];
+                            ResourceManager.Instance.CurrentScene.DirectionalLights[1] = lightTemp;
+                            lightDay.Enabled = true;
+                            lightNight.Enabled = false;
+                            switched = true;
+                        }
+                    }
+                    else
+                    {
+                        if (switched)
+                        {
+                            lightTemp = ResourceManager.Instance.CurrentScene.DirectionalLights[0];
+                            ResourceManager.Instance.CurrentScene.DirectionalLights[0] = ResourceManager.Instance.CurrentScene.DirectionalLights[1];
+                            ResourceManager.Instance.CurrentScene.DirectionalLights[1] = lightTemp;
+                            lightDay.Enabled = false;
+                            lightNight.Enabled = true;
+                            switched = false;
+                        }
                     }
                 }
             }
@@ -485,6 +488,7 @@ namespace TrashSoup.Gameplay
 
             if(reader.Name == "TextureNames")
             {
+                TextureNames = new string[TEXTURE_COUNT];
                 reader.ReadStartElement();
                 for (int i = 0; i < TEXTURE_COUNT; ++i)
                 {
@@ -508,12 +512,15 @@ namespace TrashSoup.Gameplay
             writer.WriteElementString("SunID", XmlConvert.ToString(SunID));
             writer.WriteElementString("LightDayID", XmlConvert.ToString(LightDayID));
             writer.WriteElementString("LightNightID", XmlConvert.ToString(LightNightID));
-            writer.WriteStartElement("TextureNames");
-            for(int i = 0; i<TEXTURE_COUNT; ++i)
+            if(TextureNames != null)
             {
-                writer.WriteElementString("TextureName", TextureNames[i]);
+                writer.WriteStartElement("TextureNames");
+                for (int i = 0; i < TEXTURE_COUNT; ++i)
+                {
+                    writer.WriteElementString("TextureName", TextureNames[i]);
+                }
+                writer.WriteEndElement();
             }
-            writer.WriteEndElement();
             writer.WriteElementString("SunriseMinutes", XmlConvert.ToString(SunriseMinutes));
             writer.WriteElementString("SunsetMinutes", XmlConvert.ToString(SunsetMinutes));
             writer.WriteElementString("StateChangeMinutes", XmlConvert.ToString(StateChangeMinutes));

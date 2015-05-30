@@ -319,10 +319,18 @@ namespace TrashSoup.Engine
 
                         String newName = reader.ReadElementString("Name", "");
 
-                        Material m = new Material();
-                        m = ResourceManager.Instance.LoadMaterial(Path.GetFullPath(contentPath) + newName + ".xml");
-
-                        Mat.Add(m);
+                        if(newName == "testSBMat2")
+                        {
+                            SkyboxMaterial sm = new SkyboxMaterial();
+                            sm = ResourceManager.Instance.LoadSkyboxMaterial(Path.GetFullPath(contentPath) + newName + ".xml");
+                            Mat.Add(sm);
+                        }
+                        else
+                        {
+                            Material m = new Material();
+                            m = ResourceManager.Instance.LoadMaterial(Path.GetFullPath(contentPath) + newName + ".xml");
+                            Mat.Add(m);
+                        }
                     }
                 }
                
@@ -367,11 +375,23 @@ namespace TrashSoup.Engine
             {
                 if(mat != null)
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(Material));
-                    using (FileStream file = new FileStream(Path.GetFullPath(contentPath) + mat.Name + ".xml", FileMode.Create))
+                    if(mat.Name == "testSBMat2")
                     {
-                        serializer.Serialize(file, mat);
+                        XmlSerializer serializer = new XmlSerializer(typeof(SkyboxMaterial));
+                        using (FileStream file = new FileStream(Path.GetFullPath(contentPath) + mat.Name + ".xml", FileMode.Create))
+                        {
+                            serializer.Serialize(file, mat);
+                        }
                     }
+                    else
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(Material));
+                        using (FileStream file = new FileStream(Path.GetFullPath(contentPath) + mat.Name + ".xml", FileMode.Create))
+                        {
+                            serializer.Serialize(file, mat);
+                        }
+                    }
+
                     //writer.WriteStartElement("Material");
 
                     writer.WriteElementString("Name", mat.Name);

@@ -156,7 +156,7 @@ namespace TrashSoup.Engine
 
             base.ReadXml(reader);
 
-            if (reader.Name == "SkyboxMaterial")
+            if (reader.Name == "Material")
             {
             if (!TrashSoupGame.Instance.EditorMode)
             {
@@ -173,12 +173,12 @@ namespace TrashSoup.Engine
                 {
 
                         String newName = reader.ReadElementString("Name", "");
-
-                        SkyboxMaterial m = new SkyboxMaterial();
-                        XmlSerializer serializer = new XmlSerializer(typeof(SkyboxMaterial));
+                        
+                        Material m = new SkyboxMaterial();
+                        XmlSerializer serializer = new XmlSerializer(typeof(Material));
                         using (FileStream file = new FileStream(contentPath + newName + ".xml", FileMode.Open))
                         {
-                            m = (SkyboxMaterial)serializer.Deserialize(file);
+                            m = (Material)serializer.Deserialize(file);
                             m.Name = newName;
                         }
 
@@ -212,10 +212,10 @@ namespace TrashSoup.Engine
             }
             base.WriteXml(writer);
 
-            writer.WriteStartElement("SkyboxMaterial");
+            writer.WriteStartElement("Material");
             if(Mat != null)
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(SkyboxMaterial));
+                XmlSerializer serializer = new XmlSerializer(typeof(Material));
                 using (FileStream file = new FileStream(Path.GetFullPath(contentPath) + Mat.Name + ".xml", FileMode.Create))
                 {
                     serializer.Serialize(file, Mat);
