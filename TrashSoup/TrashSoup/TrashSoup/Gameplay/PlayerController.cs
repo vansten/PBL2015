@@ -102,6 +102,18 @@ namespace TrashSoup.Gameplay
             get { return this.equipment; }
         }
 
+        public bool FoodSaw
+        {
+            get;
+            set;
+        }
+
+        public Food Food
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region methods
@@ -129,22 +141,7 @@ namespace TrashSoup.Gameplay
                 GUIManager.Instance.DrawText(this.font, "YOU'RE DEAD!", this.deadPos, Color.Red, 4.0f);
                 return;
             }
-
-            //TETIN SO HARD
-            if(InputManager.Instance.GetKeyboardButtonDown(Keys.M))
-            {
-                this.DecreaseHealth(30);
-            }
-            if(InputManager.Instance.GetKeyboardButtonDown(Keys.N))
-            {
-                this.Equipment.AddFood();
-            }
-            if(InputManager.Instance.GetKeyboardButtonDown(Keys.B))
-            {
-                this.Equipment.AddJunk(1);
-            }
-            //END OF HARD TETIN
-
+            
             if (InputHandler.Instance.Eat())
             {
                 if(this.Equipment.FoodCount > 0)
@@ -357,6 +354,18 @@ namespace TrashSoup.Gameplay
             {
                 this.Popularity -= gameTime.ElapsedGameTime.Milliseconds * 0.001f * this.popularityDecreaseSpeed;
                 this.Popularity = MathHelper.Clamp(this.Popularity, 0.0f, MAX_POPULARITY);
+            }
+
+            if(this.FoodSaw)
+            {
+                GUIManager.Instance.DrawTexture(this.interactionTexture, new Vector2(0.475f, 0.775f), 0.05f, 0.05f);
+                if(InputHandler.Instance.Action())
+                {
+                    this.equipment.AddFood();
+                    this.FoodSaw = false;
+                    this.Food.MyObject.Enabled = false;
+                    this.Food = null;
+                }
             }
 
         }
