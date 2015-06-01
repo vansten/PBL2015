@@ -156,11 +156,11 @@ namespace TrashSoup.Gameplay
                 switch (this.currentOption)
                 {
                     case 0:
-                        SaveManager.Instance.XmlPath = "../../../../TrashSoupContent/Scenes/save2.xml";
+                        SaveManager.Instance.XmlPath = "../../../../TrashSoupContent/Scenes/loading.xml";
                         SaveManager.Instance.LoadFileAction();
                         break;
                     case 1:
-                        SaveManager.Instance.XmlPath = "../../../../TrashSoupContent/Scenes/save2.xml";
+                        SaveManager.Instance.XmlPath = "../../../../TrashSoupContent/Scenes/loading.xml";
                         SaveManager.Instance.LoadFileAction();
                         break;
                     case 2:
