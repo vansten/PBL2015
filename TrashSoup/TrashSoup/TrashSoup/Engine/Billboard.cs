@@ -59,6 +59,8 @@ namespace TrashSoup.Engine
 
         public override void Draw(Camera cam, Effect effect, GameTime gameTime)
         {
+            if (TrashSoupGame.Instance.EditorMode)
+                this.Visible = false;
             if(this.Visible && Mat != null && effect == null)
             {
                 Camera camera;

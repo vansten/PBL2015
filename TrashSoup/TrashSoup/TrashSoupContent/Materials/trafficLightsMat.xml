@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <Material>
-  <Name>car2Mat</Name>
+  <Name>trafficLightsMat</Name>
   <EffectPath>Effects\DefaultEffect</EffectPath>
-  <DiffusePath>Textures\Enviro\Cars\car2_D</DiffusePath>
-  <NormalPath>Textures\Enviro\Cars\car2_N</NormalPath>
+  <DiffusePath>Textures\Enviro\Minor\TrafficLights_D</DiffusePath>
+  <NormalPath>Textures\Enviro\Minor\TrafficLights_N</NormalPath>
   <DiffuseColor>
     <X>1</X>
     <Y>1</Y>
