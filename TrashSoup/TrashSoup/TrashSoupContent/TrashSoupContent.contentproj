@@ -745,6 +745,16 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\Home\Furnitures\carpet.FBX">
+      <Name>carpet</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Bathroom\Sink.FBX">
+      <Name>Sink</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -1479,6 +1489,36 @@
     </Compile>
     <Compile Include="Textures\Home\Fortifications\metal_fortif_N.dds">
       <Name>metal_fortif_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Home\Bedroom\" />
+    <Folder Include="Models\Home\WindowsDoors\" />
+    <Folder Include="Textures\Home\Bedroom\" />
+    <Folder Include="Textures\Home\WindowsDoors\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\Furnitures\Carpet_D.dds">
+      <Name>Carpet_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Furnitures\Carpet_N.dds">
+      <Name>Carpet_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\Bathroom\Sink_D.dds">
+      <Name>Sink_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Bathroom\Sink_N.dds">
+      <Name>Sink_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
