@@ -755,6 +755,16 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\Home\WindowsDoors\DoorFrame.FBX">
+      <Name>DoorFrame</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\WindowsDoors\Door.FBX">
+      <Name>Door</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -1495,9 +1505,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Home\Bedroom\" />
-    <Folder Include="Models\Home\WindowsDoors\" />
     <Folder Include="Textures\Home\Bedroom\" />
-    <Folder Include="Textures\Home\WindowsDoors\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Home\Furnitures\Carpet_D.dds">
@@ -1519,6 +1527,18 @@
     </Compile>
     <Compile Include="Textures\Home\Bathroom\Sink_N.dds">
       <Name>Sink_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\WindowsDoors\DoorFrame_D.dds">
+      <Name>DoorFrame_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\WindowsDoors\DoorFrame_N.dds">
+      <Name>DoorFrame_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
