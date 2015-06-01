@@ -126,6 +126,7 @@
     <Compile Include="Gameplay\Equipment.cs" />
     <Compile Include="Gameplay\Food.cs" />
     <Compile Include="Gameplay\InputHandler.cs" />
+    <Compile Include="Gameplay\LoadingController.cs" />
     <Compile Include="Gameplay\MenuController.cs" />
     <Compile Include="Gameplay\PlayerHUD.cs" />
     <Compile Include="Gameplay\Rat.cs" />
