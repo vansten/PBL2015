@@ -60,7 +60,7 @@ namespace TrashSoup.Engine
                                 0, 4, 1, 5, 2, 6, 3, 7 // Side edges connecting front and back
                                 };
 
-            Vector3[] corners = this.Box.GetCorners();
+            Vector3[] corners = this.corners;
             VertexPositionColor[] primitiveList = new VertexPositionColor[corners.Length];
 
             // Assign the 8 box vertices
@@ -210,7 +210,6 @@ namespace TrashSoup.Engine
 
             if (col.GetType() == typeof(BoxCollider))
             {
-                //return this.IntersectsWithOBB(((BoxCollider)col));
                 IsCollision = _OldIntersectsWithAABB(((BoxCollider)col).Box); 
                 return IsCollision;   
             }

@@ -154,18 +154,18 @@ namespace TrashSoup
                     //randAngle, 20.0f);
                 //ResourceManager.Instance.ps.Update();
 
-                //TESTING SAVE
-                //if (Keyboard.GetState().IsKeyDown(Keys.F5) && !f5pressed)
-                //{
-                //    SaveManager.Instance.GetXmlPath();
-                //    SaveManager.Instance.SaveFileAction();
-                //    Debug.Log("Save Completed");
-                //    f5pressed = true;
-                //}
-                //if (Keyboard.GetState().IsKeyUp(Keys.F5) && f5pressed)
-                //{
-                //    f5pressed = false;
-                //}
+                //TETING PAGI SCENE
+                if (Keyboard.GetState().IsKeyDown(Keys.F5) && !f5pressed)
+                {
+                    SaveManager.Instance.XmlPath = "../../../../TrashSoupContent/Scenes/StengertPAGI.xml";
+                    SaveManager.Instance.LoadFileAction();
+                    f5pressed = true;
+                }
+                if (Keyboard.GetState().IsKeyUp(Keys.F5) && f5pressed)
+                {
+                    f5pressed = false;
+                }
+
                 if (Keyboard.GetState().IsKeyDown(Keys.F6) && !f6pressed)
                 {
                     SaveManager.Instance.GetXmlPath();
