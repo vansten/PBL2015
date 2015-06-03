@@ -16,6 +16,7 @@ namespace TrashSoup.Gameplay.RatAI
         private Vector3 chaseVector = Vector3.Zero;
         private float prevRotY;
         private float rotY;
+        private bool firstTime = true;
 
         public override void Initialize()
         {
@@ -27,16 +28,24 @@ namespace TrashSoup.Gameplay.RatAI
         {
             if(!this.blackboard.GetBool("TargetSeen"))
             {
+                firstTime = true;
                 node = null;
                 return TickStatus.FAILURE;
+            }
+
+            if (firstTime)
+            {
+                firstTime = false;
+                this.blackboard.Owner.MyAnimator.ChangeState("Run");
             }
 
             this.targetPos = this.blackboard.GetVector3("TargetPosition");
             this.myPos = this.blackboard.Owner.MyTransform.Position;
             float distance = Vector3.Distance(this.myPos, this.targetPos);
 
-            if(distance < 4.5f)
+            if(distance < 5.0f)
             {
+                firstTime = true;
                 node = null;
                 return TickStatus.SUCCESS;
             }

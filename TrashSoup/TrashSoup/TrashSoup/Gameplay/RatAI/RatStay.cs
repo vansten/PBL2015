@@ -11,20 +11,29 @@ namespace TrashSoup.Gameplay.RatAI
     {
         private float timer = 0.0f;
         private float idleTime = 3.0f;
+        private bool firstTime = true;
 
         public override Engine.AI.BehaviorTree.TickStatus Tick(Microsoft.Xna.Framework.GameTime gameTime, out Engine.AI.BehaviorTree.INode node)
         {
             if(this.blackboard.GetBool("TargetSeen"))
             {
+                firstTime = true;
                 node = null;
                 return TickStatus.FAILURE;
             }
             if(timer > idleTime)
             {
+                firstTime = true;
                 this.blackboard.SetBool("Idle", false);
                 timer = 0.0f;
                 node = null;
                 return TickStatus.SUCCESS;
+            }
+
+            if (firstTime)
+            {
+                firstTime = false;
+                this.blackboard.Owner.MyAnimator.ChangeState("Idle");
             }
 
             node = this;

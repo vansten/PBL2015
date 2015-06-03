@@ -21,6 +21,11 @@ namespace TrashSoup.Gameplay.RatAI
         private Vector3 oldRot;
         private bool firstTime = true;
 
+        public override void Initialize()
+        {
+            base.Initialize();
+        }
+
         public override TickStatus Tick(GameTime gameTime, out INode running)
         {
             if(this.blackboard.GetBool("TargetSeen") || this.blackboard.GetBool("Idle") || this.blackboard.GetBool("ShouldTurn"))
@@ -38,6 +43,11 @@ namespace TrashSoup.Gameplay.RatAI
                 rotationTimer = 0.0f;
                 running = null;
                 return TickStatus.FAILURE;
+            }
+
+            if(firstTime)
+            {
+                this.blackboard.Owner.MyAnimator.ChangeState("Walk");
             }
 
             if (rotationTimer > 0.75f || firstTime)
