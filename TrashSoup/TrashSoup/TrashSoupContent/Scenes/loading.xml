@@ -34,7 +34,7 @@
     <GameObject>
       <GameObjectKey>4</GameObjectKey>
       <UniqueID>4</UniqueID>
-      <Name>MenuController</Name>
+      <Name>LoadingController</Name>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>4</MyObjectID>

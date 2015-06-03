@@ -42,6 +42,11 @@ namespace TrashSoup.Gameplay.RatAI
 
             timer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
 
+            if (firstTime)
+            {
+                this.blackboard.Owner.MyAnimator.ChangeState("Walk");
+            }
+
             if (rotationTimer > 0.5f || firstTime)
             {
                 rotationTimer = 0.0f;

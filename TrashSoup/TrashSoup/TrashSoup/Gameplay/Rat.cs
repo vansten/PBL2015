@@ -36,7 +36,28 @@ namespace TrashSoup.Gameplay
 
         protected override void Start()
         {
-
+            ResourceManager.Instance.LoadAnimation("Animations/Enemies/Rat_idle");
+            ResourceManager.Instance.LoadAnimation("Animations/Enemies/Rat_walk");
+            ResourceManager.Instance.LoadAnimation("Animations/Enemies/Rat_run");
+            ResourceManager.Instance.LoadAnimation("Animations/Enemies/Rat_attack");
+            ResourceManager.Instance.LoadAnimation("Animations/Enemies/Rat_dying");
+            this.MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", this.MyObject.MyAnimator.GetAnimationPlayer("Rat_walk")));
+            this.MyObject.MyAnimator.AvailableStates.Add("Run", new AnimatorState("Run", this.MyObject.MyAnimator.GetAnimationPlayer("Rat_run")));
+            this.MyObject.MyAnimator.AvailableStates.Add("Attack", new AnimatorState("Attack", this.MyObject.MyAnimator.GetAnimationPlayer("Rat_attack")));
+            this.MyObject.MyAnimator.AvailableStates.Add("Die", new AnimatorState("Die", this.MyObject.MyAnimator.GetAnimationPlayer("Rat_dying")));
+            this.MyObject.MyAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", this.MyObject.MyAnimator.GetAnimationPlayer("Rat_idle")));
+            string[] states = new string[]{"Idle", "Walk", "Run", "Die", "Attack"};
+            for (int i = 0; i < states.Length; ++i)
+            {
+                for(int j = 0; j < states.Length; ++j)
+                {
+                    if(j != i)
+                    {
+                        this.MyObject.MyAnimator.AvailableStates[states[i]].AddTransition(this.MyObject.MyAnimator.AvailableStates[states[j]], new TimeSpan(0, 0, 0, 0, 0));
+                    }
+                }
+            }
+            MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["Idle"];
         }
 
         public override void Initialize()

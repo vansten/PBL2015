@@ -155,6 +155,8 @@
     <Compile Include="Gameplay\Weapons\Pipe.cs" />
     <Compile Include="Gameplay\Weapons\Signs.cs" />
     <Compile Include="Gameplay\Weapons\Stones.cs" />
+    <Compile Include="PAGI\ObjectOnPlatform.cs" />
+    <Compile Include="PAGI\Platform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="TrashSoupGame.cs" />
