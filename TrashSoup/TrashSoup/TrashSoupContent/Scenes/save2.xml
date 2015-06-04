@@ -287,9 +287,9 @@
       <MyAnimator>
         <BaseAnim>Models/Test/TestGuy</BaseAnim>
         <MyObjectID>1</MyObjectID>
-        <AnimatorClip>walking_1</AnimatorClip>
-        <AnimatorClip>idle_1</AnimatorClip>
-        <AnimatorClip>jump_1</AnimatorClip>
+        <AnimatorClip>Animations/Test/walking_1</AnimatorClip>
+        <AnimatorClip>Animations/Test/idle_1</AnimatorClip>
+        <AnimatorClip>Animations/Test/jump_1</AnimatorClip>
       </MyAnimator>
       <Components>
         <TrashSoup.Engine.CustomModel>
@@ -10734,11 +10734,11 @@
       <MyAnimator>
         <BaseAnim>Models/Enemies/Rat</BaseAnim>
         <MyObjectID>359</MyObjectID>
-        <AnimatorClip>Rat_attack</AnimatorClip>
-        <AnimatorClip>Rat_dying</AnimatorClip>
-        <AnimatorClip>Rat_idle</AnimatorClip>
-        <AnimatorClip>Rat_run</AnimatorClip>
-        <AnimatorClip>Rat_walk</AnimatorClip>
+        <AnimatorClip>Animations/Enemies/Rat_attack</AnimatorClip>
+        <AnimatorClip>Animations/Enemies/Rat_dying</AnimatorClip>
+        <AnimatorClip>Animations/Enemies/Rat_idle</AnimatorClip>
+        <AnimatorClip>Animations/Enemies/Rat_run</AnimatorClip>
+        <AnimatorClip>Animations/Enemies/Rat_walk</AnimatorClip>
       </MyAnimator>
       <Components>
         <TrashSoup.Engine.Transform>
