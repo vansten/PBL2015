@@ -460,7 +460,12 @@ namespace TrashSoup.Engine
                 while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
                 {
                     String s = reader.ReadElementString("AnimatorClip", "");
-                    MyAnimator.animationPlayers.Add(s, new SkinningModelLibrary.AnimationPlayer(MyAnimator.SkinningData, s));
+                    MyAnimator.AddAnimationClip(ResourceManager.Instance.LoadAnimationFromModel(
+                        ResourceManager.Instance.Models[baseAnimPath],
+                        ResourceManager.Instance.LoadAnimation(s),
+                        s
+                        ));
+                    //MyAnimator.animationPlayers.Add(s, new SkinningModelLibrary.AnimationPlayer(MyAnimator.SkinningData, s));
                 }
                 reader.ReadEndElement();
             }

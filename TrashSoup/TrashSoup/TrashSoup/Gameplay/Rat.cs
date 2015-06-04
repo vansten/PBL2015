@@ -41,16 +41,11 @@ namespace TrashSoup.Gameplay
 
         public override void Initialize()
         {
-            ResourceManager.Instance.LoadAnimation("Animations/Enemies/Rat_idle");
-            ResourceManager.Instance.LoadAnimation("Animations/Enemies/Rat_walk");
-            ResourceManager.Instance.LoadAnimation("Animations/Enemies/Rat_run");
-            ResourceManager.Instance.LoadAnimation("Animations/Enemies/Rat_attack");
-            ResourceManager.Instance.LoadAnimation("Animations/Enemies/Rat_dying");
-            this.MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", this.MyObject.MyAnimator.GetAnimationPlayer("Rat_walk")));
-            this.MyObject.MyAnimator.AvailableStates.Add("Run", new AnimatorState("Run", this.MyObject.MyAnimator.GetAnimationPlayer("Rat_run")));
-            this.MyObject.MyAnimator.AvailableStates.Add("Attack", new AnimatorState("Attack", this.MyObject.MyAnimator.GetAnimationPlayer("Rat_attack")));
-            this.MyObject.MyAnimator.AvailableStates.Add("Die", new AnimatorState("Die", this.MyObject.MyAnimator.GetAnimationPlayer("Rat_dying")));
-            this.MyObject.MyAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", this.MyObject.MyAnimator.GetAnimationPlayer("Rat_idle")));
+            this.MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Rat_walk")));
+            this.MyObject.MyAnimator.AvailableStates.Add("Run", new AnimatorState("Run", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Rat_run")));
+            this.MyObject.MyAnimator.AvailableStates.Add("Attack", new AnimatorState("Attack", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Rat_attack")));
+            this.MyObject.MyAnimator.AvailableStates.Add("Die", new AnimatorState("Die", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Rat_dying")));
+            this.MyObject.MyAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Rat_idle")));
             string[] states = new string[] { "Idle", "Walk", "Run", "Die", "Attack" };
             for (int i = 0; i < states.Length; ++i)
             {
