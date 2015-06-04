@@ -835,11 +835,6 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
-    <Compile Include="Models\Home\Furnitures\bed.FBX">
-      <Name>bed</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>CustomModelProcessor</Processor>
-    </Compile>
     <Compile Include="Models\Home\Furnitures\couch.FBX">
       <Name>couch</Name>
       <Importer>FbxImporter</Importer>
