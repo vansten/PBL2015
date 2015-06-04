@@ -825,6 +825,31 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\Home\Furnitures\desk.FBX">
+      <Name>desk</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Bedroom\bed.FBX">
+      <Name>bed</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Furnitures\bed.FBX">
+      <Name>bed</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Furnitures\couch.FBX">
+      <Name>couch</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Furnitures\TV.FBX">
+      <Name>TV</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -1564,8 +1589,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\Home\Bedroom\" />
-    <Folder Include="Textures\Home\Bedroom\" />
+    <Compile Include="Textures\Home\Furnitures\couch_D.dds">
+      <Name>couch_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Furnitures\couch_N.dds">
+      <Name>couch_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Home\Furnitures\Carpet_D.dds">
@@ -1774,6 +1807,30 @@
     </Compile>
     <Compile Include="Textures\Home\Stairs\Wood_N.dds">
       <Name>Wood_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\Bedroom\Bed_D.dds">
+      <Name>Bed_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Bedroom\Bed_N.dds">
+      <Name>Bed_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\Furnitures\TV_D.dds">
+      <Name>TV_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Furnitures\TV_N.dds">
+      <Name>TV_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
