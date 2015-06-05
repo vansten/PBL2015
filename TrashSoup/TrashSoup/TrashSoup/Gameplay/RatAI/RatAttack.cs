@@ -52,7 +52,7 @@ namespace TrashSoup.Gameplay.RatAI
             this.myPos = this.blackboard.Owner.MyTransform.Position;
             float distance = Vector3.Distance(this.targetPos, this.myPos);
 
-            if(distance > 6.0f)
+            if(distance > 7.0f)
             {
                 firstTime = true;
                 this.blackboard.SetBool("TargetSeen", false);

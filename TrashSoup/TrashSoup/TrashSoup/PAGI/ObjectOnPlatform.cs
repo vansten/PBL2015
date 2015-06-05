@@ -11,8 +11,9 @@ namespace TrashSoup.PAGI
     {
         private GameObject platform;
         private Vector3 currentMovement;
-        private float dragFactor = 0.1f;
+        private float dragFactor = 0.05f;
         private float moveSpeed = 10.0f;
+        private Vector3 platformRotationOnFall = Vector3.Zero;
 
         public ObjectOnPlatform(GameObject go) : base(go)
         {
@@ -37,6 +38,24 @@ namespace TrashSoup.PAGI
 
                 tempVelo = Vector3.Forward * gameTime.ElapsedGameTime.Milliseconds * 0.001f * MathHelper.ToDegrees(platform.MyTransform.Rotation.X);
                 if (platform.MyTransform.Rotation.X >= 0.0f) tempVelo = Vector3.Zero;
+                this.currentMovement += tempVelo;
+            }
+            else
+            {
+                Vector3 tempVelo = Vector3.Right * gameTime.ElapsedGameTime.Milliseconds * 0.001f * -MathHelper.ToDegrees(platformRotationOnFall.Z);
+                if (platformRotationOnFall.Z >= 0.0f) tempVelo = Vector3.Zero;
+                this.currentMovement += tempVelo;
+
+                tempVelo = Vector3.Right * gameTime.ElapsedGameTime.Milliseconds * 0.001f * -MathHelper.ToDegrees(platformRotationOnFall.Z);
+                if (platformRotationOnFall.Z <= 0.0f) tempVelo = Vector3.Zero;
+                this.currentMovement += tempVelo;
+
+                tempVelo = Vector3.Forward * gameTime.ElapsedGameTime.Milliseconds * 0.001f * MathHelper.ToDegrees(platformRotationOnFall.X);
+                if (platformRotationOnFall.X <= 0.0f) tempVelo = Vector3.Zero;
+                this.currentMovement += tempVelo;
+
+                tempVelo = Vector3.Forward * gameTime.ElapsedGameTime.Milliseconds * 0.001f * MathHelper.ToDegrees(platformRotationOnFall.X);
+                if (platformRotationOnFall.X >= 0.0f) tempVelo = Vector3.Zero;
                 this.currentMovement += tempVelo;
             }
 
@@ -69,6 +88,7 @@ namespace TrashSoup.PAGI
         {
             if(other.UniqueID == 0)
             {
+                this.platformRotationOnFall = platform.MyTransform.Rotation;
                 this.MyObject.MyPhysicalObject.IsUsingGravity = true;
             }
             base.OnTriggerExit(other);
