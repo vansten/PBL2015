@@ -2577,6 +2577,46 @@
         <IsTrigger>false</IsTrigger>
       </MyCollider>
     </GameObject>
+    <GameObject>
+      <GameObjectKey>1209</GameObjectKey>
+      <UniqueID>1209</UniqueID>
+      <Name>Carpet</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1209</MyObjectID>
+        <Position>
+          <X>1</X>
+          <Y>1.2</Y>
+          <Z>-8</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>15</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1209</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/Furnitures/carpet</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseCarpetMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+    </GameObject>
   </ObjectsDictionary>
   <Camera>
     <CameraPosition>

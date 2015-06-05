@@ -424,7 +424,7 @@ namespace TrashSoup.Gameplay
 
         public override void OnTrigger(GameObject other)
         {
-            if(other.Name == "Trash")
+            if(other.Name.Contains("Trash"))
             {
                 this.collisionWithTrash = true;
                 this.trash = other;
