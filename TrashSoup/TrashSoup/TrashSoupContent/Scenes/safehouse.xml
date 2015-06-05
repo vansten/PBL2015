@@ -1927,7 +1927,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1191</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/Flor</ModelPath>
             <ModelPath />
@@ -2269,7 +2269,7 @@
         <MyObjectID>1201</MyObjectID>
         <Position>
           <X>14.5</X>
-          <Y>5.2</Y>
+          <Y>4.2</Y>
           <Z>-5</Z>
         </Position>
         <Rotation>
@@ -2318,11 +2318,6 @@
           <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
-      <MyCollider>
-        <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1201</MyObjectID>
-        <IsTrigger>true</IsTrigger>
-      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>1202</GameObjectKey>

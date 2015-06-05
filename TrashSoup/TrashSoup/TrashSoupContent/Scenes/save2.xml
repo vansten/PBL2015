@@ -367,7 +367,7 @@
         </TrashSoup.Engine.Transform>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>83</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -412,7 +412,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>900</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Test/TestBox</ModelPath>
             <ModelPath />
@@ -476,7 +476,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>918</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -540,7 +540,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>432</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -604,7 +604,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>788</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -668,7 +668,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>387</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Test/TestBox</ModelPath>
             <ModelPath />
@@ -732,7 +732,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>126</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Test/TestBox</ModelPath>
             <ModelPath />
@@ -860,7 +860,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>255</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Test/box</ModelPath>
             <ModelPath />
@@ -988,7 +988,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>644</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Test/TestBox</ModelPath>
             <ModelPath />
@@ -1052,7 +1052,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>855</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath />
@@ -1116,7 +1116,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>860</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -1180,7 +1180,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>288</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -1308,7 +1308,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>993</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -1756,7 +1756,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>173</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -2972,7 +2972,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>224</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -3036,7 +3036,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>149</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -3100,7 +3100,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>826</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -3164,7 +3164,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>939</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -3228,7 +3228,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>254</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -3292,7 +3292,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>903</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -3356,7 +3356,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>901</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -3420,7 +3420,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>261</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -3740,7 +3740,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>100</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Test/TestBox</ModelPath>
             <ModelPath />
@@ -3804,7 +3804,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>712</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Test/TestBox</ModelPath>
             <ModelPath />
@@ -3868,7 +3868,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>497</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -3932,7 +3932,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>956</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -3996,7 +3996,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>614</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Test/TestBox</ModelPath>
             <ModelPath />
@@ -4188,7 +4188,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>822</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Test/TestBox</ModelPath>
             <ModelPath />
@@ -4572,7 +4572,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>237</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Test/TestBox</ModelPath>
             <ModelPath />
@@ -9372,7 +9372,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>987</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Test/TestBox</ModelPath>
             <ModelPath />
@@ -9436,7 +9436,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>790</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Test/TestBox</ModelPath>
             <ModelPath />
@@ -9500,7 +9500,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>647</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Test/TestBox</ModelPath>
             <ModelPath />
@@ -9564,7 +9564,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>684</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Test/TestBox</ModelPath>
             <ModelPath />
@@ -9820,7 +9820,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>442</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Test/TestBox</ModelPath>
             <ModelPath />
@@ -9884,7 +9884,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>231</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Test/TestBox</ModelPath>
             <ModelPath />
@@ -10832,7 +10832,7 @@
         </TrashSoup.Engine.Transform>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>250</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -10877,7 +10877,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>915</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -10956,7 +10956,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>62</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -11020,7 +11020,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>109</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_cross</ModelPath>
             <ModelPath />
@@ -11084,7 +11084,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>490</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -11148,7 +11148,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>487</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -11212,7 +11212,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>304</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -11276,7 +11276,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>13</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -11340,7 +11340,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>101</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -11596,7 +11596,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>143</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -11660,7 +11660,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>421</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -11724,7 +11724,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>967</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -11916,7 +11916,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>634</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -11980,7 +11980,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>510</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -12172,7 +12172,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>176</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -12364,7 +12364,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>155</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -12428,7 +12428,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>795</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -12684,7 +12684,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>47</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -12940,7 +12940,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>692</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -13516,7 +13516,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>738</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -16204,7 +16204,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>144</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -16287,7 +16287,7 @@
         </TrashSoup.Engine.Transform>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>524</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -16332,7 +16332,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>281</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -16460,7 +16460,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>983</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -16524,7 +16524,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>838</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -16588,7 +16588,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>367</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -16652,7 +16652,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>495</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -16716,7 +16716,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>10</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_cross_kerb</ModelPath>
             <ModelPath />
@@ -16780,7 +16780,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>909</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -16844,7 +16844,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>428</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -16908,7 +16908,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>648</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -16972,7 +16972,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>890</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -17036,7 +17036,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>882</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -17292,7 +17292,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>52</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -17356,7 +17356,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>356</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -17548,7 +17548,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>465</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_cross_kerb</ModelPath>
             <ModelPath />
@@ -17612,7 +17612,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>757</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -17676,7 +17676,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>946</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -17804,7 +17804,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>178</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_cross_kerb</ModelPath>
             <ModelPath />
@@ -17996,7 +17996,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>245</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -18060,7 +18060,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>409</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -18124,7 +18124,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>274</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -18188,7 +18188,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>403</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -18252,7 +18252,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>58</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight_kerb</ModelPath>
             <ModelPath />
@@ -18444,7 +18444,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>354</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -18523,7 +18523,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>344</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -18602,7 +18602,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>42</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -18681,7 +18681,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>43</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -18760,7 +18760,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>897</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -18839,7 +18839,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>377</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -19155,7 +19155,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>577</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -19234,7 +19234,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>223</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -19471,7 +19471,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>534</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -19550,7 +19550,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>431</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -19787,7 +19787,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>922</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -19945,7 +19945,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>362</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -20577,7 +20577,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>830</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -21051,7 +21051,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>969</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -23737,7 +23737,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>460</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -23816,7 +23816,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>888</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -23895,7 +23895,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>801</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -23974,7 +23974,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>340</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -24053,7 +24053,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>559</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -33216,7 +33216,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1136</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Weapons/Machete/Machete</ModelPath>
             <ModelPath>Models/Weapons/Machete/Machete</ModelPath>
@@ -35068,7 +35068,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1172</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Billboard/Billboard</ModelPath>
             <ModelPath>Models/Enviro/Billboard/Billboard</ModelPath>
@@ -35363,7 +35363,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1180</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car1</ModelPath>
             <ModelPath>Models/Enviro/Cars/car1</ModelPath>
@@ -36154,9 +36154,9 @@
       <MyTransform>
         <MyObjectID>1200</MyObjectID>
         <Position>
-          <X>81.5</X>
+          <X>164</X>
           <Y>0.25</Y>
-          <Z>-42</Z>
+          <Z>-29</Z>
         </Position>
         <Rotation>
           <X>0</X>
@@ -36194,7 +36194,7 @@
     <GameObject>
       <GameObjectKey>1201</GameObjectKey>
       <UniqueID>1201</UniqueID>
-      <Name>Car19</Name>
+      <Name>Car20</Name>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1201</MyObjectID>
@@ -36263,7 +36263,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1203</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
             <ModelPath />
@@ -37838,7 +37838,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1238</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrashContainer</ModelPath>
             <ModelPath />
@@ -38648,7 +38648,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1257</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/hydrant</ModelPath>
             <ModelPath />
@@ -39053,7 +39053,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1267</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrashBin</ModelPath>
             <ModelPath />
@@ -39788,6 +39788,513 @@
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1283</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1284</GameObjectKey>
+      <UniqueID>1284</UniqueID>
+      <Name>Bridge</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1284</MyObjectID>
+        <Position>
+          <X>169</X>
+          <Y>4</Y>
+          <Z>-28.5</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>3.14</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>4</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1284</MyObjectID>
+          <LODState>MED</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Bridge/bridge</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>metroStoneMat</Name>
+            <Name>metroStoneMat</Name>
+            <Name>metroStoneMat</Name>
+            <Name>metroStoneMat</Name>
+            <Name>metroStoneMat</Name>
+            <Name>metroStoneMat</Name>
+            <Name>metroStoneMat</Name>
+            <Name>metroStoneMat</Name>
+            <Name>metroStoneMat</Name>
+            <Name>streetsMat</Name>
+            <Name>metroStoneMat</Name>
+            <Name>metroStoneMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1285</GameObjectKey>
+      <UniqueID>1285</UniqueID>
+      <Name>Bridge2</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1285</MyObjectID>
+        <Position>
+          <X>297</X>
+          <Y>4</Y>
+          <Z>-28.5</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>4</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1285</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Bridge/bridge</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>metroStoneMat</Name>
+            <Name>metroStoneMat</Name>
+            <Name>metroStoneMat</Name>
+            <Name>metroStoneMat</Name>
+            <Name>metroStoneMat</Name>
+            <Name>metroStoneMat</Name>
+            <Name>metroStoneMat</Name>
+            <Name>metroStoneMat</Name>
+            <Name>metroStoneMat</Name>
+            <Name>streetsMat</Name>
+            <Name>metroStoneMat</Name>
+            <Name>metroStoneMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1286</GameObjectKey>
+      <UniqueID>1286</UniqueID>
+      <Name>EmptyBridgeCollider</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1286</MyObjectID>
+        <Position>
+          <X>143</X>
+          <Y>-4</Y>
+          <Z>-30</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>4</Scale>
+      </MyTransform>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1286</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1287</GameObjectKey>
+      <UniqueID>1287</UniqueID>
+      <Name>EmptyBridgeCollider2</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1287</MyObjectID>
+        <Position>
+          <X>151</X>
+          <Y>-4</Y>
+          <Z>-30</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>4</Scale>
+      </MyTransform>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1287</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1288</GameObjectKey>
+      <UniqueID>1288</UniqueID>
+      <Name>EmptyBridgeCollider3</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1288</MyObjectID>
+        <Position>
+          <X>159</X>
+          <Y>-4</Y>
+          <Z>-30</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>4</Scale>
+      </MyTransform>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1288</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1289</GameObjectKey>
+      <UniqueID>1289</UniqueID>
+      <Name>EmptyBridgeCollider4</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1289</MyObjectID>
+        <Position>
+          <X>159</X>
+          <Y>2</Y>
+          <Z>-22</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>4</Scale>
+      </MyTransform>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1289</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1290</GameObjectKey>
+      <UniqueID>1290</UniqueID>
+      <Name>EmptyBridgeCollider5</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1290</MyObjectID>
+        <Position>
+          <X>152</X>
+          <Y>2</Y>
+          <Z>-22</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>4</Scale>
+      </MyTransform>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1290</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1291</GameObjectKey>
+      <UniqueID>1291</UniqueID>
+      <Name>EmptyBridgeCollider6</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1291</MyObjectID>
+        <Position>
+          <X>143</X>
+          <Y>2</Y>
+          <Z>-22</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>4</Scale>
+      </MyTransform>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1291</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1292</GameObjectKey>
+      <UniqueID>1292</UniqueID>
+      <Name>EmptyBridgeCollider7</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1292</MyObjectID>
+        <Position>
+          <X>143</X>
+          <Y>2</Y>
+          <Z>-38</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>4</Scale>
+      </MyTransform>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1292</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1293</GameObjectKey>
+      <UniqueID>1293</UniqueID>
+      <Name>EmptyBridgeCollider7</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1293</MyObjectID>
+        <Position>
+          <X>152</X>
+          <Y>2</Y>
+          <Z>-38</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>4</Scale>
+      </MyTransform>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1293</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1294</GameObjectKey>
+      <UniqueID>1294</UniqueID>
+      <Name>EmptyBridgeCollider8</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1294</MyObjectID>
+        <Position>
+          <X>159</X>
+          <Y>2</Y>
+          <Z>-38</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>4</Scale>
+      </MyTransform>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1294</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1295</GameObjectKey>
+      <UniqueID>1295</UniqueID>
+      <Name>Car21</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1295</MyObjectID>
+        <Position>
+          <X>81.5</X>
+          <Y>0.25</Y>
+          <Z>-42</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1.2</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1295</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>car2Mat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1295</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1296</GameObjectKey>
+      <UniqueID>1296</UniqueID>
+      <Name>Car22</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1296</MyObjectID>
+        <Position>
+          <X>167</X>
+          <Y>0.25</Y>
+          <Z>-32</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>2</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1.2</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1296</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>car2Mat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1296</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1297</GameObjectKey>
+      <UniqueID>1297</UniqueID>
+      <Name>Car23</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1297</MyObjectID>
+        <Position>
+          <X>166</X>
+          <Y>2.25</Y>
+          <Z>-29</Z>
+        </Position>
+        <Rotation>
+          <X>0.6</X>
+          <Y>1.565</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1.2</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1297</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>car2Mat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1297</MyObjectID>
         <IsTrigger>false</IsTrigger>
       </MyCollider>
     </GameObject>
