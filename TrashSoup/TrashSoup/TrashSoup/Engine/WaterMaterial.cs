@@ -101,7 +101,7 @@ namespace TrashSoup.Engine
         }
 
         public override void UpdateEffect(Effect effect, Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, List<LightPoint> points,
-             Texture gSM, TextureCube point0SM, Vector3 eyeVector, BoundingFrustumExtended frustum,
+             Texture[] dSM, TextureCube point0SM, Vector3 eyeVector, BoundingFrustumExtended frustum,
              Matrix[] bones, GameTime gameTime)
         {
             //if (epReflectionMap != null)
@@ -131,7 +131,7 @@ namespace TrashSoup.Engine
                 isRendering = false;
             }
 
-            base.UpdateEffect(effect, world, worldViewProj, amb, dirs, points, gSM, point0SM, eyeVector, frustum, bones, gameTime);
+            base.UpdateEffect(effect, world, worldViewProj, amb, dirs, points, dSM, point0SM, eyeVector, frustum, bones, gameTime);
         }
 
         protected Vector4 CreatePlane(Matrix wm, bool clipSide)

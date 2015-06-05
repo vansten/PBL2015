@@ -50,8 +50,8 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	clip(input.CustomClipPlane);
 
 	//////
-	float4 color = (input.Position2D.z / (input.Position2D.w));
-	color.a = 1.0f;
+	float4 color = float4(0.0f, 0.0f, 0.0f, 1.0f);
+	color.r = (input.Position2D.z / (input.Position2D.w));
 
 	return color;
 }

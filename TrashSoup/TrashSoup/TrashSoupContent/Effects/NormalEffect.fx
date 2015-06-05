@@ -1,6 +1,7 @@
 #include "Constants.fxh"
 
 float4x4 World;
+float4x4 View;
 float4x4 WorldViewProj;
 float4x4 WorldInverseTranspose;
 
@@ -10,10 +11,32 @@ float3 DirLight0Direction;
 float3 DirLight0DiffuseColor;
 float3 DirLight0SpecularColor;
 float4x4 DirLight0WorldViewProj;
+float4x4 DirLight0WorldViewProj1;
+float4x4 DirLight0WorldViewProj2;
 texture DirLight0ShadowMap;
+texture DirLight0ShadowMap1;
+texture DirLight0ShadowMap2;
 sampler DirLight0ShadowMapSampler = sampler_state
 {
 	texture = <DirLight0ShadowMap>;
+	MipFilter = Linear;
+	MinFilter = Linear;
+	MagFilter = Linear;
+	AddressU = clamp;
+	AddressV = clamp;
+};
+sampler DirLight0ShadowMapSampler1 = sampler_state
+{
+	texture = <DirLight0ShadowMap1>;
+	MipFilter = Linear;
+	MinFilter = Linear;
+	MagFilter = Linear;
+	AddressU = clamp;
+	AddressV = clamp;
+};
+sampler DirLight0ShadowMapSampler2 = sampler_state
+{
+	texture = <DirLight0ShadowMap2>;
 	MipFilter = Linear;
 	MinFilter = Linear;
 	MagFilter = Linear;
@@ -94,9 +117,9 @@ struct VertexShaderInputSkinned
 struct VertexShaderOutput
 {
 	float4 Position : POSITION;
-	float4 PositionWS : TEXCOORD2;
-	float2 TexCoord : TEXCOORD0;
-	float3 Normal : TEXCOORD1;
+	float4 PositionWS : TEXCOORD0;
+	float2 TexCoord : TEXCOORD1;
+	float3 Normal : TEXCOORD2;
 	float4 ClipPlanes : TEXCOORD3;
 	float CustomClipPlane : TEXCOORD4;
 };
@@ -104,14 +127,16 @@ struct VertexShaderOutput
 struct VertexShaderOutputShadows
 {
 	float4 Position : POSITION0;
-	float4 PositionWS : TEXCOORD2;
-	float2 TexCoord : TEXCOORD0;
-	float3 Normal : TEXCOORD1;
-	float4 ClipPlanes : TEXCOORD3;
-	float CustomClipPlane : TEXCOORD4;
-	float4 PositionDLS : TEXCOORD5;
-	float4 PositionPLS : TEXCOORD6;
-	float4 PositionProj : TEXCOORD7;
+	float4 PositionWS : TEXCOORD0;
+	float4 PositionVS : TEXCOORD1;
+	float2 TexCoord : TEXCOORD2;
+	float3 Normal : TEXCOORD3;
+	float4 ClipPlanes : TEXCOORD4;
+	float CustomClipPlane : TEXCOORD5;
+	float4 PositionDLS : TEXCOORD6;
+	float4 PositionDLS_1 : TEXCOORD7;
+	float4 PositionDLS_2 : TEXCOORD8;
+	float4 PositionPLS : TEXCOORD9;
 };
 
 struct ColorPair
@@ -181,8 +206,10 @@ ColorPair ComputeLight(float3 posWS, float3 E, float3 N)
 	return result;
 }
 
-ColorPair ComputeLightShadows(float3 posWS, float3 E, float3 N, float4 dirPos, float4 pointPos)
+ColorPair ComputeLightShadows(float3 posWS, float3 E, float3 N, float4 dirPos, float4 dirPos1, float4 dirPos2, float4 posvs, float4 pointPos)
 {
+	float pixelDepth = length(E);
+
 	E = normalize(E);
 	N = normalize(N);
 
@@ -194,17 +221,37 @@ ColorPair ComputeLightShadows(float3 posWS, float3 E, float3 N, float4 dirPos, f
 	temp.Diffuse = 0;
 	temp.Specular = 0;
 
+	
+	float3 depthVec = float3(1.0f, 0.0f, 0.0f);
+
+	[branch]
+	if (pixelDepth > CAM_DIRECTIONAL_BOUNDARY_0 && pixelDepth <= CAM_DIRECTIONAL_BOUNDARY_1)
+	{
+		dirPos = dirPos1;
+		depthVec = float3(0.0f, 1.0f, 0.0f);
+	}
+	else if (pixelDepth > CAM_DIRECTIONAL_BOUNDARY_1)
+	{
+		dirPos = dirPos2;
+		depthVec = float3(0.0f, 0.0f, 1.0f);
+	}
+
 	// shadows for DirLight0
 	float2 projectedDLScoords;
 	projectedDLScoords.x = (dirPos.x / dirPos.w) / 2.0f + 0.5f;
 	projectedDLScoords.y = (-dirPos.y / dirPos.w) / 2.0f + 0.5f;
 
-	float depth = tex2D(DirLight0ShadowMapSampler, projectedDLScoords).r;
+	float depth = tex2D(DirLight0ShadowMapSampler, projectedDLScoords).r * depthVec.x;
+	float depth1 = tex2D(DirLight0ShadowMapSampler1, projectedDLScoords).r * depthVec.y;
+	float depth2 = tex2D(DirLight0ShadowMapSampler2, projectedDLScoords).r * depthVec.z;
+
+	depth = max(depth, max(depth1, depth2));
+
 	float dist = dirPos.z / dirPos.w;
 	
-	[branch]
+	/*[branch]
 	if (depth < 0.001f || depth > 0.8f)
-		depth = 1000000000.0f;
+		depth = 1000000.0f;*/
 
 	// DirLight0
 	ComputeSingleLight(-DirLight0Direction, DirLight0DiffuseColor,
@@ -422,6 +469,7 @@ VertexShaderOutputShadows VertexShaderFunctionShadows(VertexShaderInput input)
 	output.Position = mul(input.Position, WorldViewProj);
 
 	output.PositionWS = mul(input.Position, World);
+	output.PositionVS = mul(input.Position, mul(World, View));
 
 	output.TexCoord = input.TexCoord;
 
@@ -434,9 +482,9 @@ VertexShaderOutputShadows VertexShaderFunctionShadows(VertexShaderInput input)
 	output.CustomClipPlane = dot(output.PositionWS, CustomClippingPlane);
 
 	output.PositionDLS = mul(input.Position, DirLight0WorldViewProj);
+	output.PositionDLS_1 = mul(input.Position, DirLight0WorldViewProj1);
+	output.PositionDLS_2 = mul(input.Position, DirLight0WorldViewProj2);
 	output.PositionPLS = mul(input.Position, Point0WorldViewProj);
-
-	output.PositionProj = output.Position;
 
 	return output;
 }
@@ -450,6 +498,7 @@ VertexShaderOutputShadows VertexShaderFunctionSkinnedShadows(VertexShaderInputSk
 	output.Position = mul(input.Position, WorldViewProj);
 
 	output.PositionWS = mul(input.Position, World);
+	output.PositionVS = mul(input.Position, mul(World, View));
 
 	output.TexCoord = input.TexCoord;
 
@@ -462,9 +511,9 @@ VertexShaderOutputShadows VertexShaderFunctionSkinnedShadows(VertexShaderInputSk
 	output.CustomClipPlane = dot(output.PositionWS, CustomClippingPlane);
 
 	output.PositionDLS = mul(input.Position, DirLight0WorldViewProj);
+	output.PositionDLS_1 = mul(input.Position, DirLight0WorldViewProj1);
+	output.PositionDLS_2 = mul(input.Position, DirLight0WorldViewProj2);
 	output.PositionPLS = mul(input.Position, Point0WorldViewProj);
-
-	output.PositionProj = output.Position;
 
 	return output;
 }
@@ -538,7 +587,7 @@ float4 PixelShaderFunctionShadows(VertexShaderOutputShadows input) : COLOR0
 
 	////////
 
-	ColorPair computedLight = ComputeLightShadows(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal, input.PositionDLS, input.PositionPLS);
+	ColorPair computedLight = ComputeLightShadows(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal, input.PositionDLS, input.PositionDLS_1, input.PositionDLS_2, input.PositionVS, input.PositionPLS);
 
 	color = color * float4(DiffuseColor, 1.0f) * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f);
 
@@ -547,45 +596,45 @@ float4 PixelShaderFunctionShadows(VertexShaderOutputShadows input) : COLOR0
 	return color;
 }
 
-float4 PixelShaderFunctionBlurredShadows(VertexShaderOutputShadows input) : COLOR0
-{
-	// clippin
-
-	clip(input.ClipPlanes.x);
-	clip(input.ClipPlanes.y);
-	clip(input.ClipPlanes.z);
-	clip(input.ClipPlanes.w);
-	clip(input.CustomClipPlane);
-
-	//////
-
-	float4 color = tex2D(DiffuseSampler, input.TexCoord);
-		float alpha = color.a;
-	color.a = 1.0f;
-
-	// computin normals
-
-	float3 nAdj = (tex2D(NormalSampler, input.TexCoord)).xyz;
-		input.Normal = normalize(input.Normal);
-
-	nAdj.x = (nAdj.x * 2) - 1;
-	nAdj.y = (nAdj.y * 2) - 1;
-	nAdj.z = (nAdj.z) - 1;
-
-	input.Normal = input.Normal + nAdj;
-	input.Normal = normalize(input.Normal);
-
-	////////
-
-	ColorPair computedLight = ComputeLightBlurredShadows(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal,
-		float2((input.PositionProj.x / input.PositionProj.w) / 2.0f + 0.5f, (-input.PositionProj.y / input.PositionProj.w) / 2.0f + 0.5f));
-
-	color = color * float4(DiffuseColor, 1.0f) * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f);
-
-	color *= Transparency;
-
-	return color;
-}
+//float4 PixelShaderFunctionBlurredShadows(VertexShaderOutputShadows input) : COLOR0
+//{
+//	// clippin
+//
+//	clip(input.ClipPlanes.x);
+//	clip(input.ClipPlanes.y);
+//	clip(input.ClipPlanes.z);
+//	clip(input.ClipPlanes.w);
+//	clip(input.CustomClipPlane);
+//
+//	//////
+//
+//	float4 color = tex2D(DiffuseSampler, input.TexCoord);
+//		float alpha = color.a;
+//	color.a = 1.0f;
+//
+//	// computin normals
+//
+//	float3 nAdj = (tex2D(NormalSampler, input.TexCoord)).xyz;
+//		input.Normal = normalize(input.Normal);
+//
+//	nAdj.x = (nAdj.x * 2) - 1;
+//	nAdj.y = (nAdj.y * 2) - 1;
+//	nAdj.z = (nAdj.z) - 1;
+//
+//	input.Normal = input.Normal + nAdj;
+//	input.Normal = normalize(input.Normal);
+//
+//	////////
+//
+//	ColorPair computedLight = ComputeLightBlurredShadows(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal,
+//		float2((input.PositionProj.x / input.PositionProj.w) / 2.0f + 0.5f, (-input.PositionProj.y / input.PositionProj.w) / 2.0f + 0.5f));
+//
+//	color = color * float4(DiffuseColor, 1.0f) * float4(computedLight.Diffuse, 1.0f) + alpha * float4(computedLight.Specular, 1.0f);
+//
+//	color *= Transparency;
+//
+//	return color;
+//}
 
 technique Main
 {
@@ -628,7 +677,7 @@ technique MainBlurredShadows
 	pass Pass1
 	{
 		VertexShader = compile vs_3_0 VertexShaderFunctionShadows();
-		PixelShader = compile ps_3_0 PixelShaderFunctionBlurredShadows();
+		PixelShader = compile ps_3_0 PixelShaderFunctionShadows();
 	}
 }
 
@@ -637,6 +686,6 @@ technique SkinnedBlurredShadows
 	pass Pass1
 	{
 		VertexShader = compile vs_3_0 VertexShaderFunctionSkinnedShadows();
-		PixelShader = compile ps_3_0 PixelShaderFunctionBlurredShadows();
+		PixelShader = compile ps_3_0 PixelShaderFunctionShadows();
 	}
 }

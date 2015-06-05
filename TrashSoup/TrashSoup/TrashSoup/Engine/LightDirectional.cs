@@ -13,13 +13,17 @@ namespace TrashSoup.Engine
     {
         #region constants
 
-        const float DIRECTIONAL_DISTANCE = 60.0f;
-        const float DIRECTIONAL_CAM_NEAR_PLANE = 0.02f;
-        const float DIRECTIONAL_CAM_FAR_PLANE = 120.0f;
-        const float DIRECTIONAL_SHADOW_RANGE = 15.0f;
-        const int DIRECTIONAL_SHADOW_MAP_SIZE = 2048;
+        private const int CAMERA_COUNT = 3;
+        private float[] CAM_DIRECTIONAL_DISTANCE_MULTIPLIERS = { 10000.0f, 7500.0f, 5000.0f };
+        private float[] CAM_DIRECTIONAL_BOUNDARIES = { 15.0f, 50.0f, 100.0f };
+        private const float CAM_DIRECTIONAL_DISTANCE = 60.0f;
+        private const float CAM_DIRECTIONAL_NEAR_PLANE = 0.02f;
+        private const float CAM_DIRECTIONAL_FAR_PLANE = 120.0f;
 
-        const int BLUR_FACTOR = 1;
+        private const float DIRECTIONAL_SHADOW_RANGE = 15.0f;
+        private const int DIRECTIONAL_SHADOW_MAP_SIZE = 512;
+
+        private const int BLUR_FACTOR = 1;
         
         #endregion
 
@@ -28,9 +32,9 @@ namespace TrashSoup.Engine
         private Vector3 lightColor;
         private Vector3 lightSpecular;
         private Vector3 lightDirection;
-        private Camera shadowDrawCamera;
-        private Matrix myProj;
-        private BoundingFrustumExtended bf;
+        private Camera[] shadowDrawCameras = new Camera[CAMERA_COUNT];
+        private Matrix[] myProjs = new Matrix[CAMERA_COUNT];
+        private BoundingFrustumExtended[] bfs = new BoundingFrustumExtended[CAMERA_COUNT];
         private bool varsSet = false;
 
         private RenderTarget2D tempRenderTarget01;
@@ -39,7 +43,7 @@ namespace TrashSoup.Engine
 
         #region properties
 
-        public RenderTarget2D ShadowMapRenderTarget2048 { get; set; }
+        public RenderTarget2D[] ShadowMapRenderTargets { get; set; }
 
         public Vector3 LightColor
         { 
@@ -89,15 +93,15 @@ namespace TrashSoup.Engine
             }
         }
         public bool CastShadows { get; set; }
-        public Camera ShadowDrawCamera 
+        public Camera[] ShadowDrawCameras
         {
             get
             {
-                return shadowDrawCamera;
+                return shadowDrawCameras;
             }
             private set
             {
-                shadowDrawCamera = value;
+                shadowDrawCameras = value;
             }
         }
 
@@ -108,22 +112,29 @@ namespace TrashSoup.Engine
         public LightDirectional(uint uniqueID, string name)
             : base(uniqueID, name)
         {
-            this.ShadowDrawCamera = new Camera(0, "", new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f),
-                 MathHelper.PiOver2, 1.0f, DIRECTIONAL_CAM_NEAR_PLANE, DIRECTIONAL_CAM_FAR_PLANE);
-            this.ShadowDrawCamera.OrthoWidth = DIRECTIONAL_SHADOW_MAP_SIZE / 1000 * DIRECTIONAL_DISTANCE;
-            this.ShadowDrawCamera.OrthoHeight = DIRECTIONAL_SHADOW_MAP_SIZE / 1000 * DIRECTIONAL_DISTANCE;
-            this.ShadowDrawCamera.Ortho = true;
+            ShadowMapRenderTargets = new RenderTarget2D[CAMERA_COUNT];
 
-            this.ShadowMapRenderTarget2048 = new RenderTarget2D(
-                        TrashSoupGame.Instance.GraphicsDevice,
-                        DIRECTIONAL_SHADOW_MAP_SIZE,
-                        DIRECTIONAL_SHADOW_MAP_SIZE,
-                        false,
-                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
-                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
-                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
-                        RenderTargetUsage.DiscardContents
-                        );
+            for (int i = 0; i < CAMERA_COUNT; ++i )
+            {
+                shadowDrawCameras[i] = new Camera(this.UniqueID + 32 + (uint)i, "", new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f),
+                     MathHelper.PiOver2, 1.0f, CAM_DIRECTIONAL_NEAR_PLANE, CAM_DIRECTIONAL_FAR_PLANE);
+                shadowDrawCameras[i].OrthoWidth = DIRECTIONAL_SHADOW_MAP_SIZE / CAM_DIRECTIONAL_DISTANCE_MULTIPLIERS[i] * CAM_DIRECTIONAL_DISTANCE;
+                shadowDrawCameras[i].OrthoHeight = DIRECTIONAL_SHADOW_MAP_SIZE / CAM_DIRECTIONAL_DISTANCE_MULTIPLIERS[i] * CAM_DIRECTIONAL_DISTANCE;
+                shadowDrawCameras[i].Ortho = true;
+
+                ShadowMapRenderTargets[i] = new RenderTarget2D(
+                            TrashSoupGame.Instance.GraphicsDevice,
+                            DIRECTIONAL_SHADOW_MAP_SIZE,
+                            DIRECTIONAL_SHADOW_MAP_SIZE,
+                            false,
+                            TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.BackBufferFormat,
+                            TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
+                            TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
+                            RenderTargetUsage.DiscardContents
+                            );
+            }
+
+                
             tempRenderTarget01 = new RenderTarget2D(
                         TrashSoupGame.Instance.GraphicsDevice,
                         TrashSoupGame.Instance.Window.ClientBounds.Width / BLUR_FACTOR,
@@ -171,15 +182,18 @@ namespace TrashSoup.Engine
 
             // setting up camera properly
             Camera cam = ResourceManager.Instance.CurrentScene.Cam;
-
-            TrashSoupGame.Instance.ActualRenderTarget = ShadowMapRenderTarget2048;
             RasterizerState rs = TrashSoupGame.Instance.GraphicsDevice.RasterizerState;
             TrashSoupGame.Instance.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
-            TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
 
-            ResourceManager.Instance.CurrentScene.DrawAll(this.ShadowDrawCamera, myShadowEffect, TrashSoupGame.Instance.TempGameTime, false);
+            for (int i = 0; i < CAMERA_COUNT; ++i )
+            {
+                TrashSoupGame.Instance.ActualRenderTarget = ShadowMapRenderTargets[i];
+                TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
+                ResourceManager.Instance.CurrentScene.DrawAll(ShadowDrawCameras[i], myShadowEffect, TrashSoupGame.Instance.TempGameTime, false);
+                TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
+                
+            }
 
-            TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
             TrashSoupGame.Instance.GraphicsDevice.RasterizerState = rs;
 
             //// tu bedzie if
@@ -208,7 +222,7 @@ namespace TrashSoup.Engine
             //}
 
             //System.IO.FileStream stream = new System.IO.FileStream("Dupa.jpg", System.IO.FileMode.Create);
-            //ShadowMapRenderTarget2048.SaveAsJpeg(stream, 1024, 1024);
+            //ShadowMapRenderTargets[2].SaveAsJpeg(stream, 1024, 1024);
             //stream.Close();
         }
 
@@ -219,36 +233,39 @@ namespace TrashSoup.Engine
                 return;
             else if(!varsSet)
             {
-                myProj = Matrix.CreatePerspectiveFieldOfView(cam.FOV, cam.Ratio, cam.Near, 50.0f);
-                bf = new BoundingFrustumExtended(cam.ViewMatrix * myProj);
+                myProjs[0] = Matrix.CreatePerspectiveFieldOfView(cam.FOV, cam.Ratio, cam.Near, CAM_DIRECTIONAL_BOUNDARIES[0]);
+                myProjs[1] = Matrix.CreatePerspectiveFieldOfView(cam.FOV, cam.Ratio, CAM_DIRECTIONAL_BOUNDARIES[0], CAM_DIRECTIONAL_BOUNDARIES[1]);
+                myProjs[2] = Matrix.CreatePerspectiveFieldOfView(cam.FOV, cam.Ratio, CAM_DIRECTIONAL_BOUNDARIES[1], CAM_DIRECTIONAL_BOUNDARIES[2]);
+                bfs[0] = new BoundingFrustumExtended(cam.ViewMatrix * myProjs[0]);
+                bfs[1] = new BoundingFrustumExtended(cam.ViewMatrix * myProjs[1]);
+                bfs[2] = new BoundingFrustumExtended(cam.ViewMatrix * myProjs[2]);
                 varsSet = true;
             }
 
-            bf.Matrix = cam.ViewMatrix * myProj;
-
-            Vector3[] corners = bf.GetCorners();
-            uint cornerCount = (uint)corners.Count();
-
-            //for (uint i = 0; i < cornerCount; ++i )
-            //{
-            //    corners[i] = Vector3.Transform(corners[i], shadowDrawCamera.ViewMatrix);
-            //}
-            Vector3 middlePoint = Vector3.Zero;
-            for (uint i = 0; i < cornerCount; ++i)
+            for (int i = 0; i < CAMERA_COUNT; ++i )
             {
-                middlePoint.X += corners[i].X;
-                middlePoint.Y += corners[i].Y;
-                middlePoint.Z += corners[i].Z;
-            }
-            middlePoint.X /= cornerCount;
-            middlePoint.Y = Math.Max(middlePoint.Y, 0.0f);
-            middlePoint.Y /= cornerCount;
-            middlePoint.Z /= cornerCount;
+                bfs[i].Matrix = cam.ViewMatrix * myProjs[i];
 
-            shadowDrawCamera.Position = middlePoint + DIRECTIONAL_DISTANCE * new Vector3(-LightDirection.X, -LightDirection.Y, -LightDirection.Z);
-            shadowDrawCamera.Target = middlePoint;
-            //shadowDrawCamera.Translation = cam.Translation;
-            shadowDrawCamera.Update(null);
+                Vector3[] corners = bfs[i].GetCorners();
+                uint cornerCount = (uint)corners.Count();
+
+
+                Vector3 middlePoint = Vector3.Zero;
+                for (uint j = 0; j < cornerCount; ++j)
+                {
+                    middlePoint.X += corners[j].X;
+                    middlePoint.Y += corners[j].Y;
+                    middlePoint.Z += corners[j].Z;
+                }
+                middlePoint.X /= cornerCount;
+                middlePoint.Y = Math.Max(middlePoint.Y, 0.0f);
+                middlePoint.Y /= cornerCount;
+                middlePoint.Z /= cornerCount;
+
+                shadowDrawCameras[i].Position = middlePoint + CAM_DIRECTIONAL_DISTANCE * new Vector3(-LightDirection.X, -LightDirection.Y, -LightDirection.Z);
+                shadowDrawCameras[i].Target = middlePoint;
+                shadowDrawCameras[i].Update(null);
+            }
         }
 
         private float CurveAngle(float from, float to, float step)

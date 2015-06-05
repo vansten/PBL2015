@@ -182,7 +182,7 @@ namespace TrashSoup.Engine
                                  ResourceManager.Instance.CurrentScene.AmbientLight,
                                  ResourceManager.Instance.CurrentScene.DirectionalLights,
                                  MyObject.LightsAffecting,
-                                 ResourceManager.Instance.CurrentScene.GetGlobalShadowMap(),
+                                 ResourceManager.Instance.CurrentScene.GetDirectionalShadowMaps(),
                                  ResourceManager.Instance.CurrentScene.GetPointLight0ShadowMap(),
                                  camera.Position + camera.Translation,
                                  camera.Bounds,
