@@ -53,7 +53,7 @@ namespace TrashSoup.Gameplay
                 {
                     if (j != i)
                     {
-                        this.MyObject.MyAnimator.AvailableStates[states[i]].AddTransition(this.MyObject.MyAnimator.AvailableStates[states[j]], new TimeSpan(0, 0, 0, 0, 0));
+                        this.MyObject.MyAnimator.AvailableStates[states[i]].AddTransition(this.MyObject.MyAnimator.AvailableStates[states[j]], new TimeSpan(0, 0, 0, 0, 200));
                     }
                 }
             }

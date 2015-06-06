@@ -9,6 +9,8 @@ namespace TrashSoup.PAGI
 {
     class Platform : ObjectComponent
     {
+        private float speed = 1.0f;
+
         public Platform(GameObject go) : base(go)
         {
 
@@ -18,22 +20,22 @@ namespace TrashSoup.PAGI
         {
             if(InputManager.Instance.GetKeyboardButton(Microsoft.Xna.Framework.Input.Keys.D))
             {
-                this.MyObject.MyTransform.Rotation += Vector3.Forward * MathHelper.ToRadians(30.0f * gameTime.ElapsedGameTime.Milliseconds * 0.001f);
+                this.MyObject.MyTransform.Rotation += Vector3.Forward * MathHelper.ToRadians(30.0f * gameTime.ElapsedGameTime.Milliseconds * 0.001f * speed);
             }
 
             if (InputManager.Instance.GetKeyboardButton(Microsoft.Xna.Framework.Input.Keys.A))
             {
-                this.MyObject.MyTransform.Rotation -= Vector3.Forward * MathHelper.ToRadians(30.0f * gameTime.ElapsedGameTime.Milliseconds * 0.001f);
+                this.MyObject.MyTransform.Rotation -= Vector3.Forward * MathHelper.ToRadians(30.0f * gameTime.ElapsedGameTime.Milliseconds * 0.001f * speed);
             }
 
             if (InputManager.Instance.GetKeyboardButton(Microsoft.Xna.Framework.Input.Keys.S))
             {
-                this.MyObject.MyTransform.Rotation += Vector3.Right * MathHelper.ToRadians(30.0f * gameTime.ElapsedGameTime.Milliseconds * 0.001f);
+                this.MyObject.MyTransform.Rotation += Vector3.Right * MathHelper.ToRadians(30.0f * gameTime.ElapsedGameTime.Milliseconds * 0.001f * speed);
             }
 
             if (InputManager.Instance.GetKeyboardButton(Microsoft.Xna.Framework.Input.Keys.W))
             {
-                this.MyObject.MyTransform.Rotation -= Vector3.Right * MathHelper.ToRadians(30.0f * gameTime.ElapsedGameTime.Milliseconds * 0.001f);
+                this.MyObject.MyTransform.Rotation -= Vector3.Right * MathHelper.ToRadians(30.0f * gameTime.ElapsedGameTime.Milliseconds * 0.001f * speed);
             }
         }
 

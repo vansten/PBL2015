@@ -47,6 +47,9 @@ namespace TrashSoup.Gameplay
         protected float prevRotY;
 
         protected bool moving = false;
+        protected bool jumping = false;
+        protected float jumpTimer = 0.0f;
+        protected bool jumped = false;
 
         private bool collisionWithTrash = false;
         private bool collectedTrash = false;
@@ -256,9 +259,25 @@ namespace TrashSoup.Gameplay
                     {
                         // jump!
                         //Debug.Log("Jump!");
+                        jumping = true;
                         MyObject.MyAnimator.ChangeState("Jump");
-                        this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 200.0f);
                     }
+                }
+            }
+
+            if(jumping)
+            {
+                jumpTimer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+                if(!jumped && jumpTimer > 0.75f)
+                {
+                    this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 125.0f);
+                    jumped = true;
+                }
+                else if(jumpTimer > 2.0f)
+                {
+                    jumpTimer = 0.0f;
+                    jumped = false;
+                    jumping = false;
                 }
             }
 
