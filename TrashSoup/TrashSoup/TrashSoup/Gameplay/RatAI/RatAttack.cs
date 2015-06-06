@@ -12,7 +12,7 @@ namespace TrashSoup.Gameplay.RatAI
     {
         private Vector3 targetPos;
         private Vector3 myPos;
-        private float attackCooldown = 2.0f;
+        private float attackCooldown = 1.5f;
         private float timer = 0.0f;
         private float damage = 5.0f;
         private PlayerController target;
@@ -42,24 +42,18 @@ namespace TrashSoup.Gameplay.RatAI
                 return TickStatus.FAILURE;
             }
 
-            if (firstTime)
-            {
-                firstTime = false;
-                this.blackboard.Owner.MyAnimator.ChangeState("Attack");
-            }
-
             this.targetPos = this.blackboard.GetVector3("TargetPosition");
             this.myPos = this.blackboard.Owner.MyTransform.Position;
             float distance = Vector3.Distance(this.targetPos, this.myPos);
 
-            if(distance > 7.0f)
+            if(distance > 5.0f)
             {
                 firstTime = true;
-                this.blackboard.SetBool("TargetSeen", false);
                 node = null;
                 return TickStatus.FAILURE;
             }
 
+            //this.blackboard.Owner.MyAnimator.ChangeState("Attack");
             this.difference = this.targetPos - this.myPos;
             this.difference.Y = 0.0f;
             this.difference.Normalize();

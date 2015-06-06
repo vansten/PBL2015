@@ -59,7 +59,7 @@ namespace TrashSoup.PAGI
                 this.currentMovement += tempVelo;
             }
 
-            this.MyObject.MyTransform.Rotation += new Vector3(-this.currentMovement.Z, this.currentMovement.Y, -this.currentMovement.X) * 0.001f * gameTime.ElapsedGameTime.Milliseconds * moveSpeed;
+            this.MyObject.MyTransform.Rotation += new Vector3(currentMovement.X, 0.0f, 0.0f) * 0.001f * gameTime.ElapsedGameTime.Milliseconds * moveSpeed;
 
             this.MyObject.MyTransform.Position += currentMovement * moveSpeed * gameTime.ElapsedGameTime.Milliseconds * 0.001f;
             this.currentMovement *= (1.0f - dragFactor);
@@ -72,7 +72,6 @@ namespace TrashSoup.PAGI
 
         protected override void Start()
         {
-
         }
 
         public override void OnTriggerEnter(GameObject other)
@@ -98,6 +97,7 @@ namespace TrashSoup.PAGI
         {
             platform = ResourceManager.Instance.CurrentScene.GetObject(0);
             platform.AddChild(this.MyObject);
+            this.MyObject.MyTransform.Rotation += Vector3.Up * MathHelper.PiOver2;
             this.MyObject.MyTransform.Version = Transform.GameVersionEnum.STENGERT_PAGI;
             base.Initialize();
         }

@@ -126,7 +126,7 @@
           <MyObjectID>1</MyObjectID>
           <LODState>HI</LODState>
           <LODs>
-            <ModelPath>Models/Test/TestSphere</ModelPath>
+            <ModelPath>Models/Test/walec</ModelPath>
             <ModelPath />
             <ModelPath />
           </LODs>
@@ -140,7 +140,7 @@
         </TrashSoup.PAGI.ObjectOnPlatform>
       </Components>
       <MyCollider>
-        <Type>TrashSoup.Engine.SphereCollider</Type>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1</MyObjectID>
         <IsTrigger>true</IsTrigger>
       </MyCollider>

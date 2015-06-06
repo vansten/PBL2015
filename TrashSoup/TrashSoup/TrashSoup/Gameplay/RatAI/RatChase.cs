@@ -47,6 +47,7 @@ namespace TrashSoup.Gameplay.RatAI
             {
                 firstTime = true;
                 node = null;
+                this.blackboard.Owner.MyAnimator.ChangeState("Attack");
                 return TickStatus.SUCCESS;
             }
             
