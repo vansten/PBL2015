@@ -225,14 +225,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\Skyboxes\Sunset.dds">
-      <Name>Sunset</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <ProcessorParameters_PremultiplyAlpha>False</ProcessorParameters_PremultiplyAlpha>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Effects\CubeNormalEffect.fx">
       <Name>CubeNormalEffect</Name>
       <Importer>EffectImporter</Importer>
@@ -342,6 +334,71 @@
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
+    <Compile Include="Animations\MainCharacter\walk_1.X">
+      <Name>walk_1</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\attack_2.X">
+      <Name>attack_2</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\block_1.X">
+      <Name>block_1</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\dying_1.X">
+      <Name>dying_1</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\idle_1.X">
+      <Name>idle_1</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\run_1.X">
+      <Name>run_1</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\bow_1.X">
+      <Name>bow_1</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\idle_2.X">
+      <Name>idle_2</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\run_with_weapon.X">
+      <Name>run_with_weapon</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\attack_3.X">
+      <Name>attack_3</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\run_and_attack.X">
+      <Name>run_and_attack</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\attack_1.X">
+      <Name>attack_1</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\attack_4.X">
+      <Name>attack_4</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
     <None Include="Effects\Constants.fxh">
       <Name>Constants</Name>
       <Importer>EffectImporter</Importer>
@@ -360,62 +417,62 @@
     <Compile Include="Models\Enviro\Ground\street_cross.FBX">
       <Name>street_cross</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Ground\street_cross_kerb.FBX">
       <Name>street_cross_kerb</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Ground\street_cruve.FBX">
       <Name>street_cruve</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Ground\street_cruve_kerb1.FBX">
       <Name>street_cruve_kerb1</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Ground\street_cruve_kerb2.FBX">
       <Name>street_cruve_kerb2</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Ground\street_straight.FBX">
       <Name>street_straight</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Ground\street_straight_kerb.FBX">
       <Name>street_straight_kerb</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Weapons\Pipe\pipe.FBX">
       <Name>pipe</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Weapons\Bottle\bottle.FBX">
       <Name>bottle</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Weapons\Stones\block.FBX">
       <Name>block</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Weapons\Stones\block2.FBX">
       <Name>block2</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Weapons\Stones\brick.FBX">
       <Name>brick</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Test\box2.FBX">
       <Name>box2</Name>
@@ -430,22 +487,17 @@
     <Compile Include="Models\Weapons\Signs\StopSign.FBX">
       <Name>StopSign</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Weapons\Signs\DeadEndSign.FBX">
       <Name>DeadEndSign</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Ground\pavement1.FBX">
       <Name>pavement1</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\MainCharacter\MainCharacter_testM.FBX">
-      <Name>MainCharacter_testM</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>SkinnedModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enemies\Rat.FBX">
       <Name>Rat</Name>
@@ -455,25 +507,426 @@
     <Compile Include="Models\Enviro\Ground\pavement4x4.FBX">
       <Name>pavement4x4</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Walls\Wall_1.FBX">
       <Name>Wall_1</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Walls\Wall_2.FBX">
       <Name>Wall_2</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Buildings\Big_house.FBX">
       <Name>Big_house</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Billboard\Billboard.FBX">
       <Name>Billboard</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Test\TestSphere_LOD1.FBX">
+      <Name>TestSphere_LOD1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Test\TestSphere_LOD2.FBX">
+      <Name>TestSphere_LOD2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Minor\hydrant.FBX">
+      <Name>hydrant</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Minor\barell.FBX">
+      <Name>barell</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Minor\TrashBin.FBX">
+      <Name>TrashBin</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Knife\Knife.FBX">
+      <Name>Knife</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Stones\brick_destructible\1.FBX">
+      <Name>1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>DestructiblePartModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Stones\brick_destructible\2.FBX">
+      <Name>2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>DestructiblePartModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Stones\brick_destructible\3.FBX">
+      <Name>3</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>DestructiblePartModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Stones\brick_destructible\4.FBX">
+      <Name>4</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>DestructiblePartModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Stones\brick_destructible\5.FBX">
+      <Name>5</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>DestructiblePartModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Stones\brick_destructible\6.FBX">
+      <Name>6</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>DestructiblePartModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Stones\brick_destructible\7.FBX">
+      <Name>7</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>DestructiblePartModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Stones\brick_destructible\8.FBX">
+      <Name>8</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>DestructiblePartModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Stones\brick_destructible\9.FBX">
+      <Name>9</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>DestructiblePartModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Hammer\Hammer.FBX">
+      <Name>Hammer</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Buildings\Big_house2.FBX">
+      <Name>Big_house2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Minor\GasBottle.FBX">
+      <Name>GasBottle</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Minor\TrashContainer.FBX">
+      <Name>TrashContainer</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Nature\TreeBig.FBX">
+      <Name>TreeBig</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Nature\TreeBig2.FBX">
+      <Name>TreeBig2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Machete\Machete.FBX">
+      <Name>Machete</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Newspaper\Newspaper.FBX">
+      <Name>Newspaper</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Nature\stump.FBX">
+      <Name>stump</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Nature\TreeBig3.FBX">
+      <Name>TreeBig3</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Minor\bench.FBX">
+      <Name>bench</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Trash\Trash1.FBX">
+      <Name>Trash1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Trash\Trash2.FBX">
+      <Name>Trash2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Storyline\Food.FBX">
+      <Name>Food</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\Maczuga\Mace.FBX">
+      <Name>Mace</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Cars\car1.FBX">
+      <Name>car1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Cars\car2.FBX">
+      <Name>car2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Trash\Rubble.FBX">
+      <Name>Rubble</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Minor\TrashContainer2.FBX">
+      <Name>TrashContainer2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Minor\bench2.FBX">
+      <Name>bench2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Minor\Pylon.FBX">
+      <Name>Pylon</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Minor\Camera.FBX">
+      <Name>Camera</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Minor\Camera_LOW.FBX">
+      <Name>Camera_LOW</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Storyline\Note.FBX">
+      <Name>Note</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Weapons\HammerSmall\HammerSmall.FBX">
+      <Name>HammerSmall</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Minor\TrafficLights.FBX">
+      <Name>TrafficLights</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\MainCharacter\MainCharacter.X">
+      <Name>MainCharacter</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\MainCharacter\Hair_N.dds">
+      <Name>Hair_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\MainCharacter\Hair_D.dds">
+      <Name>Hair_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\MainCharacter\MainCharacter_D.dds">
+      <Name>MainCharacter_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\MainCharacter\MainCharacter_N.dds">
+      <Name>MainCharacter_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Nature\river.FBX">
+      <Name>river</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Nature\Sun.dds">
+      <Name>Sun</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <ProcessorParameters_PremultiplyAlpha>False</ProcessorParameters_PremultiplyAlpha>
+    </Compile>
+    <Compile Include="Models\Home\Fortifications\wood_fortif.FBX">
+      <Name>wood_fortif</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\CorkBoard\CorkBoard.FBX">
+      <Name>CorkBoard</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Fortifications\wood_fortif2.FBX">
+      <Name>wood_fortif2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Fortifications\metal_fortif.FBX">
+      <Name>metal_fortif</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Fortifications\wire_fortif.FBX">
+      <Name>wire_fortif</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Fortifications\trap_wire.FBX">
+      <Name>trap_wire</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Fortifications\trap_wnyki.FBX">
+      <Name>trap_wnyki</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Furnitures\carpet.FBX">
+      <Name>carpet</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Bathroom\Sink.FBX">
+      <Name>Sink</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\WindowsDoors\DoorFrame.FBX">
+      <Name>DoorFrame</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\WindowsDoors\Door.FBX">
+      <Name>Door</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\WindowsDoors\window.FBX">
+      <Name>window</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\WindowsDoors\wall.FBX">
+      <Name>wall</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\WindowsDoors\wall2.FBX">
+      <Name>wall2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Bathroom\bathroomWall.FBX">
+      <Name>bathroomWall</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Metro\Metro.FBX">
+      <Name>Metro</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\WindowsDoors\Flor.FBX">
+      <Name>Flor</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Bathroom\Bathroom_Floor.FBX">
+      <Name>Bathroom_Floor</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Bathroom\Toilet.FBX">
+      <Name>Toilet</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Bathroom\Pipe.FBX">
+      <Name>Pipe</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\WindowsDoors\Window_Dirt.FBX">
+      <Name>Window_Dirt</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Stairs\stiars.FBX">
+      <Name>stiars</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Furnitures\chair.FBX">
+      <Name>chair</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Furnitures\desk.FBX">
+      <Name>desk</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Bedroom\bed.FBX">
+      <Name>bed</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Furnitures\couch.FBX">
+      <Name>couch</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Furnitures\TV.FBX">
+      <Name>TV</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Furnitures\TV_table.FBX">
+      <Name>TV_table</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Furnitures\fridge.FBX">
+      <Name>fridge</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+<<<<<<< HEAD
+    <Compile Include="Models\Test\walec.FBX">
+      <Name>walec</Name>
+=======
+    <Compile Include="Models\Enviro\Bridge\bridge.FBX">
+      <Name>bridge</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Metro\Metro2.FBX">
+      <Name>Metro2</Name>
+>>>>>>> 741c619b9dd5d126a34251da796f000053a72998
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
@@ -523,15 +976,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\Home\CorkBoard\" />
-    <Folder Include="Models\Weapons\Hammer\" />
-    <Folder Include="Models\Weapons\Knife\" />
-    <Folder Include="Models\Weapons\Machete\" />
-    <Folder Include="Models\Weapons\Newspaper\" />
-    <Folder Include="Textures\Home\CorkBoard\" />
-    <Folder Include="Textures\Weapons\Hammer\" />
-    <Folder Include="Textures\Weapons\Machete\" />
-    <Folder Include="Textures\Weapons\Newspaper\" />
+    <Compile Include="Textures\Home\Fortifications\wood_fortif2_D.dds">
+      <Name>wood_fortif2_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Fortifications\wood_fortif2_N.dds">
+      <Name>wood_fortif2_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Enviro\Ground\streets_blood_D.dds">
@@ -660,28 +1114,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\MainCharacter\Hair_D.dds">
-      <Name>Hair_D</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Textures\MainCharacter\Hair_N.dds">
-      <Name>Hair_N</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Textures\MainCharacter\MainCharacter_D.dds">
-      <Name>MainCharacter_D</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Textures\MainCharacter\MainCharacter_N.dds">
-      <Name>MainCharacter_N</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Textures\Enviro\Walls\Wall_D.dds">
       <Name>Wall_D</Name>
       <Importer>TextureImporter</Importer>
@@ -718,12 +1150,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="Fonts\digital-7.bmp">
-      <Name>digital-7</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>FontTextureProcessor</Processor>
-=======
     <Compile Include="Textures\HUD\a_button.png">
       <Name>a_button</Name>
       <Importer>TextureImporter</Importer>
@@ -790,9 +1216,718 @@
       <Name>burger</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
->>>>>>> 275e1ff42609e907fd4ca7030ad68a36dbd2b7a4
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Fonts\digital-7.bmp">
+      <Name>digital-7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Minor\hydrant_D.dds">
+      <Name>hydrant_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Minor\hydrant_N.dds">
+      <Name>hydrant_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Minor\barell_D.dds">
+      <Name>barell_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Minor\barell_N.dds">
+      <Name>barell_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Minor\TrashBin_D.dds">
+      <Name>TrashBin_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Minor\TrashBin_N.dds">
+      <Name>TrashBin_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Weapons\Knife\knife_D.dds">
+      <Name>knife_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\Knife\knife_N.dds">
+      <Name>knife_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Buildings\Big_house2_D.dds">
+      <Name>Big_house2_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Buildings\Big_house2_N.dds">
+      <Name>Big_house2_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Minor\GasBottle_D.dds">
+      <Name>GasBottle_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Minor\GasBottle_N.dds">
+      <Name>GasBottle_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Minor\TrashContainer_D.dds">
+      <Name>TrashContainer_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Minor\TrashContainer_N.dds">
+      <Name>TrashContainer_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Nature\TreeBig_D.dds">
+      <Name>TreeBig_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Nature\TreeBig_N.dds">
+      <Name>TreeBig_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Nature\TreeBig2_D.dds">
+      <Name>TreeBig2_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Nature\TreeBig2_N.dds">
+      <Name>TreeBig2_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\Machete\Machete_D.dds">
+      <Name>Machete_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\Machete\Machete_N.dds">
+      <Name>Machete_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Weapons\Newspaper\Newspaper_D.dds">
+      <Name>Newspaper_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Weapons\Newspaper\Newspaper_N.dds">
+      <Name>Newspaper_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Nature\strump_N.dds">
+      <Name>strump_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Nature\stump_D.dds">
+      <Name>stump_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Nature\TreeBig3_D.dds">
+      <Name>TreeBig3_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Nature\TreeBig3_N.dds">
+      <Name>TreeBig3_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Minor\bench_D.dds">
+      <Name>bench_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Minor\bench_N.dds">
+      <Name>bench_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Trash\Trash1_D.dds">
+      <Name>Trash1_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Trash\Trash1_N.dds">
+      <Name>Trash1_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Trash\Trash2_D.dds">
+      <Name>Trash2_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Trash\Trash2_N.dds">
+      <Name>Trash2_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Storyline\Food_D.dds">
+      <Name>Food_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Storyline\Food_N.dds">
+      <Name>Food_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Weapons\Maczuga\Mace_D.dds">
+      <Name>Mace_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\Maczuga\Mace_N.dds">
+      <Name>Mace_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Cars\car1_D.dds">
+      <Name>car1_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Cars\car1_N.dds">
+      <Name>car1_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Cars\car2_D.dds">
+      <Name>car2_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Cars\car2_N.dds">
+      <Name>car2_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Trash\rubble_D.dds">
+      <Name>rubble_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Trash\rubble_N.dds">
+      <Name>rubble_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Minor\TrashContainer2_D.dds">
+      <Name>TrashContainer2_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Minor\TrashContainer2_N.dds">
+      <Name>TrashContainer2_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Minor\bench2_D.dds">
+      <Name>bench2_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Minor\bench2_N.dds">
+      <Name>bench2_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Minor\Pylon_D.dds">
+      <Name>Pylon_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Minor\Pylon_N.dds">
+      <Name>Pylon_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Minor\Camera_D.dds">
+      <Name>Camera_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Minor\Camera_N.dds">
+      <Name>Camera_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Storyline\Note_D.dds">
+      <Name>Note_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Storyline\Note_N.dds">
+      <Name>Note_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Weapons\HammerSmall\HammerSmall_D.dds">
+      <Name>HammerSmall_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\HammerSmall\HammerSmall_N.dds">
+      <Name>HammerSmall_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Fonts\manaspace.bmp">
+      <Name>manaspace</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\HUD\pixelatedLogo.png">
+      <Name>pixelatedLogo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\HUD\LIVE.png">
+      <Name>LIVE</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\HUD\LIVEBG.png">
+      <Name>LIVEBG</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\HUD\menu.png">
+      <Name>menu</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Effects\POSTLogBlurEffect.fx">
+      <Name>POSTLogBlurEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Minor\TrafficLights_D.dds">
+      <Name>TrafficLights_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Minor\TrafficLights_N.dds">
+      <Name>TrafficLights_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Effects\BillboardEffect.fx">
+      <Name>BillboardEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Skyboxes\Dawn.dds">
+      <Name>Dawn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Skyboxes\Daylight.dds">
+      <Name>Daylight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Skyboxes\Dusk.dds">
+      <Name>Dusk</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Skyboxes\Night.dds">
+      <Name>Night</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\Fortifications\wood_fortif_D.dds">
+      <Name>wood_fortif_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Fortifications\wood_fortif_N.dds">
+      <Name>wood_fortif_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\CorkBoard\CorkBoard_D.dds">
+      <Name>CorkBoard_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\CorkBoard\CorkBoard_N.dds">
+      <Name>CorkBoard_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\CorkBoard\Papers_D.dds">
+      <Name>Papers_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\CorkBoard\Papers_N.dds">
+      <Name>Papers_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\Fortifications\metal_fortif_D.dds">
+      <Name>metal_fortif_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Fortifications\metal_fortif_N.dds">
+      <Name>metal_fortif_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\Furnitures\couch_D.dds">
+      <Name>couch_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Furnitures\couch_N.dds">
+      <Name>couch_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\Furnitures\Carpet_D.dds">
+      <Name>Carpet_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Furnitures\Carpet_N.dds">
+      <Name>Carpet_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\Bathroom\Sink_D.dds">
+      <Name>Sink_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Bathroom\Sink_N.dds">
+      <Name>Sink_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\WindowsDoors\DoorFrame_D.dds">
+      <Name>DoorFrame_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\WindowsDoors\DoorFrame_N.dds">
+      <Name>DoorFrame_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\WindowsDoors\wall2_D.dds">
+      <Name>wall2_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\WindowsDoors\wall_D.dds">
+      <Name>wall_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\WindowsDoors\wall_N.dds">
+      <Name>wall_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\WindowsDoors\wall2_N.dds">
+      <Name>wall2_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\Bathroom\bathroomWall_D.dds">
+      <Name>bathroomWall_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Bathroom\bathroomWall_N.dds">
+      <Name>bathroomWall_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\HUD\LoadingScreen.dds">
+      <Name>LoadingScreen</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Metro\GreenPanels_D.dds">
+      <Name>GreenPanels_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Metro\GreenPanels_N.dds">
+      <Name>GreenPanels_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Metro\Sign_D.dds">
+      <Name>Sign_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Metro\Sign_N.dds">
+      <Name>Sign_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Metro\Stone2_D.dds">
+      <Name>Stone2_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Metro\Stone2_N.dds">
+      <Name>Stone2_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Metro\Stone_D.dds">
+      <Name>Stone_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Metro\Stone_N.dds">
+      <Name>Stone_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\WindowsDoors\flor_D.dds">
+      <Name>flor_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\WindowsDoors\flor_N.dds">
+      <Name>flor_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\Bathroom\bathroom_floor_D.dds">
+      <Name>bathroom_floor_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Bathroom\bathroom_floor_N.dds">
+      <Name>bathroom_floor_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\Bathroom\toilet_D.dds">
+      <Name>toilet_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Bathroom\toilet_N.dds">
+      <Name>toilet_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Bathroom\water_dirty_D.dds">
+      <Name>water_dirty_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Bathroom\water_dirty_N.dds">
+      <Name>water_dirty_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\WindowsDoors\window_drit_D.dds">
+      <Name>window_drit_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\WindowsDoors\window_drit_N.dds">
+      <Name>window_drit_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\Stairs\beton_D.dds">
+      <Name>beton_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Stairs\beton_N.dds">
+      <Name>beton_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Stairs\old_wood_D.dds">
+      <Name>old_wood_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Stairs\old_wood_N.dds">
+      <Name>old_wood_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Stairs\Wood_D.dds">
+      <Name>Wood_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Stairs\Wood_N.dds">
+      <Name>Wood_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\Bedroom\Bed_D.dds">
+      <Name>Bed_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Bedroom\Bed_N.dds">
+      <Name>Bed_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\Furnitures\TV_D.dds">
+      <Name>TV_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Furnitures\TV_N.dds">
+      <Name>TV_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Home\Furnitures\Fridge_D.dds">
+      <Name>Fridge_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Home\Furnitures\Fridge_N.dds">
+      <Name>Fridge_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

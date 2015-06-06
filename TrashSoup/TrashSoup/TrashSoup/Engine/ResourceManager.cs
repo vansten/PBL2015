@@ -74,6 +74,18 @@ namespace TrashSoup.Engine
             AddModel("Models/Test/TestSquarePlane");
             AddModel("Models/MainCharacter/MainCharacter");
             AddAnimation("Animations/MainCharacter/walk_1");
+            AddAnimation("Animations/MainCharacter/run_1");
+            AddAnimation("Animations/MainCharacter/run_with_weapon");
+            AddAnimation("Animations/MainCharacter/run_and_attack");
+            AddAnimation("Animations/MainCharacter/attack_3");
+            AddAnimation("Animations/MainCharacter/attack_1");
+            AddAnimation("Animations/MainCharacter/attack_2");
+            AddAnimation("Animations/MainCharacter/attack_4");
+            AddAnimation("Animations/MainCharacter/bow_1");
+            AddAnimation("Animations/MainCharacter/block_1");
+            AddAnimation("Animations/MainCharacter/dying_1");
+            AddAnimation("Animations/MainCharacter/idle_1");
+            AddAnimation("Animations/MainCharacter/idle_2");
             AddAnimation("Animations/Enemies/Rat_attack");
             AddAnimation("Animations/Enemies/Rat_dying");
             AddAnimation("Animations/Enemies/Rat_idle");
@@ -228,7 +240,7 @@ namespace TrashSoup.Engine
             CustomModel ratModel = new CustomModel(rat, new Model[] { Models["Models/MainCharacter/MainCharacter"], null, null }, ratMats);
             rat.Components.Add(ratModel);
             Animator ratAnimator = new Animator(rat, ratModel.LODs[0]);
-            ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], Animations["Animations/MainCharacter/walk_1"], "Rat_TAnim"));
+            ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], Animations["Animations/MainCharacter/attack_2"], "Rat_TAnim"));
             ratAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", ratAnimator.GetAnimationPlayer("Rat_TAnim")));
             ratAnimator.CurrentState = ratAnimator.AvailableStates["Walk"];
             rat.MyAnimator = ratAnimator;

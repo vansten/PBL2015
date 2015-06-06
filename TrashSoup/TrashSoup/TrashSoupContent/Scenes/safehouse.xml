@@ -2133,13 +2133,13 @@
       <MyTransform>
         <MyObjectID>1198</MyObjectID>
         <Position>
-          <X>-7.5</X>
-          <Y>1</Y>
-          <Z>-9</Z>
+          <X>15</X>
+          <Y>1.7</Y>
+          <Z>-18.5</Z>
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>3.14</Y>
+          <Y>-1.565</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -2269,7 +2269,7 @@
         <MyObjectID>1201</MyObjectID>
         <Position>
           <X>14.5</X>
-          <Y>5.2</Y>
+          <Y>4.2</Y>
           <Z>-5</Z>
         </Position>
         <Rotation>
@@ -2318,11 +2318,6 @@
           <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
-      <MyCollider>
-        <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1201</MyObjectID>
-        <IsTrigger>true</IsTrigger>
-      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>1202</GameObjectKey>
@@ -2443,6 +2438,184 @@
         <MyObjectID>1205</MyObjectID>
         <IsTrigger>false</IsTrigger>
       </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1206</GameObjectKey>
+      <UniqueID>1206</UniqueID>
+      <Name>Couch</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1206</MyObjectID>
+        <Position>
+          <X>15</X>
+          <Y>1.7</Y>
+          <Z>-11</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>1.565</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1.2</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1206</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/Furnitures/couch</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseCouchMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1206</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1207</GameObjectKey>
+      <UniqueID>1207</UniqueID>
+      <Name>TV Desk</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1207</MyObjectID>
+        <Position>
+          <X>15</X>
+          <Y>1.4</Y>
+          <Z>-18</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1207</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/Furnitures/TV_table</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsWoodMat</Name>
+            <Name>safehouseStairsOldWoodMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1207</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1208</GameObjectKey>
+      <UniqueID>1208</UniqueID>
+      <Name>Desk</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1208</MyObjectID>
+        <Position>
+          <X>-8</X>
+          <Y>1</Y>
+          <Z>-17</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>1.565</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1.5</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1208</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/Furnitures/desk</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>safehouseStairsBetonMat</Name>
+            <Name>safehouseStairsBetonMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1208</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1209</GameObjectKey>
+      <UniqueID>1209</UniqueID>
+      <Name>Carpet</Name>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1209</MyObjectID>
+        <Position>
+          <X>1</X>
+          <Y>1.2</Y>
+          <Z>-8</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>15</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1209</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/Furnitures/carpet</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseCarpetMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
     </GameObject>
   </ObjectsDictionary>
   <Camera>
