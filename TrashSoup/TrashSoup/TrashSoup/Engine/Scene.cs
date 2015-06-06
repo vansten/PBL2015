@@ -202,6 +202,7 @@ namespace TrashSoup.Engine
         public void AddObjectRuntime(GameObject obj)
         {
             runtimeAdded.Add(obj);
+            obj.Initialize();
         }
 
         public void DeleteObjectRuntime(GameObject obj)

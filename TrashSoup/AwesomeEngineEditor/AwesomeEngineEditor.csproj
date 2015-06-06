@@ -84,6 +84,9 @@
     <Compile Include="Components\DirectionalLight.xaml.cs">
       <DependentUpon>DirectionalLight.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\DisappearingTrash.xaml.cs">
+      <DependentUpon>DisappearingTrash.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\Material.xaml.cs">
       <DependentUpon>Material.xaml</DependentUpon>
     </Compile>
@@ -101,6 +104,9 @@
     </Compile>
     <Compile Include="Components\Transform.xaml.cs">
       <DependentUpon>Transform.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Trash.xaml.cs">
+      <DependentUpon>Trash.xaml</DependentUpon>
     </Compile>
     <Compile Include="GraphicsDeviceService.cs" />
     <Compile Include="XNAControl.xaml.cs">
@@ -143,6 +149,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Components\DisappearingTrash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\Material.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -164,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\Transform.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Trash.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

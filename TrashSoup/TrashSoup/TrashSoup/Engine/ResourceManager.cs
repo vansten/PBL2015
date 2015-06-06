@@ -339,7 +339,7 @@ namespace TrashSoup.Engine
             {
                 //Editor camera
                 CurrentScene.EditorCam = new EditorCamera(1, "editorCam", Vector3.Transform(new Vector3(0.0f, 10.0f, -50.0f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)),
-                     new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 10.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
+                     new Vector3(0.0f, 5.0f, 5.0f), new Vector3(0.0f, 10.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.Pi / 3.0f, 0.1f, 2000.0f);
             }
                 //Game camera
             cam = new Camera(1, "playerCam", Vector3.Transform(new Vector3(0.0f, 1.0f, -0.1f), Matrix.CreateRotationX(MathHelper.PiOver4 * 1.5f)) + new Vector3(0.0f, 0.4f, 0.0f),

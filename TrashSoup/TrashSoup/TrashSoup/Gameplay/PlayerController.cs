@@ -52,9 +52,9 @@ namespace TrashSoup.Gameplay
         protected bool jumped = false;
 
         private bool collisionWithTrash = false;
-        private bool collectedTrash = false;
+        public bool CollectedTrash = false;
         private double collisionFakeTime = 0.0;
-        private double collectedFakeTime = 0.0;
+        public double CollectedFakeTime = 0.0;
         private GameObject trash;
 
         private bool collisionWithWeapon = false;
@@ -294,13 +294,8 @@ namespace TrashSoup.Gameplay
                 equipment.CurrentWeapon.timerOn = gameTime.TotalGameTime.TotalSeconds;
             }
 
-            if(this.collisionWithTrash || this.collisionWithWeapon)
+            if(this.collisionWithWeapon)
             {
-                if(!this.collectedTrash)
-                {
-                    this.collisionFakeTime = gameTime.TotalGameTime.TotalSeconds;
-                    GUIManager.Instance.DrawTexture(this.interactionTexture, new Vector2(0.475f, 0.775f), 0.05f, 0.05f);
-                }
                 if(!this.collectedWeapon)
                 {
                     this.collisionFakeTime = gameTime.TotalGameTime.TotalSeconds;
@@ -308,21 +303,13 @@ namespace TrashSoup.Gameplay
                 }
             }
 
-            if(!this.collectedTrash && this.collisionWithTrash && InputHandler.Instance.Action())
-            {
-                this.collectedTrash = true;
-                this.collectedFakeTime = gameTime.TotalGameTime.TotalSeconds;
-                this.trash.Enabled = false;
-                equipment.AddJunk(1);
-            }
-
-            if(this.collectedTrash)
+            if(this.CollectedTrash)
             {
                 GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"),
                     "Trash collected", trashTextPosition, Color.Red);
-                if(gameTime.TotalGameTime.TotalSeconds - this.collectedFakeTime > 2.0)
+                if(gameTime.TotalGameTime.TotalSeconds - this.CollectedFakeTime > 2.0)
                 {
-                    this.collectedTrash = false;
+                    this.CollectedTrash = false;
                 }
                 trashTextPosition.Y -= 0.002f;
             }
@@ -330,7 +317,7 @@ namespace TrashSoup.Gameplay
             if (!this.collectedWeapon && this.collisionWithWeapon && InputHandler.Instance.Action())
             {
                 this.collectedWeapon = true;
-                this.collectedFakeTime = gameTime.TotalGameTime.TotalSeconds;
+                this.CollectedFakeTime = gameTime.TotalGameTime.TotalSeconds;
                 if(this.anotherWeapon != null)
                 {
                     equipment.DropWeapon(this.anotherWeapon);
@@ -345,14 +332,12 @@ namespace TrashSoup.Gameplay
             {
                 GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"),
                     "Weapon collected", weaponTextPosition, Color.Red);
-                if (gameTime.TotalGameTime.TotalSeconds - this.collectedFakeTime > 2.0)
+                if (gameTime.TotalGameTime.TotalSeconds - this.CollectedFakeTime > 2.0)
                 {
                     this.collectedWeapon = false;
                 }
                 weaponTextPosition.Y -= 0.002f;
             }
-
-            this.collisionWithTrash = false;
             this.collisionWithWeapon = false;
 
             if(InputManager.Instance.GetKeyboardButtonDown(Keys.F))
@@ -442,12 +427,7 @@ namespace TrashSoup.Gameplay
         }
 
         public override void OnTrigger(GameObject other)
-        {
-            if(other.Name.Contains("Trash"))
-            {
-                this.collisionWithTrash = true;
-                this.trash = other;
-            }
+        { 
             if(other.Components.Exists(x => x is Weapon))
             {
                 this.collisionWithWeapon = true;

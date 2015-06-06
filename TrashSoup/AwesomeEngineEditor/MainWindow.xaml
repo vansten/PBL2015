@@ -44,6 +44,7 @@
                     <MenuItem Header="Help" Width="120" Height="40" FontSize="30" BorderBrush="Black" BorderThickness="2" Margin="50,0,0,0">
                         <MenuItem Name="AboutMI" Header="About" Click="AboutMI_Click"/>
                     </MenuItem>
+                    <MenuItem Header="Center on object" Width="100" Height="40" FontSize="12" BorderBrush="Black" BorderThickness="2" Margin="50, 0, 0, 0" Click="CenterOnObjectMI_Click" IsEnabled="{Binding IsRemoveModelMIEnabled}"/>
                 </Menu>
             </Border>
         </DockPanel>

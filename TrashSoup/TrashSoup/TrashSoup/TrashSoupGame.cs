@@ -21,6 +21,7 @@ namespace TrashSoup
         public bool EditorMode = false;
         public RenderTarget2D DefaultRenderTarget { get; set; }
         public GameTime TempGameTime { get; private set; }
+        public bool FPressed = false;
 
 #if DEBUG
         //Variables that allow us to display fps counter :) only in debug mode
@@ -110,6 +111,14 @@ namespace TrashSoup
         public void EditorUpdate()
         {
             //ResourceManager.Instance.CurrentScene.Cam.Update(new GameTime());
+            if(InputManager.Instance.GetKeyboardButtonDown(Keys.F))
+            {
+                FPressed = true;
+            }
+            else
+            {
+                FPressed = false;
+            }
             this.Update(new GameTime());
         }
 

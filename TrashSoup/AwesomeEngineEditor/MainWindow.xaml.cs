@@ -772,6 +772,16 @@ namespace AwesomeEngineEditor
                         Components.Materials m = new Components.Materials(((TrashSoup.Engine.CustomModel)oc).Mat, this);
                         this.LoadedComponents.Add(m);
                     }
+                    else if(oc.GetType() == typeof(TrashSoup.Gameplay.Trash))
+                    {
+                        Components.Trash t = new Components.Trash(((TrashSoup.Gameplay.Trash)oc));
+                        this.LoadedComponents.Add(t);
+                    }
+                    else if(oc.GetType() == typeof(TrashSoup.Gameplay.DisappearingTrash))
+                    {
+                        Components.DisappearingTrash dt = new Components.DisappearingTrash(((TrashSoup.Gameplay.DisappearingTrash)oc));
+                        this.LoadedComponents.Add(dt);
+                    }
                     else
                     {
                         Components.ComponentWindow cw = new Components.ComponentWindow(oc);
@@ -900,6 +910,16 @@ namespace AwesomeEngineEditor
 
             this.GameObjects.Add(newGo);
             TrashSoup.Engine.ResourceManager.Instance.CurrentScene.AddObject(newGo);
+        }
+
+        public void CenterOnObjectMI_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.selectedObject == null) return;
+            TrashSoup.Engine.ResourceManager.Instance.CurrentScene.EditorCam.Translation = Vector3.Zero;
+            TrashSoup.Engine.ResourceManager.Instance.CurrentScene.EditorCam.Position = this.selectedObject.MyTransform.Position + Vector3.Up * 5.0f;
+            TrashSoup.Engine.ResourceManager.Instance.CurrentScene.EditorCam.Direction = -Vector3.Up;
+            TrashSoup.Engine.ResourceManager.Instance.CurrentScene.EditorCam.CurXRot = 0.0f;
+            TrashSoup.Engine.ResourceManager.Instance.CurrentScene.EditorCam.CurYRot = MathHelper.PiOver2;
         }
     }
 }

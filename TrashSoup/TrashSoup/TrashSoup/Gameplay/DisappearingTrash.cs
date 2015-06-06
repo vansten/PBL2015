@@ -1,0 +1,68 @@
+﻿using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using TrashSoup.Engine;
+
+namespace TrashSoup.Gameplay
+{
+    public class DisappearingTrash : ObjectComponent
+    {
+        public int TrashCount = 1;
+
+        public DisappearingTrash(GameObject go) : base(go)
+        {
+
+        }
+
+        public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
+        {
+
+        }
+
+        public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
+        {
+
+        }
+
+        protected override void Start()
+        {
+
+        }
+
+        public override void Initialize()
+        {
+            GameObject go = new GameObject((uint)SingleRandom.Instance.rnd.Next() + 105012, "MyTrigger");
+            go.MyTransform = new Transform(go, this.MyObject.MyTransform.Position, Vector3.Forward, Vector3.Zero, this.MyObject.MyTransform.Scale + 3.0f);
+            TrashTrigger tt = new TrashTrigger(go);
+            go.MyCollider = new BoxCollider(go, true);
+            tt.Init(this.MyObject, this.TrashCount);
+            go.Components.Add(tt);
+            this.MyObject.AddChild(go);
+            ResourceManager.Instance.CurrentScene.AddObjectRuntime(go);
+            base.Initialize();
+        }
+
+
+        public override void ReadXml(System.Xml.XmlReader reader)
+        {
+            reader.ReadStartElement();
+
+            reader.ReadStartElement("TrashCount");
+            this.TrashCount = reader.ReadContentAsInt();
+            reader.ReadEndElement();
+            base.ReadXml(reader);
+
+            reader.ReadEndElement();
+        }
+
+        public override void WriteXml(System.Xml.XmlWriter writer)
+        {
+            writer.WriteStartElement("TrashCount");
+            writer.WriteValue(this.TrashCount);
+            writer.WriteEndElement();
+            base.WriteXml(writer);
+        }
+    }
+}

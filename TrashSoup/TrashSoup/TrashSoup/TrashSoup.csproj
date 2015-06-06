@@ -122,6 +122,8 @@
     <Compile Include="Engine\WaterMaterial.cs" />
     <Compile Include="Gameplay\AITest.cs" />
     <Compile Include="Gameplay\DaytimeChange.cs" />
+    <Compile Include="Gameplay\Trash.cs" />
+    <Compile Include="Gameplay\DisappearingTrash.cs" />
     <Compile Include="Gameplay\Enemy.cs" />
     <Compile Include="Gameplay\Equipment.cs" />
     <Compile Include="Gameplay\Food.cs" />
@@ -137,6 +139,7 @@
     <Compile Include="Gameplay\RatAI\RatWalk.cs" />
     <Compile Include="Gameplay\RatTurningTrigger.cs" />
     <Compile Include="Gameplay\RatTrigger.cs" />
+    <Compile Include="Gameplay\TrashTrigger.cs" />
     <Compile Include="Gameplay\Weapons\Fists.cs" />
     <Compile Include="Gameplay\Weapons\NoFreePlaceSign.cs" />
     <Compile Include="Gameplay\PlayerCameraController.cs" />

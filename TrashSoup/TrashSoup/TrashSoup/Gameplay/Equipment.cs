@@ -65,7 +65,10 @@ namespace TrashSoup.Gameplay
             if (JunkCount + count <= MAX_JUNK_CAPACITY)
                 JunkCount += count;
             else
+            {
                 showJunkWarning = true;
+                this.JunkCount = MAX_JUNK_CAPACITY;
+            }
             return;
         }
 
@@ -74,7 +77,10 @@ namespace TrashSoup.Gameplay
             if (FoodCount < MAX_FOOD_CAPACITY)
                 FoodCount++;
             else
+            {
                 this.showFoodWarning = true;
+                this.FoodCount = MAX_FOOD_CAPACITY;
+            }
             return;
         }
 
