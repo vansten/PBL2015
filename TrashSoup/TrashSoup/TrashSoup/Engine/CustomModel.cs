@@ -133,6 +133,8 @@ namespace TrashSoup.Engine
                     else
                         camera = cam;
 
+                GraphicsDevice device = TrashSoupGame.Instance.GraphicsDevice;
+
                 float distance = Math.Abs(Vector3.Distance((camera.Position + camera.Translation), MyObject.MyTransform.GetWorldMatrix().Translation));
                 if(!ResourceManager.Instance.CurrentScene.Params.UseLods || !this.LodControlled || this.LODs[1] == null)
                 {

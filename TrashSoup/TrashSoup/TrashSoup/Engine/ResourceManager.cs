@@ -208,7 +208,7 @@ namespace TrashSoup.Engine
 
             // loading gameobjects
             GameObject testBox = new GameObject(1, "Player");
-            testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 5.0f, -5.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
+            testBox.MyTransform = new Transform(testBox, new Vector3(-10.0f, 0.0f, -25.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
             CustomModel skModel = new CustomModel(testBox, new Model[] { Models["Models/Test/TestGuy"], null, null }, playerMats);
             Animator playerAnimator = new Animator(testBox, skModel.LODs[0]);
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/Test/walking_1"], "Animations/Test/walking_1"));
@@ -228,7 +228,7 @@ namespace TrashSoup.Engine
             CustomModel ratModel = new CustomModel(rat, new Model[] { Models["Models/MainCharacter/MainCharacter"], null, null }, ratMats);
             rat.Components.Add(ratModel);
             Animator ratAnimator = new Animator(rat, ratModel.LODs[0]);
-            ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], Animations["Animations/MainCharacter/walk_1"], "Rat_TAnim"));
+            ratAnimator.AddAnimationClip(LoadAnimationFromModel(LoadAnimation("Animations/MainCharacter/idle_Hweapon"), LoadAnimation("Animations/MainCharacter/idle_Hweapon"), "Rat_TAnim"));
             ratAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", ratAnimator.GetAnimationPlayer("Rat_TAnim")));
             ratAnimator.CurrentState = ratAnimator.AvailableStates["Walk"];
             rat.MyAnimator = ratAnimator;
@@ -241,8 +241,8 @@ namespace TrashSoup.Engine
             testTer.Components.Add(terModel);
 
             GameObject testBox2 = new GameObject(3, "testBox2");
-            testBox2.MyTransform = new Transform(testBox2, new Vector3(10.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
-            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Enviro/Ground/street_cross"], null, null }, deSign));
+            testBox2.MyTransform = new Transform(testBox2, new Vector3(30.0f, 0.0f, 20.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
+            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Test/TestBox"], null, null }, deSign));
             //Billboard billboard = new Billboard(testBox2);
             //Material bbmat = new Material("billboard", Effects[@"Effects\BillboardEffect"], LoadTexture(@"Textures\Enviro\Nature\Sun"));
             //billboard.Mat = bbmat;
@@ -636,6 +636,8 @@ namespace TrashSoup.Engine
             path = @"Effects\ShadowMapBlurredEffect";
             LoadEffect(path);
             path = @"Effects\POSTBlurEffect";
+            LoadEffect(path);
+            path = @"Effects\POSTBoxBlurEffect";
             LoadEffect(path);
             path = @"Effects\ShadowMapUnnormalizedEffect";
             LoadEffect(path);

@@ -51,7 +51,11 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
 	//////
 	float4 color = float4(0.0f, 0.0f, 0.0f, 1.0f);
-	color.r = (input.Position2D.z / (input.Position2D.w));
+	float depth = (input.Position2D.z / (input.Position2D.w));
+	color.r = depth;
+	float dx = ddx(depth);
+	float dy = ddy(depth);
+	color.g = depth*depth + 0.25f*(dx*dx + dy*dy);
 
 	return color;
 }

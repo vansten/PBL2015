@@ -14,9 +14,9 @@ texture DirLight0ShadowMap;
 sampler DirLight0ShadowMapSampler = sampler_state
 {
 	texture = <DirLight0ShadowMap>;
-	MipFilter = Linear;
-	MinFilter = Linear;
-	MagFilter = Linear;
+	MipFilter = Point;
+	MinFilter = Point;
+	MagFilter = Point;
 	AddressU = clamp;
 	AddressV = clamp;
 };

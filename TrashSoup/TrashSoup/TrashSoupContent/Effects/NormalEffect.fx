@@ -19,27 +19,27 @@ texture DirLight0ShadowMap2;
 sampler DirLight0ShadowMapSampler = sampler_state
 {
 	texture = <DirLight0ShadowMap>;
-	MipFilter = Linear;
-	MinFilter = Linear;
-	MagFilter = Linear;
+	MipFilter = Point;
+	MinFilter = Point;
+	MagFilter = Point;
 	AddressU = clamp;
 	AddressV = clamp;
 };
 sampler DirLight0ShadowMapSampler1 = sampler_state
 {
 	texture = <DirLight0ShadowMap1>;
-	MipFilter = Linear;
-	MinFilter = Linear;
-	MagFilter = Linear;
+	MipFilter = Point;
+	MinFilter = Point;
+	MagFilter = Point;
 	AddressU = clamp;
 	AddressV = clamp;
 };
 sampler DirLight0ShadowMapSampler2 = sampler_state
 {
 	texture = <DirLight0ShadowMap2>;
-	MipFilter = Linear;
-	MinFilter = Linear;
-	MagFilter = Linear;
+	MipFilter = Point;
+	MinFilter = Point;
+	MagFilter = Point;
 	AddressU = clamp;
 	AddressV = clamp;
 };
@@ -155,7 +155,100 @@ inline void ComputeSingleLight(float3 L, float3 color, float3 specularColor, flo
 	pair.Specular += specular * specularColor * pair.Diffuse;
 }
 
-ColorPair ComputeLight(float3 posWS, float3 E, float3 N)
+inline float ChebyshevUpperBound(float2 moments, float t)
+{
+	// One-tailed inequality if t > Moments.x
+	float p = (t <= moments.x);
+
+	// compute variance
+	float variance = moments.y - (moments.x * moments.x);
+	variance = max(variance, MIN_VARIANCE);
+
+	// compute probabilistic upper bound
+	float d = t - moments.x;
+	float pMax = variance / (variance + d * d);
+	
+	return max(p, pMax);
+}
+
+inline float LinStep(float min, float max, float v)
+{
+	return clamp((v - min) / (max - min), 0.0f, 1.0f);
+}
+
+inline float ShadowContribution(float pixelDepth, float4 dirPos, float4 dirPos1, float4 dirPos2)
+{
+	if (pixelDepth >= CAM_DIRECTIONAL_BOUNDARY_2)
+		return 1.0f;
+
+	float3 depthVec = float3(1.0f, 0.0f, 0.0f);
+
+	[branch]
+	if (pixelDepth > CAM_DIRECTIONAL_BOUNDARY_0 && pixelDepth <= CAM_DIRECTIONAL_BOUNDARY_1)
+	{
+		dirPos = dirPos1;
+		depthVec = float3(0.0f, 1.0f, 0.0f);
+	}
+	else if (pixelDepth > CAM_DIRECTIONAL_BOUNDARY_1)
+	{
+		dirPos = dirPos2;
+		depthVec = float3(0.0f, 0.0f, 1.0f);
+	}
+
+	float2 projectedDLScoords;
+	projectedDLScoords.x = (dirPos.x / dirPos.w) / 2.0f + 0.5f;
+	projectedDLScoords.y = (-dirPos.y / dirPos.w) / 2.0f + 0.5f;
+
+	float2 depth = tex2D(DirLight0ShadowMapSampler, projectedDLScoords).rg * depthVec.x;
+	float2 depth1 = tex2D(DirLight0ShadowMapSampler1, projectedDLScoords).rg * depthVec.y;
+	float2 depth2 = tex2D(DirLight0ShadowMapSampler2, projectedDLScoords).rg * depthVec.z;
+
+	depth = max(depth, max(depth1, depth2));
+	
+	float shadow = ChebyshevUpperBound(depth, dirPos.z / dirPos.w);
+	shadow = LinStep(BLEED_REDUCTION, 1.0f, shadow);
+	return shadow;
+}
+
+inline float ShadowContributionOld(float pixelDepth, float4 dirPos, float4 dirPos1, float4 dirPos2)
+{
+	[branch]
+	if (pixelDepth >= CAM_DIRECTIONAL_BOUNDARY_2)
+		return 1.0f;
+
+	float3 depthVec = float3(1.0f, 0.0f, 0.0f);
+
+		[branch]
+	if (pixelDepth > CAM_DIRECTIONAL_BOUNDARY_0 && pixelDepth <= CAM_DIRECTIONAL_BOUNDARY_1)
+	{
+		dirPos = dirPos1;
+		depthVec = float3(0.0f, 1.0f, 0.0f);
+	}
+	else if (pixelDepth > CAM_DIRECTIONAL_BOUNDARY_1)
+	{
+		dirPos = dirPos2;
+		depthVec = float3(0.0f, 0.0f, 1.0f);
+	}
+
+	float2 projectedDLScoords;
+	projectedDLScoords.x = (dirPos.x / dirPos.w) / 2.0f + 0.5f;
+	projectedDLScoords.y = (-dirPos.y / dirPos.w) / 2.0f + 0.5f;
+
+	float2 depth = tex2D(DirLight0ShadowMapSampler, projectedDLScoords).rg * depthVec.x;
+	float2 depth1 = tex2D(DirLight0ShadowMapSampler1, projectedDLScoords).rg * depthVec.y;
+	float2 depth2 = tex2D(DirLight0ShadowMapSampler2, projectedDLScoords).rg * depthVec.z;
+
+	depth = max(depth, max(depth1, depth2));
+
+	float shadow = saturate(exp(max(ESM_MIN, ESM_K * (depth - ((dirPos.z / dirPos.w) - SHADOW_BIAS)))));
+	shadow = 1.0f - (ESM_DIFFUSE_SCALE * (1.0f - shadow));
+	shadow = saturate(shadow);
+
+	shadow = LinStep(BLEED_REDUCTION, 1.0f, shadow);
+	return shadow;
+}
+
+inline ColorPair ComputeLight(float3 posWS, float3 E, float3 N)
 {
 	E = normalize(E);
 	N = normalize(N);
@@ -206,7 +299,7 @@ ColorPair ComputeLight(float3 posWS, float3 E, float3 N)
 	return result;
 }
 
-ColorPair ComputeLightShadows(float3 posWS, float3 E, float3 N, float4 dirPos, float4 dirPos1, float4 dirPos2, float4 posvs, float4 pointPos)
+inline ColorPair ComputeLightShadows(float3 posWS, float3 E, float3 N, float4 dirPos, float4 dirPos1, float4 dirPos2, float4 posvs, float4 pointPos)
 {
 	float pixelDepth = length(E);
 
@@ -221,46 +314,14 @@ ColorPair ComputeLightShadows(float3 posWS, float3 E, float3 N, float4 dirPos, f
 	temp.Diffuse = 0;
 	temp.Specular = 0;
 
-	
-	float3 depthVec = float3(1.0f, 0.0f, 0.0f);
-
-	[branch]
-	if (pixelDepth > CAM_DIRECTIONAL_BOUNDARY_0 && pixelDepth <= CAM_DIRECTIONAL_BOUNDARY_1)
-	{
-		dirPos = dirPos1;
-		depthVec = float3(0.0f, 1.0f, 0.0f);
-	}
-	else if (pixelDepth > CAM_DIRECTIONAL_BOUNDARY_1)
-	{
-		dirPos = dirPos2;
-		depthVec = float3(0.0f, 0.0f, 1.0f);
-	}
-
-	// shadows for DirLight0
-	float2 projectedDLScoords;
-	projectedDLScoords.x = (dirPos.x / dirPos.w) / 2.0f + 0.5f;
-	projectedDLScoords.y = (-dirPos.y / dirPos.w) / 2.0f + 0.5f;
-
-	float depth = tex2D(DirLight0ShadowMapSampler, projectedDLScoords).r * depthVec.x;
-	float depth1 = tex2D(DirLight0ShadowMapSampler1, projectedDLScoords).r * depthVec.y;
-	float depth2 = tex2D(DirLight0ShadowMapSampler2, projectedDLScoords).r * depthVec.z;
-
-	depth = max(depth, max(depth1, depth2));
-
-	float dist = dirPos.z / dirPos.w;
-	
-	/*[branch]
-	if (depth < 0.001f || depth > 0.8f)
-		depth = 1000000.0f;*/
 
 	// DirLight0
 	ComputeSingleLight(-DirLight0Direction, DirLight0DiffuseColor,
 		float3(DirLight0SpecularColor.x * SpecularColor.x, DirLight0SpecularColor.y * SpecularColor.y, DirLight0SpecularColor.z * SpecularColor.z), E, N, result);
 
-	float shadow = saturate(exp(max(ESM_MIN, ESM_K * (depth - (dist - SHADOW_BIAS)))));
-	shadow = 1.0f - (ESM_DIFFUSE_SCALE * (1.0f - shadow));
-	result.Diffuse = lerp(AmbientLightColor, result.Diffuse, saturate(shadow));
-	result.Specular = result.Specular * shadow;
+	float shadow = ShadowContribution(pixelDepth, dirPos, dirPos1, dirPos2);
+	result.Diffuse = lerp(AmbientLightColor, result.Diffuse, shadow);
+	result.Specular = lerp(0.0f, result.Specular, shadow);
 
 	// DirLight1
 	ComputeSingleLight(-DirLight1Direction, DirLight1DiffuseColor,
@@ -324,7 +385,7 @@ ColorPair ComputeLightShadows(float3 posWS, float3 E, float3 N, float4 dirPos, f
 	return result;
 }
 
-ColorPair ComputeLightBlurredShadows(float3 posWS, float3 E, float3 N, float2 coords)
+inline ColorPair ComputeLightBlurredShadows(float3 posWS, float3 E, float3 N, float2 coords)
 {
 	E = normalize(E);
 	N = normalize(N);

@@ -7,7 +7,7 @@
     <Lod1Distance>40</Lod1Distance>
     <Lod2Distance>80</Lod2Distance>
     <Shadows>true</Shadows>
-    <SoftShadows>true</SoftShadows>
+    <SoftShadows>false</SoftShadows>
     <Bloom>true</Bloom>
     <UseGraph>true</UseGraph>
     <UseLods>true</UseLods>

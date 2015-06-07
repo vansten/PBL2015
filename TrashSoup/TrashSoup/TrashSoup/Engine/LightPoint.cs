@@ -120,8 +120,11 @@ namespace TrashSoup.Engine
             }
 
             Effect myShadowEffect = ResourceManager.Instance.Effects[@"Effects\ShadowMapUnnormalizedEffect"];
+            SamplerState sp = TrashSoupGame.Instance.GraphicsDevice.SamplerStates[0];
+            TrashSoupGame.Instance.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 
             myShadowEffect.Parameters["LightPos"].SetValue(MyTransform.Position);
+
             for(int i = 0; i < 6 ; ++i)
             {
                 TrashSoupGame.Instance.GraphicsDevice.SetRenderTarget(ShadowMapRenderTarget512, (CubeMapFace)i);
@@ -129,6 +132,7 @@ namespace TrashSoup.Engine
                 ResourceManager.Instance.CurrentScene.DrawAll(Cameras[i], myShadowEffect, TrashSoupGame.Instance.TempGameTime, false);
             }
             TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
+            TrashSoupGame.Instance.GraphicsDevice.SamplerStates[0] = sp;
         }
 
         public void SetupShadowRender()

@@ -8,11 +8,11 @@ static const int g_cKernelSize = 5;
 
 float2 PixelKernel[g_cKernelSize] = 
 {
-	{ -3.5f, 0.0f },
-	{ -1.5f, 0.0f },
+	{ -5.5f, 0.0f },
+	{ -2.5f, 0.0f },
 	{ 0.0f, 0.0f },
-	{ 1.5f, 0.0f },
-	{3.5f, 0.0f}
+	{ 2.5f, 0.0f },
+	{5.5f, 0.0f}
 };
 
 static const float BlurWeights[g_cKernelSize] =
@@ -33,9 +33,9 @@ texture ScreenTexture;
 sampler ScreenSampler = sampler_state
 {
 	texture = <ScreenTexture>;
-	MipFilter = Linear;
-	MinFilter = Linear;
-	MagFilter = Linear;
+	MipFilter = Point;
+	MinFilter = Point;
+	MagFilter = Point;
 	AddressU = clamp;
 	AddressV = clamp;
 };
