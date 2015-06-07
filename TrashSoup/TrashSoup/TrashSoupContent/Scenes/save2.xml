@@ -37830,10 +37830,6 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
-        <TrashSoup.Gameplay.Trash>
-          <TrashCount>1</TrashCount>
-          <MyObjectID>1239</MyObjectID>
-        </TrashSoup.Gameplay.Trash>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
@@ -37879,10 +37875,6 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
-        <TrashSoup.Gameplay.Trash>
-          <TrashCount>1</TrashCount>
-          <MyObjectID>1240</MyObjectID>
-        </TrashSoup.Gameplay.Trash>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
@@ -37973,10 +37965,6 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
-        <TrashSoup.Gameplay.Trash>
-          <TrashCount>1</TrashCount>
-          <MyObjectID>1242</MyObjectID>
-        </TrashSoup.Gameplay.Trash>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
@@ -38022,10 +38010,6 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
-        <TrashSoup.Gameplay.Trash>
-          <TrashCount>1</TrashCount>
-          <MyObjectID>1243</MyObjectID>
-        </TrashSoup.Gameplay.Trash>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
@@ -38071,10 +38055,6 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
-        <TrashSoup.Gameplay.Trash>
-          <TrashCount>1</TrashCount>
-          <MyObjectID>1244</MyObjectID>
-        </TrashSoup.Gameplay.Trash>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
@@ -38120,10 +38100,6 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
-        <TrashSoup.Gameplay.Trash>
-          <TrashCount>1</TrashCount>
-          <MyObjectID>1245</MyObjectID>
-        </TrashSoup.Gameplay.Trash>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
@@ -38214,10 +38190,6 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
-        <TrashSoup.Gameplay.Trash>
-          <TrashCount>1</TrashCount>
-          <MyObjectID>1248</MyObjectID>
-        </TrashSoup.Gameplay.Trash>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
@@ -38263,10 +38235,6 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
-        <TrashSoup.Gameplay.Trash>
-          <TrashCount>1</TrashCount>
-          <MyObjectID>1249</MyObjectID>
-        </TrashSoup.Gameplay.Trash>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
@@ -38312,10 +38280,6 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
-        <TrashSoup.Gameplay.Trash>
-          <TrashCount>1</TrashCount>
-          <MyObjectID>1250</MyObjectID>
-        </TrashSoup.Gameplay.Trash>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
@@ -38361,10 +38325,6 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
-        <TrashSoup.Gameplay.Trash>
-          <TrashCount>1</TrashCount>
-          <MyObjectID>1251</MyObjectID>
-        </TrashSoup.Gameplay.Trash>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
@@ -38410,10 +38370,6 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
-        <TrashSoup.Gameplay.Trash>
-          <TrashCount>1</TrashCount>
-          <MyObjectID>1252</MyObjectID>
-        </TrashSoup.Gameplay.Trash>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
@@ -38459,10 +38415,6 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
-        <TrashSoup.Gameplay.Trash>
-          <TrashCount>1</TrashCount>
-          <MyObjectID>1253</MyObjectID>
-        </TrashSoup.Gameplay.Trash>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
@@ -38508,10 +38460,6 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
-        <TrashSoup.Gameplay.Trash>
-          <TrashCount>1</TrashCount>
-          <MyObjectID>1254</MyObjectID>
-        </TrashSoup.Gameplay.Trash>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
@@ -38602,10 +38550,6 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
-        <TrashSoup.Gameplay.Trash>
-          <TrashCount>1</TrashCount>
-          <MyObjectID>1256</MyObjectID>
-        </TrashSoup.Gameplay.Trash>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
@@ -39011,10 +38955,6 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
-        <TrashSoup.Gameplay.Trash>
-          <TrashCount>1</TrashCount>
-          <MyObjectID>1265</MyObjectID>
-        </TrashSoup.Gameplay.Trash>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
@@ -39305,10 +39245,6 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
-        <TrashSoup.Gameplay.Trash>
-          <TrashCount>1</TrashCount>
-          <MyObjectID>1272</MyObjectID>
-        </TrashSoup.Gameplay.Trash>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
