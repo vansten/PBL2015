@@ -1010,6 +1010,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\Enviro\Buildings\Small_House.FBX">
+      <Name>Small_House</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -2007,7 +2012,18 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Buildings\Small_House_D.dds">
+      <Name>Small_House_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Buildings\Small_House_N.dds">
+      <Name>Small_House_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
