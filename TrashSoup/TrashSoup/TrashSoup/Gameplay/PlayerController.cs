@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 using TrashSoup.Engine;
@@ -77,6 +78,9 @@ namespace TrashSoup.Gameplay
         private Texture2D interactionTexture;
         private Vector2 trashTextPosition = new Vector2(0.43f, 0.35f);
         private Vector2 weaponTextPosition = new Vector2(0.43f, 0.35f);
+
+        public SoundEffect WalkSoundEffect;
+        public SoundEffectInstance Walk;
 
         #endregion
 
@@ -208,6 +212,7 @@ namespace TrashSoup.Gameplay
                 }
                 if(moving == true)
                 {
+                    Walk.Play();
                     MyObject.MyAnimator.CurrentInterpolation = MathHelper.Clamp(tempMove.Length(), 0.0f, 1.0f);
                 }
                 // now to rotate that damn vector as camera direction is rotated
@@ -246,6 +251,7 @@ namespace TrashSoup.Gameplay
             {
                 if (moving == true)
                 {
+                    Walk.Stop(true);
                     moving = false;
                     MyObject.MyAnimator.RemoveBlendStateToCurrent();
                 }
@@ -267,6 +273,7 @@ namespace TrashSoup.Gameplay
 
             if(jumping)
             {
+                Walk.Stop(true);
                 jumpTimer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
                 if(!jumped && jumpTimer > 0.75f)
                 {
@@ -424,6 +431,10 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["Idle"];
                 //MyObject.MyAnimator.SetBlendState("Walk");
             }
+
+            WalkSoundEffect = TrashSoupGame.Instance.Content.Load<SoundEffect>(@"Audio/Character/walk");
+            Walk = WalkSoundEffect.CreateInstance();
+            Walk.Pitch += 0.2f;
         }
 
         public override void OnTrigger(GameObject other)

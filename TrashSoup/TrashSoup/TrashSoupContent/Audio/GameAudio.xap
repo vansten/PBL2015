@@ -141,7 +141,7 @@ Global Settings
         Reserved = 1;
         Read Only = 0;
         Time = 0;
-        Value = 343.500000;
+        Value = 443.500000;
         Initial Value = 343.500000;
         Min = 0.000000;
         Max = 1000000.000000;
@@ -225,15 +225,15 @@ Wave Bank
     Windows Bank Path Edited = 0;
     Seek Tables = 1;
     Compression Preset Name = <none>;
-    Bank Last Revised Low = 2020400301;
-    Bank Last Revised High = 30432907;
+    Bank Last Revised Low = 3360220149;
+    Bank Last Revised High = 30450200;
 
     Wave
     {
-        Name = Track1;
-        File = Track1.wav;
-        Build Settings Last Modified Low = 1766816599;
-        Build Settings Last Modified High = 30432907;
+        Name = exploration;
+        File = Ambient\exploration.wav;
+        Build Settings Last Modified Low = 2166919025;
+        Build Settings Last Modified High = 30450194;
 
         Cache
         {
@@ -242,12 +242,58 @@ Wave Bank
             Sampling Rate = 44100;
             Bits Per Sample = 1;
             Play Region Offset = 44;
-            Play Region Length = 3603472;
+            Play Region Length = 14558292;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3471218055;
-            Last Modified High = 30431625;
+            Last Modified Low = 2088674118;
+            Last Modified High = 30450194;
+        }
+    }
+
+    Wave
+    {
+        Name = menu;
+        File = Ambient\menu.wav;
+        Build Settings Last Modified Low = 1067369697;
+        Build Settings Last Modified High = 30450196;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 8271360;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 596873739;
+            Last Modified High = 30450196;
+        }
+    }
+
+    Wave
+    {
+        Name = walk;
+        File = Character\walk.wav;
+        Build Settings Last Modified Low = 3345214387;
+        Build Settings Last Modified High = 30450200;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 433152;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 2975911794;
+            Last Modified High = 30450200;
         }
     }
 }
@@ -262,7 +308,7 @@ Sound Bank
 
     Sound
     {
-        Name = Track1;
+        Name = exploration;
         Volume = -1200;
         Pitch = 0;
         Priority = 0;
@@ -299,8 +345,103 @@ Sound Bank
                 {
                     Bank Name = Wave Bank;
                     Bank Index = 0;
-                    Entry Name = Track1;
+                    Entry Name = exploration;
                     Entry Index = 0;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = menu;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Loop Count = 255;
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = menu;
+                    Entry Index = 1;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = walk;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = walk;
+                    Entry Index = 2;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -310,7 +451,7 @@ Sound Bank
 
     Cue
     {
-        Name = Track1;
+        Name = exploration;
 
         Variation
         {
@@ -321,8 +462,48 @@ Sound Bank
 
         Sound Entry
         {
-            Name = Track1;
+            Name = exploration;
             Index = 0;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = menu;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = menu;
+            Index = 1;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = walk;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = walk;
+            Index = 2;
             Weight Min = 0;
             Weight Max = 255;
         }

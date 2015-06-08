@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Audio;
 using TrashSoup.Engine;
 
 namespace TrashSoup.Gameplay
@@ -57,6 +58,8 @@ namespace TrashSoup.Gameplay
 
         private Color activeColor = Color.Yellow;
         private Color normalColor = Color.Lime;
+
+        private Cue bgCue;
 
         private MenuStateEnum menuState = MenuStateEnum.MainMenu;
 
@@ -157,6 +160,7 @@ namespace TrashSoup.Gameplay
                 {
                     case 0:
                         SaveManager.Instance.XmlPath = "../../../../TrashSoupContent/Scenes/loading.xml";
+                        bgCue.Stop(AudioStopOptions.Immediate);
                         SaveManager.Instance.LoadFileAction();
                         break;
                     case 1:
@@ -183,6 +187,11 @@ namespace TrashSoup.Gameplay
             this.backgroundTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/menu");
             this.logoTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/pixelatedLogo");
             this.font = TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/manaspace");
+            if (!TrashSoupGame.Instance.EditorMode)
+            {
+                bgCue = AudioManager.Instance.GetCue("menu");
+                bgCue.Play();
+            }
             base.Initialize();
         }
 
