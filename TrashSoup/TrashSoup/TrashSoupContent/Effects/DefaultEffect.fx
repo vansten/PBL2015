@@ -126,14 +126,14 @@ inline void ComputeSingleLight(float3 L, float3 color, float3 specularColor, flo
 }
 
 
-inline float ChebyshevUpperBound(float2 moments, float t)
+inline float ChebyshevUpperBound(float2 moments, float t, float minVariance)
 {
 	// One-tailed inequality if t > Moments.x
 	float p = (t <= moments.x);
 
 	// compute variance
 	float variance = moments.y - (moments.x * moments.x);
-	variance = max(variance, MIN_VARIANCE);
+	variance = max(variance, minVariance);
 
 	// compute probabilistic upper bound
 	float d = t - moments.x;
@@ -147,7 +147,7 @@ inline float LinStep(float min, float max, float v)
 	return clamp((v - min) / (max - min), 0.0f, 1.0f);
 }
 
-inline float ShadowContribution(float pixelDepth, float4 dirPos, float4 dirPos1, float4 dirPos2)
+inline float ShadowContribution(float pixelDepth, float4 dirPos, float4 dirPos1, float4 dirPos2, float theta)
 {
 	[branch]
 	if (pixelDepth >= CAM_DIRECTIONAL_BOUNDARY_2)
@@ -155,16 +155,23 @@ inline float ShadowContribution(float pixelDepth, float4 dirPos, float4 dirPos1,
 
 	float2 sampleVec = float2(0.0f, 0.0f);
 
-		[branch]
+		float minVariance = MIN_VARIANCE_0;
+	float blurOffset = BLUR_OFFSET_0;
+
+	[branch]
 	if (pixelDepth > CAM_DIRECTIONAL_BOUNDARY_0 && pixelDepth <= CAM_DIRECTIONAL_BOUNDARY_1)
 	{
 		dirPos = dirPos1;
 		sampleVec = float2(0.5f, 0.0f);
+		minVariance = MIN_VARIANCE_1;
+		blurOffset = BLUR_OFFSET_1;
 	}
 	else if (pixelDepth > CAM_DIRECTIONAL_BOUNDARY_1)
 	{
 		dirPos = dirPos2;
 		sampleVec = float2(0.0f, 0.5f);
+		minVariance = MIN_VARIANCE_2;
+		blurOffset = BLUR_OFFSET_2;
 	}
 
 	float2 projectedDLScoords;
@@ -178,19 +185,19 @@ inline float ShadowContribution(float pixelDepth, float4 dirPos, float4 dirPos1,
 		for (float j = -BLUR_SIZE; j <= BLUR_SIZE; j += 1.0f)
 		{
 			depth = depth + tex2Dproj(DirLight0ShadowMapSampler, float4(
-				projectedDLScoords + float2(i, j) * BLUR_OFFSET, 1.0f, 1.0f));
+				projectedDLScoords + float2(i, j) * blurOffset, 1.0f, 1.0f));
 			ctr += 1.0f;
 		}
 	}
 
 	depth = depth / ctr;
 
-	float shadow = ChebyshevUpperBound(depth, dirPos.z / dirPos.w);
+	float shadow = ChebyshevUpperBound(depth, dirPos.z / dirPos.w, minVariance * theta);
 	shadow = LinStep(BLEED_REDUCTION, 1.0f, shadow);
 	return shadow;
 }
 
-inline float ShadowContributionPoint(float pixelDepth, float3 dirPos, float att)
+inline float ShadowContributionPoint(float pixelDepth, float3 dirPos, float att, float theta)
 {
 	dirPos = normalize(-(float3(dirPos.x, dirPos.y, -dirPos.z) * att));
 
@@ -210,7 +217,7 @@ inline float ShadowContributionPoint(float pixelDepth, float3 dirPos, float att)
 
 	depth = depth / ctr;
 
-	float shadow = ChebyshevUpperBound(depth, pixelDepth / SHADOW_POINT_MAX_DIST);
+	float shadow = ChebyshevUpperBound(depth, pixelDepth / SHADOW_POINT_MAX_DIST, MIN_VARIANCE_0 *  theta);
 	shadow = LinStep(BLEED_REDUCTION, 1.0f, shadow);
 	return shadow;
 }
@@ -283,12 +290,13 @@ inline ColorPair ComputeLightShadows(float3 posWS, float3 E, float3 N, float4 di
 	temp.Diffuse = 0;
 	temp.Specular = 0;
 
+	float theta = tan(acos(saturate(dot(N, -DirLight0Direction))));
 
 	// DirLight0
 	ComputeSingleLight(-DirLight0Direction, DirLight0DiffuseColor,
 		float3(DirLight0SpecularColor.x * SpecularColor.x, DirLight0SpecularColor.y * SpecularColor.y, DirLight0SpecularColor.z * SpecularColor.z), E, N, result);
 
-	float shadow = ShadowContribution(pixelDepth, dirPos, dirPos1, dirPos2);
+	float shadow = ShadowContribution(pixelDepth, dirPos, dirPos1, dirPos2, theta);
 	result.Diffuse = lerp(AmbientLightColor, result.Diffuse, shadow);
 	result.Specular = lerp(0.0f, result.Specular, shadow);
 
@@ -318,7 +326,7 @@ inline ColorPair ComputeLightShadows(float3 posWS, float3 E, float3 N, float4 di
 		float3(PointLightSpecularColors[0].x * SpecularColor.x, PointLightSpecularColors[0].y * SpecularColor.y, PointLightSpecularColors[0].z * SpecularColor.z),
 		E, N, temp);
 
-	float shadowP = ShadowContributionPoint(Llength, L, att);
+	float shadowP = ShadowContributionPoint(Llength, L, att, theta);
 
 	temp.Diffuse = temp.Diffuse * att;
 	temp.Diffuse = lerp(0.0f, temp.Diffuse, saturate(shadowP));

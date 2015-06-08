@@ -242,7 +242,7 @@ namespace TrashSoup.Engine
 
             GameObject testBox2 = new GameObject(3, "testBox2");
             testBox2.MyTransform = new Transform(testBox2, new Vector3(30.0f, 0.0f, 20.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
-            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Test/TestBox"], null, null }, deSign));
+            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Test/TestBox"], null, null }, testPlayerMats));
             //Billboard billboard = new Billboard(testBox2);
             //Material bbmat = new Material("billboard", Effects[@"Effects\BillboardEffect"], LoadTexture(@"Textures\Enviro\Nature\Sun"));
             //billboard.Mat = bbmat;

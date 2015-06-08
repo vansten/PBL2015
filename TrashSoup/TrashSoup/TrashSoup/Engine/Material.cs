@@ -367,75 +367,78 @@ namespace TrashSoup.Engine
                 epPerPixelLighting.SetValue(perPixelLighting);
             }
 
-            if (epAmbientLightColor != null)
+            if (epAmbientLightColor != null && amb != null)
             {
                 epAmbientLightColor.SetValue(amb.LightColor);
             }
 
-            if (dirs[0] != null)
+            if(dirs != null)
             {
-                if (epDirLight0Direction != null)
+                if (dirs[0] != null)
                 {
-                    epDirLight0Direction.SetValue(dirs[0].LightDirection);
-                }
-                if (epDirLight0DiffuseColor != null)
-                {
-                    epDirLight0DiffuseColor.SetValue(dirs[0].LightColor);
-                }
-                if (epDirLight0SpecularColor != null)
-                {
-                    epDirLight0SpecularColor.SetValue(dirs[0].LightSpecularColor);
-                }
-                if(dirs[0].CastShadows)
-                {
-                    if (epDirLight0ShadowMap0 != null && dSM != null)
+                    if (epDirLight0Direction != null)
                     {
-                        epDirLight0ShadowMap0.SetValue(dSM);
+                        epDirLight0Direction.SetValue(dirs[0].LightDirection);
                     }
-                    if (epDirLight0WorldViewProj != null && dirs[0].ShadowDrawCameras[0] != null)
+                    if (epDirLight0DiffuseColor != null)
                     {
-                        epDirLight0WorldViewProj.SetValue(world * dirs[0].ShadowDrawCameras[0].ViewProjMatrix);
+                        epDirLight0DiffuseColor.SetValue(dirs[0].LightColor);
                     }
-                    if (epDirLight0WorldViewProj1 != null && dirs[0].ShadowDrawCameras[1] != null)
+                    if (epDirLight0SpecularColor != null)
                     {
-                        epDirLight0WorldViewProj1.SetValue(world * dirs[0].ShadowDrawCameras[1].ViewProjMatrix);
+                        epDirLight0SpecularColor.SetValue(dirs[0].LightSpecularColor);
                     }
-                    if (epDirLight0WorldViewProj2 != null && dirs[0].ShadowDrawCameras[2] != null)
+                    if (dirs[0].CastShadows)
                     {
-                        epDirLight0WorldViewProj2.SetValue(world * dirs[0].ShadowDrawCameras[2].ViewProjMatrix);
+                        if (epDirLight0ShadowMap0 != null && dSM != null)
+                        {
+                            epDirLight0ShadowMap0.SetValue(dSM);
+                        }
+                        if (epDirLight0WorldViewProj != null && dirs[0].ShadowDrawCameras[0] != null)
+                        {
+                            epDirLight0WorldViewProj.SetValue(world * dirs[0].ShadowDrawCameras[0].ViewProjMatrix);
+                        }
+                        if (epDirLight0WorldViewProj1 != null && dirs[0].ShadowDrawCameras[1] != null)
+                        {
+                            epDirLight0WorldViewProj1.SetValue(world * dirs[0].ShadowDrawCameras[1].ViewProjMatrix);
+                        }
+                        if (epDirLight0WorldViewProj2 != null && dirs[0].ShadowDrawCameras[2] != null)
+                        {
+                            epDirLight0WorldViewProj2.SetValue(world * dirs[0].ShadowDrawCameras[2].ViewProjMatrix);
+                        }
                     }
                 }
-            }
 
-            if (dirs[1] != null)
-            {
-                if (epDirLight1Direction != null)
+                if (dirs[1] != null)
                 {
-                    epDirLight1Direction.SetValue(dirs[1].LightDirection);
+                    if (epDirLight1Direction != null)
+                    {
+                        epDirLight1Direction.SetValue(dirs[1].LightDirection);
+                    }
+                    if (epDirLight1DiffuseColor != null)
+                    {
+                        epDirLight1DiffuseColor.SetValue(dirs[1].LightColor);
+                    }
+                    if (epDirLight1SpecularColor != null)
+                    {
+                        epDirLight1SpecularColor.SetValue(dirs[1].LightSpecularColor);
+                    }
                 }
-                if (epDirLight1DiffuseColor != null)
-                {
-                    epDirLight1DiffuseColor.SetValue(dirs[1].LightColor);
-                }
-                if (epDirLight1SpecularColor != null)
-                {
-                    epDirLight1SpecularColor.SetValue(dirs[1].LightSpecularColor);
-                }
-            }
 
-            if (dirs[2] != null)
-            {
-                if (epDirLight2Direction != null)
+                if (dirs[2] != null)
                 {
-                    epDirLight2Direction.SetValue(dirs[2].LightDirection);
-                }
-                if (epDirLight2DiffuseColor != null)
-                {
-                    epDirLight2DiffuseColor.SetValue(dirs[2].LightColor);
-                }
-                if (epDirLight2SpecularColor != null)
-                {
-                    epDirLight2SpecularColor.SetValue(dirs[2].LightSpecularColor);
+                    if (epDirLight2Direction != null)
+                    {
+                        epDirLight2Direction.SetValue(dirs[2].LightDirection);
+                    }
+                    if (epDirLight2DiffuseColor != null)
+                    {
+                        epDirLight2DiffuseColor.SetValue(dirs[2].LightColor);
+                    }
+                    if (epDirLight2SpecularColor != null)
+                    {
+                        epDirLight2SpecularColor.SetValue(dirs[2].LightSpecularColor);
+                    }
                 }
             }
 
@@ -537,7 +540,7 @@ namespace TrashSoup.Engine
             bool softShadows = ResourceManager.Instance.CurrentScene.Params.SoftShadows;
             if(tempBEref == null && tempSEref == null)
             {
-                bool forShadows = ((dirs[0] != null && dirs[0].CastShadows) || (point0SM != null)) && RecieveShadows && shadows;
+                bool forShadows = ((dirs != null && dirs[0] != null && dirs[0].CastShadows) || (point0SM != null)) && RecieveShadows && shadows;
 
                 if (bones != null && forShadows && etSkinnedBlurredShadows != null && softShadows)
                 {

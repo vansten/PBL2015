@@ -203,7 +203,7 @@ namespace TrashSoup.Engine
             RasterizerState rs = TrashSoupGame.Instance.GraphicsDevice.RasterizerState;
             SamplerState sp = TrashSoupGame.Instance.GraphicsDevice.SamplerStates[0];
             BlendState bs = TrashSoupGame.Instance.GraphicsDevice.BlendState;
-            TrashSoupGame.Instance.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
+            TrashSoupGame.Instance.GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
             TrashSoupGame.Instance.GraphicsDevice.SamplerStates[0] = ss;
             TrashSoupGame.Instance.GraphicsDevice.BlendState = BlendState.Opaque;
             if (ResourceManager.Instance.CurrentScene.Params.UseGraph)
