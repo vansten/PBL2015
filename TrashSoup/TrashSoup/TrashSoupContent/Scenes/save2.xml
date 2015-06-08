@@ -205,7 +205,7 @@
           <Y>0</Y>
           <Z>1</Z>
         </Forward>
-        <Scale>0.01</Scale>
+        <Scale>0.007</Scale>
       </MyTransform>
       <MyPhysicalObject>
         <MyObjectID>1</MyObjectID>
@@ -226,26 +226,24 @@
         <PositionConstraints>None</PositionConstraints>
       </MyPhysicalObject>
       <MyAnimator>
-        <BaseAnim>Models/Test/TestGuy</BaseAnim>
+        <BaseAnim>Models/MainCharacter/MainCharacter</BaseAnim>
         <MyObjectID>1</MyObjectID>
-        <AnimatorClip>Animations/Test/walking_1</AnimatorClip>
-        <AnimatorClip>Animations/Test/idle_1</AnimatorClip>
-        <AnimatorClip>Animations/Test/jump_1</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/run_2</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/idle_1</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/dodge_1</AnimatorClip>
       </MyAnimator>
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1</MyObjectID>
           <LODState>MED</LODState>
           <LODs>
-            <ModelPath>Models/Test/TestGuy</ModelPath>
+            <ModelPath>Models/MainCharacter/MainCharacter</ModelPath>
             <ModelPath />
             <ModelPath />
           </LODs>
           <Materials>
-            <Name>ClothesShader</Name>
-            <Name>SkinShader</Name>
-            <Name>SkinShader</Name>
-            <Name>SkinShader</Name>
+            <Name>MCharacter_mat</Name>
+            <Name>Hair_mat</Name>
           </Materials>
           <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>

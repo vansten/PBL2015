@@ -2,8 +2,8 @@
 <Material>
   <Name>Hair_mat</Name>
   <EffectPath>Effects\NormalEffect</EffectPath>
-  <DiffusePath>Textures\MainCharacter\Hair_D_0</DiffusePath>
-  <NormalPath>Textures\MainCharacter\Hair_N</NormalPath>
+  <DiffusePath>Models\MainCharacter\Hair_D</DiffusePath>
+  <NormalPath>Models\MainCharacter\Hair_N</NormalPath>
   <DiffuseColor>
     <X>1</X>
     <Y>1</Y>

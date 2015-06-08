@@ -15,7 +15,7 @@ namespace TrashSoup.Gameplay
     {
         #region constants
 
-        protected const float PLAYER_SPEED = 10.0f;
+        protected const float PLAYER_SPEED = 15.0f;
         protected const float SPRINT_MULTIPLIER = 5.0f;
         protected const float SPRINT_ACCELERATION = 3.0f;
         protected const float SPRINT_DECELERATION = 2.5f*SPRINT_ACCELERATION;
@@ -404,9 +404,9 @@ namespace TrashSoup.Gameplay
 
             if(MyObject.MyAnimator != null)
             {
-                MyObject.MyAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", MyObject.MyAnimator.GetAnimationPlayer("Animations/Test/idle_1")));
-                MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", MyObject.MyAnimator.GetAnimationPlayer("Animations/Test/walking_1")));
-                MyObject.MyAnimator.AvailableStates.Add("Jump", new AnimatorState("Jump", MyObject.MyAnimator.GetAnimationPlayer("Animations/Test/jump_1"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/idle_1")));
+                MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/run_2")));
+                MyObject.MyAnimator.AvailableStates.Add("Jump", new AnimatorState("Jump", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/dodge_1"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Jump"], new TimeSpan(0, 0, 0, 0, 500));
                 MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 250));
@@ -419,7 +419,7 @@ namespace TrashSoup.Gameplay
 
             WalkSoundEffect = TrashSoupGame.Instance.Content.Load<SoundEffect>(@"Audio/Character/walk");
             Walk = WalkSoundEffect.CreateInstance();
-            Walk.Pitch += 0.2f;
+            Walk.Pitch += 0.7f;
         }
 
         public override void OnTrigger(GameObject other)

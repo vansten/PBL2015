@@ -2,8 +2,8 @@
 <Material>
   <Name>MCharacter_mat</Name>
   <EffectPath>Effects\NormalEffect</EffectPath>
-  <DiffusePath>Textures\MainCharacter\MainCharacter_D_0</DiffusePath>
-  <NormalPath>Textures\MainCharacter\MainCharacter_N</NormalPath>
+  <DiffusePath>Models\MainCharacter\MainCharacter_D</DiffusePath>
+  <NormalPath>Models\MainCharacter\MainCharacter_N</NormalPath>
   <DiffuseColor>
     <X>1</X>
     <Y>1</Y>

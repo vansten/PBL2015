@@ -168,11 +168,11 @@ namespace TrashSoup.Engine
                 this.Materials.Add(testWaterMat.Name, testWaterMat);
             }
 
-            List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"], this.Effects[@"Effects\NormalEffect"]);
-            foreach(Material mat in playerMats)
-            {
-                mat.RecieveShadows = true;
-            }
+            //List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/MainCharacter/MainCharacter"], this.Effects[@"Effects\NormalEffect"]);
+            //foreach(Material mat in playerMats)
+            //{
+            //    mat.RecieveShadows = true;
+            //}
 
             //List<Material> ratMats = LoadBasicMaterialsFromModel(Models["Models/MainCharacter/MainCharacter"], this.Effects[@"Effects\NormalEffect"]);
             List<Material> ratMats = new List<Material>();
@@ -242,12 +242,12 @@ namespace TrashSoup.Engine
 
             // loading gameobjects
             GameObject testBox = new GameObject(1, "Player");
-            testBox.MyTransform = new Transform(testBox, new Vector3(-10.0f, 0.0f, -25.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
-            CustomModel skModel = new CustomModel(testBox, new Model[] { Models["Models/Test/TestGuy"], null, null }, playerMats);
+            testBox.MyTransform = new Transform(testBox, new Vector3(-10.0f, 0.0f, -25.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.0075f);
+            CustomModel skModel = new CustomModel(testBox, new Model[] { Models["Models/MainCharacter/MainCharacter"], null, null }, ratMats);
             Animator playerAnimator = new Animator(testBox, skModel.LODs[0]);
-            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/Test/walking_1"], "Animations/Test/walking_1"));
-            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/Test/idle_1"], "Animations/Test/idle_1"));
-            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/Test/jump_1"], "Animations/Test/jump_1"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/MainCharacter/run_2"], "Animations/MainCharacter/run_2"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/MainCharacter/idle_1"], "Animations/MainCharacter/idle_1"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/MainCharacter/dodge_1"], "Animations/MainCharacter/dodge_1"));
             testBox.Components.Add(skModel);
             testBox.MyAnimator = playerAnimator;
             testBox.Components.Add(new PlayerController(testBox));
