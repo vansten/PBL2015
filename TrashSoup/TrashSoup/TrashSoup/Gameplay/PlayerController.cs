@@ -275,9 +275,9 @@ namespace TrashSoup.Gameplay
             {
                 Walk.Stop(true);
                 jumpTimer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
-                if(!jumped && jumpTimer > 0.75f)
+                if(!jumped && jumpTimer > 0.65f)
                 {
-                    this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 125.0f);
+                    this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 135.0f);
                     jumped = true;
                 }
                 else if(jumpTimer > 2.0f)
