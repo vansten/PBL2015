@@ -13,9 +13,9 @@ texture ScreenTexture;
 sampler ScreenSampler = sampler_state
 {
 	texture = <ScreenTexture>;
-	MipFilter = Linear;
-	MinFilter = Linear;
-	MagFilter = Linear;
+	MipFilter = Point;
+	MinFilter = Point;
+	MagFilter = Point;
 	AddressU = clamp;
 	AddressV = clamp;
 };
