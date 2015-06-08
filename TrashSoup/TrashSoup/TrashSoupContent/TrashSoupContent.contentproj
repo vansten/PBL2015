@@ -2008,6 +2008,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Textures\Enviro\Buildings\Small_House_D.dds">
+      <Name>Small_House_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Buildings\Small_House_N.dds">
+      <Name>Small_House_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Textures\HUD\window_red2_0.png">
       <Name>window_red2_0</Name>
       <Importer>TextureImporter</Importer>

@@ -55,8 +55,8 @@ namespace TrashSoup
         public TrashSoupGame()
         {
             GraphicsManager = new GraphicsDeviceManager(this);
-            GraphicsManager.PreferredBackBufferHeight = 720;
-            GraphicsManager.PreferredBackBufferWidth = 1280;
+            GraphicsManager.PreferredBackBufferHeight = 1080;
+            GraphicsManager.PreferredBackBufferWidth = 1920;
             GraphicsManager.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(SetToPreserve);
 #if DEBUG
             //Turning of lock to 60 fps :) only in debug mode

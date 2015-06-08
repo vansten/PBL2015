@@ -310,17 +310,6 @@ namespace TrashSoup.Gameplay
                 }
             }
 
-            if(this.CollectedTrash)
-            {
-                GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"),
-                    "Trash collected", trashTextPosition, Color.Red);
-                if(gameTime.TotalGameTime.TotalSeconds - this.CollectedFakeTime > 2.0)
-                {
-                    this.CollectedTrash = false;
-                }
-                trashTextPosition.Y -= 0.002f;
-            }
-
             if (!this.collectedWeapon && this.collisionWithWeapon && InputHandler.Instance.Action())
             {
                 this.collectedWeapon = true;
@@ -335,7 +324,7 @@ namespace TrashSoup.Gameplay
                 //PICKING ANIMATION + SOUNDS
             }
 
-            if(this.collectedWeapon)
+            /*if(this.collectedWeapon)
             {
                 GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"),
                     "Weapon collected", weaponTextPosition, Color.Red);
@@ -344,13 +333,9 @@ namespace TrashSoup.Gameplay
                     this.collectedWeapon = false;
                 }
                 weaponTextPosition.Y -= 0.002f;
-            }
-            this.collisionWithWeapon = false;
+            }*/
 
-            if(InputManager.Instance.GetKeyboardButtonDown(Keys.F))
-            {
-                this.AddPopularity();
-            }
+            this.collisionWithWeapon = false;
             
             if(this.popularityEarned)
             {
@@ -513,6 +498,7 @@ namespace TrashSoup.Gameplay
                 Debug.Log("YOU'RE DEAD");
                 isDead = true;
             }
+            this.Popularity -= 5.0f;
         }
 
         public override System.Xml.Schema.XmlSchema GetSchema()

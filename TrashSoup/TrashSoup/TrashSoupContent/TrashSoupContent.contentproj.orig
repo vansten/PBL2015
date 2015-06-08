@@ -339,11 +339,6 @@
       <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
-    <Compile Include="Animations\MainCharacter\attack_2.X">
-      <Name>attack_2</Name>
-      <Importer>XImporter</Importer>
-      <Processor>SkinnedModelProcessor</Processor>
-    </Compile>
     <Compile Include="Animations\MainCharacter\block_1.X">
       <Name>block_1</Name>
       <Importer>XImporter</Importer>
@@ -359,11 +354,6 @@
       <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
-    <Compile Include="Animations\MainCharacter\run_1.X">
-      <Name>run_1</Name>
-      <Importer>XImporter</Importer>
-      <Processor>SkinnedModelProcessor</Processor>
-    </Compile>
     <Compile Include="Animations\MainCharacter\bow_1.X">
       <Name>bow_1</Name>
       <Importer>XImporter</Importer>
@@ -374,28 +364,118 @@
       <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
-    <Compile Include="Animations\MainCharacter\run_with_weapon.X">
-      <Name>run_with_weapon</Name>
+    <Compile Include="Animations\MainCharacter\attack_Hweapon_1.X">
+      <Name>attack_Hweapon_1</Name>
       <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
-    <Compile Include="Animations\MainCharacter\attack_3.X">
-      <Name>attack_3</Name>
+    <Compile Include="Animations\MainCharacter\attack_Hweapon_2.X">
+      <Name>attack_Hweapon_2</Name>
       <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
-    <Compile Include="Animations\MainCharacter\run_and_attack.X">
-      <Name>run_and_attack</Name>
+    <Compile Include="Animations\MainCharacter\attack_Hweapon_3.X">
+      <Name>attack_Hweapon_3</Name>
       <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
-    <Compile Include="Animations\MainCharacter\attack_1.X">
-      <Name>attack_1</Name>
+    <Compile Include="Animations\MainCharacter\attack_Hweapon_4.X">
+      <Name>attack_Hweapon_4</Name>
       <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
-    <Compile Include="Animations\MainCharacter\attack_4.X">
-      <Name>attack_4</Name>
+    <Compile Include="Animations\MainCharacter\attack_Mweapon_1.X">
+      <Name>attack_Mweapon_1</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\attack_Mweapon_2.X">
+      <Name>attack_Mweapon_2</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\attack_Mweapon_3.X">
+      <Name>attack_Mweapon_3</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\attack_Mweapon_4.X">
+      <Name>attack_Mweapon_4</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\attack_Mweapon_5.X">
+      <Name>attack_Mweapon_5</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\boxing_1.X">
+      <Name>boxing_1</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\boxing_2.X">
+      <Name>boxing_2</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\boxing_3.X">
+      <Name>boxing_3</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\charge_Hweapon.X">
+      <Name>charge_Hweapon</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\dodge_1.X">
+      <Name>dodge_1</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\idle_Fists.X">
+      <Name>idle_Fists</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\idle_Hweapon.X">
+      <Name>idle_Hweapon</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\idle_SMweapon.X">
+      <Name>idle_SMweapon</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\injuries_1.X">
+      <Name>injuries_1</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\injuries_2.X">
+      <Name>injuries_2</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\run_2.X">
+      <Name>run_2</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\run_Hweapon.X">
+      <Name>run_Hweapon</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\walki_SMweapon.X">
+      <Name>walki_SMweapon</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\walk_Hweapon.X">
+      <Name>walk_Hweapon</Name>
       <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
@@ -915,10 +995,6 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="Models\Test\walec.FBX">
-      <Name>walec</Name>
-=======
     <Compile Include="Models\Enviro\Bridge\bridge.FBX">
       <Name>bridge</Name>
       <Importer>FbxImporter</Importer>
@@ -926,7 +1002,11 @@
     </Compile>
     <Compile Include="Models\Enviro\Metro\Metro2.FBX">
       <Name>Metro2</Name>
->>>>>>> 741c619b9dd5d126a34251da796f000053a72998
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Test\walec.FBX">
+      <Name>walec</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
@@ -1927,7 +2007,46 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+<<<<<<< HEAD
+    <Compile Include="Textures\HUD\window_red2_0.png">
+      <Name>window_red2_0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Audio\Ambient\exploration.wav">
+      <Name>exploration</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Audio\Ambient\menu.wav">
+      <Name>menu</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Audio\Character\walk.wav">
+      <Name>walk</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+=======
+    <Compile Include="Textures\Enviro\Buildings\Small_House_D.dds">
+      <Name>Small_House_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Buildings\Small_House_N.dds">
+      <Name>Small_House_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+>>>>>>> bca9756ea06aacc50e68222f9f1cc6c509f77c64
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

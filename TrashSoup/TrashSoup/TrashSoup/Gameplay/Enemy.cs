@@ -22,7 +22,10 @@ namespace TrashSoup.Gameplay
         public int HitPoints
         {
             get { return hitPoints; }
-            set { hitPoints = value; }
+            set 
+            {
+                hitPoints = value;
+            }
         }
 
         public bool IsDead
@@ -35,12 +38,12 @@ namespace TrashSoup.Gameplay
         #region methods
         public Enemy(GameObject obj) : base(obj)
         {
-            this.HitPoints = 20;
+            this.hitPoints = 100;
         }
 
         public Enemy(GameObject obj, int hitPoints):base(obj)
         {
-            this.HitPoints = hitPoints;
+            this.hitPoints = hitPoints;
         }
         #endregion
 

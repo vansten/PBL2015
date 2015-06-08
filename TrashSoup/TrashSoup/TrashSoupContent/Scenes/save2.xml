@@ -10656,8 +10656,8 @@
           <Y>0</Y>
           <Z>0</Z>
         </Acceleration>
-        <Mass>0</Mass>
-        <DragFactor>0</DragFactor>
+        <Mass>1</Mass>
+        <DragFactor>0.1</DragFactor>
         <IsUsingGravity>true</IsUsingGravity>
         <Velocity>
           <X>0</X>
