@@ -74,65 +74,6 @@
     </DirectionalLight>
   </DirectionalLights>
   <PointLights>
-    <PointLight>
-      <CastShadows>true</CastShadows>
-      <Color>
-        <R>0</R>
-        <G>1</G>
-        <B>1</B>
-      </Color>
-      <SpecularColor>
-        <R>1</R>
-        <G>1</G>
-        <B>1</B>
-      </SpecularColor>
-      <Attenuation>3</Attenuation>
-      <UniqueID>110</UniqueID>
-      <Name>LightPoint1</Name>
-      <Dynamic>false</Dynamic>
-      <MyTransform>
-        <MyObjectID>110</MyObjectID>
-        <Position>
-          <X>-3</X>
-          <Y>3</Y>
-          <Z>0</Z>
-        </Position>
-        <Rotation>
-          <X>0</X>
-          <Y>0</Y>
-          <Z>0</Z>
-        </Rotation>
-        <Forward>
-          <X>0</X>
-          <Y>1</Y>
-          <Z>0</Z>
-        </Forward>
-        <Scale>20</Scale>
-      </MyTransform>
-      <MyPhysicalObject>
-        <MyObjectID>110</MyObjectID>
-        <Acceleration>
-          <X>0</X>
-          <Y>0</Y>
-          <Z>0</Z>
-        </Acceleration>
-        <Mass>0</Mass>
-        <DragFactor>0</DragFactor>
-        <IsUsingGravity>false</IsUsingGravity>
-        <Velocity>
-          <X>0</X>
-          <Y>0</Y>
-          <Z>0</Z>
-        </Velocity>
-        <RotationConstraints>None</RotationConstraints>
-        <PositionConstraints>None</PositionConstraints>
-      </MyPhysicalObject>
-      <MyCollider>
-        <Type>TrashSoup.Engine.SphereCollider</Type>
-        <MyObjectID>110</MyObjectID>
-        <IsTrigger>true</IsTrigger>
-      </MyCollider>
-    </PointLight>
   </PointLights>
   <ObjectsDictionary>
     <GameObject>
