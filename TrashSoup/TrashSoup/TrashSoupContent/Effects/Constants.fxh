@@ -18,6 +18,6 @@
 #define ESM_DIFFUSE_SCALE		5.79f // Range [1, 10]
 #define MIN_VARIANCE 0.000001f
 #define BLEED_REDUCTION 0.00000001f
-#define BLUR_SIZE 4
+#define BLUR_SIZE 1.5f
 #define BLUR_OFFSET 0.0005f
 #endif

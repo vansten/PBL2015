@@ -410,19 +410,19 @@ namespace TrashSoup.Engine
             {
                 if(DirectionalLights[0].CastShadows)
                 {
-                    return (Texture)DirectionalLights[0].ShadowMapRenderTargets[0];
+                    return (Texture)DirectionalLights[0].ShadowMapRenderTarget;
                 }
             }
             return null;
         }
 
-        public Texture[] GetDirectionalShadowMaps()
+        public Texture GetDirectionalShadowMap()
         {
             if (DirectionalLights[0] != null)
             {
                 if (DirectionalLights[0].CastShadows)
                 {
-                    return (Texture[])DirectionalLights[0].ShadowMapRenderTargets;
+                    return (Texture)DirectionalLights[0].ShadowMapRenderTarget;
                 }
             }
             return null;

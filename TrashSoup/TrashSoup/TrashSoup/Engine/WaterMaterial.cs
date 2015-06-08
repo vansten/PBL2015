@@ -101,7 +101,7 @@ namespace TrashSoup.Engine
         }
 
         public override void UpdateEffect(Effect effect, Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, List<LightPoint> points,
-             Texture[] dSM, TextureCube point0SM, Vector3 eyeVector, BoundingFrustumExtended frustum,
+             Texture dSM, TextureCube point0SM, Vector3 eyeVector, BoundingFrustumExtended frustum,
              Matrix[] bones, GameTime gameTime)
         {
             //if (epReflectionMap != null)

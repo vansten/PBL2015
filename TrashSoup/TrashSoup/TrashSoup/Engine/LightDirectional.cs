@@ -14,14 +14,14 @@ namespace TrashSoup.Engine
         #region constants
 
         private const int CAMERA_COUNT = 3;
-        private float[] CAM_DIRECTIONAL_DISTANCE_MULTIPLIERS = { 13.0f, 50.0f, 150.0f };
+        private float[] CAM_DIRECTIONAL_DISTANCE_MULTIPLIERS = { 15.0f, 60.0f, 150.0f };
         private float[] CAM_DIRECTIONAL_BOUNDARIES = { 10.0f, 30.0f, 100.0f };
         private const float CAM_DIRECTIONAL_DISTANCE = 60.0f;
         private const float CAM_DIRECTIONAL_NEAR_PLANE = 0.02f;
         private const float CAM_DIRECTIONAL_FAR_PLANE = 120.0f;
 
         private const float DIRECTIONAL_SHADOW_RANGE = 15.0f;
-        private const int DIRECTIONAL_SHADOW_MAP_SIZE = 1024;
+        private const int DIRECTIONAL_SHADOW_MAP_SIZE = 2048;
 
         private const int BLUR_FACTOR = 1;
         
@@ -38,15 +38,17 @@ namespace TrashSoup.Engine
         private bool varsSet = false;
         private SamplerState ss;
         private bool rtSwitched = false;
+        private Vector4[] tempFrustumArray1;
+        private Vector4[] tempFrustumArray2;
 
-        private RenderTarget2D[] tempRenderTargets;
-        private RenderTarget2D[] veryTempRenderTargets;
+        private RenderTarget2D tempRenderTarget;
+        private RenderTarget2D veryTempRenderTarget;
         private Matrix deferredOrthoMatrix;
         #endregion
 
         #region properties
 
-        public RenderTarget2D[] ShadowMapRenderTargets { get; set; }
+        public RenderTarget2D ShadowMapRenderTarget { get; set; }
 
         public Vector3 LightColor
         { 
@@ -115,11 +117,10 @@ namespace TrashSoup.Engine
         public LightDirectional(uint uniqueID, string name)
             : base(uniqueID, name)
         {
-            ShadowMapRenderTargets = new RenderTarget2D[CAMERA_COUNT];
-            tempRenderTargets = new RenderTarget2D[CAMERA_COUNT];
-
             ss = new SamplerState();
             ss.Filter = TextureFilter.Point;
+            tempFrustumArray1 = new Vector4[4];
+            tempFrustumArray2 = new Vector4[4];
 
             for (int i = 0; i < CAMERA_COUNT; ++i )
             {
@@ -128,8 +129,9 @@ namespace TrashSoup.Engine
                 shadowDrawCameras[i].OrthoWidth = CAM_DIRECTIONAL_DISTANCE_MULTIPLIERS[i];
                 shadowDrawCameras[i].OrthoHeight = CAM_DIRECTIONAL_DISTANCE_MULTIPLIERS[i];
                 shadowDrawCameras[i].Ortho = true;
+            }
 
-                ShadowMapRenderTargets[i] = new RenderTarget2D(
+            ShadowMapRenderTarget = new RenderTarget2D(
                             TrashSoupGame.Instance.GraphicsDevice,
                             DIRECTIONAL_SHADOW_MAP_SIZE,
                             DIRECTIONAL_SHADOW_MAP_SIZE,
@@ -140,30 +142,27 @@ namespace TrashSoup.Engine
                             RenderTargetUsage.DiscardContents
                             );
 
-                tempRenderTargets[i] = new RenderTarget2D(
-                        TrashSoupGame.Instance.GraphicsDevice,
-                        TrashSoupGame.Instance.Window.ClientBounds.Width / BLUR_FACTOR,
-                        TrashSoupGame.Instance.Window.ClientBounds.Height / BLUR_FACTOR,
-                        false,
-                        SurfaceFormat.Vector2,
-                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
-                        TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
-                        RenderTargetUsage.DiscardContents
-                        );
-            }
-
-                
+            tempRenderTarget = new RenderTarget2D(
+                    TrashSoupGame.Instance.GraphicsDevice,
+                    TrashSoupGame.Instance.Window.ClientBounds.Width / BLUR_FACTOR,
+                    TrashSoupGame.Instance.Window.ClientBounds.Height / BLUR_FACTOR,
+                    false,
+                    SurfaceFormat.Vector2,
+                    TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
+                    TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.MultiSampleCount,
+                    RenderTargetUsage.DiscardContents
+                    );
             
 
             deferredOrthoMatrix = Matrix.CreateOrthographicOffCenter(0.0f, (float)TrashSoupGame.Instance.Window.ClientBounds.Width,
                     (float)TrashSoupGame.Instance.Window.ClientBounds.Height, 0, 0, 1);
 
-            bool blurred = true;
+            //bool blurred = true;
 
-            if(blurred)
-            {
-                SwitchRTs();
-            }
+            //if(blurred)
+            //{
+            //    SwitchRTs();
+            //}
         }
 
         public LightDirectional(uint uniqueID, string name, Vector3 color, Vector3 specular, Vector3 direction, bool castShadows)
@@ -184,20 +183,20 @@ namespace TrashSoup.Engine
 
             SetCamera();
 
-            bool blurred = true;
+            //bool blurred = true;
 
             Effect myShadowEffect = ResourceManager.Instance.Effects[@"Effects\ShadowMapEffect"];
-            Effect myBlurEffect = ResourceManager.Instance.Effects[@"Effects\POSTBoxBlurEffect"];
-            SpriteBatch batch = TrashSoupGame.Instance.GetSpriteBatch();
+            //Effect myBlurEffect = ResourceManager.Instance.Effects[@"Effects\POSTBoxBlurEffect"];
+            //SpriteBatch batch = TrashSoupGame.Instance.GetSpriteBatch();
 
-            if(blurred)
-            {
-                myBlurEffect.Parameters["WorldViewProj"].SetValue(deferredOrthoMatrix);
-                myBlurEffect.Parameters["ScreenWidth"].SetValue((float)TrashSoupGame.Instance.Window.ClientBounds.Width);
-                myBlurEffect.Parameters["ScreenHeight"].SetValue((float)TrashSoupGame.Instance.Window.ClientBounds.Height);
+            //if(blurred)
+            //{
+            //    myBlurEffect.Parameters["WorldViewProj"].SetValue(deferredOrthoMatrix);
+            //    myBlurEffect.Parameters["ScreenWidth"].SetValue((float)TrashSoupGame.Instance.Window.ClientBounds.Width);
+            //    myBlurEffect.Parameters["ScreenHeight"].SetValue((float)TrashSoupGame.Instance.Window.ClientBounds.Height);
 
-                SwitchRTs();
-            }
+            //    SwitchRTs();
+            //}
 
             // setting up camera properly
             Camera cam = ResourceManager.Instance.CurrentScene.Cam;
@@ -208,38 +207,88 @@ namespace TrashSoup.Engine
             TrashSoupGame.Instance.GraphicsDevice.SamplerStates[0] = ss;
             TrashSoupGame.Instance.GraphicsDevice.BlendState = BlendState.Opaque;
 
-            for (int i = 0; i < CAMERA_COUNT; ++i )
-            {
-                TrashSoupGame.Instance.ActualRenderTarget = ShadowMapRenderTargets[i];
-                TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
-                ResourceManager.Instance.CurrentScene.DrawAll(ShadowDrawCameras[i], myShadowEffect, TrashSoupGame.Instance.TempGameTime, false);
+            myShadowEffect.Parameters["ViewProj1"].SetValue(shadowDrawCameras[1].ViewProjMatrix);
+            myShadowEffect.Parameters["ViewProj2"].SetValue(shadowDrawCameras[2].ViewProjMatrix);
+
+            // bounding frustum
+            tempFrustumArray1[0].W = -shadowDrawCameras[1].Bounds.Top.D + BoundingFrustumExtended.CLIP_MARGIN;
+            tempFrustumArray1[0].X = -shadowDrawCameras[1].Bounds.Top.Normal.X;
+            tempFrustumArray1[0].Y = -shadowDrawCameras[1].Bounds.Top.Normal.Y;
+            tempFrustumArray1[0].Z = -shadowDrawCameras[1].Bounds.Top.Normal.Z;
+
+            tempFrustumArray1[1].W = -shadowDrawCameras[1].Bounds.Bottom.D + BoundingFrustumExtended.CLIP_MARGIN;
+            tempFrustumArray1[1].X = -shadowDrawCameras[1].Bounds.Bottom.Normal.X;
+            tempFrustumArray1[1].Y = -shadowDrawCameras[1].Bounds.Bottom.Normal.Y;
+            tempFrustumArray1[1].Z = -shadowDrawCameras[1].Bounds.Bottom.Normal.Z;
+
+            tempFrustumArray1[2].W = -shadowDrawCameras[1].Bounds.Left.D + BoundingFrustumExtended.CLIP_MARGIN;
+            tempFrustumArray1[2].X = -shadowDrawCameras[1].Bounds.Left.Normal.X;
+            tempFrustumArray1[2].Y = -shadowDrawCameras[1].Bounds.Left.Normal.Y;
+            tempFrustumArray1[2].Z = -shadowDrawCameras[1].Bounds.Left.Normal.Z;
+
+            tempFrustumArray1[3].W = -shadowDrawCameras[1].Bounds.Right.D + BoundingFrustumExtended.CLIP_MARGIN;
+            tempFrustumArray1[3].X = -shadowDrawCameras[1].Bounds.Right.Normal.X;
+            tempFrustumArray1[3].Y = -shadowDrawCameras[1].Bounds.Right.Normal.Y;
+            tempFrustumArray1[3].Z = -shadowDrawCameras[1].Bounds.Right.Normal.Z;
+
+            myShadowEffect.Parameters["BoundingFrustum1"].SetValue(tempFrustumArray1);
+
+            myShadowEffect.Parameters["CustomClippingPlane1"].SetValue(-new Vector4(shadowDrawCameras[1].Bounds.AdditionalClip.Normal, shadowDrawCameras[1].Bounds.AdditionalClip.D));
+
+            // bounding frustum 2
+            tempFrustumArray2[0].W = -shadowDrawCameras[2].Bounds.Top.D + BoundingFrustumExtended.CLIP_MARGIN;
+            tempFrustumArray2[0].X = -shadowDrawCameras[2].Bounds.Top.Normal.X;
+            tempFrustumArray2[0].Y = -shadowDrawCameras[2].Bounds.Top.Normal.Y;
+            tempFrustumArray2[0].Z = -shadowDrawCameras[2].Bounds.Top.Normal.Z;
+
+            tempFrustumArray2[1].W = -shadowDrawCameras[2].Bounds.Bottom.D + BoundingFrustumExtended.CLIP_MARGIN;
+            tempFrustumArray2[1].X = -shadowDrawCameras[2].Bounds.Bottom.Normal.X;
+            tempFrustumArray2[1].Y = -shadowDrawCameras[2].Bounds.Bottom.Normal.Y;
+            tempFrustumArray2[1].Z = -shadowDrawCameras[2].Bounds.Bottom.Normal.Z;
+
+            tempFrustumArray2[2].W = -shadowDrawCameras[2].Bounds.Left.D + BoundingFrustumExtended.CLIP_MARGIN;
+            tempFrustumArray2[2].X = -shadowDrawCameras[2].Bounds.Left.Normal.X;
+            tempFrustumArray2[2].Y = -shadowDrawCameras[2].Bounds.Left.Normal.Y;
+            tempFrustumArray2[2].Z = -shadowDrawCameras[2].Bounds.Left.Normal.Z;
+
+            tempFrustumArray2[3].W = -shadowDrawCameras[2].Bounds.Right.D + BoundingFrustumExtended.CLIP_MARGIN;
+            tempFrustumArray2[3].X = -shadowDrawCameras[2].Bounds.Right.Normal.X;
+            tempFrustumArray2[3].Y = -shadowDrawCameras[2].Bounds.Right.Normal.Y;
+            tempFrustumArray2[3].Z = -shadowDrawCameras[2].Bounds.Right.Normal.Z;
+
+            myShadowEffect.Parameters["BoundingFrustum2"].SetValue(tempFrustumArray2);
+
+            myShadowEffect.Parameters["CustomClippingPlane2"].SetValue(-new Vector4(shadowDrawCameras[2].Bounds.AdditionalClip.Normal, shadowDrawCameras[2].Bounds.AdditionalClip.D));
+
+            TrashSoupGame.Instance.ActualRenderTarget = ShadowMapRenderTarget;
+            TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
+            ResourceManager.Instance.CurrentScene.DrawAll(ShadowDrawCameras[0], myShadowEffect, TrashSoupGame.Instance.TempGameTime, false);
                 
                 
-                if(blurred)
-                {
-                    TrashSoupGame.Instance.ActualRenderTarget = tempRenderTargets[i];
-                    TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
+                //if(blurred)
+                //{
+                //    TrashSoupGame.Instance.ActualRenderTarget = tempRenderTarget[i];
+                //    TrashSoupGame.Instance.GraphicsDevice.Clear(Color.Black);
 
-                    batch.Begin(SpriteSortMode.Texture, TrashSoupGame.Instance.GraphicsDevice.BlendState,
-                        SamplerState.PointWrap, TrashSoupGame.Instance.GraphicsDevice.DepthStencilState,
-                        TrashSoupGame.Instance.GraphicsDevice.RasterizerState, myBlurEffect);
+                //    batch.Begin(SpriteSortMode.Texture, TrashSoupGame.Instance.GraphicsDevice.BlendState,
+                //        SamplerState.PointWrap, TrashSoupGame.Instance.GraphicsDevice.DepthStencilState,
+                //        TrashSoupGame.Instance.GraphicsDevice.RasterizerState, myBlurEffect);
 
-                    batch.Draw(ShadowMapRenderTargets[i], new Rectangle(0, 0, TrashSoupGame.Instance.Window.ClientBounds.Width, TrashSoupGame.Instance.Window.ClientBounds.Height), Color.White);
+                //    batch.Draw(ShadowMapRenderTarget[i], new Rectangle(0, 0, TrashSoupGame.Instance.Window.ClientBounds.Width, TrashSoupGame.Instance.Window.ClientBounds.Height), Color.White);
 
-                    batch.End();
-                }
+                //    batch.End();
+                //}
 
                 TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
-            }
 
             TrashSoupGame.Instance.GraphicsDevice.SamplerStates[0] = sp;
             TrashSoupGame.Instance.GraphicsDevice.RasterizerState = rs;
             TrashSoupGame.Instance.GraphicsDevice.BlendState = bs;
 
-            if (blurred)
-            {
-                SwitchRTs();
-            }
+            //if (blurred)
+            //{
+            //    SwitchRTs();
+            //}
 
             //// tu bedzie if
             //{
@@ -267,7 +316,7 @@ namespace TrashSoup.Engine
             //}
 
             //System.IO.FileStream stream = new System.IO.FileStream("Dupa.jpg", System.IO.FileMode.Create);
-            //ShadowMapRenderTargets[0].SaveAsJpeg(stream, 1024, 1024);
+            //ShadowMapRenderTarget.SaveAsJpeg(stream, 1024, 1024);
             //stream.Close();
         }
 
@@ -317,16 +366,16 @@ namespace TrashSoup.Engine
         {
             if(!rtSwitched)
             {
-                veryTempRenderTargets = ShadowMapRenderTargets;
-                ShadowMapRenderTargets = tempRenderTargets;
-                tempRenderTargets = veryTempRenderTargets;
+                veryTempRenderTarget = ShadowMapRenderTarget;
+                ShadowMapRenderTarget = tempRenderTarget;
+                tempRenderTarget = veryTempRenderTarget;
                 rtSwitched = true;
             }
             else
             {
-                veryTempRenderTargets = tempRenderTargets;
-                tempRenderTargets = ShadowMapRenderTargets;
-                ShadowMapRenderTargets = veryTempRenderTargets;
+                veryTempRenderTarget = tempRenderTarget;
+                tempRenderTarget = ShadowMapRenderTarget;
+                ShadowMapRenderTarget = veryTempRenderTarget;
                 rtSwitched = false;
             }
         }

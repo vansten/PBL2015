@@ -181,30 +181,40 @@ inline float ShadowContribution(float pixelDepth, float4 dirPos, float4 dirPos1,
 	if (pixelDepth >= CAM_DIRECTIONAL_BOUNDARY_2)
 		return 1.0f;
 
-	float3 depthVec = float3(1.0f, 0.0f, 0.0f);
+	float2 sampleVec = float2(0.0f, 0.0f);
 
 	[branch]
 	if (pixelDepth > CAM_DIRECTIONAL_BOUNDARY_0 && pixelDepth <= CAM_DIRECTIONAL_BOUNDARY_1)
 	{
 		dirPos = dirPos1;
-		depthVec = float3(0.0f, 1.0f, 0.0f);
+		sampleVec = float2(0.5f, 0.0f);
 	}
 	else if (pixelDepth > CAM_DIRECTIONAL_BOUNDARY_1)
 	{
 		dirPos = dirPos2;
-		depthVec = float3(0.0f, 0.0f, 1.0f);
+		sampleVec = float2(0.0f, 0.5f);
 	}
 
 	float2 projectedDLScoords;
-	projectedDLScoords.x = (dirPos.x / dirPos.w) / 2.0f + 0.5f;
-	projectedDLScoords.y = (-dirPos.y / dirPos.w) / 2.0f + 0.5f;
+	projectedDLScoords.x = ((dirPos.x / dirPos.w)/ 2.0f + 0.5f) / 2.0f + sampleVec.x;
+	projectedDLScoords.y = ((-dirPos.y / dirPos.w)/ 2.0f + 0.5f) / 2.0f + sampleVec.y;
 
-	float2 depth = tex2D(DirLight0ShadowMapSampler, projectedDLScoords).rg * depthVec.x;
-	float2 depth1 = tex2D(DirLight0ShadowMapSampler1, projectedDLScoords).rg * depthVec.y;
-	float2 depth2 = tex2D(DirLight0ShadowMapSampler2, projectedDLScoords).rg * depthVec.z;
+	float2 depth = float2(0.0f, 0.0f);
+	float ctr = 0.0f;
+	for (float i = -BLUR_SIZE; i <= BLUR_SIZE; i += 1.0f)
+	{
+		for (float j = -BLUR_SIZE; j <= BLUR_SIZE; j += 1.0f)
+		{
+			depth = depth + tex2Dproj(DirLight0ShadowMapSampler, float4(
+				projectedDLScoords + float2(i, j) * BLUR_OFFSET, 1.0f, 1.0f));
+			ctr += 1.0f;
+		}
+	}
 
-	depth = max(depth, max(depth1, depth2));
-	
+	depth = depth / ctr;
+
+	//float2 depth = tex2D(DirLight0ShadowMapSampler, projectedDLScoords).rg;
+
 	float shadow = ChebyshevUpperBound(depth, dirPos.z / dirPos.w);
 	shadow = LinStep(BLEED_REDUCTION, 1.0f, shadow);
 	return shadow;

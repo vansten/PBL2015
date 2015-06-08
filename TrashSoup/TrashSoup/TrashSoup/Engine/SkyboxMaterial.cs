@@ -43,7 +43,7 @@ namespace TrashSoup.Engine
         }
 
         public override void UpdateEffect(Effect effect, Microsoft.Xna.Framework.Matrix world, Microsoft.Xna.Framework.Matrix worldViewProj, 
-            LightAmbient amb, LightDirectional[] dirs, List<LightPoint> points, Texture[] dSM, TextureCube point0SM, Microsoft.Xna.Framework.Vector3 eyeVector, 
+            LightAmbient amb, LightDirectional[] dirs, List<LightPoint> points, Texture dSM, TextureCube point0SM, Microsoft.Xna.Framework.Vector3 eyeVector, 
             BoundingFrustumExtended frustum, Microsoft.Xna.Framework.Matrix[] bones, Microsoft.Xna.Framework.GameTime gameTime)
         {
             if(epCubeMap1 != null)
