@@ -206,6 +206,12 @@ namespace TrashSoup.Engine
             TrashSoupGame.Instance.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
             TrashSoupGame.Instance.GraphicsDevice.SamplerStates[0] = ss;
             TrashSoupGame.Instance.GraphicsDevice.BlendState = BlendState.Opaque;
+            if (ResourceManager.Instance.CurrentScene.Params.UseGraph)
+            {
+                this.rtSwitched = true;
+                ResourceManager.Instance.CurrentScene.Params.UseGraph = !ResourceManager.Instance.CurrentScene.Params.UseGraph;
+            }
+            
 
             myShadowEffect.Parameters["ViewProj1"].SetValue(shadowDrawCameras[1].ViewProjMatrix);
             myShadowEffect.Parameters["ViewProj2"].SetValue(shadowDrawCameras[2].ViewProjMatrix);
@@ -281,6 +287,11 @@ namespace TrashSoup.Engine
 
                 TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
 
+            if (rtSwitched)
+            {
+                rtSwitched = false;
+                ResourceManager.Instance.CurrentScene.Params.UseGraph = !ResourceManager.Instance.CurrentScene.Params.UseGraph;
+            }
             TrashSoupGame.Instance.GraphicsDevice.SamplerStates[0] = sp;
             TrashSoupGame.Instance.GraphicsDevice.RasterizerState = rs;
             TrashSoupGame.Instance.GraphicsDevice.BlendState = bs;

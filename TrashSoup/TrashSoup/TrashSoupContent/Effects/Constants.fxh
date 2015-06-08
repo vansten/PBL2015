@@ -16,8 +16,12 @@
 #define ESM_K					80.0f // Range [0, 80]
 #define ESM_MIN					-0.5f // Range [0, -oo]
 #define ESM_DIFFUSE_SCALE		5.79f // Range [1, 10]
-#define MIN_VARIANCE 0.000001f
+#define MIN_VARIANCE 0.0000001f
 #define BLEED_REDUCTION 0.00000001f
 #define BLUR_SIZE 1.5f
 #define BLUR_OFFSET 0.0005f
+#define BLUR_OFFSET_POINT 0.005f
+
+//#define RELEASE
+
 #endif

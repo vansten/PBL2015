@@ -337,6 +337,8 @@ namespace TrashSoup.Engine
 
             CurrentScene.Cam = cam;
 
+            testTer.LightsAffecting.Add(lp1);
+
             // adding items to scene
             //testBox.AddChild(testBox3);
             CurrentScene.AddObject(skyBox);
