@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using TrashSoup.Engine;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 
 namespace TrashSoup.Gameplay
 {
@@ -25,6 +26,8 @@ namespace TrashSoup.Gameplay
         private Texture2D liveBGTexture;
         private Texture2D liveTexture;
 
+        private Texture2D bgTexture;
+
         //Positioning, like CSS -,-'
         private Vector2 hpPos = new Vector2(0.09f, 0.0875f);
         private Vector2 heartPos = new Vector2(0.06f, 0.05f);
@@ -39,6 +42,8 @@ namespace TrashSoup.Gameplay
         private Vector2 dayInfoPos = new Vector2(0.15f, 0.82f);
         private Vector2 initialLiveTextPos = new Vector2(0.395f, 0.9475f);
         private Vector2 liveTextPos;
+
+        private Vector2 bgPosition = new Vector2(0.732f, 0.065f);
 
         private string currentLiveText = "";
         private int index = 0;
@@ -85,6 +90,8 @@ namespace TrashSoup.Gameplay
         private float foodTextSize = 1.0f;
         private float biggerTextSize = 1.5f;
 
+        public Cue ExplorationCue;
+
         public PlayerHUD(GameObject go) : base(go)
         {
             Start();
@@ -117,6 +124,7 @@ namespace TrashSoup.Gameplay
             }
 
             //Equipment
+            GUIManager.Instance.DrawTexture(this.bgTexture, bgPosition, 0.23f, 0.045f);
             this.currentFoodCount = this.myEq.FoodCount;
             this.currentJunkCount = this.myEq.JunkCount;
             if(!showFoodGain && this.currentFoodCount > this.prevFoodCount)
@@ -292,6 +300,14 @@ namespace TrashSoup.Gameplay
             this.equipmentFont = TrashSoupGame.Instance.Content.Load<SpriteFont>(@"Fonts/FontTest");
             this.liveBGTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/LIVEBG");
             this.liveTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/LIVE");
+
+            this.bgTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/window_red2_0");
+
+            if (!TrashSoupGame.Instance.EditorMode)
+            {
+                ExplorationCue = AudioManager.Instance.GetCue("exploration");
+                ExplorationCue.Play();
+            }
 
             base.Initialize();
         }

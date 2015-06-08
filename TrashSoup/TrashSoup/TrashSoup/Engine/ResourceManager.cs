@@ -52,7 +52,7 @@ namespace TrashSoup.Engine
             LoadTextures(game);
             LoadEffects(game);
             AudioManager.Instance.LoadContent();
-            LoadCues();
+            //LoadCues();
 
             // because it pisses me off - Mav
             //AudioManager.Instance.PlayCue(GetCueFromCueList("Track1")); //default music from tutorial, just to check that everything works xD
