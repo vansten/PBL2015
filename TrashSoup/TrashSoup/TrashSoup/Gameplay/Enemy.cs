@@ -16,13 +16,17 @@ namespace TrashSoup.Gameplay
         protected bool isDead;
 
         public Action OnDead;
+        public Action OnHit;
         #endregion
 
         #region properties
         public int HitPoints
         {
             get { return hitPoints; }
-            set { hitPoints = value; }
+            set 
+            {
+                hitPoints = value;
+            }
         }
 
         public bool IsDead
@@ -35,12 +39,12 @@ namespace TrashSoup.Gameplay
         #region methods
         public Enemy(GameObject obj) : base(obj)
         {
-            this.HitPoints = 20;
+            this.hitPoints = 1000;
         }
 
         public Enemy(GameObject obj, int hitPoints):base(obj)
         {
-            this.HitPoints = hitPoints;
+            this.hitPoints = hitPoints;
         }
         #endregion
 

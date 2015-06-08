@@ -109,6 +109,11 @@ namespace TrashSoup.Engine
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            if(this.texture == null)
+            {
+                Debug.Log("Some texture is null :(");
+                return;
+            }
             //spriteBatch.Draw(this.texture, this.position, Color.White);
             spriteBatch.Draw(this.texture, this.myRectangle, Color.White);
             base.Draw(spriteBatch);

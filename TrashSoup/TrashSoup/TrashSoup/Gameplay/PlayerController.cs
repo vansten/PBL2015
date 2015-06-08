@@ -339,11 +339,6 @@ namespace TrashSoup.Gameplay
                 weaponTextPosition.Y -= 0.002f;
             }
             this.collisionWithWeapon = false;
-
-            if(InputManager.Instance.GetKeyboardButtonDown(Keys.F))
-            {
-                this.AddPopularity();
-            }
             
             if(this.popularityEarned)
             {
@@ -502,6 +497,7 @@ namespace TrashSoup.Gameplay
                 Debug.Log("YOU'RE DEAD");
                 isDead = true;
             }
+            this.Popularity -= 5.0f;
         }
 
         public override System.Xml.Schema.XmlSchema GetSchema()
