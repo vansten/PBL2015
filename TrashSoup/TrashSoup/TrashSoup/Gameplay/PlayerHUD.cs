@@ -70,6 +70,21 @@ namespace TrashSoup.Gameplay
         private bool popularityThirdStepReached = false;
         private float popularityThirdStepAmount = 90.0f;
 
+        private Color collectedSthColor = Color.Yellow;
+        private Color looseSthColor = Color.DarkRed;
+
+        private int prevJunkCount = 0;
+        private int prevFoodCount = 0;
+        private bool showJunkGain = false;
+        private bool showJunkLoose = false;
+        private bool showFoodGain = false;
+        private bool showFoodLoose = false;
+        private float junkGainLooseTimer = 0.0f;
+        private float foodGainLooseTimer = 0.0f;
+        private float junkTextSize = 1.0f;
+        private float foodTextSize = 1.0f;
+        private float biggerTextSize = 1.5f;
+
         public PlayerHUD(GameObject go) : base(go)
         {
             Start();
@@ -104,12 +119,85 @@ namespace TrashSoup.Gameplay
             //Equipment
             this.currentFoodCount = this.myEq.FoodCount;
             this.currentJunkCount = this.myEq.JunkCount;
-            GUIManager.Instance.DrawTexture(this.backpackTexture, this.backpackPos, 0.03f, 0.03f);
+            if(!showFoodGain && this.currentFoodCount > this.prevFoodCount)
+            {
+                showFoodGain = true;
+                showFoodLoose = false;
+                foodGainLooseTimer = 0.0f;
+            }
+            
+            if(!showFoodLoose && this.currentFoodCount < this.prevFoodCount)
+            {
+                showFoodLoose = true;
+                showFoodGain = false;
+                foodGainLooseTimer = 0.0f;
+            }
+
+            if (!showJunkGain && this.currentJunkCount > this.prevJunkCount)
+            {
+                showJunkGain = true;
+                showJunkLoose = false;
+                junkGainLooseTimer = 0.0f;
+            }
+            
+            if (!showJunkLoose && this.currentJunkCount < this.prevJunkCount)
+            {
+                showJunkLoose = true;
+                showJunkGain = false;
+                junkGainLooseTimer = 0.0f;
+            }
+
             this.junkColor = this.currentJunkCount == Equipment.MAX_JUNK_CAPACITY ? Color.Red : Color.White;
-            GUIManager.Instance.DrawText(this.equipmentFont, this.currentJunkCount + "/" + this.maxJunkCount, this.eqTextPos, this.junkColor);
-            GUIManager.Instance.DrawTexture(this.burgerTexture, this.burgerPos, 0.035f, 0.045f);
+            this.foodTextSize = 1.0f;
+            this.junkTextSize = 1.0f;
             this.foodColor = this.currentFoodCount == Equipment.MAX_FOOD_CAPACITY ? Color.Red : Color.White;
-            GUIManager.Instance.DrawText(this.equipmentFont, this.currentFoodCount + "/" + this.maxFoodCount, this.foodTextPos, this.foodColor);
+           
+            if(showFoodGain)
+            {
+                foodGainLooseTimer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+                if(foodGainLooseTimer > 1.5f)
+                {
+                    showFoodGain = false;
+                }
+                this.foodColor = this.collectedSthColor;
+                this.foodTextSize = this.biggerTextSize;
+            }
+            if (showFoodLoose)
+            {
+                foodGainLooseTimer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+                if (foodGainLooseTimer > 1.5f)
+                {
+                    showFoodLoose = false;
+                }
+                this.foodColor = this.looseSthColor;
+                this.foodTextSize = this.biggerTextSize;
+            }
+            if (showJunkGain)
+            {
+                junkGainLooseTimer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+                if (junkGainLooseTimer > 1.5f)
+                {
+                    showJunkGain = false;
+                }
+                this.junkColor = this.collectedSthColor;
+                this.junkTextSize = this.biggerTextSize;
+            }
+            if (showJunkLoose)
+            {
+                junkGainLooseTimer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+                if (junkGainLooseTimer > 1.5f)
+                {
+                    showJunkLoose = false;
+                }
+                this.junkColor = this.looseSthColor;
+                this.junkTextSize = this.biggerTextSize;
+            }
+
+
+            GUIManager.Instance.DrawTexture(this.backpackTexture, this.backpackPos, 0.03f, 0.03f);
+            GUIManager.Instance.DrawText(this.equipmentFont, this.currentJunkCount + "/" + this.maxJunkCount, this.eqTextPos, this.junkColor, this.junkTextSize);
+            GUIManager.Instance.DrawTexture(this.burgerTexture, this.burgerPos, 0.035f, 0.045f);
+            GUIManager.Instance.DrawText(this.equipmentFont, this.currentFoodCount + "/" + this.maxFoodCount, this.foodTextPos, this.foodColor, this.foodTextSize);
             GUIManager.Instance.DrawText(this.equipmentFont, "DAY 1", this.dayInfoPos, Color.Red);
 
             //Live messages drawing
@@ -167,6 +255,9 @@ namespace TrashSoup.Gameplay
                     this.drawLive = false;
                 }
             }
+
+            this.prevJunkCount = this.currentJunkCount;
+            this.prevFoodCount = this.currentFoodCount;
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)

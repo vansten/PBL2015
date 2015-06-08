@@ -16,7 +16,6 @@ namespace TrashSoup.Gameplay
         protected bool isDead;
 
         public Action OnDead;
-        public Action OnHit;
         #endregion
 
         #region properties
@@ -39,7 +38,7 @@ namespace TrashSoup.Gameplay
         #region methods
         public Enemy(GameObject obj) : base(obj)
         {
-            this.hitPoints = 1000;
+            this.hitPoints = 100;
         }
 
         public Enemy(GameObject obj, int hitPoints):base(obj)
