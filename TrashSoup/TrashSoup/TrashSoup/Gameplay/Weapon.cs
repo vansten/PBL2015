@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -98,6 +99,14 @@ namespace TrashSoup.Gameplay
                     {
                         r.MyBlackBoard.SetBool("TargetSeen", true);
                         r.MyBlackBoard.SetVector3("TargetPosition", player.MyTransform.Position);
+                        if(r.MyObject.MyPhysicalObject != null)
+                        {
+                            Vector3 diff = r.MyObject.MyTransform.Position - player.MyTransform.Position;
+                            diff.Y = 0.0f;
+                            diff.Normalize();
+                            r.MyObject.MyPhysicalObject.AddForce(diff * 650.0f);
+                            ((PlayerController)player.GetComponent<PlayerController>()).Popularity += 15.0f;
+                        }
                     }
                     if (Type != WeaponType.FISTS && Durability > 0)
                         Durability--;
@@ -109,8 +118,8 @@ namespace TrashSoup.Gameplay
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             
-                if(gameTime.TotalGameTime.TotalSeconds - timerOn > 1.0f)
-                isAttacking = false;
+            if(gameTime.TotalGameTime.TotalSeconds - timerOn > 0.5f)
+            isAttacking = false;
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
