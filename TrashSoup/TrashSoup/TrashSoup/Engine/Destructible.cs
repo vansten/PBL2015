@@ -28,6 +28,7 @@ namespace TrashSoup.Engine
         private const float DISAPPEAR_DELAY = 2000.0f;
         private const float DISAPPEAR_TIME = 10000.0f;
         private const float SCALE_FACTOR = 0.01f;
+        private const float FORCE_MULTIPLIER = 80.0f;
         #endregion
 
         #region variables
@@ -161,12 +162,12 @@ namespace TrashSoup.Engine
                         Cleanup();
                     }
                 }
-                else
-                {
-                    // TO JEST DO WYJEBANIA
-                    intersectionVector = new Vector3(0.1f, 0.0f, 0.0f);
-                    Shatter();
-                }
+                //else
+                //{
+                //    // TO JEST DO WYJEBANIA
+                //    intersectionVector = new Vector3(0.1f, 0.0f, 0.0f);
+                //    Shatter();4
+                //}
             }
         }
 
@@ -192,16 +193,36 @@ namespace TrashSoup.Engine
 
         public override void OnTriggerEnter(GameObject other)
         {
-            if(ActualState == State.NORMAL)
+            if(other.GetType() == typeof(LightPoint))
+            {
+                return;
+            }
+            if (ActualState == State.NORMAL)
             {
                 PartHealth -= HitDamage;
 
                 if (PartHealth <= 0)
                 {
-                    intersectionVector = MyObject.MyCollider.IntersectionVector;
+                    intersectionVector = other.MyTransform.PositionChangeNormal;
+
+                    if (intersectionVector == Vector3.Zero)
+                    {
+                        intersectionVector = -MyObject.MyTransform.PositionChangeNormal;
+                    }
+
+                    if (intersectionVector == Vector3.Zero)
+                    {
+                        Debug.Log("DESTRUCTIBLE: IntersectionVector is still zero!!!!!");
+                        intersectionVector = Vector3.Up;
+                    }
+
+                    //Debug.Log(intersectionVector.Length().ToString());
+
                     Shatter();
                 }
             }
+
+            //Debug.Log(MyObject.MyCollider.IntersectionVector.ToString());
 
             base.OnTriggerEnter(other);
         }
@@ -258,7 +279,7 @@ namespace TrashSoup.Engine
         private void Shatter()
         {
             // calculate force multiplier here
-            forceMultiplier = 40.0f * intersectionVector.Length();
+            forceMultiplier = FORCE_MULTIPLIER * intersectionVector.Length();
             //
             ActualState = State.SHATTERED;
             this.MyObject.Visible = false;

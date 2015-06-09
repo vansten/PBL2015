@@ -242,12 +242,13 @@ namespace TrashSoup.Engine
 
             // loading gameobjects
             GameObject testBox = new GameObject(1, "Player");
-            testBox.MyTransform = new Transform(testBox, new Vector3(-10.0f, 0.0f, -25.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.0075f);
+            testBox.MyTransform = new Transform(testBox, new Vector3(2.0f, 3.0f, -5.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.0075f);
             CustomModel skModel = new CustomModel(testBox, new Model[] { Models["Models/MainCharacter/MainCharacter"], null, null }, ratMats);
             Animator playerAnimator = new Animator(testBox, skModel.LODs[0]);
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/MainCharacter/run_2"], "Animations/MainCharacter/run_2"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/MainCharacter/idle_1"], "Animations/MainCharacter/idle_1"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/MainCharacter/dodge_1"], "Animations/MainCharacter/dodge_1"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/MainCharacter/boxing_3"], "Animations/MainCharacter/boxing_3"));
             testBox.Components.Add(skModel);
             testBox.MyAnimator = playerAnimator;
             testBox.Components.Add(new PlayerController(testBox));
@@ -275,8 +276,8 @@ namespace TrashSoup.Engine
             testTer.Components.Add(terModel);
 
             GameObject testBox2 = new GameObject(3, "testBox2");
-            testBox2.MyTransform = new Transform(testBox2, new Vector3(30.0f, 0.0f, 20.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
-            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Test/TestBox"], null, null }, testPlayerMats));
+            testBox2.MyTransform = new Transform(testBox2, new Vector3(5.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
+            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Enviro/Ground/street_cross"], null, null }, deSign));
             //Billboard billboard = new Billboard(testBox2);
             //Material bbmat = new Material("billboard", Effects[@"Effects\BillboardEffect"], LoadTexture(@"Textures\Enviro\Nature\Sun"));
             //billboard.Mat = bbmat;
@@ -321,7 +322,7 @@ namespace TrashSoup.Engine
             GameObject cegla = new GameObject(14, "cegla");
             cegla.MyTransform = new Transform(cegla, new Vector3(5.0f, 5.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
             cegla.Components.Add(new CustomModel(cegla, new Model[] { Models["Models/Weapons/Stones/brick"], null, null }, bb));
-            cegla.MyCollider = new BoxCollider(cegla);
+            cegla.MyCollider = new BoxCollider(cegla, true);
             //cegla.MyPhysicalObject = new PhysicalObject(cegla, 5.0f, 0.01f, true);
             Destructible destr = new Destructible(cegla);
             destr.PartsPath = "Models/Weapons/Stones/brick_destructible";

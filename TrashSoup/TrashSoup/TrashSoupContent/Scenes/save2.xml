@@ -232,6 +232,7 @@
         <AnimatorClip>Animations/MainCharacter/run_2</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/idle_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dodge_1</AnimatorClip>
+		<AnimatorClip>Animations/MainCharacter/boxing_3</AnimatorClip>
       </MyAnimator>
       <Components>
         <TrashSoup.Engine.CustomModel>

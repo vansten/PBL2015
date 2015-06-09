@@ -44,7 +44,7 @@ namespace TrashSoup.Engine
                     this.position = value;
                 }
                 else
-                {
+                {                       
                     CalculatePosition(value);
                 }
             }
@@ -118,6 +118,7 @@ namespace TrashSoup.Engine
                 CalculateWorldMatrix();
             }
         }
+
         public float Scale 
         { 
             get
