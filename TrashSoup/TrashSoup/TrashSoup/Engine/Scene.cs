@@ -576,6 +576,10 @@ namespace TrashSoup.Engine
                     if (pl.CastShadows) pl.SetupShadowRender();
                     reader.ReadEndElement();
                 }
+                else
+                {
+                    reader.ReadElementString("null", "");
+                }
             }
             reader.ReadEndElement();
 
@@ -641,11 +645,18 @@ namespace TrashSoup.Engine
             writer.WriteEndElement();
 
             writer.WriteStartElement("PointLights");
-            foreach(LightPoint pl in PointLights)
+            if (PointLights.Count > 0)
             {
-                writer.WriteStartElement("PointLight");
-                (pl as IXmlSerializable).WriteXml(writer);
-                writer.WriteEndElement();
+                foreach (LightPoint pl in PointLights)
+                {
+                    writer.WriteStartElement("PointLight");
+                    (pl as IXmlSerializable).WriteXml(writer);
+                    writer.WriteEndElement();
+                }   
+            }
+            else
+            {
+                writer.WriteElementString("null", "");
             }
             writer.WriteEndElement();
 

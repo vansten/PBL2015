@@ -82,6 +82,9 @@ namespace TrashSoup.Gameplay
         public SoundEffect WalkSoundEffect;
         public SoundEffectInstance Walk;
 
+        public SoundEffect JumpSoundEffect;
+        public SoundEffectInstance Jump;
+
         #endregion
 
         #region properties
@@ -279,6 +282,7 @@ namespace TrashSoup.Gameplay
                 {
                     this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 135.0f);
                     jumped = true;
+                    Jump.Play();
                 }
                 else if(jumpTimer > 2.0f)
                 {
@@ -419,7 +423,11 @@ namespace TrashSoup.Gameplay
 
             WalkSoundEffect = TrashSoupGame.Instance.Content.Load<SoundEffect>(@"Audio/Character/walk");
             Walk = WalkSoundEffect.CreateInstance();
+            //Change speed of sound
             Walk.Pitch += 0.7f;
+
+            JumpSoundEffect = TrashSoupGame.Instance.Content.Load<SoundEffect>(@"Audio/Character/jump");
+            Jump = JumpSoundEffect.CreateInstance();
         }
 
         public override void OnTrigger(GameObject other)

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Audio;
 using TrashSoup.Engine;
 
 namespace TrashSoup.Gameplay
@@ -17,6 +18,9 @@ namespace TrashSoup.Gameplay
         private bool collisionWithPlayer = false;
         private Texture2D interactionTexture;
         private Vector2 interactionTexturePos = new Vector2(0.475f, 0.775f);
+
+        private Cue foundCue;
+        private bool foundIsPlaying = false;
 
         public TrashTrigger(GameObject go) : base(go)
         {
@@ -38,6 +42,7 @@ namespace TrashSoup.Gameplay
                     if(player != null)
                     {
                         player.Equipment.AddJunk(this.trashCount);
+                        foundCue.Play();
                         player.CollectedTrash = true;
                         player.CollectedFakeTime = gameTime.TotalGameTime.TotalSeconds;
                     }
@@ -57,6 +62,8 @@ namespace TrashSoup.Gameplay
         public override void Initialize()
         {
             this.interactionTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/x_button");
+            if(!TrashSoupGame.Instance.EditorMode)
+                this.foundCue = AudioManager.Instance.GetCue("found");
             base.Initialize();
         }
 
