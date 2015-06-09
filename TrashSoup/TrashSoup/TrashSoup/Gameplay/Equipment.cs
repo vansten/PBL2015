@@ -89,7 +89,7 @@ namespace TrashSoup.Gameplay
             if (TrashSoupGame.Instance.EditorMode)
                 return;
             newWeapon.Dynamic = true;
-            newWeapon.MyCarrierSocket = new Socket(base.MyObject, newWeapon, null, "mixamorig:RightHand");
+            newWeapon.MyCarrierSocket = new Socket(base.MyObject, newWeapon, null, "Bip001_R_Hand");
             newWeapon.MyTransform.Position = Vector3.Zero;
             newWeapon.MyTransform.Rotation = new Vector3(0, 0, 55);
             newWeapon.MyTransform.Scale = 1;
