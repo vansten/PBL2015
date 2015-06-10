@@ -394,8 +394,8 @@ namespace TrashSoup.Engine
             CurrentScene.PointLights.Add(lp1);
 
             ////TESTING PARTICLES
-            ps = new ParticleSystem(TrashSoupGame.Instance.GraphicsDevice, 
-                TrashSoupGame.Instance.Content.Load<Texture2D>(@"Textures/ParticleTest/Particle"), 400, new Vector2(2), 1, Vector3.Zero, 0.5f);
+            //ps = new ParticleSystem(TrashSoupGame.Instance.GraphicsDevice, 
+                //TrashSoupGame.Instance.Content.Load<Texture2D>(@"Textures/ParticleTest/Particle"), 400, new Vector2(2), 1, Vector3.Zero, 0.5f);
 
             foreach(GameObject go in this.CurrentScene.ObjectsDictionary.Values)
             {

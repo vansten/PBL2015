@@ -220,10 +220,10 @@ namespace TrashSoup
                 ResourceManager.Instance.CurrentScene.DrawAll(null, null, TempGameTime, true);
             }
 
-            if(ResourceManager.Instance.ps != null)
-            {
-                ResourceManager.Instance.ps.Draw();
-            }
+            //if(ResourceManager.Instance.ps != null)
+           // {
+             //   ResourceManager.Instance.ps.Draw();
+            //}
             GUIManager.Instance.Render(this.spriteBatch);
         }
 
