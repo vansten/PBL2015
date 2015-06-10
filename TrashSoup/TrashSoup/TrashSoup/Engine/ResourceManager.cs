@@ -168,11 +168,11 @@ namespace TrashSoup.Engine
                 this.Materials.Add(testWaterMat.Name, testWaterMat);
             }
 
-            List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/Test/TestGuy"], this.Effects[@"Effects\NormalEffect"]);
-            foreach(Material mat in playerMats)
-            {
-                mat.RecieveShadows = true;
-            }
+            //List<Material> playerMats = LoadBasicMaterialsFromModel(Models["Models/MainCharacter/MainCharacter"], this.Effects[@"Effects\NormalEffect"]);
+            //foreach(Material mat in playerMats)
+            //{
+            //    mat.RecieveShadows = true;
+            //}
 
             //List<Material> ratMats = LoadBasicMaterialsFromModel(Models["Models/MainCharacter/MainCharacter"], this.Effects[@"Effects\NormalEffect"]);
             List<Material> ratMats = new List<Material>();
@@ -242,12 +242,13 @@ namespace TrashSoup.Engine
 
             // loading gameobjects
             GameObject testBox = new GameObject(1, "Player");
-            testBox.MyTransform = new Transform(testBox, new Vector3(0.0f, 5.0f, -5.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
-            CustomModel skModel = new CustomModel(testBox, new Model[] { Models["Models/Test/TestGuy"], null, null }, playerMats);
+            testBox.MyTransform = new Transform(testBox, new Vector3(2.0f, 3.0f, -5.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.0075f);
+            CustomModel skModel = new CustomModel(testBox, new Model[] { Models["Models/MainCharacter/MainCharacter"], null, null }, ratMats);
             Animator playerAnimator = new Animator(testBox, skModel.LODs[0]);
-            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/Test/walking_1"], "Animations/Test/walking_1"));
-            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/Test/idle_1"], "Animations/Test/idle_1"));
-            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/Test/jump_1"], "Animations/Test/jump_1"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/MainCharacter/run_2"], "Animations/MainCharacter/run_2"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/MainCharacter/idle_1"], "Animations/MainCharacter/idle_1"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/MainCharacter/dodge_1"], "Animations/MainCharacter/dodge_1"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/MainCharacter/boxing_3"], "Animations/MainCharacter/boxing_3"));
             testBox.Components.Add(skModel);
             testBox.MyAnimator = playerAnimator;
             testBox.Components.Add(new PlayerController(testBox));
@@ -275,15 +276,15 @@ namespace TrashSoup.Engine
             testTer.Components.Add(terModel);
 
             GameObject testBox2 = new GameObject(3, "testBox2");
-            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 150.0f);
-            //testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Enviro/Ground/street_cross"], null, null }, deSign));
-            Billboard billboard = new Billboard(testBox2);
-            Material bbmat = new Material("billboard", Effects[@"Effects\BillboardEffect"], LoadTexture(@"Textures\Enviro\Nature\Sun"));
-            billboard.Mat = bbmat;
-            billboard.Size = new Vector2(1.0f, 1.0f);
-            testBox2.Components.Add(billboard);
-            //testBox2.MyCollider = new BoxCollider(testBox2, false);
-            //testBox2.MyPhysicalObject = new PhysicalObject(testBox2, 1.0f, 1.0f, false);
+            testBox2.MyTransform = new Transform(testBox2, new Vector3(5.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
+            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Enviro/Ground/street_cross"], null, null }, deSign));
+            //Billboard billboard = new Billboard(testBox2);
+            //Material bbmat = new Material("billboard", Effects[@"Effects\BillboardEffect"], LoadTexture(@"Textures\Enviro\Nature\Sun"));
+            //billboard.Mat = bbmat;
+            //billboard.Size = new Vector2(1.0f, 1.0f);
+            //testBox2.Components.Add(billboard);
+            testBox2.MyCollider = new BoxCollider(testBox2, false);
+            testBox2.MyPhysicalObject = new PhysicalObject(testBox2, 1.0f, 1.0f, false);
             //testBox2.Dynamic = true;
             //testBox2.MyCarrierSocket = new Socket(testBox, testBox2, null, "mixamorig:RightHand");
 
@@ -306,22 +307,22 @@ namespace TrashSoup.Engine
             CustomModel sbModel = new CustomModel(skyBox, new Model[] { Models["Models/Test/TestCube"], null, null }, testSBMats);
             sbModel.LodControlled = false;
             skyBox.Components.Add(sbModel);
-            DaytimeChange dc = new DaytimeChange(skyBox);
-            dc.LightDayID = 0;
-            dc.LightNightID = 1;
-            dc.SunID = 3;
-            dc.SunriseMinutes = 60 * 6;
-            dc.SunsetMinutes = 60 * 20;
-            dc.StateChangeMinutes = 120;
-            dc.HorizonOffset = 500.0f;
-            dc.TextureNames = new string[] { @"Textures\Skyboxes\Dawn", @"Textures\Skyboxes\Daylight", @"Textures\Skyboxes\Dusk", @"Textures\Skyboxes\Night" };
-            skyBox.Components.Add(dc);
+            //DaytimeChange dc = new DaytimeChange(skyBox);
+            //dc.LightDayID = 0;
+            //dc.LightNightID = 1;
+            //dc.SunID = 3;
+            //dc.SunriseMinutes = 60 * 6;
+            //dc.SunsetMinutes = 60 * 20;
+            //dc.StateChangeMinutes = 120;
+            //dc.HorizonOffset = 500.0f;
+            //dc.TextureNames = new string[] { @"Textures\Skyboxes\Dawn", @"Textures\Skyboxes\Daylight", @"Textures\Skyboxes\Dusk", @"Textures\Skyboxes\Night" };
+            //skyBox.Components.Add(dc);
 
             // moje na pagi
             GameObject cegla = new GameObject(14, "cegla");
             cegla.MyTransform = new Transform(cegla, new Vector3(5.0f, 5.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
             cegla.Components.Add(new CustomModel(cegla, new Model[] { Models["Models/Weapons/Stones/brick"], null, null }, bb));
-            cegla.MyCollider = new BoxCollider(cegla);
+            cegla.MyCollider = new BoxCollider(cegla, true);
             //cegla.MyPhysicalObject = new PhysicalObject(cegla, 5.0f, 0.01f, true);
             Destructible destr = new Destructible(cegla);
             destr.PartsPath = "Models/Weapons/Stones/brick_destructible";
@@ -330,10 +331,10 @@ namespace TrashSoup.Engine
             destr.HitDamage = 50;
             cegla.Components.Add(destr);
 
-            GameObject pt = new GameObject(355, "PlayerTime");
-            PlayerTime ptc = new PlayerTime(pt);
-            ptc.Multiplier = 3600;
-            pt.Components.Add(ptc);
+            //GameObject pt = new GameObject(355, "PlayerTime");
+            //PlayerTime ptc = new PlayerTime(pt);
+            //ptc.Multiplier = 3600;
+            //pt.Components.Add(ptc);
 
             //Wika i Kasia testowanie modeli
             GameObject awsomeTest = new GameObject(8, "testground");
@@ -353,7 +354,7 @@ namespace TrashSoup.Engine
 
             // loading scene
             CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), new DateTime(2015, 5, 28, 12, 0, 0, 0, new System.Globalization.GregorianCalendar(), DateTimeKind.Unspecified),
-                60.0f, 3000.0f, 35.0f, 50.0f, true, true, true, false, true));
+                60.0f, 3000.0f, 35.0f, 50.0f, true, false, true, false, true));
 
             Camera cam = null;
 
@@ -371,6 +372,8 @@ namespace TrashSoup.Engine
 
             CurrentScene.Cam = cam;
 
+            testTer.LightsAffecting.Add(lp1);
+
             // adding items to scene
             //testBox.AddChild(testBox3);
             CurrentScene.AddObject(skyBox);
@@ -383,7 +386,7 @@ namespace TrashSoup.Engine
             CurrentScene.AddObject(awsomeTest);//Wika i kasia
             CurrentScene.AddObject(rat);
             CurrentScene.AddObject(cegla);
-            CurrentScene.AddObject(pt);
+            //CurrentScene.AddObject(pt);
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;
@@ -670,6 +673,8 @@ namespace TrashSoup.Engine
             path = @"Effects\ShadowMapBlurredEffect";
             LoadEffect(path);
             path = @"Effects\POSTBlurEffect";
+            LoadEffect(path);
+            path = @"Effects\POSTBoxBlurEffect";
             LoadEffect(path);
             path = @"Effects\ShadowMapUnnormalizedEffect";
             LoadEffect(path);

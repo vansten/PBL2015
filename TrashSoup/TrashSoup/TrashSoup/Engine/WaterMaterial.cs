@@ -101,17 +101,17 @@ namespace TrashSoup.Engine
         }
 
         public override void UpdateEffect(Effect effect, Matrix world, Matrix worldViewProj, LightAmbient amb, LightDirectional[] dirs, List<LightPoint> points,
-             Texture gSM, TextureCube point0SM, Vector3 eyeVector, BoundingFrustumExtended frustum,
+             Texture dSM, TextureCube point0SM, Vector3 eyeVector, BoundingFrustumExtended frustum,
              Matrix[] bones, GameTime gameTime)
         {
-            //if (epReflectionMap != null)
-            //{
-            //    epReflectionMap.SetValue(ResourceManager.Instance.Textures["DefaultDiffuse"]);
-            //}
-            //if (epRefractionMap != null)
-            //{
-            //    epRefractionMap.SetValue(ResourceManager.Instance.Textures["DefaultDiffuse"]);
-            //}
+            if(effect != null)
+            {
+                base.UpdateEffect(null, new Matrix(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f),
+                    new Matrix(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f),
+                    null, null, null, null, null, Vector3.Zero, new BoundingFrustumExtended(Matrix.Identity), null, null);
+
+                return;
+            }
 
             if (!isRendering && TrashSoupGame.Instance.ActualRenderTarget == TrashSoupGame.Instance.DefaultRenderTarget && effect == null)
             {
@@ -131,7 +131,7 @@ namespace TrashSoup.Engine
                 isRendering = false;
             }
 
-            base.UpdateEffect(effect, world, worldViewProj, amb, dirs, points, gSM, point0SM, eyeVector, frustum, bones, gameTime);
+            base.UpdateEffect(effect, world, worldViewProj, amb, dirs, points, dSM, point0SM, eyeVector, frustum, bones, gameTime);
         }
 
         protected Vector4 CreatePlane(Matrix wm, bool clipSide)
@@ -160,11 +160,11 @@ namespace TrashSoup.Engine
             ResourceManager.Instance.CurrentScene.Cam.Bounds.AdditionalClip.Normal.Z = refractionClip.Z;
 
             TrashSoupGame.Instance.ActualRenderTarget = RefractionRenderTarget;
-            bool ifShadowsAreEnabled = ResourceManager.Instance.CurrentScene.Params.Shadows;
-            ResourceManager.Instance.CurrentScene.Params.Shadows = false;
+            //bool ifShadowsAreEnabled = ResourceManager.Instance.CurrentScene.Params.Shadows;
+            //ResourceManager.Instance.CurrentScene.Params.Shadows = false;
             ResourceManager.Instance.CurrentScene.DrawAll(null, effect, TrashSoupGame.Instance.TempGameTime, false);
             TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
-            ResourceManager.Instance.CurrentScene.Params.Shadows = ifShadowsAreEnabled;
+            //ResourceManager.Instance.CurrentScene.Params.Shadows = ifShadowsAreEnabled;
 
             ResourceManager.Instance.CurrentScene.Cam.Bounds.ZeroAllAdditionals();
 

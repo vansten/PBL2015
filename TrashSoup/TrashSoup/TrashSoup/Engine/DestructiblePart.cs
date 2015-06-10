@@ -8,9 +8,15 @@ namespace TrashSoup.Engine
 {
     public class DestructiblePart : GameObject
     {
+        #region constants
+
+        private const float ROTATION_REDUCTION = 3.0f;
+
+        #endregion
+
         #region variables
 
-        bool stopped = false;
+        private bool stopped = false;
 
         #endregion
 
@@ -30,13 +36,32 @@ namespace TrashSoup.Engine
 
         public override void OnCollision(GameObject otherGO)
         {
-            if(!stopped)
+            base.OnCollision(otherGO);
+
+            if (!stopped)
             {
-                Rotation = Vector3.Zero;
+                Rotation *= ROTATION_REDUCTION;
+
+                MyPhysicalObject.IsUsingGravity = false;
+                MyCollider.IsTrigger = true;
+                Vector3 forceVec = Vector3.Normalize(MyTransform.PositionChangeNormal);
+                forceVec.Y = 0.0f;
+                //Debug.Log(forceVec.ToString());
+                MyPhysicalObject.AddForce(forceVec * 500.0f);
                 stopped = true;
             }
+        }
 
-            base.OnCollision(otherGO);
+        public override void Update(GameTime gameTime)
+        {
+            if(stopped && MyPhysicalObject != null)
+            {
+                MyPhysicalObject.Velocity *= 0.95f;
+                Rotation *= 0.995f;
+                //Debug.Log(MyPhysicalObject.Velocity.ToString());
+            }
+
+            base.Update(gameTime);
         }
 
         #endregion

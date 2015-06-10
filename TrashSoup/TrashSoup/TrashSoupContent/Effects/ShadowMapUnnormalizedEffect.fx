@@ -51,9 +51,12 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	clip(input.CustomClipPlane);
 
 	//////
-	float4 color = 0.0f;
-		color.r = (length(LightPos - input.PositionWS.xyz) / 50.0f);
-	color.a = 1.0f;
+	float4 color = float4(0.0f, 0.0f, 0.0f, 1.0f);
+	float depth = (length(LightPos - input.PositionWS.xyz) / 50.0f);
+	color.r = depth;
+	float dx = ddx(depth);
+	float dy = ddy(depth);
+	color.g = depth*depth + 0.25f*(dx*dx + dy*dy);
 
 	return color;
 }

@@ -15,7 +15,7 @@ namespace TrashSoup.Gameplay
     {
         #region constants
 
-        protected const float PLAYER_SPEED = 10.0f;
+        protected const float PLAYER_SPEED = 15.0f;
         protected const float SPRINT_MULTIPLIER = 5.0f;
         protected const float SPRINT_ACCELERATION = 3.0f;
         protected const float SPRINT_DECELERATION = 2.5f*SPRINT_ACCELERATION;
@@ -81,6 +81,9 @@ namespace TrashSoup.Gameplay
 
         public SoundEffect WalkSoundEffect;
         public SoundEffectInstance Walk;
+
+        public SoundEffect JumpSoundEffect;
+        public SoundEffectInstance Jump;
 
         #endregion
 
@@ -279,6 +282,7 @@ namespace TrashSoup.Gameplay
                 {
                     this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 135.0f);
                     jumped = true;
+                    Jump.Play();
                 }
                 else if(jumpTimer > 2.0f)
                 {
@@ -294,7 +298,7 @@ namespace TrashSoup.Gameplay
                 {
                     if(MyObject.MyAnimator.ThirdState == null)
                     {
-                        MyObject.MyAnimator.ChangeState("Jump");
+                        MyObject.MyAnimator.ChangeState("AttackFist01");
                     }
                 }
                 equipment.CurrentWeapon.IsAttacking = true;
@@ -404,22 +408,29 @@ namespace TrashSoup.Gameplay
 
             if(MyObject.MyAnimator != null)
             {
-                MyObject.MyAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", MyObject.MyAnimator.GetAnimationPlayer("Animations/Test/idle_1")));
-                MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", MyObject.MyAnimator.GetAnimationPlayer("Animations/Test/walking_1")));
-                MyObject.MyAnimator.AvailableStates.Add("Jump", new AnimatorState("Jump", MyObject.MyAnimator.GetAnimationPlayer("Animations/Test/jump_1"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/idle_1")));
+                MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/run_2")));
+                MyObject.MyAnimator.AvailableStates.Add("Jump", new AnimatorState("Jump", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/dodge_1"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("AttackFist01", new AnimatorState("AttackFist01", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_3"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Jump"], new TimeSpan(0, 0, 0, 0, 500));
+                MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackFist01"], new TimeSpan(0, 0, 0, 0, 400));
                 MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 250));
                 MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Jump"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Jump"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 100));
                 MyObject.MyAnimator.AvailableStates["Jump"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 500));
+                MyObject.MyAnimator.AvailableStates["AttackFist01"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 500));
                 MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["Idle"];
                 //MyObject.MyAnimator.SetBlendState("Walk");
             }
 
             WalkSoundEffect = TrashSoupGame.Instance.Content.Load<SoundEffect>(@"Audio/Character/walk");
             Walk = WalkSoundEffect.CreateInstance();
-            Walk.Pitch += 0.2f;
+            //Change speed of sound
+            Walk.Pitch += 0.7f;
+
+            JumpSoundEffect = TrashSoupGame.Instance.Content.Load<SoundEffect>(@"Audio/Character/jump");
+            Jump = JumpSoundEffect.CreateInstance();
         }
 
         public override void OnTrigger(GameObject other)

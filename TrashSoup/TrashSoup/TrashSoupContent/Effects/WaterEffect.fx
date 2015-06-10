@@ -33,6 +33,8 @@ sampler DiffuseSampler = sampler_state
 	MipFilter = Linear;
 	MinFilter = Linear;
 	MagFilter = Linear;
+	AddressU = Mirror;
+	AddressV = Mirror;
 };
 
 texture NormalMap;
@@ -42,6 +44,8 @@ sampler NormalSampler = sampler_state
 	MipFilter = Linear;
 	MinFilter = Linear;
 	MagFilter = Linear;
+	AddressU = Mirror;
+	AddressV = Mirror;
 };
 
 texture ReflectionMap;

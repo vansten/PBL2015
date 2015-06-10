@@ -411,7 +411,19 @@ namespace TrashSoup.Engine
             {
                 if(DirectionalLights[0].CastShadows)
                 {
-                    return (Texture)DirectionalLights[0].ShadowMapRenderTarget2048;
+                    return (Texture)DirectionalLights[0].ShadowMapRenderTarget;
+                }
+            }
+            return null;
+        }
+
+        public Texture GetDirectionalShadowMap()
+        {
+            if (DirectionalLights[0] != null)
+            {
+                if (DirectionalLights[0].CastShadows)
+                {
+                    return (Texture)DirectionalLights[0].ShadowMapRenderTarget;
                 }
             }
             return null;
@@ -564,6 +576,10 @@ namespace TrashSoup.Engine
                     if (pl.CastShadows) pl.SetupShadowRender();
                     reader.ReadEndElement();
                 }
+                else
+                {
+                    reader.ReadElementString("null", "");
+                }
             }
             reader.ReadEndElement();
 
@@ -629,11 +645,18 @@ namespace TrashSoup.Engine
             writer.WriteEndElement();
 
             writer.WriteStartElement("PointLights");
-            foreach(LightPoint pl in PointLights)
+            if (PointLights.Count > 0)
             {
-                writer.WriteStartElement("PointLight");
-                (pl as IXmlSerializable).WriteXml(writer);
-                writer.WriteEndElement();
+                foreach (LightPoint pl in PointLights)
+                {
+                    writer.WriteStartElement("PointLight");
+                    (pl as IXmlSerializable).WriteXml(writer);
+                    writer.WriteEndElement();
+                }   
+            }
+            else
+            {
+                writer.WriteElementString("null", "");
             }
             writer.WriteEndElement();
 

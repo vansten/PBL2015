@@ -727,7 +727,7 @@
     <Compile Include="Models\Enviro\Nature\stump.FBX">
       <Name>stump</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Nature\TreeBig3.FBX">
       <Name>TreeBig3</Name>
@@ -842,7 +842,7 @@
     <Compile Include="Models\Enviro\Nature\river.FBX">
       <Name>river</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Textures\Enviro\Nature\Sun.dds">
       <Name>Sun</Name>
@@ -1013,7 +1013,12 @@
     <Compile Include="Models\Enviro\Buildings\Small_House.FBX">
       <Name>Small_House</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Nature\park_ground.FBX">
+      <Name>park_ground</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -2048,6 +2053,30 @@
   <ItemGroup>
     <Compile Include="Audio\Character\walk.wav">
       <Name>walk</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="Effects\POSTBoxBlurEffect.fx">
+      <Name>POSTBoxBlurEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Nature\park_ground_D.dds">
+      <Name>park_ground_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Nature\park_ground_N.dds">
+      <Name>park_ground_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Audio\Character\jump.wav">
+      <Name>jump</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
