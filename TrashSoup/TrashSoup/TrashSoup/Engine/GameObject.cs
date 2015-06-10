@@ -136,6 +136,18 @@ namespace TrashSoup.Engine
 
         #endregion
 
+        #region events
+
+        public delegate void OnTriggerEventHandler(object sender, CollisionEventArgs e);
+        public delegate void OnTriggerEnterEventHandler(object sender, CollisionEventArgs e);
+        public delegate void OnTriggerExitEventHandler(object sender, CollisionEventArgs e);
+
+        public event OnTriggerEventHandler OnTriggerEvent;
+        public event OnTriggerEnterEventHandler OnTriggerEnterEvent;
+        public event OnTriggerExitEventHandler OnTriggerExitEvent;
+
+        #endregion
+
         #region methods
         public GameObject(uint uniqueID, string name)
         {
@@ -577,6 +589,8 @@ namespace TrashSoup.Engine
         /// </summary>
         public virtual void OnTrigger(GameObject otherGO)
         {
+            if (OnTriggerEvent != null) OnTriggerEvent(this, new CollisionEventArgs(otherGO));
+
             foreach(ObjectComponent oc in this.Components)
             {
                 oc.OnTrigger(otherGO);
@@ -585,6 +599,8 @@ namespace TrashSoup.Engine
 
         public virtual void OnTriggerEnter(GameObject otherGO)
         {
+            if (OnTriggerEnterEvent != null) OnTriggerEnterEvent(this, new CollisionEventArgs(otherGO));
+
             //Debug.Log(this.Name + " trigger enter with " + otherGO.Name);
             foreach (ObjectComponent oc in this.Components)
             {
@@ -594,6 +610,8 @@ namespace TrashSoup.Engine
 
         public virtual void OnTriggerExit(GameObject otherGO)
         {
+            if (OnTriggerExitEvent != null) OnTriggerExitEvent(this, new CollisionEventArgs(otherGO));
+
             //Debug.Log(this.Name + " trigger exit with " + otherGO.Name);
             foreach (ObjectComponent oc in this.Components)
             {

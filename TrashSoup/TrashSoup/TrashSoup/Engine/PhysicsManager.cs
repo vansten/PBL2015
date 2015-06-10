@@ -85,11 +85,11 @@ namespace TrashSoup.Engine
         {
             foreach(GameObject po in this.physicalObjects)
             {
-                if(po.Enabled)
+                if(po.Enabled && po.MyCollider.Enabled)
                 {
                     foreach (Collider col in this.AllColliders)
                     {
-                        if(col.MyObject.Enabled)
+                        if(col.MyObject.Enabled && col.Enabled)
                         {
                             if (po.MyCollider.IsTrigger || col.IsTrigger)
                             {
@@ -133,10 +133,11 @@ namespace TrashSoup.Engine
         {
             if (go.MyTransform == null) return true;
             if (go.MyCollider == null) return true;
+            if (!go.MyCollider.Enabled) return true;
 
             foreach(Collider col in this.AllColliders)
             {
-                if(col != go.MyCollider && col.MyObject.Enabled && go.Enabled)
+                if(col != go.MyCollider && col.MyObject.Enabled && col.Enabled && go.Enabled)
                 {
                     if(go.MyCollider.IgnoredColliders.Count > 0 && go.MyCollider.IgnoredColliders.Contains(col))
                     {

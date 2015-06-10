@@ -325,7 +325,7 @@ namespace TrashSoup.Engine
             //cegla.MyCollider = new BoxCollider(cegla);
             Fortification fort = new Fortification(cegla);
             fort.CurrentState = Fortification.FortificationState.STATE_EMPTY;
-            fort.MyType = Fortification.FortificationType.METAL_WIRE_SNARES;
+            fort.MyType = Fortification.FortificationType.WOOD1_WIRE_SNARES;
             cegla.Components.Add(fort);
             //GameObject pt = new GameObject(355, "PlayerTime");
             //PlayerTime ptc = new PlayerTime(pt);
@@ -596,7 +596,7 @@ namespace TrashSoup.Engine
         private void LoadTextures(Game game)
         {
             // Adding "default" textures for all maps containing only one pixel in one color
-            //uint diffColor = 0xFFFFFFFF;
+            uint whiteColor = 0xFFFFFFFF;
             uint normColor = 0xFFFF0F0F;
             uint blackColor = 0xFF000000;
             if (!Textures.ContainsKey("DefaultDiffuse"))
@@ -604,6 +604,12 @@ namespace TrashSoup.Engine
                 Texture2D defDiff = new Texture2D(TrashSoupGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
                 defDiff.SetData<uint>(new uint[] { blackColor });
                 Textures.Add("DefaultDiffuse", defDiff);
+            }
+            if (!Textures.ContainsKey("DefaultDiffuseWhite"))
+            {
+                Texture2D defDiffW = new Texture2D(TrashSoupGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+                defDiffW.SetData<uint>(new uint[] { whiteColor });
+                Textures.Add("DefaultDiffuseWhite", defDiffW);
             }
             if(!Textures.ContainsKey("DefaultNormal"))
             {

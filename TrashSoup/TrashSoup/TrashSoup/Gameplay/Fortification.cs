@@ -13,6 +13,7 @@ namespace TrashSoup.Gameplay
         #region constants
 
         private const int TYPE_COUNT = 3;
+        private const int PART_IN_TYPE_COUNT = 3;
 
         #endregion
 
@@ -31,6 +32,14 @@ namespace TrashSoup.Gameplay
             STATE_FIRST,
             STATE_SECOND,
             STATE_THIRD
+        }
+
+        private enum PartState
+        {
+            NEXT_BUILD,
+            PENDING,
+            BUILDING,
+            BUILT
         }
 
         #endregion
@@ -98,23 +107,23 @@ namespace TrashSoup.Gameplay
             // type2
             "Models/Home/Fortifications/wood_fortif2",
             "Models/Home/Fortifications/trap_wire",
-            "Models/Home/Fortifications/trap_wnyki"
+            "Models/Home/Fortifications/trap_wnyki_double"
         };
 
         private static Vector3[] PartTranslations = 
         {
             // type0
-            new Vector3(0.0f, 2.5f, 2.0f),
-            new Vector3(0.0f, 0.55f, -0.2f),
-            new Vector3(-1.4f, 0.0f, 0.7f),
+            new Vector3(0.0f, 2.5f, 0.0f),
+            new Vector3(0.0f, 0.55f, -2.2f),
+            new Vector3(-1.4f, 0.0f, -2.7f),
             // type1
-            new Vector3(0.0f, 0.0f, 0.0f),
-            new Vector3(0.0f, 0.0f, 0.0f),
-            new Vector3(0.0f, 0.0f, 0.0f),
+            new Vector3(0.0f, 2.5f, 0.0f),
+            new Vector3(-0.3f, 0.55f, -0.75f),
+            new Vector3(0.6f, 0.0f, -1.7f),
             // type2
-            new Vector3(0.0f, 0.0f, 0.0f),
-            new Vector3(0.0f, 0.0f, 0.0f),
-            new Vector3(0.0f, 0.0f, 0.0f)
+            new Vector3(0.0f, 2.7f, 0.0f),
+            new Vector3(0.0f, 1.5f, -0.1f),
+            new Vector3(1.5f, 0.0f, -0.7f)
         };
 
         private static Vector3[] PartRotations = 
@@ -124,13 +133,13 @@ namespace TrashSoup.Gameplay
             new Vector3(0.0f, 0.15f, 0.0f),
             new Vector3(0.0f, MathHelper.Pi - 0.6f, 0.0f),
             // type1
+            new Vector3(0.0f, MathHelper.PiOver2, 0.0f),
             new Vector3(0.0f, 0.0f, 0.0f),
-            new Vector3(0.0f, 0.0f, 0.0f),
-            new Vector3(0.0f, 0.0f, 0.0f),
+            new Vector3(0.0f, MathHelper.PiOver4, 0.0f),
             // type2
-            new Vector3(0.0f, 0.0f, 0.0f),
-            new Vector3(0.0f, 0.0f, 0.0f),
-            new Vector3(0.0f, 0.0f, 0.0f)
+            new Vector3(0.0f, MathHelper.PiOver2, 0.0f),
+            new Vector3(0.0f, 0.0f, 0.2f),
+            new Vector3(0.0f, 0.3f, 0.0f)
         };
 
         private static float[] PartScales = 
@@ -140,16 +149,16 @@ namespace TrashSoup.Gameplay
             2.7f,
             2.0f,
              // type1
-            1.0f,
-            1.0f,
-            1.0f,
+            3.0f,
+            2.7f,
+            2.0f,
              // type2
-            1.0f,
-            1.0f,
-            1.0f
+            4.0f,
+            7.5f,
+            2.0f
         };
 
-        private static float[] PartSpeculars = 
+        private static float[] PartGlosses = 
         {
             // type0
             0.8f,
@@ -166,9 +175,10 @@ namespace TrashSoup.Gameplay
         };
 
         private List<Material> selectionMat;
-        private List<Material> invisibleMat;
         private List<Material>[] currentMats;
         private CustomModel[] models;
+        private GameObject[] objects;
+        private PartState[] states;
         private GameObject triggerEnemyObj;
         private GameObject triggerPlayerObj;
 
@@ -178,7 +188,7 @@ namespace TrashSoup.Gameplay
 
         public FortificationType MyType { get; set; }
         public FortificationState CurrentState { get; set; }
-        public uint CurrentHealth { get; private set; }
+        public uint CurrentHealth { get; set; }
 
         #endregion
 
@@ -193,6 +203,10 @@ namespace TrashSoup.Gameplay
         public Fortification(GameObject mObj, Fortification ff)
             : base(mObj, ff)
         {
+            this.MyType = ff.MyType;
+            this.CurrentHealth = ff.CurrentHealth;
+            this.CurrentState = ff.CurrentState;
+
             Start();
         }
 
@@ -206,19 +220,20 @@ namespace TrashSoup.Gameplay
 
         protected override void Start()
         {
-            currentMats = new List<Material>[TYPE_COUNT];
-            models = new CustomModel[TYPE_COUNT];
+            currentMats = new List<Material>[PART_IN_TYPE_COUNT];
+            models = new CustomModel[PART_IN_TYPE_COUNT];
+            objects = new GameObject[PART_IN_TYPE_COUNT];
+            states = new PartState[PART_IN_TYPE_COUNT];
             MyType = (FortificationType)0;
             CurrentState = (FortificationState)0;
 
             selectionMat = new List<Material>();
-            invisibleMat = new List<Material>();
         }
 
         public override void Initialize()
         {
             int typeNumber = (int)MyType;
-            for (int i = 0; i < TYPE_COUNT; ++i )
+            for (int i = 0; i < PART_IN_TYPE_COUNT; ++i )
             {
                 GameObject fortPart = new GameObject(MyObject.UniqueID + (uint)MyObject.Name.GetHashCode() + (uint)i, MyObject.Name + "FortificationPart" + (i).ToString());
 
@@ -231,18 +246,163 @@ namespace TrashSoup.Gameplay
 
                 foreach(Material mat in mMats)
                 {
-                    mat.Glossiness = PartSpeculars[tN];
+                    mat.Glossiness = PartGlosses[tN];
                 }
 
                 MyObject.AddChild(fortPart);
+                objects[i] = fortPart;
 
-                fortPart.Components.Add(new CustomModel(fortPart, new Model[] { ResourceManager.Instance.LoadModel(PartModels[tN]), null, null }, mMats));
+                models[i] = new CustomModel(fortPart, new Model[] { ResourceManager.Instance.LoadModel(PartModels[tN]), null, null }, mMats);
+                fortPart.Components.Add(models[i]);
                 fortPart.MyTransform = new Transform(fortPart, PartTranslations[tN], Vector3.Up, PartRotations[tN], PartScales[tN]);
                 fortPart.MyCollider = new BoxCollider(fortPart);
 
+                states[i] = PartState.PENDING;
             }
 
+            // mats!
+            Material selMat = new Material(MyObject.Name + "FortificationSelectionMat", ResourceManager.Instance.LoadEffect(@"Effects\DefaultEffect"));
+            selMat.DiffuseMap = ResourceManager.Instance.Textures["DefaultDiffuseWhite"];
+            selMat.DiffuseColor = new Vector3(0.1f, 1.0f, 0.2f);
+            selMat.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
+            selMat.Transparency = 0.25f;
+            selectionMat.Add(selMat);
+
+            if(CurrentState == FortificationState.STATE_EMPTY)
+            {
+                if(CurrentHealth != 0)
+                {
+                    CurrentHealth = 0;
+                }
+
+                states[0] = PartState.NEXT_BUILD;
+            }
+            else if(CurrentState == FortificationState.STATE_FIRST)
+            {
+                if(CurrentHealth == 0)
+                {
+                    CurrentHealth = PartHealths[TYPE_COUNT * typeNumber];
+                }
+
+                states[0] = PartState.BUILT;
+                states[1] = PartState.NEXT_BUILD;
+            }
+            else if(CurrentState == FortificationState.STATE_SECOND)
+            {
+                if (CurrentHealth == 0)
+                {
+                    CurrentHealth = PartHealths[TYPE_COUNT * typeNumber] + PartHealths[TYPE_COUNT * typeNumber + 1];
+                }
+
+                states[0] = PartState.BUILT;
+                states[1] = PartState.BUILT;
+                states[2] = PartState.NEXT_BUILD;
+            }
+            else if(CurrentState == FortificationState.STATE_THIRD)
+            {
+                if (CurrentHealth == 0)
+                {
+                    CurrentHealth = PartHealths[TYPE_COUNT * typeNumber] + PartHealths[TYPE_COUNT * typeNumber + 1] + PartHealths[TYPE_COUNT * typeNumber + 2];
+                }
+
+                states[0] = PartState.BUILT;
+                states[1] = PartState.BUILT;
+                states[2] = PartState.BUILT;
+            }
+
+            for (int i = 0; i < PART_IN_TYPE_COUNT; ++i)
+            {
+                if(states[i] == PartState.BUILT)
+                {
+                    objects[i].Visible = true;
+                    objects[i].MyCollider.Enabled = true;
+                }
+                else
+                {
+                    objects[i].Visible = false;
+                    objects[i].MyCollider.Enabled = false;
+                    models[i].Mat = selectionMat;
+                }
+            }
+
+            triggerEnemyObj = new GameObject(MyObject.UniqueID + (uint)MyObject.Name.GetHashCode() + (uint)PART_IN_TYPE_COUNT, MyObject.Name + "FortificationTriggerEnemy");
+
+            MyObject.AddChild(triggerEnemyObj);
+
+            triggerEnemyObj.MyTransform = new Transform(triggerEnemyObj);
+            triggerEnemyObj.MyTransform.Position = new Vector3(0.0f, 0.0f, 2.0f);
+            triggerEnemyObj.MyTransform.Scale = 2.0f;
+            triggerEnemyObj.MyCollider = new BoxCollider(triggerEnemyObj, true);
+
+            triggerEnemyObj.OnTriggerEvent += new GameObject.OnTriggerEventHandler(OnTriggerEnemyHandler);
+            triggerEnemyObj.OnTriggerEnterEvent += new GameObject.OnTriggerEnterEventHandler(OnTriggerEnterEnemyHandler);
+            triggerEnemyObj.OnTriggerExitEvent += new GameObject.OnTriggerExitEventHandler(OnTriggerExitEnemyHandler);
+
+            ///
+
+            triggerPlayerObj = new GameObject(MyObject.UniqueID + (uint)MyObject.Name.GetHashCode() + (uint)PART_IN_TYPE_COUNT + 1, MyObject.Name + "FortificationTriggerPlayer");
+
+            MyObject.AddChild(triggerPlayerObj);
+
+            triggerPlayerObj.MyTransform = new Transform(triggerPlayerObj);
+            triggerPlayerObj.MyTransform.Scale = 3.0f;
+            triggerPlayerObj.MyCollider = new SphereCollider(triggerPlayerObj, true);
+
+            triggerPlayerObj.OnTriggerEvent += new GameObject.OnTriggerEventHandler(OnTriggerPlayerHandler);
+            triggerPlayerObj.OnTriggerEnterEvent += new GameObject.OnTriggerEnterEventHandler(OnTriggerEnterPlayerHandler);
+            triggerPlayerObj.OnTriggerExitEvent += new GameObject.OnTriggerExitEventHandler(OnTriggerExitPlayerHandler);
+
+            for (int i = 0; i < PART_IN_TYPE_COUNT; ++i )
+            {
+                triggerEnemyObj.MyCollider.IgnoredColliders.Add(objects[i].MyCollider);
+                triggerPlayerObj.MyCollider.IgnoredColliders.Add(objects[i].MyCollider);
+            }
+            triggerEnemyObj.MyCollider.IgnoredColliders.Add(ResourceManager.Instance.CurrentScene.ObjectsDictionary[1].MyCollider);
+            
+
             base.Initialize();
+        }
+
+        private void OnTriggerPlayerHandler(object sender, CollisionEventArgs e)
+        {
+           
+        }
+
+        private void OnTriggerEnterPlayerHandler(object sender, CollisionEventArgs e)
+        {
+            for(int i = 0; i < PART_IN_TYPE_COUNT; ++i)
+            {
+                if(states[i] == PartState.NEXT_BUILD)
+                {
+                    objects[i].Visible = true;
+                }
+            }
+        }
+
+        private void OnTriggerExitPlayerHandler(object sender, CollisionEventArgs e)
+        {
+            for (int i = 0; i < PART_IN_TYPE_COUNT; ++i)
+            {
+                if (states[i] == PartState.NEXT_BUILD)
+                {
+                    objects[i].Visible = false;
+                }
+            }
+        }
+
+        private void OnTriggerEnemyHandler(object sender, CollisionEventArgs e)
+        {
+            
+        }
+
+        private void OnTriggerEnterEnemyHandler(object sender, CollisionEventArgs e)
+        {
+            
+        }
+
+        private void OnTriggerExitEnemyHandler(object sender, CollisionEventArgs e)
+        {
+            
         }
 
         #endregion
