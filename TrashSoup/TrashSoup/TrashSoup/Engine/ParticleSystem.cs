@@ -272,18 +272,18 @@ namespace TrashSoup.Engine
             indices = new int[particleCount * 6];
 
             //to serialize
-            this.particleCount = 100;
-            this.particleSize = new Vector2(2);
-            this.lifespan = 1;
-            this.wind = Vector3.Zero;
-            this.fadeInTime = 0.5f;
+            //this.particleCount = 100;
+            //this.particleSize = new Vector2(2);
+            //this.lifespan = 1;
+            //this.wind = Vector3.Zero;
+            //this.fadeInTime = 0.5f;
 
             //to serialize
-            this.isLooped = false;
-            this.isStopped = true;
+            //this.isLooped = false;
+            //this.isStopped = true;
 
             //to serialize
-            this.texture = TrashSoupGame.Instance.Content.Load<Texture2D>(@"Textures/ParticleTest/Particle");
+            //this.texture = TrashSoupGame.Instance.Content.Load<Texture2D>(@"Textures/ParticleTest/Particle");
             this.graphicsDevice = TrashSoupGame.Instance.GraphicsDevice;
 
             offset = new Vector3(MathHelper.ToRadians(10.0f));
@@ -319,12 +319,57 @@ namespace TrashSoup.Engine
 
             base.ReadXml(reader);
 
+            particleCount = reader.ReadElementContentAsInt("ParticleCount", "");
+
+            if (reader.Name == "ParticleSize")
+            {
+                reader.ReadStartElement();
+                particleSize = new Vector2(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""));
+                reader.ReadEndElement();
+            }
+
+            lifespan = reader.ReadElementContentAsInt("LifeSpan", "");
+
+            if (reader.Name == "Wind")
+            {
+                reader.ReadStartElement();
+                wind = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""),
+                    reader.ReadElementContentAsFloat("Z", ""));
+                reader.ReadEndElement();
+            }
+
+            fadeInTime = reader.ReadElementContentAsFloat("FadeInTime", "");
+            isLooped = reader.ReadElementContentAsBoolean("IsLooped", "");
+            isStopped = reader.ReadElementContentAsBoolean("IsStopped", "");
+            texture = ResourceManager.Instance.LoadTexture(reader.ReadElementString("TexturePath", ""));
+
             reader.ReadEndElement();
         }
 
         public override void WriteXml(XmlWriter writer)
         {
             base.WriteXml(writer);
+            writer.WriteElementString("ParticleCount", XmlConvert.ToString(particleCount));
+
+            writer.WriteStartElement("ParticleSize");
+            writer.WriteElementString("X", XmlConvert.ToString(particleSize.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(particleSize.Y));
+            writer.WriteEndElement();
+
+            writer.WriteElementString("LifeSpan", XmlConvert.ToString(lifespan));
+            
+            writer.WriteStartElement("Wind");
+            writer.WriteElementString("X", XmlConvert.ToString(wind.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(wind.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(wind.Z));
+            writer.WriteEndElement();
+
+            writer.WriteElementString("FadeInTime", XmlConvert.ToString(fadeInTime));
+            writer.WriteElementString("IsLooped", XmlConvert.ToString(isLooped));
+            writer.WriteElementString("IsStopped", XmlConvert.ToString(isStopped));
+            writer.WriteElementString("TexturePath", "Textures/ParticleTest/Particle");
         }
     }
 }
