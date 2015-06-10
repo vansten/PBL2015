@@ -276,7 +276,7 @@ namespace TrashSoup.Engine
             testTer.Components.Add(terModel);
 
             GameObject testBox2 = new GameObject(3, "testBox2");
-            testBox2.MyTransform = new Transform(testBox2, new Vector3(5.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
+            testBox2.MyTransform = new Transform(testBox2, new Vector3(5.0f, -10.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
             testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Enviro/Ground/street_cross"], null, null }, deSign));
             //Billboard billboard = new Billboard(testBox2);
             //Material bbmat = new Material("billboard", Effects[@"Effects\BillboardEffect"], LoadTexture(@"Textures\Enviro\Nature\Sun"));
@@ -320,17 +320,13 @@ namespace TrashSoup.Engine
 
             // moje na pagi
             GameObject cegla = new GameObject(14, "cegla");
-            cegla.MyTransform = new Transform(cegla, new Vector3(5.0f, 5.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 5.0f);
-            cegla.Components.Add(new CustomModel(cegla, new Model[] { Models["Models/Weapons/Stones/brick"], null, null }, bb));
-            cegla.MyCollider = new BoxCollider(cegla, true);
-            //cegla.MyPhysicalObject = new PhysicalObject(cegla, 5.0f, 0.01f, true);
-            Destructible destr = new Destructible(cegla);
-            destr.PartsPath = "Models/Weapons/Stones/brick_destructible";
-            destr.PartCount = 9;
-            destr.MaxHealth = 100;
-            destr.HitDamage = 50;
-            cegla.Components.Add(destr);
-
+            cegla.MyTransform = new Transform(cegla, new Vector3(5.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
+            //cegla.Components.Add(new CustomModel(cegla, new Model[] { Models["Models/Weapons/Stones/brick"], null, null }, bb));
+            //cegla.MyCollider = new BoxCollider(cegla);
+            Fortification fort = new Fortification(cegla);
+            fort.CurrentState = Fortification.FortificationState.STATE_EMPTY;
+            fort.MyType = Fortification.FortificationType.METAL_WIRE_SNARES;
+            cegla.Components.Add(fort);
             //GameObject pt = new GameObject(355, "PlayerTime");
             //PlayerTime ptc = new PlayerTime(pt);
             //ptc.Multiplier = 3600;

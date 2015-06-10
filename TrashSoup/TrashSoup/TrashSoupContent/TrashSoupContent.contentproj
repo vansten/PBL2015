@@ -873,7 +873,7 @@
     <Compile Include="Models\Home\Fortifications\wire_fortif.FBX">
       <Name>wire_fortif</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Home\Fortifications\trap_wire.FBX">
       <Name>trap_wire</Name>
@@ -1017,6 +1017,11 @@
     </Compile>
     <Compile Include="Models\Enviro\Nature\park_ground.FBX">
       <Name>park_ground</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Fortifications\trap_wnyki_double.FBX">
+      <Name>trap_wnyki_double</Name>
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
