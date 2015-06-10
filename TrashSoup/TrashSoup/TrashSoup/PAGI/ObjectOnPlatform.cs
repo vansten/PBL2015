@@ -12,7 +12,7 @@ namespace TrashSoup.PAGI
         private GameObject platform;
         private Vector3 currentMovement;
         private float dragFactor = 0.05f;
-        private float moveSpeed = 10.0f;
+        private float moveSpeed = 7.5f;
         private Vector3 platformRotationOnFall = Vector3.Zero;
 
         public ObjectOnPlatform(GameObject go) : base(go)
@@ -59,7 +59,7 @@ namespace TrashSoup.PAGI
                 this.currentMovement += tempVelo;
             }
 
-            this.MyObject.MyTransform.Rotation += new Vector3(currentMovement.X, 0.0f, 0.0f) * 0.001f * gameTime.ElapsedGameTime.Milliseconds * moveSpeed;
+            this.MyObject.MyTransform.Rotation += new Vector3(currentMovement.X, 0.0f, 0.0f) * gameTime.ElapsedGameTime.Milliseconds * 0.001f * moveSpeed;
 
             this.MyObject.MyTransform.Position += currentMovement * moveSpeed * gameTime.ElapsedGameTime.Milliseconds * 0.001f;
             this.currentMovement *= (1.0f - dragFactor);
@@ -95,10 +95,10 @@ namespace TrashSoup.PAGI
 
         public override void Initialize()
         {
-            platform = ResourceManager.Instance.CurrentScene.GetObject(0);
-            platform.AddChild(this.MyObject);
-            this.MyObject.MyTransform.Rotation += Vector3.Up * MathHelper.PiOver2;
             this.MyObject.MyTransform.Version = Transform.GameVersionEnum.STENGERT_PAGI;
+            platform = ResourceManager.Instance.CurrentScene.GetObject(0);
+            this.MyObject.MyTransform.Rotation += Vector3.Up * MathHelper.PiOver2;
+            platform.AddChild(this.MyObject);
             base.Initialize();
         }
 

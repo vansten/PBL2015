@@ -9,7 +9,7 @@ namespace TrashSoup.PAGI
 {
     class Platform : ObjectComponent
     {
-        private float speed = 1.0f;
+        private float speed = 1.3f;
 
         public Platform(GameObject go) : base(go)
         {
