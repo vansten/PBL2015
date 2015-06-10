@@ -174,6 +174,9 @@ namespace TrashSoup.Gameplay
             0.5f
         };
 
+        private static Vector3 NotBuiltColor = new Vector3(0.8f, 0.8f, 1.0f);
+        private static Vector3 BuiltColor = new Vector3(0.1f, 1.0f, 0.2f);
+
         private List<Material> selectionMat;
         private List<Material>[] currentMats;
         private CustomModel[] models;
@@ -181,6 +184,15 @@ namespace TrashSoup.Gameplay
         private PartState[] states;
         private GameObject triggerEnemyObj;
         private GameObject triggerPlayerObj;
+
+        private int currentlyBuildingID = -1;
+        private float currentlyBuildingProgress = 0;
+        private bool playerInTrigger = false;
+        private bool buildInProgress = false;
+        private uint currentMaxTime;
+
+        private Texture2D interactionTexture;
+        private Vector2 interactionTexturePos = new Vector2(0.475f, 0.775f);
 
         #endregion
 
@@ -212,6 +224,46 @@ namespace TrashSoup.Gameplay
 
         public override void Update(GameTime gameTime)
         {
+            // building
+            if(playerInTrigger)
+            {
+                GUIManager.Instance.DrawTexture(this.interactionTexture, this.interactionTexturePos, 0.05f, 0.05f);
+
+                if(InputHandler.Instance.Action())
+                {
+                    if(buildInProgress)
+                    {
+                        // have we finished?
+                        if((uint)currentlyBuildingProgress >= currentMaxTime)
+                        {
+                            // reset everything and change state to upper
+                            Debug.Log("Built!");
+                        }
+                        else
+                        {
+                            currentlyBuildingProgress += (float)(gameTime.ElapsedGameTime.TotalSeconds);
+                            float lerpFactor = (float)currentlyBuildingProgress / (float)currentMaxTime;
+                            selectionMat[0].DiffuseColor = Vector3.Lerp(NotBuiltColor, BuiltColor, lerpFactor);
+                        }
+                    }
+                    else
+                    {
+                        // get object ID we want to build
+                        for(int i = 0; i < PART_IN_TYPE_COUNT; ++i)
+                        {
+                            if(states[i] == PartState.NEXT_BUILD)
+                            {
+                                states[i] = PartState.BUILDING;
+                                currentlyBuildingID = i;
+                                break;
+                            }
+                        }
+                        currentlyBuildingProgress = 0;  // reset progress
+                        buildInProgress = true;
+                        currentMaxTime = PartTimes[currentlyBuildingID + TYPE_COUNT * (int)MyType];
+                    }
+                }
+            }
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, GameTime gameTime)
@@ -233,6 +285,9 @@ namespace TrashSoup.Gameplay
         public override void Initialize()
         {
             int typeNumber = (int)MyType;
+
+            this.interactionTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/x_button");
+
             for (int i = 0; i < PART_IN_TYPE_COUNT; ++i )
             {
                 GameObject fortPart = new GameObject(MyObject.UniqueID + (uint)MyObject.Name.GetHashCode() + (uint)i, MyObject.Name + "FortificationPart" + (i).ToString());
@@ -263,7 +318,7 @@ namespace TrashSoup.Gameplay
             // mats!
             Material selMat = new Material(MyObject.Name + "FortificationSelectionMat", ResourceManager.Instance.LoadEffect(@"Effects\DefaultEffect"));
             selMat.DiffuseMap = ResourceManager.Instance.Textures["DefaultDiffuseWhite"];
-            selMat.DiffuseColor = new Vector3(0.1f, 1.0f, 0.2f);
+            selMat.DiffuseColor = NotBuiltColor;
             selMat.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
             selMat.Transparency = 0.25f;
             selectionMat.Add(selMat);
@@ -334,7 +389,6 @@ namespace TrashSoup.Gameplay
             triggerEnemyObj.MyTransform.Scale = 2.0f;
             triggerEnemyObj.MyCollider = new BoxCollider(triggerEnemyObj, true);
 
-            triggerEnemyObj.OnTriggerEvent += new GameObject.OnTriggerEventHandler(OnTriggerEnemyHandler);
             triggerEnemyObj.OnTriggerEnterEvent += new GameObject.OnTriggerEnterEventHandler(OnTriggerEnterEnemyHandler);
             triggerEnemyObj.OnTriggerExitEvent += new GameObject.OnTriggerExitEventHandler(OnTriggerExitEnemyHandler);
 
@@ -345,10 +399,10 @@ namespace TrashSoup.Gameplay
             MyObject.AddChild(triggerPlayerObj);
 
             triggerPlayerObj.MyTransform = new Transform(triggerPlayerObj);
+            triggerPlayerObj.MyTransform.Position = new Vector3(0.0f, 0.0f, -2.0f);
             triggerPlayerObj.MyTransform.Scale = 3.0f;
             triggerPlayerObj.MyCollider = new SphereCollider(triggerPlayerObj, true);
 
-            triggerPlayerObj.OnTriggerEvent += new GameObject.OnTriggerEventHandler(OnTriggerPlayerHandler);
             triggerPlayerObj.OnTriggerEnterEvent += new GameObject.OnTriggerEnterEventHandler(OnTriggerEnterPlayerHandler);
             triggerPlayerObj.OnTriggerExitEvent += new GameObject.OnTriggerExitEventHandler(OnTriggerExitPlayerHandler);
 
@@ -363,13 +417,10 @@ namespace TrashSoup.Gameplay
             base.Initialize();
         }
 
-        private void OnTriggerPlayerHandler(object sender, CollisionEventArgs e)
-        {
-           
-        }
-
         private void OnTriggerEnterPlayerHandler(object sender, CollisionEventArgs e)
         {
+            playerInTrigger = true;
+
             for(int i = 0; i < PART_IN_TYPE_COUNT; ++i)
             {
                 if(states[i] == PartState.NEXT_BUILD)
@@ -381,6 +432,8 @@ namespace TrashSoup.Gameplay
 
         private void OnTriggerExitPlayerHandler(object sender, CollisionEventArgs e)
         {
+            playerInTrigger = false;
+
             for (int i = 0; i < PART_IN_TYPE_COUNT; ++i)
             {
                 if (states[i] == PartState.NEXT_BUILD)
@@ -388,11 +441,6 @@ namespace TrashSoup.Gameplay
                     objects[i].Visible = false;
                 }
             }
-        }
-
-        private void OnTriggerEnemyHandler(object sender, CollisionEventArgs e)
-        {
-            
         }
 
         private void OnTriggerEnterEnemyHandler(object sender, CollisionEventArgs e)
