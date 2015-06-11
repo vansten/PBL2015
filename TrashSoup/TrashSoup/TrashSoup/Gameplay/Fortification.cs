@@ -226,13 +226,13 @@ namespace TrashSoup.Gameplay
                 if (CurrentID == -1)
                     return;
 
-                uint difference = value - CurrentHealth;
+                int difference = (int)value - (int)CurrentHealth;
 
                 while(CurrentID >= 0)
                 {
                     if (Parts[CurrentID].Health + difference >= 0 && Parts[CurrentID].Health + difference <= Parts[CurrentID].MaxHealth)
                     {
-                        Parts[CurrentID].Health += difference;
+                        Parts[CurrentID].Health += (uint)difference;
                         return;
                     }
                     else if (Parts[CurrentID].Health + difference > Parts[CurrentID].MaxHealth)  // a miracle has happened!
@@ -243,7 +243,7 @@ namespace TrashSoup.Gameplay
                     else // destruction of one or more parts may occur
                     {
                         Parts[CurrentID].Health = 0;
-                        difference += Parts[CurrentID].Health;
+                        difference += (int)Parts[CurrentID].Health;
                         DestroyCurrent();
                     }
                 }
@@ -285,8 +285,8 @@ namespace TrashSoup.Gameplay
                         // fixing current one
                         if (InRange(CurrentID) && Parts[CurrentID].Health < Parts[CurrentID].MaxHealth)
                         {
-                            Debug.Log("HideoutStash: Fixing level " + CurrentID.ToString() + ", on " + Parts[CurrentID].Health.ToString() + "/" + Parts[CurrentID].MaxHealth.ToString() + " HP");
                             Parts[CurrentID].BuildUp(gameTime);
+                            Debug.Log("HideoutStash: Fixing level " + CurrentID.ToString() + ", on " + Parts[CurrentID].Health.ToString() + "/" + Parts[CurrentID].MaxHealth.ToString() + " HP");
                         }
                         // building further if build is in progress
                         else if (Parts[NextID].State == FortificationPart.PartState.BUILDING)
@@ -488,18 +488,7 @@ namespace TrashSoup.Gameplay
 
             if (InRange(NextID) && 
                 Parts[NextID].State == FortificationPart.PartState.NEXT_BUILD &&
-                Parts[CurrentID].Health == Parts[CurrentID].MaxHealth) Parts[NextID].MyObject.Visible = true;
-            //if(CurrentHealth == healthCheck)
-            //{
-                //for (int i = 0; i < PART_IN_TYPE_COUNT; ++i)
-                //{
-                //    if (Parts[i].State == FortificationPart.PartState.NEXT_BUILD)
-                //    {
-                //        Parts[i].MyObject.Visible = true;
-                //    }
-                //}
-            //}
-            
+                ((InRange(CurrentID) && Parts[CurrentID].Health == Parts[CurrentID].MaxHealth) || (!InRange(CurrentID)))) Parts[NextID].MyObject.Visible = true;
         }
 
         private void OnTriggerExitPlayerHandler(object sender, CollisionEventArgs e)
@@ -507,13 +496,6 @@ namespace TrashSoup.Gameplay
             playerInTrigger = false;
 
             if (InRange(NextID) && Parts[NextID].State == FortificationPart.PartState.NEXT_BUILD) Parts[NextID].MyObject.Visible = false;
-            //for (int i = 0; i < PART_IN_TYPE_COUNT; ++i)
-            //{
-            //    if (Parts[i].State == FortificationPart.PartState.NEXT_BUILD)
-            //    {
-            //        Parts[i].MyObject.Visible = false;
-            //    }
-            //}
         }
 
         private void OnTriggerEnterEnemyHandler(object sender, CollisionEventArgs e)
@@ -528,7 +510,19 @@ namespace TrashSoup.Gameplay
 
         private void DestroyCurrent()
         {
+            Parts[CurrentID].Destroy();
+            Parts[CurrentID].State = FortificationPart.PartState.NEXT_BUILD;
+            if(InRange(NextID))
+            {
+                Parts[NextID].State = FortificationPart.PartState.PENDING;
+                Parts[NextID].Health = 0;
+            }
+            if(playerInTrigger)
+            {
+                Parts[CurrentID].MyObject.Visible = true;
+            }
 
+            --CurrentID;
         }
 
         private bool InRange(int id)

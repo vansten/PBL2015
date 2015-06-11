@@ -160,6 +160,11 @@ namespace TrashSoup.Gameplay
             selectionMat[0].DiffuseColor = Vector3.Lerp(NotBuiltColor, BuiltColor, lerpFactor);
         }
 
+        public void Destroy()
+        {
+            Debug.Log("Boom!");
+        }
+
         #endregion
     }
 }
