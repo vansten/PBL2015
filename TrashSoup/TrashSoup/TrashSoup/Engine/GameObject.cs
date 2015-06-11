@@ -423,6 +423,19 @@ namespace TrashSoup.Engine
 
             UniqueID = (uint)reader.ReadElementContentAsInt("UniqueID", "");
             Name = reader.ReadElementString("Name", "");
+
+            if (reader.Name == "Tags")
+            {
+                reader.ReadStartElement();
+                Tags = new List<string>();
+                while (reader.NodeType != XmlNodeType.EndElement)
+                {
+                    string s = reader.ReadElementString("Tag", "");
+                    if(s != "null")
+                        Tags.Add(s);
+                }
+                reader.ReadEndElement();
+            }
             Dynamic = reader.ReadElementContentAsBoolean("Dynamic", "");
 
             if(reader.Name == "MyTransform")
@@ -530,6 +543,21 @@ namespace TrashSoup.Engine
         {
             writer.WriteElementString("UniqueID", UniqueID.ToString());
             writer.WriteElementString("Name", Name);
+
+            writer.WriteStartElement("Tags");
+            if (Tags != null)
+            {
+                foreach (string tag in Tags)
+                {
+                    writer.WriteElementString("Tag", tag);
+                }
+            }
+            else
+            {
+                writer.WriteElementString("Tag", "null");
+            }
+            writer.WriteEndElement();
+
             writer.WriteElementString("Dynamic", XmlConvert.ToString(Dynamic));
 
             if(MyTransform != null)
