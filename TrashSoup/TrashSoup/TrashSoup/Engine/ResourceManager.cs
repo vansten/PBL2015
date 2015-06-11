@@ -103,6 +103,7 @@ namespace TrashSoup.Engine
             AddAnimation("Animations/MainCharacter/injuries_1");
             AddAnimation("Animations/MainCharacter/injuries_2");
             AddAnimation("Animations/MainCharacter/run_2");
+            AddAnimation("Animations/MainCharacter/dying_1");
             AddAnimation("Animations/MainCharacter/run_Hweapon");
            // AddAnimation("Animations/MainCharacter/run_SMweapon");
             AddAnimation("Animations/MainCharacter/walk_1");
@@ -249,6 +250,7 @@ namespace TrashSoup.Engine
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/MainCharacter/idle_1"], "Animations/MainCharacter/idle_1"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/MainCharacter/dodge_1"], "Animations/MainCharacter/dodge_1"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/MainCharacter/boxing_3"], "Animations/MainCharacter/boxing_3"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/MainCharacter/dying_1"], "Animations/MainCharacter/dying_1"));
             testBox.Components.Add(skModel);
             testBox.MyAnimator = playerAnimator;
             testBox.Components.Add(new PlayerController(testBox));

@@ -125,8 +125,10 @@
     <Compile Include="Gameplay\Fortification.cs" />
     <Compile Include="Gameplay\DaytimeChange.cs" />
     <Compile Include="Gameplay\FortificationPart.cs" />
+    <Compile Include="Gameplay\GameManager.cs" />
     <Compile Include="Gameplay\HideoutStash.cs" />
     <Compile Include="Gameplay\Journal.cs" />
+    <Compile Include="Gameplay\JournalView.cs" />
     <Compile Include="Gameplay\Trash.cs" />
     <Compile Include="Gameplay\DisappearingTrash.cs" />
     <Compile Include="Gameplay\Enemy.cs" />

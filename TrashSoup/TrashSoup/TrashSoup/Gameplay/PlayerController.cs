@@ -85,6 +85,8 @@ namespace TrashSoup.Gameplay
         public SoundEffect JumpSoundEffect;
         public SoundEffectInstance Jump;
 
+        private bool deathAnimPlayed = false;
+
         #endregion
 
         #region properties
@@ -149,19 +151,27 @@ namespace TrashSoup.Gameplay
             if (isDead)
             {
                 GUIManager.Instance.DrawText(this.font, "YOU'RE DEAD!", this.deadPos, Color.Red, 4.0f);
+                if(!deathAnimPlayed)
+                {
+                    deathAnimPlayed = true;
+                    this.MyObject.MyAnimator.ChangeState("Death");
+                }
                 return;
             }
-            
-            if (InputHandler.Instance.Eat())
+
+            if (GameManager.Instance.MovementEnabled)
             {
-                if(this.Equipment.FoodCount > 0)
+                if (InputHandler.Instance.Eat())
                 {
-                    this.Equipment.FoodCount -= 1;
-                    IncreaseHealth(MAX_HEALTH);
-                }
-                else
-                {
-                    drawFoodWarning = true;
+                    if (this.Equipment.FoodCount > 0)
+                    {
+                        this.Equipment.FoodCount -= 1;
+                        IncreaseHealth(MAX_HEALTH);
+                    }
+                    else
+                    {
+                        drawFoodWarning = true;
+                    }
                 }
             }
 
@@ -195,114 +205,118 @@ namespace TrashSoup.Gameplay
             }
 
             equipment.Update(gameTime);
-            
-            Vector2 movementVector = InputHandler.Instance.GetMovementVector();
-            tempMove = new Vector3(movementVector.X,
-                (InputManager.Instance.GetKeyboardButton(Keys.Q) ? 1.0f : 0.0f) - (InputManager.Instance.GetKeyboardButton(Keys.Z) ? 1.0f : 0.0f),
-                movementVector.Y);
 
-            if(tempMove.Length() > 0.0f &&
-                ResourceManager.Instance.CurrentScene.Cam != null)
+            if (GameManager.Instance.MovementEnabled)
             {
-                if (moving == false)
-                {
-                    moving = true;
 
+                Vector2 movementVector = InputHandler.Instance.GetMovementVector();
+                tempMove = new Vector3(movementVector.X,
+                    (InputManager.Instance.GetKeyboardButton(Keys.Q) ? 1.0f : 0.0f) - (InputManager.Instance.GetKeyboardButton(Keys.Z) ? 1.0f : 0.0f),
+                    movementVector.Y);
+
+                if (tempMove.Length() > 0.0f &&
+                    ResourceManager.Instance.CurrentScene.Cam != null)
+                {
+                    if (moving == false)
+                    {
+                        moving = true;
+
+                        if (MyObject.MyAnimator != null)
+                        {
+                            MyObject.MyAnimator.SetBlendState("Walk");
+                        }
+                    }
+                    if (moving == true)
+                    {
+                        Walk.Play();
+                        MyObject.MyAnimator.CurrentInterpolation = MathHelper.Clamp(tempMove.Length(), 0.0f, 1.0f);
+                    }
+                    // now to rotate that damn vector as camera direction is rotated
+                    rotM = rotation;
+                    prevForward = MyObject.MyTransform.Forward;
+
+                    rotation = (float)Math.Atan2(ResourceManager.Instance.CurrentScene.Cam.Direction.X,
+                        -ResourceManager.Instance.CurrentScene.Cam.Direction.Z);
+                    rotation = CurveAngle(rotM, rotation, 3.0f * ROTATION_SPEED);                 // to się chyba gdzieś tu wywala ale nie jestem pewien
+                    tempMoveRotated = Vector3.Transform(tempMove, Matrix.CreateRotationY(rotation));
+
+                    if (float.IsNaN(tempMoveRotated.X) || float.IsNaN(tempMoveRotated.Y) || float.IsNaN(tempMoveRotated.Z))
+                    {
+                        Debug.Log("PLAYERCONTROLLER ERROR: NaN detected in tempMoveRotated");
+                    }
+
+                    MyObject.MyTransform.Forward = Vector3.Lerp(prevForward, tempMoveRotated, ROTATION_SPEED);
+                    MyObject.MyTransform.Rotation = RotateAsForward(MyObject.MyTransform.Forward, MyObject.MyTransform.Rotation);
+
+                    if (InputHandler.Instance.IsSprinting() && tempMove.Length() >= 0.8f)
+                    {
+                        sprint = MathHelper.Lerp(1.0f, SPRINT_MULTIPLIER, sprintM);
+                        sprintM += SPRINT_ACCELERATION * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f);
+                        sprintM = MathHelper.Min(sprintM, 1.0f);
+                    }
+                    else if (sprintM != 0.0f || sprint != 1.0f)
+                    {
+                        sprint = MathHelper.Lerp(1.0f, SPRINT_MULTIPLIER, sprintM);
+                        sprintM -= SPRINT_DECELERATION * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f);
+                        sprintM = MathHelper.Max(sprintM, 0.0f);
+                    }
+
+                    MyObject.MyTransform.Position += (MyObject.MyTransform.Forward * PLAYER_SPEED * sprint * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f));
+                }
+                else
+                {
+                    if (moving == true)
+                    {
+                        Walk.Stop(true);
+                        moving = false;
+                        MyObject.MyAnimator.RemoveBlendStateToCurrent();
+                    }
+                }
+
+                if (InputHandler.Instance.IsJumping())
+                {
                     if (MyObject.MyAnimator != null)
                     {
-                        MyObject.MyAnimator.SetBlendState("Walk");
+                        if (MyObject.MyAnimator.ThirdState == null)
+                        {
+                            // jump!
+                            //Debug.Log("Jump!");
+                            jumping = true;
+                            MyObject.MyAnimator.ChangeState("Jump");
+                        }
                     }
                 }
-                if(moving == true)
-                {
-                    Walk.Play();
-                    MyObject.MyAnimator.CurrentInterpolation = MathHelper.Clamp(tempMove.Length(), 0.0f, 1.0f);
-                }
-                // now to rotate that damn vector as camera direction is rotated
-                rotM = rotation;
-                prevForward = MyObject.MyTransform.Forward;
 
-                rotation = (float)Math.Atan2(ResourceManager.Instance.CurrentScene.Cam.Direction.X,
-                    -ResourceManager.Instance.CurrentScene.Cam.Direction.Z);
-                rotation = CurveAngle(rotM, rotation, 3.0f*ROTATION_SPEED);                 // to się chyba gdzieś tu wywala ale nie jestem pewien
-                tempMoveRotated = Vector3.Transform(tempMove, Matrix.CreateRotationY(rotation));
-
-                if (float.IsNaN(tempMoveRotated.X) || float.IsNaN(tempMoveRotated.Y) || float.IsNaN(tempMoveRotated.Z))
-                {
-                    Debug.Log("PLAYERCONTROLLER ERROR: NaN detected in tempMoveRotated");
-                }
-
-                MyObject.MyTransform.Forward = Vector3.Lerp(prevForward, tempMoveRotated, ROTATION_SPEED);
-                MyObject.MyTransform.Rotation = RotateAsForward(MyObject.MyTransform.Forward, MyObject.MyTransform.Rotation);
-               
-                if (InputHandler.Instance.IsSprinting() && tempMove.Length() >= 0.8f)
-                {
-                    sprint = MathHelper.Lerp(1.0f, SPRINT_MULTIPLIER, sprintM);
-                    sprintM += SPRINT_ACCELERATION * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f);
-                    sprintM = MathHelper.Min(sprintM, 1.0f);
-                }
-                else if(sprintM != 0.0f || sprint != 1.0f)
-                {
-                    sprint = MathHelper.Lerp(1.0f, SPRINT_MULTIPLIER, sprintM);
-                    sprintM -= SPRINT_DECELERATION * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f);
-                    sprintM = MathHelper.Max(sprintM, 0.0f);
-                }
-
-                MyObject.MyTransform.Position += (MyObject.MyTransform.Forward * PLAYER_SPEED * sprint * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f));
-            }
-            else
-            {
-                if (moving == true)
+                if (jumping)
                 {
                     Walk.Stop(true);
-                    moving = false;
-                    MyObject.MyAnimator.RemoveBlendStateToCurrent();
-                }
-            }
-
-            if (InputHandler.Instance.IsJumping())
-            {
-                if (MyObject.MyAnimator != null)
-                {
-                    if(MyObject.MyAnimator.ThirdState == null)
+                    jumpTimer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+                    if (!jumped && jumpTimer > 0.65f)
                     {
-                        // jump!
-                        //Debug.Log("Jump!");
-                        jumping = true;
-                        MyObject.MyAnimator.ChangeState("Jump");
+                        this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 135.0f);
+                        jumped = true;
+                        Jump.Play();
+                    }
+                    else if (jumpTimer > 2.0f)
+                    {
+                        jumpTimer = 0.0f;
+                        jumped = false;
+                        jumping = false;
                     }
                 }
-            }
 
-            if(jumping)
-            {
-                Walk.Stop(true);
-                jumpTimer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
-                if(!jumped && jumpTimer > 0.65f)
+                if (InputHandler.Instance.IsAttacking())
                 {
-                    this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 135.0f);
-                    jumped = true;
-                    Jump.Play();
-                }
-                else if(jumpTimer > 2.0f)
-                {
-                    jumpTimer = 0.0f;
-                    jumped = false;
-                    jumping = false;
-                }
-            }
-
-            if(InputHandler.Instance.IsAttacking())
-            {
-                if(MyObject.MyAnimator != null)
-                {
-                    if(MyObject.MyAnimator.ThirdState == null)
+                    if (MyObject.MyAnimator != null)
                     {
-                        MyObject.MyAnimator.ChangeState("AttackFist01");
+                        if (MyObject.MyAnimator.ThirdState == null)
+                        {
+                            MyObject.MyAnimator.ChangeState("AttackFist01");
+                        }
                     }
+                    equipment.CurrentWeapon.IsAttacking = true;
+                    equipment.CurrentWeapon.timerOn = gameTime.TotalGameTime.TotalSeconds;
                 }
-                equipment.CurrentWeapon.IsAttacking = true;
-                equipment.CurrentWeapon.timerOn = gameTime.TotalGameTime.TotalSeconds;
             }
 
             if(this.collisionWithWeapon)
@@ -411,6 +425,7 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/idle_1")));
                 MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/run_2")));
                 MyObject.MyAnimator.AvailableStates.Add("Jump", new AnimatorState("Jump", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/dodge_1"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("Death", new AnimatorState("Death", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/dying_1"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("AttackFist01", new AnimatorState("AttackFist01", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_3"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Jump"], new TimeSpan(0, 0, 0, 0, 500));
@@ -420,6 +435,10 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.AvailableStates["Jump"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 100));
                 MyObject.MyAnimator.AvailableStates["Jump"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 500));
                 MyObject.MyAnimator.AvailableStates["AttackFist01"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 500));
+                MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
+                MyObject.MyAnimator.AvailableStates["Jump"].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
+                MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
+                MyObject.MyAnimator.AvailableStates["AttackFist01"].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
                 MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["Idle"];
                 //MyObject.MyAnimator.SetBlendState("Walk");
             }
