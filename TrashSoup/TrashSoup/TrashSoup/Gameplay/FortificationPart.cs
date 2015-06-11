@@ -35,6 +35,8 @@ namespace TrashSoup.Gameplay
 
         private float health;
         private float hpPerMs;
+        private float pricePerMs;
+        private float priceHelper = 0.0f;
 
         #endregion
 
@@ -147,6 +149,7 @@ namespace TrashSoup.Gameplay
             hs = (HideoutStash)player.GetComponent<HideoutStash>();
 
             hpPerMs = (float)MaxHealth / ((float)TimeToBuild * 1000.0f);
+            pricePerMs = (float)Price / ((float)TimeToBuild * 1000.0f);
 
             base.Initialize();
         }
@@ -154,6 +157,7 @@ namespace TrashSoup.Gameplay
         public void BuildUp(GameTime gameTime)
         {
             health += hpPerMs * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            hs.CurrentTrashFloat -= pricePerMs * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
             float lerpFactor = health / (float)MaxHealth;
 
@@ -163,6 +167,8 @@ namespace TrashSoup.Gameplay
         public void Destroy()
         {
             Debug.Log("Boom!");
+
+            // particles flying here
         }
 
         #endregion

@@ -17,23 +17,25 @@ namespace TrashSoup.Gameplay
 
         #region variables
 
-        private int currentTrash;
+        
 
         #endregion
 
         #region properties
 
-        public int CurrentTrash 
+        public float CurrentTrashFloat { get; set; }
+
+        public int CurrentTrash
         { 
             get
             {
-                return currentTrash;
+                return (int)CurrentTrashFloat;
             }
             set
             {
                 if(value >= 0 && value <= MAX_TRASH)
                 {
-                    currentTrash = value;
+                    CurrentTrashFloat = (float)value;
                 }
                 else
                 {
@@ -53,12 +55,12 @@ namespace TrashSoup.Gameplay
 
         public HideoutStash(GameObject go, HideoutStash hs) : base(go, hs)
         {
-            CurrentTrash = hs.CurrentTrash;
+            CurrentTrashFloat = hs.CurrentTrashFloat;
         }
 
         public override void Update(GameTime gameTime)
         {
-            //Debug.Log(CurrentTrash.ToString());
+            //Debug.Log(CurrentTrashInt.ToString());
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, GameTime gameTime)

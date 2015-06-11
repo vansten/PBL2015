@@ -214,7 +214,10 @@ namespace TrashSoup.Gameplay
 
         public FortificationPart[] Parts { get; private set; }
         public FortificationType MyType { get; set; }
-        //public FortificationState CurrentState { get; set; }
+        
+        /// <summary>
+        /// This property works only in runtime!!!
+        /// </summary>
         public uint CurrentHealth 
         {
             get
@@ -286,7 +289,13 @@ namespace TrashSoup.Gameplay
                         if (InRange(CurrentID) && Parts[CurrentID].Health < Parts[CurrentID].MaxHealth)
                         {
                             Parts[CurrentID].BuildUp(gameTime);
-                            Debug.Log("HideoutStash: Fixing level " + CurrentID.ToString() + ", on " + Parts[CurrentID].Health.ToString() + "/" + Parts[CurrentID].MaxHealth.ToString() + " HP");
+                            //Debug.Log("HideoutStash: Fixing level " + CurrentID.ToString() + ", on " + Parts[CurrentID].Health.ToString() + "/" + Parts[CurrentID].MaxHealth.ToString() + " HP");
+
+                            if(Parts[CurrentID].Health >= Parts[CurrentID].MaxHealth)
+                            {
+                                Parts[CurrentID].Health = Parts[CurrentID].MaxHealth;
+                                actionHelper = false;
+                            }
                         }
                         // building further if build is in progress
                         else if (Parts[NextID].State == FortificationPart.PartState.BUILDING)
@@ -317,7 +326,7 @@ namespace TrashSoup.Gameplay
                         else
                         {
                             // check if we can even build
-                            if (stashComponent.CurrentTrash >= Parts[NextID].Price)
+                            if (stashComponent.CurrentTrashFloat >= Parts[NextID].Price)
                             {
                                 Parts[NextID].State = FortificationPart.PartState.BUILDING;
                             }
