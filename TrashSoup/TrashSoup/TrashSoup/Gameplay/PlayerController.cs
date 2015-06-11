@@ -74,7 +74,6 @@ namespace TrashSoup.Gameplay
         private float popularityEarnedTimer = 0.0f;
 
         private bool isDead = false;
-        private bool canMove = true;
 
         private Texture2D interactionTexture;
         private Vector2 trashTextPosition = new Vector2(0.43f, 0.35f);
@@ -85,6 +84,8 @@ namespace TrashSoup.Gameplay
 
         public SoundEffect JumpSoundEffect;
         public SoundEffectInstance Jump;
+
+        private bool deathAnimPlayed = false;
 
         #endregion
 
@@ -150,19 +151,27 @@ namespace TrashSoup.Gameplay
             if (isDead)
             {
                 GUIManager.Instance.DrawText(this.font, "YOU'RE DEAD!", this.deadPos, Color.Red, 4.0f);
+                if(!deathAnimPlayed)
+                {
+                    deathAnimPlayed = true;
+                    this.MyObject.MyAnimator.ChangeState("Death");
+                }
                 return;
             }
-            
-            if (InputHandler.Instance.Eat())
+
+            if (GameManager.Instance.MovementEnabled)
             {
-                if(this.Equipment.FoodCount > 0)
+                if (InputHandler.Instance.Eat())
                 {
-                    this.Equipment.FoodCount -= 1;
-                    IncreaseHealth(MAX_HEALTH);
-                }
-                else
-                {
-                    drawFoodWarning = true;
+                    if (this.Equipment.FoodCount > 0)
+                    {
+                        this.Equipment.FoodCount -= 1;
+                        IncreaseHealth(MAX_HEALTH);
+                    }
+                    else
+                    {
+                        drawFoodWarning = true;
+                    }
                 }
             }
 
@@ -196,8 +205,7 @@ namespace TrashSoup.Gameplay
             }
 
             equipment.Update(gameTime);
-            
-            if(canMove)
+            if (GameManager.Instance.MovementEnabled)
             {
                 Vector2 movementVector = InputHandler.Instance.GetMovementVector();
                 tempMove = new Vector3(movementVector.X,
@@ -250,7 +258,6 @@ namespace TrashSoup.Gameplay
                         sprintM -= SPRINT_DECELERATION * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f);
                         sprintM = MathHelper.Max(sprintM, 0.0f);
                     }
-
                     MyObject.MyTransform.Position += (MyObject.MyTransform.Forward * PLAYER_SPEED * sprint * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f));
                 }
                 else
@@ -262,52 +269,51 @@ namespace TrashSoup.Gameplay
                         MyObject.MyAnimator.RemoveBlendStateToCurrent();
                     }
                 }
-            }
-            
 
-            if (InputHandler.Instance.IsJumping())
-            {
-                if (MyObject.MyAnimator != null)
+                if (InputHandler.Instance.IsJumping())
                 {
-                    if(MyObject.MyAnimator.ThirdState == null)
+                    if (MyObject.MyAnimator != null)
                     {
-                        // jump!
-                        //Debug.Log("Jump!");
-                        jumping = true;
-                        MyObject.MyAnimator.ChangeState("Jump");
+                        if (MyObject.MyAnimator.ThirdState == null)
+                        {
+                            // jump!
+                            //Debug.Log("Jump!");
+                            jumping = true;
+                            MyObject.MyAnimator.ChangeState("Jump");
+                        }
                     }
                 }
-            }
 
-            if(jumping)
-            {
-                Walk.Stop(true);
-                jumpTimer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
-                if(!jumped && jumpTimer > 0.65f)
+                if (jumping)
                 {
-                    this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 135.0f);
-                    jumped = true;
-                    Jump.Play();
-                }
-                else if(jumpTimer > 2.0f)
-                {
-                    jumpTimer = 0.0f;
-                    jumped = false;
-                    jumping = false;
-                }
-            }
-
-            if(InputHandler.Instance.IsAttacking())
-            {
-                if(MyObject.MyAnimator != null)
-                {
-                    if(MyObject.MyAnimator.ThirdState == null)
+                    Walk.Stop(true);
+                    jumpTimer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+                    if (!jumped && jumpTimer > 0.65f)
                     {
-                        MyObject.MyAnimator.ChangeState("AttackFist01");
+                        this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 135.0f);
+                        jumped = true;
+                        Jump.Play();
+                    }
+                    else if (jumpTimer > 2.0f)
+                    {
+                        jumpTimer = 0.0f;
+                        jumped = false;
+                        jumping = false;
                     }
                 }
-                equipment.CurrentWeapon.IsAttacking = true;
-                equipment.CurrentWeapon.timerOn = gameTime.TotalGameTime.TotalSeconds;
+
+                if (InputHandler.Instance.IsAttacking())
+                {
+                    if (MyObject.MyAnimator != null)
+                    {
+                        if (MyObject.MyAnimator.ThirdState == null)
+                        {
+                            MyObject.MyAnimator.ChangeState("AttackFist01");
+                        }
+                    }
+                    equipment.CurrentWeapon.IsAttacking = true;
+                    equipment.CurrentWeapon.timerOn = gameTime.TotalGameTime.TotalSeconds;
+                }
             }
 
             if(this.collisionWithWeapon)
@@ -417,6 +423,7 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/run_2")));
                 MyObject.MyAnimator.AvailableStates.Add("Build", new AnimatorState("Build", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/injuries_1")));
                 MyObject.MyAnimator.AvailableStates.Add("Jump", new AnimatorState("Jump", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/dodge_1"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("Death", new AnimatorState("Death", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/dying_1"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("AttackFist01", new AnimatorState("AttackFist01", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_3"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Jump"], new TimeSpan(0, 0, 0, 0, 500));
@@ -430,6 +437,10 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Build"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Build"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Build"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
+                MyObject.MyAnimator.AvailableStates["Jump"].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
+                MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
+                MyObject.MyAnimator.AvailableStates["AttackFist01"].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
                 MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["Idle"];
                 //MyObject.MyAnimator.SetBlendState("Walk");
             }
@@ -524,7 +535,7 @@ namespace TrashSoup.Gameplay
 
         public void StartBuilding()
         {
-            canMove = false;
+            GameManager.Instance.MovementEnabled = false;
             if (MyObject.MyAnimator.NewState != null)
             {
                 MyObject.MyAnimator.CurrentInterpolation = 0.0f;
@@ -539,7 +550,7 @@ namespace TrashSoup.Gameplay
 
         public void StopBuilding()
         {
-            canMove = true;
+            GameManager.Instance.MovementEnabled = true;
             if (MyObject.MyAnimator.NewState != null)
             {
                 MyObject.MyAnimator.CurrentInterpolation = 0.0f;

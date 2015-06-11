@@ -63,41 +63,44 @@ namespace TrashSoup.Gameplay
 
         public override void Update(GameTime gameTime)
         {
-            Vector2 camVector = InputHandler.Instance.GetCameraVector();
-            tempYaw = -CAM_YAW_SENSITIVITY * (camVector.X);
-            tempPitch = CAM_PITCH_SENSITIVITY * (camVector.Y);
-            
-            tempPos = cam.Position;
-            tempPos = tempPos / Math.Max(tempPos.Length(), 0.000001f);
-            tempPos = distance * tempPos;
-            tempPos = Vector3.Transform(tempPos,
-                Matrix.CreateFromAxisAngle(cam.Right, tempPitch));
-
-            Vector3 dir = Vector3.Normalize(cam.Target - tempPos);
-            float angle = (float)Math.Atan2((double)dir.Y, Math.Sqrt((double)(dir.X * dir.X + dir.Z * dir.Z)));
-
-            if (angle > -1.2f && angle < 0.4f)
+            if (GameManager.Instance.MovementEnabled)
             {
-                cam.Position = tempPos;
-            }
+                Vector2 camVector = InputHandler.Instance.GetCameraVector();
+                tempYaw = -CAM_YAW_SENSITIVITY * (camVector.X);
+                tempPitch = CAM_PITCH_SENSITIVITY * (camVector.Y);
 
-            cam.Position = Vector3.Transform(cam.Position,
-                    Matrix.CreateFromAxisAngle(cam.Up, tempYaw));
+                tempPos = cam.Position;
+                tempPos = tempPos / Math.Max(tempPos.Length(), 0.000001f);
+                tempPos = distance * tempPos;
+                tempPos = Vector3.Transform(tempPos,
+                    Matrix.CreateFromAxisAngle(cam.Right, tempPitch));
 
-            Vector3 tgt = Vector3.Normalize((cam.Position - cam.Target));
+                Vector3 dir = Vector3.Normalize(cam.Target - tempPos);
+                float angle = (float)Math.Atan2((double)dir.Y, Math.Sqrt((double)(dir.X * dir.X + dir.Z * dir.Z)));
 
-            Raycast ray = new Raycast(cam.Target + cam.Translation + tgt,
-                tgt, 
-                1.5f, 0.01f);
-            if (ray.Cast())
-            {
-                if(ray.ColliderHit.MyObject.UniqueID != this.MyObject.UniqueID)
+                if (angle > -1.2f && angle < 0.4f)
                 {
-                    cam.Position = ray.PositionHit - cam.Translation;
+                    cam.Position = tempPos;
                 }
-            }
 
-            cam.Translation = new Vector3(target.MyTransform.Position.X, target.MyTransform.Position.Y, -target.MyTransform.Position.Z);
+                cam.Position = Vector3.Transform(cam.Position,
+                        Matrix.CreateFromAxisAngle(cam.Up, tempYaw));
+
+                Vector3 tgt = Vector3.Normalize((cam.Position - cam.Target));
+
+                Raycast ray = new Raycast(cam.Target + cam.Translation + tgt,
+                    tgt,
+                    1.5f, 0.01f);
+                if (ray.Cast())
+                {
+                    if (ray.ColliderHit.MyObject.UniqueID != this.MyObject.UniqueID)
+                    {
+                        cam.Position = ray.PositionHit - cam.Translation;
+                    }
+                }
+
+                cam.Translation = new Vector3(target.MyTransform.Position.X, target.MyTransform.Position.Y, -target.MyTransform.Position.Z);
+            }
         }
 
         public override void Draw(Camera cam, Effect effect, GameTime gameTime)

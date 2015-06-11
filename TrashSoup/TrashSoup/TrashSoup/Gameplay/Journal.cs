@@ -40,22 +40,20 @@ namespace TrashSoup.Gameplay
                     this.collisionWithPlayer = false;
                 }
             }
-            if (journalGathered && InputManager.Instance.GetKeyboardButtonDown(Keys.Enter))
+            if (journalGathered)
             {
-                journalGathered = false;
-                if (this.MyObject != null)
-                {
-                    this.MyObject.Enabled = false;
-                }
+                GameObject go = new GameObject(123123123, "JournalView");
+                go.MyTransform = new Transform(go);
+                JournalView jv = new JournalView(go);
+                go.Components.Add(jv);
+                ResourceManager.Instance.CurrentScene.AddObjectRuntime(go);
+                this.MyObject.Enabled = false;
             }
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
         {
-            if (journalGathered)
-            {
-                GUIManager.Instance.DrawTexture(this.noteTexture, this.noteTexturePos, 0.5f, 0.5f);
-            }
+
         }
 
         protected override void Start()
