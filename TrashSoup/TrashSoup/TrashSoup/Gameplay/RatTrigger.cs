@@ -11,7 +11,9 @@ namespace TrashSoup.Gameplay
     {
         private Rat myRat;
         private bool targetSeen = false;
+        private bool targetDead = false;
         private GameObject target;
+        private PlayerController pc;
 
         public RatTrigger(GameObject go) : base(go)
         {
@@ -20,9 +22,20 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
+            if (targetDead) return;
             if(targetSeen && target != null)
             {
                 myRat.MyBlackBoard.SetVector3("TargetPosition", target.MyTransform.Position);
+
+                if(pc != null)
+                {
+                    if(pc.IsDead)
+                    {
+                        myRat.MyBlackBoard.SetBool("TargetSeen", false);
+                        targetSeen = false;
+                        targetDead = true;
+                    }
+                }
             }
         }
 
@@ -43,11 +56,13 @@ namespace TrashSoup.Gameplay
 
         public override void OnTrigger(GameObject other)
         {
+            if (targetDead) return;
             if(other.UniqueID == 1)
             {
                 myRat.MyBlackBoard.SetBool("TargetSeen", true);
                 targetSeen = true;
                 target = other;
+                pc = (PlayerController)target.GetComponent<PlayerController>();
                 myRat.MyBlackBoard.SetVector3("TargetPosition", other.MyTransform.Position);
             }
             base.OnTrigger(other);
@@ -55,6 +70,7 @@ namespace TrashSoup.Gameplay
 
         public override void OnTriggerExit(GameObject other)
         {
+            if (targetDead) return;
             if (other.UniqueID == 1)
             {
                 myRat.MyBlackBoard.SetBool("TargetSeen", false);
