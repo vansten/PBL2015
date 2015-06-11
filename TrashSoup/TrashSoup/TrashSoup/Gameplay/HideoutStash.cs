@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 using TrashSoup.Engine;
 using Microsoft.Xna.Framework;
 
 namespace TrashSoup.Gameplay
 {
-    public class HideoutStash : ObjectComponent
+    public class HideoutStash : ObjectComponent, IXmlSerializable
     {
         #region constants
 
@@ -71,6 +74,30 @@ namespace TrashSoup.Gameplay
         protected override void Start()
         {
             
+        }
+
+        public override XmlSchema GetSchema()
+        {
+            return base.GetSchema();
+        }
+
+        public override void ReadXml(XmlReader reader)
+        {
+            reader.MoveToContent();
+            reader.ReadStartElement();
+
+            base.ReadXml(reader);
+
+            CurrentTrash = reader.ReadElementContentAsInt("CurrentTrash", "");
+
+            reader.ReadEndElement();
+        }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            writer.WriteElementString("CurrentTrash", XmlConvert.ToString(CurrentTrash));
         }
 
         #endregion
