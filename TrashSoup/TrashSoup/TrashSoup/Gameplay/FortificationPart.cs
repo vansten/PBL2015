@@ -34,8 +34,6 @@ namespace TrashSoup.Gameplay
         private HideoutStash hs;
 
         private float health;
-        private float hpPerMs;
-        private float pricePerMs;
         private float priceHelper = 0.0f;
 
         #endregion
@@ -92,6 +90,8 @@ namespace TrashSoup.Gameplay
             }
         }
         public uint MaxHealth { get; set; }
+        public float HpPerMs { get; private set; }
+        public float PricePerMs { get; private set; }
 
         #endregion
 
@@ -148,16 +148,16 @@ namespace TrashSoup.Gameplay
             GameObject player = ResourceManager.Instance.CurrentScene.ObjectsDictionary[1];
             hs = (HideoutStash)player.GetComponent<HideoutStash>();
 
-            hpPerMs = (float)MaxHealth / ((float)TimeToBuild * 1000.0f);
-            pricePerMs = (float)Price / ((float)TimeToBuild * 1000.0f);
+            HpPerMs = (float)MaxHealth / ((float)TimeToBuild * 1000.0f);
+            PricePerMs = (float)Price / ((float)TimeToBuild * 1000.0f);
 
             base.Initialize();
         }
 
         public void BuildUp(GameTime gameTime)
         {
-            health += hpPerMs * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            hs.CurrentTrashFloat -= pricePerMs * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            health += HpPerMs * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            hs.CurrentTrashFloat -= PricePerMs * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
             float lerpFactor = health / (float)MaxHealth;
 

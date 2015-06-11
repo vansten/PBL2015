@@ -111,7 +111,7 @@
           <Y>1</Y>
           <Z>0</Z>
         </Forward>
-        <Scale>1500</Scale>
+        <Scale>2000</Scale>
       </MyTransform>
       <Components>
         <TrashSoup.Engine.CustomModel>
@@ -251,6 +251,8 @@
         <AnimatorClip>Animations/MainCharacter/idle_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dodge_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/boxing_3</AnimatorClip>
+		<AnimatorClip>Animations/MainCharacter/injuries_1</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/dying_1</AnimatorClip>
       </MyAnimator>
       <Components>
         <TrashSoup.Engine.CustomModel>

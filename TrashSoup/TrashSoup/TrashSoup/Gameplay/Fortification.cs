@@ -177,6 +177,7 @@ namespace TrashSoup.Gameplay
         private GameObject triggerPlayerObj;
 
         private HideoutStash stashComponent;
+        private PlayerController pController;
 
         private Texture2D interactionTexture;
         private Vector2 interactionTexturePos = new Vector2(0.475f, 0.775f);
@@ -292,21 +293,34 @@ namespace TrashSoup.Gameplay
                 {
                     if (actionHelper)
                     {
-                        if(!soundHelper)
-                        {
-                            soundHelper = true;
-                            buildSound.Play();
-                        }
                         // fixing current one
                         if (InRange(CurrentID) && Parts[CurrentID].Health < Parts[CurrentID].MaxHealth)
                         {
-                            Parts[CurrentID].BuildUp(gameTime);
-                            //Debug.Log("HideoutStash: Fixing level " + CurrentID.ToString() + ", on " + Parts[CurrentID].Health.ToString() + "/" + Parts[CurrentID].MaxHealth.ToString() + " HP");
-
-                            if(Parts[CurrentID].Health >= Parts[CurrentID].MaxHealth)
+                            if(stashComponent.CurrentTrash >= (int)Parts[CurrentID].PricePerMs)
                             {
-                                Parts[CurrentID].Health = Parts[CurrentID].MaxHealth;
+                                if (!soundHelper)
+                                {
+                                    CommonActionStart();
+                                }
+
+                                Parts[CurrentID].BuildUp(gameTime);
+                                //Debug.Log("HideoutStash: Fixing level " + CurrentID.ToString() + ", on " + Parts[CurrentID].Health.ToString() + "/" + Parts[CurrentID].MaxHealth.ToString() + " HP");
+
+                                if (Parts[CurrentID].Health >= Parts[CurrentID].MaxHealth)
+                                {
+                                    Parts[CurrentID].Health = Parts[CurrentID].MaxHealth;
+                                    actionHelper = false;
+                                }
+                            }
+                            else
+                            {
+                                Debug.Log("HideoutStash: Haha nie stac cie");
                                 actionHelper = false;
+
+                                if (soundHelper)
+                                {
+                                    CommonActionEnd();
+                                }
                             }
                         }
                         // building further if build is in progress
@@ -330,8 +344,25 @@ namespace TrashSoup.Gameplay
                             }
                             else
                             {
-                                // update building of that part
-                                Parts[NextID].BuildUp(gameTime);
+                                if (stashComponent.CurrentTrash >= (int)Parts[NextID].PricePerMs)
+                                {
+                                    if (!soundHelper)
+                                    {
+                                        CommonActionStart();
+                                    }
+                                    // update building of that part
+                                    Parts[NextID].BuildUp(gameTime);
+                                }
+                                else
+                                {
+                                    Debug.Log("HideoutStash: Haha nie stac cie");
+                                    actionHelper = false;
+
+                                    if (soundHelper)
+                                    {
+                                        CommonActionEnd();
+                                    }
+                                }
                             }
                         }
                         // we dont need to fix nor no build is in progress - acquire new build
@@ -353,8 +384,7 @@ namespace TrashSoup.Gameplay
                     {
                         if (soundHelper)
                         {
-                            soundHelper = false;
-                            buildSound.Stop(true);
+                            CommonActionEnd();
                         }
                     }
                 }
@@ -362,8 +392,7 @@ namespace TrashSoup.Gameplay
                 {
                     if (soundHelper)
                     {
-                        soundHelper = false;
-                        buildSound.Stop(true);
+                        CommonActionEnd();
                     }
 
                     actionHelper = true;
@@ -373,8 +402,7 @@ namespace TrashSoup.Gameplay
             {
                 if (soundHelper)
                 {
-                    soundHelper = false;
-                    buildSound.Stop(true);
+                    CommonActionEnd();
                 }
             }
 
@@ -515,14 +543,8 @@ namespace TrashSoup.Gameplay
             triggerEnemyObj.MyCollider.IgnoredColliders.Add(ResourceManager.Instance.CurrentScene.ObjectsDictionary[1].MyCollider);
 
             GameObject player = ResourceManager.Instance.CurrentScene.ObjectsDictionary[1];
-            foreach(ObjectComponent comp in player.Components)
-            {
-                if(comp.GetType() == typeof(HideoutStash))
-                {
-                    stashComponent = (HideoutStash)comp;
-                    break;
-                }
-            }
+            stashComponent = (HideoutStash)player.GetComponent<HideoutStash>();
+            pController = (PlayerController)player.GetComponent<PlayerController>();
 
             SoundEffect se = TrashSoupGame.Instance.Content.Load<SoundEffect>(@"Audio/Ambient/building");
             buildSound = se.CreateInstance();
@@ -555,6 +577,20 @@ namespace TrashSoup.Gameplay
         private void OnTriggerExitEnemyHandler(object sender, CollisionEventArgs e)
         {
             
+        }
+
+        private void CommonActionStart()
+        {
+            soundHelper = true;
+            buildSound.Play();
+            pController.StartBuilding();
+        }
+
+        private void CommonActionEnd()
+        {
+            soundHelper = false;
+            buildSound.Stop(true);
+            pController.StopBuilding();
         }
 
         private void DestroyCurrent()
