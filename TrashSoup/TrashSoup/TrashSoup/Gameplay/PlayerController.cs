@@ -74,6 +74,7 @@ namespace TrashSoup.Gameplay
         private float popularityEarnedTimer = 0.0f;
 
         private bool isDead = false;
+        private bool canMove = true;
 
         private Texture2D interactionTexture;
         private Vector2 trashTextPosition = new Vector2(0.43f, 0.35f);
@@ -196,69 +197,73 @@ namespace TrashSoup.Gameplay
 
             equipment.Update(gameTime);
             
-            Vector2 movementVector = InputHandler.Instance.GetMovementVector();
-            tempMove = new Vector3(movementVector.X,
-                (InputManager.Instance.GetKeyboardButton(Keys.Q) ? 1.0f : 0.0f) - (InputManager.Instance.GetKeyboardButton(Keys.Z) ? 1.0f : 0.0f),
-                movementVector.Y);
-
-            if(tempMove.Length() > 0.0f &&
-                ResourceManager.Instance.CurrentScene.Cam != null)
+            if(canMove)
             {
-                if (moving == false)
-                {
-                    moving = true;
+                Vector2 movementVector = InputHandler.Instance.GetMovementVector();
+                tempMove = new Vector3(movementVector.X,
+                    (InputManager.Instance.GetKeyboardButton(Keys.Q) ? 1.0f : 0.0f) - (InputManager.Instance.GetKeyboardButton(Keys.Z) ? 1.0f : 0.0f),
+                    movementVector.Y);
 
-                    if (MyObject.MyAnimator != null)
+                if (tempMove.Length() > 0.0f &&
+                    ResourceManager.Instance.CurrentScene.Cam != null)
+                {
+                    if (moving == false)
                     {
-                        MyObject.MyAnimator.SetBlendState("Walk");
+                        moving = true;
+
+                        if (MyObject.MyAnimator != null)
+                        {
+                            MyObject.MyAnimator.SetBlendState("Walk");
+                        }
+                    }
+                    if (moving == true)
+                    {
+                        Walk.Play();
+                        MyObject.MyAnimator.CurrentInterpolation = MathHelper.Clamp(tempMove.Length(), 0.0f, 1.0f);
+                    }
+                    // now to rotate that damn vector as camera direction is rotated
+                    rotM = rotation;
+                    prevForward = MyObject.MyTransform.Forward;
+
+                    rotation = (float)Math.Atan2(ResourceManager.Instance.CurrentScene.Cam.Direction.X,
+                        -ResourceManager.Instance.CurrentScene.Cam.Direction.Z);
+                    rotation = CurveAngle(rotM, rotation, 3.0f * ROTATION_SPEED);                 // to się chyba gdzieś tu wywala ale nie jestem pewien
+                    tempMoveRotated = Vector3.Transform(tempMove, Matrix.CreateRotationY(rotation));
+
+                    if (float.IsNaN(tempMoveRotated.X) || float.IsNaN(tempMoveRotated.Y) || float.IsNaN(tempMoveRotated.Z))
+                    {
+                        Debug.Log("PLAYERCONTROLLER ERROR: NaN detected in tempMoveRotated");
+                    }
+
+                    MyObject.MyTransform.Forward = Vector3.Lerp(prevForward, tempMoveRotated, ROTATION_SPEED);
+                    MyObject.MyTransform.Rotation = RotateAsForward(MyObject.MyTransform.Forward, MyObject.MyTransform.Rotation);
+
+                    if (InputHandler.Instance.IsSprinting() && tempMove.Length() >= 0.8f)
+                    {
+                        sprint = MathHelper.Lerp(1.0f, SPRINT_MULTIPLIER, sprintM);
+                        sprintM += SPRINT_ACCELERATION * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f);
+                        sprintM = MathHelper.Min(sprintM, 1.0f);
+                    }
+                    else if (sprintM != 0.0f || sprint != 1.0f)
+                    {
+                        sprint = MathHelper.Lerp(1.0f, SPRINT_MULTIPLIER, sprintM);
+                        sprintM -= SPRINT_DECELERATION * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f);
+                        sprintM = MathHelper.Max(sprintM, 0.0f);
+                    }
+
+                    MyObject.MyTransform.Position += (MyObject.MyTransform.Forward * PLAYER_SPEED * sprint * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f));
+                }
+                else
+                {
+                    if (moving == true)
+                    {
+                        Walk.Stop(true);
+                        moving = false;
+                        MyObject.MyAnimator.RemoveBlendStateToCurrent();
                     }
                 }
-                if(moving == true)
-                {
-                    Walk.Play();
-                    MyObject.MyAnimator.CurrentInterpolation = MathHelper.Clamp(tempMove.Length(), 0.0f, 1.0f);
-                }
-                // now to rotate that damn vector as camera direction is rotated
-                rotM = rotation;
-                prevForward = MyObject.MyTransform.Forward;
-
-                rotation = (float)Math.Atan2(ResourceManager.Instance.CurrentScene.Cam.Direction.X,
-                    -ResourceManager.Instance.CurrentScene.Cam.Direction.Z);
-                rotation = CurveAngle(rotM, rotation, 3.0f*ROTATION_SPEED);                 // to się chyba gdzieś tu wywala ale nie jestem pewien
-                tempMoveRotated = Vector3.Transform(tempMove, Matrix.CreateRotationY(rotation));
-
-                if (float.IsNaN(tempMoveRotated.X) || float.IsNaN(tempMoveRotated.Y) || float.IsNaN(tempMoveRotated.Z))
-                {
-                    Debug.Log("PLAYERCONTROLLER ERROR: NaN detected in tempMoveRotated");
-                }
-
-                MyObject.MyTransform.Forward = Vector3.Lerp(prevForward, tempMoveRotated, ROTATION_SPEED);
-                MyObject.MyTransform.Rotation = RotateAsForward(MyObject.MyTransform.Forward, MyObject.MyTransform.Rotation);
-               
-                if (InputHandler.Instance.IsSprinting() && tempMove.Length() >= 0.8f)
-                {
-                    sprint = MathHelper.Lerp(1.0f, SPRINT_MULTIPLIER, sprintM);
-                    sprintM += SPRINT_ACCELERATION * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f);
-                    sprintM = MathHelper.Min(sprintM, 1.0f);
-                }
-                else if(sprintM != 0.0f || sprint != 1.0f)
-                {
-                    sprint = MathHelper.Lerp(1.0f, SPRINT_MULTIPLIER, sprintM);
-                    sprintM -= SPRINT_DECELERATION * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f);
-                    sprintM = MathHelper.Max(sprintM, 0.0f);
-                }
-
-                MyObject.MyTransform.Position += (MyObject.MyTransform.Forward * PLAYER_SPEED * sprint * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f));
             }
-            else
-            {
-                if (moving == true)
-                {
-                    Walk.Stop(true);
-                    moving = false;
-                    MyObject.MyAnimator.RemoveBlendStateToCurrent();
-                }
-            }
+            
 
             if (InputHandler.Instance.IsJumping())
             {
@@ -410,6 +415,7 @@ namespace TrashSoup.Gameplay
             {
                 MyObject.MyAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/idle_1")));
                 MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/run_2")));
+                MyObject.MyAnimator.AvailableStates.Add("Build", new AnimatorState("Build", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/injuries_1")));
                 MyObject.MyAnimator.AvailableStates.Add("Jump", new AnimatorState("Jump", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/dodge_1"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("AttackFist01", new AnimatorState("AttackFist01", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_3"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 200));
@@ -420,6 +426,10 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.AvailableStates["Jump"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 100));
                 MyObject.MyAnimator.AvailableStates["Jump"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 500));
                 MyObject.MyAnimator.AvailableStates["AttackFist01"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 500));
+                MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Build"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Build"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["Build"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["Build"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["Idle"];
                 //MyObject.MyAnimator.SetBlendState("Walk");
             }
@@ -510,6 +520,36 @@ namespace TrashSoup.Gameplay
                 isDead = true;
             }
             this.Popularity -= 5.0f;
+        }
+
+        public void StartBuilding()
+        {
+            canMove = false;
+            if (MyObject.MyAnimator.NewState != null)
+            {
+                MyObject.MyAnimator.CurrentInterpolation = 0.0f;
+                MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["Build"];
+            }
+            else
+            {
+                MyObject.MyAnimator.ChangeState("Build");
+            }
+            
+        }
+
+        public void StopBuilding()
+        {
+            canMove = true;
+            if (MyObject.MyAnimator.NewState != null)
+            {
+                MyObject.MyAnimator.CurrentInterpolation = 0.0f;
+                MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["Idle"];
+            }
+            else
+            {
+                MyObject.MyAnimator.ChangeState("Idle");
+            }
+            
         }
 
         public override System.Xml.Schema.XmlSchema GetSchema()

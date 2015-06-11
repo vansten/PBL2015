@@ -249,6 +249,7 @@ namespace TrashSoup.Engine
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/MainCharacter/idle_1"], "Animations/MainCharacter/idle_1"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/MainCharacter/dodge_1"], "Animations/MainCharacter/dodge_1"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/MainCharacter/boxing_3"], "Animations/MainCharacter/boxing_3"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], this.Animations["Animations/MainCharacter/injuries_1"], "Animations/MainCharacter/injuries_1"));
             testBox.Components.Add(skModel);
             testBox.MyAnimator = playerAnimator;
             testBox.Components.Add(new PlayerController(testBox));
@@ -262,15 +263,15 @@ namespace TrashSoup.Engine
             testBox.MyCollider = new BoxCollider(testBox);  //Add a box collider to test collisions
 
             // loading gameobjects
-            GameObject rat = new GameObject(50, "Rat");
-            rat.MyTransform = new Transform(rat, new Vector3(0.0f, 3.0f, -15.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
-            CustomModel ratModel = new CustomModel(rat, new Model[] { Models["Models/MainCharacter/MainCharacter"], null, null }, ratMats);
-            rat.Components.Add(ratModel);
-            Animator ratAnimator = new Animator(rat, ratModel.LODs[0]);
-            ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], Animations["Animations/MainCharacter/dodge_1"], "Rat_TAnim"));
-            ratAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", ratAnimator.GetAnimationPlayer("Rat_TAnim")));
-            ratAnimator.CurrentState = ratAnimator.AvailableStates["Walk"];
-            rat.MyAnimator = ratAnimator;
+            //GameObject rat = new GameObject(50, "Rat");
+            //rat.MyTransform = new Transform(rat, new Vector3(0.0f, 3.0f, -15.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
+            //CustomModel ratModel = new CustomModel(rat, new Model[] { Models["Models/MainCharacter/MainCharacter"], null, null }, ratMats);
+            //rat.Components.Add(ratModel);
+            //Animator ratAnimator = new Animator(rat, ratModel.LODs[0]);
+            //ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], Animations["Animations/MainCharacter/dodge_1"], "Rat_TAnim"));
+            //ratAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", ratAnimator.GetAnimationPlayer("Rat_TAnim")));
+            //ratAnimator.CurrentState = ratAnimator.AvailableStates["Walk"];
+            //rat.MyAnimator = ratAnimator;
 
             GameObject testTer = new GameObject(2, "Terrain");
             testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
@@ -383,7 +384,7 @@ namespace TrashSoup.Engine
             CurrentScene.AddObject(testMirror);
             CurrentScene.AddObject(testWater);
             CurrentScene.AddObject(awsomeTest);//Wika i kasia
-            CurrentScene.AddObject(rat);
+            //CurrentScene.AddObject(rat);
             CurrentScene.AddObject(cegla);
             //CurrentScene.AddObject(pt);
 
