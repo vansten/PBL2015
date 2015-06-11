@@ -599,7 +599,7 @@ namespace TrashSoup.Engine
         /// IMPORTANT!!! SET NAME FOR EVERY ELEMENT
         /// </summary>
         /// <param name="game"></param>
-        private void LoadTextures(Game game)
+        public void LoadTextures(Game game)
         {
             // Adding "default" textures for all maps containing only one pixel in one color
             uint whiteColor = 0xFFFFFFFF;

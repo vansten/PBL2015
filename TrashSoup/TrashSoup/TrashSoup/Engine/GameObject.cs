@@ -545,14 +545,14 @@ namespace TrashSoup.Engine
             writer.WriteElementString("Name", Name);
 
             writer.WriteStartElement("Tags");
-            if (Tags != null)
+            if (Tags != null && Tags.Count > 0)
             {
                 foreach (string tag in Tags)
                 {
                     writer.WriteElementString("Tag", tag);
                 }
             }
-            else
+            else if(Tags == null || Tags.Count == 0)
             {
                 writer.WriteElementString("Tag", "null");
             }
