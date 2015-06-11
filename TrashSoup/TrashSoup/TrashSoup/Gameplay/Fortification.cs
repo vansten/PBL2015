@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 using TrashSoup.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,7 +12,7 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace TrashSoup.Gameplay
 {
-    public class Fortification : ObjectComponent
+    public class Fortification : ObjectComponent, IXmlSerializable
     {
         #region constants
 
@@ -578,6 +581,46 @@ namespace TrashSoup.Gameplay
                 return true;
             }
             else return false;
+        }
+
+        public override XmlSchema GetSchema()
+        {
+            return base.GetSchema();
+        }
+
+        public override void ReadXml(XmlReader reader)
+        {
+            reader.MoveToContent();
+            reader.ReadStartElement();
+
+            base.ReadXml(reader);
+
+            CurrentID = reader.ReadElementContentAsInt("CurrentID", "");
+
+            string s = reader.ReadElementString("MyType", "");
+
+            switch (s)
+            {
+                case "METAL_WIRE_SNARES":
+                    MyType = FortificationType.METAL_WIRE_SNARES;
+                    break;
+                case "WOOD1_WIRE_SNARES":
+                    MyType = FortificationType.WOOD1_WIRE_SNARES;
+                    break;
+                case "WOOD2_TRAPWIRE_SNARES":
+                    MyType = FortificationType.WOOD2_TRAPWIRE_SNARES;
+                    break;
+            }
+
+            reader.ReadEndElement();
+        }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            writer.WriteElementString("CurrentID", XmlConvert.ToString(CurrentID));
+            writer.WriteElementString("MyType", MyType.ToString());
         }
 
         #endregion

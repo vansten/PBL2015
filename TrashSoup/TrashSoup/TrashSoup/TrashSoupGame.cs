@@ -88,6 +88,7 @@ namespace TrashSoup
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            ResourceManager.Instance.LoadTextures(this);
             ResourceManager.Instance.LoadEffects(this);
             //this.LoadContent();
         }
