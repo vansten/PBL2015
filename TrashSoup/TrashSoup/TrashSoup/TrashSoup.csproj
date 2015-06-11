@@ -124,6 +124,7 @@
     <Compile Include="Gameplay\AITest.cs" />
     <Compile Include="Gameplay\Fortification.cs" />
     <Compile Include="Gameplay\DaytimeChange.cs" />
+    <Compile Include="Gameplay\Journal.cs" />
     <Compile Include="Gameplay\Trash.cs" />
     <Compile Include="Gameplay\DisappearingTrash.cs" />
     <Compile Include="Gameplay\Enemy.cs" />
