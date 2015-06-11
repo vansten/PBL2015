@@ -28,18 +28,10 @@ namespace TrashSoup.Gameplay
 
         public enum FortificationState
         {
-            STATE_EMPTY,
+            STATE_EMPTY = -1,
             STATE_FIRST,
             STATE_SECOND,
             STATE_THIRD
-        }
-
-        private enum PartState
-        {
-            NEXT_BUILD,
-            PENDING,
-            BUILDING,
-            BUILT
         }
 
         #endregion
@@ -70,8 +62,8 @@ namespace TrashSoup.Gameplay
             40,
             // type1
             5,
-            25,
-            40,
+            5,  //25
+            5,  //40
             // type2
             10,
             25,
@@ -82,16 +74,16 @@ namespace TrashSoup.Gameplay
         {
             // type0
             250,
-            500,
-            750,
+            250,
+            250,
             // type1
             75,
-            175,
-            500,
+            100,
+            225,
             // type2
             75,
-            400,
-            650
+            325,
+            200
         };
 
         private static string[] PartModels = 
@@ -177,30 +169,87 @@ namespace TrashSoup.Gameplay
         private static Vector3 NotBuiltColor = new Vector3(0.8f, 0.8f, 1.0f);
         private static Vector3 BuiltColor = new Vector3(0.1f, 1.0f, 0.2f);
 
-        private List<Material> selectionMat;
-        private List<Material>[] currentMats;
-        private CustomModel[] models;
-        private GameObject[] objects;
-        private PartState[] states;
         private GameObject triggerEnemyObj;
         private GameObject triggerPlayerObj;
 
-        private int currentlyBuildingID = -1;
-        private float currentlyBuildingProgress = 0;
-        private bool playerInTrigger = false;
-        private bool buildInProgress = false;
-        private uint currentMaxTime;
+        private HideoutStash stashComponent;
 
         private Texture2D interactionTexture;
         private Vector2 interactionTexturePos = new Vector2(0.475f, 0.775f);
+
+        private int currentID;
+
+        private bool playerInTrigger;
+        private bool actionHelper;
 
         #endregion
 
         #region properties
 
+        public int CurrentID 
+        { 
+            get
+            {
+                return currentID;
+            }
+            set
+            {
+                if(InRange(value) || value == -1)
+                {
+                    currentID = value;
+                }
+                else
+                {
+                    throw new InvalidOperationException("Value given to CurrentID is invalid!");
+                }
+            }
+        }
+        public int NextID
+        {
+            get
+            {
+                return CurrentID + 1;
+            }
+        }
+
+        public FortificationPart[] Parts { get; private set; }
         public FortificationType MyType { get; set; }
-        public FortificationState CurrentState { get; set; }
-        public uint CurrentHealth { get; set; }
+        //public FortificationState CurrentState { get; set; }
+        public uint CurrentHealth 
+        {
+            get
+            {
+                return Parts[0].Health + Parts[1].Health + Parts[2].Health;
+            }
+            set
+            {
+                if (CurrentID == -1)
+                    return;
+
+                uint difference = value - CurrentHealth;
+
+                while(CurrentID >= 0)
+                {
+                    if (Parts[CurrentID].Health + difference >= 0 && Parts[CurrentID].Health + difference <= Parts[CurrentID].MaxHealth)
+                    {
+                        Parts[CurrentID].Health += difference;
+                        return;
+                    }
+                    else if (Parts[CurrentID].Health + difference > Parts[CurrentID].MaxHealth)  // a miracle has happened!
+                    {
+                        Parts[CurrentID].Health = Parts[CurrentID].MaxHealth;
+                        return;
+                    }
+                    else // destruction of one or more parts may occur
+                    {
+                        Parts[CurrentID].Health = 0;
+                        difference += Parts[CurrentID].Health;
+                        DestroyCurrent();
+                    }
+                }
+                
+            }
+        }
 
         #endregion
 
@@ -216,53 +265,95 @@ namespace TrashSoup.Gameplay
             : base(mObj, ff)
         {
             this.MyType = ff.MyType;
-            this.CurrentHealth = ff.CurrentHealth;
-            this.CurrentState = ff.CurrentState;
+            this.CurrentID = ff.CurrentID;
 
             Start();
         }
 
         public override void Update(GameTime gameTime)
         {
-            // building
-            if(playerInTrigger)
+            // solve building and fixing
+
+            if(playerInTrigger && InRange(NextID))
             {
                 GUIManager.Instance.DrawTexture(this.interactionTexture, this.interactionTexturePos, 0.05f, 0.05f);
 
-                if(InputHandler.Instance.Action())
+                if (InputHandler.Instance.Action())
                 {
-                    if(buildInProgress)
+                    if (actionHelper)
                     {
-                        // have we finished?
-                        if((uint)currentlyBuildingProgress >= currentMaxTime)
+                        // fixing current one
+                        if (InRange(CurrentID) && Parts[CurrentID].Health < Parts[CurrentID].MaxHealth)
                         {
-                            // reset everything and change state to upper
-                            Debug.Log("Built!");
+                            Debug.Log("HideoutStash: Fixing level " + CurrentID.ToString() + ", on " + Parts[CurrentID].Health.ToString() + "/" + Parts[CurrentID].MaxHealth.ToString() + " HP");
+                            Parts[CurrentID].BuildUp(gameTime);
                         }
-                        else
+                        // building further if build is in progress
+                        else if (Parts[NextID].State == FortificationPart.PartState.BUILDING)
                         {
-                            currentlyBuildingProgress += (float)(gameTime.ElapsedGameTime.TotalSeconds);
-                            float lerpFactor = (float)currentlyBuildingProgress / (float)currentMaxTime;
-                            selectionMat[0].DiffuseColor = Vector3.Lerp(NotBuiltColor, BuiltColor, lerpFactor);
-                        }
-                    }
-                    else
-                    {
-                        // get object ID we want to build
-                        for(int i = 0; i < PART_IN_TYPE_COUNT; ++i)
-                        {
-                            if(states[i] == PartState.NEXT_BUILD)
+                            // check if we built it
+                            if (Parts[NextID].Health >= Parts[NextID].MaxHealth)
                             {
-                                states[i] = PartState.BUILDING;
-                                currentlyBuildingID = i;
-                                break;
+                                Debug.Log("HideoutStash: Fortification level " + NextID.ToString() + " has been built.");
+                                Parts[NextID].Health = Parts[NextID].MaxHealth;
+                                Parts[NextID].State = FortificationPart.PartState.BUILT;
+                                ++CurrentID;
+                                if (InRange(NextID))
+                                {
+                                    Parts[NextID].State = FortificationPart.PartState.NEXT_BUILD;
+                                    Parts[NextID].MyObject.Visible = true;
+                                }
+                                    
+
+                                actionHelper = false;
+                            }
+                            else
+                            {
+                                // update building of that part
+                                Parts[NextID].BuildUp(gameTime);
                             }
                         }
-                        currentlyBuildingProgress = 0;  // reset progress
-                        buildInProgress = true;
-                        currentMaxTime = PartTimes[currentlyBuildingID + TYPE_COUNT * (int)MyType];
+                        // we dont need to fix nor no build is in progress - acquire new build
+                        else
+                        {
+                            // check if we can even build
+                            if (stashComponent.CurrentTrash >= Parts[NextID].Price)
+                            {
+                                Parts[NextID].State = FortificationPart.PartState.BUILDING;
+                            }
+                            else
+                            {
+                                Debug.Log("HideoutStash: Haha nie stac cie");
+                                actionHelper = false;
+                            }
+                        }
                     }
                 }
+                else
+                {
+                    actionHelper = true;
+                }
+            }
+
+            /////////////////////////////////
+
+            // solve attacking and damage
+
+
+            //////////////////////////////
+
+            // teting
+
+            if(InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.OemPlus))
+            {
+                CurrentHealth += 10;
+                Debug.Log("Fortification: New Health " + CurrentHealth.ToString());
+            }
+
+            if (InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.OemMinus))
+            {
+                CurrentHealth -= 10;
+                Debug.Log("Fortification: New Health " + CurrentHealth.ToString());
             }
         }
 
@@ -272,14 +363,9 @@ namespace TrashSoup.Gameplay
 
         protected override void Start()
         {
-            currentMats = new List<Material>[PART_IN_TYPE_COUNT];
-            models = new CustomModel[PART_IN_TYPE_COUNT];
-            objects = new GameObject[PART_IN_TYPE_COUNT];
-            states = new PartState[PART_IN_TYPE_COUNT];
+            Parts = new FortificationPart[PART_IN_TYPE_COUNT];
             MyType = (FortificationType)0;
-            CurrentState = (FortificationState)0;
-
-            selectionMat = new List<Material>();
+            CurrentID = -1;
         }
 
         public override void Initialize()
@@ -297,87 +383,57 @@ namespace TrashSoup.Gameplay
                 List<Material> mMats = ResourceManager.Instance.LoadBasicMaterialsFromModel(
                     ResourceManager.Instance.LoadModel(PartModels[tN]), ResourceManager.Instance.LoadEffect(@"Effects\NormalEffect"));
 
-                currentMats[i] = mMats;
-
                 foreach(Material mat in mMats)
                 {
                     mat.Glossiness = PartGlosses[tN];
                 }
 
                 MyObject.AddChild(fortPart);
-                objects[i] = fortPart;
 
-                models[i] = new CustomModel(fortPart, new Model[] { ResourceManager.Instance.LoadModel(PartModels[tN]), null, null }, mMats);
-                fortPart.Components.Add(models[i]);
+                CustomModel mod = new CustomModel(fortPart, new Model[] { ResourceManager.Instance.LoadModel(PartModels[tN]), null, null }, mMats);
+                fortPart.Components.Add(mod);
                 fortPart.MyTransform = new Transform(fortPart, PartTranslations[tN], Vector3.Up, PartRotations[tN], PartScales[tN]);
                 fortPart.MyCollider = new BoxCollider(fortPart);
 
-                states[i] = PartState.PENDING;
+                FortificationPart p = new FortificationPart(fortPart);
+                p.MaxHealth = PartHealths[tN];
+                p.Health = 0;
+                p.Price = PartPrices[tN];
+                p.TimeToBuild = PartTimes[tN];
+                fortPart.Components.Add(p);
+
+                p.Initialize();
+
+                p.State = FortificationPart.PartState.PENDING;
+                Parts[i] = p;
             }
 
-            // mats!
-            Material selMat = new Material(MyObject.Name + "FortificationSelectionMat", ResourceManager.Instance.LoadEffect(@"Effects\DefaultEffect"));
-            selMat.DiffuseMap = ResourceManager.Instance.Textures["DefaultDiffuseWhite"];
-            selMat.DiffuseColor = NotBuiltColor;
-            selMat.SpecularColor = new Vector3(0.0f, 0.0f, 0.0f);
-            selMat.Transparency = 0.25f;
-            selectionMat.Add(selMat);
-
-            if(CurrentState == FortificationState.STATE_EMPTY)
+            if(CurrentID == (int)FortificationState.STATE_EMPTY)
             {
-                if(CurrentHealth != 0)
-                {
-                    CurrentHealth = 0;
-                }
-
-                states[0] = PartState.NEXT_BUILD;
+                Parts[0].State = FortificationPart.PartState.NEXT_BUILD;
             }
-            else if(CurrentState == FortificationState.STATE_FIRST)
+            else if (CurrentID == (int)FortificationState.STATE_FIRST)
             {
-                if(CurrentHealth == 0)
-                {
-                    CurrentHealth = PartHealths[TYPE_COUNT * typeNumber];
-                }
-
-                states[0] = PartState.BUILT;
-                states[1] = PartState.NEXT_BUILD;
+                Parts[0].State = FortificationPart.PartState.BUILT;
+                Parts[0].Health = Parts[0].MaxHealth;
+                Parts[1].State = FortificationPart.PartState.NEXT_BUILD;
             }
-            else if(CurrentState == FortificationState.STATE_SECOND)
+            else if (CurrentID == (int)FortificationState.STATE_SECOND)
             {
-                if (CurrentHealth == 0)
-                {
-                    CurrentHealth = PartHealths[TYPE_COUNT * typeNumber] + PartHealths[TYPE_COUNT * typeNumber + 1];
-                }
-
-                states[0] = PartState.BUILT;
-                states[1] = PartState.BUILT;
-                states[2] = PartState.NEXT_BUILD;
+                Parts[0].State = FortificationPart.PartState.BUILT;
+                Parts[0].Health = Parts[0].MaxHealth;
+                Parts[1].State = FortificationPart.PartState.BUILT;
+                Parts[1].Health = Parts[1].MaxHealth;
+                Parts[2].State = FortificationPart.PartState.NEXT_BUILD;
             }
-            else if(CurrentState == FortificationState.STATE_THIRD)
+            else if (CurrentID == (int)FortificationState.STATE_THIRD)
             {
-                if (CurrentHealth == 0)
-                {
-                    CurrentHealth = PartHealths[TYPE_COUNT * typeNumber] + PartHealths[TYPE_COUNT * typeNumber + 1] + PartHealths[TYPE_COUNT * typeNumber + 2];
-                }
-
-                states[0] = PartState.BUILT;
-                states[1] = PartState.BUILT;
-                states[2] = PartState.BUILT;
-            }
-
-            for (int i = 0; i < PART_IN_TYPE_COUNT; ++i)
-            {
-                if(states[i] == PartState.BUILT)
-                {
-                    objects[i].Visible = true;
-                    objects[i].MyCollider.Enabled = true;
-                }
-                else
-                {
-                    objects[i].Visible = false;
-                    objects[i].MyCollider.Enabled = false;
-                    models[i].Mat = selectionMat;
-                }
+                Parts[0].State = FortificationPart.PartState.BUILT;
+                Parts[0].Health = Parts[0].MaxHealth;
+                Parts[1].State = FortificationPart.PartState.BUILT;
+                Parts[1].Health = Parts[1].MaxHealth;
+                Parts[2].State = FortificationPart.PartState.BUILT;
+                Parts[2].Health = Parts[2].MaxHealth;
             }
 
             triggerEnemyObj = new GameObject(MyObject.UniqueID + (uint)MyObject.Name.GetHashCode() + (uint)PART_IN_TYPE_COUNT, MyObject.Name + "FortificationTriggerEnemy");
@@ -408,11 +464,20 @@ namespace TrashSoup.Gameplay
 
             for (int i = 0; i < PART_IN_TYPE_COUNT; ++i )
             {
-                triggerEnemyObj.MyCollider.IgnoredColliders.Add(objects[i].MyCollider);
-                triggerPlayerObj.MyCollider.IgnoredColliders.Add(objects[i].MyCollider);
+                triggerEnemyObj.MyCollider.IgnoredColliders.Add(Parts[i].MyObject.MyCollider);
+                triggerPlayerObj.MyCollider.IgnoredColliders.Add(Parts[i].MyObject.MyCollider);
             }
             triggerEnemyObj.MyCollider.IgnoredColliders.Add(ResourceManager.Instance.CurrentScene.ObjectsDictionary[1].MyCollider);
-            
+
+            GameObject player = ResourceManager.Instance.CurrentScene.ObjectsDictionary[1];
+            foreach(ObjectComponent comp in player.Components)
+            {
+                if(comp.GetType() == typeof(HideoutStash))
+                {
+                    stashComponent = (HideoutStash)comp;
+                    break;
+                }
+            }
 
             base.Initialize();
         }
@@ -421,26 +486,34 @@ namespace TrashSoup.Gameplay
         {
             playerInTrigger = true;
 
-            for(int i = 0; i < PART_IN_TYPE_COUNT; ++i)
-            {
-                if(states[i] == PartState.NEXT_BUILD)
-                {
-                    objects[i].Visible = true;
-                }
-            }
+            if (InRange(NextID) && 
+                Parts[NextID].State == FortificationPart.PartState.NEXT_BUILD &&
+                Parts[CurrentID].Health == Parts[CurrentID].MaxHealth) Parts[NextID].MyObject.Visible = true;
+            //if(CurrentHealth == healthCheck)
+            //{
+                //for (int i = 0; i < PART_IN_TYPE_COUNT; ++i)
+                //{
+                //    if (Parts[i].State == FortificationPart.PartState.NEXT_BUILD)
+                //    {
+                //        Parts[i].MyObject.Visible = true;
+                //    }
+                //}
+            //}
+            
         }
 
         private void OnTriggerExitPlayerHandler(object sender, CollisionEventArgs e)
         {
             playerInTrigger = false;
 
-            for (int i = 0; i < PART_IN_TYPE_COUNT; ++i)
-            {
-                if (states[i] == PartState.NEXT_BUILD)
-                {
-                    objects[i].Visible = false;
-                }
-            }
+            if (InRange(NextID) && Parts[NextID].State == FortificationPart.PartState.NEXT_BUILD) Parts[NextID].MyObject.Visible = false;
+            //for (int i = 0; i < PART_IN_TYPE_COUNT; ++i)
+            //{
+            //    if (Parts[i].State == FortificationPart.PartState.NEXT_BUILD)
+            //    {
+            //        Parts[i].MyObject.Visible = false;
+            //    }
+            //}
         }
 
         private void OnTriggerEnterEnemyHandler(object sender, CollisionEventArgs e)
@@ -451,6 +524,20 @@ namespace TrashSoup.Gameplay
         private void OnTriggerExitEnemyHandler(object sender, CollisionEventArgs e)
         {
             
+        }
+
+        private void DestroyCurrent()
+        {
+
+        }
+
+        private bool InRange(int id)
+        {
+            if (id >= 0 && id < PART_IN_TYPE_COUNT)
+            {
+                return true;
+            }
+            else return false;
         }
 
         #endregion

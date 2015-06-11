@@ -254,6 +254,10 @@ namespace TrashSoup.Engine
             testBox.Components.Add(new PlayerController(testBox));
             testBox.Dynamic = true;
 
+            HideoutStash testStash = new HideoutStash(testBox);
+            testStash.CurrentTrash = 1000;
+            testBox.Components.Add(testStash);
+
             testBox.MyPhysicalObject = new PhysicalObject(testBox, 1.0f, 0.05f, false);
             testBox.MyCollider = new BoxCollider(testBox);  //Add a box collider to test collisions
 
@@ -267,7 +271,6 @@ namespace TrashSoup.Engine
             ratAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", ratAnimator.GetAnimationPlayer("Rat_TAnim")));
             ratAnimator.CurrentState = ratAnimator.AvailableStates["Walk"];
             rat.MyAnimator = ratAnimator;
-                       
 
             GameObject testTer = new GameObject(2, "Terrain");
             testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
@@ -324,7 +327,7 @@ namespace TrashSoup.Engine
             //cegla.Components.Add(new CustomModel(cegla, new Model[] { Models["Models/Weapons/Stones/brick"], null, null }, bb));
             //cegla.MyCollider = new BoxCollider(cegla);
             Fortification fort = new Fortification(cegla);
-            fort.CurrentState = Fortification.FortificationState.STATE_EMPTY;
+            fort.CurrentID = 0;
             fort.MyType = Fortification.FortificationType.WOOD1_WIRE_SNARES;
             cegla.Components.Add(fort);
             //GameObject pt = new GameObject(355, "PlayerTime");
