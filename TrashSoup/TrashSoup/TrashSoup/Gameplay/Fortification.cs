@@ -5,6 +5,7 @@ using System.Text;
 using TrashSoup.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 
 namespace TrashSoup.Gameplay
 {
@@ -181,6 +182,9 @@ namespace TrashSoup.Gameplay
 
         private bool playerInTrigger;
         private bool actionHelper;
+        private bool soundHelper;
+
+        private SoundEffectInstance buildSound;
 
         #endregion
 
@@ -285,6 +289,11 @@ namespace TrashSoup.Gameplay
                 {
                     if (actionHelper)
                     {
+                        if(!soundHelper)
+                        {
+                            soundHelper = true;
+                            buildSound.Play();
+                        }
                         // fixing current one
                         if (InRange(CurrentID) && Parts[CurrentID].Health < Parts[CurrentID].MaxHealth)
                         {
@@ -337,12 +346,36 @@ namespace TrashSoup.Gameplay
                             }
                         }
                     }
+                    else
+                    {
+                        if (soundHelper)
+                        {
+                            soundHelper = false;
+                            buildSound.Stop(true);
+                        }
+                    }
                 }
                 else
                 {
+                    if (soundHelper)
+                    {
+                        soundHelper = false;
+                        buildSound.Stop(true);
+                    }
+
                     actionHelper = true;
                 }
             }
+            else
+            {
+                if (soundHelper)
+                {
+                    soundHelper = false;
+                    buildSound.Stop(true);
+                }
+            }
+
+            
 
             /////////////////////////////////
 
@@ -487,6 +520,10 @@ namespace TrashSoup.Gameplay
                     break;
                 }
             }
+
+            SoundEffect se = TrashSoupGame.Instance.Content.Load<SoundEffect>(@"Audio/Character/walk");
+            buildSound = se.CreateInstance();
+            buildSound.IsLooped = true;
 
             base.Initialize();
         }
