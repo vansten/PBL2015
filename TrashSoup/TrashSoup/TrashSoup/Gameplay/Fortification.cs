@@ -521,7 +521,7 @@ namespace TrashSoup.Gameplay
                 }
             }
 
-            SoundEffect se = TrashSoupGame.Instance.Content.Load<SoundEffect>(@"Audio/Character/walk");
+            SoundEffect se = TrashSoupGame.Instance.Content.Load<SoundEffect>(@"Audio/Ambient/building");
             buildSound = se.CreateInstance();
             buildSound.IsLooped = true;
 
