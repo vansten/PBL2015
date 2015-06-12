@@ -109,6 +109,7 @@
     <Compile Include="Engine\LightPoint.cs" />
     <Compile Include="Engine\Material.cs" />
     <Compile Include="Engine\MirrorMaterial.cs" />
+    <Compile Include="Engine\Particle.cs" />
     <Compile Include="Engine\ParticleSystem.cs" />
     <Compile Include="Engine\ParticleVertex.cs" />
     <Compile Include="Engine\PhysicalObject.cs" />

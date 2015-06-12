@@ -1035,6 +1035,41 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
+    <Compile Include="Textures\Particles\Particle_blood01.dds">
+      <Name>Particle_blood01</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Particles\Particle_metal01.dds">
+      <Name>Particle_metal01</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Particles\Particle_metal02.dds">
+      <Name>Particle_metal02</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Particles\Particle_wood01.dds">
+      <Name>Particle_wood01</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Particles\Particle_wood02.dds">
+      <Name>Particle_wood02</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Particles\Particle_wood03.dds">
+      <Name>Particle_wood03</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Nature\Blood_spatter_01.dds">
+      <Name>Blood_spatter_01</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">

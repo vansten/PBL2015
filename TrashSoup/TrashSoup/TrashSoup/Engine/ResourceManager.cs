@@ -299,6 +299,24 @@ namespace TrashSoup.Engine
             testBox3.Components.Add(new CustomModel(testBox3, new Model[] { Models["Models/Test/TestSphere"], Models["Models/Test/TestSphere_LOD1"], Models["Models/Test/TestSphere_LOD2"] }, testPlayerMats2));
             testBox3.MyCollider = new SphereCollider(testBox3, true);
 
+            ParticleSystem ps = new ParticleSystem(testBox3);
+            ps.Textures.Add(ResourceManager.Instance.LoadTexture("Textures/Particles/Particle_metal01"));
+            ps.Textures.Add(ResourceManager.Instance.LoadTexture("Textures/Particles/Particle_metal02"));
+            ps.Textures.Add(ResourceManager.Instance.LoadTexture("Textures/Particles/Particle_wood01"));
+            ps.Textures.Add(ResourceManager.Instance.LoadTexture("Textures/Particles/Particle_wood02"));
+            ps.Textures.Add(ResourceManager.Instance.LoadTexture("Textures/Particles/Particle_wood03"));
+            ps.ParticleCount = 170;
+            ps.ParticleSize = new Vector2(0.5f, 0.5f);
+            ps.LifespanSec = 5.0f;
+            ps.Wind = new Vector3(0.0f, 0.1f, 0.0f);
+            ps.FadeInTime = 0.0f;
+            ps.Offset = new Vector3(MathHelper.PiOver2);
+            ps.Speed = 10.0f;
+            //ps.DelayMs = 5000.0f;
+            ps.LoopMode = ParticleSystem.ParticleLoopMode.CONTINUOUS;
+            ps.PositionOffset = new Vector3(0.0f, 0.0f, 0.0f) * testBox3.MyTransform.Scale;
+            testBox3.Components.Add(ps);
+
             GameObject testMirror = new GameObject(6, "testMirror");
             testMirror.MyTransform = new Transform(testMirror, new Vector3(-10.0f, 2.0f, -10.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, -MathHelper.PiOver2, 0.0f), 1.0f);
             testMirror.Components.Add(new CustomModel(testMirror, new Model[] { Models["Models/Test/TestMirror"], null, null }, testMirrorMats));
