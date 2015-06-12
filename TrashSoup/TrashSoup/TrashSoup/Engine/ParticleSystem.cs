@@ -19,15 +19,7 @@ namespace TrashSoup.Engine
 
         //Graphics device and effect
         GraphicsDevice graphicsDevice;
-        Effect effect;
-
-        //Particle settings
-        int particleCount;
-        Vector2 particleSize;
-        float lifespan = 1;
-        Vector3 wind;
-        Texture2D texture;
-        float fadeInTime;
+        Effect effect;        
 
         //Particles and indices
         ParticleVertex[] particles;
@@ -39,47 +31,92 @@ namespace TrashSoup.Engine
         //Time particle was created
         DateTime start;
 
-        private Vector3 offset;
-        private Vector3 randAngle;
         private bool isLooped;
         private bool isStopped;
+
+        // propertyz
+        private Vector3 offset;
+
+        #endregion
+
+        #region properties
+
+        public Vector3 Offset 
+        { 
+            get
+            {
+                return offset;
+            }
+            set
+            {
+                offset = value;
+
+                RandAngle = Vector3.Up + new Vector3(
+                -Offset.X + (float)SingleRandom.Instance.rnd.NextDouble() * (Offset.X - (-Offset.X)),
+                -Offset.Y + (float)SingleRandom.Instance.rnd.NextDouble() * (Offset.Y - (-Offset.Y)),
+                -Offset.Z + (float)SingleRandom.Instance.rnd.NextDouble() * (Offset.Z - (-Offset.Z))
+                );
+            }
+        }
+        public Vector3 RandAngle { get; private set; }
+        public Vector3 Wind { get; set; }
+        public Vector3 PositionOffset { get; set; }
+        public Vector2 ParticleSize { get; set; }
+        public Texture2D Texture { get; set; }
+        public float Lifespan { get; set; }
+        public float FadeInTime { get; set; }
+        public float Speed { get; set; }
+        public int ParticleCount { get; set; }
+        public bool IgnoreScale { get; set; }
+
         #endregion
 
         #region methods
 
         public ParticleSystem(GameObject obj) : base(obj)
         {
-            this.particleCount = 400;
-            this.particleSize = new Vector2(2);
-            this.lifespan = 1;
-            this.wind = Vector3.Zero;
-            this.fadeInTime = 0.5f;
+            Start();
         }
 
-        public ParticleSystem(GameObject obj,
-            Texture2D texture, int particleCount,
-            Vector2 particleSize, float lifespan,
-            Vector3 wind, float fadeInTime) : base(obj)
+        public ParticleSystem(GameObject obj, ParticleSystem ps) : base(obj, ps)
         {
-            this.particleCount = particleCount;
-            this.particleSize = particleSize;
-            this.lifespan = lifespan;
-            this.wind = wind;
-            this.texture = texture;
-            this.fadeInTime = fadeInTime;
+            ParticleCount = ps.ParticleCount;
+            ParticleSize = ps.ParticleSize;
+            PositionOffset = ps.PositionOffset;
+            Lifespan = ps.Lifespan;
+            Wind = ps.Wind;
+            FadeInTime = ps.FadeInTime;
+            Texture = ps.Texture;
+            Offset = ps.Offset;
+            IgnoreScale = ps.IgnoreScale;
+            Speed = ps.Speed;
+        }
+
+        protected override void Start()
+        {
+            this.ParticleCount = 400;
+            this.ParticleSize = new Vector2(2);
+            this.PositionOffset = Vector3.Zero;
+            this.Lifespan = 1;
+            this.Wind = Vector3.Zero;
+            this.FadeInTime = 0.5f;
+            this.Texture = null;
+            this.Offset = new Vector3(MathHelper.ToRadians(10.0f));
+            this.IgnoreScale = true;
+            this.Speed = 20.0f;
         }
 
         void GenerateParticles()
         {
             //Create particle and index arrays
-            particles = new ParticleVertex[particleCount * 4];
-            indices = new int[particleCount * 6];
+            particles = new ParticleVertex[ParticleCount * 4];
+            indices = new int[ParticleCount * 6];
 
             Vector3 z = Vector3.Zero;
             int x = 0;
 
             //Initialize particle settings and fill index and vertex arrays
-            for(int i = 0; i < particleCount * 4; i += 4)
+            for(int i = 0; i < ParticleCount * 4; i += 4)
             {
                 particles[i] = new ParticleVertex(z, new Vector2(0, 0),
                     z, 0, -1);
@@ -110,7 +147,7 @@ namespace TrashSoup.Engine
         public void AddParticle(Vector3 position, Vector3 direction, float speed)
         {
             //If there are no active particles, give up
-            if (nActive + 4 == particleCount * 4)
+            if (nActive + 4 == ParticleCount * 4)
                 return;
 
             //Determine the index at which this particle should be created
@@ -183,7 +220,7 @@ namespace TrashSoup.Engine
                 for (int i = 0; i < end; i++)
                 {
                     //If this particle has gotten older than 'lifespan'
-                    if (particles[activeStart].StartTime < now - lifespan)
+                    if (particles[activeStart].StartTime < now - Lifespan)
                     {
                         //Advance the active particle start position past
                         //the particle's index and reduce the number of
@@ -209,12 +246,12 @@ namespace TrashSoup.Engine
                 verts.SetData<ParticleVertex>(particles);
                 inds.SetData<int>(indices);
 
-                randAngle = Vector3.Up + new Vector3(
-                    -offset.X + (float)SingleRandom.Instance.rnd.NextDouble() * (offset.X - (-offset.X)),
-                    -offset.Y + (float)SingleRandom.Instance.rnd.NextDouble() * (offset.Y - (-offset.Y)),
-                    -offset.Z + (float)SingleRandom.Instance.rnd.NextDouble() * (offset.Z - (-offset.Z))
+                RandAngle = Vector3.Up + new Vector3(
+                    -Offset.X + (float)SingleRandom.Instance.rnd.NextDouble() * (Offset.X - (-Offset.X)),
+                    -Offset.Y + (float)SingleRandom.Instance.rnd.NextDouble() * (Offset.Y - (-Offset.Y)),
+                    -Offset.Z + (float)SingleRandom.Instance.rnd.NextDouble() * (Offset.Z - (-Offset.Z))
                     );
-                AddParticle(this.MyObject.MyTransform.Position, randAngle, 20.0f);
+                AddParticle(this.MyObject.MyTransform.Position, RandAngle, Speed);
             }
         }
 
@@ -222,6 +259,12 @@ namespace TrashSoup.Engine
         {
             if (!TrashSoupGame.Instance.EditorMode)
             {
+                Camera camera = ResourceManager.Instance.CurrentScene.Cam;
+                //if(camera == null)
+                //{
+                //    camera = ResourceManager.Instance.CurrentScene.Cam;
+                //}
+
                 //Set the vertex and index buffers to the graphics card
                 graphicsDevice.SetVertexBuffer(verts);
                 graphicsDevice.Indices = inds;
@@ -229,47 +272,49 @@ namespace TrashSoup.Engine
                 effect = TrashSoupGame.Instance.Content.Load<Effect>(@"Effects/ParticleEffect");
 
                 //Set the effect parameters
-                effect.Parameters["ParticleTexture"].SetValue(texture);
-                effect.Parameters["View"].SetValue(ResourceManager.Instance.CurrentScene.Cam.ViewMatrix);
-                effect.Parameters["Projection"].SetValue(ResourceManager.Instance.CurrentScene.Cam.ProjectionMatrix);
+                effect.Parameters["ParticleTexture"].SetValue(Texture);
+
+                Matrix world;
+                world = MyObject.MyTransform.GetWorldMatrix();
+                Vector3 trans, scl;
+                Quaternion rot;
+                world.Decompose(out scl, out rot, out trans);
+                world = IgnoreScale ? Matrix.CreateTranslation(trans + PositionOffset) : (Matrix.CreateScale(scl) * Matrix.CreateTranslation(trans + PositionOffset));
+
+                effect.Parameters["WorldViewProj"].SetValue(world * camera.ViewProjMatrix);
                 effect.Parameters["Time"].SetValue((float)(DateTime.Now - start).TotalSeconds);
-                effect.Parameters["Lifespan"].SetValue(lifespan);
-                effect.Parameters["Wind"].SetValue(wind);
-                effect.Parameters["Size"].SetValue(particleSize / 2.0f);
-                effect.Parameters["Up"].SetValue(ResourceManager.Instance.CurrentScene.Cam.Up);
-                effect.Parameters["Side"].SetValue(ResourceManager.Instance.CurrentScene.Cam.Right);
-                effect.Parameters["FadeInTime"].SetValue(fadeInTime);
+                effect.Parameters["Lifespan"].SetValue(Lifespan);
+                effect.Parameters["Wind"].SetValue(Wind);
+                effect.Parameters["Size"].SetValue(ParticleSize / 2.0f);
+                effect.Parameters["Up"].SetValue(camera.Up);
+                effect.Parameters["Side"].SetValue(camera.Right);
+                effect.Parameters["FadeInTime"].SetValue(FadeInTime);
 
                 //Enable blending render states
                 //graphicsDevice.BlendState = BlendState.AlphaBlend;
-                graphicsDevice.DepthStencilState = DepthStencilState.DepthRead;
+                //graphicsDevice.DepthStencilState = DepthStencilState.DepthRead;
 
                 //Apply the effect
                 effect.CurrentTechnique.Passes[0].Apply();
 
                 //Draw the billboards
                 graphicsDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList,
-                    0, 0, particleCount * 4, 0, particleCount * 2);
+                    0, 0, ParticleCount * 4, 0, ParticleCount * 2);
 
                 //Un-set the buffers
                 graphicsDevice.SetVertexBuffer(null);
                 graphicsDevice.Indices = null;
 
                 //Reset render states
-                graphicsDevice.BlendState = BlendState.Opaque;
-                graphicsDevice.DepthStencilState = DepthStencilState.Default;   
+                //graphicsDevice.BlendState = BlendState.Opaque;
+                //graphicsDevice.DepthStencilState = DepthStencilState.Default;   
             }
-        }
-
-        protected override void Start()
-        {
-  
         }
 
         public override void Initialize()
         {
-            particles = new ParticleVertex[particleCount * 4];
-            indices = new int[particleCount * 6];
+            particles = new ParticleVertex[ParticleCount * 4];
+            indices = new int[ParticleCount * 6];
 
             //to serialize
             //this.particleCount = 100;
@@ -286,19 +331,12 @@ namespace TrashSoup.Engine
             //this.texture = TrashSoupGame.Instance.Content.Load<Texture2D>(@"Textures/ParticleTest/Particle");
             this.graphicsDevice = TrashSoupGame.Instance.GraphicsDevice;
 
-            offset = new Vector3(MathHelper.ToRadians(10.0f));
-            randAngle = Vector3.Up + new Vector3(
-                -offset.X + (float)SingleRandom.Instance.rnd.NextDouble() * (offset.X - (-offset.X)),
-                -offset.Y + (float)SingleRandom.Instance.rnd.NextDouble() * (offset.Y - (-offset.Y)),
-                -offset.Z + (float)SingleRandom.Instance.rnd.NextDouble() * (offset.Z - (-offset.Z))
-                );
-
             //Create vertex and index buffers to accomodate all particles
             verts = new VertexBuffer(graphicsDevice, typeof(ParticleVertex),
-                particleCount * 4, BufferUsage.WriteOnly);
+                ParticleCount * 4, BufferUsage.WriteOnly);
 
             inds = new IndexBuffer(graphicsDevice, IndexElementSize.ThirtyTwoBits,
-                particleCount * 6, BufferUsage.WriteOnly);
+                ParticleCount * 6, BufferUsage.WriteOnly);
 
             GenerateParticles();
 
@@ -319,31 +357,31 @@ namespace TrashSoup.Engine
 
             base.ReadXml(reader);
 
-            particleCount = reader.ReadElementContentAsInt("ParticleCount", "");
+            ParticleCount = reader.ReadElementContentAsInt("ParticleCount", "");
 
             if (reader.Name == "ParticleSize")
             {
                 reader.ReadStartElement();
-                particleSize = new Vector2(reader.ReadElementContentAsFloat("X", ""),
+                ParticleSize = new Vector2(reader.ReadElementContentAsFloat("X", ""),
                     reader.ReadElementContentAsFloat("Y", ""));
                 reader.ReadEndElement();
             }
 
-            lifespan = reader.ReadElementContentAsInt("LifeSpan", "");
+            Lifespan = reader.ReadElementContentAsInt("LifeSpan", "");
 
             if (reader.Name == "Wind")
             {
                 reader.ReadStartElement();
-                wind = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                Wind = new Vector3(reader.ReadElementContentAsFloat("X", ""),
                     reader.ReadElementContentAsFloat("Y", ""),
                     reader.ReadElementContentAsFloat("Z", ""));
                 reader.ReadEndElement();
             }
 
-            fadeInTime = reader.ReadElementContentAsFloat("FadeInTime", "");
+            FadeInTime = reader.ReadElementContentAsFloat("FadeInTime", "");
             isLooped = reader.ReadElementContentAsBoolean("IsLooped", "");
             isStopped = reader.ReadElementContentAsBoolean("IsStopped", "");
-            texture = ResourceManager.Instance.LoadTexture(reader.ReadElementString("TexturePath", ""));
+            Texture = ResourceManager.Instance.LoadTexture(reader.ReadElementString("TexturePath", ""));
 
             reader.ReadEndElement();
         }
@@ -351,22 +389,22 @@ namespace TrashSoup.Engine
         public override void WriteXml(XmlWriter writer)
         {
             base.WriteXml(writer);
-            writer.WriteElementString("ParticleCount", XmlConvert.ToString(particleCount));
+            writer.WriteElementString("ParticleCount", XmlConvert.ToString(ParticleCount));
 
             writer.WriteStartElement("ParticleSize");
-            writer.WriteElementString("X", XmlConvert.ToString(particleSize.X));
-            writer.WriteElementString("Y", XmlConvert.ToString(particleSize.Y));
+            writer.WriteElementString("X", XmlConvert.ToString(ParticleSize.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(ParticleSize.Y));
             writer.WriteEndElement();
 
-            writer.WriteElementString("LifeSpan", XmlConvert.ToString(lifespan));
+            writer.WriteElementString("LifeSpan", XmlConvert.ToString(Lifespan));
             
             writer.WriteStartElement("Wind");
-            writer.WriteElementString("X", XmlConvert.ToString(wind.X));
-            writer.WriteElementString("Y", XmlConvert.ToString(wind.Y));
-            writer.WriteElementString("Z", XmlConvert.ToString(wind.Z));
+            writer.WriteElementString("X", XmlConvert.ToString(Wind.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(Wind.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(Wind.Z));
             writer.WriteEndElement();
 
-            writer.WriteElementString("FadeInTime", XmlConvert.ToString(fadeInTime));
+            writer.WriteElementString("FadeInTime", XmlConvert.ToString(FadeInTime));
             writer.WriteElementString("IsLooped", XmlConvert.ToString(isLooped));
             writer.WriteElementString("IsStopped", XmlConvert.ToString(isStopped));
             writer.WriteElementString("TexturePath", "Textures/ParticleTest/Particle");

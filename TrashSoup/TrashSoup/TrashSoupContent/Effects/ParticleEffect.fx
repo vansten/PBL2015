@@ -1,5 +1,4 @@
-float4x4 View;
-float4x4 Projection;
+float4x4 WorldViewProj;
 
 texture ParticleTexture;
 sampler2D texSampler = sampler_state{
@@ -58,7 +57,7 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 	position += (input.Direction * input.Speed + Wind) * relativeTime;
 	
 	//Transform the final position by the view and projection matrices
-	output.Position = mul(float4(position, 1), mul(View, Projection));
+	output.Position = mul(float4(position, 1.0f), WorldViewProj);
 
 	output.UV = input.UV;
 

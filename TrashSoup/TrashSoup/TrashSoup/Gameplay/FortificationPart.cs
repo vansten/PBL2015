@@ -32,6 +32,7 @@ namespace TrashSoup.Gameplay
         private List<Material> currentMat;
         private CustomModel model;
         private HideoutStash hs;
+        private ParticleSystem ps;
 
         private float health;
         private float priceHelper = 0.0f;
@@ -147,6 +148,23 @@ namespace TrashSoup.Gameplay
 
             GameObject player = ResourceManager.Instance.CurrentScene.ObjectsDictionary[1];
             hs = (HideoutStash)player.GetComponent<HideoutStash>();
+
+            ps = new ParticleSystem(this.MyObject);
+            ps.Texture = ResourceManager.Instance.LoadTexture("Textures/ParticleTest/Particle");
+            ps.ParticleCount = 70;
+            ps.ParticleSize = new Vector2(0.5f, 0.5f);
+            ps.Lifespan = 0.7f;
+            ps.Wind = new Vector3(0.0f, 0.1f, 0.0f);
+            ps.FadeInTime = 1.0f;
+            ps.Offset = new Vector3(MathHelper.PiOver2);
+            ps.Speed = 10.0f;
+            ps.PositionOffset = new Vector3(0.0f, -1.0f, 0.0f) * MyObject.MyTransform.Scale;
+
+            ps.Initialize();
+
+            ps.Stop();
+
+            MyObject.Components.Add(ps);
 
             HpPerMs = (float)MaxHealth / ((float)TimeToBuild * 1000.0f);
             PricePerMs = (float)Price / ((float)TimeToBuild * 1000.0f);
