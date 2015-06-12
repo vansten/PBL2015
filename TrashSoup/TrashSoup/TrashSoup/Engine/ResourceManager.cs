@@ -640,7 +640,6 @@ namespace TrashSoup.Engine
             LoadTexture(@"Textures\Test\cargo");
             LoadTexture(@"Textures\Test\cargo_NRM");
             LoadTexture(@"Textures\Test\metal01_d");
-            LoadTexture(@"Textures\ParticleTest\Particle");
 
             //Wika i Kasia
             LoadTexture(@"Textures\Home\WindowsDoors\DoorFrame_D");

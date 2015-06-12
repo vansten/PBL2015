@@ -98,12 +98,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\ParticleTest\Particle.png">
+    <Compile Include="Textures\Particles\Particle.png">
       <Name>Particle</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\ParticleTest\ParticleColors.png">
+    <Compile Include="Textures\Particles\ParticleColors.png">
       <Name>ParticleColors</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>

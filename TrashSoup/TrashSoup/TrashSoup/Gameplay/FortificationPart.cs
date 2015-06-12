@@ -150,7 +150,7 @@ namespace TrashSoup.Gameplay
             hs = (HideoutStash)player.GetComponent<HideoutStash>();
 
             ps = new ParticleSystem(this.MyObject);
-            ps.Texture = ResourceManager.Instance.LoadTexture("Textures/ParticleTest/Particle");
+            ps.Texture = ResourceManager.Instance.LoadTexture("Textures/Particles/Particle");
             ps.ParticleCount = 70;
             ps.ParticleSize = new Vector2(0.5f, 0.5f);
             ps.Lifespan = 0.7f;
@@ -162,7 +162,7 @@ namespace TrashSoup.Gameplay
 
             ps.Initialize();
 
-            ps.Stop();
+            //ps.Stop();
 
             MyObject.Components.Add(ps);
 
