@@ -414,20 +414,32 @@ namespace TrashSoup.Engine
             }
 
             LifespanSec = reader.ReadElementContentAsInt("LifeSpan", "");
-
-            if (reader.Name == "Wind")
+            if (reader.Name == "PositionOffset")
             {
                 reader.ReadStartElement();
-                Wind = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                PositionOffset = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""),
+                    reader.ReadElementContentAsFloat("Z", ""));
+                reader.ReadEndElement();
+            }
+
+            if (reader.Name == "Offset")
+            {
+                reader.ReadStartElement();
+                Offset = new Vector3(reader.ReadElementContentAsFloat("X", ""),
                     reader.ReadElementContentAsFloat("Y", ""),
                     reader.ReadElementContentAsFloat("Z", ""));
                 reader.ReadEndElement();
             }
 
             FadeInTime = reader.ReadElementContentAsFloat("FadeInTime", "");
-            //Looping = reader.ReadElementContentAsBoolean("IsLooped", "");
             Stopped = reader.ReadElementContentAsBoolean("IsStopped", "");
             //Textures = ResourceManager.Instance.LoadTexture(reader.ReadElementString("TexturePath", ""));
+            //IsLooped = reader.ReadElementContentAsBoolean("IsLooped", "");
+            //IsStopped = reader.ReadElementContentAsBoolean("IsStopped", "");
+            IgnoreScale = reader.ReadElementContentAsBoolean("IgnoreScale", "");
+            Speed = reader.ReadElementContentAsFloat("Speed", "");
+            //Texture = ResourceManager.Instance.LoadTexture(reader.ReadElementString("TexturePath", ""));
 
             reader.ReadEndElement();
         }
@@ -443,6 +455,19 @@ namespace TrashSoup.Engine
             writer.WriteEndElement();
 
             writer.WriteElementString("LifeSpan", XmlConvert.ToString(LifespanSec));
+            writer.WriteStartElement("PositionOffset");
+            writer.WriteElementString("X", XmlConvert.ToString(PositionOffset.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(PositionOffset.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(PositionOffset.Z));
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("Offset");
+            writer.WriteElementString("X", XmlConvert.ToString(Offset.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(Offset.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(Offset.Z));
+            writer.WriteEndElement();
+
+            writer.WriteElementString("LifeSpan", XmlConvert.ToString(LifespanSec));
             
             writer.WriteStartElement("Wind");
             writer.WriteElementString("X", XmlConvert.ToString(Wind.X));
@@ -454,6 +479,11 @@ namespace TrashSoup.Engine
             //writer.WriteElementString("IsLooped", XmlConvert.ToString(Looping));
             writer.WriteElementString("IsStopped", XmlConvert.ToString(Stopped));
             //writer.WriteElementString("TexturePath", "Textures/ParticleTest/Particle");
+            //writer.WriteElementString("IsLooped", XmlConvert.ToString(isLooped));
+            //writer.WriteElementString("IsStopped", XmlConvert.ToString(isStopped));
+            writer.WriteElementString("IgnoreScale", XmlConvert.ToString(IgnoreScale));
+            writer.WriteElementString("Speed", XmlConvert.ToString(Speed));
+            //writer.WriteElementString("TexturePath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == Texture).Key);
         }
 
         #endregion
