@@ -39,7 +39,14 @@ namespace TrashSoup.Gameplay
 
         protected override void Start()
         {
+            
+        }
+
+        public override void Initialize()
+        {
             this.noteTexture = ResourceManager.Instance.LoadTexture(@"Textures/Storyline/note");
+
+            base.Initialize();
         }
 
         public override XmlSchema GetSchema()
