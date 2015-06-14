@@ -178,12 +178,12 @@ namespace TrashSoup.Engine
             //List<Material> ratMats = LoadBasicMaterialsFromModel(Models["Models/MainCharacter/MainCharacter"], this.Effects[@"Effects\NormalEffect"]);
             List<Material> ratMats = new List<Material>();
             Material ratMat01 = new Material("PlayerMat", this.Effects[@"Effects\NormalEffect"]);
-            ratMat01.DiffuseMap = LoadTexture(@"Models\MainCharacter\MainCharacter_D");
-            ratMat01.NormalMap = LoadTexture(@"Models\MainCharacter\MainCharacter_N");
+            ratMat01.DiffuseMap = LoadTexture(@"Models\Enemies\Mutant_body_D");
+            ratMat01.NormalMap = LoadTexture(@"Models\Enemies\Mutant_body_N");
             ratMats.Add(ratMat01);
             Material ratMat02 = new Material("PlayerMatHair", this.Effects[@"Effects\NormalEffect"]);
-            ratMat02.DiffuseMap = LoadTexture(@"Models\MainCharacter\Hair_D");
-            ratMat02.NormalMap = LoadTexture(@"Models\MainCharacter\Hair_N");
+            ratMat02.DiffuseMap = LoadTexture(@"Models\Enemies\Mutant_head_D");
+            ratMat02.NormalMap = LoadTexture(@"Models\Enemies\Mutant_head_N");
             ratMats.Add(ratMat02);
 
             List<Material> deSign = LoadBasicMaterialsFromModel(Models["Models/Enviro/Ground/street_cross"], this.Effects[@"Effects\NormalEffect"]);
@@ -265,10 +265,10 @@ namespace TrashSoup.Engine
             testBox.MyCollider = new BoxCollider(testBox);  //Add a box collider to test collisions
 
             // loading gameobjects
-            //GameObject rat = new GameObject(50, "Rat");
-            //rat.MyTransform = new Transform(rat, new Vector3(0.0f, 3.0f, -15.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
-            //CustomModel ratModel = new CustomModel(rat, new Model[] { Models["Models/MainCharacter/MainCharacter"], null, null }, ratMats);
-            //rat.Components.Add(ratModel);
+            GameObject rat = new GameObject(50, "Rat");
+            rat.MyTransform = new Transform(rat, new Vector3(0.0f, 3.0f, -15.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
+            CustomModel ratModel = new CustomModel(rat, new Model[] { LoadModel("Models/Enemies/Mutant01"), null, null }, ratMats);
+            rat.Components.Add(ratModel);
             //Animator ratAnimator = new Animator(rat, ratModel.LODs[0]);
             //ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], Animations["Animations/MainCharacter/dodge_1"], "Rat_TAnim"));
             //ratAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", ratAnimator.GetAnimationPlayer("Rat_TAnim")));
@@ -404,7 +404,7 @@ namespace TrashSoup.Engine
             CurrentScene.AddObject(testMirror);
             CurrentScene.AddObject(testWater);
             CurrentScene.AddObject(awsomeTest);//Wika i kasia
-            //CurrentScene.AddObject(rat);
+            CurrentScene.AddObject(rat);
             CurrentScene.AddObject(cegla);
             //CurrentScene.AddObject(pt);
 
