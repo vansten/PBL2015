@@ -403,43 +403,73 @@ namespace TrashSoup.Engine
 
             base.ReadXml(reader);
 
-            ParticleCount = reader.ReadElementContentAsInt("ParticleCount", "");
+            string rotationMode = reader.ReadElementString("RotationMode", "");
+            string loopMode = reader.ReadElementString("LoopMode", "");
 
-            if (reader.Name == "ParticleSize")
+            switch (rotationMode)
+            {
+                case "PLAIN":
+                    RotationMode = ParticleRotationMode.PLAIN;
+                    break;
+                case "DIRECTION_Z":
+                    RotationMode = ParticleRotationMode.DIRECTION_Z;
+                    break;
+                case "DIRECTION_RANDOM":
+                    RotationMode = ParticleRotationMode.DIRECTION_RANDOM;
+                    break;
+            }
+
+            switch (loopMode)
+            {
+                case "NONE":
+                    LoopMode = ParticleLoopMode.NONE;
+                    break;
+                case "BURST":
+                    LoopMode = ParticleLoopMode.BURST;
+                    break;
+                case "CONTINUOUS":
+                    LoopMode = ParticleLoopMode.CONTINUOUS;
+                    break;
+            }
+
+            ReadVector3(reader, Offset, "Offset");
+            ReadVector3(reader, RandAngle, "RandAngle");
+            ReadVector3(reader, Wind, "Wind");
+            ReadVector3(reader, WindVariation, "WindVariation");
+            ReadVector3(reader, PositionOffset, "PositionOffset");
+            ReadVector3(reader, PositionOffsetVariation, "PositionOffsetVariation");
+            ReadVector3(reader, ParticleRotation, "ParticleRotation");
+            ReadVector3(reader, ParticleRotationVariation, "ParticleRotationVariation");
+            ReadVector3(reader, ParticleColor, "ParticleColor");
+            ReadVector3(reader, ParticleColorVariation, "ParticleColorVariation");
+            ReadVector2(reader, ParticleSize, "ParticleSize");
+            ReadVector2(reader, ParticleSizeVariation, "ParticleSizeVariation");
+
+            if (reader.Name == "Textures")
             {
                 reader.ReadStartElement();
-                ParticleSize = new Vector2(reader.ReadElementContentAsFloat("X", ""),
-                    reader.ReadElementContentAsFloat("Y", ""));
+                Textures = new List<Texture2D>();
+                while (reader.NodeType != XmlNodeType.EndElement)
+                {
+                    Textures.Add(ResourceManager.Instance.LoadTexture(reader.ReadElementString("TexturePath")));
+                }
                 reader.ReadEndElement();
             }
 
-            LifespanSec = reader.ReadElementContentAsInt("LifeSpan", "");
-            if (reader.Name == "PositionOffset")
-            {
-                reader.ReadStartElement();
-                PositionOffset = new Vector3(reader.ReadElementContentAsFloat("X", ""),
-                    reader.ReadElementContentAsFloat("Y", ""),
-                    reader.ReadElementContentAsFloat("Z", ""));
-                reader.ReadEndElement();
-            }
-
-            if (reader.Name == "Offset")
-            {
-                reader.ReadStartElement();
-                Offset = new Vector3(reader.ReadElementContentAsFloat("X", ""),
-                    reader.ReadElementContentAsFloat("Y", ""),
-                    reader.ReadElementContentAsFloat("Z", ""));
-                reader.ReadEndElement();
-            }
-
+            LifespanSec = reader.ReadElementContentAsFloat("LifeSpanSec", "");
+            LifespanSecVariation = reader.ReadElementContentAsFloat("LifeSpanSecVariation", "");
             FadeInTime = reader.ReadElementContentAsFloat("FadeInTime", "");
-            Stopped = reader.ReadElementContentAsBoolean("IsStopped", "");
-            //Textures = ResourceManager.Instance.LoadTexture(reader.ReadElementString("TexturePath", ""));
-            //IsLooped = reader.ReadElementContentAsBoolean("IsLooped", "");
-            //IsStopped = reader.ReadElementContentAsBoolean("IsStopped", "");
-            IgnoreScale = reader.ReadElementContentAsBoolean("IgnoreScale", "");
+            FadeInTimeVariation = reader.ReadElementContentAsFloat("FadeInTimeVariation", "");
+            FadeOutTime = reader.ReadElementContentAsFloat("FadeOutTime", "");
+            FadeOutTimeVariation = reader.ReadElementContentAsFloat("FadeOutTimeVariation", "");
             Speed = reader.ReadElementContentAsFloat("Speed", "");
-            //Texture = ResourceManager.Instance.LoadTexture(reader.ReadElementString("TexturePath", ""));
+            SpeedVariation = reader.ReadElementContentAsFloat("SpeedVariation", "");
+            DelayMs = reader.ReadElementContentAsFloat("DelayMs", "");
+            DelayMsVariation = reader.ReadElementContentAsFloat("DelayMsVariation", "");
+            ParticleCount = reader.ReadElementContentAsInt("ParticleCount", "");
+            IgnoreScale = reader.ReadElementContentAsBoolean("IgnoreScale", "");
+            Stopped = reader.ReadElementContentAsBoolean("Stopped", "");
+            UseGravity = reader.ReadElementContentAsBoolean("UseGravity", "");
 
             reader.ReadEndElement();
         }
@@ -447,43 +477,83 @@ namespace TrashSoup.Engine
         public override void WriteXml(XmlWriter writer)
         {
             base.WriteXml(writer);
-            writer.WriteElementString("ParticleCount", XmlConvert.ToString(ParticleCount));
-
-            writer.WriteStartElement("ParticleSize");
-            writer.WriteElementString("X", XmlConvert.ToString(ParticleSize.X));
-            writer.WriteElementString("Y", XmlConvert.ToString(ParticleSize.Y));
-            writer.WriteEndElement();
-
-            writer.WriteElementString("LifeSpan", XmlConvert.ToString(LifespanSec));
-            writer.WriteStartElement("PositionOffset");
-            writer.WriteElementString("X", XmlConvert.ToString(PositionOffset.X));
-            writer.WriteElementString("Y", XmlConvert.ToString(PositionOffset.Y));
-            writer.WriteElementString("Z", XmlConvert.ToString(PositionOffset.Z));
-            writer.WriteEndElement();
-
-            writer.WriteStartElement("Offset");
-            writer.WriteElementString("X", XmlConvert.ToString(Offset.X));
-            writer.WriteElementString("Y", XmlConvert.ToString(Offset.Y));
-            writer.WriteElementString("Z", XmlConvert.ToString(Offset.Z));
-            writer.WriteEndElement();
-
-            writer.WriteElementString("LifeSpan", XmlConvert.ToString(LifespanSec));
+            writer.WriteElementString("RotationMode", RotationMode.ToString());
+            writer.WriteElementString("LoopMode", LoopMode.ToString());
             
-            writer.WriteStartElement("Wind");
-            writer.WriteElementString("X", XmlConvert.ToString(Wind.X));
-            writer.WriteElementString("Y", XmlConvert.ToString(Wind.Y));
-            writer.WriteElementString("Z", XmlConvert.ToString(Wind.Z));
+            WriteVector3(writer, Offset, "Offset");
+            WriteVector3(writer, RandAngle, "RandAngle");
+            WriteVector3(writer, Wind, "Wind");
+            WriteVector3(writer, WindVariation, "WindVariation");
+            WriteVector3(writer, PositionOffset, "PositionOffset");
+            WriteVector3(writer, PositionOffsetVariation, "PositionOffsetVariation");
+            WriteVector3(writer, ParticleRotation, "ParticleRotation");
+            WriteVector3(writer, ParticleRotationVariation, "ParticleRotationVariation");
+            WriteVector3(writer, ParticleColor, "ParticleColor");
+            WriteVector3(writer, ParticleColorVariation, "ParticleColorVariation");
+            WriteVector2(writer, ParticleSize, "ParticleSize");
+            WriteVector2(writer, ParticleSizeVariation, "ParticleSizeVariation");
+
+            writer.WriteStartElement("Textures");
+            foreach (Texture2D texture in Textures)
+            {
+                writer.WriteElementString("TexturePath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == texture).Key);
+            }
             writer.WriteEndElement();
 
+            writer.WriteElementString("LifeSpanSec", XmlConvert.ToString(LifespanSec));
+            writer.WriteElementString("LifeSpanSecVariation", XmlConvert.ToString(LifespanSecVariation));
             writer.WriteElementString("FadeInTime", XmlConvert.ToString(FadeInTime));
-            //writer.WriteElementString("IsLooped", XmlConvert.ToString(Looping));
-            writer.WriteElementString("IsStopped", XmlConvert.ToString(Stopped));
-            //writer.WriteElementString("TexturePath", "Textures/ParticleTest/Particle");
-            //writer.WriteElementString("IsLooped", XmlConvert.ToString(isLooped));
-            //writer.WriteElementString("IsStopped", XmlConvert.ToString(isStopped));
-            writer.WriteElementString("IgnoreScale", XmlConvert.ToString(IgnoreScale));
+            writer.WriteElementString("FadeInTimeVariation", XmlConvert.ToString(FadeInTimeVariation));
+            writer.WriteElementString("FadeOutTime", XmlConvert.ToString(FadeOutTime));
+            writer.WriteElementString("FadeOutTimeVariation", XmlConvert.ToString(FadeOutTime));
             writer.WriteElementString("Speed", XmlConvert.ToString(Speed));
-            //writer.WriteElementString("TexturePath", ResourceManager.Instance.Textures.FirstOrDefault(x => x.Value == Texture).Key);
+            writer.WriteElementString("SpeedVariation", XmlConvert.ToString(SpeedVariation));
+            writer.WriteElementString("DelayMs", XmlConvert.ToString(DelayMs));
+            writer.WriteElementString("DelayMsVariation", XmlConvert.ToString(DelayMsVariation));
+            writer.WriteElementString("ParticleCount", XmlConvert.ToString(ParticleCount));
+            writer.WriteElementString("IgnoreScale", XmlConvert.ToString(IgnoreScale));
+            writer.WriteElementString("Stopped", XmlConvert.ToString(Stopped));
+            writer.WriteElementString("UseGravity", XmlConvert.ToString(UseGravity));
+        }
+
+        private void WriteVector3(XmlWriter writer, Vector3 input, string name)
+        {
+            writer.WriteStartElement(name);
+            writer.WriteElementString("X", XmlConvert.ToString(input.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(input.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(input.Z));
+            writer.WriteEndElement();
+        }
+
+        private void ReadVector3(XmlReader reader, Vector3 input, string name)
+        {
+            if (reader.Name == name)
+            {
+                reader.ReadStartElement();
+                input = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""),
+                    reader.ReadElementContentAsFloat("Z", ""));
+                reader.ReadEndElement();
+            }
+        }
+
+        private void WriteVector2(XmlWriter writer, Vector2 input, string name)
+        {
+            writer.WriteStartElement(name);
+            writer.WriteElementString("X", XmlConvert.ToString(input.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(input.Y));
+            writer.WriteEndElement();
+        }
+
+        private void ReadVector2(XmlReader reader, Vector2 input, string name)
+        {
+            if (reader.Name == name)
+            {
+                reader.ReadStartElement();
+                input = new Vector2(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""));
+                reader.ReadEndElement();
+            }
         }
 
         #endregion
