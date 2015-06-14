@@ -269,11 +269,11 @@ namespace TrashSoup.Engine
             rat.MyTransform = new Transform(rat, new Vector3(0.0f, 3.0f, -15.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
             CustomModel ratModel = new CustomModel(rat, new Model[] { LoadModel("Models/Enemies/Mutant01"), null, null }, ratMats);
             rat.Components.Add(ratModel);
-            //Animator ratAnimator = new Animator(rat, ratModel.LODs[0]);
-            //ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], Animations["Animations/MainCharacter/dodge_1"], "Rat_TAnim"));
-            //ratAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", ratAnimator.GetAnimationPlayer("Rat_TAnim")));
-            //ratAnimator.CurrentState = ratAnimator.AvailableStates["Walk"];
-            //rat.MyAnimator = ratAnimator;
+            Animator ratAnimator = new Animator(rat, ratModel.LODs[0]);
+            ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], LoadAnimation("Animations/Enemies/Mutant_walk"), "Rat_TAnim"));
+            ratAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", ratAnimator.GetAnimationPlayer("Rat_TAnim")));
+            ratAnimator.CurrentState = ratAnimator.AvailableStates["Walk"];
+            rat.MyAnimator = ratAnimator;
 
             GameObject testTer = new GameObject(2, "Terrain");
             testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
