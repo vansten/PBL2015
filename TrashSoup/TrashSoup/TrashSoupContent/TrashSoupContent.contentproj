@@ -484,6 +484,31 @@
       <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
+    <Compile Include="Animations\Enemies\Mutant_attack.X">
+      <Name>Mutant_attack</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\Enemies\Mutant_damage.X">
+      <Name>Mutant_damage</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\Enemies\Mutant_dying.X">
+      <Name>Mutant_dying</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\Enemies\Mutant_idle.X">
+      <Name>Mutant_idle</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\Enemies\Mutant_run.X">
+      <Name>Mutant_run</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
     <None Include="Effects\Constants.fxh">
       <Name>Constants</Name>
       <Importer>EffectImporter</Importer>
