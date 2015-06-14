@@ -102,6 +102,7 @@ namespace TrashSoup.Engine
             AddAnimation("Animations/MainCharacter/idle_SMweapon");
             AddAnimation("Animations/MainCharacter/injuries_1");
             AddAnimation("Animations/MainCharacter/injuries_2");
+            AddAnimation("Animations/MainCharacter/jump");
             AddAnimation("Animations/MainCharacter/run_2");
             AddAnimation("Animations/MainCharacter/dying_1");
             AddAnimation("Animations/MainCharacter/run_Hweapon");
