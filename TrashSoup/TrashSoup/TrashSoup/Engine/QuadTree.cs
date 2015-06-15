@@ -127,6 +127,7 @@ namespace TrashSoup.Engine
         private float sceneSize;
         private Dictionary<uint, GameObject> objs;
         private List<GameObject> dynamicObjects;
+        private List<GameObject> lastDraws;
         private Plane[] planesToCheck;
         Stack<QuadTreeNode> nodesToCheck;
         #endregion
@@ -137,6 +138,7 @@ namespace TrashSoup.Engine
             this.objs = objs;
             this.sceneSize = sceneSize;
             this.dynamicObjects = new List<GameObject>();
+            this.lastDraws = new List<GameObject>();
             this.planesToCheck = new Plane[PLANE_COUNT];
             this.nodesToCheck = new Stack<QuadTreeNode>();
             root = new QuadTreeNode(null, new RectangleWS(new Vector3(-sceneSize / 2.0f, 0.0f, -sceneSize / 2.0f), new Vector3(sceneSize / 2.0f, 0.0f, sceneSize / 2.0f)));
@@ -278,6 +280,7 @@ namespace TrashSoup.Engine
             planesToCheck[2] = cam.Bounds.Left;
             planesToCheck[3] = cam.Bounds.Right;
 
+            lastDraws.Clear();
 
             for(int i = 0; i < PLANE_COUNT; ++i)
             {
@@ -303,9 +306,18 @@ namespace TrashSoup.Engine
 
                 if(current.Objects.Count != 0)
                 {
-                    foreach(GameObject obj in current.Objects)
+                    int cCount = current.Objects.Count;
+                    for (int i = 0; i < cCount; ++i )
                     {
-                        obj.Draw(cam, effect, gameTime);
+                        if (!current.Objects[i].DrawLast)
+                        {
+                            current.Objects[i].Draw(cam, effect, gameTime);
+                        }
+                        else
+                        {
+                            lastDraws.Add(current.Objects[i]);
+                        }
+
                         ++ctr;
                     }
                 }
@@ -347,6 +359,12 @@ namespace TrashSoup.Engine
                     nodesToCheck.Push(current.ChildTR);
                 }
             }
+
+             int lCount = lastDraws.Count;
+             for (int i = 0; i < lCount; ++i)
+             {
+                 lastDraws[i].Draw(cam, effect, gameTime);
+             }
 
             //if (effect == null)
             //    Debug.Log("QUADTREE: Objects drawn: " + ctr.ToString() + ", objects total: " + ResourceManager.Instance.CurrentScene.ObjectsDictionary.Count.ToString());

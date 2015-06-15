@@ -46581,7 +46581,7 @@
       <GameObjectKey>1371</GameObjectKey>
       <UniqueID>1371</UniqueID>
       <Name>Particle</Name>
-      <DrawLast>false</DrawLast>
+      <DrawLast>true</DrawLast>
       <Tags>
         <Tag>null</Tag>
       </Tags>
@@ -46609,7 +46609,7 @@
         <TrashSoup.Engine.ParticleSystem>
           <MyObjectID>1371</MyObjectID>
           <RotationMode>PLAIN</RotationMode>
-          <LoopMode>NONE</LoopMode>
+          <LoopMode>BURST</LoopMode>
           <Offset>
             <X>0.17453292</X>
             <Y>0.17453292</Y>
