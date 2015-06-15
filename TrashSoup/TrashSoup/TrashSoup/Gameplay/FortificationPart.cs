@@ -167,13 +167,16 @@ namespace TrashSoup.Gameplay
             ps = new ParticleSystem(this.MyObject);
             ps.Textures.Add(ResourceManager.Instance.LoadTexture("Textures/Particles/Particle_metal01"));
             ps.ParticleCount = 70;
-            ps.ParticleSize = new Vector2(0.25f, 0.25f);
+            ps.ParticleSize = new Vector2(0.7f, 0.5f);
             ps.LifespanSec = 5.5f;
             ps.Wind = new Vector3(0.0f, 0.1f, 0.0f);
             ps.FadeInTime = 1.0f;
             ps.Offset = new Vector3(MathHelper.PiOver2);
             ps.Speed = 1.0f;
+            ps.RotationMode = ParticleSystem.ParticleRotationMode.PLAIN;
+            ps.ParticleRotation = new Vector3(0.0f, 0.0f, MathHelper.PiOver4);
             ps.PositionOffset = new Vector3(0.0f, -1.0f, 0.0f) * MyObject.MyTransform.Scale;
+            ps.BlendMode = BlendState.AlphaBlend;
 
             ps.Initialize();
 
