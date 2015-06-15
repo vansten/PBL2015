@@ -11405,14 +11405,16 @@
           <FadeInTimeVariation>0</FadeInTimeVariation>
           <FadeOutTime>0.5</FadeOutTime>
           <FadeOutTimeVariation>0.5</FadeOutTimeVariation>
-          <Speed>10</Speed>
+          <Speed>5</Speed>
           <SpeedVariation>0</SpeedVariation>
           <DelayMs>0</DelayMs>
           <DelayMsVariation>0</DelayMsVariation>
+          <Mass>1</Mass>
+          <MassVariation>0</MassVariation>
           <ParticleCount>5</ParticleCount>
           <IgnoreScale>true</IgnoreScale>
           <Stopped>true</Stopped>
-          <UseGravity>true</UseGravity>
+          <UseGravity>false</UseGravity>
         </TrashSoup.Engine.ParticleSystem>
       </Components>
       <MyCollider>
