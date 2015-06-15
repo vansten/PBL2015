@@ -184,7 +184,7 @@ namespace TrashSoup.Gameplay
             //ps.PositionOffset = new Vector3(0.0f, -1.0f, 0.0f) * MyObject.MyTransform.Scale;
             ps.BlendMode = BlendState.AlphaBlend;
             ps.UseGravity = true;
-            ps.Mass = 0.000002f;
+            ps.Mass = 0.000001f;
             ps.Initialize();
 
             ps.Stop();

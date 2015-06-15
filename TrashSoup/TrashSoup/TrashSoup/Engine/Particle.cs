@@ -44,6 +44,8 @@ namespace TrashSoup.Engine
         private float fadeOutPerMs;
         private float timeLiving = 0.0f;
         private Vector3 gravityVec = Vector3.Zero;
+        private Vector3 diffVec = Vector3.Zero;
+        private float tempAngle = 0.0f;
 
         #endregion
 
@@ -90,7 +92,9 @@ namespace TrashSoup.Engine
                 }
 
                 // update current time & position
-                CurrentPosition += (Speed + wind + WindVariation) * (float)gameTime.ElapsedGameTime.TotalSeconds + gravityVec;
+                Vector3 newPos = (Speed + wind + WindVariation) * (float)gameTime.ElapsedGameTime.TotalSeconds + gravityVec;
+                diffVec = newPos - CurrentPosition;
+                CurrentPosition += newPos;
                 timeLiving += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
                 // update states if necessary
@@ -131,7 +135,7 @@ namespace TrashSoup.Engine
             epUp.SetValue(-Vector3.Cross(cam.Direction, -cam.Right));
             epSide.SetValue(cam.Right);
             epTransparency.SetValue(transparency);
-            epRotation.SetValue(Matrix.CreateRotationZ(Rotation));
+            epRotation.SetValue(Matrix.CreateRotationZ(Rotation + tempAngle));
 
             myEffect.CurrentTechnique.Passes[0].Apply();
 
@@ -165,9 +169,19 @@ namespace TrashSoup.Engine
             timeLiving = 0.0f;
             CurrentPosition = StartPosition;
             gravityVec = Vector3.Zero;
+            diffVec = Vector3.Zero;
+            tempAngle = 0.0f;
         }
 
-        #endregion
+        public void SolveRotation()
+        {
+            diffVec.Normalize();
+            diffVec = -diffVec;
+            Vector3 up = Vector3.Up;
+            Vector3.Dot(ref diffVec, ref up, out tempAngle);
+
+            tempAngle =  (float)Math.Acos((double)MathHelper.Clamp(tempAngle, -1.0f, 1.0f));
+        }
 
         public int CompareTo(Particle other)
         {
@@ -178,7 +192,7 @@ namespace TrashSoup.Engine
             Vector3 posX = Vector3.Transform(CurrentPosition, world);
             Vector3 posY = Vector3.Transform(other.CurrentPosition, world);
             Vector3 cameraPos = ResourceManager.Instance.CurrentScene.Cam.Position + ResourceManager.Instance.CurrentScene.Cam.Translation;
-            cameraPos.Z = - cameraPos.Z;
+            cameraPos.Z = -cameraPos.Z;
 
             float diffX = Vector3.Distance(posX, cameraPos);
             float diffY = Vector3.Distance(posY, cameraPos);
@@ -193,5 +207,7 @@ namespace TrashSoup.Engine
             }
             else return 0;
         }
+
+        #endregion
     }
 }

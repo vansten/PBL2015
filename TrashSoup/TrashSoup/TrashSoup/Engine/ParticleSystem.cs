@@ -250,14 +250,14 @@ namespace TrashSoup.Engine
 
         public override void Update(GameTime gameTime)
         {
-            if (InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.P))
-            {
-                Play();
-            }
-            if (InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.O))
-            {
-                Stop();
-            }
+            //if (InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.P))
+            //{
+            //    Play();
+            //}
+            //if (InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.O))
+            //{
+            //    Stop();
+            //}
             if (!TrashSoupGame.Instance.EditorMode && !Stopped)
             {
                 // remove inactive particles and update them
@@ -271,6 +271,10 @@ namespace TrashSoup.Engine
                     }
                     else
                     {
+                        if(RotationMode == ParticleRotationMode.DIRECTION_Z)
+                        {
+                            activeParticles[i].SolveRotation();
+                        }
                         activeParticles[i].Update(gameTime, Wind);
                     }
                 }
