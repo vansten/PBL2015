@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Xml;
@@ -95,6 +96,8 @@ namespace TrashSoup.Gameplay
                 {
                     (other.GetComponent<Enemy>() as Enemy).HitPoints -= Damage;
                     Rat r = other.GetComponent<Rat>() as Rat;
+                    ParticleSystem ps = other.GetComponent<ParticleSystem>() as ParticleSystem;
+                    ps.Play();
                     if(r != null)
                     {
                         r.MyBlackBoard.SetBool("TargetSeen", true);
