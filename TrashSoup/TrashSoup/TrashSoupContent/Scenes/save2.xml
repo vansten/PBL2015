@@ -46610,6 +46610,7 @@
           <MyObjectID>1371</MyObjectID>
           <RotationMode>PLAIN</RotationMode>
           <LoopMode>BURST</LoopMode>
+		  <BlendMode>ADDITIVE</BlendMode>
           <Offset>
             <X>0.17453292</X>
             <Y>0.17453292</Y>

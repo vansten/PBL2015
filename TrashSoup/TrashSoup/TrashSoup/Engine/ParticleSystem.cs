@@ -60,6 +60,7 @@ namespace TrashSoup.Engine
 
         public ParticleRotationMode RotationMode { get; set; }
         public ParticleLoopMode LoopMode { get; set; }
+        public BlendState BlendMode { get; set; }
 
         public Vector3 Offset 
         { 
@@ -119,6 +120,8 @@ namespace TrashSoup.Engine
         {
             RotationMode = ps.RotationMode;
             LoopMode = ps.LoopMode;
+
+            BlendMode = ps.BlendMode;
             Offset = ps.Offset;
             Wind = ps.Wind;
             WindVariation = ps.WindVariation;
@@ -151,6 +154,7 @@ namespace TrashSoup.Engine
         {
             RotationMode = ParticleRotationMode.PLAIN;
             LoopMode = ParticleLoopMode.NONE;
+            BlendMode = BlendState.AlphaBlend;
             Offset = new Vector3(MathHelper.ToRadians(10.0f));
             Wind = Vector3.Zero;
             WindVariation = Vector3.Zero;
@@ -300,7 +304,7 @@ namespace TrashSoup.Engine
 
                 BlendState bs = TrashSoupGame.Instance.GraphicsDevice.BlendState;
                 DepthStencilState ds = TrashSoupGame.Instance.GraphicsDevice.DepthStencilState;
-                TrashSoupGame.Instance.GraphicsDevice.BlendState = BlendState.Additive;
+                TrashSoupGame.Instance.GraphicsDevice.BlendState = BlendMode;
                 TrashSoupGame.Instance.GraphicsDevice.DepthStencilState = DepthStencilState.DepthRead;
                 TrashSoupGame.Instance.GraphicsDevice.SetVertexBuffer(vertices);
                 TrashSoupGame.Instance.GraphicsDevice.Indices = indices;
@@ -413,6 +417,7 @@ namespace TrashSoup.Engine
 
             string rotationMode = reader.ReadElementString("RotationMode", "");
             string loopMode = reader.ReadElementString("LoopMode", "");
+            string blendMode = reader.ReadElementString("BlendMode", "");
 
             switch (rotationMode)
             {
@@ -437,6 +442,22 @@ namespace TrashSoup.Engine
                     break;
                 case "CONTINUOUS":
                     LoopMode = ParticleLoopMode.CONTINUOUS;
+                    break;
+            }
+
+            switch (blendMode)
+            {
+                case "ADDITIVE":
+                    BlendMode = BlendState.Additive;
+                    break;
+                case "ALPHA":
+                    BlendMode = BlendState.AlphaBlend;
+                    break;
+                case "ALPHANP":
+                    BlendMode = BlendState.NonPremultiplied;
+                    break;
+                case "OPAQUE":
+                    BlendMode = BlendState.Opaque;
                     break;
             }
 
@@ -487,6 +508,30 @@ namespace TrashSoup.Engine
             base.WriteXml(writer);
             writer.WriteElementString("RotationMode", RotationMode.ToString());
             writer.WriteElementString("LoopMode", LoopMode.ToString());
+            writer.WriteStartElement("BlendMode");
+
+            if(BlendMode == BlendState.Additive)
+            {
+                writer.WriteValue("ADDITIVE");
+            }
+            else if (BlendMode == BlendState.AlphaBlend)
+            {
+                writer.WriteValue("ALPHA");
+            }
+            else if (BlendMode == BlendState.NonPremultiplied)
+            {
+                writer.WriteValue("ALPHANP");
+            }
+            else if (BlendMode == BlendState.Opaque)
+            {
+                writer.WriteValue("OPAQUE");
+            }
+            else
+            {
+                throw new InvalidOperationException("ParticleSystem: Unrecognized BlendMode");
+            }
+
+            writer.WriteEndElement();
             
             WriteVector3(writer, Offset, "Offset");
             WriteVector3(writer, RandAngle, "RandAngle");
