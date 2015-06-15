@@ -257,7 +257,7 @@
         <AnimatorClip>Animations/MainCharacter/idle_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dodge_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/boxing_3</AnimatorClip>
-        <AnimatorClip>Animations/MainCharacter/injuries_1</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/building</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dying_1</AnimatorClip>
       </MyAnimator>
       <Components>
@@ -46682,6 +46682,8 @@
           <SpeedVariation>0</SpeedVariation>
           <DelayMs>0</DelayMs>
           <DelayMsVariation>0</DelayMsVariation>
+		  <Mass>0</Mass>
+          <MassVariation>0</MassVariation>
           <ParticleCount>200</ParticleCount>
           <IgnoreScale>true</IgnoreScale>
           <Stopped>false</Stopped>

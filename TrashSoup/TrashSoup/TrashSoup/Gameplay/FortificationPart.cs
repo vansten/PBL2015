@@ -166,18 +166,25 @@ namespace TrashSoup.Gameplay
 
             ps = new ParticleSystem(this.MyObject);
             ps.Textures.Add(ResourceManager.Instance.LoadTexture("Textures/Particles/Particle_metal01"));
-            ps.ParticleCount = 70;
-            ps.ParticleSize = new Vector2(0.7f, 0.5f);
-            ps.LifespanSec = 5.5f;
-            ps.Wind = new Vector3(0.0f, 0.1f, 0.0f);
-            ps.FadeInTime = 1.0f;
+            ps.Textures.Add(ResourceManager.Instance.LoadTexture("Textures/Particles/Particle_metal02"));
+            ps.Textures.Add(ResourceManager.Instance.LoadTexture("Textures/Particles/Particle_wood01"));
+            ps.Textures.Add(ResourceManager.Instance.LoadTexture("Textures/Particles/Particle_wood02"));
+            ps.Textures.Add(ResourceManager.Instance.LoadTexture("Textures/Particles/Particle_wood03"));
+            ps.ParticleCount = 10;
+            ps.ParticleSize = new Vector2(0.8f, 1.0f);
+            ps.ParticleSizeVariation = new Vector2(0.6f, 0.6f);
+            ps.LifespanSec = 0.8f;
+            ps.Wind = new Vector3(0.0f, 0.0f, -1.0f);
             ps.Offset = new Vector3(MathHelper.PiOver2);
-            ps.Speed = 1.0f;
-            ps.RotationMode = ParticleSystem.ParticleRotationMode.PLAIN;
+            ps.Speed = 10.0f;
+            ps.RotationMode = ParticleSystem.ParticleRotationMode.DIRECTION_Z;
             ps.ParticleRotation = new Vector3(0.0f, 0.0f, MathHelper.PiOver4);
-            ps.PositionOffset = new Vector3(0.0f, -1.0f, 0.0f) * MyObject.MyTransform.Scale;
+            ps.FadeInTime = 0.0f;
+            ps.FadeOutTime = 0.05f;
+            //ps.PositionOffset = new Vector3(0.0f, -1.0f, 0.0f) * MyObject.MyTransform.Scale;
             ps.BlendMode = BlendState.AlphaBlend;
-
+            ps.UseGravity = true;
+            ps.Mass = 0.000002f;
             ps.Initialize();
 
             ps.Stop();

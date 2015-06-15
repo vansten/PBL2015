@@ -43,6 +43,7 @@ namespace TrashSoup.Engine
         private float fadeInPerMs;
         private float fadeOutPerMs;
         private float timeLiving = 0.0f;
+        private Vector3 gravityVec = Vector3.Zero;
 
         #endregion
 
@@ -50,6 +51,7 @@ namespace TrashSoup.Engine
 
         public ParticleSystem MySystem { get; set; }
 
+        public Matrix RotationMatrix { get; set; }
         public Vector3 StartPosition { get; set; }
         public Vector3 CurrentPosition { get; private set; }
         public Vector3 Speed { get; set; }
@@ -62,6 +64,7 @@ namespace TrashSoup.Engine
         public float FadeOutMs { get; set; }
         public float TimeToLiveMs { get; set; }
         public float Rotation { get; set; }
+        public float Mass { get; set; }
 
         #endregion
 
@@ -72,6 +75,7 @@ namespace TrashSoup.Engine
             MySystem = sys;
             myEffect = sys.myEffect;
 
+            RotationMatrix = Matrix.Identity;
             DiffuseColor = Color.White.ToVector3();
         }
 
@@ -79,8 +83,14 @@ namespace TrashSoup.Engine
         {
             if(MyState != ParticleState.INACTIVE)
             {
+                // solve gravity
+                if(Mass != 0.0f)
+                {
+                    gravityVec += PhysicsManager.Instance.Gravity * Mass;
+                }
+
                 // update current time & position
-                CurrentPosition += (Speed + wind + WindVariation) * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                CurrentPosition += (Speed + wind + WindVariation) * (float)gameTime.ElapsedGameTime.TotalSeconds + gravityVec;
                 timeLiving += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
                 // update states if necessary
@@ -113,7 +123,7 @@ namespace TrashSoup.Engine
 
         public void Draw(Camera cam, Effect effect, GameTime gameTime, ref Matrix worldMatrix)
         {
-            epWorldViewProj.SetValue(worldMatrix * cam.ViewProjMatrix);
+            epWorldViewProj.SetValue(RotationMatrix * worldMatrix * cam.ViewProjMatrix);
             epDiffuseMap.SetValue(Texture);
             epDiffuseColor.SetValue(DiffuseColor);
             epPosition.SetValue(CurrentPosition);
@@ -154,6 +164,7 @@ namespace TrashSoup.Engine
             transparency = 0.0f;
             timeLiving = 0.0f;
             CurrentPosition = StartPosition;
+            gravityVec = Vector3.Zero;
         }
 
         #endregion
