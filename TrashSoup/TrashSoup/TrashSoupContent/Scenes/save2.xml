@@ -46677,11 +46677,11 @@
           <FadeInTimeVariation>0</FadeInTimeVariation>
           <FadeOutTime>0.5</FadeOutTime>
           <FadeOutTimeVariation>0.5</FadeOutTimeVariation>
-          <Speed>1</Speed>
+          <Speed>3</Speed>
           <SpeedVariation>0</SpeedVariation>
           <DelayMs>0</DelayMs>
           <DelayMsVariation>0</DelayMsVariation>
-          <ParticleCount>400</ParticleCount>
+          <ParticleCount>200</ParticleCount>
           <IgnoreScale>true</IgnoreScale>
           <Stopped>false</Stopped>
           <UseGravity>false</UseGravity>

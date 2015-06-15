@@ -7,7 +7,7 @@ using System.Text;
 
 namespace TrashSoup.Engine
 {
-    public class Particle
+    public class Particle : IComparable<Particle>
     {
         #region enums
 
@@ -48,6 +48,8 @@ namespace TrashSoup.Engine
 
         #region properties
 
+        public ParticleSystem MySystem { get; set; }
+
         public Vector3 StartPosition { get; set; }
         public Vector3 CurrentPosition { get; private set; }
         public Vector3 Speed { get; set; }
@@ -65,9 +67,10 @@ namespace TrashSoup.Engine
 
         #region methods
 
-        public Particle(Effect e)
+        public Particle(ParticleSystem sys)
         {
-            myEffect = e;
+            MySystem = sys;
+            myEffect = sys.myEffect;
 
             DiffuseColor = Color.White.ToVector3();
         }
@@ -154,5 +157,30 @@ namespace TrashSoup.Engine
         }
 
         #endregion
+
+        public int CompareTo(Particle other)
+        {
+            Matrix world = MySystem.world;
+            if (world == null)
+                world = Matrix.Identity;
+
+            Vector3 posX = Vector3.Transform(CurrentPosition, world);
+            Vector3 posY = Vector3.Transform(other.CurrentPosition, world);
+            Vector3 cameraPos = ResourceManager.Instance.CurrentScene.Cam.Position + ResourceManager.Instance.CurrentScene.Cam.Translation;
+            cameraPos.Z = - cameraPos.Z;
+
+            float diffX = Vector3.Distance(posX, cameraPos);
+            float diffY = Vector3.Distance(posY, cameraPos);
+
+            if (diffX > diffY)
+            {
+                return -1;
+            }
+            else if (diffX < diffY)
+            {
+                return 1;
+            }
+            else return 0;
+        }
     }
 }

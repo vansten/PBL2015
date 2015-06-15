@@ -7,6 +7,7 @@ using System.Xml.Schema;
 using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections;
 
 namespace TrashSoup.Engine
 {
@@ -37,7 +38,8 @@ namespace TrashSoup.Engine
 
         //Graphics device and effect
         GraphicsDevice graphicsDevice;
-        Effect myEffect;        
+        public Effect myEffect;
+        public Matrix world;
 
         //Particles and indices
         private List<Particle> inactiveParticles = new List<Particle>();
@@ -183,7 +185,7 @@ namespace TrashSoup.Engine
 
             for(int i = 0; i < ParticleCount; ++i)
             {
-                par = new Particle(myEffect);
+                par = new Particle(this);
                 par.StartPosition = PositionOffset;
                 par.Speed = Vector3.Zero;
                 par.DiffuseColor = Color.White.ToVector3();
@@ -269,6 +271,7 @@ namespace TrashSoup.Engine
                 {
                     // kill one active particle and restart it immediately
                     inactiveParticles.Add(activeParticles[0]);
+                    Particle tr = activeParticles[0];
                     activeParticles.RemoveAt(0);
                     AddParticle();
                 }
@@ -286,7 +289,6 @@ namespace TrashSoup.Engine
         {
             if (!TrashSoupGame.Instance.EditorMode && !Stopped && effect == null)
             {
-                Matrix world;
                 world = MyObject.MyTransform.GetWorldMatrix();
                 Vector3 trans, scl;
                 Quaternion rot;
@@ -296,14 +298,20 @@ namespace TrashSoup.Engine
                 int count = activeParticles.Count;
                 //Debug.Log("Drawing " + count.ToString() + " active particles");
 
+                BlendState bs = TrashSoupGame.Instance.GraphicsDevice.BlendState;
+                DepthStencilState ds = TrashSoupGame.Instance.GraphicsDevice.DepthStencilState;
+                TrashSoupGame.Instance.GraphicsDevice.BlendState = BlendState.Additive;
+                TrashSoupGame.Instance.GraphicsDevice.DepthStencilState = DepthStencilState.DepthRead;
                 TrashSoupGame.Instance.GraphicsDevice.SetVertexBuffer(vertices);
                 TrashSoupGame.Instance.GraphicsDevice.Indices = indices;
 
-                for(int i = 0; i < count; ++i)
+                for (int i = 0; i < count; ++i)
                 {
                     activeParticles[i].Draw(ResourceManager.Instance.CurrentScene.Cam, myEffect, gameTime, ref world);
                 }
 
+                TrashSoupGame.Instance.GraphicsDevice.DepthStencilState = ds;
+                TrashSoupGame.Instance.GraphicsDevice.BlendState = bs;
                 TrashSoupGame.Instance.GraphicsDevice.SetVertexBuffer(null);
                 TrashSoupGame.Instance.GraphicsDevice.Indices = null;
             }

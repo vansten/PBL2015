@@ -141,7 +141,7 @@ namespace TrashSoup.Engine
             testPlayerMat2.Glossiness = 40.0f;
             testPlayerMat2.ReflectivityColor = new Vector3(1.0f, 0.0f, 1.0f);
             testPlayerMat2.ReflectivityBias = 0.7f;
-            testPlayerMat2.Transparency = 1.0f;
+            testPlayerMat2.Transparency = 0.25f;
             testPlayerMat2.RecieveShadows = true;
             if(!this.Materials.ContainsKey(testPlayerMat2.Name))
             {
