@@ -24,17 +24,35 @@
     </LightColor>
     <UniqueID>100</UniqueID>
     <Name>LightAmbient</Name>
+    <DrawLast>false</DrawLast>
+    <Tags>
+      <Tag>null</Tag>
+    </Tags>
     <Dynamic>false</Dynamic>
   </AmbientLight>
   <DirectionalLights>
+    <DirectionalLight>
+      <null />
+    </DirectionalLight>
+    <DirectionalLight>
+      <null />
+    </DirectionalLight>
+    <DirectionalLight>
+      <null />
+    </DirectionalLight>
   </DirectionalLights>
   <PointLights>
+    <null />
   </PointLights>
   <ObjectsDictionary>
     <GameObject>
       <GameObjectKey>4</GameObjectKey>
       <UniqueID>4</UniqueID>
       <Name>LoadingController</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>4</MyObjectID>
@@ -99,8 +117,10 @@
     <Far>2000</Far>
     <UniqueID>1</UniqueID>
     <Name>playerCam</Name>
+    <DrawLast>false</DrawLast>
+    <Tags>
+      <Tag>null</Tag>
+    </Tags>
     <Dynamic>false</Dynamic>
-    <Components>
-    </Components>
   </Camera>
 </Scene>

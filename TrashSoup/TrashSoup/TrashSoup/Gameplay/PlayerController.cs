@@ -226,6 +226,7 @@ namespace TrashSoup.Gameplay
                     }
                     if (moving == true)
                     {
+                        Walk.Pitch = 0.1f * tempMove.Length();
                         Walk.Play();
                         MyObject.MyAnimator.CurrentInterpolation = MathHelper.Clamp(tempMove.Length(), 0.0f, 1.0f);
                     }
@@ -290,7 +291,7 @@ namespace TrashSoup.Gameplay
                     jumpTimer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
                     if (!jumped && jumpTimer > 0.65f)
                     {
-                        this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 135.0f);
+                        this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 200.0f);
                         jumped = true;
                         Jump.Play();
                     }
@@ -448,7 +449,7 @@ namespace TrashSoup.Gameplay
             WalkSoundEffect = TrashSoupGame.Instance.Content.Load<SoundEffect>(@"Audio/Character/walk");
             Walk = WalkSoundEffect.CreateInstance();
             //Change speed of sound
-            Walk.Pitch += 0.7f;
+            //Walk.Pitch += 0.7f;
 
             JumpSoundEffect = TrashSoupGame.Instance.Content.Load<SoundEffect>(@"Audio/Character/jump");
             Jump = JumpSoundEffect.CreateInstance();
