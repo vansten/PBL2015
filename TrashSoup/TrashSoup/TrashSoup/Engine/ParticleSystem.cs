@@ -101,6 +101,8 @@ namespace TrashSoup.Engine
         public float SpeedVariation { get; set; }
         public float DelayMs { get; set; }
         public float DelayMsVariation { get; set; }
+        public float Mass { get; set; }
+        public float MassVariation { get; set; }
         public int ParticleCount { get; set; }
         public bool IgnoreScale { get; set; }
 
@@ -144,6 +146,8 @@ namespace TrashSoup.Engine
             SpeedVariation = ps.SpeedVariation;
             DelayMs = ps.DelayMs;
             DelayMsVariation = ps.DelayMsVariation;
+            Mass = ps.Mass;
+            Mass = ps.MassVariation;
             ParticleCount = ps.ParticleCount;           
             IgnoreScale = ps.IgnoreScale;
             Stopped = ps.Stopped;
@@ -169,14 +173,16 @@ namespace TrashSoup.Engine
             Textures = new List<Texture2D>();
             LifespanSec = 1.0f;
             LifespanSecVariation = 0.0f;
-            FadeInTime = 0.5f;
+            FadeInTime = 0.0f;
             FadeInTimeVariation = 0.0f;
-            FadeOutTime = 0.5f;
+            FadeOutTime = 0.0f;
             FadeOutTimeVariation = 0.0f;
             Speed = 1.0f;
             SpeedVariation = 0.0f;
             DelayMs = 0.0f;
             DelayMsVariation = 0.0f;
+            Mass = 1.0f;
+            MassVariation = 0.0f;
             ParticleCount = 400;
             IgnoreScale = true;
             Stopped = false;
@@ -213,6 +219,28 @@ namespace TrashSoup.Engine
         {
             start = DateTime.Now;
             this.Stopped = false;
+
+            if(activeParticles.Count + inactiveParticles.Count < ParticleCount)
+            {
+                activeParticles.Clear();
+                inactiveParticles.Clear();
+                GenerateParticles();
+            }
+            else
+            {
+                int aCount = activeParticles.Count;
+                for (int i = 0; i < aCount; ++i)
+                {
+                    inactiveParticles.Add(activeParticles[i]);
+                }
+                activeParticles.Clear();
+
+                int iCount = inactiveParticles.Count;
+                for (int i = 0; i < iCount; ++i)
+                {
+                    inactiveParticles[i].Flush();
+                }
+            }
         }
 
         public void Stop()
@@ -222,14 +250,14 @@ namespace TrashSoup.Engine
 
         public override void Update(GameTime gameTime)
         {
-            if (InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.P))
-            {
-                Play();
-            }
-            if (InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.O))
-            {
-                Stop();
-            }
+            //if (InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.P))
+            //{
+            //    Play();
+            //}
+            //if (InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.O))
+            //{
+            //    Stop();
+            //}
             if (!TrashSoupGame.Instance.EditorMode && !Stopped)
             {
                 // remove inactive particles and update them
@@ -243,6 +271,10 @@ namespace TrashSoup.Engine
                     }
                     else
                     {
+                        if(RotationMode == ParticleRotationMode.DIRECTION_Z)
+                        {
+                            activeParticles[i].SolveRotation();
+                        }
                         activeParticles[i].Update(gameTime, Wind);
                     }
                 }
@@ -349,6 +381,12 @@ namespace TrashSoup.Engine
             newPar.FadeInMs = (FadeInTime + (float)SingleRandom.Instance.rnd.NextDouble() * FadeInTimeVariation * 2 - FadeInTimeVariation) * 1000.0f;
             newPar.FadeOutMs = (FadeOutTime + (float)SingleRandom.Instance.rnd.NextDouble() * FadeOutTimeVariation * 2 - FadeOutTimeVariation) * 1000.0f;
             newPar.TimeToLiveMs = (LifespanSec + (float)SingleRandom.Instance.rnd.NextDouble() * LifespanSecVariation * 2 - LifespanSecVariation) * 1000.0f;
+
+            if (UseGravity)
+                newPar.Mass = (Mass + (float)SingleRandom.Instance.rnd.NextDouble() * MassVariation * 2 - MassVariation) * 1000.0f;
+            else
+                newPar.Mass = 0.0f;
+
             newPar.WindVariation = new Vector3(
                 (float)SingleRandom.Instance.rnd.NextDouble() * WindVariation.X * 2 - WindVariation.X,
                 (float)SingleRandom.Instance.rnd.NextDouble() * WindVariation.Y * 2 - WindVariation.Y,
@@ -356,17 +394,17 @@ namespace TrashSoup.Engine
             //newPar.TimeToLiveMs = Lifespan * 1000.0f - (DateTime.Now - start).Ticks / 10000.0f;   // here we keep exactly same amount of time given
             // assuming rotation is fixed
 
-            if (RotationMode == ParticleRotationMode.PLAIN)
+            if (RotationMode != ParticleRotationMode.DIRECTION_RANDOM)
             {
-                newPar.Rotation = (ParticleRotation.Z + (float)SingleRandom.Instance.rnd.NextDouble() * ParticleRotation.Z * 2 - ParticleRotation.Z);
+                newPar.Rotation = (ParticleRotation.Z + (float)SingleRandom.Instance.rnd.NextDouble() * ParticleRotationVariation.Z * 2 - ParticleRotationVariation.Z);
             }
-            else if (RotationMode == ParticleRotationMode.DIRECTION_Z)
+            else
             {
-                // tba
-            }
-            else if (RotationMode == ParticleRotationMode.DIRECTION_RANDOM)
-            {
-                //tba
+                Vector3 newRotation = Vector3.Zero;
+                newRotation.X = (ParticleRotation.X + (float)SingleRandom.Instance.rnd.NextDouble() * ParticleRotationVariation.X * 2 - ParticleRotationVariation.X);
+                newRotation.Y = (ParticleRotation.Y + (float)SingleRandom.Instance.rnd.NextDouble() * ParticleRotationVariation.Y * 2 - ParticleRotationVariation.Y);
+                newRotation.Z = (ParticleRotation.Z + (float)SingleRandom.Instance.rnd.NextDouble() * ParticleRotationVariation.Z * 2 - ParticleRotationVariation.Z);
+                newPar.RotationMatrix = Matrix.CreateFromYawPitchRoll(newRotation.X, newRotation.Y, newRotation.Z);
             }
 
             activeParticles.Add(newPar);
@@ -495,6 +533,8 @@ namespace TrashSoup.Engine
             SpeedVariation = reader.ReadElementContentAsFloat("SpeedVariation", "");
             DelayMs = reader.ReadElementContentAsFloat("DelayMs", "");
             DelayMsVariation = reader.ReadElementContentAsFloat("DelayMsVariation", "");
+            Mass = reader.ReadElementContentAsFloat("Mass", "");
+            MassVariation = reader.ReadElementContentAsFloat("MassVariation", "");
             ParticleCount = reader.ReadElementContentAsInt("ParticleCount", "");
             IgnoreScale = reader.ReadElementContentAsBoolean("IgnoreScale", "");
             Stopped = reader.ReadElementContentAsBoolean("Stopped", "");
@@ -563,6 +603,8 @@ namespace TrashSoup.Engine
             writer.WriteElementString("SpeedVariation", XmlConvert.ToString(SpeedVariation));
             writer.WriteElementString("DelayMs", XmlConvert.ToString(DelayMs));
             writer.WriteElementString("DelayMsVariation", XmlConvert.ToString(DelayMsVariation));
+            writer.WriteElementString("Mass", XmlConvert.ToString(Mass));
+            writer.WriteElementString("MassVariation", XmlConvert.ToString(MassVariation));
             writer.WriteElementString("ParticleCount", XmlConvert.ToString(ParticleCount));
             writer.WriteElementString("IgnoreScale", XmlConvert.ToString(IgnoreScale));
             writer.WriteElementString("Stopped", XmlConvert.ToString(Stopped));

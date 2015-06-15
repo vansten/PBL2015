@@ -257,7 +257,7 @@
         <AnimatorClip>Animations/MainCharacter/idle_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dodge_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/boxing_3</AnimatorClip>
-        <AnimatorClip>Animations/MainCharacter/injuries_1</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/building</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dying_1</AnimatorClip>
       </MyAnimator>
       <Components>
