@@ -26,6 +26,7 @@ namespace TrashSoup.Engine
         private List<ObjectComponent> runtimeRemoved;
 
         private bool drawCollider = false;
+        private bool drawLast = false;
 
         #endregion
 
@@ -51,6 +52,12 @@ namespace TrashSoup.Engine
         {
             protected get { return this.drawCollider; }
             set { this.drawCollider = value; }
+        }
+
+        public bool DrawLast
+        {
+            get { return drawLast; }
+            set { drawLast = value; }
         }
 
         /// <summary>
@@ -423,6 +430,7 @@ namespace TrashSoup.Engine
 
             UniqueID = (uint)reader.ReadElementContentAsInt("UniqueID", "");
             Name = reader.ReadElementString("Name", "");
+            DrawLast = reader.ReadElementContentAsBoolean("DrawLast", "");
 
             if (reader.Name == "Tags")
             {
@@ -543,6 +551,7 @@ namespace TrashSoup.Engine
         {
             writer.WriteElementString("UniqueID", UniqueID.ToString());
             writer.WriteElementString("Name", Name);
+            writer.WriteElementString("DrawLast", XmlConvert.ToString(DrawLast));
 
             writer.WriteStartElement("Tags");
             if (Tags != null && Tags.Count > 0)
