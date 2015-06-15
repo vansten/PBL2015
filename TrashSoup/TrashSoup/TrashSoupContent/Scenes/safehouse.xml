@@ -24,6 +24,10 @@
     </LightColor>
     <UniqueID>100</UniqueID>
     <Name>LightAmbient</Name>
+    <DrawLast>false</DrawLast>
+    <Tags>
+      <Tag>null</Tag>
+    </Tags>
     <Dynamic>false</Dynamic>
   </AmbientLight>
   <DirectionalLights>
@@ -46,6 +50,10 @@
       </LightDirection>
       <UniqueID>101</UniqueID>
       <Name>LightDirectional1</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
     </DirectionalLight>
     <DirectionalLight>
@@ -71,6 +79,10 @@
       <Attenuation>3</Attenuation>
       <UniqueID>110</UniqueID>
       <Name>LightPoint1</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>110</MyObjectID>
@@ -121,6 +133,10 @@
       <GameObjectKey>4</GameObjectKey>
       <UniqueID>4</UniqueID>
       <Name>skyBox</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>4</MyObjectID>
@@ -177,6 +193,10 @@
       <GameObjectKey>1</GameObjectKey>
       <UniqueID>1</UniqueID>
       <Name>Player</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>true</Dynamic>
       <MyTransform>
         <MyObjectID>1</MyObjectID>
@@ -222,11 +242,13 @@
         <AnimatorClip>Animations/MainCharacter/idle_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dodge_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/boxing_3</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/injuries_1</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/dying_1</AnimatorClip>
       </MyAnimator>
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/MainCharacter/MainCharacter</ModelPath>
             <ModelPath />
@@ -255,6 +277,10 @@
       <GameObjectKey>355</GameObjectKey>
       <UniqueID>355</UniqueID>
       <Name>PlayerTime</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>355</MyObjectID>
@@ -306,6 +332,10 @@
       <GameObjectKey>1151</GameObjectKey>
       <UniqueID>1151</UniqueID>
       <Name>Sun</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1151</MyObjectID>
@@ -343,6 +373,10 @@
       <GameObjectKey>1152</GameObjectKey>
       <UniqueID>1152</UniqueID>
       <Name>Terrain</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1152</MyObjectID>
@@ -366,7 +400,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1152</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Test/box</ModelPath>
             <ModelPath />
@@ -388,6 +422,10 @@
       <GameObjectKey>1153</GameObjectKey>
       <UniqueID>1153</UniqueID>
       <Name>Wall</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1153</MyObjectID>
@@ -411,7 +449,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1153</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/wall</ModelPath>
             <ModelPath />
@@ -433,6 +471,10 @@
       <GameObjectKey>1154</GameObjectKey>
       <UniqueID>1154</UniqueID>
       <Name>DoorFrame</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1154</MyObjectID>
@@ -456,7 +498,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1154</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/DoorFrame</ModelPath>
             <ModelPath />
@@ -473,6 +515,10 @@
       <GameObjectKey>1155</GameObjectKey>
       <UniqueID>1155</UniqueID>
       <Name>Wall2</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1155</MyObjectID>
@@ -518,6 +564,10 @@
       <GameObjectKey>1156</GameObjectKey>
       <UniqueID>1156</UniqueID>
       <Name>Wall3</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1156</MyObjectID>
@@ -563,6 +613,10 @@
       <GameObjectKey>1157</GameObjectKey>
       <UniqueID>1157</UniqueID>
       <Name>Wall4</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1157</MyObjectID>
@@ -608,6 +662,10 @@
       <GameObjectKey>1158</GameObjectKey>
       <UniqueID>1158</UniqueID>
       <Name>Wall5</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1158</MyObjectID>
@@ -653,6 +711,10 @@
       <GameObjectKey>1159</GameObjectKey>
       <UniqueID>1159</UniqueID>
       <Name>Wall6</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1159</MyObjectID>
@@ -698,6 +760,10 @@
       <GameObjectKey>1160</GameObjectKey>
       <UniqueID>1160</UniqueID>
       <Name>Wall7</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1160</MyObjectID>
@@ -743,6 +809,10 @@
       <GameObjectKey>1161</GameObjectKey>
       <UniqueID>1161</UniqueID>
       <Name>Wall8</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1161</MyObjectID>
@@ -788,6 +858,10 @@
       <GameObjectKey>1163</GameObjectKey>
       <UniqueID>1163</UniqueID>
       <Name>Wall9</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1163</MyObjectID>
@@ -833,6 +907,10 @@
       <GameObjectKey>1165</GameObjectKey>
       <UniqueID>1165</UniqueID>
       <Name>Wall10</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1165</MyObjectID>
@@ -878,6 +956,10 @@
       <GameObjectKey>1166</GameObjectKey>
       <UniqueID>1166</UniqueID>
       <Name>Wall11</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1166</MyObjectID>
@@ -923,6 +1005,10 @@
       <GameObjectKey>1167</GameObjectKey>
       <UniqueID>1167</UniqueID>
       <Name>Wall12</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1167</MyObjectID>
@@ -968,6 +1054,10 @@
       <GameObjectKey>1168</GameObjectKey>
       <UniqueID>1168</UniqueID>
       <Name>Wall13</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1168</MyObjectID>
@@ -1013,6 +1103,10 @@
       <GameObjectKey>1169</GameObjectKey>
       <UniqueID>1169</UniqueID>
       <Name>Wall14</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1169</MyObjectID>
@@ -1058,6 +1152,10 @@
       <GameObjectKey>1171</GameObjectKey>
       <UniqueID>1171</UniqueID>
       <Name>DoorFrame2</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1171</MyObjectID>
@@ -1098,6 +1196,10 @@
       <GameObjectKey>1172</GameObjectKey>
       <UniqueID>1172</UniqueID>
       <Name>Wall15</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1172</MyObjectID>
@@ -1143,6 +1245,10 @@
       <GameObjectKey>1173</GameObjectKey>
       <UniqueID>1173</UniqueID>
       <Name>Wall16</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1173</MyObjectID>
@@ -1188,6 +1294,10 @@
       <GameObjectKey>1174</GameObjectKey>
       <UniqueID>1174</UniqueID>
       <Name>DoorFrame3</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1174</MyObjectID>
@@ -1228,6 +1338,10 @@
       <GameObjectKey>1175</GameObjectKey>
       <UniqueID>1175</UniqueID>
       <Name>Wall17</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1175</MyObjectID>
@@ -1273,6 +1387,10 @@
       <GameObjectKey>1176</GameObjectKey>
       <UniqueID>1176</UniqueID>
       <Name>Wall18</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1176</MyObjectID>
@@ -1318,6 +1436,10 @@
       <GameObjectKey>1177</GameObjectKey>
       <UniqueID>1177</UniqueID>
       <Name>Wall19</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1177</MyObjectID>
@@ -1363,6 +1485,10 @@
       <GameObjectKey>1179</GameObjectKey>
       <UniqueID>1179</UniqueID>
       <Name>Wall20</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1179</MyObjectID>
@@ -1408,6 +1534,10 @@
       <GameObjectKey>1180</GameObjectKey>
       <UniqueID>1180</UniqueID>
       <Name>Wall21</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1180</MyObjectID>
@@ -1453,6 +1583,10 @@
       <GameObjectKey>1181</GameObjectKey>
       <UniqueID>1181</UniqueID>
       <Name>Wall22</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1181</MyObjectID>
@@ -1498,6 +1632,10 @@
       <GameObjectKey>1182</GameObjectKey>
       <UniqueID>1182</UniqueID>
       <Name>Wall23</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1182</MyObjectID>
@@ -1543,6 +1681,10 @@
       <GameObjectKey>1183</GameObjectKey>
       <UniqueID>1183</UniqueID>
       <Name>Wall24</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1183</MyObjectID>
@@ -1588,6 +1730,10 @@
       <GameObjectKey>1184</GameObjectKey>
       <UniqueID>1184</UniqueID>
       <Name>Wall25</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1184</MyObjectID>
@@ -1633,6 +1779,10 @@
       <GameObjectKey>1185</GameObjectKey>
       <UniqueID>1185</UniqueID>
       <Name>BathroomWall</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1185</MyObjectID>
@@ -1678,6 +1828,10 @@
       <GameObjectKey>1186</GameObjectKey>
       <UniqueID>1186</UniqueID>
       <Name>BathroomWall2</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1186</MyObjectID>
@@ -1723,6 +1877,10 @@
       <GameObjectKey>1187</GameObjectKey>
       <UniqueID>1187</UniqueID>
       <Name>BathroomWall3</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1187</MyObjectID>
@@ -1768,6 +1926,10 @@
       <GameObjectKey>1188</GameObjectKey>
       <UniqueID>1188</UniqueID>
       <Name>BathroomWall4</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1188</MyObjectID>
@@ -1813,6 +1975,10 @@
       <GameObjectKey>1189</GameObjectKey>
       <UniqueID>1189</UniqueID>
       <Name>BathroomWall5</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1189</MyObjectID>
@@ -1858,6 +2024,10 @@
       <GameObjectKey>1190</GameObjectKey>
       <UniqueID>1190</UniqueID>
       <Name>BathroomWall6</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1190</MyObjectID>
@@ -1903,6 +2073,10 @@
       <GameObjectKey>1191</GameObjectKey>
       <UniqueID>1191</UniqueID>
       <Name>Floor</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1191</MyObjectID>
@@ -1926,7 +2100,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1191</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/Flor</ModelPath>
             <ModelPath />
@@ -1948,6 +2122,10 @@
       <GameObjectKey>1192</GameObjectKey>
       <UniqueID>1192</UniqueID>
       <Name>Floor2</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1192</MyObjectID>
@@ -1993,6 +2171,10 @@
       <GameObjectKey>1193</GameObjectKey>
       <UniqueID>1193</UniqueID>
       <Name>Floor3</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1193</MyObjectID>
@@ -2038,6 +2220,10 @@
       <GameObjectKey>1194</GameObjectKey>
       <UniqueID>1194</UniqueID>
       <Name>Sink</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1194</MyObjectID>
@@ -2061,7 +2247,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1194</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Bathroom/Sink</ModelPath>
             <ModelPath />
@@ -2083,6 +2269,10 @@
       <GameObjectKey>1195</GameObjectKey>
       <UniqueID>1195</UniqueID>
       <Name>Bed</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1195</MyObjectID>
@@ -2106,7 +2296,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1195</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Bedroom/bed</ModelPath>
             <ModelPath />
@@ -2128,6 +2318,10 @@
       <GameObjectKey>1198</GameObjectKey>
       <UniqueID>1198</UniqueID>
       <Name>TV</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1198</MyObjectID>
@@ -2151,7 +2345,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1198</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/TV</ModelPath>
             <ModelPath />
@@ -2173,6 +2367,10 @@
       <GameObjectKey>1199</GameObjectKey>
       <UniqueID>1199</UniqueID>
       <Name>Fridge</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1199</MyObjectID>
@@ -2196,7 +2394,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1199</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/fridge</ModelPath>
             <ModelPath />
@@ -2218,6 +2416,10 @@
       <GameObjectKey>1200</GameObjectKey>
       <UniqueID>1200</UniqueID>
       <Name>Toilet</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1200</MyObjectID>
@@ -2241,7 +2443,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1200</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Bathroom/Toilet</ModelPath>
             <ModelPath />
@@ -2263,6 +2465,10 @@
       <GameObjectKey>1201</GameObjectKey>
       <UniqueID>1201</UniqueID>
       <Name>Stairs</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1201</MyObjectID>
@@ -2286,7 +2492,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1201</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Stairs/stiars</ModelPath>
             <ModelPath />
@@ -2322,6 +2528,10 @@
       <GameObjectKey>1202</GameObjectKey>
       <UniqueID>1202</UniqueID>
       <Name>EmptyCollider</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1202</MyObjectID>
@@ -2352,6 +2562,10 @@
       <GameObjectKey>1203</GameObjectKey>
       <UniqueID>1203</UniqueID>
       <Name>EmptyCollider2</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1203</MyObjectID>
@@ -2382,6 +2596,10 @@
       <GameObjectKey>1204</GameObjectKey>
       <UniqueID>1204</UniqueID>
       <Name>EmptyCollider3</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1204</MyObjectID>
@@ -2412,6 +2630,10 @@
       <GameObjectKey>1205</GameObjectKey>
       <UniqueID>1205</UniqueID>
       <Name>EmptyCollider4</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1205</MyObjectID>
@@ -2442,6 +2664,10 @@
       <GameObjectKey>1206</GameObjectKey>
       <UniqueID>1206</UniqueID>
       <Name>Couch</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1206</MyObjectID>
@@ -2465,7 +2691,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1206</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/couch</ModelPath>
             <ModelPath />
@@ -2487,6 +2713,10 @@
       <GameObjectKey>1207</GameObjectKey>
       <UniqueID>1207</UniqueID>
       <Name>TV Desk</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1207</MyObjectID>
@@ -2510,7 +2740,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1207</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/TV_table</ModelPath>
             <ModelPath />
@@ -2533,6 +2763,10 @@
       <GameObjectKey>1208</GameObjectKey>
       <UniqueID>1208</UniqueID>
       <Name>Desk</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1208</MyObjectID>
@@ -2556,7 +2790,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1208</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/desk</ModelPath>
             <ModelPath />
@@ -2580,6 +2814,10 @@
       <GameObjectKey>1209</GameObjectKey>
       <UniqueID>1209</UniqueID>
       <Name>Carpet</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1209</MyObjectID>
@@ -2603,7 +2841,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1209</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/carpet</ModelPath>
             <ModelPath />
@@ -2654,6 +2892,10 @@
     <Far>4000</Far>
     <UniqueID>1</UniqueID>
     <Name>playerCam</Name>
+    <DrawLast>false</DrawLast>
+    <Tags>
+      <Tag>null</Tag>
+    </Tags>
     <Dynamic>false</Dynamic>
     <Components>
       <TrashSoup.Gameplay.CameraBehaviourComponent>
