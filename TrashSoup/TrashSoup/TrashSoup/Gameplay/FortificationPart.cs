@@ -5,6 +5,7 @@ using System.Text;
 using TrashSoup.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 
 namespace TrashSoup.Gameplay
 {
@@ -37,9 +38,23 @@ namespace TrashSoup.Gameplay
         private float health;
         private float priceHelper = 0.0f;
 
+        private SoundEffectInstance jebutSound;
+
         #endregion
 
         #region properties
+
+        public bool Visible
+        {
+            get
+            {
+                return model.Visible;
+            }
+            set
+            {
+                model.Visible = value;
+            }
+        }
 
         public PartState State 
         { 
@@ -53,7 +68,7 @@ namespace TrashSoup.Gameplay
 
                 if (state == PartState.PENDING || state == PartState.NEXT_BUILD)
                 {
-                    MyObject.Visible = false;
+                    Visible = false;
                     MyObject.MyCollider.Enabled = false;
 
                     model.Mat = selectionMat;
@@ -61,7 +76,7 @@ namespace TrashSoup.Gameplay
                 }
                 else if(state == PartState.BUILT)
                 {
-                    MyObject.Visible = true;
+                    Visible = true;
                     MyObject.MyCollider.Enabled = true;
 
                     model.Mat = currentMat;
@@ -69,7 +84,7 @@ namespace TrashSoup.Gameplay
                 }
                 else if(state == PartState.BUILDING)
                 {
-                    MyObject.Visible = true;
+                    Visible = true;
                     MyObject.MyCollider.Enabled = false;
 
                     model.Mat = selectionMat;
@@ -169,6 +184,9 @@ namespace TrashSoup.Gameplay
             HpPerMs = (float)MaxHealth / ((float)TimeToBuild * 1000.0f);
             PricePerMs = (float)Price / ((float)TimeToBuild * 1000.0f);
 
+            SoundEffect se = TrashSoupGame.Instance.Content.Load<SoundEffect>(@"Audio/Actions/fortificationJebut");
+            jebutSound = se.CreateInstance();
+
             base.Initialize();
         }
 
@@ -186,6 +204,8 @@ namespace TrashSoup.Gameplay
         {
             Debug.Log("Boom!");
 
+            jebutSound.Play();
+            ps.Play();
             // particles flying here
         }
 

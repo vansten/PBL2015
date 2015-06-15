@@ -336,7 +336,7 @@ namespace TrashSoup.Gameplay
                                 if (InRange(NextID))
                                 {
                                     Parts[NextID].State = FortificationPart.PartState.NEXT_BUILD;
-                                    Parts[NextID].MyObject.Visible = true;
+                                    Parts[NextID].Visible = true;
                                 }
                                     
 
@@ -559,14 +559,14 @@ namespace TrashSoup.Gameplay
 
             if (InRange(NextID) && 
                 Parts[NextID].State == FortificationPart.PartState.NEXT_BUILD &&
-                ((InRange(CurrentID) && Parts[CurrentID].Health == Parts[CurrentID].MaxHealth) || (!InRange(CurrentID)))) Parts[NextID].MyObject.Visible = true;
+                ((InRange(CurrentID) && Parts[CurrentID].Health == Parts[CurrentID].MaxHealth) || (!InRange(CurrentID)))) Parts[NextID].Visible = true;
         }
 
         private void OnTriggerExitPlayerHandler(object sender, CollisionEventArgs e)
         {
             playerInTrigger = false;
 
-            if (InRange(NextID) && Parts[NextID].State == FortificationPart.PartState.NEXT_BUILD) Parts[NextID].MyObject.Visible = false;
+            if (InRange(NextID) && Parts[NextID].State == FortificationPart.PartState.NEXT_BUILD) Parts[NextID].Visible = false;
         }
 
         private void OnTriggerEnterEnemyHandler(object sender, CollisionEventArgs e)
@@ -604,7 +604,7 @@ namespace TrashSoup.Gameplay
             }
             if(playerInTrigger)
             {
-                Parts[CurrentID].MyObject.Visible = true;
+                Parts[CurrentID].Visible = true;
             }
 
             --CurrentID;
