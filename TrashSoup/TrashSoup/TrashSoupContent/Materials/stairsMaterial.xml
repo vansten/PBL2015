@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Material>
+  <Name>stairsMaterial</Name>
+  <EffectPath>Effects\NormalEffect</EffectPath>
+  <DiffusePath>Textures\Enviro\Ground\streets_D</DiffusePath>
+  <NormalPath>Textures\Enviro\Ground\streets_N</NormalPath>
+  <DiffuseColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </DiffuseColor>
+  <SpecularColor>
+    <X>0.1</X>
+    <Y>0.1</Y>
+    <Z>0</Z>
+  </SpecularColor>
+  <Glossiness>10</Glossiness>
+  <ReflectivityColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </ReflectivityColor>
+  <ReflectivityBias>0.2</ReflectivityBias>
+  <Transparency>1</Transparency>
+  <PerPixelLighting>false</PerPixelLighting>
+  <ReceiveShadows>true</ReceiveShadows>
+</Material>

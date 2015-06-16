@@ -26,8 +26,9 @@ namespace TrashSoup.Gameplay.RatAI
 
         public override TickStatus Tick(Microsoft.Xna.Framework.GameTime gameTime, out INode node)
         {
-            if (!this.blackboard.GetBool("TargetSeen"))
+            if (!this.blackboard.GetBool("TargetSeen") || this.blackboard.GetBool("ShouldTurn"))
             {
+                this.blackboard.SetBool("TargetSeen", false);
                 firstTime = true;
                 node = null;
                 return TickStatus.FAILURE;

@@ -23,6 +23,7 @@ namespace AwesomeEngineEditor.Components
     public partial class ObjectInfo : UserControl, INotifyPropertyChanged
     {
         private TrashSoup.Engine.GameObject gameObject;
+        private MainWindow mw;
 
         public string ObjectName
         {
@@ -45,9 +46,10 @@ namespace AwesomeEngineEditor.Components
             }
         }
 
-        public ObjectInfo(TrashSoup.Engine.GameObject go)
+        public ObjectInfo(TrashSoup.Engine.GameObject go, MainWindow mw)
         {
             this.gameObject = go;
+            this.mw = mw;
             InitializeComponent();
         }
 

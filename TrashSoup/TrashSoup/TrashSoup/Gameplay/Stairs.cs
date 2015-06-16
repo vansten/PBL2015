@@ -9,6 +9,8 @@ namespace TrashSoup.Gameplay
 {
     public class Stairs : ObjectComponent
     {
+        PlayerController pc = null;
+
         public Stairs(GameObject go) : base(go)
         {
 
@@ -35,13 +37,16 @@ namespace TrashSoup.Gameplay
         {
             if(other.UniqueID == 1)
             {
-                if (other.MyPhysicalObject != null)
+                if(pc == null)
                 {
-                    other.MyPhysicalObject.Velocity = Vector3.Zero;
-                    other.MyPhysicalObject.IsUsingGravity = false;
+                    pc = (PlayerController)other.GetComponent<PlayerController>();
+                }
+                if (pc != null)
+                {
+                    pc.StairsTouching += 1;
                 }
                 Vector3 position = other.MyTransform.Position;
-                position.Y = this.MyObject.MyTransform.Position.Y + 1.075f;
+                position.Y = this.MyObject.MyTransform.Position.Y + 0.505f;
                 other.MyTransform.Position = position;
             }
             base.OnTriggerEnter(other);
@@ -51,9 +56,9 @@ namespace TrashSoup.Gameplay
         {
             if(other.UniqueID == 1)
             {
-                if (other.MyPhysicalObject != null)
+                if (pc != null)
                 {
-                    other.MyPhysicalObject.IsUsingGravity = true;
+                    pc.StairsTouching -= 1;
                 }
             }
             base.OnTriggerExit(other);

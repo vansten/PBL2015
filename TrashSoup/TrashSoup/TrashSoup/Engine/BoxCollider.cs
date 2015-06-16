@@ -45,7 +45,12 @@ namespace TrashSoup.Engine
 
         public BoxCollider(GameObject go, BoxCollider bc) : base(go, bc)
         {
-
+            this.IsTrigger = bc.IsTrigger;
+            this.initialCorners = bc.initialCorners;
+            this.min = bc.min;
+            this.max = bc.max;
+            this.Box = bc.Box;
+            this.MyBoundingSphere = bc.MyBoundingSphere;
         }
 
         /// <summary>
