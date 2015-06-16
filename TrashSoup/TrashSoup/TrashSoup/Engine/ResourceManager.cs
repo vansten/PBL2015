@@ -578,6 +578,24 @@ namespace TrashSoup.Engine
             return output;
         }
 
+        public MirrorMaterial LoadMirrorMaterial(String path)
+        {
+            string newName = Path.GetFileNameWithoutExtension(path);
+            MirrorMaterial output = new MirrorMaterial();
+            XmlSerializer serializer = new XmlSerializer(typeof(MirrorMaterial));
+            using (FileStream file = new FileStream(path, FileMode.Open))
+            {
+                output = (MirrorMaterial)serializer.Deserialize(file);
+                output.Name = newName;
+            }
+            if (!ResourceManager.Instance.Materials.ContainsKey(newName))
+            {
+                ResourceManager.Instance.Materials.Add(newName, output);
+            }
+            Debug.Log("New mirror material successfully loaded - " + newName);
+            return output;
+        }
+
         /// <summary>
         /// Used to load a single texture. If it doesn't exist in resourceManager, Content.Load is called.
         /// </summary>

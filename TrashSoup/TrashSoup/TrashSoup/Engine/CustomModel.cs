@@ -333,7 +333,13 @@ namespace TrashSoup.Engine
                             wm = ResourceManager.Instance.LoadWaterMaterial(Path.GetFullPath(contentPath) + newName + ".xml");
                             Mat.Add(wm);
                         }
-                        if(newName != "testSBMat2" && newName != "testWaterMat")
+                        if (newName == "testMirrorMat")
+                        {
+                            MirrorMaterial mm = new MirrorMaterial();
+                            mm = ResourceManager.Instance.LoadMirrorMaterial(Path.GetFullPath(contentPath) + newName + ".xml");
+                            Mat.Add(mm);
+                        }
+                        if(newName != "testSBMat2" && newName != "testWaterMat" && newName != "testMirrorMat")
                         {
                             Material m = new Material();
                             m = ResourceManager.Instance.LoadMaterial(Path.GetFullPath(contentPath) + newName + ".xml");
@@ -399,7 +405,15 @@ namespace TrashSoup.Engine
                             serializer.Serialize(file, mat);
                         }
                     }
-                    if (mat.Name != "testSBMat2" && mat.Name != "testWaterMat")
+                    if (mat.Name == "testMirrorMat")
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(MirrorMaterial));
+                        using (FileStream file = new FileStream(Path.GetFullPath(contentPath) + mat.Name + ".xml", FileMode.Create))
+                        {
+                            serializer.Serialize(file, mat);
+                        }
+                    }
+                    if (mat.Name != "testSBMat2" && mat.Name != "testWaterMat" && mat.Name != "testMirrorMat")
                     {
                         XmlSerializer serializer = new XmlSerializer(typeof(Material));
                         using (FileStream file = new FileStream(Path.GetFullPath(contentPath) + mat.Name + ".xml", FileMode.Create))

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Material>
+<MirrorMaterial>
   <Name>testMirrorMat</Name>
   <EffectPath>Effects\MirrorEffect</EffectPath>
   <DiffusePath>DefaultDiffuse</DiffusePath>
@@ -24,4 +24,4 @@
   <Transparency>1</Transparency>
   <PerPixelLighting>false</PerPixelLighting>
   <ReceiveShadows>false</ReceiveShadows>
-</Material>
+</MirrorMaterial>

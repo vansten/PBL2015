@@ -4,10 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 
 namespace TrashSoup.Engine
 {
-    public class MirrorMaterial : Material
+    public class MirrorMaterial : Material, IXmlSerializable
     {
         #region constants
 
@@ -62,6 +65,11 @@ namespace TrashSoup.Engine
         #endregion
 
         #region methods
+
+        public MirrorMaterial() : base()
+        {
+
+        }
 
         public MirrorMaterial(string name, Effect effect)
             : base(name, effect)
@@ -150,6 +158,24 @@ namespace TrashSoup.Engine
             }
         }
 
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(System.Xml.XmlReader reader)
+        {
+            base.ReadXml(reader);
+
+            AssignParamsInitialize();
+        }
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+
+        }
         #endregion
     }
 }
