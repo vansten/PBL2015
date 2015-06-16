@@ -242,13 +242,13 @@
         <AnimatorClip>Animations/MainCharacter/idle_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dodge_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/boxing_3</AnimatorClip>
-        <AnimatorClip>Animations/MainCharacter/injuries_1</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/building</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dying_1</AnimatorClip>
       </MyAnimator>
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/MainCharacter/MainCharacter</ModelPath>
             <ModelPath />
@@ -505,7 +505,7 @@
             <ModelPath />
           </LODs>
           <Materials>
-            <Name>safehouseDoorFrameMat</Name>
+            <Name>safehouseStairsWoodMat</Name>
           </Materials>
           <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
@@ -1160,7 +1160,7 @@
       <MyTransform>
         <MyObjectID>1171</MyObjectID>
         <Position>
-          <X>-6.6</X>
+          <X>-8.1</X>
           <Y>1</Y>
           <Z>2.9</Z>
         </Position>
@@ -1204,7 +1204,7 @@
       <MyTransform>
         <MyObjectID>1172</MyObjectID>
         <Position>
-          <X>-10.6</X>
+          <X>-12.2</X>
           <Y>1</Y>
           <Z>2.9</Z>
         </Position>
@@ -1346,7 +1346,7 @@
       <MyTransform>
         <MyObjectID>1175</MyObjectID>
         <Position>
-          <X>12.1</X>
+          <X>13.6</X>
           <Y>1</Y>
           <Z>2.9</Z>
         </Position>
@@ -1395,7 +1395,7 @@
       <MyTransform>
         <MyObjectID>1176</MyObjectID>
         <Position>
-          <X>18.7</X>
+          <X>20.2</X>
           <Y>1</Y>
           <Z>2.9</Z>
         </Position>
@@ -2492,7 +2492,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1201</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/Stairs/stiars</ModelPath>
             <ModelPath />
@@ -2851,6 +2851,94 @@
             <Name>safehouseCarpetMat</Name>
           </Materials>
           <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1211</GameObjectKey>
+      <UniqueID>1211</UniqueID>
+      <Name>DoorFrame2 (clone)</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1211</MyObjectID>
+        <Position>
+          <X>-5.4</X>
+          <Y>1</Y>
+          <Z>2.8</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>3.14</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>2</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1211</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/WindowsDoors/DoorFrame</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseDoorFrameMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1212</GameObjectKey>
+      <UniqueID>1212</UniqueID>
+      <Name>DoorFrame3 (clone)</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1212</MyObjectID>
+        <Position>
+          <X>10.9</X>
+          <Y>1</Y>
+          <Z>2.8</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>3.14</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>2</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1212</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/WindowsDoors/DoorFrame</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseDoorFrameMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
     </GameObject>

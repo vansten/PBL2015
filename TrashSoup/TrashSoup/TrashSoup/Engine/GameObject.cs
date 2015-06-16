@@ -257,6 +257,11 @@ namespace TrashSoup.Engine
                     obj.Draw(cam, effect, gameTime);
                 }
 
+                if (this.UniqueID == 1)
+                {
+                    this.MyCollider.Draw(cam, effect, gameTime);
+                }
+
                 //[vansten] This is for debug drawing of collider
                 //[vansten] It won't be build if we build a release version
                 //[vansten] COMMENT DRAWING COLLIDER TO GET HIGHER FPS RATE!!!!!!!!!!!!!
