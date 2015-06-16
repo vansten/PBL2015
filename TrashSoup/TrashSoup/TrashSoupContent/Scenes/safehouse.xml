@@ -2959,7 +2959,7 @@
         <MyObjectID>1213</MyObjectID>
         <Position>
           <X>-8.2</X>
-          <Y>0</Y>
+          <Y>0.5</Y>
           <Z>-1</Z>
         </Position>
         <Rotation>
@@ -2972,7 +2972,7 @@
           <Y>0</Y>
           <Z>-1</Z>
         </Forward>
-        <Scale>1</Scale>
+        <Scale>0.5</Scale>
       </MyTransform>
       <Components>
         <TrashSoup.Gameplay.Fortification>
