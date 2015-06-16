@@ -296,9 +296,9 @@ namespace TrashSoup.Engine
             //testBox2.MyCarrierSocket = new Socket(testBox, testBox2, null, "mixamorig:RightHand");
 
             GameObject testBox3 = new GameObject(5, "testBox3");
-            testBox3.MyTransform = new Transform(testBox3, new Vector3(5.0f, 1.0f, 5.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, MathHelper.Pi, 0.0f), 1.0f);
-            testBox3.Components.Add(new CustomModel(testBox3, new Model[] { Models["Models/Test/TestSphere"], Models["Models/Test/TestSphere_LOD1"], Models["Models/Test/TestSphere_LOD2"] }, testPlayerMats2));
-            testBox3.MyCollider = new SphereCollider(testBox3, true);
+            testBox3.MyTransform = new Transform(testBox3, new Vector3(5.0f, 1.0f, 5.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, MathHelper.Pi, 0.0f), 0.1f);
+            testBox3.Components.Add(new CustomModel(testBox3, new Model[] { Models["Models/Test/TestBox"], Models["Models/Test/TestSphere_LOD1"], Models["Models/Test/TestSphere_LOD2"] }, testPlayerMats));
+            testBox3.MyCollider = new BoxCollider(testBox3, true);
 
             //ParticleSystem ps = new ParticleSystem(testBox3);
             //ps.Textures.Add(ResourceManager.Instance.LoadTexture("Textures/Particles/Particle_metal01"));

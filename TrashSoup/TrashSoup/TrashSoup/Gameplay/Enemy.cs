@@ -50,11 +50,6 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            if(InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.V))
-            {
-                HitPoints = 0;
-            }
-
             if (this.HitPoints <= 0)
                 IsDead = true;
             if (IsDead)

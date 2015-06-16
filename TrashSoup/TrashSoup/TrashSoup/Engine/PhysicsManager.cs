@@ -99,15 +99,14 @@ namespace TrashSoup.Engine
                                     {
                                         po.MyCollider.TriggerReasons.Add(col);
                                         po.OnTriggerEnter(col.MyObject);
-                                    }
-                                    po.OnTrigger(col.MyObject);
-
-                                    if (!col.TriggerReasons.Contains(po.MyCollider))
-                                    {
                                         col.TriggerReasons.Add(po.MyCollider);
                                         col.MyObject.OnTriggerEnter(po);
                                     }
-                                    col.MyObject.OnTrigger(po);
+                                    else
+                                    {
+                                        po.OnTrigger(col.MyObject);
+                                        col.MyObject.OnTrigger(po);
+                                    }
                                 }
                                 else
                                 {
@@ -115,9 +114,7 @@ namespace TrashSoup.Engine
                                     {
                                         po.MyCollider.TriggerReasons.Remove(col);
                                         po.OnTriggerExit(col.MyObject);
-                                    }
-                                    if(col.TriggerReasons.Contains(po.MyCollider))
-                                    {
+
                                         col.TriggerReasons.Remove(po.MyCollider);
                                         col.MyObject.OnTriggerExit(po);
                                     }
@@ -147,8 +144,7 @@ namespace TrashSoup.Engine
                     {
                         if(col.IsTrigger || go.MyCollider.IsTrigger)
                         {
-                            col.MyObject.OnTrigger(go);
-                            go.OnTrigger(col.MyObject);
+                            //Do nothing
                         }
                         else
                         {

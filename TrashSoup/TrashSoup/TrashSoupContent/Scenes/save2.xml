@@ -3728,7 +3728,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>917</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -3796,7 +3796,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>700</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Test/TestBox</ModelPath>
             <ModelPath />
@@ -10441,8 +10441,8 @@
       <MyTransform>
         <MyObjectID>182</MyObjectID>
         <Position>
-          <X>65</X>
-          <Y>-1.3</Y>
+          <X>65.5</X>
+          <Y>-0.2</Y>
           <Z>-18</Z>
         </Position>
         <Rotation>
@@ -10486,15 +10486,18 @@
             <ModelPath />
           </LODs>
           <Materials>
-            <Name>testTerMat</Name>
+            <Name>stairsMaterial</Name>
           </Materials>
           <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Gameplay.Stairs>
+          <MyObjectID>182</MyObjectID>
+        </TrashSoup.Gameplay.Stairs>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>182</MyObjectID>
-        <IsTrigger>false</IsTrigger>
+        <IsTrigger>true</IsTrigger>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -10509,9 +10512,9 @@
       <MyTransform>
         <MyObjectID>796</MyObjectID>
         <Position>
-          <X>60</X>
-          <Y>-1.8</Y>
-          <Z>-18</Z>
+          <X>61</X>
+          <Y>-0.5</Y>
+          <Z>0</Z>
         </Position>
         <Rotation>
           <X>0</X>
@@ -10535,7 +10538,7 @@
             <ModelPath />
           </LODs>
           <Materials>
-            <Name>testTerMat</Name>
+            <Name>stairsMaterial</Name>
           </Materials>
           <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
@@ -10558,11 +10561,14 @@
           </Forward>
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
+        <TrashSoup.Gameplay.Stairs>
+          <MyObjectID>796</MyObjectID>
+        </TrashSoup.Gameplay.Stairs>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>796</MyObjectID>
-        <IsTrigger>false</IsTrigger>
+        <IsTrigger>true</IsTrigger>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -10577,8 +10583,8 @@
       <MyTransform>
         <MyObjectID>925</MyObjectID>
         <Position>
-          <X>55</X>
-          <Y>-2.2</Y>
+          <X>57</X>
+          <Y>-0.8</Y>
           <Z>-18</Z>
         </Position>
         <Rotation>
@@ -10603,7 +10609,7 @@
             <ModelPath />
           </LODs>
           <Materials>
-            <Name>testTerMat</Name>
+            <Name>stairsMaterial</Name>
           </Materials>
           <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
@@ -10626,11 +10632,14 @@
           </Forward>
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
+        <TrashSoup.Gameplay.Stairs>
+          <MyObjectID>925</MyObjectID>
+        </TrashSoup.Gameplay.Stairs>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>925</MyObjectID>
-        <IsTrigger>false</IsTrigger>
+        <IsTrigger>true</IsTrigger>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -10645,8 +10654,8 @@
       <MyTransform>
         <MyObjectID>258</MyObjectID>
         <Position>
-          <X>-28</X>
-          <Y>-1.3</Y>
+          <X>-27.5</X>
+          <Y>-0.2</Y>
           <Z>-18</Z>
         </Position>
         <Rotation>
@@ -10659,19 +10668,19 @@
           <Y>0</Y>
           <Z>0</Z>
         </Forward>
-        <Scale>1.1</Scale>
+        <Scale>1.05</Scale>
       </MyTransform>
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>258</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Test/stairs</ModelPath>
             <ModelPath />
             <ModelPath />
           </LODs>
           <Materials>
-            <Name>testTerMat</Name>
+            <Name>stairsMaterial</Name>
           </Materials>
           <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
@@ -10694,11 +10703,14 @@
           </Forward>
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
+        <TrashSoup.Gameplay.Stairs>
+          <MyObjectID>258</MyObjectID>
+        </TrashSoup.Gameplay.Stairs>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>258</MyObjectID>
-        <IsTrigger>false</IsTrigger>
+        <IsTrigger>true</IsTrigger>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -10713,8 +10725,8 @@
       <MyTransform>
         <MyObjectID>67</MyObjectID>
         <Position>
-          <X>-23</X>
-          <Y>-1.8</Y>
+          <X>-23.67</X>
+          <Y>-0.5</Y>
           <Z>-18</Z>
         </Position>
         <Rotation>
@@ -10727,19 +10739,19 @@
           <Y>0</Y>
           <Z>0</Z>
         </Forward>
-        <Scale>1.1</Scale>
+        <Scale>1.05</Scale>
       </MyTransform>
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>67</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Test/stairs</ModelPath>
             <ModelPath />
             <ModelPath />
           </LODs>
           <Materials>
-            <Name>testTerMat</Name>
+            <Name>stairsMaterial</Name>
           </Materials>
           <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
@@ -10762,11 +10774,14 @@
           </Forward>
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
+        <TrashSoup.Gameplay.Stairs>
+          <MyObjectID>67</MyObjectID>
+        </TrashSoup.Gameplay.Stairs>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>67</MyObjectID>
-        <IsTrigger>false</IsTrigger>
+        <IsTrigger>true</IsTrigger>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -10781,8 +10796,8 @@
       <MyTransform>
         <MyObjectID>793</MyObjectID>
         <Position>
-          <X>-18</X>
-          <Y>-2.2</Y>
+          <X>-19.95</X>
+          <Y>-0.8</Y>
           <Z>-18</Z>
         </Position>
         <Rotation>
@@ -10807,7 +10822,7 @@
             <ModelPath />
           </LODs>
           <Materials>
-            <Name>testTerMat</Name>
+            <Name>stairsMaterial</Name>
           </Materials>
           <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
@@ -10830,11 +10845,14 @@
           </Forward>
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
+        <TrashSoup.Gameplay.Stairs>
+          <MyObjectID>793</MyObjectID>
+        </TrashSoup.Gameplay.Stairs>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>793</MyObjectID>
-        <IsTrigger>false</IsTrigger>
+        <IsTrigger>true</IsTrigger>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -13447,7 +13465,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>47</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -20978,7 +20996,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>922</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -25128,7 +25146,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>460</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -46870,7 +46888,7 @@
       <GameObjectKey>1381</GameObjectKey>
       <UniqueID>1381</UniqueID>
       <Name>Lake</Name>
-      <DrawLast>false</DrawLast>
+      <DrawLast>true</DrawLast>
       <Tags>
         <Tag>null</Tag>
       </Tags>
@@ -47010,6 +47028,432 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1384</MyObjectID>
         <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1385</GameObjectKey>
+      <UniqueID>1385</UniqueID>
+      <Name>Stairs7</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1385</MyObjectID>
+        <Position>
+          <X>-16.95</X>
+          <Y>-1.1</Y>
+          <Z>-18</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>1.1</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1385</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Test/stairs</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>stairsMaterial</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Engine.Transform>
+          <MyObjectID>1385</MyObjectID>
+          <Position>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Position>
+          <Rotation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Rotation>
+          <Forward>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Forward>
+          <Scale>1</Scale>
+        </TrashSoup.Engine.Transform>
+        <TrashSoup.Gameplay.Stairs>
+          <MyObjectID>1385</MyObjectID>
+        </TrashSoup.Gameplay.Stairs>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1385</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1375</GameObjectKey>
+      <UniqueID>1375</UniqueID>
+      <Name>Stairs8</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1375</MyObjectID>
+        <Position>
+          <X>-11.9500008</X>
+          <Y>-1.4</Y>
+          <Z>-18</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>1.1</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1375</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Test/stairs</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>stairsMaterial</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Engine.Transform>
+          <MyObjectID>1375</MyObjectID>
+          <Position>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Position>
+          <Rotation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Rotation>
+          <Forward>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Forward>
+          <Scale>1</Scale>
+        </TrashSoup.Engine.Transform>
+        <TrashSoup.Gameplay.Stairs>
+          <MyObjectID>1375</MyObjectID>
+        </TrashSoup.Gameplay.Stairs>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1375</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1376</GameObjectKey>
+      <UniqueID>1376</UniqueID>
+      <Name>Stairs9</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1376</MyObjectID>
+        <Position>
+          <X>-8.950001</X>
+          <Y>-1.7</Y>
+          <Z>-18</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>1.1</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1376</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Test/stairs</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>stairsMaterial</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Engine.Transform>
+          <MyObjectID>1376</MyObjectID>
+          <Position>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Position>
+          <Rotation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Rotation>
+          <Forward>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Forward>
+          <Scale>1</Scale>
+        </TrashSoup.Engine.Transform>
+        <TrashSoup.Gameplay.Stairs>
+          <MyObjectID>1376</MyObjectID>
+        </TrashSoup.Gameplay.Stairs>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1376</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1377</GameObjectKey>
+      <UniqueID>1377</UniqueID>
+      <Name>Stairs10</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1377</MyObjectID>
+        <Position>
+          <X>54</X>
+          <Y>-1.1</Y>
+          <Z>-18</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>1.1</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1377</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Test/stairs</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>stairsMaterial</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Engine.Transform>
+          <MyObjectID>1377</MyObjectID>
+          <Position>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Position>
+          <Rotation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Rotation>
+          <Forward>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Forward>
+          <Scale>1</Scale>
+        </TrashSoup.Engine.Transform>
+        <TrashSoup.Gameplay.Stairs>
+          <MyObjectID>1377</MyObjectID>
+        </TrashSoup.Gameplay.Stairs>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1377</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1378</GameObjectKey>
+      <UniqueID>1378</UniqueID>
+      <Name>Stairs11</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1378</MyObjectID>
+        <Position>
+          <X>51</X>
+          <Y>-1.4</Y>
+          <Z>-18</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>1.1</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1378</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Test/stairs</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>stairsMaterial</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Engine.Transform>
+          <MyObjectID>1378</MyObjectID>
+          <Position>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Position>
+          <Rotation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Rotation>
+          <Forward>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Forward>
+          <Scale>1</Scale>
+        </TrashSoup.Engine.Transform>
+        <TrashSoup.Gameplay.Stairs>
+          <MyObjectID>1378</MyObjectID>
+        </TrashSoup.Gameplay.Stairs>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1378</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1379</GameObjectKey>
+      <UniqueID>1379</UniqueID>
+      <Name>Stairs12</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1379</MyObjectID>
+        <Position>
+          <X>48</X>
+          <Y>-1.7</Y>
+          <Z>-18</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>1.1</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1379</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Test/stairs</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>stairsMaterial</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Engine.Transform>
+          <MyObjectID>1379</MyObjectID>
+          <Position>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Position>
+          <Rotation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Rotation>
+          <Forward>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Forward>
+          <Scale>1</Scale>
+        </TrashSoup.Engine.Transform>
+        <TrashSoup.Gameplay.Stairs>
+          <MyObjectID>1379</MyObjectID>
+        </TrashSoup.Gameplay.Stairs>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1379</MyObjectID>
+        <IsTrigger>true</IsTrigger>
       </MyCollider>
     </GameObject>
   </ObjectsDictionary>

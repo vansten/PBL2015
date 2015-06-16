@@ -28,6 +28,8 @@ namespace TrashSoup.Gameplay
 
         #region variables
 
+        private int stairsTouching = 0;
+
         private SpriteFont font;
         private bool drawFoodWarning = false;
         private float foodWarningTimer = 0.0f;
@@ -90,6 +92,23 @@ namespace TrashSoup.Gameplay
         #endregion
 
         #region properties
+
+        public int StairsTouching
+        {
+            get
+            {
+                return this.stairsTouching;
+            }
+            set
+            {
+                this.stairsTouching = value;
+                this.MyObject.MyPhysicalObject.IsUsingGravity = this.stairsTouching == 0;
+                if(!this.MyObject.MyPhysicalObject.IsUsingGravity)
+                {
+                    this.MyObject.MyPhysicalObject.Velocity = Vector3.Zero;
+                }
+            }
+        }
 
         public float HitPoints 
         { 
@@ -379,7 +398,6 @@ namespace TrashSoup.Gameplay
                     this.Food = null;
                 }
             }
-
         }
 
         public override void Initialize()

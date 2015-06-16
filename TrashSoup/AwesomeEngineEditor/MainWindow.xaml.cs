@@ -274,7 +274,7 @@ namespace AwesomeEngineEditor
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged([CallerMemberName]string name = null)
+        public void OnPropertyChanged([CallerMemberName]string name = null)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if(handler != null && name != null)
@@ -664,7 +664,7 @@ namespace AwesomeEngineEditor
         {
             if (this.selectedObject == null) return;
             this.LoadedComponents.Clear();
-            this.LoadedComponents.Add(new Components.ObjectInfo(this.selectedObject));
+            this.LoadedComponents.Add(new Components.ObjectInfo(this.selectedObject, this));
             if (this.selectedObject.GetType().IsSubclassOf(typeof(TrashSoup.Engine.Camera)) || this.selectedObject.GetType() == typeof(TrashSoup.Engine.Camera))
             {
                 this.GenerateDetailsForCamera();
