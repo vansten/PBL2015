@@ -379,7 +379,6 @@ namespace TrashSoup.Gameplay
                     this.Food = null;
                 }
             }
-
         }
 
         public override void Initialize()
