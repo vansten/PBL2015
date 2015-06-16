@@ -46888,7 +46888,7 @@
       <GameObjectKey>1381</GameObjectKey>
       <UniqueID>1381</UniqueID>
       <Name>Lake</Name>
-      <DrawLast>false</DrawLast>
+      <DrawLast>true</DrawLast>
       <Tags>
         <Tag>null</Tag>
       </Tags>
