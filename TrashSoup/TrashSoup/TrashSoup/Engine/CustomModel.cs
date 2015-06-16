@@ -327,7 +327,13 @@ namespace TrashSoup.Engine
                             sm = ResourceManager.Instance.LoadSkyboxMaterial(Path.GetFullPath(contentPath) + newName + ".xml");
                             Mat.Add(sm);
                         }
-                        else
+                        if (newName == "testWaterMat")
+                        {
+                            WaterMaterial wm = new WaterMaterial();
+                            wm = ResourceManager.Instance.LoadWaterMaterial(Path.GetFullPath(contentPath) + newName + ".xml");
+                            Mat.Add(wm);
+                        }
+                        if(newName != "testSBMat2" && newName != "testWaterMat")
                         {
                             Material m = new Material();
                             m = ResourceManager.Instance.LoadMaterial(Path.GetFullPath(contentPath) + newName + ".xml");
@@ -385,7 +391,15 @@ namespace TrashSoup.Engine
                             serializer.Serialize(file, mat);
                         }
                     }
-                    else
+                    if (mat.Name == "testWaterMat")
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(WaterMaterial));
+                        using (FileStream file = new FileStream(Path.GetFullPath(contentPath) + mat.Name + ".xml", FileMode.Create))
+                        {
+                            serializer.Serialize(file, mat);
+                        }
+                    }
+                    if (mat.Name != "testSBMat2" && mat.Name != "testWaterMat")
                     {
                         XmlSerializer serializer = new XmlSerializer(typeof(Material));
                         using (FileStream file = new FileStream(Path.GetFullPath(contentPath) + mat.Name + ".xml", FileMode.Create))
