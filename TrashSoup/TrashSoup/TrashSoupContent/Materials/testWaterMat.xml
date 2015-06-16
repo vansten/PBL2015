@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Material>
+<WaterMaterial>
   <Name>testWaterMat</Name>
   <EffectPath>Effects\WaterEffect</EffectPath>
   <DiffusePath>Textures\Test\dirtywater</DiffusePath>
@@ -24,4 +24,4 @@
   <Transparency>1</Transparency>
   <PerPixelLighting>false</PerPixelLighting>
   <ReceiveShadows>false</ReceiveShadows>
-</Material>
+</WaterMaterial>
