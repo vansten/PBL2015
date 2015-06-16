@@ -16,6 +16,12 @@ namespace TrashSoup.Gameplay
         public Blackboard MyBlackBoard;
         private Enemy myEnemyScript;
 
+        private bool isDead = false;
+        private float timer = 0.0f;
+        private float dieCooldown = 0.0f;
+        int i = 0;
+        private float nextBlinkTime = 0.0f;
+
         public Rat(GameObject go) : base(go)
         {
             Start();
@@ -26,6 +32,34 @@ namespace TrashSoup.Gameplay
             if(TrashSoupGame.Instance.EditorMode)
             {
                 return;
+            }
+
+            if(isDead)
+            {
+                timer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+                if (timer > dieCooldown)
+                {
+                    this.MyObject.MyAnimator.StopAnimation();
+                }
+
+                if(timer > nextBlinkTime)
+                {
+                    this.MyObject.Visible = !this.MyObject.Visible;
+                    if(!this.MyObject.Visible)
+                    {
+                        nextBlinkTime += 0.3f / (float)(i+1);
+                    }
+                    else
+                    {
+                        nextBlinkTime += (1.0f / (float)(i + 1));
+                        ++i;
+                    }
+                }
+
+                if(timer > dieCooldown + 5.0f)
+                {
+                    this.MyObject.Enabled = false;
+                }
             }
         }
 
@@ -87,6 +121,14 @@ namespace TrashSoup.Gameplay
         void OnDead()
         {
             this.myBehavior.Stop();
+            this.MyObject.MyAnimator.ChangeState("Die");
+            dieCooldown = this.MyObject.MyAnimator.GetAnimationClip("Animations/Enemies/Rat_dying").Duration.Seconds;
+            nextBlinkTime = dieCooldown + 1.0f;
+            this.MyObject.MyPhysicalObject.Velocity = Vector3.Zero;
+            this.MyObject.MyPhysicalObject.IsUsingGravity = false;
+            this.MyObject.MyCollider.Enabled = false;
+            this.MyObject.MyTransform.Position += 0.75f * Vector3.Up;
+            isDead = true;
         }
 
         public override void OnCollision(GameObject other)

@@ -14,6 +14,7 @@ namespace TrashSoup.Gameplay
         #region variables
         protected int hitPoints;
         protected bool isDead;
+        private bool deathAnimPlayed = false;
 
         public Action OnDead;
         #endregion
@@ -49,15 +50,21 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
+            if(InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.V))
+            {
+                HitPoints = 0;
+            }
+
             if (this.HitPoints <= 0)
                 IsDead = true;
             if (IsDead)
             {
-                if(OnDead != null)
+                if(!deathAnimPlayed && OnDead != null)
                 {
+                    deathAnimPlayed = true;
                     OnDead();
                 }
-                this.MyObject.Enabled = false;
+                //this.MyObject.Enabled = false;
                 return;
             }
 
