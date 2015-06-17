@@ -98,12 +98,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\ParticleTest\Particle.png">
+    <Compile Include="Textures\Particles\Particle.png">
       <Name>Particle</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\ParticleTest\ParticleColors.png">
+    <Compile Include="Textures\Particles\ParticleColors.png">
       <Name>ParticleColors</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -419,11 +419,6 @@
       <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
-    <Compile Include="Animations\MainCharacter\boxing_3.X">
-      <Name>boxing_3</Name>
-      <Importer>XImporter</Importer>
-      <Processor>SkinnedModelProcessor</Processor>
-    </Compile>
     <Compile Include="Animations\MainCharacter\charge_Hweapon.X">
       <Name>charge_Hweapon</Name>
       <Importer>XImporter</Importer>
@@ -479,6 +474,99 @@
       <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
+    <Compile Include="Animations\Enemies\Mutant_walk.X">
+      <Name>Mutant_walk</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\Enemies\Mutant_attack.X">
+      <Name>Mutant_attack</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\Enemies\Mutant_damage.X">
+      <Name>Mutant_damage</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\Enemies\Mutant_dying.X">
+      <Name>Mutant_dying</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\Enemies\Mutant_idle.X">
+      <Name>Mutant_idle</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\Enemies\Mutant_run.X">
+      <Name>Mutant_run</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\building.X">
+      <Name>building</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\charge_SMweapon.X">
+      <Name>charge_SMweapon</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\custom_kick.X">
+      <Name>custom_kick</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\custom_slash.X">
+      <Name>custom_slash</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\custom_whirl.X">
+      <Name>custom_whirl</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\grzebanie.X">
+      <Name>grzebanie</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\jump.X">
+      <Name>jump</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\run_SMweapon2.X">
+      <Name>run_SMweapon2</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+<<<<<<< HEAD
+=======
+    <Compile Include="Animations\MainCharacter\boxing_3_fix.X">
+      <Name>boxing_3_fix</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\boxing_3_fix_fix.X">
+      <Name>boxing_3_fix_fix</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\boxing_3_fix_fix2.X">
+      <Name>boxing_3_fix_fix2</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\boxing_4.X">
+      <Name>boxing_4</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+>>>>>>> e3e80ae8987238040969e61046f0032754e4804a
     <None Include="Effects\Constants.fxh">
       <Name>Constants</Name>
       <Importer>EffectImporter</Importer>
@@ -727,7 +815,7 @@
     <Compile Include="Models\Enviro\Nature\stump.FBX">
       <Name>stump</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Enviro\Nature\TreeBig3.FBX">
       <Name>TreeBig3</Name>
@@ -842,7 +930,7 @@
     <Compile Include="Models\Enviro\Nature\river.FBX">
       <Name>river</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Textures\Enviro\Nature\Sun.dds">
       <Name>Sun</Name>
@@ -873,7 +961,7 @@
     <Compile Include="Models\Home\Fortifications\wire_fortif.FBX">
       <Name>wire_fortif</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Home\Fortifications\trap_wire.FBX">
       <Name>trap_wire</Name>
@@ -1007,6 +1095,96 @@
     </Compile>
     <Compile Include="Models\Test\walec.FBX">
       <Name>walec</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Buildings\Small_House.FBX">
+      <Name>Small_House</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Nature\park_ground.FBX">
+      <Name>park_ground</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\Fortifications\trap_wnyki_double.FBX">
+      <Name>trap_wnyki_double</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Nature\bush.FBX">
+      <Name>bush</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Buildings\Big_house_High.FBX">
+      <Name>Big_house_High</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Particles\Particle_blood01.dds">
+      <Name>Particle_blood01</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Particles\Particle_metal01.dds">
+      <Name>Particle_metal01</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Particles\Particle_metal02.dds">
+      <Name>Particle_metal02</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Particles\Particle_wood01.dds">
+      <Name>Particle_wood01</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Particles\Particle_wood02.dds">
+      <Name>Particle_wood02</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Particles\Particle_wood03.dds">
+      <Name>Particle_wood03</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Nature\Blood_spatter_01.dds">
+      <Name>Blood_spatter_01</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enemies\Mutant01.X">
+      <Name>Mutant01</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enemies\Mutant_body_D.dds">
+      <Name>Mutant_body_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enemies\Mutant_body_N.dds">
+      <Name>Mutant_body_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enemies\Mutant_head_D.dds">
+      <Name>Mutant_head_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enemies\Mutant_head_N.dds">
+      <Name>Mutant_head_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Home\WindowsDoors\DoorFrameUP.FBX">
+      <Name>DoorFrameUP</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
@@ -2008,7 +2186,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
+    <Compile Include="Textures\Enviro\Buildings\Small_House_D.dds">
+      <Name>Small_House_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Buildings\Small_House_N.dds">
+      <Name>Small_House_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Textures\HUD\window_red2_0.png">
       <Name>window_red2_0</Name>
       <Importer>TextureImporter</Importer>
@@ -2034,17 +2223,70 @@
       <Name>walk</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
-=======
-    <Compile Include="Textures\Enviro\Buildings\Small_House_D.dds">
-      <Name>Small_House_D</Name>
+    </Compile>
+    <Compile Include="Effects\POSTBoxBlurEffect.fx">
+      <Name>POSTBoxBlurEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Nature\park_ground_D.dds">
+      <Name>park_ground_D</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\Enviro\Buildings\Small_House_N.dds">
-      <Name>Small_House_N</Name>
+    <Compile Include="Textures\Enviro\Nature\park_ground_N.dds">
+      <Name>park_ground_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
->>>>>>> bca9756ea06aacc50e68222f9f1cc6c509f77c64
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Audio\Character\jump.wav">
+      <Name>jump</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Storyline\note.png">
+      <Name>note</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Audio\Ambient\building.wav">
+      <Name>building</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Nature\bush_D.dds">
+      <Name>bush_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Nature\bush_N.dds">
+      <Name>bush_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Audio\Actions\fortificationJebut.wav">
+      <Name>fortificationJebut</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Audio\Actions\fortificationHit.wav">
+      <Name>fortificationHit</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

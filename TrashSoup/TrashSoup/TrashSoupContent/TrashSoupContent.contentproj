@@ -544,6 +544,29 @@
       <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
+<<<<<<< HEAD
+=======
+    <Compile Include="Animations\MainCharacter\boxing_3_fix.X">
+      <Name>boxing_3_fix</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\boxing_3_fix_fix.X">
+      <Name>boxing_3_fix_fix</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\boxing_3_fix_fix2.X">
+      <Name>boxing_3_fix_fix2</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Animations\MainCharacter\boxing_4.X">
+      <Name>boxing_4</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+    </Compile>
+>>>>>>> e3e80ae8987238040969e61046f0032754e4804a
     <None Include="Effects\Constants.fxh">
       <Name>Constants</Name>
       <Importer>EffectImporter</Importer>
