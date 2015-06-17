@@ -25,7 +25,6 @@ namespace TrashSoup.Gameplay
         public PlayerAttackTrigger(GameObject go, PlayerController pc) : base(go)
         {
             this.pc = pc;
-            this.MyObject.DrawCollider = true;
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
@@ -45,6 +44,11 @@ namespace TrashSoup.Gameplay
             foreach(Enemy e in this.enemiesInTrigger)
             {
                 e.HitPoints -= damage;
+                ParticleSystem ps = e.MyObject.GetComponent<ParticleSystem>() as ParticleSystem;
+                if(ps != null)
+                {
+                    ps.Play();
+}
                 if (e.MyObject.MyPhysicalObject != null)
                 {
                     Vector3 diff = e.MyObject.MyTransform.Position - pc.MyObject.MyTransform.Position;
