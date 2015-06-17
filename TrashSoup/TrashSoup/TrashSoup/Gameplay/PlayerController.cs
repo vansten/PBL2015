@@ -85,6 +85,7 @@ namespace TrashSoup.Gameplay
         private PlayerAttackTrigger myAttackTriggerComponent;
         private bool isAttacking = false;
         private float attackTimer = 0.0f;
+        private float attackCooldown = 0.0f;
 
         #endregion
 
@@ -291,10 +292,8 @@ namespace TrashSoup.Gameplay
                 {
                     if (MyObject.MyAnimator != null)
                     {
-                        if (MyObject.MyAnimator.ThirdState == null)
-                        {
-                            MyObject.MyAnimator.ChangeState("AttackFist01");
-                        }
+                        MyObject.MyAnimator.ChangeState("AttackFist01");
+                        attackCooldown = (float)MyObject.MyAnimator.AvailableStates["AttackFist01"].Animation.CurrentClip.Duration.TotalMilliseconds;
                     }
                     equipment.CurrentWeapon.IsAttacking = true;
                     equipment.CurrentWeapon.timerOn = gameTime.TotalGameTime.TotalSeconds;
@@ -305,7 +304,7 @@ namespace TrashSoup.Gameplay
                 if(this.isAttacking)
                 {
                     this.attackTimer += gameTime.ElapsedGameTime.Milliseconds;
-                    if(this.attackTimer >= this.MyObject.MyAnimator.CurrentState.Animation.CurrentClip.Duration.TotalMilliseconds + 600)
+                    if (this.attackTimer >= attackCooldown)
                     {
                         this.attackTimer = 0.0f;
                         this.isAttacking = false;
@@ -420,7 +419,7 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.AvailableStates.Add("AttackFist01", new AnimatorState("AttackFist01", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_4"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Jump"], new TimeSpan(0, 0, 0, 0, 500));
-                MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackFist01"], new TimeSpan(0, 0, 0, 0, 400));
+                MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackFist01"], new TimeSpan(0, 0, 0, 0, 100));
                 MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 250));
                 MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Jump"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Jump"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 100));
