@@ -419,11 +419,6 @@
       <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
-    <Compile Include="Animations\MainCharacter\boxing_3.X">
-      <Name>boxing_3</Name>
-      <Importer>XImporter</Importer>
-      <Processor>SkinnedModelProcessor</Processor>
-    </Compile>
     <Compile Include="Animations\MainCharacter\charge_Hweapon.X">
       <Name>charge_Hweapon</Name>
       <Importer>XImporter</Importer>
@@ -509,11 +504,6 @@
       <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
-    <Compile Include="Animations\MainCharacter\boxing.X">
-      <Name>boxing</Name>
-      <Importer>XImporter</Importer>
-      <Processor>SkinnedModelProcessor</Processor>
-    </Compile>
     <Compile Include="Animations\MainCharacter\building.X">
       <Name>building</Name>
       <Importer>XImporter</Importer>
@@ -551,21 +541,6 @@
     </Compile>
     <Compile Include="Animations\MainCharacter\run_SMweapon2.X">
       <Name>run_SMweapon2</Name>
-      <Importer>XImporter</Importer>
-      <Processor>SkinnedModelProcessor</Processor>
-    </Compile>
-    <Compile Include="Animations\MainCharacter\boxing_3_fix.X">
-      <Name>boxing_3_fix</Name>
-      <Importer>XImporter</Importer>
-      <Processor>SkinnedModelProcessor</Processor>
-    </Compile>
-    <Compile Include="Animations\MainCharacter\boxing_3_fix_fix.X">
-      <Name>boxing_3_fix_fix</Name>
-      <Importer>XImporter</Importer>
-      <Processor>SkinnedModelProcessor</Processor>
-    </Compile>
-    <Compile Include="Animations\MainCharacter\boxing_3_fix_fix2.X">
-      <Name>boxing_3_fix_fix2</Name>
       <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
