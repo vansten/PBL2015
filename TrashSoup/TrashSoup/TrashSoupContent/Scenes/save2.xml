@@ -256,7 +256,7 @@
         <AnimatorClip>Animations/MainCharacter/run_2</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/idle_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dodge_1</AnimatorClip>
-        <AnimatorClip>Animations/MainCharacter/boxing_3_fix</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/boxing_4</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/building</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dying_1</AnimatorClip>
       </MyAnimator>
@@ -35186,7 +35186,7 @@
       <Tags>
         <Tag>null</Tag>
       </Tags>
-      <Dynamic>false</Dynamic>
+      <Dynamic>true</Dynamic>
       <MyTransform>
         <MyObjectID>1136</MyObjectID>
         <Position>
@@ -35241,7 +35241,7 @@
       <Tags>
         <Tag>null</Tag>
       </Tags>
-      <Dynamic>false</Dynamic>
+      <Dynamic>true</Dynamic>
       <MyTransform>
         <MyObjectID>1137</MyObjectID>
         <Position>
@@ -35746,7 +35746,7 @@
       <GameObjectKey>1144</GameObjectKey>
       <UniqueID>1144</UniqueID>
       <Name>Fists</Name>
-      <DrawLast>false</DrawLast>
+      <DrawLast>true</DrawLast>
       <Tags>
         <Tag>null</Tag>
       </Tags>

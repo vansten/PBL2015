@@ -102,7 +102,7 @@ namespace TrashSoup.Gameplay
             weapon.MyCarrierSocket = new Socket(weapon, weapon, null, "");
             weapon.MyTransform.Position = Vector3.Zero;
             weapon.MyTransform.Rotation = Vector3.Zero;
-            weapon.MyTransform.Scale = 4;
+            weapon.MyTransform.Scale = 3;
             base.MyObject.MyCollider.IgnoredColliders.Remove(weapon.MyCollider);
         }
 

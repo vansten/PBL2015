@@ -46,7 +46,6 @@ namespace TrashSoup.Engine.AI.BehaviorTree
                     {
                         if (bt.CurrentRunning != null)
                         {
-                            Debug.Log("Current Running: " + bt.CurrentRunning.GetType().Name);
                             TickStatus ts = bt.CurrentRunning.Tick(gameTime, out bt.CurrentRunning);
                             if(ts != TickStatus.RUNNING)
                             {
@@ -56,7 +55,6 @@ namespace TrashSoup.Engine.AI.BehaviorTree
                         else
                         {
                             this.milisecondsTillLastTick = this.btTickFrequency;
-                            Debug.Log("Current Running: Nothing");
                         }
                     }
                     this.milisecondsTillLastTick += (int)gameTime.ElapsedGameTime.TotalMilliseconds;

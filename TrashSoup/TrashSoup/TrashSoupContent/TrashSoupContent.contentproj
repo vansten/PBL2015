@@ -509,11 +509,6 @@
       <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
-    <Compile Include="Animations\MainCharacter\boxing.X">
-      <Name>boxing</Name>
-      <Importer>XImporter</Importer>
-      <Processor>SkinnedModelProcessor</Processor>
-    </Compile>
     <Compile Include="Animations\MainCharacter\building.X">
       <Name>building</Name>
       <Importer>XImporter</Importer>
@@ -554,8 +549,8 @@
       <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
-    <Compile Include="Animations\MainCharacter\boxing_3_fix.X">
-      <Name>boxing_3_fix</Name>
+    <Compile Include="Animations\MainCharacter\boxing_4.X">
+      <Name>boxing_4</Name>
       <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>

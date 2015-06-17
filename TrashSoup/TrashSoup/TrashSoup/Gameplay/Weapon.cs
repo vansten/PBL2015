@@ -81,7 +81,6 @@ namespace TrashSoup.Gameplay
         #region methods
         public Weapon(GameObject obj):base(obj)
         {
-
         }
 
         public override void Initialize()
@@ -92,36 +91,6 @@ namespace TrashSoup.Gameplay
                 this.pc = (PlayerController)this.player.GetComponent<PlayerController>();
             }
             base.Initialize();
-        }
-
-        public override void OnTriggerEnter(GameObject other)
-        {
-            if(isAttacking)
-            {
-                /*if (other.Components.Exists(x => x is Enemy))
-                {
-                    (other.GetComponent<Enemy>() as Enemy).HitPoints -= Damage;
-                    ParticleSystem ps = other.GetComponent<ParticleSystem>() as ParticleSystem;
-                    ps.Play();
-                    Rat r = other.GetComponent<Rat>() as Rat;
-                    if(r != null)
-                    {
-                        r.MyBlackBoard.SetBool("TargetSeen", true);
-                        r.MyBlackBoard.SetVector3("TargetPosition", player.MyTransform.Position);
-                        if(r.MyObject.MyPhysicalObject != null)
-                        {
-                            Vector3 diff = r.MyObject.MyTransform.Position - player.MyTransform.Position;
-                            diff.Y = 0.0f;
-                            diff.Normalize();
-                            r.MyObject.MyPhysicalObject.AddForce(diff * 650.0f);
-                        }
-                        this.pc.Popularity += 15.0f;
-                    }
-                    if (Type != WeaponType.FISTS && Durability > 0)
-                        Durability--;
-                }*/
-            }
-            base.OnTriggerEnter(other);
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)

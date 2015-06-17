@@ -47,6 +47,10 @@ namespace TrashSoup.Engine
 
         public override void Draw(Camera cam, Effect effect, GameTime gameTime)
         {
+            if(!this.Enabled)
+            {
+                return;
+            }
             verticesToDraw.Clear();
             indices.Clear();
             Vector3 right = Vector3.Right * this.Sphere.Radius;

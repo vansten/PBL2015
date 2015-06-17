@@ -93,7 +93,10 @@ namespace TrashSoup.Engine
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
         {
-
+            if (!this.Enabled)
+            {
+                return;
+            }
         }
 
         protected override void Start()
