@@ -47,7 +47,7 @@ namespace TrashSoup.Gameplay
             }
         }
 
-        public int Milliseconds
+        public long Milliseconds
         {
             get
             {
@@ -79,11 +79,11 @@ namespace TrashSoup.Gameplay
             }
         }
 
-        public int TotalMilliseconds
+        public long TotalMilliseconds
         {
             get
             {
-                return (int)millis;
+                return (long)millis;
             }
         }
 

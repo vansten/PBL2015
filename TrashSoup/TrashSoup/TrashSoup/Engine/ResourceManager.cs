@@ -363,6 +363,11 @@ namespace TrashSoup.Engine
             awsomeTest.Components.Add(new CustomModel(awsomeTest, new Model[] { Models["Models/Home/WindowsDoors/Door"], null, null }, awsomeTestMats));
             awsomeTest.MyCollider = new BoxCollider(awsomeTest, false);
 
+            GameObject playerTime = new GameObject(1000, "PlayerTime");
+            PlayerTime pt = new PlayerTime(playerTime);
+            pt.Multiplier = 3600.0f;
+            playerTime.Components.Add(pt);
+
             // adding lights
             LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.1f, 0.1f, 0.1f));
             LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(1.0f, 0.9f, 0.8f), new Vector3(1.0f, 0.8f, 0.8f), new Vector3(-1.0f, -1.0f, -1.0f), true);
@@ -407,6 +412,7 @@ namespace TrashSoup.Engine
             CurrentScene.AddObject(awsomeTest);//Wika i kasia
             CurrentScene.AddObject(rat);
             CurrentScene.AddObject(cegla);
+            CurrentScene.AddObject(playerTime);
             //CurrentScene.AddObject(pt);
 
             CurrentScene.AmbientLight = amb;
