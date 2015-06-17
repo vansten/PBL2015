@@ -79,6 +79,24 @@ namespace TrashSoup.Gameplay
             return InputManager.Instance.GetGamePadButtonDown(Buttons.Y) || InputManager.Instance.GetKeyboardButtonDown(Keys.R);
         }
 
+        public bool PromptOption1()
+        {
+            return (InputManager.Instance.GetGamePadButtonDown(Microsoft.Xna.Framework.Input.Buttons.X) ||
+                InputManager.Instance.GetKeyboardButtonDown(Keys.E));
+        }
+
+        public bool PromptOption2()
+        {
+            return InputManager.Instance.GetGamePadButtonDown(Microsoft.Xna.Framework.Input.Buttons.B) ||
+                InputManager.Instance.GetKeyboardButtonDown(Keys.C);
+        }
+
+        public bool PromptOption3()
+        {
+            return InputManager.Instance.GetGamePadButtonDown(Microsoft.Xna.Framework.Input.Buttons.Y) ||
+                InputManager.Instance.GetKeyboardButtonDown(Keys.V);
+        }
+
         /// <summary>
         /// 
         /// Returns movement vector of the player, works on gamepad as well as on keyboard

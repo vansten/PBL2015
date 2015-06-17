@@ -32,7 +32,7 @@ namespace TrashSoup.Engine
         public Dictionary<string, Model> Animations = new Dictionary<string, Model>();
         public Dictionary<string, Texture2D> Textures = new Dictionary<string, Texture2D>();
         public Dictionary<string, TextureCube> TexturesCube = new Dictionary<string, TextureCube>();
-        public List<SpriteFont> Fonts = new List<SpriteFont>();
+        public Dictionary<string, SpriteFont> Fonts = new Dictionary<string, SpriteFont>();
         public Dictionary<string, Effect> Effects = new Dictionary<string, Effect>();
         public Dictionary<string, Material> Materials = new Dictionary<string,Material>();
         public List<Cue> Sounds = new List<Cue>();
@@ -367,8 +367,15 @@ namespace TrashSoup.Engine
 
             GameObject playerTime = new GameObject(1000, "PlayerTime");
             PlayerTime pt = new PlayerTime(playerTime);
-            pt.Multiplier = 3600.0f;
+            pt.InitHours = 21;
             playerTime.Components.Add(pt);
+
+            GameObject testTransition = new GameObject(501, "Transition");
+            AreaTransition at = new AreaTransition(testTransition);
+            at.NextScenePath = "../../../../TrashSoupContent/Scenes/StengertPAGI.xml";
+            testTransition.Components.Add(at);
+            testTransition.MyTransform = new Transform(testTransition, new Vector3(-10.0f, 0.0f, 10.0f), Vector3.Up, Vector3.Zero, 5.0f);
+            testTransition.MyCollider = new SphereCollider(testTransition, true);
 
             // adding lights
             LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.1f, 0.1f, 0.1f));
@@ -415,16 +422,13 @@ namespace TrashSoup.Engine
             CurrentScene.AddObject(rat);
             CurrentScene.AddObject(cegla);
             CurrentScene.AddObject(playerTime);
+            CurrentScene.AddObject(testTransition);
             //CurrentScene.AddObject(pt);
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;
             CurrentScene.DirectionalLights[1] = ldrn;
             CurrentScene.PointLights.Add(lp1);
-
-            ////TESTING PARTICLES
-            //ps = new ParticleSystem(TrashSoupGame.Instance.GraphicsDevice, 
-                //TrashSoupGame.Instance.Content.Load<Texture2D>(@"Textures/ParticleTest/Particle"), 400, new Vector2(2), 1, Vector3.Zero, 0.5f);
 
             foreach(GameObject go in this.CurrentScene.ObjectsDictionary.Values)
             {
@@ -491,6 +495,20 @@ namespace TrashSoup.Engine
                 output = TrashSoupGame.Instance.Content.Load<Model>(path);
                 Models.Add(path, output);
                 Debug.Log("New model successfully loaded - " + path);
+            }
+            return output;
+        }
+
+        public SpriteFont LoadFont(String path)
+        {
+            SpriteFont output = null;
+            if (Fonts.TryGetValue(path, out output))
+                Debug.Log("Font successfully loaded - " + path);
+            else
+            {
+                output = TrashSoupGame.Instance.Content.Load<SpriteFont>(path);
+                Fonts.Add(path, output);
+                Debug.Log("Font successfully loaded - " + path);
             }
             return output;
         }

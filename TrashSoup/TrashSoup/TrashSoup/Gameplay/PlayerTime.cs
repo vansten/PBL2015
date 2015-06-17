@@ -166,7 +166,7 @@ namespace TrashSoup.Gameplay
         public override void Draw(Camera cam, Effect effect, GameTime gameTime)
         {
 
-	   }
+	    }
 
         protected override void Start()
         {

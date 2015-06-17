@@ -122,6 +122,7 @@
     <Compile Include="Engine\Transform.cs" />
     <Compile Include="Engine\WaterMaterial.cs" />
     <Compile Include="Gameplay\AITest.cs" />
+    <Compile Include="Gameplay\AreaTransition.cs" />
     <Compile Include="Gameplay\Fortification.cs" />
     <Compile Include="Gameplay\DaytimeChange.cs" />
     <Compile Include="Gameplay\FortificationPart.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Gameplay\HideoutStash.cs" />
     <Compile Include="Gameplay\Journal.cs" />
     <Compile Include="Gameplay\JournalView.cs" />
+    <Compile Include="Gameplay\MessageBox.cs" />
     <Compile Include="Gameplay\PlayerAttackTrigger.cs" />
     <Compile Include="Gameplay\Stairs.cs" />
     <Compile Include="Gameplay\Trash.cs" />
