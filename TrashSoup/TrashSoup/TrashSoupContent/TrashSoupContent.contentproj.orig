@@ -546,6 +546,8 @@
     </Compile>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
     <Compile Include="Animations\MainCharacter\boxing_3_fix.X">
       <Name>boxing_3_fix</Name>
       <Importer>XImporter</Importer>
@@ -561,6 +563,7 @@
       <Importer>XImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
     </Compile>
+>>>>>>> 329f7d10aa8c0a37feb1cf90c740c52698147ff4
     <Compile Include="Animations\MainCharacter\boxing_4.X">
       <Name>boxing_4</Name>
       <Importer>XImporter</Importer>
