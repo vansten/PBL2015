@@ -50,7 +50,7 @@ namespace TrashSoup.Gameplay
                     Vector3 diff = e.MyObject.MyTransform.Position - pc.MyObject.MyTransform.Position;
                     diff.Y = 0.0f;
                     diff.Normalize();
-                    e.MyObject.MyPhysicalObject.AddForce(diff * 130.0f * damage);
+                    e.MyObject.MyPhysicalObject.AddForce(diff * 50.0f * damage);
                 }
             }
         }

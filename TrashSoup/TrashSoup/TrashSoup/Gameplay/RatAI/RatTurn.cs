@@ -12,11 +12,11 @@ namespace TrashSoup.Gameplay.RatAI
     class RatTurn : TrashSoup.Engine.AI.BehaviorTree.Action
     {
         private float timer = 0.0f;
-        private float turnTime = 3.0f;
+        private float turnTime = 2.0f;
         private float rotationTimer = 0.0f;
         private float movementSpeed = 0.6f;
         private Vector3 movementVector = Vector3.Right;
-        private float rotationSpeed = 0.5f;
+        private float rotationSpeed = 0.25f;
         private Vector3 newRot;
         private Vector3 oldRot;
         private bool firstTime = true;
