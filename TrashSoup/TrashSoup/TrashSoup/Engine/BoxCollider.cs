@@ -59,6 +59,10 @@ namespace TrashSoup.Engine
         /// </summary>
         public override void Draw(Camera cam, Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
         {
+            if (!this.Enabled)
+            {
+                return;
+            }
             short[] bBoxIndices = {
                                 0, 1, 1, 2, 2, 3, 3, 0, // Front edges
                                 4, 5, 5, 6, 6, 7, 7, 4, // Back edges
