@@ -159,7 +159,7 @@ namespace TrashSoup.Gameplay
             GameObject player = ResourceManager.Instance.CurrentScene.GetObject(1);
             pController = (PlayerController)player.GetComponent<PlayerController>();
             stash = (HideoutStash)player.GetComponent<HideoutStash>();
-            equipment = (Equipment)player.GetComponent<Equipment>();
+            equipment = pController.Equipment;
 
             if (cTime == null || pController == null || stash == null || equipment == null)
             {
@@ -222,10 +222,15 @@ namespace TrashSoup.Gameplay
 
         private void LoadToNextLevel()
         {
+            stash.CurrentTrash += equipment.JunkCount;
+            SaveManager.Instance.SaveState(stash.CurrentTrash);
             // fade in
 
             SaveManager.Instance.XmlPath = this.NextScenePath;
             SaveManager.Instance.LoadFileAction();
+
+            stash = (HideoutStash)ResourceManager.Instance.CurrentScene.GetObject(1).GetComponent<HideoutStash>();
+            stash.CurrentTrash += SaveManager.Instance.LoadState();
 
             GUIManager.Instance.FadeClear();
         }

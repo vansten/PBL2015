@@ -281,17 +281,6 @@
         <TrashSoup.Gameplay.PlayerHUD>
           <MyObjectID>1</MyObjectID>
         </TrashSoup.Gameplay.PlayerHUD>
-        <TrashSoup.Gameplay.Equipment>
-          <MyObjectID>1</MyObjectID>
-          <JunkCount>0</JunkCount>
-          <FoodCount>0</FoodCount>
-          <Weapon>
-            <MyObjectID>1</MyObjectID>
-            <Durability>-1</Durability>
-            <Damage>5</Damage>
-            <Type>FISTS</Type>
-          </Weapon>
-        </TrashSoup.Gameplay.Equipment>
         <TrashSoup.Gameplay.HideoutStash>
           <MyObjectID>1</MyObjectID>
           <CurrentTrash>0</CurrentTrash>

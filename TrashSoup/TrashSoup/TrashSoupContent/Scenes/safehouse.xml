@@ -268,7 +268,7 @@
         </TrashSoup.Gameplay.PlayerHUD>
         <TrashSoup.Gameplay.HideoutStash>
           <MyObjectID>1</MyObjectID>
-          <CurrentTrash>1000</CurrentTrash>
+          <CurrentTrash>0</CurrentTrash>
         </TrashSoup.Gameplay.HideoutStash>
       </Components>
       <MyCollider>

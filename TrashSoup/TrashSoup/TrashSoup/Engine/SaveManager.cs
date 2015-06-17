@@ -122,6 +122,29 @@ namespace TrashSoup.Engine
             }
         }
 
+        public void SaveState(int trashCount)
+        {
+            using (FileStream fs = new FileStream("user_save.txt", FileMode.Create))
+            {
+                using (StreamWriter writer = new StreamWriter(fs))
+                {
+                    writer.Write(trashCount);
+                }
+                Debug.Log("State saved");
+            }
+        }
+
+        public int LoadState()
+        {
+            int output;
+            using (StreamReader reader = new StreamReader("user_save.txt"))
+            {
+                output = Convert.ToInt32(reader.ReadToEnd());
+                Debug.Log("Actual trash count: " + output);
+                return output;
+            }
+        }
+
         #endregion
     }
 }
