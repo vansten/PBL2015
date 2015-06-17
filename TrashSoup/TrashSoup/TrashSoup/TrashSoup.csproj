@@ -129,6 +129,7 @@
     <Compile Include="Gameplay\HideoutStash.cs" />
     <Compile Include="Gameplay\Journal.cs" />
     <Compile Include="Gameplay\JournalView.cs" />
+    <Compile Include="Gameplay\PlayerAttackTrigger.cs" />
     <Compile Include="Gameplay\Stairs.cs" />
     <Compile Include="Gameplay\Trash.cs" />
     <Compile Include="Gameplay\DisappearingTrash.cs" />

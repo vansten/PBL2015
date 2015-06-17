@@ -31,6 +31,7 @@ namespace TrashSoup.Gameplay
         public double timerOn;
 
         private GameObject player;
+        private PlayerController pc;
         #endregion
 
         #region properties
@@ -85,6 +86,10 @@ namespace TrashSoup.Gameplay
         public override void Initialize()
         {
             this.player = ResourceManager.Instance.CurrentScene.GetObject(1);
+            if(this.player != null)
+            {
+                this.pc = (PlayerController)this.player.GetComponent<PlayerController>();
+            }
             base.Initialize();
         }
 
@@ -92,12 +97,12 @@ namespace TrashSoup.Gameplay
         {
             if(isAttacking)
             {
-                if (other.Components.Exists(x => x is Enemy))
+                /*if (other.Components.Exists(x => x is Enemy))
                 {
                     (other.GetComponent<Enemy>() as Enemy).HitPoints -= Damage;
-                    Rat r = other.GetComponent<Rat>() as Rat;
                     ParticleSystem ps = other.GetComponent<ParticleSystem>() as ParticleSystem;
                     ps.Play();
+                    Rat r = other.GetComponent<Rat>() as Rat;
                     if(r != null)
                     {
                         r.MyBlackBoard.SetBool("TargetSeen", true);
@@ -108,12 +113,12 @@ namespace TrashSoup.Gameplay
                             diff.Y = 0.0f;
                             diff.Normalize();
                             r.MyObject.MyPhysicalObject.AddForce(diff * 650.0f);
-                            ((PlayerController)player.GetComponent<PlayerController>()).Popularity += 15.0f;
                         }
+                        this.pc.Popularity += 15.0f;
                     }
                     if (Type != WeaponType.FISTS && Durability > 0)
                         Durability--;
-                }
+                }*/
             }
             base.OnTriggerEnter(other);
         }
