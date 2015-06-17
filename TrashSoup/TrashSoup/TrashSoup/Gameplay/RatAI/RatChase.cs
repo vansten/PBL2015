@@ -12,7 +12,7 @@ namespace TrashSoup.Gameplay.RatAI
     {
         private Vector3 targetPos;
         private Vector3 myPos;
-        private float chaseSpeed = 8.0f;
+        private float chaseSpeed = 6.0f;
         private Vector3 chaseVector = Vector3.Zero;
         private float prevRotY;
         private float rotY;
@@ -26,7 +26,7 @@ namespace TrashSoup.Gameplay.RatAI
 
         public override TickStatus Tick(Microsoft.Xna.Framework.GameTime gameTime, out INode node)
         {
-            if (!this.blackboard.GetBool("TargetSeen") || this.blackboard.GetBool("ShouldTurn"))
+            if (!this.blackboard.GetBool("TargetSeen"))
             {
                 this.blackboard.SetBool("TargetSeen", false);
                 firstTime = true;
@@ -37,6 +37,7 @@ namespace TrashSoup.Gameplay.RatAI
             if (firstTime)
             {
                 firstTime = false;
+                this.blackboard.Owner.MyAnimator.StopAnimation();
                 this.blackboard.Owner.MyAnimator.ChangeState("Run");
             }
 
@@ -44,7 +45,7 @@ namespace TrashSoup.Gameplay.RatAI
             this.myPos = this.blackboard.Owner.MyTransform.Position;
             float distance = Vector3.Distance(this.myPos, this.targetPos);
 
-            if(distance < 5.5f)
+            if(distance < 3.5f)
             {
                 firstTime = true;
                 node = null;

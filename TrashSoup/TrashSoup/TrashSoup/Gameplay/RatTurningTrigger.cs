@@ -39,7 +39,7 @@ namespace TrashSoup.Gameplay
 
         public override void OnTrigger(GameObject other)
         {
-            if(other.UniqueID != 1 && other.UniqueID != this.myRat.MyObject.UniqueID)
+            if(other.Tags.Contains("NoRatAllowed"))
             {
                 this.myRat.MyBlackBoard.SetBool("ShouldTurn", true);
             }

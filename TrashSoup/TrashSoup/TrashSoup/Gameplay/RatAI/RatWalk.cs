@@ -14,7 +14,7 @@ namespace TrashSoup.Gameplay.RatAI
         private float timer = 0.0f;
         private float rotationTimer = 0.0f;
         private float walkTime = 8.0f;
-        private float movementSpeed = 5.0f;
+        private float movementSpeed = 2.5f;
         private Vector3 movementVector = Vector3.Right;
         private float rotationSpeed = 0.5f;
         private Vector3 newRot;
