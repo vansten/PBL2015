@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 using TrashSoup.Engine;
 using Microsoft.Xna.Framework;
 
 namespace TrashSoup.Gameplay
 {
-    public class AreaTransition : ObjectComponent
+    public class AreaTransition : ObjectComponent, IXmlSerializable
     {
         #region constants
 
@@ -64,69 +67,72 @@ namespace TrashSoup.Gameplay
 
         public override void Update(GameTime gameTime)
         {
-            if(actionTimer < actionTimerUpper)
+            if (!TrashSoupGame.Instance.EditorMode)
             {
-                actionTimer += gameTime.ElapsedGameTime.TotalMilliseconds;
-            }
-            else if(actionTimer > actionTimerUpper)
-            {
-                ActionEvent();
-
-                ActionEvent = null;
-
-                actionTimerUpper = 0;
-                actionTimer = 0;
-            }
-
-            if(!mBoxes[cMessageBox].Active)
-            {
-                // solve cMessageBox
-                int hours = cTime.Hours;
-                if (hours >= 22)  // prompt player immediately to return
+                if (actionTimer < actionTimerUpper)
                 {
-                    cMessageBox = 2;
-                    ActivateMessageBox();
+                    actionTimer += gameTime.ElapsedGameTime.TotalMilliseconds;
                 }
-                else if (hours >= 21) // disable deposit stash options
+                else if (actionTimer > actionTimerUpper)
                 {
-                    cMessageBox = 1;
+                    ActionEvent();
+
+                    ActionEvent = null;
+
+                    actionTimerUpper = 0;
+                    actionTimer = 0;
+                }
+
+                if (!mBoxes[cMessageBox].Active)
+                {
+                    // solve cMessageBox
+                    int hours = cTime.Hours;
+                    if (hours >= 22)  // prompt player immediately to return
+                    {
+                        cMessageBox = 2;
+                        ActivateMessageBox();
+                    }
+                    else if (hours >= 21) // disable deposit stash options
+                    {
+                        cMessageBox = 1;
+                    }
+                    else
+                    {
+                        cMessageBox = 0;
+                    }
                 }
                 else
                 {
-                    cMessageBox = 0;
-                }
-            }
-            else
-            {
-                // draw current message box as it is active
-                mBoxes[cMessageBox].Draw(null);
-                mBoxes[cMessageBox].Update(gameTime);
+                    // draw current message box as it is active
+                    mBoxes[cMessageBox].Draw(null);
+                    mBoxes[cMessageBox].Update(gameTime);
 
-                // check prompt response and proceed accordingly
-                if(mBoxes[cMessageBox].Response != 0)
-                {
-                    DectivateMessageBox();
+                    // check prompt response and proceed accordingly
+                    if (mBoxes[cMessageBox].Response != 0)
+                    {
+                        DectivateMessageBox();
 
-                    if(mBoxes[cMessageBox].Response == 1)   // go back to hideout
-                    {
-                        actionTimer = 0;
-                        actionTimerUpper = 500;
-                        GUIManager.Instance.FadeIn(Color.Black, 500);
-                        ActionEvent += new ActionDelegate(LoadToNextLevel);
+                        if (mBoxes[cMessageBox].Response == 1)   // go back to hideout
+                        {
+                            actionTimer = 0;
+                            actionTimerUpper = 500;
+                            GUIManager.Instance.FadeIn(Color.Black, 500);
+                            ActionEvent += new ActionDelegate(LoadToNextLevel);
+                        }
+                        //else if (mBoxes[cMessageBox].Response == 2) // do actually nothing
+                        //{
+                        //    // nothing
+                        //}
+                        else if (mBoxes[cMessageBox].Response == 3) // initiate stash deposit
+                        {
+                            actionTimer = 0;
+                            actionTimerUpper = 500;
+                            GUIManager.Instance.FadeIn(Color.Black, 500);
+                            ActionEvent += new ActionDelegate(StashStuff);
+                            GameManager.Instance.MovementEnabled = false;
+                        }
                     }
-                    //else if (mBoxes[cMessageBox].Response == 2) // do actually nothing
-                    //{
-                    //    // nothing
-                    //}
-                    else if (mBoxes[cMessageBox].Response == 3) // initiate stash deposit
-                    {
-                        actionTimer = 0;
-                        actionTimerUpper = 500;
-                        GUIManager.Instance.FadeIn(Color.Black, 500);
-                        ActionEvent += new ActionDelegate(StashStuff);
-                        GameManager.Instance.MovementEnabled = false;
-                    }
-                }
+                }   
             }
         }
 
@@ -243,6 +249,30 @@ namespace TrashSoup.Gameplay
         private void HelperExit(object sender, CollisionEventArgs e)
         {
             activationHelper = false;
+        }
+
+        public override XmlSchema GetSchema()
+        {
+            return base.GetSchema();
+        }
+
+        public override void ReadXml(XmlReader reader)
+        {
+            reader.MoveToContent();
+            reader.ReadStartElement();
+
+            base.ReadXml(reader);
+
+            NextScenePath = reader.ReadElementString("NextScenePath", "");
+
+            reader.ReadEndElement();
+        }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            writer.WriteElementString("NextScenePath", NextScenePath);
         }
 
         #endregion

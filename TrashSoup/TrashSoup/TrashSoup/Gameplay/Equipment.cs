@@ -180,9 +180,9 @@ namespace TrashSoup.Gameplay
 
             if (reader.Name == "Weapon")
             {
-                reader.ReadStartElement();
+                //reader.ReadStartElement();
                 (CurrentWeapon as IXmlSerializable).ReadXml(reader);
-                reader.ReadEndElement();
+                //reader.ReadEndElement();
             }
 
             reader.ReadEndElement();
