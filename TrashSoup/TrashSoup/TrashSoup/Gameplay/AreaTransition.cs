@@ -29,8 +29,18 @@ namespace TrashSoup.Gameplay
         private static Vector2 messageDimenstions = new Vector2(0.6f, 0.15f);
 
         private PlayerTime cTime;
+        private PlayerController pController;
+        private HideoutStash stash;
+        private Equipment equipment;
         private MessageBox[] mBoxes = new MessageBox[3];
+        private GameObject colliderHelper;
+        private bool activationHelper;
         private int cMessageBox = 0;
+
+        private double actionTimer = 0;
+        private double actionTimerUpper = 0;
+        private delegate void ActionDelegate();
+        private event ActionDelegate ActionEvent;
 
         #endregion
 
@@ -54,6 +64,20 @@ namespace TrashSoup.Gameplay
 
         public override void Update(GameTime gameTime)
         {
+            if(actionTimer < actionTimerUpper)
+            {
+                actionTimer += gameTime.ElapsedGameTime.TotalMilliseconds;
+            }
+            else if(actionTimer > actionTimerUpper)
+            {
+                ActionEvent();
+
+                ActionEvent = null;
+
+                actionTimerUpper = 0;
+                actionTimer = 0;
+            }
+
             if(!mBoxes[cMessageBox].Active)
             {
                 // solve cMessageBox
@@ -81,20 +105,27 @@ namespace TrashSoup.Gameplay
                 // check prompt response and proceed accordingly
                 if(mBoxes[cMessageBox].Response != 0)
                 {
+                    DectivateMessageBox();
+
                     if(mBoxes[cMessageBox].Response == 1)   // go back to hideout
                     {
-                        Debug.Log("go back to hideout");
+                        actionTimer = 0;
+                        actionTimerUpper = 500;
+                        GUIManager.Instance.FadeIn(Color.Black, 500);
+                        ActionEvent += new ActionDelegate(LoadToNextLevel);
                     }
-                    else if (mBoxes[cMessageBox].Response == 2) // do actually nothing
-                    {
-                        Debug.Log("do actually nothing");
-                    }
+                    //else if (mBoxes[cMessageBox].Response == 2) // do actually nothing
+                    //{
+                    //    // nothing
+                    //}
                     else if (mBoxes[cMessageBox].Response == 3) // initiate stash deposit
                     {
-                        Debug.Log("initiate stash deposit");
+                        actionTimer = 0;
+                        actionTimerUpper = 500;
+                        GUIManager.Instance.FadeIn(Color.Black, 500);
+                        ActionEvent += new ActionDelegate(StashStuff);
+                        GameManager.Instance.MovementEnabled = false;
                     }
-
-                    DectivateMessageBox();
                 }
             }
         }
@@ -118,9 +149,15 @@ namespace TrashSoup.Gameplay
             }
 
             cTime = (PlayerTime)pt.GetComponent<PlayerTime>();
-            if(cTime == null)
+
+            GameObject player = ResourceManager.Instance.CurrentScene.GetObject(1);
+            pController = (PlayerController)player.GetComponent<PlayerController>();
+            stash = (HideoutStash)player.GetComponent<HideoutStash>();
+            equipment = (Equipment)player.GetComponent<Equipment>();
+
+            if (cTime == null || pController == null || stash == null || equipment == null)
             {
-                throw new ArgumentNullException("AreaTransition: PlayerTIme object has no PlayerTime Component!");
+                throw new ArgumentNullException("AreaTransition: some required components are inexistant!");
             }
 
             mBoxes[0] = new MessageBox(messagePosition, messageDimenstions.X, messageDimenstions.Y);
@@ -141,13 +178,23 @@ namespace TrashSoup.Gameplay
             mBoxes[2].OptionTexts = new string[] { MESSAGE_2_0 };
             mBoxes[2].Initialize();
 
+            colliderHelper = new GameObject(MyObject.UniqueID + (uint)MyObject.Name.GetHashCode() + 1, MyObject.Name + "AreaTransitionHelper");
+            MyObject.AddChild(colliderHelper);
+            colliderHelper.MyTransform = new Transform(colliderHelper, Vector3.Zero, Vector3.Up, Vector3.Zero, MyObject.MyTransform.Scale * 1.3f);
+            colliderHelper.MyCollider = new SphereCollider(colliderHelper, true);
+            colliderHelper.OnTriggerEnterEvent += new GameObject.OnTriggerEnterEventHandler(HelperEnter);
+            colliderHelper.OnTriggerExitEvent += new GameObject.OnTriggerExitEventHandler(HelperExit);
+
             base.Initialize();
         }
 
         public override void OnTriggerEnter(GameObject other)
         {
             // show prompt
-            ActivateMessageBox();
+            if(!activationHelper)
+            {
+                ActivateMessageBox();
+            }
 
             base.OnTriggerEnter(other);
         }
@@ -155,6 +202,7 @@ namespace TrashSoup.Gameplay
         private void ActivateMessageBox()
         {
             mBoxes[cMessageBox].Active = true;
+            activationHelper = true;
 
             GameManager.Instance.MovementEnabled = false;
         }
@@ -164,6 +212,37 @@ namespace TrashSoup.Gameplay
             mBoxes[cMessageBox].Active = false;
 
             GameManager.Instance.MovementEnabled = true;
+        }
+
+        private void LoadToNextLevel()
+        {
+            // fade in
+
+            SaveManager.Instance.XmlPath = this.NextScenePath;
+            SaveManager.Instance.LoadFileAction();
+
+            GUIManager.Instance.FadeClear();
+        }
+
+        private void StashStuff()
+        {
+            stash.CurrentTrash += equipment.JunkCount;
+            equipment.JunkCount = 0;
+
+            cTime.TotalMilliseconds += 1000 * 60 * 60;
+
+            GUIManager.Instance.FadeOut(Color.Black, 500);
+            GameManager.Instance.MovementEnabled = true;
+        }
+
+        private void HelperEnter(object sender, CollisionEventArgs e)
+        {
+
+        }
+
+        private void HelperExit(object sender, CollisionEventArgs e)
+        {
+            activationHelper = false;
         }
 
         #endregion

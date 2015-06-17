@@ -311,6 +311,11 @@ namespace TrashSoup.Gameplay
                     }
                 }
             }
+            else
+            {
+                moving = false;
+                if(MyObject.MyAnimator.NewState != null) MyObject.MyAnimator.RemoveBlendStateToCurrent();
+            }
 
             if(this.collisionWithWeapon)
             {

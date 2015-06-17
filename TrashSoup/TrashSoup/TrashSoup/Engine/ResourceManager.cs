@@ -264,6 +264,10 @@ namespace TrashSoup.Engine
             testStash.CurrentTrash = 1000;
             testBox.Components.Add(testStash);
 
+            Equipment eq = new Equipment(testBox);
+            eq.JunkCount = 10;
+            testBox.Components.Add(eq);
+
             testBox.MyPhysicalObject = new PhysicalObject(testBox, 1.0f, 0.05f, false);
             testBox.MyCollider = new BoxCollider(testBox);  //Add a box collider to test collisions
 
@@ -367,12 +371,12 @@ namespace TrashSoup.Engine
 
             GameObject playerTime = new GameObject(1000, "PlayerTime");
             PlayerTime pt = new PlayerTime(playerTime);
-            pt.InitHours = 21;
+            pt.InitHours = 20;
             playerTime.Components.Add(pt);
 
             GameObject testTransition = new GameObject(501, "Transition");
             AreaTransition at = new AreaTransition(testTransition);
-            at.NextScenePath = "../../../../TrashSoupContent/Scenes/StengertPAGI.xml";
+            at.NextScenePath = "../../../../TrashSoupContent/Scenes/save2.xml";
             testTransition.Components.Add(at);
             testTransition.MyTransform = new Transform(testTransition, new Vector3(-10.0f, 0.0f, 10.0f), Vector3.Up, Vector3.Zero, 5.0f);
             testTransition.MyCollider = new SphereCollider(testTransition, true);

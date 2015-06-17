@@ -85,6 +85,10 @@ namespace TrashSoup.Gameplay
             {
                 return (long)millis;
             }
+            set
+            {
+                millis = (double)value;
+            }
         }
 
         public double Multiplier

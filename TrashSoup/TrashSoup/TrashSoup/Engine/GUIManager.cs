@@ -427,6 +427,12 @@ namespace TrashSoup.Engine
         private List<GUIButton> allButtonsDeclared = new List<GUIButton>();
         private List<int> buttonsToDrawIndices = new List<int>();
 
+        private bool fade;
+        private double fadeTime;
+        private float fadeAlpha = 0.0f;
+        private float fadeDirection;
+        private Color fadeColor;
+
         #endregion 
 
         #region Methods
@@ -442,6 +448,17 @@ namespace TrashSoup.Engine
         /// </summary>
         public void Update(GameTime gameTime)
         {
+            // fade solving
+            if(fade)
+            {
+                fadeAlpha = MathHelper.Clamp(
+                    fadeAlpha + fadeDirection * (float)(gameTime.ElapsedGameTime.TotalMilliseconds / fadeTime),
+                    0.0f, 1.0f);
+
+                if (fadeAlpha <= 0.0f || fadeAlpha >= 1.0f)
+                    fade = false;
+            }
+
             foreach (GUIElement element in this.elementsToDraw)
             {
                 element.Update(gameTime);
@@ -609,11 +626,47 @@ namespace TrashSoup.Engine
                     this.allButtonsDeclared[i].Draw(spriteBatch);
                 }
 
+                // fade draw
+                spriteBatch.Draw(ResourceManager.Instance.Textures["DefaultDiffuse"], 
+                    new Rectangle(0, 0, TrashSoupGame.Instance.Window.ClientBounds.Width, TrashSoupGame.Instance.Window.ClientBounds.Height), 
+                    new Color(fadeColor.R, fadeColor.B, fadeColor.A, fadeAlpha));
+
                 this.buttonsToDrawIndices.Clear();
                 this.elementsToDraw.Clear();
 
                 spriteBatch.End();
             }
+        }
+
+        public void FadeIn(Color color, double timeMS)
+        {
+            if(!fade)
+            {
+                fade = true;
+                fadeDirection = 1.0f;
+                fadeColor = color;
+                fadeTime = timeMS;
+            }
+        }
+
+        public void FadeOut(Color color, double timeMS)
+        {
+            if (!fade)
+            {
+                fade = true;
+                fadeDirection = -1.0f;
+                fadeColor = color;
+                fadeTime = timeMS;
+            }
+        }
+
+        public void FadeClear()
+        {
+            fade = false;
+            fadeDirection = 0.0f;
+            fadeColor = Color.White;
+            fadeTime = 0.0f;
+            fadeAlpha = 0.0f;
         }
 
         public void Clear()
