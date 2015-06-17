@@ -36,6 +36,7 @@ namespace TrashSoup.Engine
         #region Variables
 
         protected Vector2 position;
+        protected Vector2 relativePosition;
         protected float width;
         protected float height;
 
@@ -47,6 +48,7 @@ namespace TrashSoup.Engine
 
         public GUIElement(Vector2 pos, float width, float height)
         {
+            this.relativePosition = pos;
             this.position = new Vector2(pos.X * TrashSoupGame.Instance.Window.ClientBounds.Width, pos.Y * TrashSoupGame.Instance.Window.ClientBounds.Height);
             this.width = width;
             this.height = height;
