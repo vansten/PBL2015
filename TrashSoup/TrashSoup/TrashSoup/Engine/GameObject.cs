@@ -208,7 +208,7 @@ namespace TrashSoup.Engine
 
         public virtual void Update(GameTime gameTime)
         {
-            if(this.Enabled)
+            if(this.Enabled && !ResourceManager.Instance.ImmediateStop)
             {
                 int cCount = children.Count;
                 for (int i = 0; i < cCount; ++i)
@@ -250,7 +250,7 @@ namespace TrashSoup.Engine
 
         public virtual void Draw(Camera cam, Effect effect, GameTime gameTime)
         {
-            if(this.Visible && this.Enabled)
+            if (this.Visible && this.Enabled && !ResourceManager.Instance.ImmediateStop)
             {
                 foreach (ObjectComponent obj in Components)
                 {

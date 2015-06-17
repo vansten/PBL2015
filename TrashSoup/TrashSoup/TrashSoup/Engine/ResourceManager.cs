@@ -36,8 +36,8 @@ namespace TrashSoup.Engine
         public Dictionary<string, Effect> Effects = new Dictionary<string, Effect>();
         public Dictionary<string, Material> Materials = new Dictionary<string,Material>();
         public List<Cue> Sounds = new List<Cue>();
-        public ParticleSystem ps;
-        //public List<Particle> Particles = new List<Particle>();
+
+        public bool ImmediateStop = false;
         #endregion
 
         #region Methods
@@ -49,9 +49,10 @@ namespace TrashSoup.Engine
 
         public void LoadContent(Game game)
         {
-            LoadTextures(game);
-            LoadEffects(game);
+            LoadTextures();
+            LoadEffects();
             AudioManager.Instance.LoadContent();
+            TrashSoupGame.Instance.ReloadSpriteBatch();
             //LoadCues();
 
             // because it pisses me off - Mav
@@ -124,9 +125,9 @@ namespace TrashSoup.Engine
 
             // loading materials
             List<Material> testPlayerMats = new List<Material>();
-            Material testPlayerMat = new Material("testPlayerMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Test\cargo"]);
+            Material testPlayerMat = new Material("testPlayerMat", LoadEffect(@"Effects\NormalEffect"), LoadTexture(@"Textures\Test\cargo"));
             testPlayerMats.Add(testPlayerMat);
-            testPlayerMat.NormalMap = Textures[@"Textures\Test\cargo_NRM"];
+            testPlayerMat.NormalMap = LoadTexture(@"Textures\Test\cargo_NRM");
             testPlayerMat.Glossiness = 40.0f;
             testPlayerMat.Transparency = 1.0f;
             testPlayerMat.RecieveShadows = true;
@@ -136,9 +137,9 @@ namespace TrashSoup.Engine
             }
 
             List<Material> testPlayerMats2 = new List<Material>();
-            Material testPlayerMat2 = new Material("testPlayerMat2", this.Effects[@"Effects\CubeNormalEffect"], Textures[@"Textures\Test\cargo"]);
+            Material testPlayerMat2 = new Material("testPlayerMat2", this.Effects[@"Effects\CubeNormalEffect"], LoadTexture(@"Textures\Test\cargo"));
             testPlayerMats2.Add(testPlayerMat2);
-            testPlayerMat2.NormalMap = Textures[@"Textures\Test\cargo_NRM"];
+            testPlayerMat2.NormalMap = LoadTexture(@"Textures\Test\cargo_NRM");
             testPlayerMat2.CubeMap = LoadTextureCube(@"Textures\Skyboxes\Dusk");
             testPlayerMat2.Glossiness = 40.0f;
             testPlayerMat2.ReflectivityColor = new Vector3(1.0f, 0.0f, 1.0f);
@@ -194,7 +195,7 @@ namespace TrashSoup.Engine
             List<Material> bb = LoadBasicMaterialsFromModel(Models["Models/Weapons/Stones/brick"], Effects[@"Effects\NormalEffect"]);
 
             List<Material> testTerMats = new List<Material>();
-            Material testTerMat = new Material("testTerMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Test\metal01_d"]);
+            Material testTerMat = new Material("testTerMat", this.Effects[@"Effects\NormalEffect"], LoadTexture(@"Textures\Test\metal01_d"));
             testTerMat.NormalMap = LoadTexture(@"Textures\Test\water");
             testTerMat.SpecularColor = new Vector3(0.1f, 0.1f, 0.0f);
             testTerMat.Glossiness = 10.0f;
@@ -229,10 +230,10 @@ namespace TrashSoup.Engine
 
             //WIKA I KASIA Testowanie modeli
             List<Material> awsomeTestMats = new List<Material>();
-            Material awsomeTestMat = new Material("awsomeTestMat", this.Effects[@"Effects\NormalEffect"], Textures[@"Textures\Home\WindowsDoors\DoorFrame_D"]);
+            Material awsomeTestMat = new Material("awsomeTestMat", this.Effects[@"Effects\NormalEffect"], LoadTexture(@"Textures\Home\WindowsDoors\DoorFrame_D"));
             awsomeTestMats.Add(awsomeTestMat);
             awsomeTestMats.Add(awsomeTestMat);
-            awsomeTestMat.NormalMap = Textures[@"Textures\Home\WindowsDoors\DoorFrame_N"];
+            awsomeTestMat.NormalMap = LoadTexture(@"Textures\Home\WindowsDoors\DoorFrame_N");
             awsomeTestMat.Glossiness = 40.0f;
             awsomeTestMat.ReflectivityColor = new Vector3(1.0f, 0.0f, 1.0f);
             awsomeTestMat.ReflectivityBias = 0.0f;
@@ -415,9 +416,10 @@ namespace TrashSoup.Engine
             CurrentScene.AddObject(testTer);
             CurrentScene.AddObject(testBox);
             CurrentScene.AddObject(testBox2);
-            CurrentScene.AddObject(testBox3);
+            
             CurrentScene.AddObject(testMirror);
             CurrentScene.AddObject(testWater);
+            CurrentScene.AddObject(testBox3);
             CurrentScene.AddObject(awsomeTest);//Wika i kasia
             CurrentScene.AddObject(rat);
             CurrentScene.AddObject(cegla);
@@ -434,6 +436,38 @@ namespace TrashSoup.Engine
             {
                 go.Initialize();
             }
+        }
+
+        public void UnloadContent()
+        {
+            UnloadContentFinal();
+
+            GUIManager.Instance.Clear();
+            ImmediateStop = true;
+            //TrashSoupGame.Instance.ReloadSpriteBatch();
+            LoadTextures();
+            LoadEffects();
+
+            if(TrashSoupGame.Instance.GraphicsDevice.SamplerStates[0] == null)
+            {
+                TrashSoupGame.Instance.GraphicsDevice.SamplerStates[0] = SamplerState.LinearWrap;
+            }
+        }
+
+
+        public void UnloadContentFinal()
+        {
+            TrashSoupGame.Instance.Content.Unload();
+
+            CurrentScene = null;
+            Models.Clear();
+            Textures.Clear();
+            Animations.Clear();
+            TexturesCube.Clear();
+            Fonts.Clear();
+            Effects.Clear();
+            Sounds.Clear();
+            Materials.Clear();
         }
 
         /// <summary>
@@ -488,9 +522,7 @@ namespace TrashSoup.Engine
         public Model LoadModel(String path)
         {
             Model output = null;
-            if (Models.TryGetValue(path, out output))
-                Debug.Log("Model successfully loaded - " + path);
-            else
+            if (!Models.TryGetValue(path, out output))
             {
                 output = TrashSoupGame.Instance.Content.Load<Model>(path);
                 Models.Add(path, output);
@@ -502,9 +534,8 @@ namespace TrashSoup.Engine
         public SpriteFont LoadFont(String path)
         {
             SpriteFont output = null;
-            if (Fonts.TryGetValue(path, out output))
-                Debug.Log("Font successfully loaded - " + path);
-            else
+
+            if (!Fonts.TryGetValue(path, out output))
             {
                 output = TrashSoupGame.Instance.Content.Load<SpriteFont>(path);
                 Fonts.Add(path, output);
@@ -523,9 +554,8 @@ namespace TrashSoup.Engine
         public Model LoadAnimation(String path)
         {
             Model output = null;
-            if (Animations.TryGetValue(path, out output))
-                Debug.Log("Animation successfully loaded - " + path);
-            else
+
+            if (!Animations.TryGetValue(path, out output))
             {
                 output = TrashSoupGame.Instance.Content.Load<Model>(path);
                 Animations.Add(path, output);
@@ -680,7 +710,7 @@ namespace TrashSoup.Engine
         /// IMPORTANT!!! SET NAME FOR EVERY ELEMENT
         /// </summary>
         /// <param name="game"></param>
-        public void LoadTextures(Game game)
+        public void LoadTextures()
         {
             // Adding "default" textures for all maps containing only one pixel in one color
             uint whiteColor = 0xFFFFFFFF;
@@ -716,15 +746,6 @@ namespace TrashSoup.Engine
                 TexturesCube.Add("DefaultCube", defCbc);
             }
             ///////////////////////////////////////////
-
-            // FOR TETIN
-            LoadTexture(@"Textures\Test\cargo");
-            LoadTexture(@"Textures\Test\cargo_NRM");
-            LoadTexture(@"Textures\Test\metal01_d");
-
-            //Wika i Kasia
-            LoadTexture(@"Textures\Home\WindowsDoors\DoorFrame_D");
-            LoadTexture(@"Textures\Home\WindowsDoors\DoorFrame_N");
         }
 
         /// <summary>
@@ -733,7 +754,7 @@ namespace TrashSoup.Engine
         /// IMPORTANT!!! SET NAME FOR EVERY ELEMENT
         /// </summary>
         /// <param name="game"></param>
-        public void LoadEffects(Game game)
+        public void LoadEffects()
         {
             if(!Effects.ContainsKey("BasicEffect"))
             {

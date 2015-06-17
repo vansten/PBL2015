@@ -292,7 +292,10 @@ namespace TrashSoup.Engine
                 rtSwitched = false;
                 ResourceManager.Instance.CurrentScene.Params.UseGraph = !ResourceManager.Instance.CurrentScene.Params.UseGraph;
             }
-            TrashSoupGame.Instance.GraphicsDevice.SamplerStates[0] = sp;
+            if (sp != null)
+                TrashSoupGame.Instance.GraphicsDevice.SamplerStates[0] = sp;
+            else
+                TrashSoupGame.Instance.GraphicsDevice.SamplerStates[0] = SamplerState.LinearWrap;
             TrashSoupGame.Instance.GraphicsDevice.RasterizerState = rs;
             TrashSoupGame.Instance.GraphicsDevice.BlendState = bs;
 

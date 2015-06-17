@@ -595,7 +595,7 @@ namespace TrashSoup.Engine
         /// </summary>
         public void Render(SpriteBatch spriteBatch)
         {
-            if(spriteBatch != null)
+            if(spriteBatch != null && elementsToDraw.Count > 0)
             {
                 spriteBatch.Begin();
 
@@ -614,6 +614,11 @@ namespace TrashSoup.Engine
 
                 spriteBatch.End();
             }
+        }
+
+        public void Clear()
+        {
+            elementsToDraw.Clear();
         }
 
         #endregion

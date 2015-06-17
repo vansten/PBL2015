@@ -134,7 +134,10 @@ namespace TrashSoup.Engine
                 ResourceManager.Instance.CurrentScene.DrawAll(Cameras[i], myShadowEffect, TrashSoupGame.Instance.TempGameTime, false);
             }
             TrashSoupGame.Instance.ActualRenderTarget = TrashSoupGame.Instance.DefaultRenderTarget;
-            TrashSoupGame.Instance.GraphicsDevice.SamplerStates[0] = sp;
+            if (sp != null)
+                TrashSoupGame.Instance.GraphicsDevice.SamplerStates[0] = sp;
+            else
+                TrashSoupGame.Instance.GraphicsDevice.SamplerStates[0] = SamplerState.LinearWrap;
             TrashSoupGame.Instance.GraphicsDevice.BlendState = bs;
         }
 

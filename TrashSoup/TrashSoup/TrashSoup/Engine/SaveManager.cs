@@ -65,6 +65,7 @@ namespace TrashSoup.Engine
 
         public void LoadFileAction()
         {
+            ResourceManager.Instance.UnloadContent();
             PhysicsManager.Instance.Reload();
             Debug.Log("Loading file: " + this.XmlPath);
             XmlSerializer serializer = new XmlSerializer(typeof(Scene));

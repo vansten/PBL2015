@@ -27,7 +27,6 @@ namespace TrashSoup
         //Variables that allow us to display fps counter :) only in debug mode
         private int frames = 0;
         private float timer = 0.0f;
-        private SpriteFont font;
         float fps = 0.0f;
 #endif
 
@@ -88,25 +87,19 @@ namespace TrashSoup
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            ResourceManager.Instance.LoadTextures(this);
-            ResourceManager.Instance.LoadEffects(this);
+            ResourceManager.Instance.LoadTextures();
+            ResourceManager.Instance.LoadEffects();
             //this.LoadContent();
         }
 
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
             ResourceManager.Instance.LoadContent(this);
-#if DEBUG
-            //Loading font for fps counter :) only in debug mode
-            font = Content.Load<SpriteFont>("Fonts/FontTest");
-#endif
         }
 
         protected override void UnloadContent()
         {
-
+            ResourceManager.Instance.UnloadContentFinal();
         }
 
         public void EditorUpdate()
@@ -125,6 +118,9 @@ namespace TrashSoup
 
         protected override void Update(GameTime gameTime)
         {
+            if (ResourceManager.Instance.ImmediateStop)
+                ResourceManager.Instance.ImmediateStop = false;
+
             if(!this.EditorMode)
             {
 #if DEBUG
@@ -138,7 +134,7 @@ namespace TrashSoup
                     timer = 0.0f;
                     frames = 0;
                 }
-                GUIManager.Instance.DrawText(this.font, "FPS: " + fps.ToString(), new Vector2(0.45f, 0.1f), Color.Lime);
+                GUIManager.Instance.DrawText(ResourceManager.Instance.LoadFont("Fonts/FontTest"), "FPS: " + fps.ToString(), new Vector2(0.45f, 0.1f), Color.Lime);
 #endif
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                     this.Exit();
@@ -213,6 +209,9 @@ namespace TrashSoup
 
         public void EditorDraw()
         {
+            if (ResourceManager.Instance.ImmediateStop)
+                ResourceManager.Instance.ImmediateStop = false;
+
             this.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
@@ -230,15 +229,13 @@ namespace TrashSoup
 
         protected override void Draw(GameTime gameTime)
         {
+            if (ResourceManager.Instance.ImmediateStop)
+                ResourceManager.Instance.ImmediateStop = false;
+
             this.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             ResourceManager.Instance.CurrentScene.DrawAll(null, null, gameTime, true);
-
-            if (ResourceManager.Instance.ps != null)
-            {
-                //ResourceManager.Instance.ps.Draw();
-            }
 
             base.Draw(gameTime);
 
@@ -253,6 +250,11 @@ namespace TrashSoup
         public SpriteBatch GetSpriteBatch()
         {
             return this.spriteBatch;
+        }
+
+        public void ReloadSpriteBatch()
+        {
+            this.spriteBatch = new SpriteBatch(GraphicsDevice);
         }
     }
 }
