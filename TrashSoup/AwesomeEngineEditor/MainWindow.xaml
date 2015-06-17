@@ -62,7 +62,7 @@
         <!-- Hierarchy -->
         <DockPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
             <Border BorderBrush="Black" BorderThickness="2">
-                <TreeView Name="HierarchyTreeView" Width="300" FontSize="30" Background="LightGray" SelectedItemChanged="HierarchyTreeView_SelectedItemChanged" MouseLeftButtonDown="HierarchyTreeView_MouseLeftButtonDown"
+                <TreeView Name="HierarchyTreeView" Width="300" FontSize="15" Background="LightGray" SelectedItemChanged="HierarchyTreeView_SelectedItemChanged" MouseLeftButtonDown="HierarchyTreeView_MouseLeftButtonDown"
                           ItemsSource="{Binding GameObjects}">
                     <TreeView.ItemTemplate>
                         <DataTemplate>

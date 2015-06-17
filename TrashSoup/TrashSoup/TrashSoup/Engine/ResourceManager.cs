@@ -32,7 +32,7 @@ namespace TrashSoup.Engine
         public Dictionary<string, Model> Animations = new Dictionary<string, Model>();
         public Dictionary<string, Texture2D> Textures = new Dictionary<string, Texture2D>();
         public Dictionary<string, TextureCube> TexturesCube = new Dictionary<string, TextureCube>();
-        public List<SpriteFont> Fonts = new List<SpriteFont>();
+        public Dictionary<string, SpriteFont> Fonts = new Dictionary<string, SpriteFont>();
         public Dictionary<string, Effect> Effects = new Dictionary<string, Effect>();
         public Dictionary<string, Material> Materials = new Dictionary<string,Material>();
         public List<Cue> Sounds = new List<Cue>();
@@ -88,6 +88,8 @@ namespace TrashSoup.Engine
             AddAnimation("Animations/MainCharacter/boxing_1");
             AddAnimation("Animations/MainCharacter/boxing_2");
             AddAnimation("Animations/MainCharacter/boxing_3");
+            AddAnimation("Animations/MainCharacter/boxing_3_fix");
+            AddAnimation("Animations/MainCharacter/boxing");
             AddAnimation("Animations/MainCharacter/charge_Hweapon");
            // AddAnimation("Animations/MainCharacter/charge_SMweapon");
           //  AddAnimation("Animations/MainCharacter/custom_kick");
@@ -250,7 +252,7 @@ namespace TrashSoup.Engine
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/run_2"), "Animations/MainCharacter/run_2"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/idle_1"), "Animations/MainCharacter/idle_1"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/dodge_1"), "Animations/MainCharacter/dodge_1"));
-            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/boxing_3"), "Animations/MainCharacter/boxing_3"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/boxing_3"), "Animations/MainCharacter/boxing_3_fix"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/building"), "Animations/MainCharacter/building"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/dying_1"), "Animations/MainCharacter/dying_1"));
             testBox.Components.Add(skModel);
@@ -363,6 +365,18 @@ namespace TrashSoup.Engine
             awsomeTest.Components.Add(new CustomModel(awsomeTest, new Model[] { Models["Models/Home/WindowsDoors/Door"], null, null }, awsomeTestMats));
             awsomeTest.MyCollider = new BoxCollider(awsomeTest, false);
 
+            GameObject playerTime = new GameObject(1000, "PlayerTime");
+            PlayerTime pt = new PlayerTime(playerTime);
+            pt.InitHours = 21;
+            playerTime.Components.Add(pt);
+
+            GameObject testTransition = new GameObject(501, "Transition");
+            AreaTransition at = new AreaTransition(testTransition);
+            at.NextScenePath = "../../../../TrashSoupContent/Scenes/StengertPAGI.xml";
+            testTransition.Components.Add(at);
+            testTransition.MyTransform = new Transform(testTransition, new Vector3(-10.0f, 0.0f, 10.0f), Vector3.Up, Vector3.Zero, 5.0f);
+            testTransition.MyCollider = new SphereCollider(testTransition, true);
+
             // adding lights
             LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.1f, 0.1f, 0.1f));
             LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(1.0f, 0.9f, 0.8f), new Vector3(1.0f, 0.8f, 0.8f), new Vector3(-1.0f, -1.0f, -1.0f), true);
@@ -407,16 +421,14 @@ namespace TrashSoup.Engine
             CurrentScene.AddObject(awsomeTest);//Wika i kasia
             CurrentScene.AddObject(rat);
             CurrentScene.AddObject(cegla);
+            CurrentScene.AddObject(playerTime);
+            CurrentScene.AddObject(testTransition);
             //CurrentScene.AddObject(pt);
 
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;
             CurrentScene.DirectionalLights[1] = ldrn;
             CurrentScene.PointLights.Add(lp1);
-
-            ////TESTING PARTICLES
-            //ps = new ParticleSystem(TrashSoupGame.Instance.GraphicsDevice, 
-                //TrashSoupGame.Instance.Content.Load<Texture2D>(@"Textures/ParticleTest/Particle"), 400, new Vector2(2), 1, Vector3.Zero, 0.5f);
 
             foreach(GameObject go in this.CurrentScene.ObjectsDictionary.Values)
             {
@@ -483,6 +495,20 @@ namespace TrashSoup.Engine
                 output = TrashSoupGame.Instance.Content.Load<Model>(path);
                 Models.Add(path, output);
                 Debug.Log("New model successfully loaded - " + path);
+            }
+            return output;
+        }
+
+        public SpriteFont LoadFont(String path)
+        {
+            SpriteFont output = null;
+            if (Fonts.TryGetValue(path, out output))
+                Debug.Log("Font successfully loaded - " + path);
+            else
+            {
+                output = TrashSoupGame.Instance.Content.Load<SpriteFont>(path);
+                Fonts.Add(path, output);
+                Debug.Log("Font successfully loaded - " + path);
             }
             return output;
         }

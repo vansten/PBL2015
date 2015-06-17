@@ -31,6 +31,7 @@ namespace TrashSoup.Gameplay
         public double timerOn;
 
         private GameObject player;
+        private PlayerController pc;
         #endregion
 
         #region properties
@@ -85,37 +86,11 @@ namespace TrashSoup.Gameplay
         public override void Initialize()
         {
             this.player = ResourceManager.Instance.CurrentScene.GetObject(1);
-            base.Initialize();
-        }
-
-        public override void OnTriggerEnter(GameObject other)
-        {
-            if(isAttacking)
+            if(this.player != null)
             {
-                if (other.Components.Exists(x => x is Enemy))
-                {
-                    (other.GetComponent<Enemy>() as Enemy).HitPoints -= Damage;
-                    Rat r = other.GetComponent<Rat>() as Rat;
-                    ParticleSystem ps = other.GetComponent<ParticleSystem>() as ParticleSystem;
-                    ps.Play();
-                    if(r != null)
-                    {
-                        r.MyBlackBoard.SetBool("TargetSeen", true);
-                        r.MyBlackBoard.SetVector3("TargetPosition", player.MyTransform.Position);
-                        if(r.MyObject.MyPhysicalObject != null)
-                        {
-                            Vector3 diff = r.MyObject.MyTransform.Position - player.MyTransform.Position;
-                            diff.Y = 0.0f;
-                            diff.Normalize();
-                            r.MyObject.MyPhysicalObject.AddForce(diff * 650.0f);
-                            ((PlayerController)player.GetComponent<PlayerController>()).Popularity += 15.0f;
-                        }
-                    }
-                    if (Type != WeaponType.FISTS && Durability > 0)
-                        Durability--;
-                }
+                this.pc = (PlayerController)this.player.GetComponent<PlayerController>();
             }
-            base.OnTriggerEnter(other);
+            base.Initialize();
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)

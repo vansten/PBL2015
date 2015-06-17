@@ -1,0 +1,173 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using TrashSoup.Engine;
+using Microsoft.Xna.Framework;
+
+namespace TrashSoup.Gameplay
+{
+    public class AreaTransition : ObjectComponent
+    {
+        #region constants
+
+        private static string MESSAGE_0 = "What do you want to do?";
+        private static string MESSAGE_1 = "What do you want to do?";
+        private static string MESSAGE_2 = "It's getting late. \nYou need to go back as quick as possible.";
+        private static string MESSAGE_0_0 = "Go back";
+        private static string MESSAGE_0_1 = "Stay here";
+        private static string MESSAGE_0_2 = "Deposit trash";
+        private static string MESSAGE_1_0 = " Go back";
+        private static string MESSAGE_1_1 = " Stay here";
+        private static string MESSAGE_2_0 = "OK";
+
+        #endregion
+
+        #region variables
+
+        private static Vector2 messagePosition = new Vector2(0.2f, 0.35f);
+        private static Vector2 messageDimenstions = new Vector2(0.6f, 0.15f);
+
+        private PlayerTime cTime;
+        private MessageBox[] mBoxes = new MessageBox[3];
+        private int cMessageBox = 0;
+
+        #endregion
+
+        #region properties
+
+        public string NextScenePath { get; set; }
+
+        #endregion
+
+        #region methods
+
+        public AreaTransition(GameObject obj) : base(obj)
+        {
+            Start();
+        }
+
+        public AreaTransition(GameObject obj, AreaTransition at) : base(obj, at)
+        {
+            Start();
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            if(!mBoxes[cMessageBox].Active)
+            {
+                // solve cMessageBox
+                int hours = cTime.Hours;
+                if (hours >= 22)  // prompt player immediately to return
+                {
+                    cMessageBox = 2;
+                    ActivateMessageBox();
+                }
+                else if (hours >= 21) // disable deposit stash options
+                {
+                    cMessageBox = 1;
+                }
+                else
+                {
+                    cMessageBox = 0;
+                }
+            }
+            else
+            {
+                // draw current message box as it is active
+                mBoxes[cMessageBox].Draw(null);
+                mBoxes[cMessageBox].Update(gameTime);
+
+                // check prompt response and proceed accordingly
+                if(mBoxes[cMessageBox].Response != 0)
+                {
+                    if(mBoxes[cMessageBox].Response == 1)   // go back to hideout
+                    {
+                        Debug.Log("go back to hideout");
+                    }
+                    else if (mBoxes[cMessageBox].Response == 2) // do actually nothing
+                    {
+                        Debug.Log("do actually nothing");
+                    }
+                    else if (mBoxes[cMessageBox].Response == 3) // initiate stash deposit
+                    {
+                        Debug.Log("initiate stash deposit");
+                    }
+
+                    DectivateMessageBox();
+                }
+            }
+        }
+
+        public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, GameTime gameTime)
+        {
+            
+        }
+
+        protected override void Start()
+        {
+
+        }
+
+        public override void Initialize()
+        {
+            GameObject pt = ResourceManager.Instance.CurrentScene.GetObject("PlayerTime");
+            if (pt == null)
+            {
+                throw new ArgumentNullException("AreaTransition: PlayerTime object does not exist!");
+            }
+
+            cTime = (PlayerTime)pt.GetComponent<PlayerTime>();
+            if(cTime == null)
+            {
+                throw new ArgumentNullException("AreaTransition: PlayerTIme object has no PlayerTime Component!");
+            }
+
+            mBoxes[0] = new MessageBox(messagePosition, messageDimenstions.X, messageDimenstions.Y);
+            mBoxes[0].OptionCount = 3;
+            mBoxes[0].Text = MESSAGE_0;
+            mBoxes[0].OptionTexts = new string[] { MESSAGE_0_0, MESSAGE_0_1, MESSAGE_0_2 };
+            mBoxes[0].Initialize();
+
+            mBoxes[1] = new MessageBox(messagePosition, messageDimenstions.X * 0.8f, messageDimenstions.Y);
+            mBoxes[1].OptionCount = 2;
+            mBoxes[1].Text = MESSAGE_1;
+            mBoxes[1].OptionTexts = new string[] { MESSAGE_1_0, MESSAGE_1_1 };
+            mBoxes[1].Initialize();
+
+            mBoxes[2] = new MessageBox(messagePosition, messageDimenstions.X, messageDimenstions.Y);
+            mBoxes[2].OptionCount = 1;
+            mBoxes[2].Text = MESSAGE_2;
+            mBoxes[2].OptionTexts = new string[] { MESSAGE_2_0 };
+            mBoxes[2].Initialize();
+
+            base.Initialize();
+        }
+
+        public override void OnTriggerEnter(GameObject other)
+        {
+            // show prompt
+            ActivateMessageBox();
+
+            base.OnTriggerEnter(other);
+        }
+
+        private void ActivateMessageBox()
+        {
+            mBoxes[cMessageBox].Active = true;
+
+            GameManager.Instance.MovementEnabled = false;
+        }
+
+        private void DectivateMessageBox()
+        {
+            mBoxes[cMessageBox].Active = false;
+
+            GameManager.Instance.MovementEnabled = true;
+        }
+
+        #endregion
+    
+
+    }
+}

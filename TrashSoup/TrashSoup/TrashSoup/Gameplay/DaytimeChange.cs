@@ -19,7 +19,8 @@ namespace TrashSoup.Gameplay
         private const int TEXTURE_DUSK = 2;
         private const int TEXTURE_NIGHT = 3;
 
-        private const int MINUTES_MAX = 60 * 24;
+        private const long MINUTES_MAX = 60 * 24;
+        private const long MS_MAX = MINUTES_MAX * 60000;
 
         private const float SUN_DISTANCE = 100.0f;
 
@@ -40,8 +41,8 @@ namespace TrashSoup.Gameplay
         private Material sunMaterial;
         private TextureCube[] textures = new TextureCube[TEXTURE_COUNT];
         private PlayerTime cTime;
-        private int time;
-        private int prevTime;
+        private long time;
+        private long prevTime;
         private Vector3 startDaylightColor;
         private Vector3 startDaylightSpecular;
         private Vector3 startNightColor;
@@ -59,6 +60,29 @@ namespace TrashSoup.Gameplay
         public int SunriseMinutes { get; set; }
         public int SunsetMinutes { get; set; }
         public int StateChangeMinutes { get; set; }
+
+        public long SunriseMS 
+        {
+            get
+            {
+                return (long)SunriseMinutes * 60000;
+            }
+        }
+        public long SunsetMS 
+        { 
+            get
+            {
+                return (long)SunsetMinutes * 60000;
+            }
+        }
+        public long StateChangeMS 
+        { 
+            get
+            {
+                return (long)StateChangeMinutes * 60000;
+            }
+        }
+
         public float HorizonOffset { get; set; }
         #endregion
 
@@ -91,15 +115,16 @@ namespace TrashSoup.Gameplay
             if (!TrashSoupGame.Instance.EditorMode)
             {
                 prevTime = time;
-                time = 60 * cTime.Hours + cTime.Minutes;
-                if (time < 0 || time > MINUTES_MAX)
+                //time = 60 * cTime.Hours + cTime.Minutes;
+                time = cTime.TotalMilliseconds % MS_MAX;
+                if (time < 0 || time > MS_MAX)
                 {
                     Debug.Log("DaytimeChange: Time is invalid. Clamping.");
-                    time = (int)MathHelper.Clamp((float)time, 0.0f, (float)MINUTES_MAX);
+                    time = (int)MathHelper.Clamp((float)time, 0.0f, (float)MS_MAX);
                 }
 
-                if (time != prevTime)
-                {
+                //if (time != prevTime)
+                //{
                     Vector4 probes;
                     ConvertTimeToProbes(time, out probes);
                     myMaterial.Probes = probes;
@@ -122,7 +147,7 @@ namespace TrashSoup.Gameplay
 
                     //Debug.Log(lightCol.ToString());
 
-                    if (time >= SunriseMinutes - StateChangeMinutes && time <= SunsetMinutes + StateChangeMinutes)
+                    if (time >= SunriseMS - StateChangeMS && time <= SunsetMS + StateChangeMS)
                     {
                         if (!switched)
                         {
@@ -146,7 +171,7 @@ namespace TrashSoup.Gameplay
                             switched = false;
                         }
                     }
-                }
+                //}
             }
         }
 
@@ -248,8 +273,8 @@ namespace TrashSoup.Gameplay
                 throw new ArgumentNullException("DaytimeChange: PlayerTime object has no PlayerTime component!");
             }
 
-            int t = 60 * cTime.Hours + cTime.Minutes;
-            if (t >= SunriseMinutes - StateChangeMinutes && t <= SunsetMinutes + StateChangeMinutes)
+            long t = cTime.TotalMilliseconds;
+            if (t >= SunriseMS - StateChangeMS && t <= SunsetMS + StateChangeMS)
                 switched = true;
             else 
                 switched = false;
@@ -259,7 +284,7 @@ namespace TrashSoup.Gameplay
             base.Initialize();
         }
 
-        private void ConvertTimeToProbes(int minutes, out Vector4 probes)
+        private void ConvertTimeToProbes(long ms, out Vector4 probes)
         {
             Vector4 state0 = new Vector4(1.0f, 0.0f, 0.0f, 0.0f);
             Vector4 state1 = new Vector4(0.0f, 1.0f, 0.0f, 0.0f);
@@ -267,81 +292,81 @@ namespace TrashSoup.Gameplay
             Vector4 state3 = new Vector4(0.0f, 0.0f, 0.0f, 1.0f);
             float lerpValue;
 
-            if (minutes < ((SunriseMinutes - StateChangeMinutes) % MINUTES_MAX) || minutes > (SunsetMinutes + StateChangeMinutes))
+            if (ms < ((SunriseMS - StateChangeMS) % MS_MAX) || ms > (SunsetMS + StateChangeMS))
             {
                 probes = state3;
             }
-            else if(minutes > SunriseMinutes + StateChangeMinutes && minutes < SunsetMinutes - StateChangeMinutes)
+            else if(ms > SunriseMS + StateChangeMS && ms < SunsetMS - StateChangeMS)
             {
                 probes = state1;
             }
-            else if(minutes == SunriseMinutes)
+            else if(ms == SunriseMS)
             {
                 probes = state0;
             }
-            else if(minutes == SunsetMinutes)
+            else if(ms == SunsetMS)
             {
                 probes = state2;
             }
-            else if(minutes >= SunriseMinutes - StateChangeMinutes && minutes < SunriseMinutes)
+            else if(ms >= SunriseMS - StateChangeMS && ms < SunriseMS)
             {
                 //state3 vs state0
-                float x = (float)(SunriseMinutes - StateChangeMinutes);
-                float y = (float)SunriseMinutes;
-                lerpValue = (((float)minutes) - x) / (y - x);
+                float x = (float)(SunriseMS - StateChangeMS);
+                float y = (float)SunriseMS;
+                lerpValue = (((float)ms) - x) / (y - x);
                 probes = Vector4.Lerp(state3, state0, lerpValue);
             }
-            else if(minutes > SunriseMinutes && minutes <= SunriseMinutes + StateChangeMinutes)
+            else if(ms > SunriseMS && ms <= SunriseMS + StateChangeMS)
             {
                 //state0 vs state1
-                float x = (float)(SunriseMinutes);
-                float y = (float)(SunriseMinutes + StateChangeMinutes);
-                lerpValue = (((float)minutes) - x) / (y - x);
+                float x = (float)(SunriseMS);
+                float y = (float)(SunriseMS + StateChangeMS);
+                lerpValue = (((float)ms) - x) / (y - x);
                 probes = Vector4.Lerp(state0, state1, lerpValue);
             }
-            else if(minutes >= SunsetMinutes - StateChangeMinutes && minutes < SunsetMinutes)
+            else if(ms >= SunsetMS - StateChangeMS && ms < SunsetMS)
             {
                 //state1 vs state2
-                float x = (float)(SunsetMinutes - StateChangeMinutes);
-                float y = (float)(SunsetMinutes);
-                lerpValue = (((float)minutes) - x) / (y - x);
+                float x = (float)(SunsetMS - StateChangeMS);
+                float y = (float)(SunsetMS);
+                lerpValue = (((float)ms) - x) / (y - x);
                 probes = Vector4.Lerp(state1, state2, lerpValue);
             }
-            else if(minutes > SunsetMinutes && minutes <= SunsetMinutes + StateChangeMinutes)
+            else if(ms > SunsetMS && ms <= SunsetMS + StateChangeMS)
             {
                 //state2 vs state3
-                float x = (float)(SunsetMinutes);
-                float y = (float)(SunsetMinutes + StateChangeMinutes);
-                lerpValue = (((float)minutes) - x) / (y - x);
+                float x = (float)(SunsetMS);
+                float y = (float)(SunsetMS + StateChangeMS);
+                lerpValue = (((float)ms) - x) / (y - x);
                 probes = Vector4.Lerp(state2, state3, lerpValue);
             }
             else
             {
-                Debug.Log("DaytimeChange: ConvertTimeToProbes has fucked up somehow. Time given is " + minutes.ToString());
+                Debug.Log("DaytimeChange: ConvertTimeToProbes has fucked up somehow. Time given is " + ms.ToString());
                 probes = new Vector4(0.0f, 0.0f, 0.0f, 0.0f);
             }
         }
 
-        private void ConvertTimeToLightDirection(int minutes, out Vector3 direction)
+        private void ConvertTimeToLightDirection(long ms, out Vector3 direction)
         {
             direction = new Vector3(-0.1f, -0.7f, -0.4f);   // dla minutes = 720
             //direction = Vector3.Transform(direction, Matrix.CreateRotationY(-MathHelper.PiOver4 / 1.5f));
 
-            float rotation = ((float)((minutes - MINUTES_MAX / 2) % MINUTES_MAX) / (float)MINUTES_MAX) * MathHelper.TwoPi;
+            double rotation = ((double)((ms - MS_MAX / 2) % MS_MAX) / (double)MS_MAX) * MathHelper.TwoPi;
             //Debug.Log(rotation.ToString());
-            direction = Vector3.Transform(direction, Matrix.CreateFromAxisAngle(rotationAxe, -rotation));
+            direction = Vector3.Transform(direction, Matrix.CreateFromAxisAngle(rotationAxe, -(float)rotation));
 
             direction.Z = -direction.Z;
             direction.Normalize();
         }
 
-        private void ConvertTimeToDaylightColor(int minutes, out Vector3 color, out Vector3 specular, out Vector3 nColor, out Vector3 nSpecular, out Vector3 ambientColor, out Vector3 sunDiff)
+        private void ConvertTimeToDaylightColor(long ms, out Vector3 color, out Vector3 specular, out Vector3 nColor, out Vector3 nSpecular, out Vector3 ambientColor, out Vector3 sunDiff)
         {
             float lerpValue;
             Vector3 smallAmbient = startAmbientColor * 0.25f;
             int de = 30;
 
-            if (minutes < ((SunriseMinutes - (StateChangeMinutes + de)) % MINUTES_MAX) || minutes > (SunsetMinutes + (StateChangeMinutes + de)))
+            if (ms < ((SunriseMS - (StateChangeMS + de)) % MS_MAX) || ms > (SunsetMS + (StateChangeMS + de)))
             {
                 // night
                 color = DARK_COLOR;
@@ -351,12 +376,12 @@ namespace TrashSoup.Gameplay
                 nSpecular = startNightSpecular;
                 sunDiff = RED_COLOR;
             }
-            else if(minutes >= (SunriseMinutes - (StateChangeMinutes + de)) && minutes < (SunriseMinutes - StateChangeMinutes))
+            else if(ms >= (SunriseMS - (StateChangeMS + de)) && ms < (SunriseMS - StateChangeMS))
             {
                 // night fade out
-                float x = (float)(SunriseMinutes - (StateChangeMinutes + de));
-                float y = (float)(SunriseMinutes - StateChangeMinutes);
-                lerpValue = (((float)minutes) - x) / (y - x);
+                float x = (float)(SunriseMS - (StateChangeMS + de));
+                float y = (float)(SunriseMS - StateChangeMS);
+                lerpValue = (((float)ms) - x) / (y - x);
                 color = DARK_COLOR;
                 specular = DARK_COLOR;
                 ambientColor = DARK_COLOR;
@@ -364,12 +389,12 @@ namespace TrashSoup.Gameplay
                 nSpecular = Vector3.Lerp(startNightSpecular, DARK_COLOR, lerpValue);
                 sunDiff = RED_COLOR;
             }
-            else if (minutes <= (SunsetMinutes + (StateChangeMinutes + de)) && minutes > (SunsetMinutes + StateChangeMinutes))
+            else if (ms <= (SunsetMS + (StateChangeMS + de)) && ms > (SunsetMS + StateChangeMS))
             {
                 // night fade in
-                float x = (float)(SunsetMinutes + StateChangeMinutes);
-                float y = (float)(SunsetMinutes + (StateChangeMinutes + de));
-                lerpValue = (((float)minutes) - x) / (y - x);
+                float x = (float)(SunsetMS + StateChangeMS);
+                float y = (float)(SunsetMS + (StateChangeMS + de));
+                lerpValue = (((float)ms) - x) / (y - x);
                 color = DARK_COLOR;
                 specular = DARK_COLOR;
                 ambientColor = DARK_COLOR;
@@ -377,7 +402,7 @@ namespace TrashSoup.Gameplay
                 nSpecular = Vector3.Lerp(DARK_COLOR, startNightSpecular, lerpValue);
                 sunDiff = RED_COLOR;
             }
-            else if (minutes > SunriseMinutes + StateChangeMinutes && minutes < SunsetMinutes - StateChangeMinutes)
+            else if (ms > SunriseMS + StateChangeMS && ms < SunsetMS - StateChangeMS)
             {
                 // day
                 color = startDaylightColor;
@@ -387,7 +412,7 @@ namespace TrashSoup.Gameplay
                 nSpecular = DARK_COLOR;
                 sunDiff = startSunDiffuse;
             }
-            else if (minutes == SunriseMinutes || minutes == SunsetMinutes)
+            else if (ms == SunriseMS || ms == SunsetMS)
             {
                 // sunrise n sunset
                 color = SUNRISE_COLOR;
@@ -397,12 +422,12 @@ namespace TrashSoup.Gameplay
                 nSpecular = DARK_COLOR;
                 sunDiff = RED_COLOR;
             }
-            else if (minutes >= SunriseMinutes - StateChangeMinutes && minutes < SunriseMinutes)
+            else if (ms >= SunriseMS - StateChangeMS && ms < SunriseMS)
             {
                 //state3 vs state0
-                float x = (float)(SunriseMinutes - StateChangeMinutes);
-                float y = (float)SunriseMinutes;
-                lerpValue = (((float)minutes) - x) / (y - x);
+                float x = (float)(SunriseMS - StateChangeMS);
+                float y = (float)SunriseMS;
+                lerpValue = (((float)ms) - x) / (y - x);
                 color = Vector3.Lerp(DARK_COLOR, SUNRISE_COLOR, lerpValue);
                 specular = Vector3.Lerp(DARK_COLOR, SUNRISE_COLOR, lerpValue);
                 ambientColor = Vector3.Lerp(smallAmbient, startAmbientColor, lerpValue / 2.0f);
@@ -410,12 +435,12 @@ namespace TrashSoup.Gameplay
                 nSpecular = DARK_COLOR;
                 sunDiff = RED_COLOR;
             }
-            else if (minutes > SunriseMinutes && minutes <= SunriseMinutes + StateChangeMinutes)
+            else if (ms > SunriseMS && ms <= SunriseMS + StateChangeMS)
             {
                 //state0 vs state1
-                float x = (float)(SunriseMinutes);
-                float y = (float)(SunriseMinutes + StateChangeMinutes);
-                lerpValue = (((float)minutes) - x) / (y - x);
+                float x = (float)(SunriseMS);
+                float y = (float)(SunriseMS + StateChangeMS);
+                lerpValue = (((float)ms) - x) / (y - x);
                 color = Vector3.Lerp(SUNRISE_COLOR, startDaylightColor, lerpValue);
                 specular = Vector3.Lerp(SUNRISE_COLOR, startDaylightSpecular, lerpValue);
                 ambientColor = Vector3.Lerp(smallAmbient, startAmbientColor, lerpValue / 2.0f + 0.5f);
@@ -423,12 +448,12 @@ namespace TrashSoup.Gameplay
                 nSpecular = DARK_COLOR;
                 sunDiff = Vector3.Lerp(RED_COLOR, startSunDiffuse, lerpValue);
             }
-            else if (minutes >= SunsetMinutes - StateChangeMinutes && minutes < SunsetMinutes)
+            else if (ms >= SunsetMS - StateChangeMS && ms < SunsetMS)
             {
                 //state1 vs state2
-                float x = (float)(SunsetMinutes - StateChangeMinutes);
-                float y = (float)(SunsetMinutes);
-                lerpValue = (((float)minutes) - x) / (y - x);
+                float x = (float)(SunsetMS - StateChangeMS);
+                float y = (float)(SunsetMS);
+                lerpValue = (((float)ms) - x) / (y - x);
                 color = Vector3.Lerp(startDaylightColor, SUNRISE_COLOR, lerpValue);
                 specular = Vector3.Lerp(startDaylightSpecular, SUNRISE_COLOR, lerpValue);
                 ambientColor = Vector3.Lerp(startAmbientColor, smallAmbient, lerpValue / 2.0f);
@@ -436,12 +461,12 @@ namespace TrashSoup.Gameplay
                 nSpecular = DARK_COLOR;
                 sunDiff = Vector3.Lerp(startSunDiffuse, RED_COLOR, lerpValue);
             }
-            else if (minutes > SunsetMinutes && minutes <= SunsetMinutes + StateChangeMinutes)
+            else if (ms > SunsetMS && ms <= SunsetMS + StateChangeMS)
             {
                 //state2 vs state3
-                float x = (float)(SunsetMinutes);
-                float y = (float)(SunsetMinutes + StateChangeMinutes);
-                lerpValue = (((float)minutes) - x) / (y - x);
+                float x = (float)(SunsetMS);
+                float y = (float)(SunsetMS + StateChangeMS);
+                lerpValue = (((float)ms) - x) / (y - x);
                 color = Vector3.Lerp(SUNRISE_COLOR, DARK_COLOR, lerpValue);
                 specular = Vector3.Lerp(SUNRISE_COLOR, DARK_COLOR, lerpValue);
                 ambientColor = Vector3.Lerp(startAmbientColor, smallAmbient, lerpValue / 2.0f + 0.5f);
@@ -451,7 +476,7 @@ namespace TrashSoup.Gameplay
             }
             else
             {
-                Debug.Log("DaytimeChange: ConvertTimeToDaylightColor has fucked up somehow. Time given is " + minutes.ToString());
+                Debug.Log("DaytimeChange: ConvertTimeToDaylightColor has fucked up somehow. Time given is " + ms.ToString());
                 color = new Vector3(1.0f, 1.0f, 1.0f);
                 specular = new Vector3(1.0f, 1.0f, 1.0f);
                 ambientColor = new Vector3(0.0f, 0.0f, 0.0f);

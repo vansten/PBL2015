@@ -50,15 +50,10 @@ namespace TrashSoup.Gameplay
         protected float prevRotY;
 
         protected bool moving = false;
-        protected bool jumping = false;
-        protected float jumpTimer = 0.0f;
-        protected bool jumped = false;
 
-        private bool collisionWithTrash = false;
         public bool CollectedTrash = false;
         private double collisionFakeTime = 0.0;
         public double CollectedFakeTime = 0.0;
-        private GameObject trash;
 
         private bool collisionWithWeapon = false;
         private bool collectedWeapon = false;
@@ -84,10 +79,12 @@ namespace TrashSoup.Gameplay
         public SoundEffect WalkSoundEffect;
         public SoundEffectInstance Walk;
 
-        public SoundEffect JumpSoundEffect;
-        public SoundEffectInstance Jump;
-
         private bool deathAnimPlayed = false;
+
+        private GameObject myAttackTrigger;
+        private PlayerAttackTrigger myAttackTriggerComponent;
+        private bool isAttacking = false;
+        private float attackTimer = 0.0f;
 
         #endregion
 
@@ -232,7 +229,7 @@ namespace TrashSoup.Gameplay
                     movementVector.Y);
 
                 if (tempMove.Length() > 0.0f &&
-                    ResourceManager.Instance.CurrentScene.Cam != null)
+                    ResourceManager.Instance.CurrentScene.Cam != null && !this.isAttacking)
                 {
                     if (moving == false)
                     {
@@ -288,41 +285,9 @@ namespace TrashSoup.Gameplay
                         moving = false;
                         MyObject.MyAnimator.RemoveBlendStateToCurrent();
                     }
-                }
+                }                
 
-                if (InputHandler.Instance.IsJumping())
-                {
-                    if (MyObject.MyAnimator != null)
-                    {
-                        if (MyObject.MyAnimator.ThirdState == null)
-                        {
-                            // jump!
-                            //Debug.Log("Jump!");
-                            jumping = true;
-                            MyObject.MyAnimator.ChangeState("Jump");
-                        }
-                    }
-                }
-
-                if (jumping)
-                {
-                    Walk.Stop(true);
-                    jumpTimer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
-                    if (!jumped && jumpTimer > 0.65f)
-                    {
-                        this.MyObject.MyPhysicalObject.AddForce(Vector3.Up * 200.0f);
-                        jumped = true;
-                        Jump.Play();
-                    }
-                    else if (jumpTimer > 2.0f)
-                    {
-                        jumpTimer = 0.0f;
-                        jumped = false;
-                        jumping = false;
-                    }
-                }
-
-                if (InputHandler.Instance.IsAttacking())
+                if (!isAttacking && InputHandler.Instance.IsAttacking())
                 {
                     if (MyObject.MyAnimator != null)
                     {
@@ -333,6 +298,18 @@ namespace TrashSoup.Gameplay
                     }
                     equipment.CurrentWeapon.IsAttacking = true;
                     equipment.CurrentWeapon.timerOn = gameTime.TotalGameTime.TotalSeconds;
+                    this.myAttackTriggerComponent.Attack(this.equipment.CurrentWeapon.Damage);
+                    this.isAttacking = true;
+                }
+
+                if(this.isAttacking)
+                {
+                    this.attackTimer += gameTime.ElapsedGameTime.Milliseconds;
+                    if(this.attackTimer >= this.MyObject.MyAnimator.CurrentState.Animation.CurrentClip.Duration.TotalMilliseconds + 600)
+                    {
+                        this.attackTimer = 0.0f;
+                        this.isAttacking = false;
+                    }
                 }
             }
 
@@ -358,17 +335,6 @@ namespace TrashSoup.Gameplay
                 this.anotherWeapon = this.weapon;
                 //PICKING ANIMATION + SOUNDS
             }
-
-            /*if(this.collectedWeapon)
-            {
-                GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"),
-                    "Weapon collected", weaponTextPosition, Color.Red);
-                if (gameTime.TotalGameTime.TotalSeconds - this.CollectedFakeTime > 2.0)
-                {
-                    this.collectedWeapon = false;
-                }
-                weaponTextPosition.Y -= 0.002f;
-            }*/
 
             this.collisionWithWeapon = false;
             
@@ -405,11 +371,19 @@ namespace TrashSoup.Gameplay
             this.font = TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest");
             this.interactionTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/x_button");
             this.weapon = new GameObject(0, "");
-            if (ResourceManager.Instance.CurrentScene.GetObject(1144) != null)
+            GameObject w = ResourceManager.Instance.CurrentScene.GetObject(1144);
+            if (w != null)
             {
-                equipment.CurrentWeapon = (ResourceManager.Instance.CurrentScene.GetObject(1144).Components.First(x => x.GetType() == typeof(Weapons.Fists)) as Weapon);
-                equipment.PickUpWeapon(ResourceManager.Instance.CurrentScene.GetObject(1144));
+                equipment.CurrentWeapon = (w.Components.First(x => x.GetType() == typeof(Weapons.Fists)) as Weapon);
+                equipment.PickUpWeapon(w);
             }
+            this.myAttackTrigger = new GameObject(1122334455, "MyAttackTrigger");
+            this.myAttackTrigger.MyTransform = new Transform(this.myAttackTrigger, Vector3.Backward * 1.5f + Vector3.Up * 1.0f, Vector3.Forward, Vector3.Zero, 1.5f);
+            this.myAttackTriggerComponent = new PlayerAttackTrigger(this.myAttackTrigger, this);
+            this.myAttackTrigger.AddComponentRuntime(this.myAttackTriggerComponent);
+            this.myAttackTrigger.MyCollider = new BoxCollider(this.myAttackTrigger, true);
+            this.MyObject.AddChild(this.myAttackTrigger);
+            ResourceManager.Instance.CurrentScene.AddObjectRuntime(this.myAttackTrigger);
             base.Initialize();
         }
 
@@ -443,7 +417,7 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.AvailableStates.Add("Build", new AnimatorState("Build", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/building")));
                 MyObject.MyAnimator.AvailableStates.Add("Jump", new AnimatorState("Jump", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/dodge_1"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("Death", new AnimatorState("Death", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/dying_1"), AnimatorState.StateType.SINGLE));
-                MyObject.MyAnimator.AvailableStates.Add("AttackFist01", new AnimatorState("AttackFist01", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_3"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("AttackFist01", new AnimatorState("AttackFist01", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_3_fix"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Jump"], new TimeSpan(0, 0, 0, 0, 500));
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackFist01"], new TimeSpan(0, 0, 0, 0, 400));
@@ -468,9 +442,6 @@ namespace TrashSoup.Gameplay
             Walk = WalkSoundEffect.CreateInstance();
             //Change speed of sound
             //Walk.Pitch += 0.7f;
-
-            JumpSoundEffect = TrashSoupGame.Instance.Content.Load<SoundEffect>(@"Audio/Character/jump");
-            Jump = JumpSoundEffect.CreateInstance();
         }
 
         public override void OnTrigger(GameObject other)
