@@ -94,6 +94,14 @@ namespace TrashSoup.Gameplay
             newWeapon.MyTransform.Rotation = new Vector3(0, 0, 55);
             newWeapon.MyTransform.Scale = 1;
             base.MyObject.MyCollider.IgnoredColliders.Add(newWeapon.MyCollider);
+
+            foreach(ObjectComponent oc in newWeapon.Components)
+            {
+                if(oc is Weapon)
+                {
+                    CurrentWeapon = (Weapon)oc;
+                }
+            }
         }
 
         public void DropWeapon(GameObject weapon)

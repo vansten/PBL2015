@@ -82,7 +82,6 @@ namespace TrashSoup.Gameplay
         private bool deathAnimPlayed = false;
 
         private GameObject myAttackTrigger;
-        private PlayerAttackTrigger myAttackTriggerComponent;
         private bool isAttacking = false;
         private float attackTimer = 0.0f;
         private float attackCooldown = 0.0f;
@@ -90,6 +89,8 @@ namespace TrashSoup.Gameplay
         #endregion
 
         #region properties
+
+        public PlayerAttackTrigger MyAttackTriggerComponent { get; private set; }
 
         public int StairsTouching
         {
@@ -297,7 +298,7 @@ namespace TrashSoup.Gameplay
                     }
                     equipment.CurrentWeapon.IsAttacking = true;
                     equipment.CurrentWeapon.timerOn = gameTime.TotalGameTime.TotalSeconds;
-                    this.myAttackTriggerComponent.Attack(this.equipment.CurrentWeapon.Damage);
+                    this.MyAttackTriggerComponent.Attack(this.equipment.CurrentWeapon.Damage);
                     this.isAttacking = true;
                 }
 
@@ -383,8 +384,8 @@ namespace TrashSoup.Gameplay
             }
             this.myAttackTrigger = new GameObject(1122334455, "MyAttackTrigger");
             this.myAttackTrigger.MyTransform = new Transform(this.myAttackTrigger, Vector3.Backward * 1.5f + Vector3.Up * 1.0f, Vector3.Forward, Vector3.Zero, 1.5f);
-            this.myAttackTriggerComponent = new PlayerAttackTrigger(this.myAttackTrigger, this);
-            this.myAttackTrigger.AddComponentRuntime(this.myAttackTriggerComponent);
+            this.MyAttackTriggerComponent = new PlayerAttackTrigger(this.myAttackTrigger, this);
+            this.myAttackTrigger.AddComponentRuntime(this.MyAttackTriggerComponent);
             this.myAttackTrigger.MyCollider = new BoxCollider(this.myAttackTrigger, true);
             this.MyObject.AddChild(this.myAttackTrigger);
             ResourceManager.Instance.CurrentScene.AddObjectRuntime(this.myAttackTrigger);

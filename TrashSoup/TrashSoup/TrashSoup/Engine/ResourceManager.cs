@@ -257,7 +257,8 @@ namespace TrashSoup.Engine
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/dying_1"), "Animations/MainCharacter/dying_1"));
             testBox.Components.Add(skModel);
             testBox.MyAnimator = playerAnimator;
-            testBox.Components.Add(new PlayerController(testBox));
+            PlayerController pc = new PlayerController(testBox);
+            testBox.Components.Add(pc);
             testBox.Dynamic = true;
 
             HideoutStash testStash = new HideoutStash(testBox);
@@ -281,6 +282,9 @@ namespace TrashSoup.Engine
             ratAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", ratAnimator.GetAnimationPlayer("Rat_TAnim")));
             ratAnimator.CurrentState = ratAnimator.AvailableStates["Walk"];
             rat.MyAnimator = ratAnimator;
+            rat.Components.Add(new Enemy(rat));
+            rat.MyCollider = new SphereCollider(rat);
+            rat.MyPhysicalObject = new PhysicalObject(rat);
 
             GameObject testTer = new GameObject(2, "Terrain");
             testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
@@ -302,9 +306,18 @@ namespace TrashSoup.Engine
             //testBox2.MyCarrierSocket = new Socket(testBox, testBox2, null, "mixamorig:RightHand");
 
             GameObject testBox3 = new GameObject(5, "testBox3");
-            testBox3.MyTransform = new Transform(testBox3, new Vector3(5.0f, 1.0f, 5.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, MathHelper.Pi, 0.0f), 0.1f);
-            testBox3.Components.Add(new CustomModel(testBox3, new Model[] { Models["Models/Test/TestBox"], Models["Models/Test/TestSphere_LOD1"], Models["Models/Test/TestSphere_LOD2"] }, testPlayerMats));
+            testBox3.MyTransform = new Transform(testBox3, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.7f);
+            testBox3.Components.Add(new CustomModel(testBox3, new Model[] { LoadModel("Models/Weapons/Maczuga/Mace"), null, null }, testPlayerMats));
             testBox3.MyCollider = new BoxCollider(testBox3, true);
+            testBox3.Dynamic = true;
+            Destructible destr = new Destructible(testBox3);
+            destr.HitDamage = 50;
+            destr.MaxHealth = 100;
+            destr.PartCount = 10;
+            testBox3.Components.Add(destr);
+            testBox3.Components.Add(new Gameplay.Weapons.Hammer(testBox3));
+
+            pc.Equipment.PickUpWeapon(testBox3);
 
             //ParticleSystem ps = new ParticleSystem(testBox3);
             //ps.Textures.Add(ResourceManager.Instance.LoadTexture("Textures/Particles/Particle_metal01"));

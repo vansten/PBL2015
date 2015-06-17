@@ -7,10 +7,13 @@ using TrashSoup.Engine;
 
 namespace TrashSoup.Gameplay
 {
-    class PlayerAttackTrigger : ObjectComponent
+    public class PlayerAttackTrigger : ObjectComponent
     {
         private List<Enemy> enemiesInTrigger = new List<Enemy>();
         private PlayerController pc;
+
+        public delegate void AttackEventHandler(object o, CollisionEventArgs e);
+        public event AttackEventHandler AttackEvent;
 
         public PlayerAttackTrigger(GameObject go) : base(go)
         {
@@ -43,6 +46,11 @@ namespace TrashSoup.Gameplay
         {
             foreach(Enemy e in this.enemiesInTrigger)
             {
+                if(AttackEvent != null)
+                {
+                    AttackEvent(this, new CollisionEventArgs(e.MyObject));
+                }
+
                 e.HitPoints -= damage;
                 ParticleSystem ps = e.MyObject.GetComponent<ParticleSystem>() as ParticleSystem;
                 if(ps != null)

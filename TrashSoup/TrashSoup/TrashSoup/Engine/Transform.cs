@@ -195,13 +195,31 @@ namespace TrashSoup.Engine
             GameObject parent = MyObject.GetParent();
             if (parent != null && parent.MyTransform != null)
             {
-                Matrix parents = MyObject.GetParent().MyTransform.GetWorldMatrix();
+                Matrix parents = parent.MyTransform.GetWorldMatrix();
                 Vector3 trans, scl;
                 Quaternion quat;
                 parents.Decompose(out scl, out quat, out trans);
 
                 this.position = Vector3.Transform(this.position, Matrix.CreateFromQuaternion(quat) * Matrix.CreateTranslation(trans));
                 this.rotation += parent.MyTransform.rotation;
+            }
+        }
+
+        public void BakeTransformFromCarrier()
+        {
+            if (MyObject.MyCarrierSocket == null)
+                return;
+
+            GameObject carrier = MyObject.MyCarrierSocket.Carrier;
+            if (carrier != null && carrier.MyTransform != null)
+            {
+                Matrix parents = carrier.MyTransform.GetWorldMatrix();
+                Vector3 trans, scl;
+                Quaternion quat;
+                parents.Decompose(out scl, out quat, out trans);
+
+                this.position = Vector3.Transform(this.position, Matrix.CreateFromQuaternion(quat) * Matrix.CreateTranslation(trans));
+                this.rotation += carrier.MyTransform.rotation;
             }
         }
 
