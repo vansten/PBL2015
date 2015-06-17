@@ -81,6 +81,7 @@ namespace TrashSoup.Gameplay
         #region methods
         public Weapon(GameObject obj):base(obj)
         {
+
         }
 
         public override void Initialize()
