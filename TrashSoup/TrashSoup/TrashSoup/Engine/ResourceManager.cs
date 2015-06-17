@@ -367,7 +367,7 @@ namespace TrashSoup.Engine
 
             GameObject playerTime = new GameObject(1000, "PlayerTime");
             PlayerTime pt = new PlayerTime(playerTime);
-            pt.InitHours = 22;
+            pt.InitHours = 21;
             playerTime.Components.Add(pt);
 
             GameObject testTransition = new GameObject(501, "Transition");
