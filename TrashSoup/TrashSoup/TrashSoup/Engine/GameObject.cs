@@ -109,7 +109,8 @@ namespace TrashSoup.Engine
                     Debug.Log("GameObject ERROR: " + this.Name + ", ID " + this.UniqueID.ToString() + " is already assigned to this socket! Aborting.");
                     return;
                 }
-                value.Carrier.AddComponentRuntime(value);
+                if(value != null)
+                    value.Carrier.AddComponentRuntime(value);
                 myCarrierSocket = value;
             }
         }

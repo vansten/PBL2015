@@ -163,6 +163,7 @@ namespace TrashSoup.Gameplay
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
 #if DEBUG
+            if(equipment.CurrentWeapon != null)
             GUIManager.Instance.DrawText(this.font,
                     "Weapon: " + equipment.CurrentWeapon.Name, this.weaponInfoPos, Color.Red);
 #endif
