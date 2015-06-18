@@ -23,6 +23,8 @@ namespace TrashSoup.Gameplay
         #region variables
         protected int durability;
         protected int damage;
+        protected Vector3 offsetPosition;
+        protected Vector3 offsetRotation;
         protected WeaponType type;
         protected bool isCraftable;
         protected int craftingCost;
@@ -76,6 +78,19 @@ namespace TrashSoup.Gameplay
             get { return isAttacking; }
             set { isAttacking = value; }
         }
+
+        public Vector3 OffsetPosition
+        {
+            get { return offsetPosition; }
+            set { offsetPosition = value; }
+        }
+
+        public Vector3 OffsetRotation
+        {
+            get { return offsetRotation; }
+            set { offsetRotation = value; }
+        }
+
         #endregion
 
         #region methods
