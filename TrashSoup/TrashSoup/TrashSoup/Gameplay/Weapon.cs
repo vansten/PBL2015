@@ -169,7 +169,7 @@ namespace TrashSoup.Gameplay
 
             cModel = (CustomModel)MyObject.GetComponent<CustomModel>();
 
-            if(DestroyCueName != null)
+            if(DestroyCueName != null && !TrashSoupGame.Instance.EditorMode)
             {
                 jeb = Engine.AudioManager.Instance.SoundBank.GetCue(DestroyCueName);
             }
