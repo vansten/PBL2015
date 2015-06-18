@@ -100,11 +100,11 @@ namespace TrashSoup.Engine
             }
             set
             {
-                if(myCarrierSocket != null)
+                if(myCarrierSocket != null && value != null)
                 {
                     Debug.Log("GameObject WARNING! " + this.Name + ", ID " + this.UniqueID.ToString() + " already had assigned socket!");
                 }
-                if(myCarrierSocket == value)
+                if(myCarrierSocket == value && value != null)
                 {
                     Debug.Log("GameObject ERROR: " + this.Name + ", ID " + this.UniqueID.ToString() + " is already assigned to this socket! Aborting.");
                     return;

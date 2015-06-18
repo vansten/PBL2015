@@ -16,6 +16,13 @@ namespace TrashSoup.Gameplay.Weapons
             IsCraftable = true;
             CraftingCost = 40;
             Name = "Pipe";
+
+            ParticleTexturePaths = new string[] 
+            {
+                "Textures/Particles/Particle_metal01",
+                "Textures/Particles/Particle_metal02",
+            };
+            DestroyCueName = "metalHit";
         }
     }
 }

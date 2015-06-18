@@ -310,12 +310,12 @@ namespace TrashSoup.Engine
             testBox3.Components.Add(new CustomModel(testBox3, new Model[] { LoadModel("Models/Weapons/Maczuga/Mace"), null, null }, testPlayerMats));
             testBox3.MyCollider = new BoxCollider(testBox3, true);
             testBox3.Dynamic = true;
-            Destructible destr = new Destructible(testBox3);
-            destr.HitDamage = 50;
-            destr.MaxHealth = 100;
-            destr.PartCount = 10;
-            testBox3.Components.Add(destr);
             testBox3.Components.Add(new Gameplay.Weapons.Hammer(testBox3));
+
+            GameObject fuckYou = new GameObject(1144, "Fists");
+            fuckYou.MyTransform = new Transform(fuckYou, Vector3.Zero, Vector3.Up, new Vector3(0.0f, 0.0f, 11.017704f), 1.0f);
+            fuckYou.MyCollider = new BoxCollider(fuckYou, true);
+            fuckYou.Components.Add(new Gameplay.Weapons.Fists(fuckYou));
 
             pc.Equipment.PickUpWeapon(testBox3);
 
@@ -442,7 +442,7 @@ namespace TrashSoup.Engine
             CurrentScene.AddObject(playerTime);
             CurrentScene.AddObject(testTransition);
             //CurrentScene.AddObject(pt);
-
+            CurrentScene.AddObject(fuckYou);
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;
             CurrentScene.DirectionalLights[1] = ldrn;
