@@ -16,6 +16,16 @@ namespace TrashSoup.Gameplay.Weapons
             IsCraftable = true;
             CraftingCost = 40;
             Name = "Razor Sign";
+
+            ParticleTexturePaths = new string[] 
+            {
+                "Textures/Particles/Particle_metal01",
+                "Textures/Particles/Particle_metal02",
+                "Textures/Particles/Particle_wood01",
+                "Textures/Particles/Particle_wood02",
+                "Textures/Particles/Particle_wood03"
+            };
+            DestroyCueName = "metalHit";
         }
     }
 }

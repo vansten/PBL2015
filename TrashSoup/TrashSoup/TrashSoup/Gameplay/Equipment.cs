@@ -114,15 +114,6 @@ namespace TrashSoup.Gameplay
             base.MyObject.MyCollider.IgnoredColliders.Remove(weapon.MyCollider);
         }
 
-        public void DestroyCurrentWeapon()
-        {
-            CurrentWeapon.MyObject.Dynamic = false;
-            CurrentWeapon.MyObject.MyTransform.BakeTransformFromCarrier();
-            CurrentWeapon.MyObject.MyCarrierSocket = null;
-            CurrentWeapon = null;
-            //PickUpWeapon(ResourceManager.Instance.CurrentScene.GetObject(1144));
-        }
-
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             if((showFoodWarning && !showJunkWarning) || foodWarningCurrentlyShowing)
@@ -157,8 +148,12 @@ namespace TrashSoup.Gameplay
                 }
             }
 
-            if(currentWeapon.Durability == 0)
+            if (currentWeapon.Destroyed)
             {
+                CurrentWeapon.MyObject.Dynamic = false;
+                CurrentWeapon.MyObject.MyTransform.BakeTransformFromCarrier();
+                CurrentWeapon.MyObject.MyCarrierSocket = null;
+
                 this.CurrentWeapon = (ResourceManager.Instance.CurrentScene.GetObject(1144).Components.First(x => x.GetType() == typeof(Weapons.Fists)) as Weapon);
                 this.PickUpWeapon(ResourceManager.Instance.CurrentScene.GetObject(1144));
             }

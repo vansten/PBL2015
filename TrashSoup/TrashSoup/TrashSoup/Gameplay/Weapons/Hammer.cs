@@ -11,7 +11,7 @@ namespace TrashSoup.Gameplay.Weapons
     {
         public Hammer(GameObject obj) : base(obj)
         {
-            Durability = 35;
+            Durability = 2;
             Damage = 18;
             OffsetPosition = new Vector3(0.1f, 0, 0.05f);
             OffsetRotation = new Vector3(0, 0, -30);
@@ -19,6 +19,12 @@ namespace TrashSoup.Gameplay.Weapons
             IsCraftable = true;
             CraftingCost = 50;
             Name = "Hammer";
+            ParticleTexturePaths = new string[] 
+            {
+                "Textures/Particles/Particle_metal01",
+                "Textures/Particles/Particle_metal02"
+            };
+            DestroyCueName = "metalHit";
         }
     }
 }

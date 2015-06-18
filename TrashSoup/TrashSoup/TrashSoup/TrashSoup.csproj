@@ -92,8 +92,6 @@
     <Compile Include="Engine\Billboard.cs" />
     <Compile Include="Engine\BoundingFrustumExtended.cs" />
     <Compile Include="Engine\CollisionEventArgs.cs" />
-    <Compile Include="Engine\Destructible.cs" />
-    <Compile Include="Engine\DestructiblePart.cs" />
     <Compile Include="Engine\EditorCamera.cs" />
     <Compile Include="Engine\Face.cs" />
     <Compile Include="Engine\LightDirectional.cs" />
@@ -151,6 +149,7 @@
     <Compile Include="Gameplay\RatTurningTrigger.cs" />
     <Compile Include="Gameplay\RatTrigger.cs" />
     <Compile Include="Gameplay\TrashTrigger.cs" />
+    <Compile Include="Gameplay\Weapons\Brick.cs" />
     <Compile Include="Gameplay\Weapons\Fists.cs" />
     <Compile Include="Gameplay\Weapons\NoFreePlaceSign.cs" />
     <Compile Include="Gameplay\PlayerCameraController.cs" />

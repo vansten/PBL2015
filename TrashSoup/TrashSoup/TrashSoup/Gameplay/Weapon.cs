@@ -7,6 +7,9 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using TrashSoup.Engine;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Graphics;
+
 
 namespace TrashSoup.Gameplay
 {
@@ -20,6 +23,14 @@ namespace TrashSoup.Gameplay
 
     public class Weapon : ObjectComponent, IXmlSerializable
     {
+        #region constants
+
+        private const int DURABILITY_TAKEN_PER_HIT = 1;
+        private const double MS_TO_DISPOSE = 1000;
+        private const double MS_TO_SHATTER = 250;
+
+        #endregion
+
         #region variables
         protected int durability;
         protected int damage;
@@ -30,10 +41,18 @@ namespace TrashSoup.Gameplay
         protected int craftingCost;
         protected string name;
         protected bool isAttacking = false;
+        protected bool isCurrent;
+        protected bool disposeBoolHelper;
+        protected bool shatterHelper;
+        protected double shatterTimer = 0;
+        private double disposeHelper;
         public double timerOn;
 
         private GameObject player;
         private PlayerController pc;
+        private ParticleSystem ps;
+        private Cue jeb;
+        private CustomModel cModel;
         #endregion
 
         #region properties
@@ -79,6 +98,11 @@ namespace TrashSoup.Gameplay
             set { isAttacking = value; }
         }
 
+        public bool Destroyed { get; private set; }
+
+        public string[] ParticleTexturePaths { get; set; }
+        public string DestroyCueName { get; set; }
+
         public Vector3 OffsetPosition
         {
             get { return offsetPosition; }
@@ -105,6 +129,51 @@ namespace TrashSoup.Gameplay
             {
                 this.pc = (PlayerController)this.player.GetComponent<PlayerController>();
             }
+
+            if (ParticleTexturePaths != null && ParticleTexturePaths.Count() != 0)
+            {
+                int pCount = ParticleTexturePaths.Count();
+                GameObject dupa = new GameObject(132453245, "asfoieasjhgeowisughasaedokfgheasiourfdseyhaeyogfiuhsweoiughdseifoluh");
+                ps = new ParticleSystem(this.MyObject);
+
+                for (int i = 0; i < pCount; ++i )
+                {
+                    ps.Textures.Add(ResourceManager.Instance.LoadTexture(ParticleTexturePaths[i]));
+                }
+
+                ps.ParticleCount = 20;
+                ps.ParticleSize = new Vector2(0.3f, 0.3f);
+                ps.ParticleSizeVariation = new Vector2(0.2f, 0.2f);
+                ps.LifespanSec = 0.8f;
+                ps.Wind = new Vector3(0.0f, 0.0f, 0.0f);
+                ps.Offset = new Vector3(MathHelper.Pi);
+                ps.Speed = 2.0f;
+                ps.RotationMode = ParticleSystem.ParticleRotationMode.DIRECTION_Z;
+                ps.ParticleRotation = new Vector3(0.0f, 0.0f, MathHelper.PiOver4);
+                ps.FadeInTime = 0.0f;
+                ps.FadeOutTime = 0.05f;
+                //ps.PositionOffset = new Vector3(0.0f, -1.0f, 0.0f) * MyObject.MyTransform.Scale;
+                ps.BlendMode = BlendState.AlphaBlend;
+                ps.UseGravity = true;
+                ps.Mass = 0.00000005f;
+                ps.Initialize();
+
+                ps.Stop();
+
+                dupa.Components.Add(ps);
+                dupa.MyTransform = new Transform(dupa);
+
+                MyObject.AddChild(dupa);
+            }
+            
+
+            cModel = (CustomModel)MyObject.GetComponent<CustomModel>();
+
+            if(DestroyCueName != null)
+            {
+                jeb = Engine.AudioManager.Instance.SoundBank.GetCue(DestroyCueName);
+            }
+
             base.Initialize();
         }
 
@@ -115,7 +184,41 @@ namespace TrashSoup.Gameplay
                 ((PlayerController)player.GetComponent<PlayerController>()).Walk.Stop(true);   
             }
             if(gameTime.TotalGameTime.TotalSeconds - timerOn > 1.5f)
-            isAttacking = false;
+                isAttacking = false;
+
+            if (pc.Equipment.CurrentWeapon == this && !isCurrent)
+            {
+                pc.MyAttackTriggerComponent.AttackEvent += new PlayerAttackTrigger.AttackEventHandler(OnAttackHandler);
+                isCurrent = true;
+            }
+            else if (pc.Equipment.CurrentWeapon != this && isCurrent)
+            {
+                pc.MyAttackTriggerComponent.AttackEvent -= OnAttackHandler;
+                isCurrent = false;
+            }
+
+            if(Destroyed && !disposeBoolHelper)
+            {
+                disposeBoolHelper = true;
+                disposeHelper = gameTime.TotalGameTime.TotalMilliseconds;
+            }
+
+            if(disposeBoolHelper && (gameTime.TotalGameTime.TotalMilliseconds - disposeHelper > MS_TO_DISPOSE))
+            {
+                ResourceManager.Instance.CurrentScene.DeleteObjectRuntime(MyObject);
+            }
+
+            if(shatterHelper)
+            {
+                shatterTimer = gameTime.TotalGameTime.TotalMilliseconds;
+                shatterHelper = false;
+            }
+
+            if (shatterTimer != 0 && (gameTime.TotalGameTime.TotalMilliseconds - shatterTimer > MS_TO_SHATTER))
+            {
+                Shatter();
+                shatterTimer = 0;
+            }
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
@@ -126,6 +229,35 @@ namespace TrashSoup.Gameplay
         protected override void Start()
         {
 
+        }
+
+        private void OnAttackHandler(object o, CollisionEventArgs e)
+        {
+            Debug.Log("JEB! Durability = " + Durability.ToString());
+
+            if(Durability > 0)
+            {
+                Durability -= DURABILITY_TAKEN_PER_HIT;
+                if (Durability <= 0)
+                {
+                    shatterHelper = true;
+                }
+            }
+        }
+
+        private void Shatter()
+        {
+            Debug.Log("ALE ÓRWAŁ! Weapon shattered!");
+            Destroyed = true;
+
+            if (cModel != null)
+                cModel.Visible = false;
+
+            if(ps != null)
+                ps.Play();
+
+            if(jeb != null)
+                jeb.Play();
         }
 
         public override System.Xml.Schema.XmlSchema GetSchema()

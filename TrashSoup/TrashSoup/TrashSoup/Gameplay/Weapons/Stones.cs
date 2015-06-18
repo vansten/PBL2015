@@ -16,6 +16,12 @@ namespace TrashSoup.Gameplay.Weapons
             IsCraftable = true;
             CraftingCost = 15;
             Name = "Stone";
+
+            ParticleTexturePaths = new string[] 
+            {
+                "Textures/Particles/Particle_stone01"
+            };
+            DestroyCueName = "stoneHit";
         }
     }
 }

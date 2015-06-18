@@ -18,6 +18,12 @@ namespace TrashSoup.Gameplay.Weapons
             Type = WeaponType.LIGHT;
             IsCraftable = false;
             Name = "Bottle";
+
+            ParticleTexturePaths = new string[] 
+            {
+                "Textures/Particles/Particle_glass01"
+            };
+            DestroyCueName = "glassHit";
         }
     }
 }

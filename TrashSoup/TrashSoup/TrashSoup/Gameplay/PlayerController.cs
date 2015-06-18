@@ -377,12 +377,12 @@ namespace TrashSoup.Gameplay
             this.font = TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest");
             this.interactionTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/x_button");
             this.weapon = new GameObject(0, "");
-            GameObject w = ResourceManager.Instance.CurrentScene.GetObject(1144);
-            if (w != null)
-            {
-                equipment.CurrentWeapon = (w.Components.First(x => x.GetType() == typeof(Weapons.Fists)) as Weapon);
-                equipment.PickUpWeapon(w);
-            }
+            //GameObject w = ResourceManager.Instance.CurrentScene.GetObject(1144);
+            //if (w != null)
+            //{
+            //    equipment.CurrentWeapon = (w.Components.First(x => x.GetType() == typeof(Weapons.Fists)) as Weapon);
+            //    equipment.PickUpWeapon(w);
+            //}
             this.myAttackTrigger = new GameObject(1122334455, "MyAttackTrigger");
             this.myAttackTrigger.MyTransform = new Transform(this.myAttackTrigger, Vector3.Backward * 1.5f + Vector3.Up * 1.0f, Vector3.Forward, Vector3.Zero, 1.5f);
             this.MyAttackTriggerComponent = new PlayerAttackTrigger(this.myAttackTrigger, this);

@@ -15,6 +15,12 @@ namespace TrashSoup.Gameplay.Weapons
             Type = WeaponType.LIGHT;
             IsCraftable = false;
             Name = "Newspaper";
+
+            ParticleTexturePaths = new string[] 
+            {
+                "Textures/Particles/Particle_wood01"
+            };
+            DestroyCueName = "stoneHit";
         }
     }
 }
