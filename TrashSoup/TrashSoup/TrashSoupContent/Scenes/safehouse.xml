@@ -453,7 +453,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1153</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/wall</ModelPath>
             <ModelPath />
@@ -502,7 +502,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1154</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/DoorFrame</ModelPath>
             <ModelPath />
@@ -2085,9 +2085,9 @@
       <MyTransform>
         <MyObjectID>1191</MyObjectID>
         <Position>
-          <X>12</X>
+          <X>5</X>
           <Y>0.8</Y>
-          <Z>-23</Z>
+          <Z>-10</Z>
         </Position>
         <Rotation>
           <X>0</X>
@@ -2134,9 +2134,9 @@
       <MyTransform>
         <MyObjectID>1192</MyObjectID>
         <Position>
-          <X>14</X>
+          <X>9</X>
           <Y>0.88</Y>
-          <Z>2.8</Z>
+          <Z>11.8</Z>
         </Position>
         <Rotation>
           <X>0</X>
@@ -2183,7 +2183,7 @@
       <MyTransform>
         <MyObjectID>1193</MyObjectID>
         <Position>
-          <X>-5</X>
+          <X>-6</X>
           <Y>0.65</Y>
           <Z>9</Z>
         </Position>
@@ -2251,7 +2251,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1194</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Bathroom/Sink</ModelPath>
             <ModelPath />
@@ -2300,7 +2300,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1195</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Bedroom/bed</ModelPath>
             <ModelPath />
@@ -2447,7 +2447,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1200</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Bathroom/Toilet</ModelPath>
             <ModelPath />
@@ -2496,7 +2496,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1201</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Stairs/stiars</ModelPath>
             <ModelPath />
