@@ -136,12 +136,12 @@ namespace TrashSoup.Engine
         {
             Debug.Log("ALE ÓRWAŁ!");
 
-            mModel.Visible = false;
-            Vector3 lPos, lRot;
-            MyObject.MyTransform.BakeTransformFromCarrier();
+            //mModel.Visible = false;
+            //Vector3 lPos, lRot;
+            //MyObject.MyTransform.BakeTransformFromCarrier();
             //lPos = MyObject.MyTransform.Position;
             //lRot = MyObject.MyTransform.Rotation;
-            eq.DropWeapon(eq.CurrentWeapon.MyObject);
+            //eq.DestroyCurrentWeapon();
 
             //MyObject.MyTransform.Position = lPos;
             //MyObject.MyTransform.Rotation = lRot;

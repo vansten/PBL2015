@@ -107,11 +107,20 @@ namespace TrashSoup.Gameplay
         public void DropWeapon(GameObject weapon)
         {
             weapon.Dynamic = false;
-            weapon.MyCarrierSocket = new Socket(weapon, weapon, null, "");
-            weapon.MyTransform.Position = Vector3.Zero;
+            weapon.MyCarrierSocket = null;
+            weapon.MyTransform.Position = MyObject.MyTransform.Position;
             weapon.MyTransform.Rotation = Vector3.Zero;
             weapon.MyTransform.Scale = 3;
             base.MyObject.MyCollider.IgnoredColliders.Remove(weapon.MyCollider);
+        }
+
+        public void DestroyCurrentWeapon()
+        {
+            CurrentWeapon.MyObject.Dynamic = false;
+            CurrentWeapon.MyObject.MyTransform.BakeTransformFromCarrier();
+            CurrentWeapon.MyObject.MyCarrierSocket = null;
+            CurrentWeapon = null;
+            //PickUpWeapon(ResourceManager.Instance.CurrentScene.GetObject(1144));
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
