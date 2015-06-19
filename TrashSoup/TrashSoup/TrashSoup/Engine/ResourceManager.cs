@@ -120,7 +120,7 @@ namespace TrashSoup.Engine
             AddAnimation("Animations/Test/walking_1");
             AddAnimation("Animations/Test/idle_1");
             AddAnimation("Animations/Test/jump_1");
-            AddModel("Models/Home/WindowsDoors/Door");    //Wika i Kasia
+            AddModel("Models/Enviro/Railing/Railing_1");    //Wika i Kasia
 
             // loading materials
             List<Material> testPlayerMats = new List<Material>();
@@ -229,10 +229,10 @@ namespace TrashSoup.Engine
 
             //WIKA I KASIA Testowanie modeli
             List<Material> awsomeTestMats = new List<Material>();
-            Material awsomeTestMat = new Material("awsomeTestMat", this.Effects[@"Effects\NormalEffect"], LoadTexture(@"Textures\Home\WindowsDoors\DoorFrame_D"));
+            Material awsomeTestMat = new Material("awsomeTestMat", this.Effects[@"Effects\NormalEffect"], LoadTexture(@"Textures\Enviro\Railing\Railing_D"));
             awsomeTestMats.Add(awsomeTestMat);
             awsomeTestMats.Add(awsomeTestMat);
-            awsomeTestMat.NormalMap = LoadTexture(@"Textures\Home\WindowsDoors\DoorFrame_N");
+            awsomeTestMat.NormalMap = LoadTexture(@"Textures\Enviro\Railing\Railing_N");
             awsomeTestMat.Glossiness = 40.0f;
             awsomeTestMat.ReflectivityColor = new Vector3(1.0f, 0.0f, 1.0f);
             awsomeTestMat.ReflectivityBias = 0.0f;
@@ -391,7 +391,7 @@ namespace TrashSoup.Engine
             //Wika i Kasia testowanie modeli
             GameObject awsomeTest = new GameObject(8, "testground");
             awsomeTest.MyTransform = new Transform(awsomeTest, new Vector3(-12.0f, 1.0f, -5.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(MathHelper.PiOver2, 0.0f, 0.0f), 1.0f);
-            awsomeTest.Components.Add(new CustomModel(awsomeTest, new Model[] { Models["Models/Home/WindowsDoors/Door"], null, null }, awsomeTestMats));
+            awsomeTest.Components.Add(new CustomModel(awsomeTest, new Model[] { Models["Models/Enviro/Railing/Railing_1"], null, null }, awsomeTestMats));
             awsomeTest.MyCollider = new BoxCollider(awsomeTest, false);
 
             GameObject playerTime = new GameObject(1000, "PlayerTime");
