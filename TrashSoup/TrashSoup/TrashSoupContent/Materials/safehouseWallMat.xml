@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Material>
   <Name>safehouseWallMat</Name>
-  <EffectPath>Effects\DefaultEffect</EffectPath>
+  <EffectPath>Effects\NormalEffect</EffectPath>
   <DiffusePath>Textures\Home\WindowsDoors\wall_D</DiffusePath>
   <NormalPath>Textures\Home\WindowsDoors\wall_N</NormalPath>
   <DiffuseColor>
@@ -10,17 +10,17 @@
     <Z>1</Z>
   </DiffuseColor>
   <SpecularColor>
-    <X>0.1</X>
-    <Y>0.1</Y>
-    <Z>0</Z>
+    <X>0.4</X>
+    <Y>0.4</Y>
+    <Z>0.4</Z>
   </SpecularColor>
-  <Glossiness>10</Glossiness>
+  <Glossiness>100</Glossiness>
   <ReflectivityColor>
     <X>1</X>
     <Y>1</Y>
     <Z>1</Z>
   </ReflectivityColor>
-  <ReflectivityBias>0.2</ReflectivityBias>
+  <ReflectivityBias>1</ReflectivityBias>
   <Transparency>1</Transparency>
   <PerPixelLighting>false</PerPixelLighting>
   <ReceiveShadows>true</ReceiveShadows>
