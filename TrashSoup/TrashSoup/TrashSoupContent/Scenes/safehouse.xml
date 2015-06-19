@@ -2855,8 +2855,8 @@
       </Components>
     </GameObject>
     <GameObject>
-      <GameObjectKey>1216</GameObjectKey>
-      <UniqueID>1216</UniqueID>
+      <GameObjectKey>1217</GameObjectKey>
+      <UniqueID>1217</UniqueID>
       <Name>Stairs</Name>
       <DrawLast>false</DrawLast>
       <Tags>
@@ -2864,7 +2864,7 @@
       </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
-        <MyObjectID>1216</MyObjectID>
+        <MyObjectID>1217</MyObjectID>
         <Position>
           <X>17</X>
           <Y>1</Y>
@@ -2884,7 +2884,7 @@
       </MyTransform>
       <Components>
         <TrashSoup.Engine.CustomModel>
-          <MyObjectID>1216</MyObjectID>
+          <MyObjectID>1217</MyObjectID>
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/Stairs/stairs_lower</ModelPath>
@@ -2901,13 +2901,13 @@
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1216</MyObjectID>
+        <MyObjectID>1217</MyObjectID>
         <IsTrigger>false</IsTrigger>
       </MyCollider>
     </GameObject>
     <GameObject>
-      <GameObjectKey>1217</GameObjectKey>
-      <UniqueID>1217</UniqueID>
+      <GameObjectKey>1218</GameObjectKey>
+      <UniqueID>1218</UniqueID>
       <Name>StairsHigh</Name>
       <DrawLast>false</DrawLast>
       <Tags>
@@ -2915,7 +2915,7 @@
       </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
-        <MyObjectID>1217</MyObjectID>
+        <MyObjectID>1218</MyObjectID>
         <Position>
           <X>17</X>
           <Y>6</Y>
@@ -2935,7 +2935,7 @@
       </MyTransform>
       <Components>
         <TrashSoup.Engine.CustomModel>
-          <MyObjectID>1217</MyObjectID>
+          <MyObjectID>1218</MyObjectID>
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/Stairs/stairs_upper</ModelPath>
@@ -2952,7 +2952,7 @@
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1217</MyObjectID>
+        <MyObjectID>1218</MyObjectID>
         <IsTrigger>false</IsTrigger>
       </MyCollider>
     </GameObject>
