@@ -16,9 +16,9 @@ namespace TrashSoup.Engine
         private const int CAMERA_COUNT = 3;
         private float[] CAM_DIRECTIONAL_DISTANCE_MULTIPLIERS = { 15.0f, 60.0f, 150.0f };
         private float[] CAM_DIRECTIONAL_BOUNDARIES = { 10.0f, 30.0f, 100.0f };
-        private const float CAM_DIRECTIONAL_DISTANCE = 60.0f;
+        private const float CAM_DIRECTIONAL_DISTANCE = 80.0f;
         private const float CAM_DIRECTIONAL_NEAR_PLANE = 0.02f;
-        private const float CAM_DIRECTIONAL_FAR_PLANE = 120.0f;
+        private const float CAM_DIRECTIONAL_FAR_PLANE = 150.0f;
 
         private const float DIRECTIONAL_SHADOW_RANGE = 15.0f;
         private const int DIRECTIONAL_SHADOW_MAP_SIZE = 2048;
@@ -203,7 +203,7 @@ namespace TrashSoup.Engine
             RasterizerState rs = TrashSoupGame.Instance.GraphicsDevice.RasterizerState;
             SamplerState sp = TrashSoupGame.Instance.GraphicsDevice.SamplerStates[0];
             BlendState bs = TrashSoupGame.Instance.GraphicsDevice.BlendState;
-            TrashSoupGame.Instance.GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
+            TrashSoupGame.Instance.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
             TrashSoupGame.Instance.GraphicsDevice.SamplerStates[0] = ss;
             TrashSoupGame.Instance.GraphicsDevice.BlendState = BlendState.Opaque;
             if (ResourceManager.Instance.CurrentScene.Params.UseGraph)
