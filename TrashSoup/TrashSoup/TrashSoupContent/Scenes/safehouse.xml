@@ -18,9 +18,9 @@
   </SceneParams>
   <AmbientLight>
     <LightColor>
-      <X>0.3</X>
-      <Y>0.2</Y>
-      <Z>0.1</Z>
+      <X>0.05</X>
+      <Y>0.1</Y>
+      <Z>0.2</Z>
     </LightColor>
     <UniqueID>100</UniqueID>
     <Name>LightAmbient</Name>
@@ -32,29 +32,7 @@
   </AmbientLight>
   <DirectionalLights>
     <DirectionalLight>
-      <CastShadows>true</CastShadows>
-      <LightColor>
-        <X>1</X>
-        <Y>0.9</Y>
-        <Z>0.8</Z>
-      </LightColor>
-      <LightSpecularColor>
-        <X>1</X>
-        <Y>0.8</Y>
-        <Z>0.8</Z>
-      </LightSpecularColor>
-      <LightDirection>
-        <X>-0.5773503</X>
-        <Y>-0.5773503</Y>
-        <Z>-0.5773503</Z>
-      </LightDirection>
-      <UniqueID>101</UniqueID>
-      <Name>LightDirectional1</Name>
-      <DrawLast>false</DrawLast>
-      <Tags>
-        <Tag>null</Tag>
-      </Tags>
-      <Dynamic>false</Dynamic>
+      <null />
     </DirectionalLight>
     <DirectionalLight>
       <null />
@@ -67,16 +45,16 @@
     <PointLight>
       <CastShadows>true</CastShadows>
       <Color>
-        <R>0</R>
-        <G>0</G>
-        <B>0</B>
+        <R>1</R>
+        <G>0.8</G>
+        <B>0.8</B>
       </Color>
       <SpecularColor>
         <R>1</R>
-        <G>1</G>
-        <B>1</B>
+        <G>0.8</G>
+        <B>0.8</B>
       </SpecularColor>
-      <Attenuation>3</Attenuation>
+      <Attenuation>30</Attenuation>
       <UniqueID>110</UniqueID>
       <Name>LightPoint1</Name>
       <DrawLast>false</DrawLast>
@@ -88,7 +66,7 @@
         <MyObjectID>110</MyObjectID>
         <Position>
           <X>-3</X>
-          <Y>3</Y>
+          <Y>5</Y>
           <Z>0</Z>
         </Position>
         <Rotation>
@@ -101,7 +79,7 @@
           <Y>1</Y>
           <Z>0</Z>
         </Forward>
-        <Scale>20</Scale>
+        <Scale>200</Scale>
       </MyTransform>
       <MyPhysicalObject>
         <MyObjectID>110</MyObjectID>
@@ -171,22 +149,6 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
-        <TrashSoup.Gameplay.DaytimeChange>
-          <MyObjectID>4</MyObjectID>
-          <SunID>1151</SunID>
-          <LightDayID>0</LightDayID>
-          <LightNightID>0</LightNightID>
-          <TextureNames>
-            <TextureName>Textures\Skyboxes\Dawn</TextureName>
-            <TextureName>Textures\Skyboxes\Daylight</TextureName>
-            <TextureName>Textures\Skyboxes\Dusk</TextureName>
-            <TextureName>Textures\Skyboxes\Night</TextureName>
-          </TextureNames>
-          <SunriseMinutes>360</SunriseMinutes>
-          <SunsetMinutes>1200</SunsetMinutes>
-          <StateChangeMinutes>120</StateChangeMinutes>
-          <HorizonOffset>500</HorizonOffset>
-        </TrashSoup.Gameplay.DaytimeChange>
       </Components>
     </GameObject>
     <GameObject>
@@ -342,47 +304,6 @@
           <initHours>12</initHours>
           <initMinutes>0</initMinutes>
         </TrashSoup.Gameplay.PlayerTime>
-      </Components>
-    </GameObject>
-    <GameObject>
-      <GameObjectKey>1151</GameObjectKey>
-      <UniqueID>1151</UniqueID>
-      <Name>Sun</Name>
-      <DrawLast>false</DrawLast>
-      <Tags>
-        <Tag>null</Tag>
-      </Tags>
-      <Dynamic>false</Dynamic>
-      <MyTransform>
-        <MyObjectID>1151</MyObjectID>
-        <Position>
-          <X>0</X>
-          <Y>0</Y>
-          <Z>0</Z>
-        </Position>
-        <Rotation>
-          <X>0</X>
-          <Y>0</Y>
-          <Z>0</Z>
-        </Rotation>
-        <Forward>
-          <X>0</X>
-          <Y>0</Y>
-          <Z>1</Z>
-        </Forward>
-        <Scale>150</Scale>
-      </MyTransform>
-      <Components>
-        <TrashSoup.Engine.Billboard>
-          <MyObjectID>1151</MyObjectID>
-          <Material>
-            <Name>sunMat</Name>
-          </Material>
-          <Size>
-            <X>1</X>
-            <Y>1</Y>
-          </Size>
-        </TrashSoup.Engine.Billboard>
       </Components>
     </GameObject>
     <GameObject>

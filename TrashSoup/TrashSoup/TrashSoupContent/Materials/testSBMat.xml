@@ -4,7 +4,7 @@
   <EffectPath>Effects\SkyboxEffect</EffectPath>
   <DiffusePath>DefaultDiffuse</DiffusePath>
   <NormalPath>DefaultNormal</NormalPath>
-  <CubePath>Textures\Skyboxes\Daylight</CubePath>
+  <CubePath>Textures\Skyboxes\Night</CubePath>
   <DiffuseColor>
     <X>1</X>
     <Y>1</Y>
@@ -21,7 +21,7 @@
     <Y>1</Y>
     <Z>1</Z>
   </ReflectivityColor>
-  <ReflectivityBias>0.2</ReflectivityBias>
+  <ReflectivityBias>1</ReflectivityBias>
   <Transparency>1</Transparency>
   <PerPixelLighting>false</PerPixelLighting>
   <ReceiveShadows>false</ReceiveShadows>
