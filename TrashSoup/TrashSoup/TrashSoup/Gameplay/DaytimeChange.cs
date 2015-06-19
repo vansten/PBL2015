@@ -27,6 +27,8 @@ namespace TrashSoup.Gameplay
         private Vector3 SUNRISE_COLOR = new Vector3(0.7f, 0.5f, 0.2f);
         private Vector3 RED_COLOR = new Vector3(1.0f, 0.0f, 0.0f);
         private Vector3 DARK_COLOR = new Vector3(0.0f, 0.0f, 0.0f);
+
+        private Vector3 DEFAULT_SUN_DIRECTION = new Vector3(-0.1f, -0.7f, -0.4f);
         #endregion
 
         #region variables
@@ -349,14 +351,16 @@ namespace TrashSoup.Gameplay
 
         private void ConvertTimeToLightDirection(long ms, out Vector3 direction)
         {
-            direction = new Vector3(-0.1f, -0.7f, -0.4f);   // dla minutes = 720
+            direction = DEFAULT_SUN_DIRECTION;   // dla minutes = 720
             //direction = Vector3.Transform(direction, Matrix.CreateRotationY(-MathHelper.PiOver4 / 1.5f));
 
             double rotation = ((double)((ms - MS_MAX / 2) % MS_MAX) / (double)MS_MAX) * MathHelper.TwoPi;
-            //Debug.Log(rotation.ToString());
+            
             direction = Vector3.Transform(direction, Matrix.CreateFromAxisAngle(rotationAxe, -(float)rotation));
 
+            Debug.Log(direction.ToString());
             direction.Z = -direction.Z;
+            direction.Y -= HorizonOffset;
             direction.Normalize();
         }
 
@@ -492,7 +496,7 @@ namespace TrashSoup.Gameplay
             pos.Y = -pos.Y;
             float size = ResourceManager.Instance.CurrentScene.Params.MaxSize;
             float smallDiagonal = (size * (float) Math.Sqrt(2)) / 4.0f;
-            sun.MyTransform.Position = new Vector3((pos * smallDiagonal).X, (pos * smallDiagonal).Y + HorizonOffset, (pos * smallDiagonal).Z);
+            sun.MyTransform.Position = new Vector3((pos * smallDiagonal).X, (pos * smallDiagonal).Y, (pos * smallDiagonal).Z);
         }
 
         public override System.Xml.Schema.XmlSchema GetSchema()

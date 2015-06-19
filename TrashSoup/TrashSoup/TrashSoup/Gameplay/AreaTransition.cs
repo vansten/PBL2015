@@ -45,6 +45,8 @@ namespace TrashSoup.Gameplay
         private delegate void ActionDelegate();
         private event ActionDelegate ActionEvent;
 
+        private PlayerTime playerTime;
+
         #endregion
 
         #region properties
@@ -114,6 +116,10 @@ namespace TrashSoup.Gameplay
 
                         if (mBoxes[cMessageBox].Response == 1)   // go back to hideout
                         {
+                            if(this.playerTime != null)
+                            {
+                                Safehouse.SafehouseController.Instance.SetExitTime(playerTime.Hours, playerTime.Minutes);
+                            }
                             actionTimer = 0;
                             actionTimerUpper = 500;
                             GUIManager.Instance.FadeIn(Color.Black, 500);
@@ -190,6 +196,12 @@ namespace TrashSoup.Gameplay
             colliderHelper.MyCollider = new SphereCollider(colliderHelper, true);
             colliderHelper.OnTriggerEnterEvent += new GameObject.OnTriggerEnterEventHandler(HelperEnter);
             colliderHelper.OnTriggerExitEvent += new GameObject.OnTriggerExitEventHandler(HelperExit);
+
+            GameObject playerTimeObj = ResourceManager.Instance.CurrentScene.GetObject(355);
+            if(playerTimeObj != null)
+            {
+                this.playerTime = (PlayerTime)playerTimeObj.GetComponent<PlayerTime>();
+            }
 
             base.Initialize();
         }

@@ -9,7 +9,7 @@ namespace TrashSoup.Gameplay
 {
     class LoadingController : ObjectComponent
     {
-        private float timer = 0.0f;
+        private bool first = true;
         private float ar = 9.0f / 16.0f;
 
         private Texture2D backgroundTexture;
@@ -22,12 +22,12 @@ namespace TrashSoup.Gameplay
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             GUIManager.Instance.DrawTexture(this.backgroundTexture, new Microsoft.Xna.Framework.Vector2(0.0f, 0.0f), 1.0f, this.ar);
-            timer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
-            if(timer > 0.3f)
+            if(!first)
             {
                 SaveManager.Instance.XmlPath = "../../../../TrashSoupContent/Scenes/save2.xml";
                 SaveManager.Instance.LoadFileAction();
             }
+            first = false;
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
@@ -41,6 +41,7 @@ namespace TrashSoup.Gameplay
         public override void Initialize()
         {
             this.backgroundTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/LoadingScreen");
+            first = true;
             base.Initialize();
         }
 

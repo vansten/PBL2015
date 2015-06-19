@@ -143,9 +143,9 @@
             <TextureName>Textures\Skyboxes\Night</TextureName>
           </TextureNames>
           <SunriseMinutes>360</SunriseMinutes>
-          <SunsetMinutes>1200</SunsetMinutes>
+          <SunsetMinutes>1080</SunsetMinutes>
           <StateChangeMinutes>120</StateChangeMinutes>
-          <HorizonOffset>500</HorizonOffset>
+          <HorizonOffset>0.4</HorizonOffset>
         </TrashSoup.Gameplay.DaytimeChange>
       </Components>
     </GameObject>
@@ -201,6 +201,7 @@
           <MyObjectID>355</MyObjectID>
           <initHours>12</initHours>
           <initMinutes>0</initMinutes>
+		  <Multiplier>60</Multiplier>
         </TrashSoup.Gameplay.PlayerTime>
       </Components>
     </GameObject>

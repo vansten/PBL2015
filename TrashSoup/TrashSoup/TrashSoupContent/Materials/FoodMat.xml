@@ -20,7 +20,7 @@
     <Y>1</Y>
     <Z>1</Z>
   </ReflectivityColor>
-  <ReflectivityBias>0.2</ReflectivityBias>
+  <ReflectivityBias>1</ReflectivityBias>
   <Transparency>1</Transparency>
   <PerPixelLighting>false</PerPixelLighting>
   <ReceiveShadows>false</ReceiveShadows>

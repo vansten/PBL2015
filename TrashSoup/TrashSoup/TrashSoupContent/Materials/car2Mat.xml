@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Material>
   <Name>car2Mat</Name>
-  <EffectPath>Effects\DefaultEffect</EffectPath>
+  <EffectPath>Effects\NormalEffect</EffectPath>
   <DiffusePath>Textures\Enviro\Cars\car2_D</DiffusePath>
   <NormalPath>Textures\Enviro\Cars\car2_N</NormalPath>
   <DiffuseColor>
@@ -10,11 +10,11 @@
     <Z>1</Z>
   </DiffuseColor>
   <SpecularColor>
-    <X>0.1</X>
-    <Y>0.1</Y>
-    <Z>0</Z>
+    <X>0.7</X>
+    <Y>0.7</Y>
+    <Z>0.7</Z>
   </SpecularColor>
-  <Glossiness>10</Glossiness>
+  <Glossiness>150</Glossiness>
   <ReflectivityColor>
     <X>1</X>
     <Y>1</Y>

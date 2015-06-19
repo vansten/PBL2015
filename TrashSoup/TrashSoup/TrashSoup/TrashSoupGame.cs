@@ -57,11 +57,11 @@ namespace TrashSoup
             GraphicsManager.PreferredBackBufferHeight = 720;
             GraphicsManager.PreferredBackBufferWidth = 1280;
             GraphicsManager.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(SetToPreserve);
-#if DEBUG
-            //Turning of lock to 60 fps :) only in debug mode
+//#if DEBUG
+            //Turning of lock to 60 fps :)
             this.IsFixedTimeStep = false;
             this.GraphicsManager.SynchronizeWithVerticalRetrace = false;
-#endif
+//#endif
             GraphicsManager.ApplyChanges();
             Content.RootDirectory = ROOT_DIRECTIORY;
             this.IsMouseVisible = false;
