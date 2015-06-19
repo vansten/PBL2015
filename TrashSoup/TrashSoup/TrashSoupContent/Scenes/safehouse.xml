@@ -303,6 +303,7 @@
           <MyObjectID>355</MyObjectID>
           <initHours>21</initHours>
           <initMinutes>0</initMinutes>
+		  <Multiplier>60</Multiplier>
         </TrashSoup.Gameplay.PlayerTime>
       </Components>
     </GameObject>

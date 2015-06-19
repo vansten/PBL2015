@@ -218,6 +218,7 @@ namespace TrashSoup.Gameplay
 
             InitHours = reader.ReadElementContentAsInt("initHours", "");
             InitMinutes = reader.ReadElementContentAsInt("initMinutes", "");
+            Multiplier = reader.ReadElementContentAsInt("Multiplier", "");
 
             reader.ReadEndElement();
         }
@@ -228,6 +229,7 @@ namespace TrashSoup.Gameplay
 
             writer.WriteElementString("initHours", XmlConvert.ToString(initHours));
             writer.WriteElementString("initMinutes", XmlConvert.ToString(initMinutes));
+            writer.WriteElementString("Multiplier", XmlConvert.ToString(Multiplier));
         }
 
         #endregion
