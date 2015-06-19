@@ -222,7 +222,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/MainCharacter/MainCharacter</ModelPath>
             <ModelPath />
@@ -301,7 +301,7 @@
         </TrashSoup.Engine.Transform>
         <TrashSoup.Gameplay.PlayerTime>
           <MyObjectID>355</MyObjectID>
-          <initHours>12</initHours>
+          <initHours>21</initHours>
           <initMinutes>0</initMinutes>
         </TrashSoup.Gameplay.PlayerTime>
       </Components>
@@ -337,7 +337,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1152</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Test/box</ModelPath>
             <ModelPath />
@@ -386,7 +386,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1153</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/wall</ModelPath>
             <ModelPath />
@@ -435,7 +435,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1154</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/DoorFrame</ModelPath>
             <ModelPath />
@@ -2037,7 +2037,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1191</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/Flor</ModelPath>
             <ModelPath />
@@ -2184,7 +2184,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1194</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Bathroom/Sink</ModelPath>
             <ModelPath />
@@ -2233,7 +2233,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1195</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Bedroom/bed</ModelPath>
             <ModelPath />
@@ -2282,7 +2282,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1198</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/TV</ModelPath>
             <ModelPath />
@@ -2331,7 +2331,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1199</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/fridge</ModelPath>
             <ModelPath />
@@ -2380,7 +2380,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1200</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Bathroom/Toilet</ModelPath>
             <ModelPath />
@@ -2429,7 +2429,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1201</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Stairs/stiars</ModelPath>
             <ModelPath />
@@ -2633,7 +2633,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1206</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/couch</ModelPath>
             <ModelPath />
@@ -2682,7 +2682,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1207</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/TV_table</ModelPath>
             <ModelPath />
@@ -2732,7 +2732,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1208</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/desk</ModelPath>
             <ModelPath />
@@ -2783,7 +2783,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1209</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/carpet</ModelPath>
             <ModelPath />
@@ -2795,9 +2795,9 @@
           <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
-	  <MyCollider>
+      <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1201</MyObjectID>
+        <MyObjectID>1209</MyObjectID>
         <IsTrigger>true</IsTrigger>
       </MyCollider>
     </GameObject>
@@ -2956,7 +2956,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1214</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/window</ModelPath>
             <ModelPath />
@@ -3005,7 +3005,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1215</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/Window_Dirt</ModelPath>
             <ModelPath />
@@ -3022,6 +3022,40 @@
         <MyObjectID>1215</MyObjectID>
         <IsTrigger>true</IsTrigger>
       </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1216</GameObjectKey>
+      <UniqueID>1216</UniqueID>
+      <Name>EnemiesSpawner</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1216</MyObjectID>
+        <Position>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Gameplay.Safehouse.EnemiesSpawner>
+          <MyObjectID>1216</MyObjectID>
+        </TrashSoup.Gameplay.Safehouse.EnemiesSpawner>
+      </Components>
     </GameObject>
   </ObjectsDictionary>
   <Camera>

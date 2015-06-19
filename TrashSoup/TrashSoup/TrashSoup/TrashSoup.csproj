@@ -130,6 +130,9 @@
     <Compile Include="Gameplay\JournalView.cs" />
     <Compile Include="Gameplay\MessageBox.cs" />
     <Compile Include="Gameplay\PlayerAttackTrigger.cs" />
+    <Compile Include="Gameplay\Safehouse\EnemiesSpawner.cs" />
+    <Compile Include="Gameplay\Safehouse\MapSelectionController.cs" />
+    <Compile Include="Gameplay\Safehouse\SafehouseController.cs" />
     <Compile Include="Gameplay\Stairs.cs" />
     <Compile Include="Gameplay\Trash.cs" />
     <Compile Include="Gameplay\DisappearingTrash.cs" />

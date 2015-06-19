@@ -177,6 +177,33 @@ namespace TrashSoup.Gameplay
             // do nothing
         }
 
+        public override void Initialize()
+        {
+            if(SaveManager.Instance.XmlPath.Contains("safehouse"))
+            {
+                int[] time = Safehouse.SafehouseController.Instance.GetExitTime();
+                if(time[0] < 21)
+                {
+                    this.InitHours = 21;
+                    this.InitMinutes = 0;
+                }
+                else if(time[0] == 21)
+                {
+                    if(time[1] == 0)
+                    {
+                        this.InitHours = 21;
+                        this.InitMinutes = 0;
+                    }
+                }
+                else
+                {
+                    this.InitHours = 22;
+                    this.InitMinutes = 0;
+                }
+            }
+            base.Initialize();
+        }
+
         public override System.Xml.Schema.XmlSchema GetSchema()
         {
             return null;
