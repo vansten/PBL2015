@@ -241,7 +241,19 @@
         <AnimatorClip>Animations/MainCharacter/run_2</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/idle_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dodge_1</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/boxing_1</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/boxing_2</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/boxing_3</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/boxing_4</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/attack_Hweapon_1</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/attack_Hweapon_2</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/attack_Hweapon_3</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/attack_Hweapon_4</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/attack_Mweapon_1</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/attack_Mweapon_2</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/attack_Mweapon_3</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/attack_Mweapon_4</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/attack_Mweapon_5</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/building</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dying_1</AnimatorClip>
       </MyAnimator>
