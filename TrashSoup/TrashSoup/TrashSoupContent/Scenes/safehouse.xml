@@ -215,7 +215,7 @@
           <Y>0</Y>
           <Z>1</Z>
         </Forward>
-        <Scale>0.01</Scale>
+        <Scale>0.005</Scale>
       </MyTransform>
       <MyPhysicalObject>
         <MyObjectID>1</MyObjectID>
