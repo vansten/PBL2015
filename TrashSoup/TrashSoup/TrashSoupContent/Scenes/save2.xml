@@ -11323,8 +11323,8 @@
             <Z>0</Z>
           </ParticleColorVariation>
           <ParticleSize>
-            <X>1</X>
-            <Y>1</Y>
+            <X>0.5</X>
+            <Y>0.5</Y>
           </ParticleSize>
           <ParticleSizeVariation>
             <X>0</X>

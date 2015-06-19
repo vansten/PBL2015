@@ -499,18 +499,18 @@ namespace TrashSoup.Engine
                     break;
             }
 
-            ReadVector3(reader, Offset, "Offset");
-            ReadVector3(reader, RandAngle, "RandAngle");
-            ReadVector3(reader, Wind, "Wind");
-            ReadVector3(reader, WindVariation, "WindVariation");
-            ReadVector3(reader, PositionOffset, "PositionOffset");
-            ReadVector3(reader, PositionOffsetVariation, "PositionOffsetVariation");
-            ReadVector3(reader, ParticleRotation, "ParticleRotation");
-            ReadVector3(reader, ParticleRotationVariation, "ParticleRotationVariation");
-            ReadVector3(reader, ParticleColor, "ParticleColor");
-            ReadVector3(reader, ParticleColorVariation, "ParticleColorVariation");
-            ReadVector2(reader, ParticleSize, "ParticleSize");
-            ReadVector2(reader, ParticleSizeVariation, "ParticleSizeVariation");
+            Offset = ReadVector3(reader, "Offset");
+            RandAngle = ReadVector3(reader, "RandAngle");
+            Wind = ReadVector3(reader, "Wind");
+            WindVariation = ReadVector3(reader, "WindVariation");
+            PositionOffset = ReadVector3(reader, "PositionOffset");
+            PositionOffsetVariation = ReadVector3(reader, "PositionOffsetVariation");
+            ParticleRotation = ReadVector3(reader, "ParticleRotation");
+            ParticleRotationVariation = ReadVector3(reader, "ParticleRotationVariation");
+            ParticleColor = ReadVector3(reader, "ParticleColor");
+            ParticleColorVariation = ReadVector3(reader, "ParticleColorVariation");
+            ParticleSize = ReadVector2(reader, "ParticleSize");
+            ParticleSizeVariation = ReadVector2(reader, "ParticleSizeVariation");
 
             if (reader.Name == "Textures")
             {
@@ -620,16 +620,18 @@ namespace TrashSoup.Engine
             writer.WriteEndElement();
         }
 
-        private void ReadVector3(XmlReader reader, Vector3 input, string name)
+        private Vector3 ReadVector3(XmlReader reader, string name)
         {
+            Vector3 output = Vector3.Zero;
             if (reader.Name == name)
             {
                 reader.ReadStartElement();
-                input = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                output = new Vector3(reader.ReadElementContentAsFloat("X", ""),
                     reader.ReadElementContentAsFloat("Y", ""),
                     reader.ReadElementContentAsFloat("Z", ""));
                 reader.ReadEndElement();
             }
+            return output;
         }
 
         private void WriteVector2(XmlWriter writer, Vector2 input, string name)
@@ -640,15 +642,17 @@ namespace TrashSoup.Engine
             writer.WriteEndElement();
         }
 
-        private void ReadVector2(XmlReader reader, Vector2 input, string name)
+        private Vector2 ReadVector2(XmlReader reader, string name)
         {
+            Vector2 output = Vector2.Zero;
             if (reader.Name == name)
             {
                 reader.ReadStartElement();
-                input = new Vector2(reader.ReadElementContentAsFloat("X", ""),
+                output = new Vector2(reader.ReadElementContentAsFloat("X", ""),
                     reader.ReadElementContentAsFloat("Y", ""));
                 reader.ReadEndElement();
             }
+            return output;
         }
 
         #endregion
