@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Material>
   <Name>metroGreenPanelsMat</Name>
-  <EffectPath>Effects\DefaultEffect</EffectPath>
+  <EffectPath>Effects\NormalEffect</EffectPath>
   <DiffusePath>Textures\Enviro\Metro\GreenPanels_D</DiffusePath>
   <NormalPath>Textures\Enviro\Metro\GreenPanels_D</NormalPath>
   <DiffuseColor>
@@ -10,11 +10,11 @@
     <Z>1</Z>
   </DiffuseColor>
   <SpecularColor>
-    <X>0.1</X>
-    <Y>0.1</Y>
-    <Z>0</Z>
+    <X>0.5</X>
+    <Y>0.5</Y>
+    <Z>0.5</Z>
   </SpecularColor>
-  <Glossiness>10</Glossiness>
+  <Glossiness>100</Glossiness>
   <ReflectivityColor>
     <X>1</X>
     <Y>1</Y>
