@@ -57,12 +57,12 @@ namespace TrashSoup.Gameplay
                 {
                     ps.Play();
 }
-                if (e.MyObject.MyPhysicalObject != null)
+                if (e.HitPoints > 0 && e.MyObject.MyPhysicalObject != null)
                 {
                     Vector3 diff = e.MyObject.MyTransform.Position - pc.MyObject.MyTransform.Position;
                     diff.Y = 0.0f;
                     diff.Normalize();
-                    e.MyObject.MyPhysicalObject.AddForce(diff * 50.0f * damage);
+                    e.MyObject.MyPhysicalObject.AddForce(diff * 30.0f * damage);
                 }
             }
         }

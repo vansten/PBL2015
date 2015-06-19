@@ -126,7 +126,10 @@ namespace TrashSoup.Gameplay
             nextBlinkTime = dieCooldown + 1.0f;
             this.MyObject.MyPhysicalObject.Velocity = Vector3.Zero;
             this.MyObject.MyPhysicalObject.IsUsingGravity = false;
-            this.MyObject.MyCollider.Enabled = false;
+            //this.MyObject.MyCollider.Enabled = false;
+            Collider c = ResourceManager.Instance.CurrentScene.GetObject(1).MyCollider;
+            this.MyObject.MyCollider.IgnoredColliders.Add(c);
+            c.IgnoredColliders.Add(this.MyObject.MyCollider);
             this.MyObject.MyTransform.Position += 0.75f * Vector3.Up;
             isDead = true;
         }

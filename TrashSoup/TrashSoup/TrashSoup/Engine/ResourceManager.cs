@@ -253,6 +253,18 @@ namespace TrashSoup.Engine
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/idle_1"), "Animations/MainCharacter/idle_1"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/dodge_1"), "Animations/MainCharacter/dodge_1"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/boxing_4"), "Animations/MainCharacter/boxing_4"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/boxing_1"), "Animations/MainCharacter/boxing_1"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/boxing_2"), "Animations/MainCharacter/boxing_2"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/boxing_3"), "Animations/MainCharacter/boxing_3"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/attack_Hweapon_1"), "Animations/MainCharacter/attack_Hweapon_1"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/attack_Hweapon_2"), "Animations/MainCharacter/attack_Hweapon_2"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/attack_Hweapon_3"), "Animations/MainCharacter/attack_Hweapon_3"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/attack_Hweapon_4"), "Animations/MainCharacter/attack_Hweapon_4"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/attack_Mweapon_1"), "Animations/MainCharacter/attack_Mweapon_1"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/attack_Mweapon_2"), "Animations/MainCharacter/attack_Mweapon_2"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/attack_Mweapon_3"), "Animations/MainCharacter/attack_Mweapon_3"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/attack_Mweapon_4"), "Animations/MainCharacter/attack_Mweapon_4"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/attack_Mweapon_5"), "Animations/MainCharacter/attack_Mweapon_5"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/building"), "Animations/MainCharacter/building"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/dying_1"), "Animations/MainCharacter/dying_1"));
             testBox.Components.Add(skModel);

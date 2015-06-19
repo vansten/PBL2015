@@ -85,6 +85,8 @@ namespace TrashSoup.Gameplay
         private bool isAttacking = false;
         private float attackTimer = 0.0f;
         private float attackCooldown = 0.0f;
+        private int combo = 1;
+        private float lastAttackTime = 0.0f;
 
         #endregion
 
@@ -294,8 +296,33 @@ namespace TrashSoup.Gameplay
                 {
                     if (MyObject.MyAnimator != null)
                     {
-                        MyObject.MyAnimator.ChangeState("AttackFist01");
-                        attackCooldown = (float)MyObject.MyAnimator.AvailableStates["AttackFist01"].Animation.CurrentClip.Duration.TotalMilliseconds;
+                        if(gameTime.TotalGameTime.TotalMilliseconds - lastAttackTime < attackCooldown + 300.0f)
+                        {
+                            combo += 1;
+                            if(this.equipment.CurrentWeapon.Type != WeaponType.MEDIUM)
+                            {
+                                if(combo > 4)
+                                {
+                                    combo = 1;
+                                }
+                            }
+                            else
+                            {
+                                if(combo > 5)
+                                {
+                                    combo = 1;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            combo = 1;
+                        }
+                        lastAttackTime = (float)gameTime.TotalGameTime.TotalMilliseconds;
+                        string animName = BuildCurrentAnimName();
+                        Debug.Log(animName);
+                        MyObject.MyAnimator.ChangeState(animName);
+                        attackCooldown = (float)MyObject.MyAnimator.AvailableStates[animName].Animation.CurrentClip.Duration.TotalMilliseconds;
                     }
                     equipment.CurrentWeapon.IsAttacking = true;
                     equipment.CurrentWeapon.timerOn = gameTime.TotalGameTime.TotalSeconds;
@@ -423,15 +450,51 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.AvailableStates.Add("Build", new AnimatorState("Build", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/building")));
                 MyObject.MyAnimator.AvailableStates.Add("Jump", new AnimatorState("Jump", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/dodge_1"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("Death", new AnimatorState("Death", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/dying_1"), AnimatorState.StateType.SINGLE));
-                MyObject.MyAnimator.AvailableStates.Add("AttackFist01", new AnimatorState("AttackFist01", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_4"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("AttackFist01", new AnimatorState("AttackFist01", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_1"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("AttackFist02", new AnimatorState("AttackFist02", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_2"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("AttackFist03", new AnimatorState("AttackFist03", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_3"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("AttackFist04", new AnimatorState("AttackFist04", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_4"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("AttackHWeapon01", new AnimatorState("AttackHWeapon01", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/attack_Hweapon_1"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("AttackHWeapon02", new AnimatorState("AttackHWeapon02", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/attack_Hweapon_2"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("AttackHWeapon03", new AnimatorState("AttackHWeapon03", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/attack_Hweapon_3"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("AttackHWeapon04", new AnimatorState("AttackHWeapon04", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/attack_Hweapon_4"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("AttackMWeapon01", new AnimatorState("AttackMWeapon01", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/attack_Mweapon_1"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("AttackMWeapon02", new AnimatorState("AttackMWeapon02", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/attack_Mweapon_2"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("AttackMWeapon03", new AnimatorState("AttackMWeapon03", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/attack_Mweapon_3"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("AttackMWeapon04", new AnimatorState("AttackMWeapon04", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/attack_Mweapon_4"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("AttackMWeapon05", new AnimatorState("AttackMWeapon05", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/attack_Mweapon_5"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Jump"], new TimeSpan(0, 0, 0, 0, 500));
-                MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackFist01"], new TimeSpan(0, 0, 0, 0, 100));
                 MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 250));
                 MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Jump"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Jump"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 100));
                 MyObject.MyAnimator.AvailableStates["Jump"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 500));
-                MyObject.MyAnimator.AvailableStates["AttackFist01"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 500));
+                string[] combatAnimsNames = {"AttackFist01", "AttackFist02", "AttackFist03", "AttackFist04",
+                                            "AttackHWeapon01", "AttackHWeapon02", "AttackHWeapon03", "AttackHWeapon04",
+                                            "AttackMWeapon01", "AttackMWeapon02", "AttackMWeapon03", "AttackMWeapon04", "AttackMWeapon05"};
+                for (int i = 0; i < combatAnimsNames.Length; ++i)
+                {
+                    MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates[combatAnimsNames[i]], new TimeSpan(0, 0, 0, 0, 100));
+                    MyObject.MyAnimator.AvailableStates[combatAnimsNames[i]].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 500));
+                    MyObject.MyAnimator.AvailableStates[combatAnimsNames[i]].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
+                }
+
+                MyObject.MyAnimator.AvailableStates["AttackFist01"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackFist02"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["AttackFist02"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackFist03"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["AttackFist03"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackFist04"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["AttackFist04"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackFist01"], new TimeSpan(0, 0, 0, 0, 200));
+
+                MyObject.MyAnimator.AvailableStates["AttackHWeapon01"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackHWeapon02"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["AttackHWeapon02"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackHWeapon03"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["AttackHWeapon03"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackHWeapon04"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["AttackHWeapon04"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackHWeapon01"], new TimeSpan(0, 0, 0, 0, 200));
+
+                MyObject.MyAnimator.AvailableStates["AttackMWeapon01"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackMWeapon02"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["AttackMWeapon02"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackMWeapon03"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["AttackMWeapon03"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackMWeapon04"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["AttackMWeapon04"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackMWeapon05"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["AttackMWeapon05"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackMWeapon01"], new TimeSpan(0, 0, 0, 0, 200));
+
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Build"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Build"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Build"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 200));
@@ -439,7 +502,6 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
                 MyObject.MyAnimator.AvailableStates["Jump"].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
                 MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
-                MyObject.MyAnimator.AvailableStates["AttackFist01"].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
                 MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["Idle"];
                 //MyObject.MyAnimator.SetBlendState("Walk");
             }
@@ -557,6 +619,31 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.ChangeState("Idle");
             }
             
+        }
+
+        private string BuildCurrentAnimName()
+        {
+            string currentAnimName = "Attack";
+            switch(this.equipment.CurrentWeapon.Type)
+            {
+                case WeaponType.FISTS:
+                    currentAnimName += "Fist0";
+                    break;
+                case WeaponType.HEAVY:
+                    currentAnimName += "HWeapon0";
+                    break;
+                case WeaponType.LIGHT:
+                    currentAnimName += "MWeapon0";
+                    break;
+                case WeaponType.MEDIUM:
+                    currentAnimName += "MWeapon0";
+                    break;
+                default:
+                    currentAnimName += "Fists0";
+                    break;
+            }
+            currentAnimName += this.combo.ToString();
+            return currentAnimName;
         }
 
         public override System.Xml.Schema.XmlSchema GetSchema()

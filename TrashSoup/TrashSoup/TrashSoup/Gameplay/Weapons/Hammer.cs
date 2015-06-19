@@ -15,7 +15,7 @@ namespace TrashSoup.Gameplay.Weapons
             Damage = 18;
             OffsetPosition = new Vector3(0.1f, 0, 0.05f);
             OffsetRotation = new Vector3(0, 0, -30);
-            Type = WeaponType.MEDIUM;
+            Type = WeaponType.HEAVY;
             IsCraftable = true;
             CraftingCost = 50;
             Name = "Hammer";
