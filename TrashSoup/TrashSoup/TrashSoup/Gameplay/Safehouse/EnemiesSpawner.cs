@@ -12,36 +12,52 @@ namespace TrashSoup.Gameplay.Safehouse
     class EnemiesSpawner : ObjectComponent
     {
         private uint playerTimerID = 355;
-        private int enemiesLeftCount = 10;
+
+        private int lastMinutesSpawn = 30;
+
+        private bool spawnPossible = false;
 
         private PlayerTime playerTime;
 
         public EnemiesSpawner(GameObject go) : base(go)
         {
-            enemiesLeftCount = 10;
         }
 
         public EnemiesSpawner(GameObject go, EnemiesSpawner es) : base(go)
         {
             this.playerTimerID = es.playerTimerID;
-            enemiesLeftCount = es.enemiesLeftCount;
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             if (TrashSoupGame.Instance.EditorMode) return;
+            
             if(this.playerTime.Hours == 22 && this.playerTime.Minutes == 0)
             {
-                while(--this.enemiesLeftCount >= 0)
-                {
-                    Debug.Log("Selecting random spawn point to spawn enemy in that spawn point");
-                }
-                //this.MyObject.Enabled = false;
+                spawnPossible = true;
             }
+            else if(this.playerTime.Hours == 3 && this.playerTime.Minutes == 0)
+            {
+                spawnPossible = false;
+                SafehouseController.Instance.CanToMapSelection = true;
+            }
+
+            if(spawnPossible)
+            {
+                if(Math.Abs(lastMinutesSpawn - this.playerTime.Minutes) == 30)
+                {
+                    Spawn();
+                }
+            }
+
 
             if(InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.P))
             {
                 SafehouseController.Instance.EnemiesLeft = 0;
+            }
+            if(InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.O))
+            {
+                SafehouseController.Instance.CanToMapSelection = true;
             }
         }
 
@@ -53,10 +69,26 @@ namespace TrashSoup.Gameplay.Safehouse
         {
         }
 
+        private void Spawn()
+        {
+            lastMinutesSpawn = this.playerTime.Minutes;
+            int rand = SingleRandom.Instance.rnd.Next() % 4 + 1;
+            while (--rand >= 0)
+            {
+                Debug.Log("Spawning enemy");
+                SafehouseController.Instance.EnemiesLeft += 1;
+            }
+        }
+
         public override void Initialize()
         {
             this.playerTime = (PlayerTime)ResourceManager.Instance.CurrentScene.GetObject(this.playerTimerID).GetComponent<PlayerTime>();
-            SafehouseController.Instance.EnemiesLeft = this.enemiesLeftCount;
+            if (this.playerTime.Hours == 22 && this.playerTime.Minutes == 0)
+            {
+                spawnPossible = true;
+                Spawn();
+            }
+            SafehouseController.Instance.CanToMapSelection = false;
 
             base.Initialize();
         }

@@ -357,7 +357,7 @@ namespace TrashSoup.Gameplay
 
             if (!this.collectedWeapon && this.collisionWithWeapon && InputHandler.Instance.Action())
             {
-                this.collectedWeapon = true;
+                //this.collectedWeapon = true;
                 this.CollectedFakeTime = gameTime.TotalGameTime.TotalSeconds;
                 if(this.anotherWeapon != null)
                 {

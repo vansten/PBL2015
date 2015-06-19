@@ -12,6 +12,7 @@ namespace TrashSoup.Gameplay.Safehouse
         private int hours;
         private int minutes;
         private int enemiesLeft;
+        private bool canToMapSelection;
 
         public int EnemiesLeft
         {
@@ -22,7 +23,23 @@ namespace TrashSoup.Gameplay.Safehouse
             set
             {
                 enemiesLeft = value;
-                if(enemiesLeft == 0)
+                if(enemiesLeft == 0 && canToMapSelection)
+                {
+                    LoadMapSelectMenu();
+                }
+            }
+        }
+
+        public bool CanToMapSelection
+        {
+            get
+            {
+                return this.canToMapSelection;
+            }
+            set
+            {
+                this.canToMapSelection = value;
+                if(this.canToMapSelection && enemiesLeft == 0)
                 {
                     LoadMapSelectMenu();
                 }
