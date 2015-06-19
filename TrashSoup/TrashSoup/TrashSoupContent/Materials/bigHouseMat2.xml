@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Material>
   <Name>bigHouseMat2</Name>
-  <EffectPath>Effects\DefaultEffect</EffectPath>
+  <EffectPath>Effects\NormalEffect</EffectPath>
   <DiffusePath>Textures\Enviro\Buildings\Big_house_D</DiffusePath>
   <NormalPath>Textures\Enviro\Buildings\Big_house_N</NormalPath>
   <DiffuseColor>
@@ -10,11 +10,11 @@
     <Z>0.6</Z>
   </DiffuseColor>
   <SpecularColor>
-    <X>0.1</X>
-    <Y>0.1</Y>
-    <Z>0</Z>
+    <X>0.4</X>
+    <Y>0.4</Y>
+    <Z>0.4</Z>
   </SpecularColor>
-  <Glossiness>10</Glossiness>
+  <Glossiness>55</Glossiness>
   <ReflectivityColor>
     <X>1</X>
     <Y>1</Y>

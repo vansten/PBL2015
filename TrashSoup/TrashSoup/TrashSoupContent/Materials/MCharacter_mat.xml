@@ -10,11 +10,11 @@
     <Z>1</Z>
   </DiffuseColor>
   <SpecularColor>
-    <X>1</X>
-    <Y>1</Y>
-    <Z>1</Z>
+    <X>0.5</X>
+    <Y>0.5</Y>
+    <Z>0.5</Z>
   </SpecularColor>
-  <Glossiness>50</Glossiness>
+  <Glossiness>40</Glossiness>
   <ReflectivityColor>
     <X>1</X>
     <Y>1</Y>
