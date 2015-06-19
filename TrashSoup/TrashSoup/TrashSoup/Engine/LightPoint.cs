@@ -234,15 +234,15 @@ namespace TrashSoup.Engine
             writer.WriteElementString("CastShadows", XmlConvert.ToString(CastShadows));
 
             writer.WriteStartElement("Color");
-            writer.WriteElementString("R", LightColor.X.ToString());
-            writer.WriteElementString("G", LightColor.Y.ToString());
-            writer.WriteElementString("B", LightColor.Z.ToString());
+            writer.WriteElementString("R", XmlConvert.ToString(LightColor.X));
+            writer.WriteElementString("G", XmlConvert.ToString(LightColor.Y));
+            writer.WriteElementString("B", XmlConvert.ToString(LightColor.Z));
             writer.WriteEndElement();
 
             writer.WriteStartElement("SpecularColor");
-            writer.WriteElementString("R", LightSpecularColor.X.ToString());
-            writer.WriteElementString("G", LightSpecularColor.Y.ToString());
-            writer.WriteElementString("B", LightSpecularColor.Z.ToString());
+            writer.WriteElementString("R", XmlConvert.ToString(LightSpecularColor.X));
+            writer.WriteElementString("G", XmlConvert.ToString(LightSpecularColor.Y));
+            writer.WriteElementString("B", XmlConvert.ToString(LightSpecularColor.Z));
             writer.WriteEndElement();
 
             writer.WriteElementString("Attenuation", XmlConvert.ToString(Attenuation));
