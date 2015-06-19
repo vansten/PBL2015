@@ -2,19 +2,19 @@
 <Material>
   <Name>testTerMat</Name>
   <EffectPath>Effects\NormalEffect</EffectPath>
-  <DiffusePath>Textures\Test\metal01_d</DiffusePath>
-  <NormalPath>Textures\Test\water</NormalPath>
+  <DiffusePath>Textures\Enviro\Nature\park_ground_D</DiffusePath>
+  <NormalPath>Textures\Enviro\Nature\park_ground_N</NormalPath>
   <DiffuseColor>
     <X>1</X>
     <Y>1</Y>
     <Z>1</Z>
   </DiffuseColor>
   <SpecularColor>
-    <X>0.1</X>
-    <Y>0.1</Y>
-    <Z>0</Z>
+    <X>0.5</X>
+    <Y>0.5</Y>
+    <Z>0.5</Z>
   </SpecularColor>
-  <Glossiness>10</Glossiness>
+  <Glossiness>100</Glossiness>
   <ReflectivityColor>
     <X>1</X>
     <Y>1</Y>

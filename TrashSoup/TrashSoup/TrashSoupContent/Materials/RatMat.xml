@@ -14,13 +14,13 @@
     <Y>0.3</Y>
     <Z>0.3</Z>
   </SpecularColor>
-  <Glossiness>50</Glossiness>
+  <Glossiness>20</Glossiness>
   <ReflectivityColor>
     <X>1</X>
     <Y>1</Y>
     <Z>1</Z>
   </ReflectivityColor>
-  <ReflectivityBias>0.2</ReflectivityBias>
+  <ReflectivityBias>1</ReflectivityBias>
   <Transparency>1</Transparency>
   <PerPixelLighting>false</PerPixelLighting>
   <ReceiveShadows>false</ReceiveShadows>
