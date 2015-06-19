@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Material>
   <Name>safehouseFloorMat</Name>
-  <EffectPath>Effects\DefaultEffect</EffectPath>
+  <EffectPath>Effects\NormalEffect</EffectPath>
   <DiffusePath>Textures\Home\WindowsDoors\flor_D</DiffusePath>
   <NormalPath>Textures\Home\WindowsDoors\flor_N</NormalPath>
   <DiffuseColor>

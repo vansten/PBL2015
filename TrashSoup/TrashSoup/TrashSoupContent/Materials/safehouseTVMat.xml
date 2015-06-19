@@ -1,18 +1,19 @@
 <?xml version="1.0"?>
 <Material>
   <Name>safehouseTVMat</Name>
-  <EffectPath>Effects\NormalEffect</EffectPath>
+  <EffectPath>Effects\CubeNormalEffect</EffectPath>
   <DiffusePath>Textures\Home\Furnitures\TV_D</DiffusePath>
   <NormalPath>Textures\Home\Furnitures\TV_N</NormalPath>
+  <CubePath>Textures\Skyboxes\Night</CubePath>
   <DiffuseColor>
     <X>1</X>
     <Y>1</Y>
     <Z>1</Z>
   </DiffuseColor>
   <SpecularColor>
-    <X>1</X>
-    <Y>1</Y>
-    <Z>1</Z>
+    <X>0.5</X>
+    <Y>0.5</Y>
+    <Z>0.5</Z>
   </SpecularColor>
   <Glossiness>200</Glossiness>
   <ReflectivityColor>
@@ -20,7 +21,7 @@
     <Y>1</Y>
     <Z>1</Z>
   </ReflectivityColor>
-  <ReflectivityBias>0.2</ReflectivityBias>
+  <ReflectivityBias>1</ReflectivityBias>
   <Transparency>1</Transparency>
   <PerPixelLighting>false</PerPixelLighting>
   <ReceiveShadows>true</ReceiveShadows>

@@ -6,9 +6,9 @@
   <NormalPath>Textures\Home\WindowsDoors\window_drit_N</NormalPath>
   <CubePath>Textures\Skyboxes\Daylight</CubePath>
   <DiffuseColor>
-    <X>1</X>
-    <Y>1</Y>
-    <Z>1</Z>
+    <X>0.3</X>
+    <Y>0.3</Y>
+    <Z>0.3</Z>
   </DiffuseColor>
   <SpecularColor>
     <X>1</X>

@@ -54,7 +54,7 @@
         <G>0.8</G>
         <B>0.8</B>
       </SpecularColor>
-      <Attenuation>30</Attenuation>
+      <Attenuation>30.0000019</Attenuation>
       <UniqueID>110</UniqueID>
       <Name>LightPoint1</Name>
       <DrawLast>false</DrawLast>
@@ -386,7 +386,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1153</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/wall</ModelPath>
             <ModelPath />
@@ -435,7 +435,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1154</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/DoorFrame</ModelPath>
             <ModelPath />
@@ -2184,7 +2184,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1194</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/Bathroom/Sink</ModelPath>
             <ModelPath />
@@ -2233,7 +2233,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1195</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/Bedroom/bed</ModelPath>
             <ModelPath />
@@ -2380,7 +2380,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1200</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/Bathroom/Toilet</ModelPath>
             <ModelPath />
@@ -2429,7 +2429,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1201</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/Stairs/stiars</ModelPath>
             <ModelPath />
@@ -2460,6 +2460,11 @@
           <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1201</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>1202</GameObjectKey>
@@ -2790,6 +2795,11 @@
           <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
+	  <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1201</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
     </GameObject>
     <GameObject>
       <GameObjectKey>1211</GameObjectKey>
