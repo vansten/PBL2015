@@ -5,9 +5,9 @@
   <DiffusePath>Textures\Enviro\Ground\streets_D</DiffusePath>
   <NormalPath>Textures\Enviro\Ground\streets_N</NormalPath>
   <DiffuseColor>
-    <X>1</X>
-    <Y>0</Y>
-    <Z>0</Z>
+    <X>1.7</X>
+    <Y>1.7</Y>
+    <Z>1.7</Z>
   </DiffuseColor>
   <SpecularColor>
     <X>0.5</X>

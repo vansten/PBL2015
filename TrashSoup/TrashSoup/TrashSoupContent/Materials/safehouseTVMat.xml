@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Material>
   <Name>safehouseTVMat</Name>
-  <EffectPath>Effects\DefaultEffect</EffectPath>
+  <EffectPath>Effects\NormalEffect</EffectPath>
   <DiffusePath>Textures\Home\Furnitures\TV_D</DiffusePath>
   <NormalPath>Textures\Home\Furnitures\TV_N</NormalPath>
   <DiffuseColor>
@@ -10,11 +10,11 @@
     <Z>1</Z>
   </DiffuseColor>
   <SpecularColor>
-    <X>0.1</X>
-    <Y>0.1</Y>
-    <Z>0</Z>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
   </SpecularColor>
-  <Glossiness>10</Glossiness>
+  <Glossiness>200</Glossiness>
   <ReflectivityColor>
     <X>1</X>
     <Y>1</Y>
