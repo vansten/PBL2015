@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Material>
+  <Name>zskmartMat</Name>
+  <EffectPath>Effects\NormalEffect</EffectPath>
+  <DiffusePath>Textures\Enviro\Buildings\zskmart_D</DiffusePath>
+  <NormalPath>Textures\Enviro\Buildings\zskmart_N</NormalPath>
+  <DiffuseColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </DiffuseColor>
+  <SpecularColor>
+    <X>0.45</X>
+    <Y>0.45</Y>
+    <Z>0.6</Z>
+  </SpecularColor>
+  <Glossiness>50</Glossiness>
+  <ReflectivityColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </ReflectivityColor>
+  <ReflectivityBias>1</ReflectivityBias>
+  <Transparency>1</Transparency>
+  <PerPixelLighting>false</PerPixelLighting>
+  <ReceiveShadows>true</ReceiveShadows>
+</Material>
