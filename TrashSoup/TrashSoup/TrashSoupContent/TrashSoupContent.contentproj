@@ -824,11 +824,6 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
-    <Compile Include="Models\Storyline\Food.FBX">
-      <Name>Food</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>CustomModelProcessor</Processor>
-    </Compile>
     <Compile Include="Models\Weapons\Maczuga\Mace.FBX">
       <Name>Mace</Name>
       <Importer>FbxImporter</Importer>
@@ -873,11 +868,6 @@
       <Name>Camera_LOW</Name>
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\Storyline\Note.FBX">
-      <Name>Note</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Weapons\HammerSmall\HammerSmall.FBX">
       <Name>HammerSmall</Name>
@@ -1218,6 +1208,16 @@
     </Compile>
     <Compile Include="Models\Enviro\Railing\Railing_2.FBX">
       <Name>Railing_2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Storyline\Food.FBX">
+      <Name>Food</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Storyline\Note.FBX">
+      <Name>Note</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>

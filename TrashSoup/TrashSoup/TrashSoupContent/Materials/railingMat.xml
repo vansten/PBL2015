@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Material>
+  <Name>railingMat</Name>
+  <EffectPath>Effects\NormalEffect</EffectPath>
+  <DiffusePath>Textures\Enviro\Railing\Railing_D</DiffusePath>
+  <NormalPath>Textures\Enviro\Railing\Railing_N</NormalPath>
+  <DiffuseColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </DiffuseColor>
+  <SpecularColor>
+    <X>0.5</X>
+    <Y>0.5</Y>
+    <Z>0.5</Z>
+  </SpecularColor>
+  <Glossiness>80</Glossiness>
+  <ReflectivityColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </ReflectivityColor>
+  <ReflectivityBias>1</ReflectivityBias>
+  <Transparency>1</Transparency>
+  <PerPixelLighting>false</PerPixelLighting>
+  <ReceiveShadows>true</ReceiveShadows>
+</Material>
