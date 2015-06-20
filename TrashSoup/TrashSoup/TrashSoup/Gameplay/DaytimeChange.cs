@@ -358,7 +358,7 @@ namespace TrashSoup.Gameplay
             
             direction = Vector3.Transform(direction, Matrix.CreateFromAxisAngle(rotationAxe, -(float)rotation));
 
-            Debug.Log(direction.ToString());
+            //Debug.Log(direction.ToString());
             direction.Z = -direction.Z;
             direction.Y -= HorizonOffset;
             direction.Normalize();

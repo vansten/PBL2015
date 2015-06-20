@@ -320,7 +320,7 @@ namespace TrashSoup.Gameplay
                         }
                         lastAttackTime = (float)gameTime.TotalGameTime.TotalMilliseconds;
                         string animName = BuildCurrentAnimName();
-                        Debug.Log(animName);
+                        //Debug.Log(animName);
                         MyObject.MyAnimator.ChangeState(animName);
                         attackCooldown = (float)MyObject.MyAnimator.AvailableStates[animName].Animation.CurrentClip.Duration.TotalMilliseconds;
                     }
