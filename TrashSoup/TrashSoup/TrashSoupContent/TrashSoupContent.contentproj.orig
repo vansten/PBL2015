@@ -824,11 +824,6 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
-    <Compile Include="Models\Storyline\Food.FBX">
-      <Name>Food</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>CustomModelProcessor</Processor>
-    </Compile>
     <Compile Include="Models\Weapons\Maczuga\Mace.FBX">
       <Name>Mace</Name>
       <Importer>FbxImporter</Importer>
@@ -873,11 +868,6 @@
       <Name>Camera_LOW</Name>
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\Storyline\Note.FBX">
-      <Name>Note</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
     </Compile>
     <Compile Include="Models\Weapons\HammerSmall\HammerSmall.FBX">
       <Name>HammerSmall</Name>
@@ -1203,20 +1193,40 @@
     <Compile Include="Models\Home\Stairs\stairs_lower.FBX">
       <Name>stairs_lower</Name>
       <Importer>FbxImporter</Importer>
-<<<<<<< HEAD
-      <Processor>ModelProcessor</Processor>
-=======
       <Processor>CustomModelProcessor</Processor>
->>>>>>> d50b2d9541cb85b80e68b99f0a72d090b3c68b68
     </Compile>
     <Compile Include="Models\Home\Stairs\stairs_upper.FBX">
       <Name>stairs_upper</Name>
       <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Railing\Railing_1.FBX">
+      <Name>Railing_1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+      <ProcessorParameters_PremultiplyTextureAlpha>False</ProcessorParameters_PremultiplyTextureAlpha>
+    </Compile>
+    <Compile Include="Models\Enviro\Railing\Railing_2.FBX">
+      <Name>Railing_2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
 <<<<<<< HEAD
+    <Compile Include="Models\Storyline\Food.FBX">
+      <Name>Food</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Storyline\Note.FBX">
+      <Name>Note</Name>
+      <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
 =======
+    <Compile Include="Models\Enviro\Buildings\zskmart.FBX">
+      <Name>zskmart</Name>
+      <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
->>>>>>> d50b2d9541cb85b80e68b99f0a72d090b3c68b68
+>>>>>>> 575f3a8f3ac7b5010b543aed9702c4c418dba35c
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -2543,6 +2553,37 @@
     </Compile>
     <Compile Include="Textures\GUITest\NotActiveMap.png">
       <Name>NotActiveMap</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Railing\Railing_D.dds">
+      <Name>Railing_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Railing\Railing_N.dds">
+      <Name>Railing_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\HUD\map_menu.png">
+      <Name>map_menu</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Enviro\Buildings\zskmart_D.dds">
+      <Name>zskmart_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Enviro\Buildings\zskmart_N.dds">
+      <Name>zskmart_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
