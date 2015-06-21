@@ -1209,7 +1209,8 @@
     <Compile Include="Models\Enviro\Railing\Railing_2.FBX">
       <Name>Railing_2</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>CustomModelProcessor</Processor>
+      <ProcessorParameters_PremultiplyTextureAlpha>False</ProcessorParameters_PremultiplyTextureAlpha>
     </Compile>
     <Compile Include="Models\Storyline\Food.FBX">
       <Name>Food</Name>
