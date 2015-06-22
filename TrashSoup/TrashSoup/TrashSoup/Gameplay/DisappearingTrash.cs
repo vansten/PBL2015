@@ -20,21 +20,29 @@ namespace TrashSoup.Gameplay
 
         }
 
+        public DisappearingTrash(GameObject go, DisappearingTrash cm) : base(go, cm)
+        {
+            TrashCount = cm.TrashCount;
+        }
+
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            if (tt.Picked && this.Enabled)
+            if(!TrashSoupGame.Instance.EditorMode)
             {
-                if (modelBad != null)
+                if (tt.Picked && this.Enabled)
                 {
-                    modelBad.Visible = true;
-                    modelGood.Visible = false;
+                    if (modelBad != null)
+                    {
+                        modelBad.Visible = true;
+                        modelGood.Visible = false;
+                    }
+                    else
+                    {
+                        MyObject.Enabled = false;
+                        ResourceManager.Instance.CurrentScene.DeleteObjectRuntime(MyObject);
+                    }
+                    this.Enabled = false;
                 }
-                else
-                {
-                    MyObject.Enabled = false;
-                    ResourceManager.Instance.CurrentScene.DeleteObjectRuntime(MyObject);
-                }
-                this.Enabled = false;
             }
         }
 

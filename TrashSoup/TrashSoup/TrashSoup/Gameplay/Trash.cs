@@ -21,6 +21,11 @@ namespace TrashSoup.Gameplay
         {
 
         }
+        public Trash(GameObject go, Trash cm)
+            : base(go, cm)
+        {
+            TrashCount = cm.TrashCount;
+        }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
