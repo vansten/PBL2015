@@ -17,6 +17,11 @@ namespace TrashSoup.Gameplay
 
         }
 
+        public RatTurningTrigger(GameObject go, RatTurningTrigger rtt) : base(go, rtt)
+        {
+            
+        }
+
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             

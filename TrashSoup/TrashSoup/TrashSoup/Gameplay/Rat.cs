@@ -27,6 +27,11 @@ namespace TrashSoup.Gameplay
             Start();
         }
 
+        public Rat(GameObject go, Rat r) : base(go, r)
+        {
+            Start();
+        }
+
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             if(TrashSoupGame.Instance.EditorMode)
@@ -130,7 +135,6 @@ namespace TrashSoup.Gameplay
             Collider c = ResourceManager.Instance.CurrentScene.GetObject(1).MyCollider;
             this.MyObject.MyCollider.IgnoredColliders.Add(c);
             c.IgnoredColliders.Add(this.MyObject.MyCollider);
-            this.MyObject.MyTransform.Position += 0.75f * Vector3.Up;
             isDead = true;
         }
 
