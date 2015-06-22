@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Material>
+  <Name>trash2Mat_04</Name>
+  <EffectPath>Effects\NormalEffect</EffectPath>
+  <DiffusePath>Textures\Enviro\Nature\bush_D</DiffusePath>
+  <NormalPath>Textures\Enviro\Nature\bush_N</NormalPath>
+  <DiffuseColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </DiffuseColor>
+  <SpecularColor>
+    <X>0.35</X>
+    <Y>0.35</Y>
+    <Z>0.35</Z>
+  </SpecularColor>
+  <Glossiness>60</Glossiness>
+  <ReflectivityColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </ReflectivityColor>
+  <ReflectivityBias>1</ReflectivityBias>
+  <Transparency>1</Transparency>
+  <PerPixelLighting>false</PerPixelLighting>
+  <ReceiveShadows>true</ReceiveShadows>
+</Material>

@@ -163,7 +163,7 @@ namespace TrashSoup
                 //TETING PAGI SCENE
                 if (Keyboard.GetState().IsKeyDown(Keys.F6) && !f6pressed)
                 {
-                    SaveManager.Instance.GetXmlPath();
+                    SaveManager.Instance.XmlPath = "../../../../TrashSoupContent/Scenes/intro.xml";
                     SaveManager.Instance.LoadFileAction();
                     Debug.Log("Load Completed");
                     f6pressed = true;

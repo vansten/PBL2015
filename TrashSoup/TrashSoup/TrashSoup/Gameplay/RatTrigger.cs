@@ -7,13 +7,15 @@ using TrashSoup.Engine;
 
 namespace TrashSoup.Gameplay
 {
-    class RatTrigger : ObjectComponent
+    public class RatTrigger : ObjectComponent
     {
         private Rat myRat;
         private bool targetSeen = false;
         private bool targetDead = false;
         private GameObject target;
         private PlayerController pc;
+
+        public uint MyRatID;
 
         public RatTrigger(GameObject go) : base(go)
         {
@@ -22,7 +24,8 @@ namespace TrashSoup.Gameplay
 
         public RatTrigger(GameObject go, RatTrigger rt) : base(go, rt)
         {
-            
+            this.myRat = rt.myRat;
+            this.MyRatID = rt.MyRatID;
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
@@ -54,7 +57,11 @@ namespace TrashSoup.Gameplay
 
         public override void Initialize()
         {
-            this.myRat = (Rat)ResourceManager.Instance.CurrentScene.GetObject(359).GetComponent<Rat>();
+            this.myRat = (Rat)ResourceManager.Instance.CurrentScene.GetObject(MyRatID).GetComponent<Rat>();
+            if (MyRatID == 1550)
+            {
+                this.MyObject.DrawCollider = true;
+            }
             this.myRat.MyObject.AddChild(this.MyObject);
             base.Initialize();
         }
@@ -90,13 +97,20 @@ namespace TrashSoup.Gameplay
         {
             reader.ReadStartElement();
 
+            reader.ReadStartElement("MyRatID");
+            this.MyRatID = (uint)reader.ReadContentAsInt();
+            reader.ReadEndElement();
             base.ReadXml(reader);
+            
 
             reader.ReadEndElement();
         }
 
         public override void WriteXml(System.Xml.XmlWriter writer)
         {
+            writer.WriteStartElement("MyRatID");
+            writer.WriteValue(this.MyRatID);
+            writer.WriteEndElement();
             base.WriteXml(writer);
         }
     }

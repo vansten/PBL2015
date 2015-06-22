@@ -24,17 +24,25 @@ namespace TrashSoup.Engine.AI.BehaviorTree
             set;
         }
 
+        public double MilisecondsTillLastTick
+        {
+            get;
+            set;
+        }
+
         public bool Enabled = false;
 
         public BehaviorTree()
         {
             this.Blackboard = null;
+            this.MilisecondsTillLastTick = 0;
             BehaviorTreeManager.Instance.AddBehaviorTree(this);
         }
 
         public BehaviorTree(Blackboard b)
         {
             this.Blackboard = b;
+            this.MilisecondsTillLastTick = 0;
             BehaviorTreeManager.Instance.AddBehaviorTree(this);
         }
 
@@ -43,6 +51,7 @@ namespace TrashSoup.Engine.AI.BehaviorTree
             this.Blackboard = b;
             this.BTRoot = btRoot;
             this.BTRoot.SetBlackboard(this.Blackboard);
+            this.MilisecondsTillLastTick = 0;
             BehaviorTreeManager.Instance.AddBehaviorTree(this);
         }
 
@@ -55,6 +64,7 @@ namespace TrashSoup.Engine.AI.BehaviorTree
         public void Run()
         {
             this.Enabled = true;
+            this.MilisecondsTillLastTick = 0;
             if(this.BTRoot != null)
             {
                 this.BTRoot.Initialize();

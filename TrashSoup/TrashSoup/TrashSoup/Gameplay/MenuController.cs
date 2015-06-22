@@ -172,7 +172,7 @@ namespace TrashSoup.Gameplay
                 switch (this.currentOption)
                 {
                     case 0:
-                        SaveManager.Instance.XmlPath = "../../../../TrashSoupContent/Scenes/intro.xml";
+                        SaveManager.Instance.XmlPath = "../../../../TrashSoupContent/Scenes/loading.xml";
                         bgCue.Stop(AudioStopOptions.Immediate);
                         SaveManager.Instance.LoadFileAction();
                         break;

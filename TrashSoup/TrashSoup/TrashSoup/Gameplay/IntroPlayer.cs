@@ -51,7 +51,7 @@ namespace TrashSoup.Gameplay
 
         private void LoadNextScene()
         {
-            SaveManager.Instance.XmlPath = "../../../../TrashSoupContent/Scenes/loading.xml";
+            SaveManager.Instance.XmlPath = "../../../../TrashSoupContent/Scenes/menu.xml";
             SaveManager.Instance.LoadFileAction();
         }
 
@@ -67,7 +67,7 @@ namespace TrashSoup.Gameplay
 
         public override void Initialize()
         {
-            introVideo = TrashSoupGame.Instance.Content.Load<Video>("Videos/test");
+            introVideo = TrashSoupGame.Instance.Content.Load<Video>("Videos/intro");
             videoPlayer = new VideoPlayer();
             videoPlayer.Play(introVideo);
             textureHeight = 0.05f;

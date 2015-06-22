@@ -256,8 +256,8 @@
         <MyObjectID>1</MyObjectID>
         <AnimatorClip>Animations/MainCharacter/run_2</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/idle_Fists</AnimatorClip>
-		<AnimatorClip>Animations/MainCharacter/idle_Hweapon</AnimatorClip>
-		<AnimatorClip>Animations/MainCharacter/idle_SMweapon</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/idle_Hweapon</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/idle_SMweapon</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dodge_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/boxing_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/boxing_2</AnimatorClip>
@@ -275,7 +275,7 @@
         <AnimatorClip>Animations/MainCharacter/building</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dying_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/block_1</AnimatorClip>
-		<AnimatorClip>Animations/MainCharacter/grzebanie</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/grzebanie</AnimatorClip>
       </MyAnimator>
       <Components>
         <TrashSoup.Engine.CustomModel>
@@ -3634,7 +3634,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>582</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -3702,7 +3702,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>36</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -3770,7 +3770,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>917</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -3838,7 +3838,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>700</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -3906,7 +3906,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>100</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -3974,7 +3974,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>712</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -5068,7 +5068,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>102</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -5278,7 +5278,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>533</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -5346,7 +5346,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>263</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -7395,7 +7395,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>374</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -7463,7 +7463,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>493</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -7531,7 +7531,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>631</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -7599,7 +7599,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>691</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -7667,7 +7667,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>266</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -7735,7 +7735,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>992</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Small_House</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Small_House</ModelPath>
@@ -7805,7 +7805,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>186</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -7873,7 +7873,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>122</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -7941,7 +7941,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>307</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -8009,7 +8009,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>731</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -8145,7 +8145,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>670</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/GasStation/GasStation</ModelPath>
             <ModelPath>Models/Enviro/GasStation/GasStation</ModelPath>
@@ -8351,7 +8351,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>467</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -8419,7 +8419,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>744</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -8487,7 +8487,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>767</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -8555,7 +8555,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>212</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -10060,7 +10060,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>324</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Test/box</ModelPath>
             <ModelPath />
@@ -10826,7 +10826,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>870</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -10894,7 +10894,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>768</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -10962,7 +10962,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>786</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -11212,7 +11212,7 @@
         </TrashSoup.Engine.Transform>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>359</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enemies/Rat</ModelPath>
             <ModelPath>Models/Enemies/Rat</ModelPath>
@@ -12725,7 +12725,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>907</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -12861,7 +12861,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>823</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -13133,7 +13133,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>850</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -13201,7 +13201,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>33</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -13269,7 +13269,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>528</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -13405,7 +13405,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>334</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -13473,7 +13473,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>610</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -14901,7 +14901,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>962</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -14969,7 +14969,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>479</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -15037,7 +15037,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>116</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -20785,7 +20785,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>148</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -21200,7 +21200,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>597</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -21283,7 +21283,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>690</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -21366,7 +21366,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>401</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -21449,7 +21449,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>775</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -21532,7 +21532,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>994</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -24437,7 +24437,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>586</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -24520,7 +24520,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>34</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -24603,7 +24603,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>829</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -35142,7 +35142,7 @@
         </TrashSoup.Gameplay.Weapons.Pipe>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1137</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Weapons/Pipe/pipe</ModelPath>
             <ModelPath>Models/Weapons/Pipe/pipe</ModelPath>
@@ -35605,6 +35605,7 @@
       </MyTransform>
       <Components>
         <TrashSoup.Gameplay.RatTrigger>
+          <MyRatID>359</MyRatID>
           <MyObjectID>1143</MyObjectID>
         </TrashSoup.Gameplay.RatTrigger>
       </Components>
@@ -35704,6 +35705,7 @@
       </MyPhysicalObject>
       <Components>
         <TrashSoup.Gameplay.RatTurningTrigger>
+          <MyRatID>359</MyRatID>
           <MyObjectID>1145</MyObjectID>
         </TrashSoup.Gameplay.RatTurningTrigger>
       </Components>
@@ -39552,7 +39554,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1227</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/Camera</ModelPath>
             <ModelPath>Models/Enviro/Minor/Camera_LOW</ModelPath>
@@ -42938,6 +42940,20 @@
           </Materials>
           <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1299</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1299</MyObjectID>
@@ -42952,7 +42968,7 @@
     <GameObject>
       <GameObjectKey>1300</GameObjectKey>
       <UniqueID>1300</UniqueID>
-      <Name>Trash3</Name>
+      <Name>TrashVER2_0</Name>
       <DrawLast>false</DrawLast>
       <Tags>
         <Tag>NoRatAllowed</Tag>
@@ -42962,11 +42978,11 @@
         <MyObjectID>1300</MyObjectID>
         <Position>
           <X>-130</X>
-          <Y>1.2</Y>
+          <Y>0.25</Y>
           <Z>38</Z>
         </Position>
         <Rotation>
-          <X>1.565</X>
+          <X>0</X>
           <Y>0</Y>
           <Z>0</Z>
         </Rotation>
@@ -42975,25 +42991,42 @@
           <Y>0</Y>
           <Z>-1</Z>
         </Forward>
-        <Scale>0.5</Scale>
+        <Scale>5</Scale>
       </MyTransform>
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1300</MyObjectID>
           <LODState>HI</LODState>
           <LODs>
-            <ModelPath>Models/Enviro/Trash/Trash1</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash2</ModelPath>
             <ModelPath />
             <ModelPath />
           </LODs>
           <Materials>
-            <Name>safehouseStairsOldWoodMat</Name>
-            <Name>trashMat</Name>
+            <Name>trash2Mat_03</Name>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_04</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1300</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2_taken</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_03</Name>
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
-          <TrashCount>1</TrashCount>
+          <TrashCount>3</TrashCount>
           <MyObjectID>1300</MyObjectID>
         </TrashSoup.Gameplay.DisappearingTrash>
       </Components>
@@ -43046,6 +43079,20 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1301</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1301</MyObjectID>
@@ -43054,60 +43101,6 @@
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1301</MyObjectID>
-        <IsTrigger>false</IsTrigger>
-      </MyCollider>
-    </GameObject>
-    <GameObject>
-      <GameObjectKey>1303</GameObjectKey>
-      <UniqueID>1303</UniqueID>
-      <Name>Trash5</Name>
-      <DrawLast>false</DrawLast>
-      <Tags>
-        <Tag>NoRatAllowed</Tag>
-      </Tags>
-      <Dynamic>false</Dynamic>
-      <MyTransform>
-        <MyObjectID>1303</MyObjectID>
-        <Position>
-          <X>-104</X>
-          <Y>1</Y>
-          <Z>90</Z>
-        </Position>
-        <Rotation>
-          <X>1.565</X>
-          <Y>0</Y>
-          <Z>0</Z>
-        </Rotation>
-        <Forward>
-          <X>0</X>
-          <Y>0</Y>
-          <Z>-1</Z>
-        </Forward>
-        <Scale>0.5</Scale>
-      </MyTransform>
-      <Components>
-        <TrashSoup.Engine.CustomModel>
-          <MyObjectID>1303</MyObjectID>
-          <LODState>HI</LODState>
-          <LODs>
-            <ModelPath>Models/Enviro/Trash/Trash1</ModelPath>
-            <ModelPath />
-            <ModelPath />
-          </LODs>
-          <Materials>
-            <Name>safehouseStairsOldWoodMat</Name>
-            <Name>trashMat</Name>
-          </Materials>
-          <LodControlled>false</LodControlled>
-        </TrashSoup.Engine.CustomModel>
-        <TrashSoup.Gameplay.DisappearingTrash>
-          <TrashCount>3</TrashCount>
-          <MyObjectID>1303</MyObjectID>
-        </TrashSoup.Gameplay.DisappearingTrash>
-      </Components>
-      <MyCollider>
-        <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1303</MyObjectID>
         <IsTrigger>false</IsTrigger>
       </MyCollider>
     </GameObject>
@@ -43153,6 +43146,20 @@
             <Name>trashMat</Name>
           </Materials>
           <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1304</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
@@ -43208,6 +43215,20 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1305</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1305</MyObjectID>
@@ -43231,13 +43252,13 @@
       <MyTransform>
         <MyObjectID>1306</MyObjectID>
         <Position>
-          <X>-84</X>
+          <X>-85</X>
           <Y>1</Y>
-          <Z>77</Z>
+          <Z>76</Z>
         </Position>
         <Rotation>
           <X>1.565</X>
-          <Y>0</Y>
+          <Y>2</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -43261,6 +43282,20 @@
             <Name>trashMat</Name>
           </Materials>
           <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1306</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
@@ -43316,6 +43351,20 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1307</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1307</MyObjectID>
@@ -43369,6 +43418,20 @@
             <Name>trashMat</Name>
           </Materials>
           <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1308</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
@@ -43424,6 +43487,20 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1309</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1309</MyObjectID>
@@ -43477,6 +43554,20 @@
             <Name>trashMat</Name>
           </Materials>
           <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1310</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
@@ -43532,6 +43623,20 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1311</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1311</MyObjectID>
@@ -43585,6 +43690,20 @@
             <Name>trashMat</Name>
           </Materials>
           <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1312</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
@@ -43640,6 +43759,20 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1313</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1313</MyObjectID>
@@ -43693,6 +43826,20 @@
             <Name>trashMat</Name>
           </Materials>
           <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1314</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
@@ -43748,6 +43895,20 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1315</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1315</MyObjectID>
@@ -43801,6 +43962,20 @@
             <Name>trashMat</Name>
           </Materials>
           <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1316</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
@@ -43856,6 +44031,20 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1317</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1317</MyObjectID>
@@ -43909,6 +44098,20 @@
             <Name>trashMat</Name>
           </Materials>
           <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1318</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
@@ -43964,6 +44167,20 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1319</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1319</MyObjectID>
@@ -44017,6 +44234,20 @@
             <Name>trashMat</Name>
           </Materials>
           <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1320</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
@@ -44072,6 +44303,20 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1321</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1321</MyObjectID>
@@ -44126,6 +44371,20 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1322</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1322</MyObjectID>
@@ -44179,6 +44438,20 @@
             <Name>trashMat</Name>
           </Materials>
           <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1323</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
@@ -44370,6 +44643,20 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1326</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1326</MyObjectID>
@@ -44378,60 +44665,6 @@
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1326</MyObjectID>
-        <IsTrigger>false</IsTrigger>
-      </MyCollider>
-    </GameObject>
-    <GameObject>
-      <GameObjectKey>1327</GameObjectKey>
-      <UniqueID>1327</UniqueID>
-      <Name>Trash26</Name>
-      <DrawLast>false</DrawLast>
-      <Tags>
-        <Tag>NoRatAllowed</Tag>
-      </Tags>
-      <Dynamic>false</Dynamic>
-      <MyTransform>
-        <MyObjectID>1327</MyObjectID>
-        <Position>
-          <X>-104</X>
-          <Y>1</Y>
-          <Z>-96</Z>
-        </Position>
-        <Rotation>
-          <X>1.565</X>
-          <Y>0</Y>
-          <Z>0</Z>
-        </Rotation>
-        <Forward>
-          <X>0</X>
-          <Y>0</Y>
-          <Z>-1</Z>
-        </Forward>
-        <Scale>0.5</Scale>
-      </MyTransform>
-      <Components>
-        <TrashSoup.Engine.CustomModel>
-          <MyObjectID>1327</MyObjectID>
-          <LODState>HI</LODState>
-          <LODs>
-            <ModelPath>Models/Enviro/Trash/Trash1</ModelPath>
-            <ModelPath />
-            <ModelPath />
-          </LODs>
-          <Materials>
-            <Name>safehouseStairsOldWoodMat</Name>
-            <Name>trashMat</Name>
-          </Materials>
-          <LodControlled>false</LodControlled>
-        </TrashSoup.Engine.CustomModel>
-        <TrashSoup.Gameplay.DisappearingTrash>
-          <TrashCount>1</TrashCount>
-          <MyObjectID>1327</MyObjectID>
-        </TrashSoup.Gameplay.DisappearingTrash>
-      </Components>
-      <MyCollider>
-        <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1327</MyObjectID>
         <IsTrigger>false</IsTrigger>
       </MyCollider>
     </GameObject>
@@ -44447,9 +44680,9 @@
       <MyTransform>
         <MyObjectID>1328</MyObjectID>
         <Position>
-          <X>-107</X>
+          <X>-117</X>
           <Y>1</Y>
-          <Z>-96</Z>
+          <Z>-86</Z>
         </Position>
         <Rotation>
           <X>1.565</X>
@@ -44477,6 +44710,20 @@
             <Name>trashMat</Name>
           </Materials>
           <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1328</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
@@ -44501,13 +44748,13 @@
       <MyTransform>
         <MyObjectID>1329</MyObjectID>
         <Position>
-          <X>-106</X>
-          <Y>1</Y>
+          <X>-112</X>
+          <Y>1.8</Y>
           <Z>-100</Z>
         </Position>
         <Rotation>
           <X>1.565</X>
-          <Y>0</Y>
+          <Y>6</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -44515,7 +44762,7 @@
           <Y>0</Y>
           <Z>-1</Z>
         </Forward>
-        <Scale>0.5</Scale>
+        <Scale>1</Scale>
       </MyTransform>
       <Components>
         <TrashSoup.Engine.CustomModel>
@@ -44531,6 +44778,20 @@
             <Name>trashMat</Name>
           </Materials>
           <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1329</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
@@ -44586,6 +44847,20 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1330</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1330</MyObjectID>
@@ -44639,6 +44914,20 @@
             <Name>trashMat</Name>
           </Materials>
           <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1331</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
@@ -44694,6 +44983,20 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1332</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1332</MyObjectID>
@@ -44747,6 +45050,20 @@
             <Name>trashMat</Name>
           </Materials>
           <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1333</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
@@ -44802,6 +45119,20 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1334</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1334</MyObjectID>
@@ -44855,6 +45186,20 @@
             <Name>trashMat</Name>
           </Materials>
           <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1335</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
@@ -44910,6 +45255,20 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1336</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1336</MyObjectID>
@@ -44963,6 +45322,20 @@
             <Name>trashMat</Name>
           </Materials>
           <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1337</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
@@ -45018,6 +45391,20 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1338</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1338</MyObjectID>
@@ -45071,6 +45458,20 @@
             <Name>trashMat</Name>
           </Materials>
           <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1339</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
@@ -45126,6 +45527,20 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1340</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1340</MyObjectID>
@@ -45180,6 +45595,20 @@
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1341</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
           <MyObjectID>1341</MyObjectID>
@@ -45233,6 +45662,20 @@
             <Name>trashMat</Name>
           </Materials>
           <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1342</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+            <ModelPath>Models/Enviro/Trash/Trash1_taken</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+            <Name>trashMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>1</TrashCount>
@@ -47405,7 +47848,7 @@
         </TrashSoup.Gameplay.Weapons.Bottle>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1390</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Weapons/Bottle/bottle</ModelPath>
             <ModelPath />
@@ -54244,6 +54687,998 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1549</MyObjectID>
         <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1550</GameObjectKey>
+      <UniqueID>1550</UniqueID>
+      <Name>TrashVER2_1</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>NoRatAllowed</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1550</MyObjectID>
+        <Position>
+          <X>-107</X>
+          <Y>0.25</Y>
+          <Z>90</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>1</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>5</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1550</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_03</Name>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_04</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1550</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2_taken</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_03</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Gameplay.DisappearingTrash>
+          <TrashCount>3</TrashCount>
+          <MyObjectID>1550</MyObjectID>
+        </TrashSoup.Gameplay.DisappearingTrash>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1550</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1551</GameObjectKey>
+      <UniqueID>1551</UniqueID>
+      <Name>TrashVER2_2</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>NoRatAllowed</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1551</MyObjectID>
+        <Position>
+          <X>-83</X>
+          <Y>0.15</Y>
+          <Z>90</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>5</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1551</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_03</Name>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_04</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1551</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2_taken</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_03</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Gameplay.DisappearingTrash>
+          <TrashCount>3</TrashCount>
+          <MyObjectID>1551</MyObjectID>
+        </TrashSoup.Gameplay.DisappearingTrash>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1551</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1552</GameObjectKey>
+      <UniqueID>1552</UniqueID>
+      <Name>TrashVER2_3</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>NoRatAllowed</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1552</MyObjectID>
+        <Position>
+          <X>-104</X>
+          <Y>0.15</Y>
+          <Z>-96</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>1</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>5</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1552</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_03</Name>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_04</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1552</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2_taken</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_03</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Gameplay.DisappearingTrash>
+          <TrashCount>3</TrashCount>
+          <MyObjectID>1552</MyObjectID>
+        </TrashSoup.Gameplay.DisappearingTrash>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1552</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1553</GameObjectKey>
+      <UniqueID>1553</UniqueID>
+      <Name>TrashVER2_4</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>NoRatAllowed</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1553</MyObjectID>
+        <Position>
+          <X>-89</X>
+          <Y>0.15</Y>
+          <Z>-8</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>5</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1553</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_03</Name>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_04</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1553</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2_taken</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_03</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Gameplay.DisappearingTrash>
+          <TrashCount>3</TrashCount>
+          <MyObjectID>1553</MyObjectID>
+        </TrashSoup.Gameplay.DisappearingTrash>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1553</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1554</GameObjectKey>
+      <UniqueID>1554</UniqueID>
+      <Name>TrashVER2_5</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>NoRatAllowed</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1554</MyObjectID>
+        <Position>
+          <X>-58</X>
+          <Y>0.15</Y>
+          <Z>38</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>-2</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>5</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1554</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_03</Name>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_04</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1554</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2_taken</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_03</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Gameplay.DisappearingTrash>
+          <TrashCount>3</TrashCount>
+          <MyObjectID>1554</MyObjectID>
+        </TrashSoup.Gameplay.DisappearingTrash>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1554</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1555</GameObjectKey>
+      <UniqueID>1555</UniqueID>
+      <Name>TrashVER2_6</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>NoRatAllowed</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1555</MyObjectID>
+        <Position>
+          <X>15</X>
+          <Y>-1.85</Y>
+          <Z>38</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>-2</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>7</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1555</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_03</Name>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_04</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1555</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2_taken</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_03</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Gameplay.DisappearingTrash>
+          <TrashCount>3</TrashCount>
+          <MyObjectID>1555</MyObjectID>
+        </TrashSoup.Gameplay.DisappearingTrash>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1555</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1556</GameObjectKey>
+      <UniqueID>1556</UniqueID>
+      <Name>TrashVER2_7</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>NoRatAllowed</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1556</MyObjectID>
+        <Position>
+          <X>39</X>
+          <Y>-1.85</Y>
+          <Z>5</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>1</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>7</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1556</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_03</Name>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_04</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1556</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2_taken</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_03</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Gameplay.DisappearingTrash>
+          <TrashCount>3</TrashCount>
+          <MyObjectID>1556</MyObjectID>
+        </TrashSoup.Gameplay.DisappearingTrash>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1556</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1557</GameObjectKey>
+      <UniqueID>1557</UniqueID>
+      <Name>TrashVER2_8</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>NoRatAllowed</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1557</MyObjectID>
+        <Position>
+          <X>89</X>
+          <Y>0.1500001</Y>
+          <Z>21</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>3</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>7</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1557</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_03</Name>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_04</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1557</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2_taken</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_03</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Gameplay.DisappearingTrash>
+          <TrashCount>3</TrashCount>
+          <MyObjectID>1557</MyObjectID>
+        </TrashSoup.Gameplay.DisappearingTrash>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1557</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1558</GameObjectKey>
+      <UniqueID>1558</UniqueID>
+      <Name>TrashVER2_9</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>NoRatAllowed</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1558</MyObjectID>
+        <Position>
+          <X>30</X>
+          <Y>0.1500001</Y>
+          <Z>-107</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>3</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>5</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1558</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_03</Name>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_04</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1558</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2_taken</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_03</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Gameplay.DisappearingTrash>
+          <TrashCount>3</TrashCount>
+          <MyObjectID>1558</MyObjectID>
+        </TrashSoup.Gameplay.DisappearingTrash>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1558</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1559</GameObjectKey>
+      <UniqueID>1559</UniqueID>
+      <Name>TrashVER2_10</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>NoRatAllowed</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1559</MyObjectID>
+        <Position>
+          <X>9</X>
+          <Y>0.2</Y>
+          <Z>-116</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0.7168145</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>5</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1559</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_03</Name>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_04</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+		<TrashSoup.Engine.CustomModel>
+          <MyObjectID>1559</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enviro/Trash/Trash2_taken</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>trash2Mat_01</Name>
+            <Name>trash2Mat_02</Name>
+            <Name>trash2Mat_03</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Gameplay.DisappearingTrash>
+          <TrashCount>3</TrashCount>
+          <MyObjectID>1559</MyObjectID>
+        </TrashSoup.Gameplay.DisappearingTrash>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1559</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1560</GameObjectKey>
+      <UniqueID>1560</UniqueID>
+      <Name>Rat (clone)</Name>
+      <DrawLast>true</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>true</Dynamic>
+      <MyTransform>
+        <MyObjectID>1560</MyObjectID>
+        <Position>
+          <X>-69</X>
+          <Y>1</Y>
+          <Z>16</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>-1.57</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>0.0002</Scale>
+      </MyTransform>
+      <MyPhysicalObject>
+        <MyObjectID>1560</MyObjectID>
+        <Acceleration>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Acceleration>
+        <Mass>1</Mass>
+        <DragFactor>0.1</DragFactor>
+        <IsUsingGravity>true</IsUsingGravity>
+        <Velocity>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Velocity>
+        <RotationConstraints>None</RotationConstraints>
+        <PositionConstraints>None</PositionConstraints>
+      </MyPhysicalObject>
+      <MyAnimator>
+        <BaseAnim>Models/Enemies/Rat</BaseAnim>
+        <MyObjectID>1560</MyObjectID>
+        <AnimatorClip>Animations/Enemies/Rat_attack</AnimatorClip>
+        <AnimatorClip>Animations/Enemies/Rat_dying</AnimatorClip>
+        <AnimatorClip>Animations/Enemies/Rat_idle</AnimatorClip>
+        <AnimatorClip>Animations/Enemies/Rat_run</AnimatorClip>
+        <AnimatorClip>Animations/Enemies/Rat_walk</AnimatorClip>
+      </MyAnimator>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1560</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enemies/Rat</ModelPath>
+            <ModelPath>Models/Enemies/Rat</ModelPath>
+            <ModelPath>Models/Enemies/Rat</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>RatMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Engine.Transform>
+          <MyObjectID>1560</MyObjectID>
+          <Position>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Position>
+          <Rotation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Rotation>
+          <Forward>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Forward>
+          <Scale>1</Scale>
+        </TrashSoup.Engine.Transform>
+        <TrashSoup.Gameplay.Enemy>
+          <MyObjectID>1560</MyObjectID>
+        </TrashSoup.Gameplay.Enemy>
+        <TrashSoup.Gameplay.Rat>
+          <MyObjectID>1560</MyObjectID>
+        </TrashSoup.Gameplay.Rat>
+        <TrashSoup.Engine.ParticleSystem>
+          <MyObjectID>1560</MyObjectID>
+          <RotationMode>PLAIN</RotationMode>
+          <LoopMode>NONE</LoopMode>
+          <BlendMode>ALPHA</BlendMode>
+          <Offset>
+            <X>0.17453292</X>
+            <Y>0.17453292</Y>
+            <Z>0.17453292</Z>
+          </Offset>
+          <RandAngle>
+            <X>0.1717074</X>
+            <Y>0.8730113</Y>
+            <Z>0.06092844</Z>
+          </RandAngle>
+          <Wind>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Wind>
+          <WindVariation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </WindVariation>
+          <PositionOffset>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </PositionOffset>
+          <PositionOffsetVariation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </PositionOffsetVariation>
+          <ParticleRotation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </ParticleRotation>
+          <ParticleRotationVariation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </ParticleRotationVariation>
+          <ParticleColor>
+            <X>1</X>
+            <Y>1</Y>
+            <Z>1</Z>
+          </ParticleColor>
+          <ParticleColorVariation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </ParticleColorVariation>
+          <ParticleSize>
+            <X>0.5</X>
+            <Y>0.5</Y>
+          </ParticleSize>
+          <ParticleSizeVariation>
+            <X>0</X>
+            <Y>0</Y>
+          </ParticleSizeVariation>
+          <Textures>
+            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+          </Textures>
+          <LifeSpanSec>0.5</LifeSpanSec>
+          <LifeSpanSecVariation>0</LifeSpanSecVariation>
+          <FadeInTime>0.5</FadeInTime>
+          <FadeInTimeVariation>0</FadeInTimeVariation>
+          <FadeOutTime>0.5</FadeOutTime>
+          <FadeOutTimeVariation>0.5</FadeOutTimeVariation>
+          <Speed>5</Speed>
+          <SpeedVariation>0</SpeedVariation>
+          <DelayMs>0</DelayMs>
+          <DelayMsVariation>0</DelayMsVariation>
+          <Mass>0</Mass>
+          <MassVariation>0</MassVariation>
+          <ParticleCount>5</ParticleCount>
+          <IgnoreScale>true</IgnoreScale>
+          <Stopped>true</Stopped>
+          <UseGravity>false</UseGravity>
+        </TrashSoup.Engine.ParticleSystem>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1560</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1561</GameObjectKey>
+      <UniqueID>1561</UniqueID>
+      <Name>RatTurningTrigger (clone)</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>true</Dynamic>
+      <MyTransform>
+        <MyObjectID>1561</MyObjectID>
+        <Position>
+          <X>3</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <MyPhysicalObject>
+        <MyObjectID>1561</MyObjectID>
+        <Acceleration>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Acceleration>
+        <Mass>0</Mass>
+        <DragFactor>0</DragFactor>
+        <IsUsingGravity>false</IsUsingGravity>
+        <Velocity>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Velocity>
+        <RotationConstraints>None</RotationConstraints>
+        <PositionConstraints>None</PositionConstraints>
+      </MyPhysicalObject>
+      <Components>
+        <TrashSoup.Gameplay.RatTurningTrigger>
+          <MyRatID>1560</MyRatID>
+          <MyObjectID>1561</MyObjectID>
+        </TrashSoup.Gameplay.RatTurningTrigger>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1561</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1562</GameObjectKey>
+      <UniqueID>1562</UniqueID>
+      <Name>RatTrigger (clone)</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>true</Dynamic>
+      <MyTransform>
+        <MyObjectID>1562</MyObjectID>
+        <Position>
+          <X>8</X>
+          <Y>2</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>6</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Gameplay.RatTrigger>
+          <MyRatID>1560</MyRatID>
+          <MyObjectID>1562</MyObjectID>
+        </TrashSoup.Gameplay.RatTrigger>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1562</MyObjectID>
+        <IsTrigger>true</IsTrigger>
       </MyCollider>
     </GameObject>
   </ObjectsDictionary>

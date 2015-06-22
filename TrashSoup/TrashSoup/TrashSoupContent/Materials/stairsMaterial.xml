@@ -2,8 +2,8 @@
 <Material>
   <Name>stairsMaterial</Name>
   <EffectPath>Effects\NormalEffect</EffectPath>
-  <DiffusePath>Textures\Enviro\Ground\streets_D</DiffusePath>
-  <NormalPath>Textures\Enviro\Ground\streets_N</NormalPath>
+  <DiffusePath>Textures\Enviro\Ground\streets_corner_D</DiffusePath>
+  <NormalPath>Textures\Enviro\Ground\streets_corner_N</NormalPath>
   <DiffuseColor>
     <X>1.6</X>
     <Y>1.6</Y>
