@@ -67,7 +67,7 @@ namespace TrashSoup.Gameplay
 
         public override void Initialize()
         {
-            introVideo = TrashSoupGame.Instance.Content.Load<Video>("Videos/test");
+            introVideo = TrashSoupGame.Instance.Content.Load<Video>("Videos/intro");
             videoPlayer = new VideoPlayer();
             videoPlayer.Play(introVideo);
             textureHeight = 0.05f;

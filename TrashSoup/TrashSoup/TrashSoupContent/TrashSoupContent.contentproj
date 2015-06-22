@@ -2598,6 +2598,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Videos\intro.wmv">
+      <Name>intro</Name>
+      <Importer>WmvImporter</Importer>
+      <Processor>VideoProcessor</Processor>
+    </Compile>
     <Compile Include="Videos\test.wmv">
       <Name>test</Name>
       <Importer>WmvImporter</Importer>
