@@ -14,6 +14,12 @@ namespace TrashSoup.Gameplay
         Video introVideo;
         VideoPlayer videoPlayer;
         Texture2D videoTexture;
+        float ar = 9.0f / 16.0f;
+        private Texture2D skipTexture;
+        private Vector2 skipPosition;
+        private float timer = 0.0f;
+        private float textureWidth;
+        private float textureHeight;
 
         public IntroPlayer(GameObject go) : base(go)
         {
@@ -24,14 +30,29 @@ namespace TrashSoup.Gameplay
         {
             if(videoPlayer.State == MediaState.Stopped)
             {
-                SaveManager.Instance.XmlPath = "../../../../TrashSoupContent/Scenes/loading.xml";
-                SaveManager.Instance.LoadFileAction();
+                LoadNextScene();
             }
             else
             {
                 videoTexture = videoPlayer.GetTexture();
-                GUIManager.Instance.DrawTexture(videoTexture, Vector2.Zero, 1.0f, 9.0f / 16.0f);
+                GUIManager.Instance.DrawTexture(videoTexture, Vector2.Zero, 1.0f, ar);
+                if(timer < 1.5f)
+                {
+                    timer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+                    GUIManager.Instance.DrawTexture(skipTexture, skipPosition, textureWidth, textureHeight);
+                }
             }
+
+            if(InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.Enter) || InputManager.Instance.GetGamePadButtonDown(Microsoft.Xna.Framework.Input.Buttons.A))
+            {
+                LoadNextScene();
+            }
+        }
+
+        private void LoadNextScene()
+        {
+            SaveManager.Instance.XmlPath = "../../../../TrashSoupContent/Scenes/loading.xml";
+            SaveManager.Instance.LoadFileAction();
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
@@ -49,6 +70,18 @@ namespace TrashSoup.Gameplay
             introVideo = TrashSoupGame.Instance.Content.Load<Video>("Videos/test");
             videoPlayer = new VideoPlayer();
             videoPlayer.Play(introVideo);
+            textureHeight = 0.05f;
+            if(InputManager.Instance.IsGamePadConnected())
+            {
+                skipTexture = ResourceManager.Instance.LoadTexture("Textures/HUD/a_button");
+                textureWidth = 0.05f;
+            }
+            else
+            {
+                skipTexture = ResourceManager.Instance.LoadTexture("Textures/HUD/enter_key");
+                textureWidth = 0.1f;
+            }
+            skipPosition = new Vector2(0.8f, 0.9f);
             base.Initialize();
         }
 
