@@ -88,6 +88,7 @@ namespace SkinningModelLibrary
 
             // initialize bone transforms to the bind pose
             skinningDataValue.BindPose.CopyTo(boneTransforms, 0);
+            Update(new TimeSpan(0), true, Matrix.Identity);
         }
 
         public void StopClip()

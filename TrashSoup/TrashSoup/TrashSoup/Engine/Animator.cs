@@ -345,6 +345,7 @@ namespace TrashSoup.Engine
             this.NewState = newS;
             this.ifInterpolate = false;
             currentInterpolation = 0.0f;
+            newS.Animation.StopClip();
             newS.Animation.StartClip();
         }
 
