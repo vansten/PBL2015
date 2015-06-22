@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Audio;
@@ -60,6 +61,9 @@ namespace TrashSoup.Gameplay
         private Color normalColor = Color.Lime;
 
         private Cue bgCue;
+        private Cue welcomeCue;
+        //private bool bg;
+        private bool welcome = true;
 
         private MenuStateEnum menuState = MenuStateEnum.MainMenu;
 
@@ -70,6 +74,15 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
+            if (welcome)
+            {
+                if (welcomeCue.IsStopped)
+                {
+                    bgCue.Play();
+                    welcome = false;
+                }
+            }
+
             GUIManager.Instance.DrawTexture(this.backgroundTexture, Vector2.Zero, 1.0f, this.invertedAspectRatio);
             GUIManager.Instance.DrawText(this.font, "11 - DEATH TV", this.channelPos, this.normalColor);
             GUIManager.Instance.DrawTexture(this.logoTexture, this.logoOnePos, 0.05f, 0.07f);
@@ -189,8 +202,9 @@ namespace TrashSoup.Gameplay
             this.font = TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/manaspace");
             if (!TrashSoupGame.Instance.EditorMode)
             {
-                bgCue = AudioManager.Instance.GetCue("menu");
-                bgCue.Play();
+                bgCue = AudioManager.Instance.SoundBank.GetCue("menu");
+                welcomeCue = AudioManager.Instance.SoundBank.GetCue("welcome");
+                welcomeCue.Play();
             }
             base.Initialize();
         }

@@ -75,6 +75,19 @@ namespace TrashSoup.Gameplay
         private bool popularityThirdStepReached = false;
         private float popularityThirdStepAmount = 90.0f;
 
+        private SoundEffect popularityFirstStepApplause;
+        private SoundEffect popularitySecondStepApplause;
+        private SoundEffect popularityThirdStepApplause;
+
+        private SoundEffectInstance popularityFirstEffectInstance;
+        private SoundEffectInstance popularitySecondEffectInstance;
+        private SoundEffectInstance popularityThirdEffectInstance;
+
+        /***COMMENTARY***/
+        //private SoundEffect welcomeSoundEffect;
+        //private SoundEffectInstance welcomeEffectInstance;
+        //////////////////
+        
         private Color collectedSthColor = Color.Yellow;
         private Color looseSthColor = Color.DarkRed;
 
@@ -214,16 +227,19 @@ namespace TrashSoup.Gameplay
             if(!this.popularityFirstStepReached && this.currentPopularity >= this.popularityFirstStepAmount)
             {
                 this.popularityFirstStepReached = true;
+                this.popularityFirstEffectInstance.Play();
                 this.drawLive = true;
             }
             if(!this.popularitySecondStepReached && this.currentPopularity >= this.popularitySecondStepAmount)
             {
                 this.popularitySecondStepReached = true;
+                this.popularitySecondEffectInstance.Play();
                 this.drawLive = true;
             }
             else if(!this.popularityThirdStepReached && this.currentPopularity >= this.popularityThirdStepAmount)
             {
                 this.popularityThirdStepReached = true;
+                this.popularityThirdEffectInstance.Play();
                 this.drawLive = true;
             }
 
@@ -308,6 +324,13 @@ namespace TrashSoup.Gameplay
                 ExplorationCue = AudioManager.Instance.GetCue("exploration");
                 ExplorationCue.Play();
             }
+
+            popularityFirstStepApplause = TrashSoupGame.Instance.Content.Load<SoundEffect>(@"Audio/Ambient/applause_1");
+            popularityFirstEffectInstance = popularityFirstStepApplause.CreateInstance();
+            popularitySecondStepApplause = TrashSoupGame.Instance.Content.Load<SoundEffect>(@"Audio/Ambient/applause_2");
+            popularitySecondEffectInstance = popularitySecondStepApplause.CreateInstance();
+            popularityThirdStepApplause = TrashSoupGame.Instance.Content.Load<SoundEffect>(@"Audio/Ambient/applause_3");
+            popularityThirdEffectInstance = popularityThirdStepApplause.CreateInstance();
 
             base.Initialize();
         }

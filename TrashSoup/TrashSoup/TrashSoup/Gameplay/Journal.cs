@@ -36,6 +36,7 @@ namespace TrashSoup.Gameplay
                 GUIManager.Instance.DrawTexture(this.interactionTexture, this.interactionTexturePos, 0.05f, 0.05f);
                 if (InputHandler.Instance.Action())
                 {
+                    AudioManager.Instance.SoundBank.PlayCue("commentary");
                     journalGathered = true;
                     this.collisionWithPlayer = false;
                 }

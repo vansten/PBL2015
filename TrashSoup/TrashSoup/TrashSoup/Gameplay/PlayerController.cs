@@ -95,6 +95,8 @@ namespace TrashSoup.Gameplay
         private bool dodged = false;
         private float dodgeTimer = 0.0f;
 
+        public Cue CommentaryCue;
+
         #endregion
 
         #region properties
@@ -230,6 +232,11 @@ namespace TrashSoup.Gameplay
                     equipment.CurrentWeapon = (ResourceManager.Instance.CurrentScene.GetObject(1144).Components.First(x => x.GetType() == typeof(Weapons.Fists)) as Weapon);
                     equipment.PickUpWeapon(ResourceManager.Instance.CurrentScene.GetObject(1144));
                 }
+            }
+
+            if (InputManager.Instance.GetKeyboardButtonDown(Keys.M))
+            {
+                this.AddPopularity();
             }
 
             equipment.Update(gameTime);
@@ -402,6 +409,7 @@ namespace TrashSoup.Gameplay
                     equipment.DropWeapon(this.anotherWeapon);
                 }
                 equipment.CurrentWeapon = this.weapon.Components.First(x => x is Weapon) as Weapon;
+                AudioManager.Instance.SoundBank.PlayCue("commentary");
                 equipment.PickUpWeapon(this.weapon);
                 this.anotherWeapon = this.weapon;
                 //PICKING ANIMATION + SOUNDS
@@ -429,6 +437,7 @@ namespace TrashSoup.Gameplay
                 GUIManager.Instance.DrawTexture(this.interactionTexture, new Vector2(0.475f, 0.775f), 0.05f, 0.05f);
                 if(InputHandler.Instance.Action())
                 {
+                    AudioManager.Instance.SoundBank.PlayCue("commentary");
                     this.equipment.AddFood();
                     this.FoodSaw = false;
                     this.Food.MyObject.Enabled = false;
@@ -473,7 +482,7 @@ namespace TrashSoup.Gameplay
             // Draw nothing
         }
 
-        private void AddPopularity(float amount = 10.0f)
+        public void AddPopularity(float amount = 10.0f)
         {
             this.popularityEarned = true;
             this.popularityEarnedTimer = 0.0f;
@@ -596,6 +605,11 @@ namespace TrashSoup.Gameplay
 
                 MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates[currentIdleAnimID];
                 //MyObject.MyAnimator.SetBlendState("Walk");
+            }
+
+            if (!TrashSoupGame.Instance.EditorMode)
+            {
+                CommentaryCue = AudioManager.Instance.GetCue("commentary");
             }
 
             WalkSoundEffect = TrashSoupGame.Instance.Content.Load<SoundEffect>(@"Audio/Character/walk");

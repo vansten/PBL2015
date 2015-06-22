@@ -52,6 +52,7 @@ namespace TrashSoup.Gameplay
                 }
 
                 e.HitPoints -= damage;
+                pc.AddPopularity();
                 ParticleSystem ps = e.MyObject.GetComponent<ParticleSystem>() as ParticleSystem;
                 if(ps != null)
                 {
