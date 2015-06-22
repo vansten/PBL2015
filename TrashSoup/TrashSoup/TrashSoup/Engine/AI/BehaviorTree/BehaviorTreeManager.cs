@@ -24,7 +24,6 @@ namespace TrashSoup.Engine.AI.BehaviorTree
 
         private List<BehaviorTree> behaviorTrees = new List<BehaviorTree>();
         private int btTickFrequency = 300;
-        private int milisecondsTillLastTick = 0;
 
         public void AddBehaviorTree(BehaviorTree bt)
         {
@@ -37,10 +36,10 @@ namespace TrashSoup.Engine.AI.BehaviorTree
             {
                 if (bt.Enabled)
                 {
-                    if (this.milisecondsTillLastTick >= this.btTickFrequency)
+                    if (bt.MilisecondsTillLastTick >= this.btTickFrequency)
                     {
                         bt.Tick(gameTime);
-                        this.milisecondsTillLastTick = 0;
+                        bt.MilisecondsTillLastTick = 0;
                     }
                     else
                     {
@@ -49,15 +48,15 @@ namespace TrashSoup.Engine.AI.BehaviorTree
                             TickStatus ts = bt.CurrentRunning.Tick(gameTime, out bt.CurrentRunning);
                             if(ts != TickStatus.RUNNING)
                             {
-                                this.milisecondsTillLastTick = this.btTickFrequency;
+                                bt.MilisecondsTillLastTick = this.btTickFrequency;
                             }
                         }
                         else
                         {
-                            this.milisecondsTillLastTick = this.btTickFrequency;
+                            bt.MilisecondsTillLastTick = this.btTickFrequency;
                         }
                     }
-                    this.milisecondsTillLastTick += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+                    bt.MilisecondsTillLastTick += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
                 }
             }
         }

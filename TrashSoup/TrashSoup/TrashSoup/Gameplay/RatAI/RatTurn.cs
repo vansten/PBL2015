@@ -40,6 +40,11 @@ namespace TrashSoup.Gameplay.RatAI
                 return TickStatus.SUCCESS;
             }
 
+            if (this.blackboard.Owner.UniqueID == 1550)
+            {
+                Debug.Log("Should turn");
+            }
+
             timer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
 
             if (firstTime)

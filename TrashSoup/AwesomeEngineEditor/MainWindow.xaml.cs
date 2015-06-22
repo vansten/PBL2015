@@ -782,6 +782,16 @@ namespace AwesomeEngineEditor
                         Components.DisappearingTrash dt = new Components.DisappearingTrash(((TrashSoup.Gameplay.DisappearingTrash)oc));
                         this.LoadedComponents.Add(dt);
                     }
+                    else if(oc.GetType() == typeof(TrashSoup.Gameplay.RatTrigger))
+                    {
+                        Components.RatTrigger rt = new Components.RatTrigger((TrashSoup.Gameplay.RatTrigger)oc);
+                        this.LoadedComponents.Add(rt);
+                    }
+                    else if (oc.GetType() == typeof(TrashSoup.Gameplay.RatTurningTrigger))
+                    {
+                        Components.RatTurningTrigger rt = new Components.RatTurningTrigger((TrashSoup.Gameplay.RatTurningTrigger)oc);
+                        this.LoadedComponents.Add(rt);
+                    }
                     else
                     {
                         Components.ComponentWindow cw = new Components.ComponentWindow(oc);
@@ -857,6 +867,8 @@ namespace AwesomeEngineEditor
             uint uid = this.maxID;
             this.maxID += 1;
             TrashSoup.Engine.GameObject newGo = new TrashSoup.Engine.GameObject(uid, this.selectedObject.Name + " (clone)");
+            newGo.DrawLast = this.selectedObject.DrawLast;
+            newGo.Dynamic = this.selectedObject.Dynamic;
             newGo.MyTransform = new TrashSoup.Engine.Transform(newGo, this.selectedObject.MyTransform);
             newGo.Enabled = this.selectedObject.Enabled;
             newGo.Visible = this.selectedObject.Visible;

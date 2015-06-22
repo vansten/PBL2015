@@ -24,12 +24,12 @@ namespace TrashSoup.Gameplay
 
         public Rat(GameObject go) : base(go)
         {
-            Start();
+
         }
 
         public Rat(GameObject go, Rat r) : base(go, r)
         {
-            Start();
+
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
@@ -104,7 +104,7 @@ namespace TrashSoup.Gameplay
             {
                 path += "../";
             }
-            path += "../../../../TrashSoupContent/BehaviorTrees/RatAI.xml";
+            path += "../../../../TrashSoupContent/BehaviorTrees/RatAI" + this.MyObject.UniqueID.ToString()+".xml";
             try
             {
                 using (FileStream file = new FileStream(Path.GetFullPath(path), FileMode.Open))

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<BehaviorTree>
+  <OwnerID>359</OwnerID>
+  <Blackboard>
+    <intObjects>
+    </intObjects>
+    <floatObjects>
+    </floatObjects>
+    <boolObjects>
+      <TargetSeen>false</TargetSeen>
+      <ShouldTurn>false</ShouldTurn>
+      <Idle>false</Idle>
+    </boolObjects>
+    <vectorObjects>
+      <TargetPosition>0 0 0</TargetPosition>
+    </vectorObjects>
+  </Blackboard>
+  <BTRoot>
+    <Child>
+      <Type>TrashSoup.Engine.AI.BehaviorTree.Selector</Type>
+      <Children>
+        <Type>TrashSoup.Engine.AI.BehaviorTree.Selector</Type>
+        <Children>
+          <Type>TrashSoup.Gameplay.RatAI.RatTurn</Type>
+          <Type>TrashSoup.Gameplay.RatAI.RatWalk</Type>
+          <Type>TrashSoup.Gameplay.RatAI.RatStay</Type>
+        </Children>
+        <Type>TrashSoup.Engine.AI.BehaviorTree.Sequence</Type>
+        <Children>
+          <Type>TrashSoup.Gameplay.RatAI.RatChase</Type>
+          <Type>TrashSoup.Gameplay.RatAI.RatAttack</Type>
+        </Children>
+      </Children>
+    </Child>
+  </BTRoot>
+</BehaviorTree>
