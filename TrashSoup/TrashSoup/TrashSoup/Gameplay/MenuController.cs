@@ -173,6 +173,7 @@ namespace TrashSoup.Gameplay
                 {
                     case 0:
                         SaveManager.Instance.XmlPath = "../../../../TrashSoupContent/Scenes/loading.xml";
+                        welcomeCue.Stop(AudioStopOptions.Immediate);
                         bgCue.Stop(AudioStopOptions.Immediate);
                         SaveManager.Instance.LoadFileAction();
                         break;
