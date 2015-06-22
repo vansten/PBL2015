@@ -13,7 +13,7 @@ namespace TrashSoup.Gameplay
     {
         #region constants
 
-        private const float PICKING_SPEED = 0.0001f;
+        private const float PICKING_SPEED = 0.0003f;
 
         #endregion
 
