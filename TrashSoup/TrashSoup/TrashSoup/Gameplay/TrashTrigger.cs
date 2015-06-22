@@ -11,6 +11,14 @@ namespace TrashSoup.Gameplay
 {
     class TrashTrigger : ObjectComponent
     {
+        #region constants
+
+        private const float PICKING_SPEED = 0.0001f;
+
+        #endregion
+
+        #region variables
+
         private GameObject myTrash;
         private PlayerController player;
         private int trashCount = 1;
@@ -22,6 +30,14 @@ namespace TrashSoup.Gameplay
         private Cue foundCue;
         private bool foundIsPlaying = false;
 
+        public bool Picked = false;
+        private bool playerAnim = false;
+        private float pickCounter = 0.0f;
+
+        #endregion
+
+        #region methods
+
         public TrashTrigger(GameObject go) : base(go)
         {
 
@@ -29,10 +45,29 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            if(this.collisionWithPlayer)
+            if(this.collisionWithPlayer && !Picked)
             {
                 GUIManager.Instance.DrawTexture(this.interactionTexture, this.interactionTexturePos, 0.05f, 0.05f);
-                if(InputHandler.Instance.Action())
+
+                if (InputHandler.Instance.Action())
+                {
+                    if (!playerAnim)
+                    {
+                        playerAnim = true;
+                        player.StartOtherState("PickTrash");
+                    }
+                    pickCounter += PICKING_SPEED * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                }
+                else
+                {
+                    if (playerAnim)
+                    {
+                        playerAnim = false;
+                        player.StopOtherState();
+                    }
+                }
+                
+                if(pickCounter >= 1.0f)
                 {
                     if(this.myTrash != null)
                     {
@@ -45,6 +80,13 @@ namespace TrashSoup.Gameplay
                         foundCue.Play();
                         player.CollectedTrash = true;
                         player.CollectedFakeTime = gameTime.TotalGameTime.TotalSeconds;
+                        Picked = true;
+                    }
+
+                    if (playerAnim)
+                    {
+                        playerAnim = false;
+                        player.StopOtherState();
                     }
                 }
             }
@@ -104,5 +146,8 @@ namespace TrashSoup.Gameplay
         {
             base.WriteXml(writer);
         }
+
+        #endregion
+
     }
 }

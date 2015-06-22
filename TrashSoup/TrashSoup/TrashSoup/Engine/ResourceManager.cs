@@ -250,7 +250,9 @@ namespace TrashSoup.Engine
             CustomModel skModel = new CustomModel(testBox, new Model[] { Models["Models/MainCharacter/MainCharacter"], null, null }, ratMats);
             Animator playerAnimator = new Animator(testBox, skModel.LODs[0]);
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/run_2"), "Animations/MainCharacter/run_2"));
-            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/idle_1"), "Animations/MainCharacter/idle_1"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/idle_Hweapon"), "Animations/MainCharacter/idle_Hweapon"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/idle_Fists"), "Animations/MainCharacter/idle_Fists"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/idle_SMweapon"), "Animations/MainCharacter/idle_SMweapon"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/dodge_1"), "Animations/MainCharacter/dodge_1"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/boxing_4"), "Animations/MainCharacter/boxing_4"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/boxing_1"), "Animations/MainCharacter/boxing_1"));
@@ -267,6 +269,8 @@ namespace TrashSoup.Engine
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/attack_Mweapon_5"), "Animations/MainCharacter/attack_Mweapon_5"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/building"), "Animations/MainCharacter/building"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/dying_1"), "Animations/MainCharacter/dying_1"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/block_1"), "Animations/MainCharacter/block_1"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/grzebanie"), "Animations/MainCharacter/grzebanie"));
             testBox.Components.Add(skModel);
             testBox.MyAnimator = playerAnimator;
             PlayerController pc = new PlayerController(testBox);

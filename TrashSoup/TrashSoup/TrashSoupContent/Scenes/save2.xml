@@ -241,7 +241,7 @@
           <Z>0</Z>
         </Acceleration>
         <Mass>3</Mass>
-        <DragFactor>0.05</DragFactor>
+        <DragFactor>0.01</DragFactor>
         <IsUsingGravity>true</IsUsingGravity>
         <Velocity>
           <X>0</X>
@@ -255,7 +255,9 @@
         <BaseAnim>Models/MainCharacter/MainCharacter</BaseAnim>
         <MyObjectID>1</MyObjectID>
         <AnimatorClip>Animations/MainCharacter/run_2</AnimatorClip>
-        <AnimatorClip>Animations/MainCharacter/idle_1</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/idle_Fists</AnimatorClip>
+		<AnimatorClip>Animations/MainCharacter/idle_Hweapon</AnimatorClip>
+		<AnimatorClip>Animations/MainCharacter/idle_SMweapon</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dodge_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/boxing_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/boxing_2</AnimatorClip>
@@ -272,6 +274,8 @@
         <AnimatorClip>Animations/MainCharacter/attack_Mweapon_5</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/building</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dying_1</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/block_1</AnimatorClip>
+		<AnimatorClip>Animations/MainCharacter/grzebanie</AnimatorClip>
       </MyAnimator>
       <Components>
         <TrashSoup.Engine.CustomModel>

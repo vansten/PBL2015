@@ -35,7 +35,7 @@ namespace TrashSoup.Gameplay.Safehouse
 
             GUIManager.Instance.DrawTexture(this.interactionTexture, this.interactionPos, 0.05f, 0.05f);
 
-            if(InputHandler.Instance.Action())
+            if(InputManager.Instance.GetGamePadButtonDown(Microsoft.Xna.Framework.Input.Buttons.A) || InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.Enter))
             {
                 SaveManager.Instance.XmlPath = "../../../../TrashSoupContent/Scenes/loading.xml";
                 SaveManager.Instance.LoadFileAction();
@@ -55,7 +55,7 @@ namespace TrashSoup.Gameplay.Safehouse
         public override void Initialize()
         {
             background = TrashSoupGame.Instance.Content.Load<Texture2D>(@"Textures/HUD/map_menu");
-            interactionTexture = TrashSoupGame.Instance.Content.Load<Texture2D>(@"Textures/HUD/x_button");
+            interactionTexture = TrashSoupGame.Instance.Content.Load<Texture2D>(@"Textures/HUD/a_button");
 
             backgroundPos = new Vector2(0.0f, 0.0f);
             interactionPos = new Vector2(0.45f, 0.9f);

@@ -143,6 +143,8 @@ namespace TrashSoup.Gameplay
                 millis = initMillis;
             }
         }
+
+        public bool Stopped { get; set; }
         #endregion
 
         #region methods
@@ -151,6 +153,7 @@ namespace TrashSoup.Gameplay
             InitHours = 12;
             InitMinutes = 0;
             this.millis = InitMillis;
+            this.Stopped = false;
         }
 
         public PlayerTime(GameObject obj, int initHours, int initMinutes) : base(obj)
@@ -158,11 +161,13 @@ namespace TrashSoup.Gameplay
             InitHours = initHours;
             InitMinutes = initMinutes;
             this.millis = InitMillis;
+            this.Stopped = false;
         }
 
         public override void Update(GameTime gameTime)
         {
-            millis += gameTime.ElapsedGameTime.TotalMilliseconds * multiplier;
+            if(!Stopped)
+                millis += gameTime.ElapsedGameTime.TotalMilliseconds * multiplier;
 
             GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/digital-7"), Hours.ToString("00") + ":" + Minutes.ToString("00"), this.timePos, Color.Red);
         }

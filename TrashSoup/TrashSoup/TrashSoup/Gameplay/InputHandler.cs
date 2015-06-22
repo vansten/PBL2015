@@ -29,18 +29,9 @@ namespace TrashSoup.Gameplay
 
         }
 
-        /// <summary>
-        /// 
-        /// Returns true if sqrt(LeftStickValue().Length()) > 0.75f
-        /// </summary>
-        public bool IsRunning()
-        {
-            return InputManager.Instance.GetLeftStickValue().LengthSquared() > 0.75f;
-        }
-
         public bool IsSprinting()
         {
-            return (InputManager.Instance.GetGamePadButton(Microsoft.Xna.Framework.Input.Buttons.B) ||
+            return (InputManager.Instance.GetGamePadButton(Buttons.A) ||
                 InputManager.Instance.GetKeyboardButton(Keys.LeftShift));
         }
 
@@ -50,7 +41,7 @@ namespace TrashSoup.Gameplay
         /// </summary>
         public bool IsAttacking()
         {
-            return (InputManager.Instance.GetGamePadButtonDown(Microsoft.Xna.Framework.Input.Buttons.RightTrigger) ||
+            return (InputManager.Instance.GetGamePadButtonDown(Buttons.RightTrigger) ||
                 InputManager.Instance.GetLeftMouseButtonDown());
         }
 
@@ -60,7 +51,7 @@ namespace TrashSoup.Gameplay
         /// </summary>
         public bool IsJumping()
         {
-            return (InputManager.Instance.GetGamePadButtonDown(Microsoft.Xna.Framework.Input.Buttons.A) ||
+            return (InputManager.Instance.GetGamePadButtonDown(Buttons.A) ||
                 InputManager.Instance.GetKeyboardButtonDown(Keys.Space));
         }
 
@@ -70,7 +61,7 @@ namespace TrashSoup.Gameplay
         /// </summary>
         public bool Action()
         {
-            return InputManager.Instance.GetGamePadButton(Microsoft.Xna.Framework.Input.Buttons.X) || 
+            return InputManager.Instance.GetGamePadButton(Buttons.X) || 
                 InputManager.Instance.GetKeyboardButton(Keys.E);
         }
 
@@ -81,7 +72,7 @@ namespace TrashSoup.Gameplay
 
         public bool PromptOption1()
         {
-            return (InputManager.Instance.GetGamePadButtonDown(Microsoft.Xna.Framework.Input.Buttons.X) ||
+            return (InputManager.Instance.GetGamePadButtonDown(Buttons.X) ||
                 InputManager.Instance.GetKeyboardButtonDown(Keys.E));
         }
 
@@ -95,6 +86,16 @@ namespace TrashSoup.Gameplay
         {
             return InputManager.Instance.GetGamePadButtonDown(Microsoft.Xna.Framework.Input.Buttons.Y) ||
                 InputManager.Instance.GetKeyboardButtonDown(Keys.V);
+        }
+
+        public bool Block()
+        {
+            return InputManager.Instance.GetRightMouseButton() || InputManager.Instance.GetGamePadButton(Buttons.LeftTrigger);
+        }
+
+        public bool Dodge()
+        {
+            return InputManager.Instance.GetKeyboardButtonDown(Keys.Q) || InputManager.Instance.GetGamePadButtonDown(Buttons.B);
         }
 
         /// <summary>
