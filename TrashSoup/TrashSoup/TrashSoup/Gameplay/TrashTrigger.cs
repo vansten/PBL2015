@@ -69,10 +69,6 @@ namespace TrashSoup.Gameplay
                 
                 if(pickCounter >= 1.0f)
                 {
-                    if(this.myTrash != null)
-                    {
-                        this.myTrash.Enabled = false;
-                    }
                     this.MyObject.Enabled = false;
                     if(player != null)
                     {

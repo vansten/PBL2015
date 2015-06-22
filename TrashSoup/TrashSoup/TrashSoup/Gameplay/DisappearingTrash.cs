@@ -11,6 +11,10 @@ namespace TrashSoup.Gameplay
     {
         public int TrashCount = 1;
 
+        private CustomModel modelGood;
+        private CustomModel modelBad;
+        private TrashTrigger tt;
+
         public DisappearingTrash(GameObject go) : base(go)
         {
 
@@ -18,7 +22,20 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-
+            if (tt.Picked && this.Enabled)
+            {
+                if (modelBad != null)
+                {
+                    modelBad.Visible = true;
+                    modelGood.Visible = false;
+                }
+                else
+                {
+                    MyObject.Enabled = false;
+                    ResourceManager.Instance.CurrentScene.DeleteObjectRuntime(MyObject);
+                }
+                this.Enabled = false;
+            }
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
@@ -35,12 +52,37 @@ namespace TrashSoup.Gameplay
         {
             GameObject go = new GameObject((uint)SingleRandom.Instance.rnd.Next() + 105012, "MyTrigger");
             go.MyTransform = new Transform(go, this.MyObject.MyTransform.Position, Vector3.Forward, Vector3.Zero, this.MyObject.MyTransform.Scale + 3.0f);
-            TrashTrigger tt = new TrashTrigger(go);
+            tt = new TrashTrigger(go);
             go.MyCollider = new BoxCollider(go, true);
             tt.Init(this.MyObject, this.TrashCount);
             go.Components.Add(tt);
             this.MyObject.AddChild(go);
-            ResourceManager.Instance.CurrentScene.AddObjectRuntime(go);
+            tt.Initialize();
+            //ResourceManager.Instance.CurrentScene.AddObjectRuntime(go);
+
+            bool second = false;
+            foreach (ObjectComponent comp in MyObject.Components)
+            {
+                if (comp.GetType() == typeof(CustomModel))
+                {
+                    if (!second)
+                    {
+                        modelGood = (CustomModel)comp;
+                        second = true;
+                    }
+                    else
+                    {
+                        modelBad = (CustomModel)comp;
+                        break;
+                    }
+                }
+            }
+
+            if (modelBad != null)
+            {
+                modelBad.Visible = false;
+            }
+
             base.Initialize();
         }
 
