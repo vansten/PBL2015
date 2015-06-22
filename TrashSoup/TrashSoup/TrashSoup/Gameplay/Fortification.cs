@@ -45,17 +45,17 @@ namespace TrashSoup.Gameplay
         private static uint[] PartPrices = 
         {
             // type0
-            100,
-            200,
-            500,
-            // type1
+            10,
+            20,
             50,
-            150,
-            350,
+            // type1
+            5,
+            15,
+            35,
             // type2
-            75,
-            200,
-            400
+            7,
+            20,
+            40
         };
 
         private static uint[] PartTimes = 
