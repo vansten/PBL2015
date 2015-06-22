@@ -223,6 +223,16 @@ namespace TrashSoup.Engine
             }
         }
 
+        public void BakeTransformFromCarrierInvertZ()
+        {
+            if (MyObject.MyCarrierSocket == null)
+                return;
+
+            BakeTransformFromCarrier();
+
+            Position = new Vector3(Position.X, Position.Y, -Position.Z);
+        }
+
         protected override void Start()
         {
             /// do nothing
