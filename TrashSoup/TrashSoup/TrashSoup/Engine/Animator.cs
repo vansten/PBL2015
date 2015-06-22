@@ -82,7 +82,16 @@ namespace TrashSoup.Engine
             this.CurrentInterpolation = anim.CurrentInterpolation;
             this.BaseAnim = anim.BaseAnim;
             this.SkinningData = anim.SkinningData;
-            this.AvailableStates = anim.AvailableStates;
+            this.AvailableStates = new Dictionary<string, AnimatorState>();
+            foreach(AnimatorState astate in anim.AvailableStates.Values)
+            {
+                this.AvailableStates.Add(astate.Name, astate);
+            }
+            this.animationPlayers = new Dictionary<string, AnimationPlayer>();
+            foreach(AnimationPlayer ap in anim.animationPlayers.Values)
+            {
+                this.animationPlayers.Add(ap.AnimationKey, ap);
+            }
             this.CurrentState = anim.CurrentState;
             this.NewState = null;
         }

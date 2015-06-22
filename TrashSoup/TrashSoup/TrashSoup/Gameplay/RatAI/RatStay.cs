@@ -19,6 +19,7 @@ namespace TrashSoup.Gameplay.RatAI
             {
                 firstTime = true;
                 node = null;
+                this.blackboard.SetBool("Idle", false);
                 return TickStatus.FAILURE;
             }
             if(timer > idleTime)
@@ -28,6 +29,11 @@ namespace TrashSoup.Gameplay.RatAI
                 timer = 0.0f;
                 node = null;
                 return TickStatus.SUCCESS;
+            }
+
+            if (this.blackboard.Owner.UniqueID == 1550)
+            {
+                Debug.Log("Idle babe");
             }
 
             if (firstTime)
