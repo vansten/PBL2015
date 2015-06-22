@@ -20,6 +20,11 @@ namespace TrashSoup.Gameplay
 
         }
 
+        public RatTrigger(GameObject go, RatTrigger rt) : base(go, rt)
+        {
+            
+        }
+
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             if (targetDead) return;

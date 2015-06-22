@@ -42,6 +42,11 @@ namespace TrashSoup.Gameplay
             this.hitPoints = 100;
         }
 
+        public Enemy(GameObject obj, Enemy e) : base(obj, e)
+        {
+            this.HitPoints = 100;
+        }
+
         public Enemy(GameObject obj, int hitPoints):base(obj)
         {
             this.hitPoints = hitPoints;

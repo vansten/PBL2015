@@ -27,6 +27,11 @@ namespace TrashSoup.Gameplay
             Start();
         }
 
+        public Rat(GameObject go, Rat r) : base(go, r)
+        {
+            Start();
+        }
+
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             if(TrashSoupGame.Instance.EditorMode)
