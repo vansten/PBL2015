@@ -15,11 +15,11 @@ namespace TrashSoup.Gameplay
     {
         #region constants
 
-        protected const float PLAYER_SPEED = 15.0f;
+        protected const float PLAYER_SPEED = 12.0f;
         protected const float SPRINT_MULTIPLIER = 5.0f;
         protected const float SPRINT_ACCELERATION = 3.0f;
         protected const float SPRINT_DECELERATION = 2.5f*SPRINT_ACCELERATION;
-        protected const float ROTATION_SPEED = 0.2f;
+        protected const float ROTATION_SPEED = 0.4f;
         public const float MAX_HEALTH = 50.0f;
         public const float MAX_POPULARITY = 100.0f;
         protected const float POPULARITY_STOP_COOLDOWN = 1.0f;

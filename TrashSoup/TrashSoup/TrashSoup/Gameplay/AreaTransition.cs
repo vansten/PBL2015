@@ -128,7 +128,8 @@ namespace TrashSoup.Gameplay
                             actionTimer = 0;
                             actionTimerUpper = 500;
                             GUIManager.Instance.FadeIn(Color.Black, 500);
-                            music.Stop(AudioStopOptions.Immediate);
+                            if(music != null)
+                                music.Stop(AudioStopOptions.Immediate);
                             ActionEvent += new ActionDelegate(LoadToNextLevel);
 
                             if(cMessageBox == 2)
