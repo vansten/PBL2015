@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Material>
+  <Name>trash2Mat_03</Name>
+  <EffectPath>Effects\NormalEffect</EffectPath>
+  <DiffusePath>Textures\Enviro\Trash\rubble_D</DiffusePath>
+  <NormalPath>Textures\Enviro\Trash\rubble_N</NormalPath>
+  <DiffuseColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </DiffuseColor>
+  <SpecularColor>
+    <X>0.4</X>
+    <Y>0.4</Y>
+    <Z>0.4</Z>
+  </SpecularColor>
+  <Glossiness>80</Glossiness>
+  <ReflectivityColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </ReflectivityColor>
+  <ReflectivityBias>1</ReflectivityBias>
+  <Transparency>1</Transparency>
+  <PerPixelLighting>false</PerPixelLighting>
+  <ReceiveShadows>true</ReceiveShadows>
+</Material>

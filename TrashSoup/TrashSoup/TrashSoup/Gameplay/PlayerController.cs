@@ -441,10 +441,6 @@ namespace TrashSoup.Gameplay
                 eqLastWeap = Equipment.CurrentWeapon;
                 IdleChangeHandler(eqLastWeap);
             }
-            //if(InputManager.Instance.GetKeyboardButtonDown(Keys.J))
-            //{
-            //    MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["IdleSM"];
-            //}
         }
 
         public override void Initialize()

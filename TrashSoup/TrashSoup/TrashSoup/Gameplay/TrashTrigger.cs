@@ -13,7 +13,7 @@ namespace TrashSoup.Gameplay
     {
         #region constants
 
-        private const float PICKING_SPEED = 0.0001f;
+        private const float PICKING_SPEED = 0.0003f;
 
         #endregion
 
@@ -69,10 +69,6 @@ namespace TrashSoup.Gameplay
                 
                 if(pickCounter >= 1.0f)
                 {
-                    if(this.myTrash != null)
-                    {
-                        this.myTrash.Enabled = false;
-                    }
                     this.MyObject.Enabled = false;
                     if(player != null)
                     {
