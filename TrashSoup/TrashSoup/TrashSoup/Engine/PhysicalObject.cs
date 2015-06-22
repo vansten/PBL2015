@@ -121,6 +121,11 @@ namespace TrashSoup.Engine
             this.acceleration += force / this.Mass;
         }
 
+        public void ZeroForce()
+        {
+            this.acceleration = Vector3.Zero;
+        }
+
         public override void Update(GameTime gameTime)
         {
             //TODO:

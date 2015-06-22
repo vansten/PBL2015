@@ -91,6 +91,10 @@ namespace TrashSoup.Gameplay
         private string currentIdleAnimID;
         private Weapon eqLastWeap = null;
 
+        private bool isBlocking = false;
+        private bool dodged = false;
+        private float dodgeTimer = 0.0f;
+
         #endregion
 
         #region properties
@@ -237,7 +241,7 @@ namespace TrashSoup.Gameplay
                     movementVector.Y);
 
                 if (tempMove.Length() > 0.0f &&
-                    ResourceManager.Instance.CurrentScene.Cam != null && !this.isAttacking)
+                    ResourceManager.Instance.CurrentScene.Cam != null && !this.isAttacking && !this.isBlocking && !dodged)
                 {
                     if (moving == false)
                     {
@@ -295,7 +299,7 @@ namespace TrashSoup.Gameplay
                     }
                 }                
 
-                if (!isAttacking && InputHandler.Instance.IsAttacking())
+                if (!dodged && !isBlocking && !isAttacking && InputHandler.Instance.IsAttacking())
                 {
                     if (MyObject.MyAnimator != null)
                     {
@@ -323,7 +327,6 @@ namespace TrashSoup.Gameplay
                         }
                         lastAttackTime = (float)gameTime.TotalGameTime.TotalMilliseconds;
                         string animName = BuildCurrentAnimName();
-                        //Debug.Log(animName);
                         MyObject.MyAnimator.ChangeState(animName);
                         attackCooldown = (float)MyObject.MyAnimator.AvailableStates[animName].Animation.CurrentClip.Duration.TotalMilliseconds;
                     }
@@ -333,7 +336,39 @@ namespace TrashSoup.Gameplay
                     this.isAttacking = true;
                 }
 
-                if(this.isAttacking)
+                if(!this.isAttacking)
+                {
+                    if(InputHandler.Instance.Block())
+                    {
+                        this.isBlocking = true;
+                    }
+                    else
+                    {
+                        this.isBlocking = false;
+                    }
+
+                    if(!this.isBlocking)
+                    {
+                        if(!dodged && InputHandler.Instance.Dodge())
+                        {
+                            this.MyObject.MyAnimator.ChangeState("Dodge");
+                            //this.MyObject.MyPhysicalObject.AddForce(-this.MyObject.MyTransform.Forward * 30.0f * this.MyObject.MyPhysicalObject.Mass);
+                            dodged = true;
+                        }
+                        else if(dodged)
+                        {
+                            this.dodgeTimer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+                            if(dodgeTimer > 1.0f)
+                            {
+                                dodged = false;
+                                dodgeTimer = 0.0f;
+                                this.MyObject.MyPhysicalObject.Velocity = Vector3.Zero;
+                                this.MyObject.MyPhysicalObject.ZeroForce();
+                            }
+                        }
+                    }
+                }
+                else
                 {
                     this.attackTimer += gameTime.ElapsedGameTime.Milliseconds;
                     if (this.attackTimer >= attackCooldown)
@@ -464,7 +499,9 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/run_2")));
                 MyObject.MyAnimator.AvailableStates.Add("Build", new AnimatorState("Build", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/building")));
                 MyObject.MyAnimator.AvailableStates.Add("PickTrash", new AnimatorState("PickTrash", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/grzebanie")));
+                MyObject.MyAnimator.AvailableStates.Add("Block", new AnimatorState("Block", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/block_1"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("Death", new AnimatorState("Death", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/dying_1"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("Dodge", new AnimatorState("Dodge", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/dodge_1"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("AttackFist01", new AnimatorState("AttackFist01", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_1"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("AttackFist02", new AnimatorState("AttackFist02", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_2"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("AttackFist03", new AnimatorState("AttackFist03", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_3"), AnimatorState.StateType.SINGLE));
@@ -473,7 +510,7 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.AvailableStates.Add("AttackHWeapon02", new AnimatorState("AttackHWeapon02", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/attack_Hweapon_2"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("AttackHWeapon03", new AnimatorState("AttackHWeapon03", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/attack_Hweapon_3"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("AttackHWeapon04", new AnimatorState("AttackHWeapon04", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/attack_Hweapon_4"), AnimatorState.StateType.SINGLE));
-                MyObject.MyAnimator.AvailableStates.Add("AttackMWeapon01", new AnimatorState("AttackMWeapon01", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/attack_Mweapon_1"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("AttackMWeapon01", new AnimatorState("AttackMWeapon01", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/attack_Mweapon_3"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("AttackMWeapon02", new AnimatorState("AttackMWeapon02", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/attack_Mweapon_2"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("AttackMWeapon03", new AnimatorState("AttackMWeapon03", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/attack_Mweapon_3"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("AttackMWeapon04", new AnimatorState("AttackMWeapon04", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/attack_Mweapon_4"), AnimatorState.StateType.SINGLE));
@@ -484,6 +521,25 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["IdleSM"], new TimeSpan(0, 0, 0, 0, 250));
                 MyObject.MyAnimator.AvailableStates["IdleH"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["IdleH"], new TimeSpan(0, 0, 0, 0, 250));
+                MyObject.MyAnimator.AvailableStates["Block"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 1));
+                MyObject.MyAnimator.AvailableStates["Block"].AddTransition(MyObject.MyAnimator.AvailableStates["IdleSM"], new TimeSpan(0, 0, 0, 0, 1));
+                MyObject.MyAnimator.AvailableStates["Block"].AddTransition(MyObject.MyAnimator.AvailableStates["IdleH"], new TimeSpan(0, 0, 0, 0, 1));
+                MyObject.MyAnimator.AvailableStates["Block"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 1));
+                MyObject.MyAnimator.AvailableStates["Block"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackFist01"], new TimeSpan(0, 0, 0, 0, 1));
+                MyObject.MyAnimator.AvailableStates["Block"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackHWeapon01"], new TimeSpan(0, 0, 0, 0, 1));
+                MyObject.MyAnimator.AvailableStates["Block"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackMWeapon01"], new TimeSpan(0, 0, 0, 0, 1));
+                MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Block"], new TimeSpan(0, 0, 0, 0, 250));
+                MyObject.MyAnimator.AvailableStates["IdleH"].AddTransition(MyObject.MyAnimator.AvailableStates["Block"], new TimeSpan(0, 0, 0, 0, 250));
+                MyObject.MyAnimator.AvailableStates["IdleSM"].AddTransition(MyObject.MyAnimator.AvailableStates["Block"], new TimeSpan(0, 0, 0, 0, 250));
+                MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Block"], new TimeSpan(0, 0, 0, 0, 250));
+                MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Dodge"], new TimeSpan(0, 0, 0, 0, 100));
+                MyObject.MyAnimator.AvailableStates["IdleH"].AddTransition(MyObject.MyAnimator.AvailableStates["Dodge"], new TimeSpan(0, 0, 0, 0, 100));
+                MyObject.MyAnimator.AvailableStates["IdleSM"].AddTransition(MyObject.MyAnimator.AvailableStates["Dodge"], new TimeSpan(0, 0, 0, 0, 100));
+                MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Dodge"], new TimeSpan(0, 0, 0, 0, 100));
+                MyObject.MyAnimator.AvailableStates["Dodge"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 100));
+                MyObject.MyAnimator.AvailableStates["Dodge"].AddTransition(MyObject.MyAnimator.AvailableStates["IdleH"], new TimeSpan(0, 0, 0, 0, 100));
+                MyObject.MyAnimator.AvailableStates["Dodge"].AddTransition(MyObject.MyAnimator.AvailableStates["IdleSM"], new TimeSpan(0, 0, 0, 0, 100));
+                MyObject.MyAnimator.AvailableStates["Dodge"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 100));
 
                 string[] combatAnimsNames = {"AttackFist01", "AttackFist02", "AttackFist03", "AttackFist04",
                                             "AttackHWeapon01", "AttackHWeapon02", "AttackHWeapon03", "AttackHWeapon04",
@@ -497,6 +553,7 @@ namespace TrashSoup.Gameplay
                     MyObject.MyAnimator.AvailableStates[combatAnimsNames[i]].AddTransition(MyObject.MyAnimator.AvailableStates["IdleSM"], new TimeSpan(0, 0, 0, 0, 500));
                     MyObject.MyAnimator.AvailableStates[combatAnimsNames[i]].AddTransition(MyObject.MyAnimator.AvailableStates["IdleH"], new TimeSpan(0, 0, 0, 0, 500));
                     MyObject.MyAnimator.AvailableStates[combatAnimsNames[i]].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
+                    MyObject.MyAnimator.AvailableStates[combatAnimsNames[i]].AddTransition(MyObject.MyAnimator.AvailableStates["Block"], new TimeSpan(0, 0, 0, 0, 250));
                 }
 
                 MyObject.MyAnimator.AvailableStates["AttackFist01"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackFist02"], new TimeSpan(0, 0, 0, 0, 200));
@@ -617,6 +674,15 @@ namespace TrashSoup.Gameplay
 
         public void DecreaseHealth(float value)
         {
+            if(this.isBlocking)
+            {
+                this.isBlocking = false;
+                return;
+            }
+            if(dodged)
+            {
+                return;
+            }
             HitPoints -= value;
             if (HitPoints <= 0)
             {

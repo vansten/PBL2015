@@ -241,7 +241,7 @@
           <Z>0</Z>
         </Acceleration>
         <Mass>3</Mass>
-        <DragFactor>0.05</DragFactor>
+        <DragFactor>0.01</DragFactor>
         <IsUsingGravity>true</IsUsingGravity>
         <Velocity>
           <X>0</X>
@@ -274,6 +274,7 @@
         <AnimatorClip>Animations/MainCharacter/attack_Mweapon_5</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/building</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dying_1</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/block_1</AnimatorClip>
 		<AnimatorClip>Animations/MainCharacter/grzebanie</AnimatorClip>
       </MyAnimator>
       <Components>
