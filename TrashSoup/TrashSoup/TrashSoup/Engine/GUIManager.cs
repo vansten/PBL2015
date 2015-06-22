@@ -614,6 +614,13 @@ namespace TrashSoup.Engine
         {
             if(spriteBatch != null && elementsToDraw.Count > 0)
             {
+                if (ResourceManager.Instance.ImmediateStop)
+                {
+                    this.buttonsToDrawIndices.Clear();
+                    this.elementsToDraw.Clear();
+                    return;
+                }
+
                 spriteBatch.Begin();
 
                 foreach (GUIElement element in this.elementsToDraw)
@@ -631,10 +638,10 @@ namespace TrashSoup.Engine
                     new Rectangle(0, 0, TrashSoupGame.Instance.Window.ClientBounds.Width, TrashSoupGame.Instance.Window.ClientBounds.Height), 
                     new Color(fadeColor.R, fadeColor.B, fadeColor.A, fadeAlpha));
 
+                spriteBatch.End();
+
                 this.buttonsToDrawIndices.Clear();
                 this.elementsToDraw.Clear();
-
-                spriteBatch.End();
             }
         }
 

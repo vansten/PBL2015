@@ -49,6 +49,8 @@ namespace TrashSoup.Gameplay
 
         private PlayerTime playerTime;
 
+        private bool drawSwitch = true;
+
         #endregion
 
         #region properties
@@ -91,9 +93,10 @@ namespace TrashSoup.Gameplay
                 {
                     // solve cMessageBox
                     int hours = cTime.Hours;
-                    if (hours >= 22)  // prompt player immediately to return
+                    if (hours >= 22 && drawSwitch)  // prompt player immediately to return
                     {
                         cMessageBox = 2;
+                        cTime.Stopped = true;
                         ActivateMessageBox();
                     }
                     else if (hours >= 21) // disable deposit stash options
@@ -127,6 +130,11 @@ namespace TrashSoup.Gameplay
                             GUIManager.Instance.FadeIn(Color.Black, 500);
                             music.Stop(AudioStopOptions.Immediate);
                             ActionEvent += new ActionDelegate(LoadToNextLevel);
+
+                            if(cMessageBox == 2)
+                            {
+                                drawSwitch = false;
+                            }
                         }
                         //else if (mBoxes[cMessageBox].Response == 2) // do actually nothing
                         //{
