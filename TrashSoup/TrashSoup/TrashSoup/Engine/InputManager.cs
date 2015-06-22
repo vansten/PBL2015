@@ -43,6 +43,11 @@ namespace TrashSoup.Engine
             this.currentMouseState = Mouse.GetState();
         }
 
+        public bool IsGamePadConnected()
+        {
+            return this.currentGamePadState.IsConnected;
+        }
+
         /// <summary>
         /// 
         /// Returns left stick value or keyboard WASD value. For example if player clicks keys W and D the returned value will be (1,1). If the player clicks S and D keys the returned value will be (1,-1).
