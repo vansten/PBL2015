@@ -694,6 +694,8 @@ namespace TrashSoup.Gameplay
 
         public void StartOtherState(string id)
         {
+            MyObject.MyAnimator.AvailableStates[id].Animation.StopClip();
+            MyObject.MyAnimator.AvailableStates[id].Animation.StartClip();
             GameManager.Instance.MovementEnabled = false;
                 MyObject.MyAnimator.CurrentInterpolation = 0.0f;
                 MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates[id];

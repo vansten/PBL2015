@@ -30,7 +30,7 @@ namespace TrashSoup.Gameplay
         private Cue foundCue;
         private bool foundIsPlaying = false;
 
-        private bool picked = false;
+        public bool Picked = false;
         private bool playerAnim = false;
         private float pickCounter = 0.0f;
 
@@ -45,7 +45,7 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            if(this.collisionWithPlayer && !picked)
+            if(this.collisionWithPlayer && !Picked)
             {
                 GUIManager.Instance.DrawTexture(this.interactionTexture, this.interactionTexturePos, 0.05f, 0.05f);
 
@@ -80,7 +80,7 @@ namespace TrashSoup.Gameplay
                         foundCue.Play();
                         player.CollectedTrash = true;
                         player.CollectedFakeTime = gameTime.TotalGameTime.TotalSeconds;
-                        picked = true;
+                        Picked = true;
                     }
 
                     if (playerAnim)
