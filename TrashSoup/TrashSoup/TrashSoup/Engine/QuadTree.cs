@@ -152,6 +152,11 @@ namespace TrashSoup.Engine
             QuadTreeNode current;
             for(int i = 0; i < count; ++i)
             {
+                if(dynamicObjects[i].MyNode == null)
+                {
+                    this.Add(dynamicObjects[i]);
+                }
+
                 currentRect = GenerateRectangle(dynamicObjects[i]);
                 current = dynamicObjects[i].MyNode;
 
@@ -178,7 +183,7 @@ namespace TrashSoup.Engine
                         current = nodesToCheck.Pop();
 
                         // check if we fit
-                        if(CheckIfObjectFits(ref current.Rect, ref currentRect))
+                        if(current != null && CheckIfObjectFits(ref current.Rect, ref currentRect))
                         {
                             // YESS! but let's check if we fit in children first
                             if(current.ChildBL != null)
@@ -263,7 +268,7 @@ namespace TrashSoup.Engine
                             break;
 
                         }
-                        else
+                        else if(current != null)
                         {
                             // nope, let's push parent
                             nodesToCheck.Push(current.Parent);

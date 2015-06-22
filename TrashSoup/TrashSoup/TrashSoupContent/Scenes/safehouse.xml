@@ -201,7 +201,9 @@
         <BaseAnim>Models/MainCharacter/MainCharacter</BaseAnim>
         <MyObjectID>1</MyObjectID>
         <AnimatorClip>Animations/MainCharacter/run_2</AnimatorClip>
-        <AnimatorClip>Animations/MainCharacter/idle_1</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/idle_Fists</AnimatorClip>
+		<AnimatorClip>Animations/MainCharacter/idle_Hweapon</AnimatorClip>
+		<AnimatorClip>Animations/MainCharacter/idle_SMweapon</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dodge_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/boxing_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/boxing_2</AnimatorClip>

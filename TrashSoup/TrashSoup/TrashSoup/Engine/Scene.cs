@@ -345,6 +345,11 @@ namespace TrashSoup.Engine
 
             Params.Time = Params.Time.AddMilliseconds(Params.TimeMultiplier * gameTime.ElapsedGameTime.TotalMilliseconds);
 
+            if(ObjectsDictionary[1] == null)
+            {
+                throw new NullReferenceException("");
+            }
+
             //[vansten] Added testing code for physics simulation
             AI.BehaviorTree.BehaviorTreeManager.Instance.Update(gameTime);
             foreach (GameObject obj in ObjectsDictionary.Values)

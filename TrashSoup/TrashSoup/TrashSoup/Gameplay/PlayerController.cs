@@ -88,6 +88,9 @@ namespace TrashSoup.Gameplay
         private int combo = 1;
         private float lastAttackTime = 0.0f;
 
+        private string currentIdleAnimID;
+        private Weapon eqLastWeap = null;
+
         #endregion
 
         #region properties
@@ -397,6 +400,16 @@ namespace TrashSoup.Gameplay
                     this.Food = null;
                 }
             }
+
+            if (eqLastWeap != Equipment.CurrentWeapon)
+            {
+                eqLastWeap = Equipment.CurrentWeapon;
+                IdleChangeHandler(eqLastWeap);
+            }
+            //if(InputManager.Instance.GetKeyboardButtonDown(Keys.J))
+            //{
+            //    MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["IdleSM"];
+            //}
         }
 
         public override void Initialize()
@@ -445,10 +458,11 @@ namespace TrashSoup.Gameplay
 
             if(MyObject.MyAnimator != null)
             {
-                MyObject.MyAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/idle_1")));
+                MyObject.MyAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/idle_Fists")));
+                MyObject.MyAnimator.AvailableStates.Add("IdleSM", new AnimatorState("IdleSM", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/idle_SMweapon")));
+                MyObject.MyAnimator.AvailableStates.Add("IdleH", new AnimatorState("IdleH", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/idle_Hweapon")));
                 MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/run_2")));
                 MyObject.MyAnimator.AvailableStates.Add("Build", new AnimatorState("Build", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/building")));
-                MyObject.MyAnimator.AvailableStates.Add("Jump", new AnimatorState("Jump", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/dodge_1"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("Death", new AnimatorState("Death", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/dying_1"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("AttackFist01", new AnimatorState("AttackFist01", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_1"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("AttackFist02", new AnimatorState("AttackFist02", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_2"), AnimatorState.StateType.SINGLE));
@@ -464,18 +478,23 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.AvailableStates.Add("AttackMWeapon04", new AnimatorState("AttackMWeapon04", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/attack_Mweapon_4"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("AttackMWeapon05", new AnimatorState("AttackMWeapon05", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/attack_Mweapon_5"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 200));
-                MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Jump"], new TimeSpan(0, 0, 0, 0, 500));
                 MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 250));
-                MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Jump"], new TimeSpan(0, 0, 0, 0, 200));
-                MyObject.MyAnimator.AvailableStates["Jump"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 100));
-                MyObject.MyAnimator.AvailableStates["Jump"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 500));
+                MyObject.MyAnimator.AvailableStates["IdleSM"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["IdleSM"], new TimeSpan(0, 0, 0, 0, 250));
+                MyObject.MyAnimator.AvailableStates["IdleH"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["IdleH"], new TimeSpan(0, 0, 0, 0, 250));
+
                 string[] combatAnimsNames = {"AttackFist01", "AttackFist02", "AttackFist03", "AttackFist04",
                                             "AttackHWeapon01", "AttackHWeapon02", "AttackHWeapon03", "AttackHWeapon04",
                                             "AttackMWeapon01", "AttackMWeapon02", "AttackMWeapon03", "AttackMWeapon04", "AttackMWeapon05"};
                 for (int i = 0; i < combatAnimsNames.Length; ++i)
                 {
                     MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates[combatAnimsNames[i]], new TimeSpan(0, 0, 0, 0, 100));
+                    MyObject.MyAnimator.AvailableStates["IdleSM"].AddTransition(MyObject.MyAnimator.AvailableStates[combatAnimsNames[i]], new TimeSpan(0, 0, 0, 0, 100));
+                    MyObject.MyAnimator.AvailableStates["IdleH"].AddTransition(MyObject.MyAnimator.AvailableStates[combatAnimsNames[i]], new TimeSpan(0, 0, 0, 0, 100));
                     MyObject.MyAnimator.AvailableStates[combatAnimsNames[i]].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 500));
+                    MyObject.MyAnimator.AvailableStates[combatAnimsNames[i]].AddTransition(MyObject.MyAnimator.AvailableStates["IdleSM"], new TimeSpan(0, 0, 0, 0, 500));
+                    MyObject.MyAnimator.AvailableStates[combatAnimsNames[i]].AddTransition(MyObject.MyAnimator.AvailableStates["IdleH"], new TimeSpan(0, 0, 0, 0, 500));
                     MyObject.MyAnimator.AvailableStates[combatAnimsNames[i]].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
                 }
 
@@ -496,13 +515,19 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.AvailableStates["AttackMWeapon05"].AddTransition(MyObject.MyAnimator.AvailableStates["AttackMWeapon01"], new TimeSpan(0, 0, 0, 0, 200));
 
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Build"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["IdleSM"].AddTransition(MyObject.MyAnimator.AvailableStates["Build"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["IdleH"].AddTransition(MyObject.MyAnimator.AvailableStates["Build"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Build"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Build"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["Build"].AddTransition(MyObject.MyAnimator.AvailableStates["IdleSM"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["Build"].AddTransition(MyObject.MyAnimator.AvailableStates["IdleH"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Build"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
-                MyObject.MyAnimator.AvailableStates["Jump"].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
                 MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
-                MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["Idle"];
+
+                currentIdleAnimID = "Idle";
+
+                MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates[currentIdleAnimID];
                 //MyObject.MyAnimator.SetBlendState("Walk");
             }
 
@@ -644,6 +669,26 @@ namespace TrashSoup.Gameplay
             }
             currentAnimName += this.combo.ToString();
             return currentAnimName;
+        }
+
+        public void IdleChangeHandler(Weapon wep)
+        {
+            WeaponType type = wep.Type;
+
+            if(type == WeaponType.FISTS)
+            {
+                currentIdleAnimID = "Idle";
+            }
+            else if(type == WeaponType.HEAVY)
+            {
+                currentIdleAnimID = "IdleH";
+            }
+            else
+            {
+                currentIdleAnimID = "IdleSM";
+            }
+
+            MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates[currentIdleAnimID];
         }
 
         public override System.Xml.Schema.XmlSchema GetSchema()
