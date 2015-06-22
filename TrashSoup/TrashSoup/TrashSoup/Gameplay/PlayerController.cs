@@ -463,6 +463,7 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.AvailableStates.Add("IdleH", new AnimatorState("IdleH", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/idle_Hweapon")));
                 MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/run_2")));
                 MyObject.MyAnimator.AvailableStates.Add("Build", new AnimatorState("Build", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/building")));
+                MyObject.MyAnimator.AvailableStates.Add("PickTrash", new AnimatorState("PickTrash", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/grzebanie")));
                 MyObject.MyAnimator.AvailableStates.Add("Death", new AnimatorState("Death", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/dying_1"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("AttackFist01", new AnimatorState("AttackFist01", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_1"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("AttackFist02", new AnimatorState("AttackFist02", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_2"), AnimatorState.StateType.SINGLE));
@@ -524,6 +525,15 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.AvailableStates["Build"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 200));
                 MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
                 MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["Death"], new TimeSpan(0, 0, 0, 0, 100));
+
+                MyObject.MyAnimator.AvailableStates["Idle"].AddTransition(MyObject.MyAnimator.AvailableStates["PickTrash"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["IdleSM"].AddTransition(MyObject.MyAnimator.AvailableStates["PickTrash"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["IdleH"].AddTransition(MyObject.MyAnimator.AvailableStates["PickTrash"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["PickTrash"].AddTransition(MyObject.MyAnimator.AvailableStates["Idle"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["PickTrash"].AddTransition(MyObject.MyAnimator.AvailableStates["IdleSM"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["PickTrash"].AddTransition(MyObject.MyAnimator.AvailableStates["IdleH"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["Walk"].AddTransition(MyObject.MyAnimator.AvailableStates["PickTrash"], new TimeSpan(0, 0, 0, 0, 200));
+                MyObject.MyAnimator.AvailableStates["PickTrash"].AddTransition(MyObject.MyAnimator.AvailableStates["Walk"], new TimeSpan(0, 0, 0, 0, 200));
 
                 currentIdleAnimID = "Idle";
 
@@ -616,33 +626,19 @@ namespace TrashSoup.Gameplay
             this.Popularity -= 5.0f;
         }
 
-        public void StartBuilding()
+        public void StartOtherState(string id)
         {
             GameManager.Instance.MovementEnabled = false;
-            if (MyObject.MyAnimator.NewState != null)
-            {
                 MyObject.MyAnimator.CurrentInterpolation = 0.0f;
-                MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["Build"];
-            }
-            else
-            {
-                MyObject.MyAnimator.ChangeState("Build");
-            }
+                MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates[id];
             
         }
 
-        public void StopBuilding()
+        public void StopOtherState()
         {
             GameManager.Instance.MovementEnabled = true;
-            if (MyObject.MyAnimator.NewState != null)
-            {
                 MyObject.MyAnimator.CurrentInterpolation = 0.0f;
-                MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["Idle"];
-            }
-            else
-            {
-                MyObject.MyAnimator.ChangeState("Idle");
-            }
+                MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates[currentIdleAnimID];
             
         }
 
