@@ -583,14 +583,14 @@ namespace TrashSoup.Gameplay
         {
             soundHelper = true;
             buildSound.Play();
-            pController.StartBuilding();
+            pController.StartOtherState("Build");
         }
 
         private void CommonActionEnd()
         {
             soundHelper = false;
             buildSound.Stop(true);
-            pController.StopBuilding();
+            pController.StopOtherState();
         }
 
         private void DestroyCurrent()

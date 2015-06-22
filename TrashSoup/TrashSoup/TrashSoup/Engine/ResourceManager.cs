@@ -269,6 +269,7 @@ namespace TrashSoup.Engine
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/attack_Mweapon_5"), "Animations/MainCharacter/attack_Mweapon_5"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/building"), "Animations/MainCharacter/building"));
             playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/dying_1"), "Animations/MainCharacter/dying_1"));
+            playerAnimator.AddAnimationClip(LoadAnimationFromModel(skModel.LODs[0], LoadAnimation("Animations/MainCharacter/grzebanie"), "Animations/MainCharacter/grzebanie"));
             testBox.Components.Add(skModel);
             testBox.MyAnimator = playerAnimator;
             PlayerController pc = new PlayerController(testBox);

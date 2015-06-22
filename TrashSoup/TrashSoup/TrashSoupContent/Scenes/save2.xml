@@ -274,6 +274,7 @@
         <AnimatorClip>Animations/MainCharacter/attack_Mweapon_5</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/building</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dying_1</AnimatorClip>
+		<AnimatorClip>Animations/MainCharacter/grzebanie</AnimatorClip>
       </MyAnimator>
       <Components>
         <TrashSoup.Engine.CustomModel>
