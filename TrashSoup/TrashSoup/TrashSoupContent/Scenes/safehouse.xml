@@ -202,8 +202,8 @@
         <MyObjectID>1</MyObjectID>
         <AnimatorClip>Animations/MainCharacter/run_2</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/idle_Fists</AnimatorClip>
-		<AnimatorClip>Animations/MainCharacter/idle_Hweapon</AnimatorClip>
-		<AnimatorClip>Animations/MainCharacter/idle_SMweapon</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/idle_Hweapon</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/idle_SMweapon</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dodge_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/boxing_1</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/boxing_2</AnimatorClip>
@@ -220,6 +220,8 @@
         <AnimatorClip>Animations/MainCharacter/attack_Mweapon_5</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/building</AnimatorClip>
         <AnimatorClip>Animations/MainCharacter/dying_1</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/block_1</AnimatorClip>
+        <AnimatorClip>Animations/MainCharacter/grzebanie</AnimatorClip>
       </MyAnimator>
       <Components>
         <TrashSoup.Engine.CustomModel>
