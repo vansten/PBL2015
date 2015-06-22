@@ -7,6 +7,7 @@ using System.Xml.Schema;
 using System.Xml.Serialization;
 using TrashSoup.Engine;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 
 namespace TrashSoup.Gameplay
 {
@@ -35,6 +36,7 @@ namespace TrashSoup.Gameplay
         private PlayerController pController;
         private HideoutStash stash;
         private Equipment equipment;
+        private Cue music;
         private MessageBox[] mBoxes = new MessageBox[3];
         private GameObject colliderHelper;
         private bool activationHelper;
@@ -123,6 +125,7 @@ namespace TrashSoup.Gameplay
                             actionTimer = 0;
                             actionTimerUpper = 500;
                             GUIManager.Instance.FadeIn(Color.Black, 500);
+                            music.Stop(AudioStopOptions.Immediate);
                             ActionEvent += new ActionDelegate(LoadToNextLevel);
                         }
                         //else if (mBoxes[cMessageBox].Response == 2) // do actually nothing
@@ -166,6 +169,8 @@ namespace TrashSoup.Gameplay
             pController = (PlayerController)player.GetComponent<PlayerController>();
             stash = (HideoutStash)player.GetComponent<HideoutStash>();
             equipment = pController.Equipment;
+            if ((player.GetComponent<PlayerHUD>() as PlayerHUD) != null)
+            music = (player.GetComponent<PlayerHUD>() as PlayerHUD).ExplorationCue;
 
             if (cTime == null || pController == null || stash == null || equipment == null)
             {
