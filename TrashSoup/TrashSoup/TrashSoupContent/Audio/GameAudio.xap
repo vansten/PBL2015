@@ -225,6 +225,12 @@ Wave Bank
     Windows Bank Path Edited = 0;
     Seek Tables = 1;
     Compression Preset Name = <none>;
+    Xbox Bank Last Modified Low = 0;
+    Xbox Bank Last Modified High = 0;
+    PC Bank Last Modified Low = 0;
+    PC Bank Last Modified High = 0;
+    Header Last Modified Low = 0;
+    Header Last Modified High = 0;
     Bank Last Revised Low = 79038235;
     Bank Last Revised High = 30453047;
 
@@ -765,6 +771,8 @@ Sound Bank
     Windows File = Win\Sound Bank.xsb;
     Xbox Bank Path Edited = 0;
     Windows Bank Path Edited = 0;
+    Header Last Modified High = 0;
+    Header Last Modified Low = 0;
 
     Sound
     {
@@ -865,7 +873,7 @@ Sound Bank
     Sound
     {
         Name = walk;
-        Volume = -1200;
+        Volume = -1020;
         Pitch = 0;
         Priority = 0;
 
@@ -912,7 +920,7 @@ Sound Bank
     Sound
     {
         Name = 1_znalezienie;
-        Volume = 300;
+        Volume = 600;
         Pitch = 0;
         Priority = 0;
 
@@ -959,7 +967,7 @@ Sound Bank
     Sound
     {
         Name = 2_znalezienie;
-        Volume = 300;
+        Volume = 600;
         Pitch = 0;
         Priority = 0;
 
@@ -1006,7 +1014,7 @@ Sound Bank
     Sound
     {
         Name = 3_znalezienie;
-        Volume = 300;
+        Volume = 600;
         Pitch = 0;
         Priority = 0;
 
@@ -1053,7 +1061,7 @@ Sound Bank
     Sound
     {
         Name = 4_znalezienie;
-        Volume = 300;
+        Volume = 600;
         Pitch = 0;
         Priority = 0;
 
@@ -1758,7 +1766,7 @@ Sound Bank
     Sound
     {
         Name = welcome;
-        Volume = -1200;
+        Volume = 230;
         Pitch = 0;
         Priority = 0;
 
@@ -1805,7 +1813,7 @@ Sound Bank
     Sound
     {
         Name = action;
-        Volume = -1200;
+        Volume = 300;
         Pitch = 0;
         Priority = 0;
 
@@ -1852,7 +1860,7 @@ Sound Bank
     Sound
     {
         Name = interesting;
-        Volume = -1200;
+        Volume = 600;
         Pitch = 0;
         Priority = 0;
 
@@ -1899,7 +1907,7 @@ Sound Bank
     Sound
     {
         Name = plan;
-        Volume = -1200;
+        Volume = 250;
         Pitch = 0;
         Priority = 0;
 

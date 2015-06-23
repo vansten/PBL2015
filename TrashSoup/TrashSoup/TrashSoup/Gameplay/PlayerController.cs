@@ -633,6 +633,7 @@ namespace TrashSoup.Gameplay
 
             WalkSoundEffect = TrashSoupGame.Instance.Content.Load<SoundEffect>(@"Audio/Character/walk");
             Walk = WalkSoundEffect.CreateInstance();
+            Walk.Volume = 0.1f;
             //Change speed of sound
             //Walk.Pitch += 0.7f;
         }
