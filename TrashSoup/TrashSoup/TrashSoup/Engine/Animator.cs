@@ -295,6 +295,7 @@ namespace TrashSoup.Engine
                 this.currentInterpolationTimeMS = (int)tmpMS.TotalMilliseconds;
             }
 
+            newS.Animation.StopClip();
             newS.Animation.StartClip();
         }
 
@@ -316,6 +317,7 @@ namespace TrashSoup.Engine
             this.NewState = newS;
             ifInterpolate = true;
             currentInterpolation = startInterp;
+            newS.Animation.StopClip();
             newS.Animation.StartClip();
         }
 
@@ -328,9 +330,17 @@ namespace TrashSoup.Engine
             ifInterpolate = true;
             currentInterpolation = startInterp;
             if (this.CurrentState.Animation.MyState == AnimationPlayer.animationStates.STOPPED)
+            {
+                this.CurrentState.Animation.StopClip();
                 this.CurrentState.Animation.StartClip();
+            }
+                
             if (this.NewState.Animation.MyState == AnimationPlayer.animationStates.STOPPED)
+            {
+                this.NewState.Animation.StopClip();
                 this.NewState.Animation.StartClip();
+            }
+                
         }
 
         public void SetBlendState(string stateName)

@@ -65,7 +65,7 @@ namespace TrashSoup.Engine
         {
             if(this.Type == StateType.SINGLE)
             {
-                if(Animation.CurrentTime >= Animation.GetDuration() - TimeSpan.FromMilliseconds(10))
+                if(Animation.CurrentTime.TotalMilliseconds >= Animation.GetDuration().TotalMilliseconds - gameTime.ElapsedGameTime.TotalMilliseconds * 1.1)
                 {
                     Animation.StopClip();
                     this.IsFinished = true;
