@@ -93,6 +93,8 @@ namespace TrashSoup.Gameplay
 
         private bool isBlocking = false;
         private bool dodged = false;
+        private bool blockingAnim = false;
+        private bool blockingAnimStopped = false;
         private float dodgeTimer = 0.0f;
 
         public Cue CommentaryCue;
@@ -348,10 +350,31 @@ namespace TrashSoup.Gameplay
                     if(InputHandler.Instance.Block())
                     {
                         this.isBlocking = true;
+                        if(!blockingAnim)
+                        {
+                            blockingAnim = true;
+                            StartOtherStateNoMovementEnabledFalse("Block");
+                        }
+                        if(MyObject.MyAnimator.CurrentState.Name == "Block" && 
+                            MyObject.MyAnimator.CurrentState.Animation.CurrentTime.TotalMilliseconds >= (MyObject.MyAnimator.CurrentState.Animation.CurrentClip.Duration.TotalMilliseconds - 76) &&
+                            !blockingAnimStopped)
+                        {
+                            MyObject.MyAnimator.CurrentState.Animation.PauseClip();
+                            blockingAnimStopped = true;
+                        }
+                        Debug.Log(MyObject.MyAnimator.CurrentState.Animation.CurrentTime.ToString() + " | " +
+                            MyObject.MyAnimator.CurrentState.Animation.CurrentClip.Duration.ToString());
                     }
                     else
                     {
                         this.isBlocking = false;
+                        if(blockingAnim)
+                        {
+                            blockingAnim = false;
+                            blockingAnimStopped = false;
+                            StopOtherState();
+                            Debug.Log("Blockin off");
+                        }
                     }
 
                     if(!this.isBlocking)
@@ -504,7 +527,7 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/run_2")));
                 MyObject.MyAnimator.AvailableStates.Add("Build", new AnimatorState("Build", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/building")));
                 MyObject.MyAnimator.AvailableStates.Add("PickTrash", new AnimatorState("PickTrash", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/grzebanie")));
-                MyObject.MyAnimator.AvailableStates.Add("Block", new AnimatorState("Block", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/block_1"), AnimatorState.StateType.SINGLE));
+                MyObject.MyAnimator.AvailableStates.Add("Block", new AnimatorState("Block", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/block_1")));
                 MyObject.MyAnimator.AvailableStates.Add("Death", new AnimatorState("Death", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/dying_1"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("Dodge", new AnimatorState("Dodge", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/dodge_1"), AnimatorState.StateType.SINGLE));
                 MyObject.MyAnimator.AvailableStates.Add("AttackFist01", new AnimatorState("AttackFist01", MyObject.MyAnimator.GetAnimationPlayer("Animations/MainCharacter/boxing_1"), AnimatorState.StateType.SINGLE));
@@ -710,6 +733,12 @@ namespace TrashSoup.Gameplay
                 MyObject.MyAnimator.CurrentInterpolation = 0.0f;
                 MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates[id];
             
+        }
+
+        public void StartOtherStateNoMovementEnabledFalse(string id)
+        {
+            StartOtherState(id);
+            GameManager.Instance.MovementEnabled = true;
         }
 
         public void StopOtherState()
