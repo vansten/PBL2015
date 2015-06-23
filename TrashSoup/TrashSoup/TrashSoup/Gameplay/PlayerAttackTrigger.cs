@@ -64,6 +64,12 @@ namespace TrashSoup.Gameplay
                     diff.Y = 0.0f;
                     diff.Normalize();
                     e.MyObject.MyPhysicalObject.AddForce(diff * 30.0f * damage);
+                    Rat eRat = (Rat)e.GetComponent<Rat>();
+                    if(eRat != null)
+                    {
+                        eRat.MyBlackBoard.SetBool("TargetSeen", true);
+                        eRat.MyBlackBoard.SetVector3("TargetPosition", this.pc.MyObject.MyTransform.Position);
+                    }
                 }
             }
         }

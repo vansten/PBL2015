@@ -34,23 +34,27 @@ namespace TrashSoup.Gameplay.RatAI
                 return TickStatus.FAILURE;
             }
 
-            if (firstTime)
-            {
-                firstTime = false;
-                this.blackboard.Owner.MyAnimator.StopAnimation();
-                this.blackboard.Owner.MyAnimator.ChangeState("Run");
-            }
-
             this.targetPos = this.blackboard.GetVector3("TargetPosition");
             this.myPos = this.blackboard.Owner.MyTransform.Position;
             float distance = Vector3.Distance(this.myPos, this.targetPos);
 
             if(distance < 3.5f)
             {
-                firstTime = true;
                 node = null;
-                this.blackboard.Owner.MyAnimator.ChangeState("Attack");
+                if(!firstTime)
+                {
+                    this.blackboard.Owner.MyAnimator.ChangeState("Attack");
+                    Debug.Log("Hello");
+                }
+                firstTime = true;
                 return TickStatus.SUCCESS;
+            }
+
+            if (firstTime)
+            {
+                firstTime = false;
+                this.blackboard.Owner.MyAnimator.StopAnimation();
+                this.blackboard.Owner.MyAnimator.ChangeState("Run");
             }
             
             this.chaseVector = this.targetPos - this.myPos;

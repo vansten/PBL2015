@@ -53,7 +53,10 @@ namespace TrashSoup.Gameplay.RatAI
                 return TickStatus.FAILURE;
             }
 
-            //this.blackboard.Owner.MyAnimator.ChangeState("Attack");
+            if(firstTime)
+            {
+                firstTime = false;
+            }
             this.difference = this.targetPos - this.myPos;
             this.difference.Y = 0.0f;
             this.difference.Normalize();
@@ -66,7 +69,6 @@ namespace TrashSoup.Gameplay.RatAI
 
             if(timer > attackCooldown)
             {
-                Debug.Log("Attacking");
                 if(target != null)
                 {
                     target.DecreaseHealth(this.damage);
