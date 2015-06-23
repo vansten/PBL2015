@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Material>
-  <Name>sunMat</Name>
+  <Name>hpBarMat</Name>
   <EffectPath>Effects\BillboardEffect</EffectPath>
   <DiffusePath>Textures\HUD\HP</DiffusePath>
   <NormalPath>DefaultNormal</NormalPath>

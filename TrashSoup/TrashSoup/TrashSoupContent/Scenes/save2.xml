@@ -2129,7 +2129,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>652</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -2197,7 +2197,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>405</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Small_House</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Small_House</ModelPath>
@@ -2268,7 +2268,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>552</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Small_House</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Small_House</ModelPath>
@@ -2339,7 +2339,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>914</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -2407,7 +2407,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>665</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -2886,7 +2886,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>783</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -3022,7 +3022,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>584</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -3090,7 +3090,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>224</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -3158,7 +3158,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>149</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -3770,7 +3770,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>917</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
@@ -5618,7 +5618,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>54</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -5686,7 +5686,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>807</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
@@ -6162,7 +6162,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>988</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/garage</ModelPath>
             <ModelPath>Models/Enviro/Buildings/garage</ModelPath>
@@ -10545,7 +10545,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>258</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Test/stairs</ModelPath>
             <ModelPath />
@@ -10616,7 +10616,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>67</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Test/stairs</ModelPath>
             <ModelPath />
@@ -10687,7 +10687,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>793</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Test/stairs</ModelPath>
             <ModelPath />
@@ -10758,7 +10758,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>613</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/park_ground</ModelPath>
             <ModelPath>Models/Enviro/Nature/park_ground</ModelPath>
@@ -12794,7 +12794,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>176</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -12862,7 +12862,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>823</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -12930,7 +12930,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>714</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -13338,7 +13338,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>47</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -13474,7 +13474,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>610</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -13678,7 +13678,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>741</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_cross</ModelPath>
             <ModelPath />
@@ -13746,7 +13746,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>218</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -13814,7 +13814,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>371</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -13882,7 +13882,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>284</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -13950,7 +13950,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>863</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -14018,7 +14018,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>221</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -14222,7 +14222,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>738</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -14290,7 +14290,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>821</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -14358,7 +14358,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>426</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -14426,7 +14426,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>886</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -17282,7 +17282,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>265</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_cross_kerb</ModelPath>
             <ModelPath />
@@ -20869,7 +20869,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>922</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -20952,7 +20952,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>471</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -21367,7 +21367,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>401</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -21782,7 +21782,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>107</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -21865,7 +21865,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>851</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -21948,7 +21948,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>641</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -22197,7 +22197,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>969</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -22280,7 +22280,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>570</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -22363,7 +22363,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>633</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -25019,7 +25019,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>460</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -25683,7 +25683,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>183</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -46982,7 +46982,7 @@
         </TrashSoup.Gameplay.Journal>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1370</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Storyline/Note</ModelPath>
             <ModelPath />
@@ -48392,7 +48392,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1404</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
             <ModelPath />
@@ -49715,7 +49715,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1435</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig</ModelPath>
             <ModelPath />
@@ -50793,7 +50793,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1465</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_2</ModelPath>
             <ModelPath />
@@ -55695,8 +55695,8 @@
       <MyTransform>
         <MyObjectID>1563</MyObjectID>
         <Position>
-          <X>0</X>
-          <Y>0</Y>
+          <X>-32</X>
+          <Y>3</Y>
           <Z>0</Z>
         </Position>
         <Rotation>
@@ -55736,9 +55736,9 @@
       <MyTransform>
         <MyObjectID>1564</MyObjectID>
         <Position>
-          <X>0</X>
-          <Y>0</Y>
-          <Z>0</Z>
+          <X>-69</X>
+          <Y>3</Y>
+          <Z>16</Z>
         </Position>
         <Rotation>
           <X>0</X>
@@ -55755,6 +55755,654 @@
       <Components>
         <TrashSoup.Engine.Billboard>
           <MyObjectID>1564</MyObjectID>
+          <Material>
+            <Name>hpBarMat</Name>
+          </Material>
+          <Size>
+            <X>1</X>
+            <Y>0.1</Y>
+          </Size>
+        </TrashSoup.Engine.Billboard>
+      </Components>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1565</GameObjectKey>
+      <UniqueID>1565</UniqueID>
+      <Name>Rat3</Name>
+      <DrawLast>true</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>true</Dynamic>
+      <MyTransform>
+        <MyObjectID>1565</MyObjectID>
+        <Position>
+          <X>-75</X>
+          <Y>1</Y>
+          <Z>-82</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>-1.57</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>0.0002</Scale>
+      </MyTransform>
+      <MyPhysicalObject>
+        <MyObjectID>1565</MyObjectID>
+        <Acceleration>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Acceleration>
+        <Mass>1</Mass>
+        <DragFactor>0.1</DragFactor>
+        <IsUsingGravity>true</IsUsingGravity>
+        <Velocity>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Velocity>
+        <RotationConstraints>None</RotationConstraints>
+        <PositionConstraints>None</PositionConstraints>
+      </MyPhysicalObject>
+      <MyAnimator>
+        <BaseAnim>Models/Enemies/Rat</BaseAnim>
+        <MyObjectID>1565</MyObjectID>
+        <AnimatorClip>Animations/Enemies/Rat_attack</AnimatorClip>
+        <AnimatorClip>Animations/Enemies/Rat_dying</AnimatorClip>
+        <AnimatorClip>Animations/Enemies/Rat_idle</AnimatorClip>
+        <AnimatorClip>Animations/Enemies/Rat_run</AnimatorClip>
+        <AnimatorClip>Animations/Enemies/Rat_walk</AnimatorClip>
+      </MyAnimator>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1565</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enemies/Rat</ModelPath>
+            <ModelPath>Models/Enemies/Rat</ModelPath>
+            <ModelPath>Models/Enemies/Rat</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>RatMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Engine.Transform>
+          <MyObjectID>1565</MyObjectID>
+          <Position>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Position>
+          <Rotation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Rotation>
+          <Forward>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Forward>
+          <Scale>1</Scale>
+        </TrashSoup.Engine.Transform>
+        <TrashSoup.Gameplay.Enemy>
+          <MyHPBarID>1566</MyHPBarID>
+          <MyObjectID>1565</MyObjectID>
+        </TrashSoup.Gameplay.Enemy>
+        <TrashSoup.Gameplay.Rat>
+          <MyObjectID>1565</MyObjectID>
+        </TrashSoup.Gameplay.Rat>
+        <TrashSoup.Engine.ParticleSystem>
+          <MyObjectID>1565</MyObjectID>
+          <RotationMode>PLAIN</RotationMode>
+          <LoopMode>NONE</LoopMode>
+          <BlendMode>ALPHA</BlendMode>
+          <Offset>
+            <X>0.17453292</X>
+            <Y>0.17453292</Y>
+            <Z>0.17453292</Z>
+          </Offset>
+          <RandAngle>
+            <X>0.1711352</X>
+            <Y>0.8638618</Y>
+            <Z>-0.03803615</Z>
+          </RandAngle>
+          <Wind>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Wind>
+          <WindVariation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </WindVariation>
+          <PositionOffset>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </PositionOffset>
+          <PositionOffsetVariation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </PositionOffsetVariation>
+          <ParticleRotation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </ParticleRotation>
+          <ParticleRotationVariation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </ParticleRotationVariation>
+          <ParticleColor>
+            <X>1</X>
+            <Y>1</Y>
+            <Z>1</Z>
+          </ParticleColor>
+          <ParticleColorVariation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </ParticleColorVariation>
+          <ParticleSize>
+            <X>0.5</X>
+            <Y>0.5</Y>
+          </ParticleSize>
+          <ParticleSizeVariation>
+            <X>0</X>
+            <Y>0</Y>
+          </ParticleSizeVariation>
+          <Textures>
+            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+          </Textures>
+          <LifeSpanSec>0.5</LifeSpanSec>
+          <LifeSpanSecVariation>0</LifeSpanSecVariation>
+          <FadeInTime>0.5</FadeInTime>
+          <FadeInTimeVariation>0</FadeInTimeVariation>
+          <FadeOutTime>0.5</FadeOutTime>
+          <FadeOutTimeVariation>0.5</FadeOutTimeVariation>
+          <Speed>5</Speed>
+          <SpeedVariation>0</SpeedVariation>
+          <DelayMs>0</DelayMs>
+          <DelayMsVariation>0</DelayMsVariation>
+          <Mass>0</Mass>
+          <MassVariation>0</MassVariation>
+          <ParticleCount>5</ParticleCount>
+          <IgnoreScale>true</IgnoreScale>
+          <Stopped>true</Stopped>
+          <UseGravity>false</UseGravity>
+        </TrashSoup.Engine.ParticleSystem>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1565</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1566</GameObjectKey>
+      <UniqueID>1566</UniqueID>
+      <Name>HPBarRat3</Name>
+      <DrawLast>true</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>true</Dynamic>
+      <MyTransform>
+        <MyObjectID>1566</MyObjectID>
+        <Position>
+          <X>-75</X>
+          <Y>3</Y>
+          <Z>-82</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>1</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.Billboard>
+          <MyObjectID>1566</MyObjectID>
+          <Material>
+            <Name>hpBarMat</Name>
+          </Material>
+          <Size>
+            <X>1</X>
+            <Y>0.1</Y>
+          </Size>
+        </TrashSoup.Engine.Billboard>
+      </Components>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1567</GameObjectKey>
+      <UniqueID>1567</UniqueID>
+      <Name>RatTurningTrigger (clone) (clone)</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>true</Dynamic>
+      <MyTransform>
+        <MyObjectID>1567</MyObjectID>
+        <Position>
+          <X>3</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <MyPhysicalObject>
+        <MyObjectID>1567</MyObjectID>
+        <Acceleration>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Acceleration>
+        <Mass>0</Mass>
+        <DragFactor>0</DragFactor>
+        <IsUsingGravity>false</IsUsingGravity>
+        <Velocity>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Velocity>
+        <RotationConstraints>None</RotationConstraints>
+        <PositionConstraints>None</PositionConstraints>
+      </MyPhysicalObject>
+      <Components>
+        <TrashSoup.Gameplay.RatTurningTrigger>
+          <MyRatID>1565</MyRatID>
+          <MyObjectID>1567</MyObjectID>
+        </TrashSoup.Gameplay.RatTurningTrigger>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1567</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1568</GameObjectKey>
+      <UniqueID>1568</UniqueID>
+      <Name>RatTrigger (clone) (clone)</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>true</Dynamic>
+      <MyTransform>
+        <MyObjectID>1568</MyObjectID>
+        <Position>
+          <X>8</X>
+          <Y>2</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>6</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Gameplay.RatTrigger>
+          <MyRatID>1565</MyRatID>
+          <MyObjectID>1568</MyObjectID>
+        </TrashSoup.Gameplay.RatTrigger>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1568</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1569</GameObjectKey>
+      <UniqueID>1569</UniqueID>
+      <Name>Rat4</Name>
+      <DrawLast>true</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>true</Dynamic>
+      <MyTransform>
+        <MyObjectID>1569</MyObjectID>
+        <Position>
+          <X>-110</X>
+          <Y>1</Y>
+          <Z>55</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>-1.57</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>0.0002</Scale>
+      </MyTransform>
+      <MyPhysicalObject>
+        <MyObjectID>1569</MyObjectID>
+        <Acceleration>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Acceleration>
+        <Mass>1</Mass>
+        <DragFactor>0.1</DragFactor>
+        <IsUsingGravity>true</IsUsingGravity>
+        <Velocity>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Velocity>
+        <RotationConstraints>None</RotationConstraints>
+        <PositionConstraints>None</PositionConstraints>
+      </MyPhysicalObject>
+      <MyAnimator>
+        <BaseAnim>Models/Enemies/Rat</BaseAnim>
+        <MyObjectID>1569</MyObjectID>
+        <AnimatorClip>Animations/Enemies/Rat_attack</AnimatorClip>
+        <AnimatorClip>Animations/Enemies/Rat_dying</AnimatorClip>
+        <AnimatorClip>Animations/Enemies/Rat_idle</AnimatorClip>
+        <AnimatorClip>Animations/Enemies/Rat_run</AnimatorClip>
+        <AnimatorClip>Animations/Enemies/Rat_walk</AnimatorClip>
+      </MyAnimator>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1569</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Enemies/Rat</ModelPath>
+            <ModelPath>Models/Enemies/Rat</ModelPath>
+            <ModelPath>Models/Enemies/Rat</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>RatMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Engine.Transform>
+          <MyObjectID>1569</MyObjectID>
+          <Position>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Position>
+          <Rotation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Rotation>
+          <Forward>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Forward>
+          <Scale>1</Scale>
+        </TrashSoup.Engine.Transform>
+        <TrashSoup.Gameplay.Enemy>
+          <MyHPBarID>1572</MyHPBarID>
+          <MyObjectID>1569</MyObjectID>
+        </TrashSoup.Gameplay.Enemy>
+        <TrashSoup.Gameplay.Rat>
+          <MyObjectID>1569</MyObjectID>
+        </TrashSoup.Gameplay.Rat>
+        <TrashSoup.Engine.ParticleSystem>
+          <MyObjectID>1569</MyObjectID>
+          <RotationMode>PLAIN</RotationMode>
+          <LoopMode>NONE</LoopMode>
+          <BlendMode>ALPHA</BlendMode>
+          <Offset>
+            <X>0.17453292</X>
+            <Y>0.17453292</Y>
+            <Z>0.17453292</Z>
+          </Offset>
+          <RandAngle>
+            <X>-0.137906983</X>
+            <Y>0.843717</Y>
+            <Z>-0.138901234</Z>
+          </RandAngle>
+          <Wind>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </Wind>
+          <WindVariation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </WindVariation>
+          <PositionOffset>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </PositionOffset>
+          <PositionOffsetVariation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </PositionOffsetVariation>
+          <ParticleRotation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </ParticleRotation>
+          <ParticleRotationVariation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </ParticleRotationVariation>
+          <ParticleColor>
+            <X>1</X>
+            <Y>1</Y>
+            <Z>1</Z>
+          </ParticleColor>
+          <ParticleColorVariation>
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+          </ParticleColorVariation>
+          <ParticleSize>
+            <X>0.5</X>
+            <Y>0.5</Y>
+          </ParticleSize>
+          <ParticleSizeVariation>
+            <X>0</X>
+            <Y>0</Y>
+          </ParticleSizeVariation>
+          <Textures>
+            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+          </Textures>
+          <LifeSpanSec>0.5</LifeSpanSec>
+          <LifeSpanSecVariation>0</LifeSpanSecVariation>
+          <FadeInTime>0.5</FadeInTime>
+          <FadeInTimeVariation>0</FadeInTimeVariation>
+          <FadeOutTime>0.5</FadeOutTime>
+          <FadeOutTimeVariation>0.5</FadeOutTimeVariation>
+          <Speed>5</Speed>
+          <SpeedVariation>0</SpeedVariation>
+          <DelayMs>0</DelayMs>
+          <DelayMsVariation>0</DelayMsVariation>
+          <Mass>0</Mass>
+          <MassVariation>0</MassVariation>
+          <ParticleCount>5</ParticleCount>
+          <IgnoreScale>true</IgnoreScale>
+          <Stopped>true</Stopped>
+          <UseGravity>false</UseGravity>
+        </TrashSoup.Engine.ParticleSystem>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1569</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1570</GameObjectKey>
+      <UniqueID>1570</UniqueID>
+      <Name>RatTurningTrigger (clone) (clone)</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>true</Dynamic>
+      <MyTransform>
+        <MyObjectID>1570</MyObjectID>
+        <Position>
+          <X>3</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <MyPhysicalObject>
+        <MyObjectID>1570</MyObjectID>
+        <Acceleration>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Acceleration>
+        <Mass>0</Mass>
+        <DragFactor>0</DragFactor>
+        <IsUsingGravity>false</IsUsingGravity>
+        <Velocity>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Velocity>
+        <RotationConstraints>None</RotationConstraints>
+        <PositionConstraints>None</PositionConstraints>
+      </MyPhysicalObject>
+      <Components>
+        <TrashSoup.Gameplay.RatTurningTrigger>
+          <MyRatID>1569</MyRatID>
+          <MyObjectID>1570</MyObjectID>
+        </TrashSoup.Gameplay.RatTurningTrigger>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1570</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1571</GameObjectKey>
+      <UniqueID>1571</UniqueID>
+      <Name>RatTrigger (clone) (clone)</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>true</Dynamic>
+      <MyTransform>
+        <MyObjectID>1571</MyObjectID>
+        <Position>
+          <X>8</X>
+          <Y>2</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>6</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Gameplay.RatTrigger>
+          <MyRatID>1569</MyRatID>
+          <MyObjectID>1571</MyObjectID>
+        </TrashSoup.Gameplay.RatTrigger>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1571</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1572</GameObjectKey>
+      <UniqueID>1572</UniqueID>
+      <Name>HPBarRat4</Name>
+      <DrawLast>true</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>true</Dynamic>
+      <MyTransform>
+        <MyObjectID>1572</MyObjectID>
+        <Position>
+          <X>-69</X>
+          <Y>3</Y>
+          <Z>16</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>1</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.Billboard>
+          <MyObjectID>1572</MyObjectID>
           <Material>
             <Name>hpBarMat</Name>
           </Material>
