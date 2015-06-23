@@ -25,7 +25,7 @@ namespace TrashSoup.Gameplay
         public override void Update(GameTime gameTime)
         {
             GUIManager.Instance.DrawTexture(this.noteTexture, this.noteTexturePos, 0.5f, 0.5f);
-            if(InputManager.Instance.GetKeyboardButtonDown(Keys.Enter))
+            if(InputManager.Instance.GetKeyboardButtonDown(Keys.Enter) || InputManager.Instance.GetGamePadButtonDown(Buttons.A))
             {
                 GameManager.Instance.MovementEnabled = true;
                 this.MyObject.Enabled = false;

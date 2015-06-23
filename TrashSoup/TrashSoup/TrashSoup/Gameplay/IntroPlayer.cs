@@ -51,6 +51,7 @@ namespace TrashSoup.Gameplay
 
         private void LoadNextScene()
         {
+            this.videoPlayer.Stop();
             SaveManager.Instance.XmlPath = "../../../../TrashSoupContent/Scenes/menu.xml";
             SaveManager.Instance.LoadFileAction();
         }

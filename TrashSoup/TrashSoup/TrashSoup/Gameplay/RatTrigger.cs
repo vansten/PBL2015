@@ -58,10 +58,6 @@ namespace TrashSoup.Gameplay
         public override void Initialize()
         {
             this.myRat = (Rat)ResourceManager.Instance.CurrentScene.GetObject(MyRatID).GetComponent<Rat>();
-            if (MyRatID == 1550)
-            {
-                this.MyObject.DrawCollider = true;
-            }
             this.myRat.MyObject.AddChild(this.MyObject);
             base.Initialize();
         }
