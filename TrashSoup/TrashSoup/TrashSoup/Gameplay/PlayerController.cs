@@ -22,6 +22,7 @@ namespace TrashSoup.Gameplay
         protected const float ROTATION_SPEED = 0.4f;
         public const float MAX_HEALTH = 50.0f;
         public const float MAX_POPULARITY = 100.0f;
+        public const float DAMAGE_INCREASE_POPULARITY_AMOUNT = 0.8f * MAX_POPULARITY;
         protected const float POPULARITY_STOP_COOLDOWN = 1.0f;
 
         #endregion
@@ -87,6 +88,7 @@ namespace TrashSoup.Gameplay
         private float attackCooldown = 0.0f;
         private int combo = 1;
         private float lastAttackTime = 0.0f;
+        private int damageMultiplier = 1;
 
         private string currentIdleAnimID;
         private Weapon eqLastWeap = null;
@@ -236,11 +238,6 @@ namespace TrashSoup.Gameplay
                 }
             }
 
-            if (InputManager.Instance.GetKeyboardButtonDown(Keys.M))
-            {
-                this.AddPopularity();
-            }
-
             equipment.Update(gameTime);
             if (GameManager.Instance.MovementEnabled)
             {
@@ -341,7 +338,7 @@ namespace TrashSoup.Gameplay
                     }
                     equipment.CurrentWeapon.IsAttacking = true;
                     equipment.CurrentWeapon.timerOn = gameTime.TotalGameTime.TotalSeconds;
-                    this.MyAttackTriggerComponent.Attack(this.equipment.CurrentWeapon.Damage);
+                    this.MyAttackTriggerComponent.Attack(this.equipment.CurrentWeapon.Damage, this.damageMultiplier);
                     this.isAttacking = true;
                 }
 
@@ -473,6 +470,15 @@ namespace TrashSoup.Gameplay
                 eqLastWeap = Equipment.CurrentWeapon;
                 IdleChangeHandler(eqLastWeap);
             }
+
+            if (this.popularity >= DAMAGE_INCREASE_POPULARITY_AMOUNT)
+            {
+                this.damageMultiplier = 2;
+            }
+            else
+            {
+                this.damageMultiplier = 1;
+            }
         }
 
         public override void Initialize()
@@ -503,6 +509,7 @@ namespace TrashSoup.Gameplay
 
         public void AddPopularity(float amount = 10.0f)
         {
+            amount = amount + amount * 0.5f * (combo - 1);
             this.popularityEarned = true;
             this.popularityEarnedTimer = 0.0f;
             this.Popularity += amount;

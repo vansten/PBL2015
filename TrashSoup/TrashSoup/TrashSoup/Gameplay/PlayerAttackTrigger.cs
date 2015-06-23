@@ -42,7 +42,7 @@ namespace TrashSoup.Gameplay
         {
         }
 
-        public void Attack(int damage)
+        public void Attack(int damage, int damageMultiplier = 1)
         {
             foreach(Enemy e in this.enemiesInTrigger)
             {
@@ -51,7 +51,7 @@ namespace TrashSoup.Gameplay
                     AttackEvent(this, new CollisionEventArgs(e.MyObject));
                 }
 
-                e.HitPoints -= damage;
+                e.HitPoints -= damage * damageMultiplier;
                 pc.AddPopularity();
                 ParticleSystem ps = e.MyObject.GetComponent<ParticleSystem>() as ParticleSystem;
                 if(ps != null)

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Material>
+  <Name>sunMat</Name>
+  <EffectPath>Effects\BillboardEffect</EffectPath>
+  <DiffusePath>Textures\HUD\HP</DiffusePath>
+  <NormalPath>DefaultNormal</NormalPath>
+  <DiffuseColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </DiffuseColor>
+  <SpecularColor>
+    <X>0</X>
+    <Y>0</Y>
+    <Z>0</Z>
+  </SpecularColor>
+  <Glossiness>100</Glossiness>
+  <ReflectivityColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </ReflectivityColor>
+  <ReflectivityBias>0.2</ReflectivityBias>
+  <Transparency>1</Transparency>
+  <PerPixelLighting>false</PerPixelLighting>
+  <ReceiveShadows>false</ReceiveShadows>
+</Material>

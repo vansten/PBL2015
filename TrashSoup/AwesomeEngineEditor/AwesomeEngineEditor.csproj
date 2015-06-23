@@ -89,6 +89,9 @@
     <Compile Include="Components\DisappearingTrash.xaml.cs">
       <DependentUpon>DisappearingTrash.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\Enemy.xaml.cs">
+      <DependentUpon>Enemy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\Material.xaml.cs">
       <DependentUpon>Material.xaml</DependentUpon>
     </Compile>
@@ -158,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\DisappearingTrash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Enemy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

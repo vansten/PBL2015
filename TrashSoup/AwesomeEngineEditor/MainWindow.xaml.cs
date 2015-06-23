@@ -792,6 +792,11 @@ namespace AwesomeEngineEditor
                         Components.RatTurningTrigger rt = new Components.RatTurningTrigger((TrashSoup.Gameplay.RatTurningTrigger)oc);
                         this.LoadedComponents.Add(rt);
                     }
+                    else if(oc.GetType() == typeof(TrashSoup.Gameplay.Enemy))
+                    {
+                        Components.Enemy e = new Components.Enemy(((TrashSoup.Gameplay.Enemy)oc));
+                        this.LoadedComponents.Add(e);
+                    }
                     else
                     {
                         Components.ComponentWindow cw = new Components.ComponentWindow(oc);
