@@ -130,6 +130,7 @@ namespace TrashSoup.Gameplay
             dieCooldown = this.MyObject.MyAnimator.GetAnimationClip("Animations/Enemies/Rat_dying").Duration.Seconds;
             nextBlinkTime = dieCooldown + 1.0f;
             this.MyObject.MyPhysicalObject.Velocity = Vector3.Zero;
+            this.MyObject.MyPhysicalObject.ZeroForce();
             this.MyObject.MyPhysicalObject.IsUsingGravity = false;
             //this.MyObject.MyCollider.Enabled = false;
             Collider c = ResourceManager.Instance.CurrentScene.GetObject(1).MyCollider;

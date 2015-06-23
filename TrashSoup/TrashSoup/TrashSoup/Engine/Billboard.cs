@@ -49,7 +49,9 @@ namespace TrashSoup.Engine
         public Billboard(GameObject go, Billboard bi)
             : base(go, bi)
         {
-
+            this.contentPath = bi.contentPath;
+            this.Mat = bi.Mat;
+            this.Size = bi.Size;
         }
 
         public override void Update(GameTime gameTime)
