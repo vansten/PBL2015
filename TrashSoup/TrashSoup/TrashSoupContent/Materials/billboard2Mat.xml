@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Material>
+  <Name>billboard2Mat</Name>
+  <EffectPath>Effects\NormalEffect</EffectPath>
+  <DiffusePath>Textures\Enviro\Billboard\billboard_2_d</DiffusePath>
+  <NormalPath>Textures\Enviro\Billboard\billboard_2_N</NormalPath>
+  <DiffuseColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </DiffuseColor>
+  <SpecularColor>
+    <X>0.7</X>
+    <Y>0.7</Y>
+    <Z>0.7</Z>
+  </SpecularColor>
+  <Glossiness>100</Glossiness>
+  <ReflectivityColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </ReflectivityColor>
+  <ReflectivityBias>1</ReflectivityBias>
+  <Transparency>1</Transparency>
+  <PerPixelLighting>false</PerPixelLighting>
+  <ReceiveShadows>true</ReceiveShadows>
+</Material>
