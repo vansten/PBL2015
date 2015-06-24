@@ -3,6 +3,7 @@
   <OwnerID>359</OwnerID>
   <Blackboard>
     <intObjects>
+      <Damage>5</Damage>
     </intObjects>
     <floatObjects>
     </floatObjects>

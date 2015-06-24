@@ -45,11 +45,6 @@ namespace TrashSoup.Gameplay.RatAI
                 return TickStatus.FAILURE;
             }
 
-            if (this.blackboard.Owner.UniqueID == 1550)
-            {
-                Debug.Log("Walking on the streets");
-            }
-
             if(firstTime)
             {
                 this.blackboard.Owner.MyAnimator.ChangeState("Walk");
