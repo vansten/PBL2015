@@ -96,6 +96,8 @@ namespace TrashSoup
         protected override void LoadContent()
         {
             ResourceManager.Instance.LoadContent(this);
+            SaveManager.Instance.XmlPath = "../../../../TrashSoupContent/Scenes/controls.xml";
+            SaveManager.Instance.LoadFileAction();
         }
 
         protected override void UnloadContent()

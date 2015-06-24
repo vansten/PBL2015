@@ -122,6 +122,7 @@
     <Compile Include="Engine\WaterMaterial.cs" />
     <Compile Include="Gameplay\AITest.cs" />
     <Compile Include="Gameplay\AreaTransition.cs" />
+    <Compile Include="Gameplay\ControlsScreenController.cs" />
     <Compile Include="Gameplay\Fortification.cs" />
     <Compile Include="Gameplay\DaytimeChange.cs" />
     <Compile Include="Gameplay\FortificationPart.cs" />
