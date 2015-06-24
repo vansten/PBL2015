@@ -61,7 +61,6 @@ namespace TrashSoup.Gameplay
             {
                 this.stairsTouching = value;
                 this.MyObject.MyPhysicalObject.IsUsingGravity = this.stairsTouching == 0;
-                Debug.Log("Lol, stairs " + value.ToString());
                 if (!this.MyObject.MyPhysicalObject.IsUsingGravity)
                 {
                     this.MyObject.MyPhysicalObject.Velocity = Vector3.Zero;

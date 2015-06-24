@@ -28,7 +28,6 @@ namespace TrashSoup.Gameplay.RatAI
             if(go != null)
             {
                 target = (PlayerController)go.GetComponent<PlayerController>();
-                Debug.Log("Target: " + (target != null).ToString());
             }
             base.Initialize();
         } 
@@ -117,8 +116,8 @@ namespace TrashSoup.Gameplay.RatAI
 
             if (float.IsNaN(toReturn.X) || float.IsNaN(toReturn.Y))
             {
-                Debug.Log("PLAYERCONTROLLER ERROR: NaN detected in Slerp()");
-                throw new InvalidOperationException("PLAYERCONTROLLER ERROR: NaN detected in Slerp()");
+                Debug.Log("RAT ERROR: NaN detected in Slerp()");
+                throw new InvalidOperationException("RAT ERROR: NaN detected in Slerp()");
             }
 
             return toReturn;
