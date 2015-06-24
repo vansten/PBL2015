@@ -57033,8 +57033,8 @@
       </MyCollider>
     </GameObject>
     <GameObject>
-      <GameObjectKey>1587</GameObjectKey>
-      <UniqueID>1587</UniqueID>
+      <GameObjectKey>1606</GameObjectKey>
+      <UniqueID>1606</UniqueID>
       <Name>Rat6</Name>
       <DrawLast>true</DrawLast>
       <Tags>
@@ -57042,7 +57042,7 @@
       </Tags>
       <Dynamic>true</Dynamic>
       <MyTransform>
-        <MyObjectID>1587</MyObjectID>
+        <MyObjectID>1606</MyObjectID>
         <Position>
           <X>-78</X>
           <Y>1</Y>
@@ -57061,7 +57061,7 @@
         <Scale>0.0002</Scale>
       </MyTransform>
       <MyPhysicalObject>
-        <MyObjectID>1587</MyObjectID>
+        <MyObjectID>1606</MyObjectID>
         <Acceleration>
           <X>0</X>
           <Y>0</Y>
@@ -57080,7 +57080,7 @@
       </MyPhysicalObject>
       <MyAnimator>
         <BaseAnim>Models/Enemies/Rat</BaseAnim>
-        <MyObjectID>1587</MyObjectID>
+        <MyObjectID>1606</MyObjectID>
         <AnimatorClip>Animations/Enemies/Rat_attack</AnimatorClip>
         <AnimatorClip>Animations/Enemies/Rat_dying</AnimatorClip>
         <AnimatorClip>Animations/Enemies/Rat_idle</AnimatorClip>
@@ -57089,7 +57089,7 @@
       </MyAnimator>
       <Components>
         <TrashSoup.Engine.CustomModel>
-          <MyObjectID>1587</MyObjectID>
+          <MyObjectID>1606</MyObjectID>
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enemies/Rat</ModelPath>
@@ -57102,7 +57102,7 @@
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
-          <MyObjectID>1587</MyObjectID>
+          <MyObjectID>1606</MyObjectID>
           <Position>
             <X>0</X>
             <Y>0</Y>
@@ -57121,14 +57121,14 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
         <TrashSoup.Gameplay.Enemy>
-          <MyHPBarID>1588</MyHPBarID>
-          <MyObjectID>1587</MyObjectID>
+          <MyHPBarID>1607</MyHPBarID>
+          <MyObjectID>1606</MyObjectID>
         </TrashSoup.Gameplay.Enemy>
         <TrashSoup.Gameplay.Rat>
-          <MyObjectID>1587</MyObjectID>
+          <MyObjectID>1606</MyObjectID>
         </TrashSoup.Gameplay.Rat>
         <TrashSoup.Engine.ParticleSystem>
-          <MyObjectID>1587</MyObjectID>
+          <MyObjectID>1606</MyObjectID>
           <RotationMode>PLAIN</RotationMode>
           <LoopMode>NONE</LoopMode>
           <BlendMode>ALPHA</BlendMode>
@@ -57213,13 +57213,13 @@
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1587</MyObjectID>
+        <MyObjectID>1606</MyObjectID>
         <IsTrigger>false</IsTrigger>
       </MyCollider>
     </GameObject>
     <GameObject>
-      <GameObjectKey>1588</GameObjectKey>
-      <UniqueID>1588</UniqueID>
+      <GameObjectKey>1607</GameObjectKey>
+      <UniqueID>1607</UniqueID>
       <Name>HPBarRat3 (clone)</Name>
       <DrawLast>true</DrawLast>
       <Tags>
@@ -57227,7 +57227,7 @@
       </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
-        <MyObjectID>1588</MyObjectID>
+        <MyObjectID>1607</MyObjectID>
         <Position>
           <X>-75</X>
           <Y>3</Y>
@@ -57247,7 +57247,7 @@
       </MyTransform>
       <Components>
         <TrashSoup.Engine.Billboard>
-          <MyObjectID>1588</MyObjectID>
+          <MyObjectID>1607</MyObjectID>
           <Material>
             <Name>hpBarMat</Name>
           </Material>
@@ -57259,8 +57259,8 @@
       </Components>
     </GameObject>
     <GameObject>
-      <GameObjectKey>1589</GameObjectKey>
-      <UniqueID>1589</UniqueID>
+      <GameObjectKey>1608</GameObjectKey>
+      <UniqueID>1608</UniqueID>
       <Name>RatTurningTrigger (clone) (clone) (clone)</Name>
       <DrawLast>false</DrawLast>
       <Tags>
@@ -57268,7 +57268,7 @@
       </Tags>
       <Dynamic>true</Dynamic>
       <MyTransform>
-        <MyObjectID>1589</MyObjectID>
+        <MyObjectID>1608</MyObjectID>
         <Position>
           <X>3</X>
           <Y>0</Y>
@@ -57287,7 +57287,7 @@
         <Scale>1</Scale>
       </MyTransform>
       <MyPhysicalObject>
-        <MyObjectID>1589</MyObjectID>
+        <MyObjectID>1608</MyObjectID>
         <Acceleration>
           <X>0</X>
           <Y>0</Y>
@@ -57306,19 +57306,19 @@
       </MyPhysicalObject>
       <Components>
         <TrashSoup.Gameplay.RatTurningTrigger>
-          <MyRatID>1587</MyRatID>
-          <MyObjectID>1589</MyObjectID>
+          <MyRatID>1606</MyRatID>
+          <MyObjectID>1608</MyObjectID>
         </TrashSoup.Gameplay.RatTurningTrigger>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1589</MyObjectID>
+        <MyObjectID>1608</MyObjectID>
         <IsTrigger>true</IsTrigger>
       </MyCollider>
     </GameObject>
     <GameObject>
-      <GameObjectKey>1590</GameObjectKey>
-      <UniqueID>1590</UniqueID>
+      <GameObjectKey>1609</GameObjectKey>
+      <UniqueID>1609</UniqueID>
       <Name>RatTrigger (clone) (clone) (clone)</Name>
       <DrawLast>false</DrawLast>
       <Tags>
@@ -57326,7 +57326,7 @@
       </Tags>
       <Dynamic>true</Dynamic>
       <MyTransform>
-        <MyObjectID>1590</MyObjectID>
+        <MyObjectID>1609</MyObjectID>
         <Position>
           <X>8</X>
           <Y>2</Y>
@@ -57346,19 +57346,19 @@
       </MyTransform>
       <Components>
         <TrashSoup.Gameplay.RatTrigger>
-          <MyRatID>1587</MyRatID>
-          <MyObjectID>1590</MyObjectID>
+          <MyRatID>1606</MyRatID>
+          <MyObjectID>1609</MyObjectID>
         </TrashSoup.Gameplay.RatTrigger>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1590</MyObjectID>
+        <MyObjectID>1609</MyObjectID>
         <IsTrigger>true</IsTrigger>
       </MyCollider>
     </GameObject>
     <GameObject>
-      <GameObjectKey>1591</GameObjectKey>
-      <UniqueID>1591</UniqueID>
+      <GameObjectKey>1610</GameObjectKey>
+      <UniqueID>1610</UniqueID>
       <Name>Rat7</Name>
       <DrawLast>true</DrawLast>
       <Tags>
@@ -57366,7 +57366,7 @@
       </Tags>
       <Dynamic>true</Dynamic>
       <MyTransform>
-        <MyObjectID>1591</MyObjectID>
+        <MyObjectID>1610</MyObjectID>
         <Position>
           <X>-84</X>
           <Y>1</Y>
@@ -57385,7 +57385,7 @@
         <Scale>0.0002</Scale>
       </MyTransform>
       <MyPhysicalObject>
-        <MyObjectID>1591</MyObjectID>
+        <MyObjectID>1610</MyObjectID>
         <Acceleration>
           <X>0</X>
           <Y>0</Y>
@@ -57404,7 +57404,7 @@
       </MyPhysicalObject>
       <MyAnimator>
         <BaseAnim>Models/Enemies/Rat</BaseAnim>
-        <MyObjectID>1591</MyObjectID>
+        <MyObjectID>1610</MyObjectID>
         <AnimatorClip>Animations/Enemies/Rat_attack</AnimatorClip>
         <AnimatorClip>Animations/Enemies/Rat_dying</AnimatorClip>
         <AnimatorClip>Animations/Enemies/Rat_idle</AnimatorClip>
@@ -57413,7 +57413,7 @@
       </MyAnimator>
       <Components>
         <TrashSoup.Engine.CustomModel>
-          <MyObjectID>1591</MyObjectID>
+          <MyObjectID>1610</MyObjectID>
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enemies/Rat</ModelPath>
@@ -57426,7 +57426,7 @@
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
-          <MyObjectID>1591</MyObjectID>
+          <MyObjectID>1610</MyObjectID>
           <Position>
             <X>0</X>
             <Y>0</Y>
@@ -57445,14 +57445,14 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
         <TrashSoup.Gameplay.Enemy>
-          <MyHPBarID>1594</MyHPBarID>
-          <MyObjectID>1591</MyObjectID>
+          <MyHPBarID>1613</MyHPBarID>
+          <MyObjectID>1610</MyObjectID>
         </TrashSoup.Gameplay.Enemy>
         <TrashSoup.Gameplay.Rat>
-          <MyObjectID>1591</MyObjectID>
+          <MyObjectID>1610</MyObjectID>
         </TrashSoup.Gameplay.Rat>
         <TrashSoup.Engine.ParticleSystem>
-          <MyObjectID>1591</MyObjectID>
+          <MyObjectID>1610</MyObjectID>
           <RotationMode>PLAIN</RotationMode>
           <LoopMode>NONE</LoopMode>
           <BlendMode>ALPHA</BlendMode>
@@ -57537,13 +57537,13 @@
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1591</MyObjectID>
+        <MyObjectID>1610</MyObjectID>
         <IsTrigger>false</IsTrigger>
       </MyCollider>
     </GameObject>
     <GameObject>
-      <GameObjectKey>1592</GameObjectKey>
-      <UniqueID>1592</UniqueID>
+      <GameObjectKey>1611</GameObjectKey>
+      <UniqueID>1611</UniqueID>
       <Name>RatTurningTrigger (clone) (clone)</Name>
       <DrawLast>false</DrawLast>
       <Tags>
@@ -57551,7 +57551,7 @@
       </Tags>
       <Dynamic>true</Dynamic>
       <MyTransform>
-        <MyObjectID>1592</MyObjectID>
+        <MyObjectID>1611</MyObjectID>
         <Position>
           <X>3</X>
           <Y>0</Y>
@@ -57570,7 +57570,7 @@
         <Scale>1</Scale>
       </MyTransform>
       <MyPhysicalObject>
-        <MyObjectID>1592</MyObjectID>
+        <MyObjectID>1611</MyObjectID>
         <Acceleration>
           <X>0</X>
           <Y>0</Y>
@@ -57589,7 +57589,7 @@
       </MyPhysicalObject>
       <Components>
         <TrashSoup.Engine.CustomModel>
-          <MyObjectID>1581</MyObjectID>
+          <MyObjectID>1611</MyObjectID>
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Metro/tunnel</ModelPath>
@@ -57602,19 +57602,19 @@
           <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.RatTurningTrigger>
-          <MyRatID>1591</MyRatID>
-          <MyObjectID>1592</MyObjectID>
+          <MyRatID>1610</MyRatID>
+          <MyObjectID>1611</MyObjectID>
         </TrashSoup.Gameplay.RatTurningTrigger>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1592</MyObjectID>
+        <MyObjectID>1611</MyObjectID>
         <IsTrigger>true</IsTrigger>
       </MyCollider>
     </GameObject>
     <GameObject>
-      <GameObjectKey>1593</GameObjectKey>
-      <UniqueID>1593</UniqueID>
+      <GameObjectKey>1612</GameObjectKey>
+      <UniqueID>1612</UniqueID>
       <Name>RatTrigger (clone) (clone)</Name>
       <DrawLast>false</DrawLast>
       <Tags>
@@ -57622,7 +57622,7 @@
       </Tags>
       <Dynamic>true</Dynamic>
       <MyTransform>
-        <MyObjectID>1593</MyObjectID>
+        <MyObjectID>1612</MyObjectID>
         <Position>
           <X>8</X>
           <Y>2</Y>
@@ -57642,19 +57642,19 @@
       </MyTransform>
       <Components>
         <TrashSoup.Gameplay.RatTrigger>
-          <MyRatID>1591</MyRatID>
-          <MyObjectID>1593</MyObjectID>
+          <MyRatID>1610</MyRatID>
+          <MyObjectID>1612</MyObjectID>
         </TrashSoup.Gameplay.RatTrigger>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1593</MyObjectID>
+        <MyObjectID>1612</MyObjectID>
         <IsTrigger>true</IsTrigger>
       </MyCollider>
     </GameObject>
     <GameObject>
-      <GameObjectKey>1594</GameObjectKey>
-      <UniqueID>1594</UniqueID>
+      <GameObjectKey>1613</GameObjectKey>
+      <UniqueID>1613</UniqueID>
       <Name>HPBarRat2 (clone)</Name>
       <DrawLast>true</DrawLast>
       <Tags>
@@ -57662,7 +57662,7 @@
       </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
-        <MyObjectID>1594</MyObjectID>
+        <MyObjectID>1613</MyObjectID>
         <Position>
           <X>-69</X>
           <Y>3</Y>
@@ -57682,7 +57682,7 @@
       </MyTransform>
       <Components>
         <TrashSoup.Engine.Billboard>
-          <MyObjectID>1594</MyObjectID>
+          <MyObjectID>1613</MyObjectID>
           <Material>
             <Name>hpBarMat</Name>
           </Material>
@@ -57694,8 +57694,8 @@
       </Components>
     </GameObject>
     <GameObject>
-      <GameObjectKey>1595</GameObjectKey>
-      <UniqueID>1595</UniqueID>
+      <GameObjectKey>1614</GameObjectKey>
+      <UniqueID>1614</UniqueID>
       <Name>Rat7 (clone)</Name>
       <DrawLast>true</DrawLast>
       <Tags>
@@ -57703,7 +57703,7 @@
       </Tags>
       <Dynamic>true</Dynamic>
       <MyTransform>
-        <MyObjectID>1595</MyObjectID>
+        <MyObjectID>1614</MyObjectID>
         <Position>
           <X>-68</X>
           <Y>1</Y>
@@ -57722,7 +57722,7 @@
         <Scale>0.0002</Scale>
       </MyTransform>
       <MyPhysicalObject>
-        <MyObjectID>1595</MyObjectID>
+        <MyObjectID>1614</MyObjectID>
         <Acceleration>
           <X>0</X>
           <Y>0</Y>
@@ -57741,7 +57741,7 @@
       </MyPhysicalObject>
       <MyAnimator>
         <BaseAnim>Models/Enemies/Rat</BaseAnim>
-        <MyObjectID>1595</MyObjectID>
+        <MyObjectID>1614</MyObjectID>
         <AnimatorClip>Animations/Enemies/Rat_attack</AnimatorClip>
         <AnimatorClip>Animations/Enemies/Rat_dying</AnimatorClip>
         <AnimatorClip>Animations/Enemies/Rat_idle</AnimatorClip>
@@ -57750,7 +57750,7 @@
       </MyAnimator>
       <Components>
         <TrashSoup.Engine.CustomModel>
-          <MyObjectID>1595</MyObjectID>
+          <MyObjectID>1614</MyObjectID>
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enemies/Rat</ModelPath>
@@ -57763,7 +57763,7 @@
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
-          <MyObjectID>1595</MyObjectID>
+          <MyObjectID>1614</MyObjectID>
           <Position>
             <X>0</X>
             <Y>0</Y>
@@ -57782,14 +57782,14 @@
           <Scale>1</Scale>
         </TrashSoup.Engine.Transform>
         <TrashSoup.Gameplay.Enemy>
-          <MyHPBarID>1598</MyHPBarID>
-          <MyObjectID>1595</MyObjectID>
+          <MyHPBarID>1617</MyHPBarID>
+          <MyObjectID>1614</MyObjectID>
         </TrashSoup.Gameplay.Enemy>
         <TrashSoup.Gameplay.Rat>
-          <MyObjectID>1595</MyObjectID>
+          <MyObjectID>1614</MyObjectID>
         </TrashSoup.Gameplay.Rat>
         <TrashSoup.Engine.ParticleSystem>
-          <MyObjectID>1595</MyObjectID>
+          <MyObjectID>1614</MyObjectID>
           <RotationMode>PLAIN</RotationMode>
           <LoopMode>NONE</LoopMode>
           <BlendMode>ALPHA</BlendMode>
@@ -57874,13 +57874,13 @@
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1595</MyObjectID>
+        <MyObjectID>1614</MyObjectID>
         <IsTrigger>false</IsTrigger>
       </MyCollider>
     </GameObject>
     <GameObject>
-      <GameObjectKey>1596</GameObjectKey>
-      <UniqueID>1596</UniqueID>
+      <GameObjectKey>1615</GameObjectKey>
+      <UniqueID>1615</UniqueID>
       <Name>RatTurningTrigger (clone) (clone) (clone)</Name>
       <DrawLast>false</DrawLast>
       <Tags>
@@ -57888,7 +57888,7 @@
       </Tags>
       <Dynamic>true</Dynamic>
       <MyTransform>
-        <MyObjectID>1596</MyObjectID>
+        <MyObjectID>1615</MyObjectID>
         <Position>
           <X>3</X>
           <Y>0</Y>
@@ -57907,7 +57907,7 @@
         <Scale>1</Scale>
       </MyTransform>
       <MyPhysicalObject>
-        <MyObjectID>1596</MyObjectID>
+        <MyObjectID>1615</MyObjectID>
         <Acceleration>
           <X>0</X>
           <Y>0</Y>
@@ -57926,19 +57926,19 @@
       </MyPhysicalObject>
       <Components>
         <TrashSoup.Gameplay.RatTurningTrigger>
-          <MyRatID>1595</MyRatID>
-          <MyObjectID>1596</MyObjectID>
+          <MyRatID>1614</MyRatID>
+          <MyObjectID>1615</MyObjectID>
         </TrashSoup.Gameplay.RatTurningTrigger>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1596</MyObjectID>
+        <MyObjectID>1615</MyObjectID>
         <IsTrigger>true</IsTrigger>
       </MyCollider>
     </GameObject>
     <GameObject>
-      <GameObjectKey>1597</GameObjectKey>
-      <UniqueID>1597</UniqueID>
+      <GameObjectKey>1616</GameObjectKey>
+      <UniqueID>1616</UniqueID>
       <Name>RatTrigger (clone) (clone) (clone)</Name>
       <DrawLast>false</DrawLast>
       <Tags>
@@ -57946,7 +57946,7 @@
       </Tags>
       <Dynamic>true</Dynamic>
       <MyTransform>
-        <MyObjectID>1597</MyObjectID>
+        <MyObjectID>1616</MyObjectID>
         <Position>
           <X>8</X>
           <Y>2</Y>
@@ -57966,19 +57966,19 @@
       </MyTransform>
       <Components>
         <TrashSoup.Gameplay.RatTrigger>
-          <MyRatID>1595</MyRatID>
-          <MyObjectID>1597</MyObjectID>
+          <MyRatID>1614</MyRatID>
+          <MyObjectID>1616</MyObjectID>
         </TrashSoup.Gameplay.RatTrigger>
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1597</MyObjectID>
+        <MyObjectID>1616</MyObjectID>
         <IsTrigger>true</IsTrigger>
       </MyCollider>
     </GameObject>
     <GameObject>
-      <GameObjectKey>1598</GameObjectKey>
-      <UniqueID>1598</UniqueID>
+      <GameObjectKey>1617</GameObjectKey>
+      <UniqueID>1617</UniqueID>
       <Name>HPBarRat2 (clone) (clone)</Name>
       <DrawLast>true</DrawLast>
       <Tags>
@@ -57986,7 +57986,7 @@
       </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
-        <MyObjectID>1598</MyObjectID>
+        <MyObjectID>1617</MyObjectID>
         <Position>
           <X>-69</X>
           <Y>3</Y>
@@ -58006,7 +58006,7 @@
       </MyTransform>
       <Components>
         <TrashSoup.Engine.Billboard>
-          <MyObjectID>1598</MyObjectID>
+          <MyObjectID>1617</MyObjectID>
           <Material>
             <Name>hpBarMat</Name>
           </Material>
@@ -58630,8 +58630,8 @@
       </MyCollider>
     </GameObject>
     <GameObject>
-      <GameObjectKey>1606</GameObjectKey>
-      <UniqueID>1606</UniqueID>
+      <GameObjectKey>1618</GameObjectKey>
+      <UniqueID>1618</UniqueID>
       <Name>EmptyTreeCollider19</Name>
       <DrawLast>false</DrawLast>
       <Tags>
@@ -58639,7 +58639,7 @@
       </Tags>
       <Dynamic>false</Dynamic>
       <MyTransform>
-        <MyObjectID>1606</MyObjectID>
+        <MyObjectID>1618</MyObjectID>
         <Position>
           <X>34</X>
           <Y>-1</Y>
@@ -58659,7 +58659,7 @@
       </MyTransform>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1606</MyObjectID>
+        <MyObjectID>1618</MyObjectID>
         <IsTrigger>false</IsTrigger>
       </MyCollider>
     </GameObject>

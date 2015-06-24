@@ -173,6 +173,7 @@ namespace TrashSoup.Engine
 
             this.Enabled = true;
             this.Visible = true;
+            this.Tags = new List<string>();
         }
 
         public void Initialize()
