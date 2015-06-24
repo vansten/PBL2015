@@ -1247,6 +1247,11 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
+    <Compile Include="Models\Weapons\Signs\home_sign.FBX">
+      <Name>home_sign</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
@@ -2677,6 +2682,18 @@
     </Compile>
     <Compile Include="Textures\Enviro\Metro\tunnel_N.dds">
       <Name>tunnel_N</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Weapons\Signs\HOME_D.dds">
+      <Name>HOME_D</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Weapons\Signs\HOME_N.dds">
+      <Name>HOME_N</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
