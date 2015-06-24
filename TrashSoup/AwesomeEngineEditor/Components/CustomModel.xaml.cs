@@ -205,7 +205,7 @@ namespace AwesomeEngineEditor.Components
         private string OpenFileDialogForFBXFile()
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "FBX files (*fbx) | *fbx"; string initialDirectory = System.IO.Directory.GetCurrentDirectory();
+            ofd.Filter = "FBX files (*fbx) | *.fbx | X files (*x) | *.x"; string initialDirectory = System.IO.Directory.GetCurrentDirectory();
             for (int i = 0; i < 3; ++i)
             {
                 System.IO.DirectoryInfo di = System.IO.Directory.GetParent(initialDirectory);
@@ -217,13 +217,13 @@ namespace AwesomeEngineEditor.Components
             {
                 string path = ofd.FileName;
 
-                return this.GetRelativePathToContentDirectory(path);
+                return this.GetRelativePathToContentDirectory(path, ofd.FilterIndex);
             }
 
             return null;
         }
 
-        private string GetRelativePathToContentDirectory(string path)
+        private string GetRelativePathToContentDirectory(string path, int filterID)
         {
             int i = 6;
             if (i > path.Length)
@@ -269,7 +269,14 @@ namespace AwesomeEngineEditor.Components
                 ++i;
             }
             path = tmp;
-            path = path.Substring(0, path.Length - 4);
+            if (filterID == 1)
+            {
+                path = path.Substring(0, path.Length - 4);
+            }
+            else
+            {
+                path = path.Substring(0, path.Length - 2);
+            }
 
             return path;
         }

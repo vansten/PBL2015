@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="AwesomeEngineEditor.Components.MutantTurningTrigger"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Width="260" Height="auto">
+    <Grid>
+        <TextBlock Text="Mutant Turning Trigger" FontSize="26" FontWeight="Bold"/>
+        <TextBlock Text="My Mutant ID: " FontSize="20" Margin="0, 40, 0, 0"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="125,40,0,0" TextWrapping="Wrap" Text="{Binding MyMutantID}" VerticalAlignment="Top" Width="120"/>
+    </Grid>
+</UserControl>

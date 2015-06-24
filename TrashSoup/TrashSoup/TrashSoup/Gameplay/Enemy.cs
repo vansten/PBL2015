@@ -27,23 +27,21 @@ namespace TrashSoup.Gameplay
         #endregion
 
         #region properties
+        public int ArmorPoints
+        {
+            get;
+            set;
+        }
+
         public int HitPoints
         {
             get { return hitPoints; }
             set 
             {
-                hitPoints = value;
-                //if (this.myHpBarTexture != null)
-                //{
-                //    Color[] tcolor = new Color[this.myHpBarTexture.Width * this.myHpBarTexture.Height];
-                //    this.myHpBarTexture.GetData<Color>(tcolor);
-                //    int size = this.myHpBarTexture.Width * this.myHpBarTexture.Height;
-                //    for (int i = (int)((float)this.hitPoints / 100.0f * (float)size); i < size; ++i)
-                //    {
-                //        tcolor[i].A = 0;
-                //    }
-                //    this.myHpBarTexture.SetData<Color>(tcolor);
-                //}
+                int diff = hitPoints - value;
+                diff -= ArmorPoints;
+                if (diff < 0) diff = 0;
+                hitPoints = hitPoints - diff;
                 if(this.hpBarBillboardComp != null)
                 {
                     this.hpBarBillboardComp.Size = new Vector2(hitPoints / 100.0f, this.hpBarBillboardComp.Size.Y);

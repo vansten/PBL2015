@@ -792,6 +792,16 @@ namespace AwesomeEngineEditor
                         Components.RatTurningTrigger rt = new Components.RatTurningTrigger((TrashSoup.Gameplay.RatTurningTrigger)oc);
                         this.LoadedComponents.Add(rt);
                     }
+                    else if (oc.GetType() == typeof(TrashSoup.Gameplay.MutantTrigger))
+                    {
+                        Components.MutantTrigger rt = new Components.MutantTrigger((TrashSoup.Gameplay.MutantTrigger)oc);
+                        this.LoadedComponents.Add(rt);
+                    }
+                    else if (oc.GetType() == typeof(TrashSoup.Gameplay.MutantTurningTrigger))
+                    {
+                        Components.MutantTurningTrigger rt = new Components.MutantTurningTrigger((TrashSoup.Gameplay.MutantTurningTrigger)oc);
+                        this.LoadedComponents.Add(rt);
+                    }
                     else if(oc.GetType() == typeof(TrashSoup.Gameplay.Enemy))
                     {
                         Components.Enemy e = new Components.Enemy(((TrashSoup.Gameplay.Enemy)oc));

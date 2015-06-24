@@ -54,7 +54,6 @@ namespace TrashSoup.Gameplay
                 Enemy e = (Enemy)other.GetComponent<Enemy>();
                 if(e != null)
                 {
-                    Debug.Log(e.MyObject.Name);
                     e.StairsTouching += 1;
                 }
                 Vector3 position = other.MyTransform.Position;
@@ -78,7 +77,6 @@ namespace TrashSoup.Gameplay
                 Enemy e = (Enemy)other.GetComponent<Enemy>();
                 if (e != null)
                 {
-                    Debug.Log("Substracting some stairs touching");
                     e.StairsTouching -= 1;
                 }
             }

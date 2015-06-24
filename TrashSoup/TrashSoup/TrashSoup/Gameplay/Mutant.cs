@@ -10,7 +10,7 @@ using TrashSoup.Engine.AI.BehaviorTree;
 
 namespace TrashSoup.Gameplay
 {
-    class Rat : ObjectComponent
+    class Mutant : ObjectComponent
     {
         private BehaviorTree myBehavior;
         public Blackboard MyBlackBoard;
@@ -22,12 +22,13 @@ namespace TrashSoup.Gameplay
         int i = 0;
         private float nextBlinkTime = 0.0f;
 
-        public Rat(GameObject go) : base(go)
+        public Mutant(GameObject go) : base(go)
         {
 
         }
 
-        public Rat(GameObject go, Rat r) : base(go, r)
+        public Mutant(GameObject go, Mutant m)
+            : base(go, m)
         {
 
         }
@@ -80,11 +81,11 @@ namespace TrashSoup.Gameplay
 
         public override void Initialize()
         {
-            this.MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Rat_walk")));
-            this.MyObject.MyAnimator.AvailableStates.Add("Run", new AnimatorState("Run", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Rat_run")));
-            this.MyObject.MyAnimator.AvailableStates.Add("Attack", new AnimatorState("Attack", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Rat_attack")));
-            this.MyObject.MyAnimator.AvailableStates.Add("Die", new AnimatorState("Die", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Rat_dying")));
-            this.MyObject.MyAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Rat_idle")));
+            this.MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Mutant_walk")));
+            this.MyObject.MyAnimator.AvailableStates.Add("Run", new AnimatorState("Run", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Mutant_run")));
+            this.MyObject.MyAnimator.AvailableStates.Add("Attack", new AnimatorState("Attack", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Mutant_attack")));
+            this.MyObject.MyAnimator.AvailableStates.Add("Die", new AnimatorState("Die", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Mutant_dying")));
+            this.MyObject.MyAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Mutant_idle")));
             string[] states = new string[] { "Idle", "Walk", "Run", "Die", "Attack" };
             for (int i = 0; i < states.Length; ++i)
             {
@@ -104,7 +105,7 @@ namespace TrashSoup.Gameplay
             {
                 path += "../";
             }
-            path += "../../../../TrashSoupContent/BehaviorTrees/RatAI" + this.MyObject.UniqueID.ToString()+".xml";
+            path += "../../../../TrashSoupContent/BehaviorTrees/MutantAI" + this.MyObject.UniqueID.ToString() + ".xml";
             try
             {
                 using (FileStream file = new FileStream(Path.GetFullPath(path), FileMode.Open))
@@ -112,15 +113,16 @@ namespace TrashSoup.Gameplay
                     myBehavior = (BehaviorTree)serializer.Deserialize(file);
                     MyBlackBoard = myBehavior.Blackboard;
                 }
+                Debug.Log("Running!");
                 myBehavior.Run();
             }
             catch
             {
-
+                Debug.Log("WHAAAT?");
             }
             this.myEnemyScript = (Enemy)this.MyObject.GetComponent<Enemy>();
             this.myEnemyScript.OnDead += this.OnDead;
-            this.myEnemyScript.ArmorPoints = 0;
+            this.myEnemyScript.ArmorPoints = 5;
             base.Initialize();
         }
 
