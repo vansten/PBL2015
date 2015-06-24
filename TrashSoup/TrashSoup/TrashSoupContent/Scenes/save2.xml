@@ -55691,7 +55691,7 @@
       <Tags>
         <Tag>null</Tag>
       </Tags>
-      <Dynamic>true</Dynamic>
+      <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1563</MyObjectID>
         <Position>
@@ -55732,7 +55732,7 @@
       <Tags>
         <Tag>null</Tag>
       </Tags>
-      <Dynamic>true</Dynamic>
+      <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1564</MyObjectID>
         <Position>
@@ -55958,7 +55958,7 @@
       <Tags>
         <Tag>null</Tag>
       </Tags>
-      <Dynamic>true</Dynamic>
+      <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1566</MyObjectID>
         <Position>
@@ -56380,7 +56380,7 @@
       <Tags>
         <Tag>null</Tag>
       </Tags>
-      <Dynamic>true</Dynamic>
+      <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1572</MyObjectID>
         <Position>
@@ -56704,7 +56704,7 @@
       <Tags>
         <Tag>null</Tag>
       </Tags>
-      <Dynamic>true</Dynamic>
+      <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1576</MyObjectID>
         <Position>
@@ -57028,7 +57028,7 @@
       <Tags>
         <Tag>null</Tag>
       </Tags>
-      <Dynamic>true</Dynamic>
+      <Dynamic>false</Dynamic>
       <MyTransform>
         <MyObjectID>1580</MyObjectID>
         <Position>
