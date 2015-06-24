@@ -49,6 +49,18 @@ namespace TrashSoup.Gameplay
                 position.Y = this.MyObject.MyTransform.Position.Y + 0.505f;
                 other.MyTransform.Position = position;
             }
+            else
+            {
+                Enemy e = (Enemy)other.GetComponent<Enemy>();
+                if(e != null)
+                {
+                    Debug.Log("Adding some stairs touching");
+                    e.StairsTouching += 1;
+                }
+                Vector3 position = other.MyTransform.Position;
+                position.Y = this.MyObject.MyTransform.Position.Y + 1.1f;
+                other.MyTransform.Position = position;
+            }
             base.OnTriggerEnter(other);
         }
 
@@ -59,6 +71,15 @@ namespace TrashSoup.Gameplay
                 if (pc != null)
                 {
                     pc.StairsTouching -= 1;
+                }
+            }
+            else
+            {
+                Enemy e = (Enemy)other.GetComponent<Enemy>();
+                if (e != null)
+                {
+                    Debug.Log("Substracting some stairs touching");
+                    e.StairsTouching -= 1;
                 }
             }
             base.OnTriggerExit(other);

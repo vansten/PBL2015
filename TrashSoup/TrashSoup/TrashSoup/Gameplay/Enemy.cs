@@ -22,6 +22,8 @@ namespace TrashSoup.Gameplay
         private Billboard hpBarBillboardComp;
         private Texture2D myHpBarTexture;
         public uint MyHPBarID;
+
+        private int stairsTouching;
         #endregion
 
         #region properties
@@ -45,6 +47,25 @@ namespace TrashSoup.Gameplay
                 if(this.hpBarBillboardComp != null)
                 {
                     this.hpBarBillboardComp.Size = new Vector2(hitPoints / 100.0f, this.hpBarBillboardComp.Size.Y);
+                }
+            }
+        }
+
+        public int StairsTouching
+        {
+            get
+            {
+                return this.stairsTouching;
+            }
+            set
+            {
+                this.stairsTouching = value;
+                this.MyObject.MyPhysicalObject.IsUsingGravity = this.stairsTouching == 0;
+                Debug.Log("Lol, stairs " + value.ToString());
+                if (!this.MyObject.MyPhysicalObject.IsUsingGravity)
+                {
+                    this.MyObject.MyPhysicalObject.Velocity = Vector3.Zero;
+                    this.MyObject.MyPhysicalObject.ZeroForce();
                 }
             }
         }
@@ -114,6 +135,7 @@ namespace TrashSoup.Gameplay
                 hpBarBillboardComp = (Billboard)this.hpBar.GetComponent<Billboard>();
                 this.myHpBarTexture = hpBarBillboardComp.Mat.DiffuseMap;
             }
+            this.StairsTouching = 0;
             base.Initialize();
         }
 

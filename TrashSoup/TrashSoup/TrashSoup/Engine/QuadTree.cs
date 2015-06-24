@@ -365,8 +365,8 @@ namespace TrashSoup.Engine
                 }
             }
 
-             int lCount = lastDraws.Count;
-             for (int i = 0; i < lCount; ++i)
+            //Cause there was exception (index out of range)
+             for (int i = 0; i < lastDraws.Count; ++i)
              {
                  lastDraws[i].Draw(cam, effect, gameTime);
              }

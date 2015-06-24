@@ -120,6 +120,7 @@ namespace TrashSoup.Gameplay
                 if(!this.MyObject.MyPhysicalObject.IsUsingGravity)
                 {
                     this.MyObject.MyPhysicalObject.Velocity = Vector3.Zero;
+                    this.MyObject.MyPhysicalObject.ZeroForce();
                 }
             }
         }
