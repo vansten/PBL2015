@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="872f13d9-0a3a-4f08-aed3-9e74f22bdd30"
+  name="SkinningModelLibrary"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="63eff4b3-54a1-4abf-af8e-cc76c7ed0336"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DSkinningModelLibrary"
+      tag="ViewCode" />
+  </referencesInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="14841066-da99-4d9e-8760-067cc0ae720c">
+      <profileInstance
+        Id="4aaea481-015a-490e-968c-29952fa9cc09"
+        name="CSharpProfile" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="57090c81-14f1-4e70-90e5-afa832187ae4"
+        name="AnimationClip"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="3e796000-e062-47c3-aca9-b4f5237fad61"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2FPBL2015%2FTrashSoup%2FSkinnedModelLibrary%2Fbin%2Fx86%2FDebug%2FSkinnedModelLibrary.dll Namespace%3DSkinningModelLibrary Type%3DAnimationClip"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="859ab9c3-1b2f-4dab-a38c-972df691c930"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d883c093-9f0a-481f-9e4c-e068bc72e943">
+                <propertyInstance
+                  Id="dd5b16a6-4f02-44a7-8525-9e5362b6d8d3"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a9619bb0-dae5-4c5d-8604-d7b7cebd9788">
+                <propertyInstance
+                  Id="04fa7e47-6f8c-4d6c-b38c-02c9f563bf53"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b8471992-a66b-40c7-9c98-09a723f06d78">
+                <propertyInstance
+                  Id="e0d6060d-c39b-46e0-88e0-97c3fe7cc76f"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="538bfbe3-0af4-4b66-abcb-0518662ee771">
+                <propertyInstance
+                  Id="b5d7bdd1-c263-4568-9f7c-0d0dd93af6d4"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f8a39d83-6b86-40c8-b672-e436d2d67479">
+                <propertyInstance
+                  Id="76b93b78-6ded-461a-a455-a7829432515f"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="c4c4c564-827c-43d3-9ca2-29c05a3d8e1b"
+        name="AnimationPlayer"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="8f260a7c-b0ab-4fd7-a35e-641c0717105d"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2FPBL2015%2FTrashSoup%2FSkinnedModelLibrary%2Fbin%2Fx86%2FDebug%2FSkinnedModelLibrary.dll Namespace%3DSkinningModelLibrary Type%3DAnimationPlayer"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="9bd23a90-e346-4443-aacf-3e4c04f98b0b"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="87cd6d01-f603-498d-91e6-5a080dff25df">
+                <propertyInstance
+                  Id="203a4ebf-56c2-41ad-8d32-0e0591f627ab"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="728d040b-05f3-4213-aded-820292f08d85">
+                <propertyInstance
+                  Id="459d67f4-868e-4a8b-b443-1818bfe1716a"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c934f24a-35a9-4ee6-8354-437282938cd7">
+                <propertyInstance
+                  Id="3335586f-ff3e-4525-a865-a28874e2deee"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="bb8dc89d-a601-4a59-9be0-f2f29481ef2a">
+                <propertyInstance
+                  Id="7ceb2bb3-e7b6-4707-aba1-b76354b77239"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="99bcb108-2ee5-43f7-8d97-ab66380404cf">
+                <propertyInstance
+                  Id="e1b098b5-18b9-4f5c-91b7-7757c4531fc5"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="ad7a64aa-3adf-45f0-8d7d-b901c21b5ca9"
+        name="SkinningData"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="8576e771-d6b3-431e-adbd-357ebeee8538"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2FPBL2015%2FTrashSoup%2FSkinnedModelLibrary%2Fbin%2Fx86%2FDebug%2FSkinnedModelLibrary.dll Namespace%3DSkinningModelLibrary Type%3DSkinningData"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="efefe042-c3cb-45b3-b3e0-bd9f86903b3c"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="0139d847-8308-444a-91e2-361ed2a9a25c">
+                <propertyInstance
+                  Id="91182d4f-eea5-403d-83ff-7ee767d555db"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="fb9e030e-ac07-4c6b-aa46-28dcc21e6a12">
+                <propertyInstance
+                  Id="9a9269f3-1c5c-417b-865f-64a5dabc8ff6"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="8fb7e8ba-4ed9-43d9-a88e-3955f8ef5ae6">
+                <propertyInstance
+                  Id="e92b09a6-bcaa-4a68-a3fc-6d2b2d56e56e"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="58f5020b-3285-4abd-ad58-bf7493b1efa2">
+                <propertyInstance
+                  Id="0fcbcb35-6010-42ad-a682-fd368f066773"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="533ee70d-35b2-4da3-9c3b-b32f5613d3a0">
+                <propertyInstance
+                  Id="27066f0f-c804-4a8f-a5a2-1fda75ce4582"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="d6be66db-4fd0-4884-8ce8-0353da57a710"
+  name="Audio"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="3f0fb1ab-80d9-4758-ad20-6585939819b4"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DMicrosoft.Xna.Framework.Audio"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="1b47ff56-0608-4907-8813-1db902302214"
+        name="Cue"
+        isAbstract="false"
+        isLeaf="true"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="6cfb570e-0e28-4f19-b94f-e3b2768e0d43"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FMicrosoft XNA%2FXNA Game Studio%2Fv4.0%2FReferences%2FWindows%2Fx86%2FMicrosoft.Xna.Framework.Xact.dll&quot; Namespace%3DMicrosoft.Xna.Framework.Audio Type%3DCue"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="7f2eefee-b3d0-4671-b580-d12bb0b0ac29"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="81feafe5-d08c-4cc8-9985-ca316dd2fd96">
+                <propertyInstance
+                  Id="9c030775-a58f-4cc4-8b3c-c21c4713c554"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="db4fd542-b6dd-43d8-8fd5-d76366d44de8">
+                <propertyInstance
+                  Id="3ec7f099-c53a-4368-bfa9-109fc00a407d"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="850a7f78-6240-4fdd-bda2-75c62b2bc57a">
+                <propertyInstance
+                  Id="01661dee-6b0b-4a67-ad85-f412a3410310"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b1b0e200-be9e-4f6b-a030-361da41a874a">
+                <propertyInstance
+                  Id="7104aa3a-717c-4e09-9d49-57a971552311"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a46b0ba7-fe6e-4ec1-bb31-5f72aaa22df3">
+                <propertyInstance
+                  Id="3a07dcc3-e3d3-4314-b131-a61b6c4448e5"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="6a95e41c-2552-47e2-b1b1-50b18845e875"
+        name="SoundBank"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="28756d2b-bb2b-4be3-b5b2-8531268d259a"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FMicrosoft XNA%2FXNA Game Studio%2Fv4.0%2FReferences%2FWindows%2Fx86%2FMicrosoft.Xna.Framework.Xact.dll&quot; Namespace%3DMicrosoft.Xna.Framework.Audio Type%3DSoundBank"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="72eca52f-2d1f-4e11-8d4e-2143bd15bfff"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="da2e9e3f-ef3f-444c-8cbe-69d85d5cb44f">
+                <propertyInstance
+                  Id="92562683-aaa8-4df6-a1c5-037c18cff998"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="cc9d5424-aaa8-4ec6-8479-0cf199c20efe">
+                <propertyInstance
+                  Id="bc27877c-ac41-413d-8a44-6d914954c675"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="89fcdfd9-8bed-498b-bb14-7f40feae5364">
+                <propertyInstance
+                  Id="72646446-a5d4-4b5a-b910-152e32d453c3"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="14415d90-381a-48d0-a835-d485f62335d1">
+                <propertyInstance
+                  Id="69557ffd-ea9f-4cba-b3e6-eedb2a488fa1"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e46148b4-873e-4f8c-924e-7b019c7dc000">
+                <propertyInstance
+                  Id="a6ac23ad-7bbb-4dac-86e4-43f3977ece3a"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="0d76e751-07fa-4fd1-9a8b-c735e6c4b538"
+        name="AudioEngine"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="a238e98e-daa0-4a64-8c40-6ab35e94c530"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FMicrosoft XNA%2FXNA Game Studio%2Fv4.0%2FReferences%2FWindows%2Fx86%2FMicrosoft.Xna.Framework.Xact.dll&quot; Namespace%3DMicrosoft.Xna.Framework.Audio Type%3DAudioEngine"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="e114670f-79c1-4034-82a2-42ff50156b9e"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="65a93650-a6b4-48b0-8788-fe6a1cc1595b">
+                <propertyInstance
+                  Id="9ae1c284-14a4-41ea-9f7b-afa2a5f3f697"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="0942cb1d-657f-42c0-9b70-e75b02527a78">
+                <propertyInstance
+                  Id="25250397-1c18-4da2-92e8-c0f518b5c655"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f4c2d45e-7017-4bc4-860f-44cabd7c1e3a">
+                <propertyInstance
+                  Id="c4ecb3d2-3578-44c3-a6a9-9afa1157b03e"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6e9f6d07-9202-486e-9b2d-cb3bdd460570">
+                <propertyInstance
+                  Id="8cd853ea-3bd4-4326-8af3-e91b46761375"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a78d58e6-4d3e-4eee-a7cf-bfe9510caa57">
+                <propertyInstance
+                  Id="1a1233e5-069f-4b97-beb1-9e42d1eb9a7d"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="19b0988d-b946-4226-b1b8-5241eb688522"
+        name="WaveBank"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="4980c832-efc5-435c-a20d-2f8a7156c66d"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FMicrosoft XNA%2FXNA Game Studio%2Fv4.0%2FReferences%2FWindows%2Fx86%2FMicrosoft.Xna.Framework.Xact.dll&quot; Namespace%3DMicrosoft.Xna.Framework.Audio Type%3DWaveBank"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="c4b8b2d5-d556-4b48-aee9-353ada28f1cc"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="10bc60d2-0346-4ec2-8cf2-16d9c5e13341">
+                <propertyInstance
+                  Id="3e9732a5-4842-476d-ac7d-17761fadb8b6"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f1c78b19-82fa-4220-b3b7-7ad844b1a5a3">
+                <propertyInstance
+                  Id="0473fa69-3713-4d28-a059-d9caa66de93a"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="8b8c1ea1-ccfc-4be5-b05c-badd54218389">
+                <propertyInstance
+                  Id="724bb13b-ea7b-4640-b8d4-c537f61456d9"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="50e183ce-78ca-466c-af88-83dc5b1eb461">
+                <propertyInstance
+                  Id="d51737a9-8914-41b5-9202-816f136c9d06"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e4b00e8a-fe42-48c9-b40b-a764b0d99dce">
+                <propertyInstance
+                  Id="c312e5b2-366a-49cd-8bca-12767e2d46fe"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
