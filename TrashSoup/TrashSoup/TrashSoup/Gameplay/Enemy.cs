@@ -20,8 +20,11 @@ namespace TrashSoup.Gameplay
 
         private GameObject hpBar;
         private Billboard hpBarBillboardComp;
+        private GameObject hpBarOutline;
         private Texture2D myHpBarTexture;
         public uint MyHPBarID;
+        public uint MyHPBarOutlineID;
+        private Vector3 hpBarYOffset = 2.0f * Vector3.Up;
 
         private int stairsTouching;
         #endregion
@@ -105,18 +108,19 @@ namespace TrashSoup.Gameplay
                     deathAnimPlayed = true;
                     OnDead();
                 }
-                //this.MyObject.Enabled = false;
                 return;
             }
-            else if(this.hpBar != null)
+            else
             {
-                this.hpBar.MyTransform.Position = this.MyObject.MyTransform.Position + Vector3.Up * 2.0f;
+                if (this.hpBar != null)
+                {
+                    this.hpBar.MyTransform.Position = this.MyObject.MyTransform.Position + hpBarYOffset;
+                }
+                if(this.hpBarOutline != null)
+                {
+                    this.hpBarOutline.MyTransform.Position = this.MyObject.MyTransform.Position + hpBarYOffset;
+                }
             }
-
-#if DEBUG
-            GUIManager.Instance.DrawText(TrashSoupGame.Instance.Content.Load<SpriteFont>("Fonts/FontTest"),
-                "RAT: " + this.HitPoints, new Vector2(0.8f, 0.8f), Color.Red);
-#endif
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
@@ -133,6 +137,11 @@ namespace TrashSoup.Gameplay
                 this.myHpBarTexture = hpBarBillboardComp.Mat.DiffuseMap;
             }
             this.StairsTouching = 0;
+            if(this.GetComponent<Mutant>() != null)
+            {
+                hpBarYOffset = 4.0f * Vector3.Up;
+            }
+            this.hpBarOutline = ResourceManager.Instance.CurrentScene.GetObject(this.MyHPBarOutlineID);
             base.Initialize();
         }
 
@@ -154,6 +163,9 @@ namespace TrashSoup.Gameplay
             reader.ReadStartElement("MyHPBarID");
             this.MyHPBarID = (uint)reader.ReadContentAsInt();
             reader.ReadEndElement();
+            reader.ReadStartElement("MyHPBarOutlineID");
+            this.MyHPBarOutlineID = (uint)reader.ReadContentAsInt();
+            reader.ReadEndElement();
             base.ReadXml(reader);
 
             reader.ReadEndElement();
@@ -163,6 +175,9 @@ namespace TrashSoup.Gameplay
         {
             writer.WriteStartElement("MyHPBarID");
             writer.WriteValue(this.MyHPBarID);
+            writer.WriteEndElement();
+            writer.WriteStartElement("MyHPBarOutlineID");
+            writer.WriteValue(this.MyHPBarOutlineID);
             writer.WriteEndElement();
             base.WriteXml(writer);
         }

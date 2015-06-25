@@ -9,5 +9,7 @@
         <TextBlock Text="Enemy" FontSize="26" FontWeight="Bold"/>
         <TextBlock Text="My HP Bar ID: " FontSize="20" Margin="0, 40, 0, 0"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="125,40,0,0" TextWrapping="Wrap" Text="{Binding MyHPBarID}" VerticalAlignment="Top" Width="120"/>
+        <TextBlock Text="Outline ID: " FontSize="20" Margin="0, 70, 0, 0"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="125,70,0,0" TextWrapping="Wrap" Text="{Binding MyHPBarOutlineID}" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </UserControl>

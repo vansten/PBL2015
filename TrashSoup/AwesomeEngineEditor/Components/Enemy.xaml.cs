@@ -35,9 +35,21 @@ namespace AwesomeEngineEditor.Components
                 {
                     this.myEnemy.MyHPBarID = newValue;
                 }
-                else
+            }
+        }
+
+        public string MyHPBarOutlineID
+        {
+            get
+            {
+                return this.myEnemy.MyHPBarOutlineID.ToString();
+            }
+            set
+            {
+                uint newValue = this.myEnemy.MyHPBarOutlineID;
+                if (uint.TryParse(value, out newValue))
                 {
-                    TrashSoup.Engine.Debug.Log("Something failed");
+                    this.myEnemy.MyHPBarOutlineID = newValue;
                 }
             }
         }
