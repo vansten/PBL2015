@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Material>
-  <Name>hpBarMat</Name>
+  <Name>hpBarOutlineMat</Name>
   <EffectPath>Effects\BillboardEffect</EffectPath>
   <DiffusePath>Textures\HUD\HPBG</DiffusePath>
   <NormalPath>DefaultNormal</NormalPath>
