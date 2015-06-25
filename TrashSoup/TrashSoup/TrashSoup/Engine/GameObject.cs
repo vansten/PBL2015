@@ -268,6 +268,11 @@ namespace TrashSoup.Engine
                    this.MyCollider.Draw(cam, effect, gameTime);
                 }
 
+#else
+                if (this.MyCollider != null && this.DrawCollider && TrashSoupGame.Instance.EditorMode)
+                {
+                    this.MyCollider.Draw(cam, effect, gameTime);
+                }
 #endif
             }
 

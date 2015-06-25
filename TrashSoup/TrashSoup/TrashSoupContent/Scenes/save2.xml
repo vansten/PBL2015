@@ -6665,7 +6665,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>247</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Small_House</ModelPath>
             <ModelPath>Models/Enviro/Buildings/Small_House</ModelPath>
@@ -14648,7 +14648,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>741</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_cross</ModelPath>
             <ModelPath />
@@ -16473,7 +16473,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>879</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -16765,7 +16765,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>227</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/street_straight</ModelPath>
             <ModelPath />
@@ -23141,7 +23141,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>372</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -24109,7 +24109,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>938</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Ground/pavement4x4</ModelPath>
             <ModelPath />
@@ -42415,7 +42415,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1227</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/Camera</ModelPath>
             <ModelPath>Models/Enviro/Minor/Camera_LOW</ModelPath>
@@ -46242,7 +46242,7 @@
         <IsTrigger>false</IsTrigger>
         <CustomScale>
           <X>1</X>
-          <Y>1</Y>
+          <Y>2</Y>
           <Z>1</Z>
         </CustomScale>
       </MyCollider>
@@ -48139,9 +48139,9 @@
         <MyObjectID>1329</MyObjectID>
         <IsTrigger>false</IsTrigger>
         <CustomScale>
-          <X>1</X>
-          <Y>1</Y>
-          <Z>1</Z>
+          <X>0.5</X>
+          <Y>0.5</Y>
+          <Z>0.5</Z>
         </CustomScale>
       </MyCollider>
     </GameObject>
@@ -59100,9 +59100,9 @@
         <MyObjectID>1550</MyObjectID>
         <IsTrigger>false</IsTrigger>
         <CustomScale>
-          <X>1</X>
+          <X>0.8</X>
           <Y>1</Y>
-          <Z>1</Z>
+          <Z>0.8</Z>
         </CustomScale>
       </MyCollider>
     </GameObject>
@@ -59176,9 +59176,9 @@
         <MyObjectID>1551</MyObjectID>
         <IsTrigger>false</IsTrigger>
         <CustomScale>
-          <X>1</X>
+          <X>0.8</X>
           <Y>1</Y>
-          <Z>1</Z>
+          <Z>0.8</Z>
         </CustomScale>
       </MyCollider>
     </GameObject>
@@ -59252,9 +59252,9 @@
         <MyObjectID>1552</MyObjectID>
         <IsTrigger>false</IsTrigger>
         <CustomScale>
-          <X>1</X>
+          <X>0.8</X>
           <Y>1</Y>
-          <Z>1</Z>
+          <Z>0.8</Z>
         </CustomScale>
       </MyCollider>
     </GameObject>
@@ -59328,9 +59328,9 @@
         <MyObjectID>1553</MyObjectID>
         <IsTrigger>false</IsTrigger>
         <CustomScale>
-          <X>1</X>
+          <X>0.8</X>
           <Y>1</Y>
-          <Z>1</Z>
+          <Z>0.8</Z>
         </CustomScale>
       </MyCollider>
     </GameObject>
@@ -59404,9 +59404,9 @@
         <MyObjectID>1554</MyObjectID>
         <IsTrigger>false</IsTrigger>
         <CustomScale>
-          <X>1</X>
+          <X>0.8</X>
           <Y>1</Y>
-          <Z>1</Z>
+          <Z>0.8</Z>
         </CustomScale>
       </MyCollider>
     </GameObject>
@@ -59480,9 +59480,9 @@
         <MyObjectID>1555</MyObjectID>
         <IsTrigger>false</IsTrigger>
         <CustomScale>
-          <X>1</X>
+          <X>0.6</X>
           <Y>1</Y>
-          <Z>1</Z>
+          <Z>0.6</Z>
         </CustomScale>
       </MyCollider>
     </GameObject>
@@ -59556,9 +59556,9 @@
         <MyObjectID>1556</MyObjectID>
         <IsTrigger>false</IsTrigger>
         <CustomScale>
-          <X>1</X>
+          <X>0.6</X>
           <Y>1</Y>
-          <Z>1</Z>
+          <Z>0.6</Z>
         </CustomScale>
       </MyCollider>
     </GameObject>
@@ -59632,9 +59632,9 @@
         <MyObjectID>1557</MyObjectID>
         <IsTrigger>false</IsTrigger>
         <CustomScale>
-          <X>1</X>
+          <X>0.7</X>
           <Y>1</Y>
-          <Z>1</Z>
+          <Z>0.7</Z>
         </CustomScale>
       </MyCollider>
     </GameObject>
@@ -59708,9 +59708,9 @@
         <MyObjectID>1558</MyObjectID>
         <IsTrigger>false</IsTrigger>
         <CustomScale>
-          <X>1</X>
+          <X>0.7</X>
           <Y>1</Y>
-          <Z>1</Z>
+          <Z>0.7</Z>
         </CustomScale>
       </MyCollider>
     </GameObject>
@@ -59784,9 +59784,9 @@
         <MyObjectID>1559</MyObjectID>
         <IsTrigger>false</IsTrigger>
         <CustomScale>
-          <X>1</X>
+          <X>0.7</X>
           <Y>1</Y>
-          <Z>1</Z>
+          <Z>0.7</Z>
         </CustomScale>
       </MyCollider>
     </GameObject>

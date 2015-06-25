@@ -36,6 +36,63 @@ namespace AwesomeEngineEditor.Components
                 OnPropertyChanged();
             }
         }
+        
+        public string CustomScaleX
+        {
+            get
+            {
+                return myCollider.CustomScale.X.ToString();
+            }
+            set
+            {
+                float newX = myCollider.CustomScale.X;
+                if (!float.TryParse(value, out newX))
+                {
+                    TrashSoup.Engine.Debug.Log("Wrong format of string!");
+                }
+                myCollider.CustomScale = new Microsoft.Xna.Framework.Vector3(newX, myCollider.CustomScale.Y, myCollider.CustomScale.Z);
+                myCollider.UpdateCollider();
+                OnPropertyChanged();
+            }
+        }
+
+        public string CustomScaleY
+        {
+            get
+            {
+                return myCollider.CustomScale.Y.ToString();
+            }
+            set
+            {
+                float newY = myCollider.CustomScale.Y;
+                if (!float.TryParse(value, out newY))
+                {
+                    TrashSoup.Engine.Debug.Log("Wrong format of string!");
+                }
+                myCollider.CustomScale = new Microsoft.Xna.Framework.Vector3(myCollider.CustomScale.X, newY, myCollider.CustomScale.Z);
+                myCollider.UpdateCollider();
+                OnPropertyChanged();
+            }
+        }
+
+        public string CustomScaleZ
+        {
+            get
+            {
+                return myCollider.CustomScale.Z.ToString();
+            }
+            set
+            {
+                float newZ = myCollider.CustomScale.Z;
+                if (!float.TryParse(value, out newZ))
+                {
+                    TrashSoup.Engine.Debug.Log("Wrong format of string!");
+                }
+                myCollider.CustomScale = new Microsoft.Xna.Framework.Vector3(myCollider.CustomScale.X, myCollider.CustomScale.Y, newZ);
+                myCollider.UpdateCollider();
+                OnPropertyChanged();
+            }
+        }
 
         public Collider(TrashSoup.Engine.Collider col)
         {

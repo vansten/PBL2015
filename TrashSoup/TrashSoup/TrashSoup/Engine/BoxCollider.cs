@@ -419,7 +419,7 @@ namespace TrashSoup.Engine
 
             for (int i = 0; i < corners.Length; ++i)
             {
-                this.corners[i] = Vector3.Transform(this.initialCorners[i], this.worldMatrix);
+                this.corners[i] = Vector3.Transform(this.initialCorners[i] * CustomScale, this.worldMatrix);
                 min = Vector3.Min(min, this.corners[i]);
                 max = Vector3.Max(max, this.corners[i]);
             }
@@ -437,12 +437,6 @@ namespace TrashSoup.Engine
             //reader.ReadStartElement();
             base.ReadXml(reader);
             //reader.ReadEndElement();
-
-
-            for (int i = 0; i < initialCorners.Length; ++i)
-            {
-                initialCorners[i] *= CustomScale;
-            }
         }
 
         public override void WriteXml(System.Xml.XmlWriter writer)
