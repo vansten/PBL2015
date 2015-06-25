@@ -1095,11 +1095,6 @@
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
-    <Compile Include="Models\Enviro\Buildings\Big_house_High.FBX">
-      <Name>Big_house_High</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>CustomModelProcessor</Processor>
-    </Compile>
     <Compile Include="Textures\Particles\Particle_blood01.dds">
       <Name>Particle_blood01</Name>
       <Importer>TextureImporter</Importer>
@@ -1254,6 +1249,56 @@
     </Compile>
     <Compile Include="Models\Enviro\Buildings\zskmart_LOD1.FBX">
       <Name>zskmart_LOD1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Buildings\Big_house_LOD1.FBX">
+      <Name>Big_house_LOD1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Buildings\Big_house_LOD2.FBX">
+      <Name>Big_house_LOD2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Buildings\Big_house2_LOD1.FBX">
+      <Name>Big_house2_LOD1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Buildings\Big_house2_LOD2.FBX">
+      <Name>Big_house2_LOD2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Buildings\Big_house3.FBX">
+      <Name>Big_house3</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Buildings\Big_house3_LOD1.FBX">
+      <Name>Big_house3_LOD1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Buildings\Big_house3_LOD2.FBX">
+      <Name>Big_house3_LOD2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Buildings\garage_LOD1.FBX">
+      <Name>garage_LOD1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Buildings\Small_House_LOD2.FBX">
+      <Name>Small_House_LOD2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Buildings\Small_House_LOD1.FBX">
+      <Name>Small_House_LOD1</Name>
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>
