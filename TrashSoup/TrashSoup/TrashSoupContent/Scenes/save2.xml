@@ -5044,8 +5044,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/garage</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/garage</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/garage</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/garage_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/garage_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>garageMat</Name>
@@ -5117,8 +5117,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/garage</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/garage</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/garage</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/garage_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/garage_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>garageMat</Name>
@@ -6216,8 +6216,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/garage</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/garage</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/garage</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/garage_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/garage_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>garageMat</Name>
@@ -6581,8 +6581,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/garage</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/garage</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/garage</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/garage_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/garage_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>garageMat</Name>
@@ -51873,8 +51873,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/garage</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/garage</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/garage</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/garage_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/garage_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>garageMat</Name>
