@@ -49,6 +49,8 @@ namespace TrashSoup.Engine
             set;
         }
 
+        public Vector3 CustomScale { get; set; }
+
         #endregion
 
         #region Methods
@@ -62,6 +64,7 @@ namespace TrashSoup.Engine
             worldMatrix = Matrix.Identity;
             this.TriggerReasons = new List<Collider>();
             this.IgnoredColliders = new List<Collider>();
+            CustomScale = new Vector3(1.0f, 1.0f, 1.0f);
             this.CreateCollider();
         }
 
@@ -71,6 +74,7 @@ namespace TrashSoup.Engine
             this.IsTrigger = isTrigger;
             this.TriggerReasons = new List<Collider>();
             this.IgnoredColliders = new List<Collider>();
+            CustomScale = new Vector3(1.0f, 1.0f, 1.0f);
             this.CreateCollider();
         }
 
@@ -80,6 +84,7 @@ namespace TrashSoup.Engine
             this.IsTrigger = c.IsTrigger;
             this.TriggerReasons = new List<Collider>();
             this.IgnoredColliders = new List<Collider>();
+            CustomScale = c.CustomScale;
             this.CreateCollider();
         }
 
@@ -148,8 +153,17 @@ namespace TrashSoup.Engine
             worldMatrix = this.MyObject.MyTransform.GetWorldMatrix();
 
             IsTrigger = reader.ReadElementContentAsBoolean("IsTrigger", "");
+            if (reader.Name == "CustomScale")
+            {
+                reader.ReadStartElement();
+                CustomScale = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""),
+                    reader.ReadElementContentAsFloat("Z", ""));
+                reader.ReadEndElement();
+            }
             //MyObject = ResourceManager.Instance.CurrentScene.GetObject(tmp);
 
+            //this.CreateCollider();
             //reader.ReadEndElement();
         }
         
@@ -157,6 +171,11 @@ namespace TrashSoup.Engine
         {
             base.WriteXml(writer);
             writer.WriteElementString("IsTrigger", XmlConvert.ToString(IsTrigger));
+            writer.WriteStartElement("CustomScale");
+            writer.WriteElementString("X", XmlConvert.ToString(CustomScale.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(CustomScale.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(CustomScale.Z));
+            writer.WriteEndElement();
         }
         #endregion
     }

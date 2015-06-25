@@ -312,6 +312,8 @@ namespace TrashSoup.Engine
             //reader.ReadStartElement();
             base.ReadXml(reader);
             //reader.ReadEndElement();
+
+            this.Sphere.Radius *= CustomScale.X;
         }
 
         public override void WriteXml(System.Xml.XmlWriter writer)

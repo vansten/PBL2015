@@ -403,6 +403,7 @@ namespace TrashSoup.Engine
             while (!finished)
             {
                 ++ctr;
+
                 // generate rects for leaf nodes
                 RectangleWS childTLRect = current.GetRectForChildTL();
                 RectangleWS childTRRect = current.GetRectForChildTR();

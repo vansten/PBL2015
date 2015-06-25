@@ -188,6 +188,7 @@ namespace TrashSoup.Engine
             this.Box = new BoundingBox(min, max);
             this.initialCorners = this.Box.GetCorners();
             this.corners = this.Box.GetCorners();
+
             this.UpdateCollider();
 
             base.CreateCollider();
@@ -436,6 +437,12 @@ namespace TrashSoup.Engine
             //reader.ReadStartElement();
             base.ReadXml(reader);
             //reader.ReadEndElement();
+
+
+            for (int i = 0; i < initialCorners.Length; ++i)
+            {
+                initialCorners[i] *= CustomScale;
+            }
         }
 
         public override void WriteXml(System.Xml.XmlWriter writer)
