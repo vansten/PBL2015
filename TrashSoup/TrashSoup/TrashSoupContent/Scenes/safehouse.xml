@@ -2170,7 +2170,7 @@
       <MyTransform>
         <MyObjectID>1194</MyObjectID>
         <Position>
-          <X>-2</X>
+          <X>-1.7</X>
           <Y>2</Y>
           <Z>10</Z>
         </Position>
@@ -2184,7 +2184,7 @@
           <Y>0</Y>
           <Z>-1</Z>
         </Forward>
-        <Scale>4</Scale>
+        <Scale>3</Scale>
       </MyTransform>
       <Components>
         <TrashSoup.Engine.CustomModel>
@@ -2220,7 +2220,7 @@
         <MyObjectID>1195</MyObjectID>
         <Position>
           <X>15</X>
-          <Y>1</Y>
+          <Y>1.05</Y>
           <Z>10</Z>
         </Position>
         <Rotation>
@@ -2233,7 +2233,7 @@
           <Y>0</Y>
           <Z>-1</Z>
         </Forward>
-        <Scale>2</Scale>
+        <Scale>1</Scale>
       </MyTransform>
       <Components>
         <TrashSoup.Engine.CustomModel>
@@ -2366,8 +2366,8 @@
       <MyTransform>
         <MyObjectID>1200</MyObjectID>
         <Position>
-          <X>-2.2</X>
-          <Y>2.1</Y>
+          <X>-2</X>
+          <Y>1.8</Y>
           <Z>6</Z>
         </Position>
         <Rotation>
@@ -2380,7 +2380,7 @@
           <Y>0</Y>
           <Z>-1</Z>
         </Forward>
-        <Scale>7</Scale>
+        <Scale>5</Scale>
       </MyTransform>
       <Components>
         <TrashSoup.Engine.CustomModel>
@@ -2516,7 +2516,7 @@
         <Position>
           <X>-8</X>
           <Y>1</Y>
-          <Z>-17</Z>
+          <Z>-19</Z>
         </Position>
         <Rotation>
           <X>0</X>
@@ -2566,7 +2566,7 @@
         <MyObjectID>1209</MyObjectID>
         <Position>
           <X>1</X>
-          <Y>1.2</Y>
+          <Y>1.1</Y>
           <Z>-8</Z>
         </Position>
         <Rotation>
@@ -2704,7 +2704,7 @@
         <Position>
           <X>-8.2</X>
           <Y>0.5</Y>
-          <Z>-1</Z>
+          <Z>-7</Z>
         </Position>
         <Rotation>
           <X>0</X>
@@ -2740,7 +2740,7 @@
         <Position>
           <X>-8.4</X>
           <Y>2.5</Y>
-          <Z>-1</Z>
+          <Z>-7</Z>
         </Position>
         <Rotation>
           <X>0</X>
@@ -2788,8 +2788,8 @@
         <MyObjectID>1215</MyObjectID>
         <Position>
           <X>-8.5</X>
-          <Y>2.8</Y>
-          <Z>-0.34</Z>
+          <Y>2.85</Y>
+          <Z>-6.34</Z>
         </Position>
         <Rotation>
           <X>0</X>
@@ -2959,140 +2959,6 @@
         <MyObjectID>1218</MyObjectID>
         <IsTrigger>false</IsTrigger>
       </MyCollider>
-    </GameObject>
-    <GameObject>
-      <GameObjectKey>1219</GameObjectKey>
-      <UniqueID>1219</UniqueID>
-      <Name>Window2</Name>
-      <DrawLast>false</DrawLast>
-      <Tags>
-        <Tag>null</Tag>
-      </Tags>
-      <Dynamic>false</Dynamic>
-      <MyTransform>
-        <MyObjectID>1219</MyObjectID>
-        <Position>
-          <X>-8.4</X>
-          <Y>2.5</Y>
-          <Z>-10</Z>
-        </Position>
-        <Rotation>
-          <X>0</X>
-          <Y>1.565</Y>
-          <Z>0</Z>
-        </Rotation>
-        <Forward>
-          <X>0</X>
-          <Y>0</Y>
-          <Z>-1</Z>
-        </Forward>
-        <Scale>3</Scale>
-      </MyTransform>
-      <Components>
-        <TrashSoup.Engine.CustomModel>
-          <MyObjectID>1219</MyObjectID>
-          <LODState>HI</LODState>
-          <LODs>
-            <ModelPath>Models/Home/WindowsDoors/window</ModelPath>
-            <ModelPath />
-            <ModelPath />
-          </LODs>
-          <Materials>
-            <Name>safehouseStairsOldWoodMat</Name>
-          </Materials>
-          <LodControlled>false</LodControlled>
-        </TrashSoup.Engine.CustomModel>
-      </Components>
-      <MyCollider>
-        <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1219</MyObjectID>
-        <IsTrigger>false</IsTrigger>
-      </MyCollider>
-    </GameObject>
-    <GameObject>
-      <GameObjectKey>1220</GameObjectKey>
-      <UniqueID>1220</UniqueID>
-      <Name>WindowDirt2</Name>
-      <DrawLast>false</DrawLast>
-      <Tags>
-        <Tag>null</Tag>
-      </Tags>
-      <Dynamic>false</Dynamic>
-      <MyTransform>
-        <MyObjectID>1220</MyObjectID>
-        <Position>
-          <X>-8.5</X>
-          <Y>2.8</Y>
-          <Z>-9.34</Z>
-        </Position>
-        <Rotation>
-          <X>0</X>
-          <Y>3.14</Y>
-          <Z>0</Z>
-        </Rotation>
-        <Forward>
-          <X>0</X>
-          <Y>0</Y>
-          <Z>-1</Z>
-        </Forward>
-        <Scale>7</Scale>
-      </MyTransform>
-      <Components>
-        <TrashSoup.Engine.CustomModel>
-          <MyObjectID>1220</MyObjectID>
-          <LODState>HI</LODState>
-          <LODs>
-            <ModelPath>Models/Home/WindowsDoors/Window_Dirt</ModelPath>
-            <ModelPath />
-            <ModelPath />
-          </LODs>
-          <Materials>
-            <Name>safehouseWindowDirtMat</Name>
-          </Materials>
-          <LodControlled>false</LodControlled>
-        </TrashSoup.Engine.CustomModel>
-      </Components>
-      <MyCollider>
-        <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1220</MyObjectID>
-        <IsTrigger>false</IsTrigger>
-      </MyCollider>
-    </GameObject>
-    <GameObject>
-      <GameObjectKey>1221</GameObjectKey>
-      <UniqueID>1221</UniqueID>
-      <Name>Fortification2</Name>
-      <DrawLast>true</DrawLast>
-      <Tags>
-        <Tag>null</Tag>
-      </Tags>
-      <Dynamic>false</Dynamic>
-      <MyTransform>
-        <MyObjectID>1221</MyObjectID>
-        <Position>
-          <X>-8.2</X>
-          <Y>0.5</Y>
-          <Z>-10</Z>
-        </Position>
-        <Rotation>
-          <X>0</X>
-          <Y>1.565</Y>
-          <Z>0</Z>
-        </Rotation>
-        <Forward>
-          <X>0</X>
-          <Y>0</Y>
-          <Z>-1</Z>
-        </Forward>
-        <Scale>0.5</Scale>
-      </MyTransform>
-      <Components>
-        <TrashSoup.Gameplay.Fortification>
-          <MyObjectID>1221</MyObjectID>
-          <CurrentID>-1</CurrentID>
-          <MyType>METAL_WIRE_SNARES</MyType>
-        </TrashSoup.Gameplay.Fortification>
-      </Components>
     </GameObject>
     <GameObject>
       <GameObjectKey>1222</GameObjectKey>
@@ -3534,6 +3400,382 @@
         <MyObjectID>1230</MyObjectID>
         <IsTrigger>false</IsTrigger>
       </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1619</GameObjectKey>
+      <UniqueID>1619</UniqueID>
+      <Name>Window3</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1619</MyObjectID>
+        <Position>
+          <X>-3.39999962</X>
+          <Y>2.5</Y>
+          <Z>-23</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>3</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1619</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/WindowsDoors/window</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1619</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1620</GameObjectKey>
+      <UniqueID>1620</UniqueID>
+      <Name>WindowDirt3</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1620</MyObjectID>
+        <Position>
+          <X>-4.05</X>
+          <Y>2.85</Y>
+          <Z>-23.24</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>-1.565</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>7</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1620</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/WindowsDoors/Window_Dirt</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseWindowDirtMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1620</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1621</GameObjectKey>
+      <UniqueID>1621</UniqueID>
+      <Name>Window4</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1621</MyObjectID>
+        <Position>
+          <X>9.6</X>
+          <Y>2.5</Y>
+          <Z>-23.1</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>3</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1621</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/WindowsDoors/window</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsOldWoodMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1621</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1622</GameObjectKey>
+      <UniqueID>1622</UniqueID>
+      <Name>WindowDirt4</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1622</MyObjectID>
+        <Position>
+          <X>8.95</X>
+          <Y>2.85</Y>
+          <Z>-23.2</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>-1.565</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>7</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1622</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/WindowsDoors/Window_Dirt</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseWindowDirtMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1622</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1623</GameObjectKey>
+      <UniqueID>1623</UniqueID>
+      <Name>Fortification3</Name>
+      <DrawLast>true</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1623</MyObjectID>
+        <Position>
+          <X>-3.5</X>
+          <Y>0.5</Y>
+          <Z>-22.75</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>3.14</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>0.5</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Gameplay.Fortification>
+          <MyObjectID>1623</MyObjectID>
+          <CurrentID>-1</CurrentID>
+          <MyType>METAL_WIRE_SNARES</MyType>
+        </TrashSoup.Gameplay.Fortification>
+      </Components>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1624</GameObjectKey>
+      <UniqueID>1624</UniqueID>
+      <Name>Fortification4</Name>
+      <DrawLast>true</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1624</MyObjectID>
+        <Position>
+          <X>9.5</X>
+          <Y>0.5</Y>
+          <Z>-22.75</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>3.14</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>0.5</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Gameplay.Fortification>
+          <MyObjectID>1624</MyObjectID>
+          <CurrentID>-1</CurrentID>
+          <MyType>METAL_WIRE_SNARES</MyType>
+        </TrashSoup.Gameplay.Fortification>
+      </Components>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1625</GameObjectKey>
+      <UniqueID>1625</UniqueID>
+      <Name>Fortification5</Name>
+      <DrawLast>true</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1625</MyObjectID>
+        <Position>
+          <X>-6.8</X>
+          <Y>0.5</Y>
+          <Z>3</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>0.5</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Gameplay.Fortification>
+          <MyObjectID>1625</MyObjectID>
+          <CurrentID>-1</CurrentID>
+          <MyType>METAL_WIRE_SNARES</MyType>
+        </TrashSoup.Gameplay.Fortification>
+      </Components>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1626</GameObjectKey>
+      <UniqueID>1626</UniqueID>
+      <Name>Fortification6</Name>
+      <DrawLast>true</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1626</MyObjectID>
+        <Position>
+          <X>9.6</X>
+          <Y>0.5</Y>
+          <Z>3</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>0.5</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Gameplay.Fortification>
+          <MyObjectID>1626</MyObjectID>
+          <CurrentID>-1</CurrentID>
+          <MyType>METAL_WIRE_SNARES</MyType>
+        </TrashSoup.Gameplay.Fortification>
+      </Components>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1627</GameObjectKey>
+      <UniqueID>1627</UniqueID>
+      <Name>Fortification7</Name>
+      <DrawLast>true</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1627</MyObjectID>
+        <Position>
+          <X>17.6</X>
+          <Y>0.5</Y>
+          <Z>-5</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>-1.565</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>0.5</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Gameplay.Fortification>
+          <MyObjectID>1627</MyObjectID>
+          <CurrentID>-1</CurrentID>
+          <MyType>METAL_WIRE_SNARES</MyType>
+        </TrashSoup.Gameplay.Fortification>
+      </Components>
     </GameObject>
   </ObjectsDictionary>
   <Camera>
