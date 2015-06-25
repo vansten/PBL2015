@@ -60,7 +60,7 @@ namespace TrashSoup.Gameplay
         {
             this.myMutant = (Mutant)ResourceManager.Instance.CurrentScene.GetObject(MyMutantID).GetComponent<Mutant>();
             this.myMutant.MyObject.AddChild(this.MyObject);
-            this.MyObject.DrawCollider = true;
+            this.MyObject.MyTransform.Position = new Vector3(5.0f, 0.0f, 0.0f);
             base.Initialize();
         }
 

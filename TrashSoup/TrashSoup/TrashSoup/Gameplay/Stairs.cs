@@ -55,10 +55,17 @@ namespace TrashSoup.Gameplay
                 if(e != null)
                 {
                     e.StairsTouching += 1;
+                    Vector3 position = other.MyTransform.Position;
+                    if (e.GetComponent<Rat>() != null)
+                    {
+                        position.Y = this.MyObject.MyTransform.Position.Y + 1.1f;
+                    }
+                    else
+                    {
+                        position.Y = this.MyObject.MyTransform.Position.Y + 0.5f;
+                    }
+                    other.MyTransform.Position = position;
                 }
-                Vector3 position = other.MyTransform.Position;
-                position.Y = this.MyObject.MyTransform.Position.Y + 1.1f;
-                other.MyTransform.Position = position;
             }
             base.OnTriggerEnter(other);
         }

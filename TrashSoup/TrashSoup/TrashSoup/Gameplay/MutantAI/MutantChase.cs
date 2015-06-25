@@ -38,7 +38,7 @@ namespace TrashSoup.Gameplay.MutantAI
             this.myPos = this.blackboard.Owner.MyTransform.Position;
             float distance = Vector3.Distance(this.myPos, this.targetPos);
 
-            if (distance < 6.5f)
+            if (distance < 3.5f)
             {
                 node = null;
                 if (!firstTime)

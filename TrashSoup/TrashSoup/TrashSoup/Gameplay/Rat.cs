@@ -128,7 +128,7 @@ namespace TrashSoup.Gameplay
         {
             this.myBehavior.Stop();
             this.MyObject.MyAnimator.ChangeState("Die");
-            dieCooldown = this.MyObject.MyAnimator.GetAnimationClip("Animations/Enemies/Rat_dying").Duration.Seconds;
+            dieCooldown = (float)this.MyObject.MyAnimator.AvailableStates["Die"].Animation.GetDuration().TotalSeconds;
             nextBlinkTime = dieCooldown + 1.0f;
             this.MyObject.MyPhysicalObject.Velocity = Vector3.Zero;
             this.MyObject.MyPhysicalObject.ZeroForce();

@@ -67,6 +67,11 @@ namespace TrashSoup.Gameplay
                     this.MyObject.Enabled = false;
                 }
             }
+
+            if(InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.J))
+            {
+                this.myEnemyScript.HitPoints -= 1500;
+            }
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
@@ -130,7 +135,7 @@ namespace TrashSoup.Gameplay
         {
             this.myBehavior.Stop();
             this.MyObject.MyAnimator.ChangeState("Die");
-            dieCooldown = this.MyObject.MyAnimator.GetAnimationClip("Animations/Enemies/Rat_dying").Duration.Seconds;
+            dieCooldown = (float)this.MyObject.MyAnimator.AvailableStates["Die"].Animation.GetDuration().TotalSeconds;
             nextBlinkTime = dieCooldown + 1.0f;
             this.MyObject.MyPhysicalObject.Velocity = Vector3.Zero;
             this.MyObject.MyPhysicalObject.ZeroForce();

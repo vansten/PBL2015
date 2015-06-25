@@ -63,7 +63,7 @@ namespace TrashSoup.Gameplay
                     Vector3 diff = e.MyObject.MyTransform.Position - pc.MyObject.MyTransform.Position;
                     diff.Y = 0.0f;
                     diff.Normalize();
-                    e.MyObject.MyPhysicalObject.AddForce(diff * 30.0f * damage);
+                    e.MyObject.MyPhysicalObject.AddForce(diff * 10.0f * damage / 5.0f);
                     Rat eRat = (Rat)e.GetComponent<Rat>();
                     if(eRat != null)
                     {
