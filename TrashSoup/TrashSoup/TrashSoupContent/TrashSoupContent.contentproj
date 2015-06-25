@@ -1065,11 +1065,6 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
-    <Compile Include="Models\Enviro\Metro\Metro2.FBX">
-      <Name>Metro2</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-    </Compile>
     <Compile Include="Models\Test\walec.FBX">
       <Name>walec</Name>
       <Importer>FbxImporter</Importer>
@@ -1299,6 +1294,16 @@
     </Compile>
     <Compile Include="Models\Enviro\Buildings\Small_House_LOD1.FBX">
       <Name>Small_House_LOD1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Metro\Metro_LOD1.FBX">
+      <Name>Metro_LOD1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Enviro\Metro\tunnel_LOD1.FBX">
+      <Name>tunnel_LOD1</Name>
       <Importer>FbxImporter</Importer>
       <Processor>CustomModelProcessor</Processor>
     </Compile>

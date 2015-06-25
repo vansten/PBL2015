@@ -46040,9 +46040,9 @@
           <MyObjectID>1298</MyObjectID>
           <LODState>LO</LODState>
           <LODs>
-            <ModelPath>Models/Enviro/Metro/Metro2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Metro/Metro</ModelPath>
+            <ModelPath>Models/Enviro/Metro/Metro_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Metro/Metro_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>metroStone2Mat</Name>
@@ -51681,9 +51681,9 @@
           <MyObjectID>1396</MyObjectID>
           <LODState>HI</LODState>
           <LODs>
-            <ModelPath>Models/Enviro/Metro/Metro2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Metro/Metro</ModelPath>
+            <ModelPath>Models/Enviro/Metro/Metro_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Metro/Metro_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>metroStone2Mat</Name>
@@ -61191,8 +61191,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Metro/tunnel</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Metro/tunnel</ModelPath>
+            <ModelPath>Models/Enviro/Metro/tunnel_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>tunnelMat</Name>
