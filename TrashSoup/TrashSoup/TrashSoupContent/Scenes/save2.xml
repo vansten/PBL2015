@@ -367,8 +367,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -496,8 +496,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -569,8 +569,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -642,8 +642,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -865,8 +865,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -1086,8 +1086,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -1159,8 +1159,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -1232,8 +1232,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -1305,8 +1305,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -1378,8 +1378,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -1526,8 +1526,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -1599,8 +1599,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -1672,8 +1672,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -1895,8 +1895,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -1968,8 +1968,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -2041,8 +2041,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -2114,8 +2114,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -2187,8 +2187,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -2260,8 +2260,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -2483,8 +2483,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -2556,8 +2556,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -2704,8 +2704,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -2777,8 +2777,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -2850,8 +2850,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -2923,8 +2923,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -2996,8 +2996,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -3069,8 +3069,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -3142,8 +3142,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -3215,8 +3215,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -3288,8 +3288,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -3361,8 +3361,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -3434,8 +3434,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -3507,8 +3507,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -3580,8 +3580,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -3653,8 +3653,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -3726,8 +3726,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -3799,8 +3799,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -3872,8 +3872,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -3945,8 +3945,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -4018,8 +4018,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -4091,8 +4091,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -4164,8 +4164,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -4237,8 +4237,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -4310,8 +4310,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -4383,8 +4383,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -4531,8 +4531,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -4604,8 +4604,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -4752,8 +4752,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -4825,8 +4825,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -4898,8 +4898,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -4971,8 +4971,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -5190,8 +5190,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -5263,8 +5263,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -5336,8 +5336,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -5409,8 +5409,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -5632,8 +5632,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -5705,8 +5705,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -5778,8 +5778,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -5851,8 +5851,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -5924,8 +5924,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -5997,8 +5997,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -6070,8 +6070,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -6143,8 +6143,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -6289,8 +6289,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -6362,8 +6362,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -6435,8 +6435,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -6508,8 +6508,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -6729,8 +6729,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -6802,8 +6802,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -6875,8 +6875,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -7023,8 +7023,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -7096,8 +7096,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -7169,8 +7169,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -7242,8 +7242,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -7315,8 +7315,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -7463,8 +7463,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -7536,8 +7536,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -7609,8 +7609,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -7682,8 +7682,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -7755,8 +7755,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -7901,8 +7901,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -7974,8 +7974,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -8047,8 +8047,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -8120,8 +8120,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -8193,8 +8193,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -8341,8 +8341,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -8414,8 +8414,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -8487,8 +8487,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -8560,8 +8560,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -8633,8 +8633,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -8854,8 +8854,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -8927,8 +8927,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -9000,8 +9000,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -9073,8 +9073,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -9146,8 +9146,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -9219,8 +9219,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -9292,8 +9292,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -9365,8 +9365,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -9436,10 +9436,10 @@
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>635</MyObjectID>
           <LODState>LO</LODState>
-          <LODs>
+			<LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -9586,8 +9586,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -9659,8 +9659,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -9732,8 +9732,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -9805,8 +9805,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -9953,8 +9953,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -10100,8 +10100,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -10248,8 +10248,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -10321,8 +10321,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -10394,8 +10394,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -10467,8 +10467,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -10615,8 +10615,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -10907,8 +10907,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -10980,8 +10980,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -11582,8 +11582,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -11655,8 +11655,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -11728,8 +11728,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat2</Name>
@@ -11801,8 +11801,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -11874,8 +11874,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouseMat</Name>
@@ -38243,8 +38243,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -38316,8 +38316,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -38433,8 +38433,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -38604,8 +38604,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -38677,8 +38677,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
@@ -38750,8 +38750,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
-            <ModelPath>Models/Enviro/Buildings/Big_house2</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Buildings/Big_house2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bigHouse2Mat</Name>
