@@ -213,9 +213,9 @@ inline float ShadowContributionPoint(float pixelDepth, float3 dirPos, float att,
 	float2 depth = float2(0.0f, 0.0f);
 		float ctr = 0.0f;
 
-	for (float i = -BLUR_SIZE; i <= BLUR_SIZE; i += 1.0f)
+	for (float i = -BLUR_SIZE_POINT; i <= BLUR_SIZE_POINT; i += 1.0f)
 	{
-		for (float j = -BLUR_SIZE; j <= BLUR_SIZE; j += 1.0f)
+		for (float j = -BLUR_SIZE_POINT; j <= BLUR_SIZE_POINT; j += 1.0f)
 		{
 			depth = depth + texCUBE(Point0ShadowMapSampler, dirPos + float3(i, j, -BLUR_SIZE) * BLUR_OFFSET_POINT).rg;
 			depth = depth + texCUBE(Point0ShadowMapSampler, dirPos + float3(i, j, 0.0f) * BLUR_OFFSET_POINT).rg;
@@ -223,10 +223,11 @@ inline float ShadowContributionPoint(float pixelDepth, float3 dirPos, float att,
 			ctr += 3.0f;
 		}
 	}
-
 	depth = depth / ctr;
 
-	float shadow = ChebyshevUpperBound(depth, pixelDepth / SHADOW_POINT_MAX_DIST, MIN_VARIANCE_0 * theta);
+	//depth = texCUBE(Point0ShadowMapSampler, dirPos).rg;
+
+	float shadow = ChebyshevUpperBound(depth, pixelDepth / SHADOW_POINT_MAX_DIST, MIN_VARIANCE_0 * theta / 10.0f);
 	shadow = LinStep(BLEED_REDUCTION, 1.0f, shadow);
 	return shadow;
 }

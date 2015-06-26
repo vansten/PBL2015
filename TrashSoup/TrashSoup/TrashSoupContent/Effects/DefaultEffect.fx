@@ -217,7 +217,7 @@ inline float ShadowContributionPoint(float pixelDepth, float3 dirPos, float att,
 
 	depth = depth / ctr;
 
-	float shadow = ChebyshevUpperBound(depth, pixelDepth / SHADOW_POINT_MAX_DIST, MIN_VARIANCE_0 *  theta);
+	float shadow = ChebyshevUpperBound(depth, pixelDepth / SHADOW_POINT_MAX_DIST, MIN_VARIANCE_0 *  theta / 10.0f);
 	shadow = LinStep(BLEED_REDUCTION, 1.0f, shadow);
 	return shadow;
 }
