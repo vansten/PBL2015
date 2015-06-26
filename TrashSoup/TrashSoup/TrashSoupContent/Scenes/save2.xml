@@ -49619,8 +49619,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bench2Mat</Name>
@@ -49673,8 +49673,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bench2Mat</Name>
@@ -49727,8 +49727,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bench2Mat</Name>
@@ -49781,8 +49781,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bench2Mat</Name>
@@ -49835,8 +49835,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bench2Mat</Name>
@@ -49889,8 +49889,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bench2Mat</Name>
@@ -49943,8 +49943,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bench2Mat</Name>
@@ -49997,8 +49997,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bench2Mat</Name>
@@ -50051,8 +50051,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bench2Mat</Name>
@@ -50105,8 +50105,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bench2Mat</Name>
@@ -50159,8 +50159,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bench2Mat</Name>
@@ -50213,8 +50213,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bench2Mat</Name>
@@ -50267,8 +50267,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bench2Mat</Name>
@@ -50321,8 +50321,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bench2Mat</Name>
@@ -50375,8 +50375,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bench2Mat</Name>
@@ -50429,8 +50429,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bench2Mat</Name>
@@ -52046,8 +52046,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -52100,8 +52100,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -52154,8 +52154,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -52208,8 +52208,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -52262,8 +52262,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -52316,8 +52316,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -52370,8 +52370,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -52424,8 +52424,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -52478,8 +52478,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -52532,8 +52532,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -52586,8 +52586,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -52640,8 +52640,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -52694,8 +52694,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -52748,8 +52748,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -52802,8 +52802,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -52856,8 +52856,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -52910,8 +52910,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -52964,8 +52964,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -53018,8 +53018,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -53072,8 +53072,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -53126,8 +53126,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -53180,8 +53180,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -53234,8 +53234,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -53288,8 +53288,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -53342,8 +53342,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -53396,8 +53396,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
@@ -53450,8 +53450,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/bench</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Minor/bench_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>benchMat</Name>
