@@ -50,6 +50,7 @@ namespace TrashSoup.Engine
         }
 
         public Vector3 CustomScale { get; set; }
+        public Vector3 CustomOffset { get; set; }
 
         #endregion
 
@@ -65,6 +66,7 @@ namespace TrashSoup.Engine
             this.TriggerReasons = new List<Collider>();
             this.IgnoredColliders = new List<Collider>();
             CustomScale = new Vector3(1.0f, 1.0f, 1.0f);
+            CustomOffset = Vector3.Zero;
             this.CreateCollider();
         }
 
@@ -75,6 +77,7 @@ namespace TrashSoup.Engine
             this.TriggerReasons = new List<Collider>();
             this.IgnoredColliders = new List<Collider>();
             CustomScale = new Vector3(1.0f, 1.0f, 1.0f);
+            CustomOffset = Vector3.Zero;
             this.CreateCollider();
         }
 
@@ -85,6 +88,7 @@ namespace TrashSoup.Engine
             this.TriggerReasons = new List<Collider>();
             this.IgnoredColliders = new List<Collider>();
             CustomScale = c.CustomScale;
+            CustomOffset = c.CustomOffset;
             this.CreateCollider();
         }
 
@@ -161,6 +165,15 @@ namespace TrashSoup.Engine
                     reader.ReadElementContentAsFloat("Z", ""));
                 reader.ReadEndElement();
             }
+
+            if (reader.Name == "CustomOffset")
+            {
+                reader.ReadStartElement();
+                CustomOffset = new Vector3(reader.ReadElementContentAsFloat("X", ""),
+                    reader.ReadElementContentAsFloat("Y", ""),
+                    reader.ReadElementContentAsFloat("Z", ""));
+                reader.ReadEndElement();
+            }
             //MyObject = ResourceManager.Instance.CurrentScene.GetObject(tmp);
 
             //this.CreateCollider();
@@ -175,6 +188,11 @@ namespace TrashSoup.Engine
             writer.WriteElementString("X", XmlConvert.ToString(CustomScale.X));
             writer.WriteElementString("Y", XmlConvert.ToString(CustomScale.Y));
             writer.WriteElementString("Z", XmlConvert.ToString(CustomScale.Z));
+            writer.WriteEndElement();
+            writer.WriteStartElement("CustomOffset");
+            writer.WriteElementString("X", XmlConvert.ToString(CustomOffset.X));
+            writer.WriteElementString("Y", XmlConvert.ToString(CustomOffset.Y));
+            writer.WriteElementString("Z", XmlConvert.ToString(CustomOffset.Z));
             writer.WriteEndElement();
         }
         #endregion

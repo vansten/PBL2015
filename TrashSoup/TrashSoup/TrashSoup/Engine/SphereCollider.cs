@@ -243,10 +243,10 @@ namespace TrashSoup.Engine
             this.worldMatrix = this.MyObject.MyTransform.GetWorldMatrix();
             Vector3 newCenter = Vector3.Zero;
             newCenter = Vector3.Transform(this.Center, this.worldMatrix);
-            this.Sphere.Center = newCenter;
+            this.Sphere.Center = newCenter + CustomOffset;
             this.Sphere = this.initialSphere.Transform(this.worldMatrix);
             this.Radius = this.initialSphere.Radius * MyObject.MyTransform.Scale;
-            this.Sphere.Radius = this.Radius;
+            this.Sphere.Radius = this.Radius * CustomScale.X;
         }
 
         public override bool Intersects(Collider col)
@@ -312,8 +312,6 @@ namespace TrashSoup.Engine
             //reader.ReadStartElement();
             base.ReadXml(reader);
             //reader.ReadEndElement();
-
-            this.Sphere.Radius *= CustomScale.X;
         }
 
         public override void WriteXml(System.Xml.XmlWriter writer)

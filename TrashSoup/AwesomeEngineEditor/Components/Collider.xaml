@@ -5,13 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              Width="260" Height="auto">
-    <Grid>
+    <Grid Height="143">
         <TextBlock Margin="15,10,32,85" FontSize="25" FontWeight="Bold">Collider</TextBlock>
         <TextBlock Margin="10,48,178,48" Background="Transparent" FontSize="16">IsTrigger</TextBlock>
         <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="87,53,0,0" IsChecked="{Binding IsTrigger}" Height="27" Width="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <TextBlock Margin="10,80,143,16" Background="Transparent" FontSize="16">CustomScale</TextBlock>
-        <TextBox FontSize="12" Text="{Binding CustomScaleX}" Height="20" Margin="122,80,97,28"/>
-        <TextBox FontSize="12" Text="{Binding CustomScaleY}" Height="20" Margin="168,80,51,28"/>
-        <TextBox FontSize="12" Text="{Binding CustomScaleZ}" Height="20" Margin="214,80,5,28"/>
+        <TextBox FontSize="12" Text="{Binding CustomScaleX}" Height="20" Margin="122,80,97,43"/>
+        <TextBox FontSize="12" Text="{Binding CustomScaleY}" Height="20" Margin="168,80,51,43"/>
+        <TextBox FontSize="12" Text="{Binding CustomScaleZ}" Height="20" Margin="214,80,5,43"/>
+        <TextBlock Margin="10,110,143,0" Background="Transparent" FontSize="16">CustomOffset</TextBlock>
+        <TextBox FontSize="12" Text="{Binding CustomOffsetX}" Height="20" Margin="122,110,97,13"/>
+        <TextBox FontSize="12" Text="{Binding CustomOffsetY}" Height="20" Margin="168,110,51,13"/>
+        <TextBox FontSize="12" Text="{Binding CustomOffsetZ}" Height="20" Margin="214,110,5,13"/>
     </Grid>
 </UserControl>

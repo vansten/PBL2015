@@ -94,6 +94,63 @@ namespace AwesomeEngineEditor.Components
             }
         }
 
+        public string CustomOffsetX
+        {
+            get
+            {
+                return myCollider.CustomOffset.X.ToString();
+            }
+            set
+            {
+                float newX = myCollider.CustomOffset.X;
+                if (!float.TryParse(value, out newX))
+                {
+                    TrashSoup.Engine.Debug.Log("Wrong format of string!");
+                }
+                myCollider.CustomOffset = new Microsoft.Xna.Framework.Vector3(newX, myCollider.CustomOffset.Y, myCollider.CustomOffset.Z);
+                myCollider.UpdateCollider();
+                OnPropertyChanged();
+            }
+        }
+
+        public string CustomOffsetY
+        {
+            get
+            {
+                return myCollider.CustomOffset.Y.ToString();
+            }
+            set
+            {
+                float newY = myCollider.CustomOffset.Y;
+                if (!float.TryParse(value, out newY))
+                {
+                    TrashSoup.Engine.Debug.Log("Wrong format of string!");
+                }
+                myCollider.CustomOffset = new Microsoft.Xna.Framework.Vector3(myCollider.CustomOffset.X, newY, myCollider.CustomOffset.Z);
+                myCollider.UpdateCollider();
+                OnPropertyChanged();
+            }
+        }
+
+        public string CustomOffsetZ
+        {
+            get
+            {
+                return myCollider.CustomOffset.Z.ToString();
+            }
+            set
+            {
+                float newZ = myCollider.CustomOffset.Z;
+                if (!float.TryParse(value, out newZ))
+                {
+                    TrashSoup.Engine.Debug.Log("Wrong format of string!");
+                }
+                myCollider.CustomOffset = new Microsoft.Xna.Framework.Vector3(myCollider.CustomOffset.X, myCollider.CustomOffset.Y, newZ);
+                myCollider.UpdateCollider();
+                OnPropertyChanged();
+            }
+        }
+
         public Collider(TrashSoup.Engine.Collider col)
         {
             InitializeComponent();

@@ -419,7 +419,7 @@ namespace TrashSoup.Engine
 
             for (int i = 0; i < corners.Length; ++i)
             {
-                this.corners[i] = Vector3.Transform(this.initialCorners[i] * CustomScale, this.worldMatrix);
+                this.corners[i] = Vector3.Transform(this.initialCorners[i] * CustomScale + CustomOffset, this.worldMatrix);
                 min = Vector3.Min(min, this.corners[i]);
                 max = Vector3.Max(max, this.corners[i]);
             }

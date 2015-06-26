@@ -108,6 +108,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </PointLight>
   </PointLights>
@@ -263,6 +268,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -373,6 +383,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -427,6 +442,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -525,6 +545,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -579,6 +604,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -633,6 +663,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -687,6 +722,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -741,6 +781,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -795,6 +840,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -849,6 +899,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -903,6 +958,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -957,6 +1017,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -1011,6 +1076,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -1065,6 +1135,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -1119,6 +1194,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -1173,6 +1253,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -1271,6 +1356,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -1325,6 +1415,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -1423,6 +1518,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -1477,6 +1577,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -1531,6 +1636,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -1585,6 +1695,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -1639,6 +1754,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -1693,6 +1813,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -1747,6 +1872,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -1801,6 +1931,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -1855,6 +1990,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -1909,6 +2049,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -1963,6 +2108,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -2017,6 +2167,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -2071,6 +2226,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -2125,6 +2285,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -2179,6 +2344,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -2233,6 +2403,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -2287,6 +2462,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -2341,6 +2521,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -2395,6 +2580,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -2449,6 +2639,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -2503,6 +2698,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -2557,6 +2757,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -2611,6 +2816,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -2665,6 +2875,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -2720,6 +2935,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -2776,6 +2996,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -2830,6 +3055,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -3008,6 +3238,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -3062,6 +3297,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -3152,6 +3392,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -3208,6 +3453,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -3262,6 +3512,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -3316,6 +3571,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -3370,6 +3630,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -3424,6 +3689,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -3478,6 +3748,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -3532,6 +3807,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -3586,6 +3866,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -3640,6 +3925,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -3694,6 +3984,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -3748,6 +4043,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -3802,6 +4102,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -3856,6 +4161,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
@@ -3910,6 +4220,11 @@
           <Y>1</Y>
           <Z>1</Z>
         </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
       </MyCollider>
     </GameObject>
     <GameObject>
