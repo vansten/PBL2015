@@ -370,8 +370,16 @@ namespace TrashSoup.Gameplay
                         {
                             blockingAnim = false;
                             blockingAnimStopped = false;
-                            MyObject.MyAnimator.ChangeState(currentIdleAnimID);
-                            //Debug.Log("Blockin off");
+
+                            if(InputHandler.Instance.GetMovementVector() != Vector2.Zero)
+                            {
+                                StopOtherState();
+                            }
+                            else
+                            {
+                                MyObject.MyAnimator.ChangeState(currentIdleAnimID);
+                            }
+                            //Debug.Log(InputHandler.Instance.GetMovementVector().ToString());
                         }
                     }
 

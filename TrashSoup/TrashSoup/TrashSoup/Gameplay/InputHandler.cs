@@ -104,7 +104,7 @@ namespace TrashSoup.Gameplay
         /// </summary>
         public Vector2 GetMovementVector()
         {
-            Vector2 toReturn;
+            Vector2 toReturn = Vector2.Zero;
             if ((toReturn = InputManager.Instance.GetLeftStickValue()).Length() != 0)
             {
                 return toReturn;
@@ -142,6 +142,10 @@ namespace TrashSoup.Gameplay
                 else if (InputManager.Instance.GetKeyboardButton(Keys.D))
                 {
                     toReturn = new Vector2(1.0f, 0.0f);
+                }
+                else
+                {
+                    return toReturn;
                 }
             }
             return Vector2.Normalize(toReturn);
