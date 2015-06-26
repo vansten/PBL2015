@@ -34,7 +34,7 @@ namespace TrashSoup.Engine.AI.BehaviorTree
         {
             foreach (BehaviorTree bt in this.behaviorTrees)
             {
-                if (bt.Enabled)
+                if (bt.Enabled && bt.Blackboard.Owner.Enabled)
                 {
                     if (bt.MilisecondsTillLastTick >= this.btTickFrequency)
                     {

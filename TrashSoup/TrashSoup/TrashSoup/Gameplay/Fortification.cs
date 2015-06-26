@@ -314,7 +314,7 @@ namespace TrashSoup.Gameplay
                             }
                             else
                             {
-                                Debug.Log("HideoutStash: Haha nie stac cie");
+                                Debug.Log(this.MyObject.Name + " HideoutStash: Haha nie stac cie");
                                 actionHelper = false;
 
                                 if (soundHelper)
@@ -355,7 +355,7 @@ namespace TrashSoup.Gameplay
                                 }
                                 else
                                 {
-                                    Debug.Log("HideoutStash: Haha nie stac cie");
+                                    Debug.Log(this.MyObject.Name + " HideoutStash: Haha nie stac cie");
                                     actionHelper = false;
 
                                     if (soundHelper)
@@ -375,7 +375,7 @@ namespace TrashSoup.Gameplay
                             }
                             else
                             {
-                                Debug.Log("HideoutStash: Haha nie stac cie");
+                                Debug.Log(this.MyObject.Name + " HideoutStash: Haha nie stac cie");
                                 actionHelper = false;
                             }
                         }

@@ -61,11 +61,18 @@ namespace TrashSoup.Gameplay
             set
             {
                 this.stairsTouching = value;
-                this.MyObject.MyPhysicalObject.IsUsingGravity = this.stairsTouching == 0;
-                if (!this.MyObject.MyPhysicalObject.IsUsingGravity)
+                if(SaveManager.Instance.XmlPath.Contains("save2"))
                 {
-                    this.MyObject.MyPhysicalObject.Velocity = Vector3.Zero;
-                    this.MyObject.MyPhysicalObject.ZeroForce();
+                    this.MyObject.MyPhysicalObject.IsUsingGravity = this.stairsTouching == 0;
+                    if (!this.MyObject.MyPhysicalObject.IsUsingGravity)
+                    {
+                        this.MyObject.MyPhysicalObject.Velocity = Vector3.Zero;
+                        this.MyObject.MyPhysicalObject.ZeroForce();
+                    }
+                }
+                else
+                {
+                    this.MyObject.MyPhysicalObject.IsUsingGravity = false;
                 }
             }
         }
@@ -105,6 +112,8 @@ namespace TrashSoup.Gameplay
             {
                 if(!deathAnimPlayed && OnDead != null)
                 {
+                    this.hpBar.Enabled = false;
+                    this.hpBarOutline.Enabled = false;
                     deathAnimPlayed = true;
                     OnDead();
                 }
@@ -139,7 +148,7 @@ namespace TrashSoup.Gameplay
             this.StairsTouching = 0;
             if(this.GetComponent<Mutant>() != null)
             {
-                hpBarYOffset = 4.0f * Vector3.Up;
+                hpBarYOffset = 3.0f * Vector3.Up;
             }
             this.hpBarOutline = ResourceManager.Instance.CurrentScene.GetObject(this.MyHPBarOutlineID);
             base.Initialize();

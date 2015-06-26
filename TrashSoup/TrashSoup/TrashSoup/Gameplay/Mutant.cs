@@ -89,21 +89,26 @@ namespace TrashSoup.Gameplay
             this.MyObject.MyAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Mutant_walk")));
             this.MyObject.MyAnimator.AvailableStates.Add("Run", new AnimatorState("Run", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Mutant_run")));
             this.MyObject.MyAnimator.AvailableStates.Add("Attack", new AnimatorState("Attack", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Mutant_attack")));
-            this.MyObject.MyAnimator.AvailableStates.Add("Die", new AnimatorState("Die", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Mutant_dying")));
+            this.MyObject.MyAnimator.AvailableStates.Add("Die", new AnimatorState("Die", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Mutant_dying"), AnimatorState.StateType.SINGLE));
             this.MyObject.MyAnimator.AvailableStates.Add("Idle", new AnimatorState("Idle", this.MyObject.MyAnimator.GetAnimationPlayer("Animations/Enemies/Mutant_idle")));
             string[] states = new string[] { "Idle", "Walk", "Run", "Die", "Attack" };
             for (int i = 0; i < states.Length; ++i)
             {
-                for (int j = 0; j < states.Length; ++j)
+                if (states[i] != "Die")
                 {
-                    if (j != i)
+                    for (int j = 0; j < states.Length; ++j)
                     {
-                        this.MyObject.MyAnimator.AvailableStates[states[i]].AddTransition(this.MyObject.MyAnimator.AvailableStates[states[j]], new TimeSpan(0, 0, 0, 0, 200));
+                        if (j != i)
+                        {
+                            this.MyObject.MyAnimator.AvailableStates[states[i]].AddTransition(this.MyObject.MyAnimator.AvailableStates[states[j]], new TimeSpan(0, 0, 0, 0, 200));
+                        }
                     }
                 }
             }
             MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates["Idle"];
-            
+
+            this.MyObject.MyTransform.Rotation -= Vector3.Up * MathHelper.PiOver2;
+
             XmlSerializer serializer = new XmlSerializer(typeof(BehaviorTree));
             string path = "";
             if (TrashSoupGame.Instance != null && TrashSoupGame.Instance.EditorMode)
@@ -140,7 +145,6 @@ namespace TrashSoup.Gameplay
             this.MyObject.MyPhysicalObject.Velocity = Vector3.Zero;
             this.MyObject.MyPhysicalObject.ZeroForce();
             this.MyObject.MyPhysicalObject.IsUsingGravity = false;
-            //this.MyObject.MyCollider.Enabled = false;
             Collider c = ResourceManager.Instance.CurrentScene.GetObject(1).MyCollider;
             this.MyObject.MyCollider.IgnoredColliders.Add(c);
             c.IgnoredColliders.Add(this.MyObject.MyCollider);

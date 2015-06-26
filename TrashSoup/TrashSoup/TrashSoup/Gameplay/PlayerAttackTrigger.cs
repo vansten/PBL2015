@@ -63,7 +63,14 @@ namespace TrashSoup.Gameplay
                     Vector3 diff = e.MyObject.MyTransform.Position - pc.MyObject.MyTransform.Position;
                     diff.Y = 0.0f;
                     diff.Normalize();
-                    e.MyObject.MyPhysicalObject.AddForce(diff * 10.0f * damage / 5.0f);
+                    float force = 100.0f;
+                    if(pc.Equipment.CurrentWeapon.Type != WeaponType.FISTS)
+                    {
+                        force = 120.0f;
+                    }
+                    e.MyObject.MyPhysicalObject.ZeroForce();
+                    e.MyObject.MyPhysicalObject.Velocity = Vector3.Zero;
+                    e.MyObject.MyPhysicalObject.AddForce(diff * force);
                     Rat eRat = (Rat)e.GetComponent<Rat>();
                     if(eRat != null)
                     {

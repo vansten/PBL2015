@@ -31,11 +31,6 @@ namespace TrashSoup.Gameplay.MutantAI
                 return TickStatus.SUCCESS;
             }
 
-            if (this.blackboard.Owner.UniqueID == 1550)
-            {
-                Debug.Log("Idle babe");
-            }
-
             if (firstTime)
             {
                 firstTime = false;
