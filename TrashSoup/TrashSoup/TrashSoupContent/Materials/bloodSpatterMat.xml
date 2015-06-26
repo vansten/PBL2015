@@ -1,27 +1,27 @@
 <?xml version="1.0"?>
 <Material>
-  <Name>streetsMat</Name>
+  <Name>bloodSpatterMat</Name>
   <EffectPath>Effects\NormalEffect</EffectPath>
-  <DiffusePath>Textures\Enviro\Ground\streets_D</DiffusePath>
-  <NormalPath>Textures\Enviro\Ground\streets_N</NormalPath>
+  <DiffusePath>Textures\Enviro\Nature\Blood_spatter_01</DiffusePath>
+  <NormalPath>Textures\Enviro\Nature\Blood_spatter_01_N</NormalPath>
   <DiffuseColor>
-    <X>1</X>
-    <Y>1</Y>
-    <Z>1</Z>
+    <X>0.7</X>
+    <Y>0.7</Y>
+    <Z>0.7</Z>
   </DiffuseColor>
   <SpecularColor>
-    <X>0.5</X>
-    <Y>0.5</Y>
-    <Z>0.5</Z>
+    <X>0.6</X>
+    <Y>0.6</Y>
+    <Z>0.6</Z>
   </SpecularColor>
-  <Glossiness>75</Glossiness>
+  <Glossiness>65</Glossiness>
   <ReflectivityColor>
     <X>1</X>
     <Y>1</Y>
     <Z>1</Z>
   </ReflectivityColor>
   <ReflectivityBias>1</ReflectivityBias>
-  <Transparency>1</Transparency>
+  <Transparency>0.7</Transparency>
   <PerPixelLighting>false</PerPixelLighting>
   <ReceiveShadows>true</ReceiveShadows>
 </Material>
