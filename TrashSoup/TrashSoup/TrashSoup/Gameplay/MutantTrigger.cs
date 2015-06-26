@@ -14,6 +14,7 @@ namespace TrashSoup.Gameplay
         private bool targetDead = false;
         private GameObject target;
         private PlayerController pc;
+        private Fortification f;
 
         public uint MyMutantID;
 
@@ -45,6 +46,18 @@ namespace TrashSoup.Gameplay
                         targetDead = true;
                     }
                 }
+                else
+                {
+                    if(f != null)
+                    {
+                        if(f.CurrentHealth <= 0)
+                        {
+                            myMutant.MyBlackBoard.SetBool("TargetSeen", false);
+                            target = null;
+                            targetSeen = false;
+                        }
+                    }
+                }
             }
         }
 
@@ -61,19 +74,34 @@ namespace TrashSoup.Gameplay
             this.myMutant = (Mutant)ResourceManager.Instance.CurrentScene.GetObject(MyMutantID).GetComponent<Mutant>();
             this.myMutant.MyObject.AddChild(this.MyObject);
             this.MyObject.MyTransform.Position = new Vector3(5.0f, 0.0f, 0.0f);
+            this.MyObject.MyCollider.IgnoredColliders.Add(this.myMutant.MyObject.MyCollider);
+            this.MyObject.MyPhysicalObject = new PhysicalObject(this.MyObject, 0.0f, 0.0f, false);
             base.Initialize();
         }
 
         public override void OnTrigger(GameObject other)
         {
             if (targetDead) return;
-            if(other.UniqueID == 1)
+            if (target != null && target.UniqueID != 1) return;
+            bool fort = other.Tags.Contains("Fortification");
+            if (other.UniqueID == 1 || fort)
             {
                 myMutant.MyBlackBoard.SetBool("TargetSeen", true);
                 targetSeen = true;
                 target = other;
+                myMutant.myEnemyScript.target = other;
                 pc = (PlayerController)target.GetComponent<PlayerController>();
-                myMutant.MyBlackBoard.SetVector3("TargetPosition", other.MyTransform.Position);
+                if(fort)
+                {
+                    target = other.GetParent();
+                    f = (Fortification)target.GetComponent<Fortification>();
+                    if(f == null)
+                    {
+                        f = (Fortification)target.GetComponent<Fortification>();
+                    }
+                }
+                Vector3 pos = target.MyTransform.Position;
+                myMutant.MyBlackBoard.SetVector3("TargetPosition", pos);
             }
             base.OnTrigger(other);
         }

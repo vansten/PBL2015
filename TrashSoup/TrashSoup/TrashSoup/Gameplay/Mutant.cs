@@ -14,7 +14,7 @@ namespace TrashSoup.Gameplay
     {
         private BehaviorTree myBehavior;
         public Blackboard MyBlackBoard;
-        private Enemy myEnemyScript;
+        public Enemy myEnemyScript;
 
         private bool isDead = false;
         private float timer = 0.0f;

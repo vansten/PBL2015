@@ -44,6 +44,12 @@ namespace TrashSoup.Gameplay
                         targetDead = true;
                     }
                 }
+                else if(!target.Enabled)
+                {
+                    myRat.MyBlackBoard.SetBool("TargetSeen", false);
+                    target = null;
+                    targetSeen = false;
+                }
             }
         }
 
@@ -59,17 +65,19 @@ namespace TrashSoup.Gameplay
         {
             this.myRat = (Rat)ResourceManager.Instance.CurrentScene.GetObject(MyRatID).GetComponent<Rat>();
             this.myRat.MyObject.AddChild(this.MyObject);
+            this.MyObject.MyCollider.IgnoredColliders.Add(this.myRat.MyObject.MyCollider);
             base.Initialize();
         }
 
         public override void OnTrigger(GameObject other)
         {
             if (targetDead) return;
-            if(other.UniqueID == 1)
+            if (other.UniqueID == 1 || other.Tags.Contains("Fortification"))
             {
                 myRat.MyBlackBoard.SetBool("TargetSeen", true);
                 targetSeen = true;
                 target = other;
+                myRat.myEnemyScript.target = other;
                 pc = (PlayerController)target.GetComponent<PlayerController>();
                 myRat.MyBlackBoard.SetVector3("TargetPosition", other.MyTransform.Position);
             }

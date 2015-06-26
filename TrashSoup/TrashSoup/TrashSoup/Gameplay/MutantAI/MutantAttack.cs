@@ -20,6 +20,7 @@ namespace TrashSoup.Gameplay.MutantAI
         private float prevRotY;
         private float rotY;
         private bool firstTime = true;
+        private Enemy myEnemy;
 
         public override void Initialize()
         {
@@ -29,6 +30,7 @@ namespace TrashSoup.Gameplay.MutantAI
             {
                 target = (PlayerController)go.GetComponent<PlayerController>();
             }
+            this.myEnemy = (Enemy)blackboard.Owner.GetComponent<Enemy>();
             base.Initialize();
         }
 
@@ -68,9 +70,10 @@ namespace TrashSoup.Gameplay.MutantAI
 
             if (timer > attackCooldown)
             {
-                if (target != null)
+                if (myEnemy != null)
                 {
-                    target.DecreaseHealth(this.damage);
+                    this.myEnemy.AttackTarget(damage);
+                    //target.DecreaseHealth(this.damage);
                 }
                 timer = 0.0f;
             }

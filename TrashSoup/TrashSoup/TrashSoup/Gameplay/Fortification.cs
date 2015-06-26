@@ -61,17 +61,17 @@ namespace TrashSoup.Gameplay
         private static uint[] PartTimes = 
         {
             // type0
-            20,
-            30,
-            40,
-            // type1
-            5,
-            5,  //25
-            5,  //40
-            // type2
+            8,
             10,
-            25,
-            40
+            15,
+            // type1
+            2,
+            2,  //25
+            2,  //40
+            // type2
+            4,
+            12,
+            15
         };
 
         private static uint[] PartHealths = 
@@ -241,7 +241,7 @@ namespace TrashSoup.Gameplay
 
                 while(CurrentID >= 0)
                 {
-                    if (Parts[CurrentID].Health + difference >= 0 && Parts[CurrentID].Health + difference <= Parts[CurrentID].MaxHealth)
+                    if (Parts[CurrentID].Health + difference > 0 && Parts[CurrentID].Health + difference <= Parts[CurrentID].MaxHealth)
                     {
                         Parts[CurrentID].Health += (uint)difference;
                         return;
@@ -467,6 +467,7 @@ namespace TrashSoup.Gameplay
                 fortPart.Components.Add(mod);
                 fortPart.MyTransform = new Transform(fortPart, PartTranslations[tN], Vector3.Up, PartRotations[tN], PartScales[tN]);
                 fortPart.MyCollider = new BoxCollider(fortPart);
+                fortPart.Tags.Add("Fortification");
 
                 FortificationPart p = new FortificationPart(fortPart);
                 p.MaxHealth = PartHealths[tN];
