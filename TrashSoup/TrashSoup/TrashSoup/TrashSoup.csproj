@@ -144,6 +144,7 @@
     <Compile Include="Gameplay\Safehouse\EnemiesSpawner.cs" />
     <Compile Include="Gameplay\Safehouse\MapSelectionController.cs" />
     <Compile Include="Gameplay\Safehouse\SafehouseController.cs" />
+    <Compile Include="Gameplay\Safehouse\SpawnPoint.cs" />
     <Compile Include="Gameplay\Stairs.cs" />
     <Compile Include="Gameplay\Trash.cs" />
     <Compile Include="Gameplay\DisappearingTrash.cs" />

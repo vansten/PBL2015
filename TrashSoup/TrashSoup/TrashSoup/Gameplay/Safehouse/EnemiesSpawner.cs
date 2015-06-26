@@ -9,8 +9,12 @@ using TrashSoup.Gameplay;
 
 namespace TrashSoup.Gameplay.Safehouse
 {
-    class EnemiesSpawner : ObjectComponent
+    public class EnemiesSpawner : ObjectComponent
     {
+        public List<uint> SpawnPointsIDs = new List<uint>();
+
+        private List<SpawnPoint> spawnPoints = new List<SpawnPoint>();
+
         private uint playerTimerID = 355;
 
         private int lastMinutesSpawn = 30;
@@ -21,6 +25,7 @@ namespace TrashSoup.Gameplay.Safehouse
 
         public EnemiesSpawner(GameObject go) : base(go)
         {
+
         }
 
         public EnemiesSpawner(GameObject go, EnemiesSpawner es) : base(go)
@@ -73,11 +78,8 @@ namespace TrashSoup.Gameplay.Safehouse
         {
             lastMinutesSpawn = this.playerTime.Minutes;
             int rand = SingleRandom.Instance.rnd.Next() % 4 + 1;
-            while (--rand >= 0)
-            {
-                Debug.Log("Spawning enemy");
-                SafehouseController.Instance.EnemiesLeft += 1;
-            }
+            int randomSpawnPoint = SingleRandom.Instance.rnd.Next(spawnPoints.Count);
+            spawnPoints[randomSpawnPoint].SpawnEnemies(rand);
         }
 
         public override void Initialize()
@@ -89,6 +91,12 @@ namespace TrashSoup.Gameplay.Safehouse
                 Spawn();
             }
             SafehouseController.Instance.CanToMapSelection = false;
+
+            foreach(uint id in SpawnPointsIDs)
+            {
+                GameObject go = ResourceManager.Instance.CurrentScene.GetObject(id);
+                spawnPoints.Add((SpawnPoint)go.GetComponent<SpawnPoint>());
+            }
 
             base.Initialize();
         }
@@ -103,6 +111,16 @@ namespace TrashSoup.Gameplay.Safehouse
             reader.MoveToContent();
             reader.ReadStartElement();
 
+            reader.ReadStartElement();
+
+            while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
+            {
+                uint id = (uint)reader.ReadElementContentAsInt("SpawnPoint", "");
+                this.SpawnPointsIDs.Add(id);
+            }
+
+            reader.ReadEndElement();
+            
             base.ReadXml(reader);
 
             reader.ReadEndElement();
@@ -110,6 +128,14 @@ namespace TrashSoup.Gameplay.Safehouse
 
         public override void WriteXml(XmlWriter writer)
         {
+            writer.WriteStartElement("SpawnPointsIDs");
+            foreach (uint id in SpawnPointsIDs)
+            {
+                writer.WriteStartElement("SpawnPoint");
+                writer.WriteValue(id);
+                writer.WriteEndElement();
+            }
+            writer.WriteEndElement();
             base.WriteXml(writer);
         }
     }
