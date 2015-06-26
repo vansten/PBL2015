@@ -52,7 +52,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
 	//////
 	float4 color = float4(0.0f, 0.0f, 0.0f, 1.0f);
-	float depth = (length(LightPos - input.PositionWS.xyz) / 50.0f);
+	float depth = (length(LightPos - input.PositionWS.xyz) / SHADOW_POINT_MAX_DIST);
 	color.r = depth;
 	float dx = ddx(depth);
 	float dy = ddy(depth);

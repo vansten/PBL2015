@@ -290,7 +290,7 @@ namespace TrashSoup.Engine
 
             // loading gameobjects
             GameObject rat = new GameObject(50, "Rat");
-            rat.MyTransform = new Transform(rat, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
+            rat.MyTransform = new Transform(rat, new Vector3(0.0f, 0.0f, 10.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 0.01f);
             CustomModel ratModel = new CustomModel(rat, new Model[] { LoadModel("Models/Enemies/Mutant01"), null, null }, ratMats);
             rat.Components.Add(ratModel);
             Animator ratAnimator = new Animator(rat, ratModel.LODs[0]);

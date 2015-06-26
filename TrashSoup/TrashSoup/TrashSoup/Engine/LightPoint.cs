@@ -13,8 +13,8 @@ namespace TrashSoup.Engine
     {
         #region constants
 
-        const float POINT_CAM_NEAR_PLANE = 1.0f;
-        const float POINT_CAM_FAR_PLANE = 50.0f;
+        const float POINT_CAM_NEAR_PLANE = 0.1f;
+        const float POINT_CAM_FAR_PLANE = 40.0f;
 
         #endregion
 
@@ -162,7 +162,7 @@ namespace TrashSoup.Engine
 
             this.ShadowMapRenderTarget512 = new RenderTargetCube(
                         TrashSoupGame.Instance.GraphicsDevice,
-                        512,
+                        1024,
                         false,
                         SurfaceFormat.Vector2,
                         TrashSoupGame.Instance.GraphicsDevice.PresentationParameters.DepthStencilFormat,
