@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<BehaviorTree>
+  <OwnerID>1646</OwnerID>
+  <Blackboard>
+    <intObjects>
+      <Damage>15</Damage>
+    </intObjects>
+    <floatObjects>
+    </floatObjects>
+    <boolObjects>
+      <TargetSeen>false</TargetSeen>
+      <ShouldTurn>false</ShouldTurn>
+      <Idle>false</Idle>
+    </boolObjects>
+    <vectorObjects>
+      <TargetPosition>0 0 0</TargetPosition>
+    </vectorObjects>
+  </Blackboard>
+  <BTRoot>
+    <Child>
+      <Type>TrashSoup.Engine.AI.BehaviorTree.Selector</Type>
+      <Children>
+        <Type>TrashSoup.Engine.AI.BehaviorTree.Selector</Type>
+        <Children>
+          <Type>TrashSoup.Gameplay.MutantAI.MutantTurn</Type>
+          <Type>TrashSoup.Gameplay.MutantAI.MutantWalk</Type>
+          <Type>TrashSoup.Gameplay.MutantAI.MutantStay</Type>
+        </Children>
+        <Type>TrashSoup.Engine.AI.BehaviorTree.Sequence</Type>
+        <Children>
+          <Type>TrashSoup.Gameplay.MutantAI.MutantChase</Type>
+          <Type>TrashSoup.Gameplay.MutantAI.MutantAttack</Type>
+        </Children>
+      </Children>
+    </Child>
+  </BTRoot>
+</BehaviorTree>
