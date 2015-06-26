@@ -1471,6 +1471,11 @@
       <Processor>TextureProcessor</Processor>
       <ProcessorParameters_PremultiplyAlpha>False</ProcessorParameters_PremultiplyAlpha>
     </Compile>
+    <Compile Include="Models\Enviro\Trash\BigRubble01.FBX">
+      <Name>BigRubble01</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CustomModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Weapons\NoFreePlaceSign\slupek_D.dds">
