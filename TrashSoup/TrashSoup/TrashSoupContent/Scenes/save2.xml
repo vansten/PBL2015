@@ -129,7 +129,7 @@
           <Materials>
             <Name>testSBMat2</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DaytimeChange>
           <MyObjectID>4</MyObjectID>
@@ -27534,7 +27534,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>996</MyObjectID>
@@ -27607,7 +27607,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>997</MyObjectID>
@@ -27680,7 +27680,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>998</MyObjectID>
@@ -27753,7 +27753,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>999</MyObjectID>
@@ -27826,7 +27826,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1000</MyObjectID>
@@ -27899,7 +27899,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1001</MyObjectID>
@@ -27972,7 +27972,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1002</MyObjectID>
@@ -28045,7 +28045,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1003</MyObjectID>
@@ -28118,7 +28118,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1004</MyObjectID>
@@ -28191,7 +28191,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1005</MyObjectID>
@@ -28264,7 +28264,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1007</MyObjectID>
@@ -28337,7 +28337,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1008</MyObjectID>
@@ -28410,7 +28410,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1009</MyObjectID>
@@ -28483,7 +28483,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1010</MyObjectID>
@@ -28556,7 +28556,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1011</MyObjectID>
@@ -28629,7 +28629,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1012</MyObjectID>
@@ -28702,7 +28702,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1013</MyObjectID>
@@ -28775,7 +28775,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1014</MyObjectID>
@@ -28848,7 +28848,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1015</MyObjectID>
@@ -28921,7 +28921,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1016</MyObjectID>
@@ -28994,7 +28994,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1017</MyObjectID>
@@ -29067,7 +29067,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1018</MyObjectID>
@@ -29140,7 +29140,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1019</MyObjectID>
@@ -29213,7 +29213,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1020</MyObjectID>
@@ -29286,7 +29286,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1021</MyObjectID>
@@ -29359,7 +29359,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1022</MyObjectID>
@@ -29432,7 +29432,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1023</MyObjectID>
@@ -29505,7 +29505,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1024</MyObjectID>
@@ -29578,7 +29578,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1025</MyObjectID>
@@ -29651,7 +29651,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1026</MyObjectID>
@@ -29724,7 +29724,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1028</MyObjectID>
@@ -29797,7 +29797,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1029</MyObjectID>
@@ -29870,7 +29870,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1030</MyObjectID>
@@ -29943,7 +29943,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1031</MyObjectID>
@@ -30016,7 +30016,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1032</MyObjectID>
@@ -30089,7 +30089,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1033</MyObjectID>
@@ -30162,7 +30162,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1034</MyObjectID>
@@ -30235,7 +30235,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1035</MyObjectID>
@@ -30308,7 +30308,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1036</MyObjectID>
@@ -30381,7 +30381,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1037</MyObjectID>
@@ -30454,7 +30454,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1038</MyObjectID>
@@ -30527,7 +30527,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1039</MyObjectID>
@@ -30600,7 +30600,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1040</MyObjectID>
@@ -30673,7 +30673,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1041</MyObjectID>
@@ -30746,7 +30746,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1042</MyObjectID>
@@ -30819,7 +30819,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1043</MyObjectID>
@@ -30892,7 +30892,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1044</MyObjectID>
@@ -30965,7 +30965,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1045</MyObjectID>
@@ -31038,7 +31038,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1046</MyObjectID>
@@ -31111,7 +31111,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1047</MyObjectID>
@@ -31184,7 +31184,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1048</MyObjectID>
@@ -31257,7 +31257,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1049</MyObjectID>
@@ -31330,7 +31330,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1050</MyObjectID>
@@ -31403,7 +31403,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1051</MyObjectID>
@@ -31476,7 +31476,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1052</MyObjectID>
@@ -31549,7 +31549,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1053</MyObjectID>
@@ -31622,7 +31622,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1054</MyObjectID>
@@ -31695,7 +31695,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1055</MyObjectID>
@@ -31768,7 +31768,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1056</MyObjectID>
@@ -31841,7 +31841,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1057</MyObjectID>
@@ -31914,7 +31914,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1058</MyObjectID>
@@ -31987,7 +31987,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1059</MyObjectID>
@@ -32060,7 +32060,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1060</MyObjectID>
@@ -32133,7 +32133,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1061</MyObjectID>
@@ -32206,7 +32206,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1062</MyObjectID>
@@ -32279,7 +32279,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1063</MyObjectID>
@@ -32352,7 +32352,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1064</MyObjectID>
@@ -32425,7 +32425,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1065</MyObjectID>
@@ -32498,7 +32498,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1066</MyObjectID>
@@ -32571,7 +32571,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1067</MyObjectID>
@@ -32644,7 +32644,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1068</MyObjectID>
@@ -32717,7 +32717,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1069</MyObjectID>
@@ -32790,7 +32790,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1070</MyObjectID>
@@ -32863,7 +32863,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1071</MyObjectID>
@@ -32936,7 +32936,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1072</MyObjectID>
@@ -33009,7 +33009,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1073</MyObjectID>
@@ -33082,7 +33082,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1074</MyObjectID>
@@ -33155,7 +33155,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1075</MyObjectID>
@@ -33228,7 +33228,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1076</MyObjectID>
@@ -33301,7 +33301,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1077</MyObjectID>
@@ -33374,7 +33374,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1078</MyObjectID>
@@ -33447,7 +33447,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1079</MyObjectID>
@@ -33520,7 +33520,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1080</MyObjectID>
@@ -33593,7 +33593,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1081</MyObjectID>
@@ -33666,7 +33666,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1082</MyObjectID>
@@ -33739,7 +33739,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1083</MyObjectID>
@@ -33812,7 +33812,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1084</MyObjectID>
@@ -33885,7 +33885,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1085</MyObjectID>
@@ -33958,7 +33958,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1086</MyObjectID>
@@ -34031,7 +34031,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1087</MyObjectID>
@@ -34104,7 +34104,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1088</MyObjectID>
@@ -34177,7 +34177,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1089</MyObjectID>
@@ -34250,7 +34250,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1090</MyObjectID>
@@ -34323,7 +34323,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1091</MyObjectID>
@@ -34396,7 +34396,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1092</MyObjectID>
@@ -34469,7 +34469,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1093</MyObjectID>
@@ -34542,7 +34542,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1094</MyObjectID>
@@ -34615,7 +34615,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1095</MyObjectID>
@@ -34688,7 +34688,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1096</MyObjectID>
@@ -34761,7 +34761,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1097</MyObjectID>
@@ -34834,7 +34834,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1099</MyObjectID>
@@ -34907,7 +34907,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1100</MyObjectID>
@@ -34980,7 +34980,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1101</MyObjectID>
@@ -35053,7 +35053,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1102</MyObjectID>
@@ -35126,7 +35126,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1103</MyObjectID>
@@ -35199,7 +35199,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1104</MyObjectID>
@@ -35272,7 +35272,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1105</MyObjectID>
@@ -35345,7 +35345,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1106</MyObjectID>
@@ -35418,7 +35418,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1107</MyObjectID>
@@ -35491,7 +35491,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1108</MyObjectID>
@@ -35564,7 +35564,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1109</MyObjectID>
@@ -35637,7 +35637,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1110</MyObjectID>
@@ -35710,7 +35710,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1111</MyObjectID>
@@ -35783,7 +35783,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1112</MyObjectID>
@@ -35856,7 +35856,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1113</MyObjectID>
@@ -35929,7 +35929,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1114</MyObjectID>
@@ -36002,7 +36002,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1115</MyObjectID>
@@ -36075,7 +36075,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1116</MyObjectID>
@@ -36148,7 +36148,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1117</MyObjectID>
@@ -36221,7 +36221,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1118</MyObjectID>
@@ -36294,7 +36294,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1119</MyObjectID>
@@ -36367,7 +36367,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1120</MyObjectID>
@@ -36440,7 +36440,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1121</MyObjectID>
@@ -36513,7 +36513,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1122</MyObjectID>
@@ -36586,7 +36586,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1123</MyObjectID>
@@ -36659,7 +36659,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1124</MyObjectID>
@@ -36732,7 +36732,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1125</MyObjectID>
@@ -36805,7 +36805,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1126</MyObjectID>
@@ -36878,7 +36878,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1127</MyObjectID>
@@ -36951,7 +36951,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1128</MyObjectID>
@@ -37024,7 +37024,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1129</MyObjectID>
@@ -37097,7 +37097,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1130</MyObjectID>
@@ -37170,7 +37170,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1131</MyObjectID>
@@ -37243,7 +37243,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1132</MyObjectID>
@@ -37316,7 +37316,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1133</MyObjectID>
@@ -37389,7 +37389,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1134</MyObjectID>
@@ -37462,7 +37462,7 @@
           <Materials>
             <Name>kerbMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1135</MyObjectID>
@@ -37670,7 +37670,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1138</MyObjectID>
@@ -37758,7 +37758,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1139</MyObjectID>
@@ -37846,7 +37846,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1140</MyObjectID>
@@ -37934,7 +37934,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1141</MyObjectID>
@@ -38022,7 +38022,7 @@
             <Name>pavementMat</Name>
             <Name>pavementMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1142</MyObjectID>
@@ -38250,7 +38250,7 @@
           <Materials>
             <Name>bigHouse2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1146</MyObjectID>
@@ -38323,7 +38323,7 @@
           <Materials>
             <Name>bigHouse2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1147</MyObjectID>
@@ -38440,7 +38440,7 @@
           <Materials>
             <Name>bigHouse2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1149</MyObjectID>
@@ -38611,7 +38611,7 @@
           <Materials>
             <Name>bigHouse2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1152</MyObjectID>
@@ -38684,7 +38684,7 @@
           <Materials>
             <Name>bigHouse2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1153</MyObjectID>
@@ -38757,7 +38757,7 @@
           <Materials>
             <Name>bigHouse2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1155</MyObjectID>
@@ -38884,7 +38884,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -38938,7 +38938,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -38992,7 +38992,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -39046,7 +39046,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -39100,7 +39100,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -39154,7 +39154,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -39208,7 +39208,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -39262,7 +39262,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -39316,7 +39316,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -39370,7 +39370,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -39424,7 +39424,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -39478,7 +39478,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -39532,7 +39532,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -39586,7 +39586,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -39640,7 +39640,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -39738,7 +39738,7 @@
           <Materials>
             <Name>billboardMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -39792,7 +39792,7 @@
           <Materials>
             <Name>billboardMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -39846,7 +39846,7 @@
           <Materials>
             <Name>billboardMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -39900,7 +39900,7 @@
           <Materials>
             <Name>billboardMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
     </GameObject>
@@ -39944,7 +39944,7 @@
           <Materials>
             <Name>billboardMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
     </GameObject>
@@ -39988,7 +39988,7 @@
           <Materials>
             <Name>billboardMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
     </GameObject>
@@ -40086,7 +40086,7 @@
           <Materials>
             <Name>car1Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -40140,7 +40140,7 @@
           <Materials>
             <Name>car2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -40194,7 +40194,7 @@
           <Materials>
             <Name>car1Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -40248,7 +40248,7 @@
           <Materials>
             <Name>car2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -40302,7 +40302,7 @@
           <Materials>
             <Name>car2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -40356,7 +40356,7 @@
           <Materials>
             <Name>car2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -40410,7 +40410,7 @@
           <Materials>
             <Name>car1Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -40464,7 +40464,7 @@
           <Materials>
             <Name>car1Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -40518,7 +40518,7 @@
           <Materials>
             <Name>car1Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -40572,7 +40572,7 @@
           <Materials>
             <Name>car1Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -40626,7 +40626,7 @@
           <Materials>
             <Name>car1Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -40680,7 +40680,7 @@
           <Materials>
             <Name>car2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -40734,7 +40734,7 @@
           <Materials>
             <Name>car2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -40788,7 +40788,7 @@
           <Materials>
             <Name>car1Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -40842,7 +40842,7 @@
           <Materials>
             <Name>car1Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -40896,7 +40896,7 @@
           <Materials>
             <Name>car1Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -40950,7 +40950,7 @@
           <Materials>
             <Name>car2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -41004,7 +41004,7 @@
           <Materials>
             <Name>car2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -41058,7 +41058,7 @@
           <Materials>
             <Name>car1Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -41106,8 +41106,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
@@ -41160,13 +41160,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -41214,13 +41214,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -41268,13 +41268,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -41322,13 +41322,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -41376,13 +41376,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -41430,13 +41430,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -41484,13 +41484,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -41538,13 +41538,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -41592,13 +41592,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -41646,13 +41646,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -41700,13 +41700,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -41754,13 +41754,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -41808,13 +41808,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -41862,13 +41862,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -41916,13 +41916,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -41970,13 +41970,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -42024,13 +42024,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -42078,13 +42078,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -42132,13 +42132,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -42186,13 +42186,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -42240,13 +42240,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -42294,13 +42294,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -42348,13 +42348,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/TrafficLights</ModelPath>
+            <ModelPath>Models/Enviro/Minor/TrafficLights_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>trafficLightsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -42462,7 +42462,7 @@
           <Materials>
             <Name>cameraMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -42516,7 +42516,7 @@
           <Materials>
             <Name>cameraMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -42570,7 +42570,7 @@
           <Materials>
             <Name>cameraMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -42624,7 +42624,7 @@
           <Materials>
             <Name>cameraMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -42678,7 +42678,7 @@
           <Materials>
             <Name>cameraMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -42732,7 +42732,7 @@
           <Materials>
             <Name>cameraMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -42786,7 +42786,7 @@
           <Materials>
             <Name>cameraMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -42840,7 +42840,7 @@
           <Materials>
             <Name>cameraMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -42894,7 +42894,7 @@
           <Materials>
             <Name>cameraMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -42948,7 +42948,7 @@
           <Materials>
             <Name>cameraMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -43056,7 +43056,7 @@
           <Materials>
             <Name>trashContainer2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -43110,7 +43110,7 @@
           <Materials>
             <Name>trashContainer2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -43164,7 +43164,7 @@
           <Materials>
             <Name>trashContainerMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -43218,7 +43218,7 @@
           <Materials>
             <Name>trashContainer2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -43272,7 +43272,7 @@
           <Materials>
             <Name>trashContainer2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -43326,7 +43326,7 @@
           <Materials>
             <Name>trashContainer2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -43380,7 +43380,7 @@
           <Materials>
             <Name>trashContainer2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -43434,7 +43434,7 @@
           <Materials>
             <Name>trashContainerMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -43488,7 +43488,7 @@
           <Materials>
             <Name>trashContainerMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -43542,7 +43542,7 @@
           <Materials>
             <Name>trashContainer2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -43596,7 +43596,7 @@
           <Materials>
             <Name>trashContainer2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -43650,7 +43650,7 @@
           <Materials>
             <Name>trashContainerMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -43704,7 +43704,7 @@
           <Materials>
             <Name>trashContainerMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -43758,7 +43758,7 @@
           <Materials>
             <Name>trashContainer2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -43812,7 +43812,7 @@
           <Materials>
             <Name>trashContainer2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -43866,7 +43866,7 @@
           <Materials>
             <Name>trashContainerMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -43920,7 +43920,7 @@
           <Materials>
             <Name>trashContainer2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -43968,8 +43968,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/hydrant</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/hydrant</ModelPath>
+            <ModelPath>Models/Enviro/Minor/hydrant_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>hydrantMat</Name>
@@ -44022,13 +44022,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/hydrant</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/hydrant</ModelPath>
+            <ModelPath>Models/Enviro/Minor/hydrant_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>hydrantMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -44076,13 +44076,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/hydrant</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/hydrant</ModelPath>
+            <ModelPath>Models/Enviro/Minor/hydrant_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>hydrantMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -44130,13 +44130,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/hydrant</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/hydrant</ModelPath>
+            <ModelPath>Models/Enviro/Minor/hydrant_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>hydrantMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -44184,13 +44184,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/hydrant</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/hydrant</ModelPath>
+            <ModelPath>Models/Enviro/Minor/hydrant_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>hydrantMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -44238,13 +44238,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/hydrant</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/hydrant</ModelPath>
+            <ModelPath>Models/Enviro/Minor/hydrant_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>hydrantMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -44292,13 +44292,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/hydrant</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/hydrant</ModelPath>
+            <ModelPath>Models/Enviro/Minor/hydrant_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>hydrantMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -44346,13 +44346,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Minor/hydrant</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Minor/hydrant</ModelPath>
+            <ModelPath>Models/Enviro/Minor/hydrant_LOD1</ModelPath>
           </LODs>
           <Materials>
             <Name>hydrantMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -44406,7 +44406,7 @@
           <Materials>
             <Name>trashContainer2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -44518,7 +44518,7 @@
           <Materials>
             <Name>trashBinMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.Trash>
           <TrashCount>1</TrashCount>
@@ -44576,7 +44576,7 @@
           <Materials>
             <Name>trashBinMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.Trash>
           <TrashCount>1</TrashCount>
@@ -44634,7 +44634,7 @@
           <Materials>
             <Name>trashBinMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.Trash>
           <TrashCount>1</TrashCount>
@@ -44692,7 +44692,7 @@
           <Materials>
             <Name>trashBinMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.Trash>
           <TrashCount>1</TrashCount>
@@ -44750,7 +44750,7 @@
           <Materials>
             <Name>trashContainer2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -44804,7 +44804,7 @@
           <Materials>
             <Name>trashBinMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.Trash>
           <TrashCount>1</TrashCount>
@@ -44862,7 +44862,7 @@
           <Materials>
             <Name>trashBinMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.Trash>
           <TrashCount>1</TrashCount>
@@ -44920,7 +44920,7 @@
           <Materials>
             <Name>trashBinMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.Trash>
           <TrashCount>1</TrashCount>
@@ -44978,7 +44978,7 @@
           <Materials>
             <Name>trashBinMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.Trash>
           <TrashCount>1</TrashCount>
@@ -45036,7 +45036,7 @@
           <Materials>
             <Name>trashBinMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.Trash>
           <TrashCount>1</TrashCount>
@@ -45094,7 +45094,7 @@
           <Materials>
             <Name>trashBinMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.Trash>
           <TrashCount>1</TrashCount>
@@ -45152,7 +45152,7 @@
           <Materials>
             <Name>trashBinMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.Trash>
           <TrashCount>1</TrashCount>
@@ -45210,7 +45210,7 @@
           <Materials>
             <Name>trashBinMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.Trash>
           <TrashCount>1</TrashCount>
@@ -45268,7 +45268,7 @@
           <Materials>
             <Name>trashBinMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.Trash>
           <TrashCount>1</TrashCount>
@@ -45326,7 +45326,7 @@
           <Materials>
             <Name>trashBinMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.Trash>
           <TrashCount>1</TrashCount>
@@ -45384,7 +45384,7 @@
           <Materials>
             <Name>trashBinMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.Trash>
           <TrashCount>1</TrashCount>
@@ -45490,7 +45490,7 @@
             <Name>barellMat</Name>
             <Name>streetsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
     </GameObject>
@@ -45885,7 +45885,7 @@
           <Materials>
             <Name>car2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -45939,7 +45939,7 @@
           <Materials>
             <Name>car2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -45993,7 +45993,7 @@
           <Materials>
             <Name>car2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -46180,7 +46180,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_04</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1300</MyObjectID>
@@ -46195,7 +46195,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_03</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>3</TrashCount>
@@ -46254,7 +46254,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1301</MyObjectID>
@@ -46327,7 +46327,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1304</MyObjectID>
@@ -46400,7 +46400,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1305</MyObjectID>
@@ -46473,7 +46473,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1306</MyObjectID>
@@ -46546,7 +46546,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1307</MyObjectID>
@@ -46619,7 +46619,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1308</MyObjectID>
@@ -46692,7 +46692,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1309</MyObjectID>
@@ -46765,7 +46765,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1310</MyObjectID>
@@ -46838,7 +46838,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1311</MyObjectID>
@@ -46911,7 +46911,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1312</MyObjectID>
@@ -46984,7 +46984,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1313</MyObjectID>
@@ -47057,7 +47057,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1314</MyObjectID>
@@ -47130,7 +47130,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1315</MyObjectID>
@@ -47203,7 +47203,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1316</MyObjectID>
@@ -47276,7 +47276,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1317</MyObjectID>
@@ -47349,7 +47349,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1318</MyObjectID>
@@ -47422,7 +47422,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1319</MyObjectID>
@@ -47495,7 +47495,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1320</MyObjectID>
@@ -47568,7 +47568,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1321</MyObjectID>
@@ -47641,7 +47641,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1322</MyObjectID>
@@ -47714,7 +47714,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1323</MyObjectID>
@@ -47786,7 +47786,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1324</MyObjectID>
@@ -47859,7 +47859,7 @@
           <Materials>
             <Name>streetsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1325</MyObjectID>
@@ -47933,7 +47933,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1326</MyObjectID>
@@ -48006,7 +48006,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1328</MyObjectID>
@@ -48079,7 +48079,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1329</MyObjectID>
@@ -48152,7 +48152,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1330</MyObjectID>
@@ -48225,7 +48225,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1331</MyObjectID>
@@ -48298,7 +48298,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1332</MyObjectID>
@@ -48371,7 +48371,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1333</MyObjectID>
@@ -48444,7 +48444,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1334</MyObjectID>
@@ -48517,7 +48517,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1335</MyObjectID>
@@ -48590,7 +48590,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1336</MyObjectID>
@@ -48663,7 +48663,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1337</MyObjectID>
@@ -48736,7 +48736,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1338</MyObjectID>
@@ -48809,7 +48809,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1339</MyObjectID>
@@ -48882,7 +48882,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1340</MyObjectID>
@@ -48955,7 +48955,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1341</MyObjectID>
@@ -49028,7 +49028,7 @@
             <Name>safehouseStairsOldWoodMat</Name>
             <Name>trashMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1342</MyObjectID>
@@ -49154,7 +49154,7 @@
           <Materials>
             <Name>pylonMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -49208,7 +49208,7 @@
           <Materials>
             <Name>pylonMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -49262,7 +49262,7 @@
           <Materials>
             <Name>pylonMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -49316,7 +49316,7 @@
           <Materials>
             <Name>pylonMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -49424,7 +49424,7 @@
           <Materials>
             <Name>barellMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -49478,7 +49478,7 @@
           <Materials>
             <Name>barellMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -49532,7 +49532,7 @@
           <Materials>
             <Name>barellMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -49679,7 +49679,7 @@
           <Materials>
             <Name>bench2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -49733,7 +49733,7 @@
           <Materials>
             <Name>bench2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -49787,7 +49787,7 @@
           <Materials>
             <Name>bench2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -49841,7 +49841,7 @@
           <Materials>
             <Name>bench2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -49895,7 +49895,7 @@
           <Materials>
             <Name>bench2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -49949,7 +49949,7 @@
           <Materials>
             <Name>bench2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -50003,7 +50003,7 @@
           <Materials>
             <Name>bench2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -50057,7 +50057,7 @@
           <Materials>
             <Name>bench2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -50111,7 +50111,7 @@
           <Materials>
             <Name>bench2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -50165,7 +50165,7 @@
           <Materials>
             <Name>bench2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -50219,7 +50219,7 @@
           <Materials>
             <Name>bench2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -50273,7 +50273,7 @@
           <Materials>
             <Name>bench2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -50327,7 +50327,7 @@
           <Materials>
             <Name>bench2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -50381,7 +50381,7 @@
           <Materials>
             <Name>bench2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -50435,7 +50435,7 @@
           <Materials>
             <Name>bench2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -50663,7 +50663,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -50717,7 +50717,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -50815,7 +50815,7 @@
           <Materials>
             <Name>stairsMaterial</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1385</MyObjectID>
@@ -50891,7 +50891,7 @@
           <Materials>
             <Name>stairsMaterial</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1375</MyObjectID>
@@ -50967,7 +50967,7 @@
           <Materials>
             <Name>stairsMaterial</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1376</MyObjectID>
@@ -51043,7 +51043,7 @@
           <Materials>
             <Name>stairsMaterial</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1377</MyObjectID>
@@ -51119,7 +51119,7 @@
           <Materials>
             <Name>stairsMaterial</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1378</MyObjectID>
@@ -51195,7 +51195,7 @@
           <Materials>
             <Name>stairsMaterial</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1379</MyObjectID>
@@ -51691,7 +51691,7 @@
             <Name>metroSignMat</Name>
             <Name>metroGreenPanelsMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -51862,7 +51862,7 @@
           <Materials>
             <Name>garageMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1400</MyObjectID>
@@ -52106,7 +52106,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -52160,7 +52160,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -52214,7 +52214,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -52268,7 +52268,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -52322,7 +52322,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -52376,7 +52376,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -52430,7 +52430,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -52484,7 +52484,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -52538,7 +52538,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -52592,7 +52592,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -52646,7 +52646,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -52700,7 +52700,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -52754,7 +52754,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -52808,7 +52808,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -52862,7 +52862,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -52916,7 +52916,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -52970,7 +52970,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -53024,7 +53024,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -53078,7 +53078,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -53132,7 +53132,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -53186,7 +53186,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -53240,7 +53240,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -53294,7 +53294,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -53348,7 +53348,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -53402,7 +53402,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -53456,7 +53456,7 @@
           <Materials>
             <Name>benchMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -53504,8 +53504,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBigMat</Name>
@@ -53558,13 +53558,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBigMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -53612,13 +53612,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig3</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig3_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig3_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBig3Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -53666,13 +53666,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBigMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -53720,13 +53720,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/bush</ModelPath>
-            <ModelPath>Models/Enviro/Nature/bush</ModelPath>
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/bush_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/bush_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bushMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -53774,13 +53774,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBig2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -53828,13 +53828,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBigMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -53882,13 +53882,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig3</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig3_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig3_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBig3Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -53936,13 +53936,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBig2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -53990,13 +53990,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/bush</ModelPath>
-            <ModelPath>Models/Enviro/Nature/bush</ModelPath>
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/bush_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/bush_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bushMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -54044,13 +54044,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBig2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -54098,13 +54098,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBigMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -54152,13 +54152,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBigMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -54206,13 +54206,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBigMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -54260,13 +54260,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBigMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -54314,13 +54314,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBig2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -54368,13 +54368,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig3</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig3_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig3_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBig3Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -54422,13 +54422,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig3</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig3_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig3_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBig3Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -54476,13 +54476,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBigMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -54530,13 +54530,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBig2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -54584,13 +54584,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBigMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -54638,13 +54638,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/bush</ModelPath>
-            <ModelPath>Models/Enviro/Nature/bush</ModelPath>
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/bush_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/bush_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>bushMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -54692,8 +54692,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
@@ -54746,13 +54746,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -54800,13 +54800,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -54854,13 +54854,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -54908,13 +54908,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -54962,13 +54962,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -55016,13 +55016,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -55070,13 +55070,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -55124,13 +55124,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -55178,13 +55178,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -55232,13 +55232,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -55286,13 +55286,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -55340,13 +55340,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -55394,13 +55394,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -55448,13 +55448,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -55502,13 +55502,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -55556,13 +55556,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -55610,13 +55610,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -55664,13 +55664,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -55718,13 +55718,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -55772,13 +55772,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -55826,13 +55826,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -55880,13 +55880,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -55934,13 +55934,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -55988,13 +55988,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -56042,13 +56042,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -56096,13 +56096,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -56150,13 +56150,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -56204,13 +56204,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -56258,13 +56258,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -56312,13 +56312,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -56366,13 +56366,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -56420,13 +56420,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -56474,13 +56474,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -56528,13 +56528,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -56582,13 +56582,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -56636,13 +56636,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -56690,13 +56690,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -56744,13 +56744,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -56798,13 +56798,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -56852,13 +56852,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -56906,13 +56906,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -56960,13 +56960,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -57014,13 +57014,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -57068,13 +57068,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -57122,13 +57122,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -57176,13 +57176,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -57230,13 +57230,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -57284,13 +57284,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -57338,13 +57338,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -57392,13 +57392,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -57446,13 +57446,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -57500,13 +57500,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -57554,13 +57554,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -57608,13 +57608,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -57662,13 +57662,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -57716,13 +57716,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -57770,13 +57770,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -57824,13 +57824,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -57878,13 +57878,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -57932,13 +57932,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -57986,13 +57986,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -58040,13 +58040,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -58094,13 +58094,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -58148,13 +58148,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -58202,13 +58202,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -58256,13 +58256,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -58310,13 +58310,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -58364,13 +58364,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -58418,13 +58418,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Railing/Railing_1</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Railing/Railing_1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>railingMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -58478,7 +58478,7 @@
           <Materials>
             <Name>car1Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -58532,7 +58532,7 @@
           <Materials>
             <Name>car1Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -58586,7 +58586,7 @@
           <Materials>
             <Name>car2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -58640,7 +58640,7 @@
           <Materials>
             <Name>car1Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -58688,13 +58688,13 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Nature/TreeBig3</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Enviro/Nature/TreeBig3_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Nature/TreeBig3_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>treeBig3Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -58748,7 +58748,7 @@
           <Materials>
             <Name>pylonMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -59039,7 +59039,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_04</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1550</MyObjectID>
@@ -59054,7 +59054,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_03</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>3</TrashCount>
@@ -59115,7 +59115,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_04</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1551</MyObjectID>
@@ -59130,7 +59130,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_03</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>3</TrashCount>
@@ -59191,7 +59191,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_04</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1552</MyObjectID>
@@ -59206,7 +59206,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_03</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>3</TrashCount>
@@ -59267,7 +59267,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_04</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1553</MyObjectID>
@@ -59282,7 +59282,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_03</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>3</TrashCount>
@@ -59343,7 +59343,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_04</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1554</MyObjectID>
@@ -59358,7 +59358,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_03</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>3</TrashCount>
@@ -59419,7 +59419,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_04</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1555</MyObjectID>
@@ -59434,7 +59434,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_03</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>3</TrashCount>
@@ -59495,7 +59495,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_04</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1556</MyObjectID>
@@ -59510,7 +59510,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_03</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>3</TrashCount>
@@ -59571,7 +59571,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_04</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1557</MyObjectID>
@@ -59586,7 +59586,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_03</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>3</TrashCount>
@@ -59647,7 +59647,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_04</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1558</MyObjectID>
@@ -59662,7 +59662,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_03</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>3</TrashCount>
@@ -59723,7 +59723,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_04</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1559</MyObjectID>
@@ -59738,7 +59738,7 @@
             <Name>trash2Mat_02</Name>
             <Name>trash2Mat_03</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.DisappearingTrash>
           <TrashCount>3</TrashCount>
@@ -59823,7 +59823,7 @@
           <Materials>
             <Name>RatMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1560</MyObjectID>
@@ -60204,7 +60204,7 @@
           <Materials>
             <Name>RatMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1565</MyObjectID>
@@ -60544,7 +60544,7 @@
           <Materials>
             <Name>RatMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1569</MyObjectID>
@@ -60884,7 +60884,7 @@
           <Materials>
             <Name>RatMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1573</MyObjectID>
@@ -61251,7 +61251,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -61305,7 +61305,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -61359,7 +61359,7 @@
           <Materials>
             <Name>wallMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -61413,7 +61413,7 @@
           <Materials>
             <Name>billboard2Mat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -61468,7 +61468,7 @@
             <Name>homeSignMat</Name>
             <Name>homeSignMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
       </Components>
       <MyCollider>
@@ -61549,7 +61549,7 @@
           <Materials>
             <Name>RatMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1606</MyObjectID>
@@ -61889,7 +61889,7 @@
           <Materials>
             <Name>RatMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1610</MyObjectID>
@@ -62229,7 +62229,7 @@
           <Materials>
             <Name>RatMat</Name>
           </Materials>
-          <LodControlled>false</LodControlled>
+          <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Engine.Transform>
           <MyObjectID>1614</MyObjectID>
