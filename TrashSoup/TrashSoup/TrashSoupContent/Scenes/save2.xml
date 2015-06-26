@@ -42667,8 +42667,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car1Mat</Name>
@@ -42726,8 +42726,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car1Mat</Name>
@@ -42785,8 +42785,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car2Mat</Name>
@@ -42844,8 +42844,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car1Mat</Name>
@@ -42903,8 +42903,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car2Mat</Name>
@@ -42962,8 +42962,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car2Mat</Name>
@@ -43021,8 +43021,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car2Mat</Name>
@@ -43080,8 +43080,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car1Mat</Name>
@@ -43139,8 +43139,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car1Mat</Name>
@@ -43198,8 +43198,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car1Mat</Name>
@@ -43257,8 +43257,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car1Mat</Name>
@@ -43316,8 +43316,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car1Mat</Name>
@@ -43375,8 +43375,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car2Mat</Name>
@@ -43434,8 +43434,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car2Mat</Name>
@@ -43493,8 +43493,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car1Mat</Name>
@@ -43552,8 +43552,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car1Mat</Name>
@@ -43611,8 +43611,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car1Mat</Name>
@@ -43670,8 +43670,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car2Mat</Name>
@@ -43729,8 +43729,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car2Mat</Name>
@@ -43788,8 +43788,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car1Mat</Name>
@@ -49060,8 +49060,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car2Mat</Name>
@@ -49119,8 +49119,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car2Mat</Name>
@@ -49178,8 +49178,8 @@
           <LODState>LO</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car2Mat</Name>
@@ -61941,8 +61941,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car1Mat</Name>
@@ -62000,8 +62000,8 @@
           <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car1Mat</Name>
@@ -62059,8 +62059,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car2Mat</Name>
@@ -62118,8 +62118,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car1_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car1Mat</Name>
@@ -68023,8 +68023,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car2Mat</Name>
@@ -68082,8 +68082,8 @@
           <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
-            <ModelPath>Models/Enviro/Cars/car2</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD1</ModelPath>
+            <ModelPath>Models/Enviro/Cars/car2_LOD2</ModelPath>
           </LODs>
           <Materials>
             <Name>car2Mat</Name>
