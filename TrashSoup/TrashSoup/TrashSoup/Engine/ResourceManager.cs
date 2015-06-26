@@ -294,7 +294,7 @@ namespace TrashSoup.Engine
             CustomModel ratModel = new CustomModel(rat, new Model[] { LoadModel("Models/Enemies/Mutant01"), null, null }, ratMats);
             rat.Components.Add(ratModel);
             Animator ratAnimator = new Animator(rat, ratModel.LODs[0]);
-            ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], LoadAnimation("Animations/Enemies/Mutant_dying"), "Rat_TAnim"));
+            ratAnimator.AddAnimationClip(LoadAnimationFromModel(ratModel.LODs[0], LoadAnimation("Animations/Enemies/Mutant_attack"), "Rat_TAnim"));
             ratAnimator.AvailableStates.Add("Walk", new AnimatorState("Walk", ratAnimator.GetAnimationPlayer("Rat_TAnim"), AnimatorState.StateType.SINGLE));
             ratAnimator.CurrentState = ratAnimator.AvailableStates["Walk"];
             rat.MyAnimator = ratAnimator;

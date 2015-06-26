@@ -929,7 +929,10 @@ namespace TrashSoup.Engine
             }
 
             DiffuseMap = ResourceManager.Instance.LoadTexture(reader.ReadElementString("DiffusePath", ""));
-            NormalMap = ResourceManager.Instance.LoadTexture(reader.ReadElementString("NormalPath", ""));
+            if(reader.Name == "NormalPath")
+            {
+                NormalMap = ResourceManager.Instance.LoadTexture(reader.ReadElementString("NormalPath", ""));
+            }
             if(reader.Name == "CubePath")
             {
                 CubeMap = ResourceManager.Instance.LoadTextureCube(reader.ReadElementString("CubePath", ""));
