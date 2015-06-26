@@ -180,15 +180,15 @@ namespace TrashSoup
                     f6pressed = false;
                 }
 
-                #region TETIN
+                //#region TETIN
 
-                if (InputManager.Instance.GetKeyboardButtonDown(Keys.T))
-                {
-                    ResourceManager.Instance.CurrentScene.ObjectsDictionary[3].MyTransform.Position = new Vector3(-50.0f, 2.0f, -30.0f);
-                    ResourceManager.Instance.CurrentScene.ObjectsDictionary[3].MyTransform.Update(gameTime);
-                }
+                //if (InputManager.Instance.GetKeyboardButtonDown(Keys.T))
+                //{
+                //    ResourceManager.Instance.CurrentScene.ObjectsDictionary[3].MyTransform.Position = new Vector3(-50.0f, 2.0f, -30.0f);
+                //    ResourceManager.Instance.CurrentScene.ObjectsDictionary[3].MyTransform.Update(gameTime);
+                //}
 
-                #endregion
+                //#endregion
 
                 base.Update(gameTime);
             }

@@ -78,8 +78,11 @@ namespace TrashSoup.Gameplay.Safehouse
         {
             lastMinutesSpawn = this.playerTime.Minutes;
             int rand = SingleRandom.Instance.rnd.Next() % 4 + 1;
-            int randomSpawnPoint = SingleRandom.Instance.rnd.Next(spawnPoints.Count);
-            spawnPoints[randomSpawnPoint].SpawnEnemies(rand);
+            for(int i = 0; i < rand; ++i)
+            {
+                int randomSpawnPoint = SingleRandom.Instance.rnd.Next(spawnPoints.Count);
+                spawnPoints[randomSpawnPoint].SpawnEnemies();
+            }
         }
 
         public override void Initialize()

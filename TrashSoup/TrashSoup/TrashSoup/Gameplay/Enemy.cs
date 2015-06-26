@@ -27,6 +27,8 @@ namespace TrashSoup.Gameplay
         private Vector3 hpBarYOffset = 2.0f * Vector3.Up;
 
         private int stairsTouching;
+
+        public GameObject target;
         #endregion
 
         #region properties
@@ -157,6 +159,35 @@ namespace TrashSoup.Gameplay
         protected override void Start()
         {
             IsDead = false;
+        }
+
+        public void AttackTarget(float damage)
+        {
+            PlayerController pc = (PlayerController)target.GetComponent<PlayerController>();
+            if(pc != null)
+            {
+                pc.DecreaseHealth(damage);
+            }
+            else
+            {
+                if(this.MyObject.Name.Contains("Mutant"))
+                {
+                    damage *= 10;
+                }
+                Fortification f = (Fortification)target.GetComponent<Fortification>();
+                if(f != null)
+                {
+                    f.CurrentHealth -= (uint)damage;
+                }
+                else
+                {
+                    f = (Fortification)target.GetParent().GetComponent<Fortification>();
+                    if(f != null)
+                    {
+                        f.CurrentHealth -= (uint)damage;
+                    }
+                }
+            }
         }
 
         public override System.Xml.Schema.XmlSchema GetSchema()
