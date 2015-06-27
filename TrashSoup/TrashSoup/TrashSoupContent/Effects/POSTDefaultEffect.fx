@@ -10,9 +10,7 @@ float3 ColorAddition;
 float3 ColorMultiplication;
 float3 VignetteColor;
 float2 VignetteRadius;
-
-float ScreenWidth;
-float ScreenHeight;
+float Contrast;
 
 texture ScreenTexture;
 sampler ScreenSampler = sampler_state
@@ -55,9 +53,15 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	float3 vCol = 1.0f / max(dist, 0.0000000000001f) * VignetteColor;
 
 	float4 color = tex2D(ScreenSampler, input.TexCoord);
-	color.r = (color.r * ColorMultiplication.r + ColorAddition.r) * dist + vCol.r;
-	color.g = (color.g * ColorMultiplication.g + ColorAddition.g) * dist + vCol.g;
-	color.b = (color.b * ColorMultiplication.b + ColorAddition.b) * dist + vCol.b;
+	color.r = (color.r * ColorMultiplication.r + ColorAddition.r);
+	color.g = (color.g * ColorMultiplication.g + ColorAddition.g);
+	color.b = (color.b * ColorMultiplication.b + ColorAddition.b);
+
+	color.rgb = ((color.rgb - 0.5f) * max(Contrast, 0.0f)) + 0.5f;
+
+	color.r = color.r * dist + vCol.r;
+	color.g = color.g * dist + vCol.g;
+	color.b = color.b * dist + vCol.b;
 
     return color;
 }

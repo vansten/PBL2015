@@ -15,6 +15,7 @@ namespace TrashSoup.Engine
         private EffectParameter epColorMultiplication;
         private EffectParameter epVignetteColor;
         private EffectParameter epVignetteRadius;
+        private EffectParameter epContrast;
 
         #endregion
 
@@ -24,6 +25,7 @@ namespace TrashSoup.Engine
         public Vector3 ColorMultiplication { get; set; }
         public Vector3 VignetteColor { get; set; }
         public Vector2 VignetteRadius { get; set; }
+        public float Contrast { get; set; }
 
         #endregion
 
@@ -33,8 +35,9 @@ namespace TrashSoup.Engine
         {
             ColorAddition = Vector3.Zero;
             ColorMultiplication = Vector3.One;
-            VignetteColor = Vector3.One;
+            VignetteColor = Vector3.Zero;
             VignetteRadius = new Vector2(0.6f, 0.1f);
+            Contrast = 1.0f;
         }
 
         public override void UpdateEffect()
@@ -43,6 +46,7 @@ namespace TrashSoup.Engine
             epColorMultiplication.SetValue(ColorMultiplication);
             epVignetteColor.SetValue(VignetteColor);
             epVignetteRadius.SetValue(VignetteRadius);
+            epContrast.SetValue(Contrast);
         }
 
         protected override void LoadAssociatedEffect()
@@ -53,6 +57,7 @@ namespace TrashSoup.Engine
             epColorMultiplication = MyEffect.Parameters["ColorMultiplication"];
             epVignetteColor = MyEffect.Parameters["VignetteColor"];
             epVignetteRadius = MyEffect.Parameters["VignetteRadius"];
+            epContrast = MyEffect.Parameters["Contrast"];
         }
 
         #endregion
