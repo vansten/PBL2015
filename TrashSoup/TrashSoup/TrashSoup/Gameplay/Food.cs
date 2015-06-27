@@ -34,6 +34,12 @@ namespace TrashSoup.Gameplay
 
         public override void Initialize()
         {
+            LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, true);
+            lp1.MyTransform = new Transform(lp1, new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
+            lp1.MyCollider = new SphereCollider(lp1, true);
+            lp1.MyPhysicalObject = new PhysicalObject(lp1, 0.0f, 0.0f, false);
+            lp1.SetupShadowRender();
+
             base.Initialize();
         }
 

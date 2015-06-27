@@ -50,6 +50,34 @@ namespace TrashSoup.Engine
             }
         }
 
+        public Vector3 PositionGlobal
+        {
+            get
+            {
+                CalculateWorldMatrix();
+                Vector3 p, s;
+                Quaternion r;
+                worldMatrix.Decompose(out s, out r, out p);
+
+                p.Z = - p.Z;
+
+                return p;
+            }
+        }
+
+        public Vector3 PositionGlobalNoZInverted
+        {
+            get
+            {
+                CalculateWorldMatrix();
+                Vector3 p, s;
+                Quaternion r;
+                worldMatrix.Decompose(out s, out r, out p);
+
+                return p;
+            }
+        }
+
         public Vector3 PreviousPosition
         {
             get
@@ -255,6 +283,8 @@ namespace TrashSoup.Engine
                 Vector3 trans, scl;
                 Quaternion quat;
                 MyObject.MyCarrierSocket.Carrier.MyTransform.GetWorldMatrix().Decompose(out scl, out quat, out trans);
+
+
                 fromSocket = fromSocket * Matrix.CreateFromQuaternion(quat) * Matrix.CreateTranslation(trans);
             }
 
@@ -264,6 +294,12 @@ namespace TrashSoup.Engine
                 Vector3 trans, scl;
                 Quaternion quat;
                 parents.Decompose(out scl, out quat, out trans);
+
+                if(MyObject.GetType() == typeof(LightPoint))
+                {
+                    trans.Z = -trans.Z;
+                }
+
                 parents = Matrix.CreateFromQuaternion(quat) * Matrix.CreateTranslation(trans);
                 secondPreRot = preRotationMatrix;
             }
@@ -280,6 +316,10 @@ namespace TrashSoup.Engine
 
         protected void CalculatePosition(Vector3 value)
         {
+            if(MyObject.GetType() == typeof(LightPoint))
+            {
+                value.Z = -value.Z;
+            }
             Vector3 tmp = this.prevPosition;
             this.positionChangeNormal = value - this.position;
             this.prevPosition = this.position;
@@ -378,7 +418,14 @@ namespace TrashSoup.Engine
             writer.WriteStartElement("Position");
             writer.WriteElementString("X", XmlConvert.ToString(Position.X));
             writer.WriteElementString("Y", XmlConvert.ToString(Position.Y));
-            writer.WriteElementString("Z", XmlConvert.ToString(Position.Z));
+            if(MyObject.GetType() == typeof(LightPoint))
+            {
+                writer.WriteElementString("Z", XmlConvert.ToString(-Position.Z));
+            }
+            else
+            {
+                writer.WriteElementString("Z", XmlConvert.ToString(Position.Z));
+            }
             writer.WriteEndElement();
 
             writer.WriteStartElement("Rotation");

@@ -415,11 +415,14 @@ namespace TrashSoup.Engine
             LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.1f, 0.1f, 0.1f));
             LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(1.0f, 0.9f, 0.8f), new Vector3(1.0f, 0.8f, 0.8f), new Vector3(-1.0f, -1.0f, -1.0f), true);
             LightDirectional ldrn = new LightDirectional(102, "LightDirectional2", new Vector3(0.1f, 0.1f, 0.15f), new Vector3(0.0f, 0.1f, 0.2f), new Vector3(1.0f, 1.0f, 1.0f), true);
-            LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, true);
+            LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, false);
             lp1.MyTransform = new Transform(lp1, new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
             lp1.MyCollider = new SphereCollider(lp1, true);
             lp1.MyPhysicalObject = new PhysicalObject(lp1, 0.0f, 0.0f, false);
+            rat.AddChild(lp1);
             lp1.SetupShadowRender();
+
+            
 
             // loading scene
             CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), new DateTime(2015, 5, 28, 12, 0, 0, 0, new System.Globalization.GregorianCalendar(), DateTimeKind.Unspecified),

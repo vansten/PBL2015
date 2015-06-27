@@ -66,6 +66,7 @@ namespace TrashSoup.Engine
         protected EffectParameter epPointLightAttenuations;
         protected EffectParameter epPointLightCount;
         protected EffectParameter epPoint0ShadowMap;
+        protected EffectParameter epSSA;
 
         protected EffectParameter epEyePosition;
         protected EffectParameter epBoundingFrustum;
@@ -453,11 +454,19 @@ namespace TrashSoup.Engine
                 }
 
                 int pCount = points.Count;
+                if(epSSA != null)
+                    epSSA.SetValue(1.0f);
+
                 for (int i = 0; i < pCount; ++i )
                 {
+                    if (points[i].CastShadows && epSSA != null)
+                    {
+                        epSSA.SetValue(0.0f);
+                    }
+
                     tempPLColors[i] = points[i].LightColor;
                     tempPLSpeculars[i] = points[i].LightSpecularColor;
-                    tempPLPositions[i] = points[i].MyTransform.Position;
+                    tempPLPositions[i] = points[i].MyTransform.PositionGlobal;
                     tempPLAttenuations[i] = points[i].Attenuation;
                 }
 
@@ -639,6 +648,7 @@ namespace TrashSoup.Engine
             epPointLightAttenuations = null;
             epPointLightCount = null;
             epPoint0ShadowMap = null;
+            epSSA = null;
 
             epEyePosition = null;
             epBoundingFrustum = null;
@@ -677,6 +687,7 @@ namespace TrashSoup.Engine
             int l2spec = ("DirLight2SpecularColor").GetHashCode();
             int pDiffs = ("PointLightDiffuseColors").GetHashCode();
             int pSpecs = ("PointLightSpecularColors").GetHashCode();
+            int jebactowszystko = ("ShadowSampleAddition").GetHashCode();
             int pPos = ("PointLightPositions").GetHashCode();
             int pAtts = ("PointLightAttenuations").GetHashCode();
             int pCnt = ("PointLightCount").GetHashCode();
@@ -836,6 +847,10 @@ namespace TrashSoup.Engine
                 else if (pNameHash == p0sm)
                 {
                     epPoint0ShadowMap = p;
+                }
+                else if (pNameHash == jebactowszystko)
+                {
+                    epSSA = p;
                 }
                 else if (pNameHash == eyeP)
                 {
