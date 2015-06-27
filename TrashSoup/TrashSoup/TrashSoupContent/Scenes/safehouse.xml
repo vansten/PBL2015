@@ -421,7 +421,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1153</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/wall</ModelPath>
             <ModelPath />
@@ -2618,7 +2618,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1195</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Bedroom/bed</ModelPath>
             <ModelPath />
@@ -2677,7 +2677,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1198</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/TV</ModelPath>
             <ModelPath />
@@ -2913,7 +2913,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1207</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/TV_table</ModelPath>
             <ModelPath />
@@ -4478,7 +4478,7 @@
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-4.712389</Y>
+          <Y>-6.28318548</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -4810,7 +4810,7 @@
         </TrashSoup.Gameplay.Weapons.Bottle>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1390</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Weapons/Bottle/bottle</ModelPath>
             <ModelPath />
@@ -5015,6 +5015,463 @@
         </CustomScale>
         <CustomOffset>
           <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1634</GameObjectKey>
+      <UniqueID>1634</UniqueID>
+      <Name>Machete (clone)</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>true</Dynamic>
+      <MyTransform>
+        <MyObjectID>1634</MyObjectID>
+        <Position>
+          <X>10000</X>
+          <Y>0</Y>
+          <Z>10000</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>4</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1634</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Weapons/Machete/Machete</ModelPath>
+            <ModelPath>Models/Weapons/Machete/Machete</ModelPath>
+            <ModelPath>Models/Weapons/Machete/Machete</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>macheteMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Gameplay.Weapons.Machete>
+          <MyObjectID>1634</MyObjectID>
+          <Durability>50</Durability>
+          <Damage>25</Damage>
+          <Type>MEDIUM</Type>
+        </TrashSoup.Gameplay.Weapons.Machete>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1634</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+    <GameObjectKey>1635</GameObjectKey>
+      <UniqueID>1635</UniqueID>
+      <Name>Pipe</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>true</Dynamic>
+      <MyTransform>
+        <MyObjectID>1635</MyObjectID>
+        <Position>
+          <X>10000</X>
+          <Y>0</Y>
+          <Z>10000</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>4</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Gameplay.Weapons.Pipe>
+          <MyObjectID>1635</MyObjectID>
+          <Durability>30</Durability>
+          <Damage>20</Damage>
+          <Type>MEDIUM</Type>
+        </TrashSoup.Gameplay.Weapons.Pipe>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1635</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Weapons/Pipe/pipe</ModelPath>
+            <ModelPath>Models/Weapons/Pipe/pipe</ModelPath>
+            <ModelPath>Models/Weapons/Pipe/pipe</ModelPath>
+          </LODs>
+          <Materials>
+            <Name>pipeMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1635</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1636</GameObjectKey>
+      <UniqueID>1636</UniqueID>
+      <Name>Bottle</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1636</MyObjectID>
+        <Position>
+          <X>10000</X>
+          <Y>0</Y>
+          <Z>10000</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>10</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Gameplay.Weapons.Bottle>
+          <MyObjectID>1636</MyObjectID>
+          <Durability>1</Durability>
+          <Damage>35</Damage>
+          <Type>LIGHT</Type>
+        </TrashSoup.Gameplay.Weapons.Bottle>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1636</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Weapons/Bottle/bottle</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>bottleMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1636</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1693</GameObjectKey>
+      <UniqueID>1693</UniqueID>
+      <Name>NoFreePlaceSign</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1693</MyObjectID>
+        <Position>
+          <X>10000</X>
+          <Y>0</Y>
+          <Z>10000</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1.5</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Gameplay.Weapons.NoFreePlaceSign>
+          <MyObjectID>1693</MyObjectID>
+          <Durability>40</Durability>
+          <Damage>35</Damage>
+          <Type>HEAVY</Type>
+        </TrashSoup.Gameplay.Weapons.NoFreePlaceSign>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1693</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Weapons/NoFreePlaceSign/NoFreePlaceSign</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>noFreePlaceSignHead2Mat</Name>
+            <Name>noFreePlaceSignPoleMat</Name>
+            <Name>noFreePlaceSignHeadMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1693</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1694</GameObjectKey>
+      <UniqueID>1694</UniqueID>
+      <Name>Knife</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1694</MyObjectID>
+        <Position>
+          <X>10000</X>
+          <Y>0</Y>
+          <Z>10000</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>4</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1694</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Weapons/Knife/Knife</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>knifeMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Gameplay.Weapons.Knife>
+          <MyObjectID>1694</MyObjectID>
+          <Durability>35</Durability>
+          <Damage>13</Damage>
+          <Type>LIGHT</Type>
+        </TrashSoup.Gameplay.Weapons.Knife>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1694</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1697</GameObjectKey>
+      <UniqueID>1697</UniqueID>
+      <Name>Hammer</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1697</MyObjectID>
+        <Position>
+          <X>10000</X>
+          <Y>0</Y>
+          <Z>10000</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>3</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1697</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Weapons/Maczuga/Mace</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>maceMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Gameplay.Weapons.Hammer>
+          <MyObjectID>1697</MyObjectID>
+          <Durability>2</Durability>
+          <Damage>18</Damage>
+          <Type>HEAVY</Type>
+        </TrashSoup.Gameplay.Weapons.Hammer>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1697</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1699</GameObjectKey>
+      <UniqueID>1699</UniqueID>
+      <Name>Newspaper</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1699</MyObjectID>
+        <Position>
+          <X>10000</X>
+          <Y>0</Y>
+          <Z>10000</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>4</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1699</MyObjectID>
+          <LODState>LO</LODState>
+          <LODs>
+            <ModelPath>Models/Weapons/Newspaper/Newspaper</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>newspaperMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+        <TrashSoup.Gameplay.Weapons.Newspaper>
+          <MyObjectID>1699</MyObjectID>
+          <Durability>20</Durability>
+          <Damage>7</Damage>
+          <Type>LIGHT</Type>
+        </TrashSoup.Gameplay.Weapons.Newspaper>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1699</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>-0.05</X>
           <Y>0</Y>
           <Z>0</Z>
         </CustomOffset>

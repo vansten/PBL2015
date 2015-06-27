@@ -14,6 +14,8 @@ namespace TrashSoup.Engine
         #region variables
         public Scene scene;
         public String XmlPath { get; set; }
+
+        public Action OnLevelBeginLoad;
         #endregion
 
         #region methods
@@ -65,6 +67,11 @@ namespace TrashSoup.Engine
 
         public void LoadFileAction()
         {
+            if(OnLevelBeginLoad != null)
+            {
+                OnLevelBeginLoad();
+            }
+            OnLevelBeginLoad = null;
             ResourceManager.Instance.UnloadContent();
             PhysicsManager.Instance.Reload();
             Debug.Log("Loading file: " + this.XmlPath);
