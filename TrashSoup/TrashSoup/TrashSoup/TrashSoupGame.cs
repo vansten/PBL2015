@@ -220,6 +220,7 @@ namespace TrashSoup
             if (ResourceManager.Instance.ImmediateStop)
                 ResourceManager.Instance.ImmediateStop = false;
 
+            GraphicsDevice.SetRenderTarget(DefaultRenderTarget);
             this.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
@@ -227,6 +228,19 @@ namespace TrashSoup
             {
                 ResourceManager.Instance.CurrentScene.DrawAll(null, null, TempGameTime, true);
             }
+
+            GraphicsDevice.SetRenderTarget(null);
+
+            ResourceManager.Instance.CurrentScene.CurrentPostEffect.UpdateEffect();
+            Effect ef = ResourceManager.Instance.CurrentScene.CurrentPostEffect.MyEffect;
+
+            spriteBatch.Begin(SpriteSortMode.Texture, TrashSoupGame.Instance.GraphicsDevice.BlendState,
+                    TrashSoupGame.Instance.GraphicsDevice.SamplerStates[1], TrashSoupGame.Instance.GraphicsDevice.DepthStencilState,
+                    TrashSoupGame.Instance.GraphicsDevice.RasterizerState, ef);
+
+            spriteBatch.Draw(DefaultRenderTarget, new Rectangle(0, 0, GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight), Color.White);
+
+            spriteBatch.End();
 
             //if(ResourceManager.Instance.ps != null)
            // {
@@ -252,7 +266,8 @@ namespace TrashSoup
 
             GraphicsDevice.SetRenderTarget(null);
 
-            Effect ef = ResourceManager.Instance.LoadEffect(@"Effects\POSTDefaultEffect");
+            ResourceManager.Instance.CurrentScene.CurrentPostEffect.UpdateEffect();
+            Effect ef = ResourceManager.Instance.CurrentScene.CurrentPostEffect.MyEffect;
 
             spriteBatch.Begin(SpriteSortMode.Texture, TrashSoupGame.Instance.GraphicsDevice.BlendState,
                     TrashSoupGame.Instance.GraphicsDevice.SamplerStates[1], TrashSoupGame.Instance.GraphicsDevice.DepthStencilState,

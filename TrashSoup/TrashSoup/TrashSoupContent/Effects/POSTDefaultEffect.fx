@@ -6,6 +6,11 @@
 
 float4x4 WorldViewProj;
 
+float3 ColorAddition;
+float3 ColorMultiplication;
+float3 VignetteColor;
+float2 VignetteRadius;
+
 float ScreenWidth;
 float ScreenHeight;
 
@@ -45,9 +50,9 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 {
 	float4 color = tex2D(ScreenSampler, input.TexCoord);
-	color.r *= 1.0f;
-	color.g *= 1.0f;
-	color.b *= 1.0f;
+	color.r = color.r * ColorMultiplication.r + ColorAddition.r;
+	color.g = color.g * ColorMultiplication.g + ColorAddition.g;
+	color.b = color.b * ColorMultiplication.b + ColorAddition.b;
 
     return color;
 }
