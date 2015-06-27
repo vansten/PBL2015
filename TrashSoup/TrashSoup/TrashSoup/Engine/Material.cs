@@ -457,7 +457,7 @@ namespace TrashSoup.Engine
                 if(epSSA != null)
                     epSSA.SetValue(1.0f);
 
-                for (int i = 0; i < pCount; ++i )
+                for (int i = 0; i < pCount && i < ResourceManager.POINT_MAX_LIGHTS_PER_OBJECT; ++i )
                 {
                     if (points[i].CastShadows && epSSA != null)
                     {

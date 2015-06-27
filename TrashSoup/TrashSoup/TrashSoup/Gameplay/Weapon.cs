@@ -53,6 +53,8 @@ namespace TrashSoup.Gameplay
         private ParticleSystem ps;
         private Cue jeb;
         private CustomModel cModel;
+
+        private LightPoint myPoint;
         #endregion
 
         #region properties
@@ -129,6 +131,25 @@ namespace TrashSoup.Gameplay
 
         public override void Initialize()
         {
+            myPoint = new LightPoint(110, "LightPoint1", Color.Orange.ToVector3(), Color.Orange.ToVector3(), 6.0f, false);
+            MyObject.AddChild(myPoint);
+            myPoint.MyTransform = new Transform(myPoint, new Vector3(0.0f, 0.25f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
+            myPoint.MyCollider = new SphereCollider(myPoint, true);
+            myPoint.MyCollider.CustomScale = new Vector3(5.0f, 0.0f, 0.0f);
+            myPoint.MyPhysicalObject = new PhysicalObject(myPoint, 0.0f, 0.0f, false);
+
+            ResourceManager.Instance.CurrentScene.PointLights.Add(myPoint);
+
+            foreach (GameObject obj in ResourceManager.Instance.CurrentScene.ObjectsDictionary.Values)
+            {
+                if (obj.Name.Contains("Street") && !obj.LightsAffecting.Contains(myPoint)
+                    && Vector3.Distance(MyObject.MyTransform.PositionGlobal, obj.MyTransform.PositionGlobal) <= 20.0f)
+                {
+                    myPoint.AffectedObjects.Add(obj);
+                    obj.LightsAffecting.Add(myPoint);
+                }
+            }
+
             this.player = ResourceManager.Instance.CurrentScene.GetObject(1);
             if(this.player != null)
             {
@@ -182,6 +203,11 @@ namespace TrashSoup.Gameplay
             base.Initialize();
         }
 
+        public void RemoveMyPointLight()
+        {
+            ResourceManager.Instance.CurrentScene.RemovePointLight(myPoint);
+        }
+
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             if (TrashSoupGame.Instance.EditorMode) return;
@@ -214,6 +240,7 @@ namespace TrashSoup.Gameplay
 
             if(disposeBoolHelper && (gameTime.TotalGameTime.TotalMilliseconds - disposeHelper > MS_TO_DISPOSE))
             {
+                ResourceManager.Instance.CurrentScene.RemovePointLight(myPoint);
                 ResourceManager.Instance.CurrentScene.DeleteObjectRuntime(MyObject);
             }
 
