@@ -36,6 +36,7 @@ namespace TrashSoup.Engine
         public Dictionary<string, Effect> Effects = new Dictionary<string, Effect>();
         public Dictionary<string, Material> Materials = new Dictionary<string,Material>();
         public List<Cue> Sounds = new List<Cue>();
+        public Dictionary<string, PostEffect> PostEffects = new Dictionary<string, PostEffect>();
 
         public bool ImmediateStop = false;
         #endregion
@@ -500,6 +501,7 @@ namespace TrashSoup.Engine
             Effects.Clear();
             Sounds.Clear();
             Materials.Clear();
+            PostEffects.Clear();
         }
 
         /// <summary>
@@ -823,6 +825,12 @@ namespace TrashSoup.Engine
             LoadEffect(path);
             path = @"Effects\BillboardEffect";
             LoadEffect(path);
+            path = @"Effects\POSTDefaultEffect";
+            LoadEffect(path);
+
+            DefaultPostEffect dpe = new DefaultPostEffect("Default");
+            dpe.ColorMultiplication = new Vector3(1.1f, 1.1f, 1.1f);
+            PostEffects.Add("Default", dpe);
         }
 
         /// <summary>

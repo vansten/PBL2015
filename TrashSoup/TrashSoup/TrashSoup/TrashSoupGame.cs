@@ -77,6 +77,18 @@ namespace TrashSoup
             {
                 DefaultRenderTarget = null;
             }
+
+            DefaultRenderTarget = new RenderTarget2D(
+                GraphicsDevice,
+                GraphicsDevice.PresentationParameters.BackBufferWidth,
+                GraphicsDevice.PresentationParameters.BackBufferHeight, 
+                false, 
+                SurfaceFormat.Color, 
+                DepthFormat.Depth24Stencil8, 
+                1, 
+                RenderTargetUsage.PreserveContents
+                );
+
             ActualRenderTarget = DefaultRenderTarget;
 
             this.TempGameTime = new GameTime();
@@ -208,6 +220,7 @@ namespace TrashSoup
             if (ResourceManager.Instance.ImmediateStop)
                 ResourceManager.Instance.ImmediateStop = false;
 
+            GraphicsDevice.SetRenderTarget(DefaultRenderTarget);
             this.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
@@ -215,6 +228,19 @@ namespace TrashSoup
             {
                 ResourceManager.Instance.CurrentScene.DrawAll(null, null, TempGameTime, true);
             }
+
+            GraphicsDevice.SetRenderTarget(null);
+
+            ResourceManager.Instance.CurrentScene.CurrentPostEffect.UpdateEffect();
+            Effect ef = ResourceManager.Instance.CurrentScene.CurrentPostEffect.MyEffect;
+
+            spriteBatch.Begin(SpriteSortMode.Texture, TrashSoupGame.Instance.GraphicsDevice.BlendState,
+                    TrashSoupGame.Instance.GraphicsDevice.SamplerStates[1], TrashSoupGame.Instance.GraphicsDevice.DepthStencilState,
+                    TrashSoupGame.Instance.GraphicsDevice.RasterizerState, ef);
+
+            spriteBatch.Draw(DefaultRenderTarget, new Rectangle(0, 0, GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight), Color.White);
+
+            spriteBatch.End();
 
             //if(ResourceManager.Instance.ps != null)
            // {
@@ -229,11 +255,27 @@ namespace TrashSoup
                 ResourceManager.Instance.ImmediateStop = false;
 
             this.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+
+            GraphicsDevice.SetRenderTarget(DefaultRenderTarget);
+
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             ResourceManager.Instance.CurrentScene.DrawAll(null, null, gameTime, true);
 
             base.Draw(gameTime);
+
+            GraphicsDevice.SetRenderTarget(null);
+
+            ResourceManager.Instance.CurrentScene.CurrentPostEffect.UpdateEffect();
+            Effect ef = ResourceManager.Instance.CurrentScene.CurrentPostEffect.MyEffect;
+
+            spriteBatch.Begin(SpriteSortMode.Texture, TrashSoupGame.Instance.GraphicsDevice.BlendState,
+                    TrashSoupGame.Instance.GraphicsDevice.SamplerStates[1], TrashSoupGame.Instance.GraphicsDevice.DepthStencilState,
+                    TrashSoupGame.Instance.GraphicsDevice.RasterizerState, ef);
+
+            spriteBatch.Draw(DefaultRenderTarget, new Rectangle(0, 0, GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight), Color.White);
+
+            spriteBatch.End();
 
             GUIManager.Instance.Render(this.spriteBatch);
         }

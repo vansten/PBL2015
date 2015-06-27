@@ -93,6 +93,7 @@
     <Compile Include="Engine\Billboard.cs" />
     <Compile Include="Engine\BoundingFrustumExtended.cs" />
     <Compile Include="Engine\CollisionEventArgs.cs" />
+    <Compile Include="Engine\DefaultPostEffect.cs" />
     <Compile Include="Engine\EditorCamera.cs" />
     <Compile Include="Engine\Face.cs" />
     <Compile Include="Engine\LightDirectional.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Engine\ParticleSystem.cs" />
     <Compile Include="Engine\PhysicalObject.cs" />
     <Compile Include="Engine\PhysicsManager.cs" />
+    <Compile Include="Engine\PostEffect.cs" />
     <Compile Include="Engine\Raycast.cs" />
     <Compile Include="Engine\SaveManager.cs" />
     <Compile Include="Engine\Simplex.cs" />
