@@ -175,7 +175,7 @@
         <Position>
           <X>12</X>
           <Y>11</Y>
-          <Z>-3</Z>
+          <Z>0</Z>
         </Position>
         <Rotation>
           <X>0</X>
@@ -236,7 +236,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/MainCharacter/MainCharacter</ModelPath>
             <ModelPath />
@@ -362,7 +362,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1152</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Test/box</ModelPath>
             <ModelPath />
@@ -480,7 +480,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1154</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/DoorFrame</ModelPath>
             <ModelPath />
@@ -1832,9 +1832,9 @@
       <MyTransform>
         <MyObjectID>1182</MyObjectID>
         <Position>
-          <X>2.8</X>
-          <Y>1</Y>
-          <Z>14.6</Z>
+          <X>2.80000019</X>
+          <Y>3</Y>
+          <Z>15.6</Z>
         </Position>
         <Rotation>
           <X>0</X>
@@ -1846,19 +1846,19 @@
           <Y>0</Y>
           <Z>-1</Z>
         </Forward>
-        <Scale>1.5</Scale>
+        <Scale>0.001</Scale>
       </MyTransform>
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1182</MyObjectID>
           <LODState>HI</LODState>
           <LODs>
-            <ModelPath>Models/Home/WindowsDoors/wall2</ModelPath>
-            <ModelPath />
-            <ModelPath />
+            <ModelPath>Models/Home/WindowsDoors/broken_wall</ModelPath>
+            <ModelPath>Models/Home/WindowsDoors/broken_wall</ModelPath>
+            <ModelPath>Models/Home/WindowsDoors/broken_wall</ModelPath>
           </LODs>
           <Materials>
-            <Name>safehouseWall2Mat</Name>
+            <Name>safehouseBrokenWallMat</Name>
           </Materials>
           <LodControlled>false</LodControlled>
         </TrashSoup.Engine.CustomModel>
@@ -1868,9 +1868,9 @@
         <MyObjectID>1182</MyObjectID>
         <IsTrigger>false</IsTrigger>
         <CustomScale>
-          <X>1</X>
-          <Y>1</Y>
-          <Z>1</Z>
+          <X>0.001</X>
+          <Y>0.005</Y>
+          <Z>0.02</Z>
         </CustomScale>
         <CustomOffset>
           <X>0</X>
@@ -2128,12 +2128,12 @@
         <MyObjectID>1187</MyObjectID>
         <Position>
           <X>-3.9</X>
-          <Y>1</Y>
-          <Z>15.1</Z>
+          <Y>3</Y>
+          <Z>15.85</Z>
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>3.14</Y>
+          <Y>1.565</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -2141,14 +2141,14 @@
           <Y>0</Y>
           <Z>-1</Z>
         </Forward>
-        <Scale>1.5</Scale>
+        <Scale>0.001</Scale>
       </MyTransform>
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1187</MyObjectID>
           <LODState>HI</LODState>
           <LODs>
-            <ModelPath>Models/Home/Bathroom/bathroomWall</ModelPath>
+            <ModelPath>Models/Home/WindowsDoors/broken_wall</ModelPath>
             <ModelPath />
             <ModelPath />
           </LODs>
@@ -2163,9 +2163,9 @@
         <MyObjectID>1187</MyObjectID>
         <IsTrigger>false</IsTrigger>
         <CustomScale>
-          <X>1</X>
-          <Y>1</Y>
-          <Z>1</Z>
+          <X>0.001</X>
+          <Y>0.005</Y>
+          <Z>0.02</Z>
         </CustomScale>
         <CustomOffset>
           <X>0</X>
@@ -2382,7 +2382,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1191</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/Flor</ModelPath>
             <ModelPath />
@@ -2559,7 +2559,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1194</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Bathroom/Sink</ModelPath>
             <ModelPath />
@@ -2736,7 +2736,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1199</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/fridge</ModelPath>
             <ModelPath />
@@ -2795,7 +2795,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1200</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Bathroom/Toilet</ModelPath>
             <ModelPath />
@@ -2854,7 +2854,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1206</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/couch</ModelPath>
             <ModelPath />
@@ -2973,7 +2973,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1208</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/desk</ModelPath>
             <ModelPath />
@@ -3016,7 +3016,7 @@
         <MyObjectID>1209</MyObjectID>
         <Position>
           <X>1</X>
-          <Y>1.1</Y>
+          <Y>1.02</Y>
           <Z>-8</Z>
         </Position>
         <Rotation>
@@ -3034,7 +3034,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1209</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/carpet</ModelPath>
             <ModelPath />
@@ -3217,7 +3217,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1214</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/window</ModelPath>
             <ModelPath />
@@ -3276,7 +3276,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1215</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/Window_Dirt</ModelPath>
             <ModelPath />
@@ -3372,7 +3372,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1217</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Stairs/stairs_lower</ModelPath>
             <ModelPath />
@@ -4472,13 +4472,13 @@
       <MyTransform>
         <MyObjectID>1629</MyObjectID>
         <Position>
-          <X>15.6</X>
-          <Y>1</Y>
-          <Z>-5</Z>
+          <X>13</X>
+          <Y>1.2</Y>
+          <Z>10</Z>
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>0</Y>
+          <Y>-4.712389</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -4554,7 +4554,8 @@
           <Z>0</Z>
         </CustomOffset>
       </MyCollider>
-    </GameObject><GameObject>
+    </GameObject>
+    <GameObject>
       <GameObjectKey>1630</GameObjectKey>
       <UniqueID>1630</UniqueID>
       <Name>HPBarOutlineMutant1</Name>
@@ -4664,6 +4665,24 @@
         </Forward>
         <Scale>6</Scale>
       </MyTransform>
+      <MyPhysicalObject>
+        <MyObjectID>1632</MyObjectID>
+        <Acceleration>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Acceleration>
+        <Mass>0</Mass>
+        <DragFactor>0</DragFactor>
+        <IsUsingGravity>false</IsUsingGravity>
+        <Velocity>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Velocity>
+        <RotationConstraints>None</RotationConstraints>
+        <PositionConstraints>None</PositionConstraints>
+      </MyPhysicalObject>
       <Components>
         <TrashSoup.Gameplay.MutantTrigger>
           <MyMutantID>1629</MyMutantID>
@@ -5051,7 +5070,7 @@
         <TargetPosition>
           <X>12</X>
           <Y>11</Y>
-          <Z>-3</Z>
+          <Z>0</Z>
         </TargetPosition>
       </TrashSoup.Gameplay.CameraBehaviourComponent>
     </Components>
