@@ -152,11 +152,22 @@ namespace TrashSoup.Engine
             }
 
             List<Material> testMirrorMats = new List<Material>();
+            Material testMirrorMat2 = new MirrorMaterial("testMirrorMat2", this.Effects[@"Effects\NormalEffect"]);
+            testMirrorMats.Add(testMirrorMat2);
+            testMirrorMat2.DiffuseMap = LoadTexture(@"Textures\Home\Furnitures\mirror_D");
+            testMirrorMat2.NormalMap = LoadTexture(@"Textures\Home\Furnitures\mirror_N");
+            testMirrorMat2.Glossiness = 100.0f;
+            testMirrorMat2.ReflectivityBias = 0.0f;
+            if (!this.Materials.ContainsKey(testMirrorMat2.Name))
+            {
+                this.Materials.Add(testMirrorMat2.Name, testMirrorMat2);
+            }
             Material testMirrorMat = new MirrorMaterial("testMirrorMat", this.Effects[@"Effects\MirrorEffect"]);
             testMirrorMats.Add(testMirrorMat);
+            testMirrorMat.DiffuseMap = LoadTexture(@"Textures\Home\Furnitures\mirror_glass");
             testMirrorMat.Glossiness = 100.0f;
-            testMirrorMat.ReflectivityBias = 1.0f;
-            if(!this.Materials.ContainsKey(testMirrorMat.Name))
+            testMirrorMat.ReflectivityBias = 0.0f;
+            if (!this.Materials.ContainsKey(testMirrorMat.Name))
             {
                 this.Materials.Add(testMirrorMat.Name, testMirrorMat);
             }
@@ -358,7 +369,7 @@ namespace TrashSoup.Engine
 
             GameObject testMirror = new GameObject(6, "testMirror");
             testMirror.MyTransform = new Transform(testMirror, new Vector3(-10.0f, 2.0f, -10.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, -MathHelper.PiOver2, 0.0f), 1.0f);
-            testMirror.Components.Add(new CustomModel(testMirror, new Model[] { Models["Models/Test/TestMirror"], null, null }, testMirrorMats));
+            testMirror.Components.Add(new CustomModel(testMirror, new Model[] { LoadModel("Models/Home/Furnitures/mirror"), null, null }, testMirrorMats));
             testMirror.MyCollider = new BoxCollider(testMirror, false);
 
             GameObject testWater = new GameObject(7, "tesWtater");
