@@ -368,7 +368,7 @@ namespace TrashSoup.Engine
             //testBox3.Components.Add(ps);
 
             GameObject testMirror = new GameObject(6, "testMirror");
-            testMirror.MyTransform = new Transform(testMirror, new Vector3(-10.0f, 2.0f, -10.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, -MathHelper.PiOver2, 0.0f), 1.0f);
+            testMirror.MyTransform = new Transform(testMirror, new Vector3(-10.0f, 2.0f, -10.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, -MathHelper.PiOver2, 0.0f), 0.5f);
             testMirror.Components.Add(new CustomModel(testMirror, new Model[] { LoadModel("Models/Home/Furnitures/mirror"), null, null }, testMirrorMats));
             testMirror.MyCollider = new BoxCollider(testMirror, false);
 
