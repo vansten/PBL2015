@@ -13,7 +13,7 @@ namespace TrashSoup.Engine
         #region constants
 
         public const float REFLECTION_BUFFER_SIZE_MULTIPLIER = 0.25f;
-        public const float REFRACTION_BUFFER_SIZE_MULTIPLIER = 1.0f;
+        public const float REFRACTION_BUFFER_SIZE_MULTIPLIER = 0.5f;
 
         #endregion
 

@@ -192,6 +192,7 @@ namespace TrashSoup.Gameplay
                 if(!deathAnimPlayed)
                 {
                     deathAnimPlayed = true;
+                    GameManager.Instance.MovementEnabled = false;
                     this.MyObject.MyAnimator.ChangeState("Death");
                 }
                 return;
@@ -236,6 +237,7 @@ namespace TrashSoup.Gameplay
             {
                 if(equipment.CurrentWeapon.Name != "Fists")
                 {
+                    equipment.CurrentWeapon.TurnMyPointLight(true);
                     equipment.DropWeapon(this.anotherWeapon);
                     equipment.CurrentWeapon = (ResourceManager.Instance.CurrentScene.GetObject(1144).Components.First(x => x.GetType() == typeof(Weapons.Fists)) as Weapon);
                     equipment.PickUpWeapon(ResourceManager.Instance.CurrentScene.GetObject(1144));
@@ -441,6 +443,7 @@ namespace TrashSoup.Gameplay
                     equipment.DropWeapon(this.anotherWeapon);
                 }
                 equipment.CurrentWeapon = this.weapon.Components.First(x => x is Weapon) as Weapon;
+                equipment.CurrentWeapon.TurnMyPointLight(false);
                 AudioManager.Instance.SoundBank.PlayCue("commentary");
                 equipment.PickUpWeapon(this.weapon);
                 this.anotherWeapon = this.weapon;

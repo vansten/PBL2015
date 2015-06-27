@@ -60,7 +60,10 @@ namespace TrashSoup.Gameplay
 
         public void RemoveMyPointLight()
         {
+            if (myPoint == null)
+                return;
             ResourceManager.Instance.CurrentScene.RemovePointLight(myPoint);
+            myPoint = null;
         }
 
         public override void OnTriggerEnter(GameObject other)
