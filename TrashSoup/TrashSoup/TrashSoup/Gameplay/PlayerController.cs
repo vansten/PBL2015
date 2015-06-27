@@ -66,6 +66,8 @@ namespace TrashSoup.Gameplay
 
         private Equipment equipment;
 
+        private PostEffectController pec;
+
         private float hitPoints = MAX_HEALTH;
         private float popularity = 0.0f;
         private float popularityDecreaseSpeed = 3.0f;
@@ -489,6 +491,8 @@ namespace TrashSoup.Gameplay
             {
                 this.damageMultiplier = 1;
             }
+
+            pec.Update(gameTime);
         }
 
         public override void Initialize()
@@ -509,6 +513,9 @@ namespace TrashSoup.Gameplay
             this.myAttackTrigger.MyCollider = new BoxCollider(this.myAttackTrigger, true);
             this.MyObject.AddChild(this.myAttackTrigger);
             ResourceManager.Instance.CurrentScene.AddObjectRuntime(this.myAttackTrigger);
+
+            pec = new PostEffectController(this, (DefaultPostEffect)ResourceManager.Instance.CurrentScene.CurrentPostEffect, MAX_HEALTH, MAX_POPULARITY);
+
             if (!TrashSoupGame.Instance.EditorMode)
             {
                 if (SaveManager.Instance.XmlPath.Contains("save2"))

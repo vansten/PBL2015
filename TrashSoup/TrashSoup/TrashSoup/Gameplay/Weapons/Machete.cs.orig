@@ -31,6 +31,20 @@ namespace TrashSoup.Gameplay.Weapons
             DestroyCueName = "metalHit";
         }
 
+<<<<<<< HEAD
+        public Machete(GameObject go, Machete m) : base(go)
+        {
+            this.durability = m.durability;
+            this.damage = m.damage;
+            this.offsetPosition = m.offsetPosition;
+            this.offsetRotation = m.offsetRotation;
+            this.type = m.type;
+            this.isCraftable = m.isCraftable;
+            this.craftingCost = m.craftingCost;
+            this.name = m.name;
+            this.ParticleTexturePaths = m.ParticleTexturePaths;
+            this.DestroyCueName = m.DestroyCueName;
+=======
         public Machete(GameObject obj, Machete m) : base(obj, m)
         {
             Durability = m.Durability;
@@ -44,6 +58,7 @@ namespace TrashSoup.Gameplay.Weapons
 
             ParticleTexturePaths = m.ParticleTexturePaths;
             DestroyCueName = "metalHit";
+>>>>>>> 8e58d881b1e5d5b9386b8df0dfa6d5d547bc5cde
         }
     }
 }

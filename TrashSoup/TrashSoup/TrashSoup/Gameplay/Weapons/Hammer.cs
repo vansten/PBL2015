@@ -26,5 +26,19 @@ namespace TrashSoup.Gameplay.Weapons
             };
             DestroyCueName = "metalHit";
         }
+
+        public Hammer(GameObject obj, Hammer h) : base(obj, h)
+        {
+            Durability = h.Durability;
+            Damage = h.Damage;
+            OffsetPosition = h.OffsetPosition;
+            OffsetRotation = h.OffsetRotation;
+            Type = WeaponType.HEAVY;
+            IsCraftable = true;
+            CraftingCost = 50;
+            Name = "Hammer";
+            ParticleTexturePaths = h.ParticleTexturePaths;
+            DestroyCueName = "metalHit";
+        }
     }
 }

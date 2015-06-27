@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Material>
+  <Name>stonesMat</Name>
+  <EffectPath>Effects\NormalEffect</EffectPath>
+  <DiffusePath>Textures\Weapons\Stones\stones_blood_D</DiffusePath>
+  <NormalPath>Textures\Weapons\Stones\stones_blood_N</NormalPath>
+  <DiffuseColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </DiffuseColor>
+  <SpecularColor>
+    <X>1</X>
+    <Y>0.8</Y>
+    <Z>0.7</Z>
+  </SpecularColor>
+  <Glossiness>70</Glossiness>
+  <ReflectivityColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </ReflectivityColor>
+  <ReflectivityBias>1</ReflectivityBias>
+  <Transparency>1</Transparency>
+  <PerPixelLighting>false</PerPixelLighting>
+  <ReceiveShadows>true</ReceiveShadows>
+</Material>

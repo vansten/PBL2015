@@ -122,6 +122,11 @@ namespace TrashSoup.Gameplay
         {
         }
 
+        public Weapon(GameObject obj, Weapon w) : base(obj, w)
+        {
+            
+        }
+
         public override void Initialize()
         {
             this.player = ResourceManager.Instance.CurrentScene.GetObject(1);
@@ -187,15 +192,18 @@ namespace TrashSoup.Gameplay
             if(gameTime.TotalGameTime.TotalSeconds - timerOn > 1.5f)
                 isAttacking = false;
 
-            if (pc.Equipment.CurrentWeapon == this && !isCurrent)
+            if (!TrashSoupGame.Instance.EditorMode)
             {
-                pc.MyAttackTriggerComponent.AttackEvent += new PlayerAttackTrigger.AttackEventHandler(OnAttackHandler);
-                isCurrent = true;
-            }
-            else if (pc.Equipment.CurrentWeapon != this && isCurrent)
-            {
-                pc.MyAttackTriggerComponent.AttackEvent -= OnAttackHandler;
-                isCurrent = false;
+                if (pc.Equipment.CurrentWeapon == this && !isCurrent)
+                {
+                    pc.MyAttackTriggerComponent.AttackEvent += new PlayerAttackTrigger.AttackEventHandler(OnAttackHandler);
+                    isCurrent = true;
+                }
+                else if (pc.Equipment.CurrentWeapon != this && isCurrent)
+                {
+                    pc.MyAttackTriggerComponent.AttackEvent -= OnAttackHandler;
+                    isCurrent = false;
+                }   
             }
 
             if(Destroyed && !disposeBoolHelper)

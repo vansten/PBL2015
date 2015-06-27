@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ namespace TrashSoup.Gameplay.Weapons
         {
             Durability = 35;
             Damage = 13;
+            OffsetPosition = new Vector3(0.1f, 0, 0.025f);
+            OffsetRotation = new Vector3(1.0f, -1.0f, 0);
             Type = WeaponType.LIGHT;
             IsCraftable = true;
             CraftingCost = 50;
@@ -22,6 +25,21 @@ namespace TrashSoup.Gameplay.Weapons
                 "Textures/Particles/Particle_metal01",
                 "Textures/Particles/Particle_metal02"
             };
+            DestroyCueName = "metalHit";
+        }
+
+        public Knife(GameObject obj, Knife k) : base(obj, k)
+        {
+            Durability = k.Durability;
+            Damage = k.Damage;
+            OffsetPosition = k.OffsetPosition;
+            OffsetRotation = k.OffsetRotation;
+            Type = WeaponType.LIGHT;
+            IsCraftable = true;
+            CraftingCost = 50;
+            Name = "Knife";
+
+            ParticleTexturePaths = k.ParticleTexturePaths;
             DestroyCueName = "metalHit";
         }
     }

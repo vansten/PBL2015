@@ -137,6 +137,7 @@ namespace TrashSoup.Engine
         public List<LightPoint> PointLights { get; set; }
         public Dictionary<uint, GameObject> ObjectsDictionary { get; set; }
         public QuadTree ObjectsQT { get; set; }
+        public PostEffect CurrentPostEffect { get; set; }
         // place for bounding sphere tree
 
         #endregion
@@ -180,6 +181,10 @@ namespace TrashSoup.Engine
                     (float)TrashSoupGame.Instance.Window.ClientBounds.Height, 0, 0, 1);
 
             ifRenderShadows = true;
+
+            // TEMPORARY!!!!!!!!!!
+            CurrentPostEffect = ResourceManager.Instance.PostEffects["Default"];
+            ///////////////////////////////////
         }
         public Scene(SceneParams par) : this()
         {
