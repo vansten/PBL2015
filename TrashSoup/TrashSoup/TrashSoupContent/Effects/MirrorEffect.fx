@@ -206,7 +206,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
 	ColorPair computedLight = ComputeLight(input.PositionWS.xyz, EyePosition - input.PositionWS.xyz, input.Normal);
 
-	float4 diffColor = (color * float4(DiffuseColor, 1.0f) * float4(computedLight.Diffuse, 1.0f)).rgb;
+	float4 diffColor = (color * float4(DiffuseColor, 1.0f) * float4(computedLight.Diffuse, 1.0f));
 	float4 diffSpec = alpha * float4(computedLight.Specular, 1.0f);
 	float4 refl = (alpha * float4(reflection, 1.0f));
 	color = diffColor + alpha*diffSpec + alpha*refl;
