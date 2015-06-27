@@ -15,6 +15,11 @@ namespace TrashSoup.Gameplay
         {
         }
 
+        public Food(GameObject go, Food f) : base(go, f)
+        {
+            
+        }
+
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
         }
