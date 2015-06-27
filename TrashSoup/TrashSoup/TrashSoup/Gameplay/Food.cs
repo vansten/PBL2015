@@ -10,6 +10,7 @@ namespace TrashSoup.Gameplay
     public class Food : ObjectComponent
     {
         private GameObject myTrigger;
+        private LightPoint myPoint;
 
         public Food(GameObject go) : base(go)
         {
@@ -22,6 +23,7 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
+
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)
@@ -34,13 +36,21 @@ namespace TrashSoup.Gameplay
 
         public override void Initialize()
         {
-            LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, true);
-            lp1.MyTransform = new Transform(lp1, new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
-            lp1.MyCollider = new SphereCollider(lp1, true);
-            lp1.MyPhysicalObject = new PhysicalObject(lp1, 0.0f, 0.0f, false);
-            lp1.SetupShadowRender();
+            myPoint = new LightPoint(110, "LightPoint1", Color.Orange.ToVector3(), Color.Orange.ToVector3(), 6.0f, false);
+            MyObject.AddChild(myPoint);
+            myPoint.MyTransform = new Transform(myPoint, new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
+            myPoint.MyCollider = new SphereCollider(myPoint, true);
+            myPoint.MyCollider.CustomScale = new Vector3(5.0f, 0.0f, 0.0f);
+            myPoint.MyPhysicalObject = new PhysicalObject(myPoint, 0.0f, 0.0f, false);
+
+            ResourceManager.Instance.CurrentScene.PointLights.Add(myPoint);
 
             base.Initialize();
+        }
+
+        public void RemoveMyPointLight()
+        {
+            ResourceManager.Instance.CurrentScene.RemovePointLight(myPoint);
         }
 
         public override void OnTriggerEnter(GameObject other)

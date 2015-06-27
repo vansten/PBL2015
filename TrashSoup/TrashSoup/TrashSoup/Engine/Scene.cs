@@ -451,6 +451,23 @@ namespace TrashSoup.Engine
             return null;
         }
 
+        public void RemovePointLight(LightPoint lp)
+        {
+            if(!PointLights.Contains(lp))
+            {
+                return;
+            }
+
+            foreach(GameObject obj in lp.AffectedObjects)
+            {
+                obj.LightsAffecting.Remove(lp);
+            }
+
+            PointLights.Remove(lp);
+            PhysicsManager.Instance.RemoveCollider(lp.MyCollider);
+            PhysicsManager.Instance.RemovePhysicalObject(lp);
+        }
+
         private void SolveRuntimeAdditions()
         {
             int aCount = runtimeAdded.Count;

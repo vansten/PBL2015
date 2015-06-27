@@ -473,6 +473,7 @@ namespace TrashSoup.Gameplay
                     this.equipment.AddFood();
                     this.FoodSaw = false;
                     this.Food.MyObject.Enabled = false;
+                    this.Food.RemoveMyPointLight();
                     this.Food = null;
                 }
             }
