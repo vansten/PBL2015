@@ -19,9 +19,15 @@ namespace TrashSoup.Gameplay.Safehouse
 
         }
 
+        public SpawnPoint(GameObject go, SpawnPoint sp) : base(go)
+        {
+            this.EnemyID = sp.EnemyID;
+        }
+
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-
+            if (TrashSoupGame.Instance.EditorMode) return;
+            if (enemy == null) return;
             foreach (GameObject go in enemy.GetChildren())
             {
                 go.MyCollider.Enabled = enemy.Enabled;
@@ -42,6 +48,7 @@ namespace TrashSoup.Gameplay.Safehouse
 
         public void SpawnEnemies()
         {
+            if (enemy == null) return;
             if (enemy.Enabled)
             {
                 return;
@@ -57,11 +64,14 @@ namespace TrashSoup.Gameplay.Safehouse
         public override void Initialize()
         {
             enemy = ResourceManager.Instance.CurrentScene.GetObject(EnemyID);
-            enemy.Enabled = false;
-            enemy.Dynamic = true;
-            enemy.MyTransform.Version = Transform.GameVersionEnum.STENGERT_PAGI;
-            enemy.MyTransform.Position = this.MyObject.MyTransform.Position + 0.2f * Vector3.Up;
-            enemy.MyTransform.Version = Transform.GameVersionEnum.PBL;
+            if(enemy != null)
+            {
+                enemy.Enabled = false;
+                enemy.Dynamic = true;
+                enemy.MyTransform.Version = Transform.GameVersionEnum.STENGERT_PAGI;
+                enemy.MyTransform.Position = this.MyObject.MyTransform.Position + 0.2f * Vector3.Up;
+                enemy.MyTransform.Version = Transform.GameVersionEnum.PBL;
+            }
 
             player = ResourceManager.Instance.CurrentScene.GetObject(1);
             base.Initialize();

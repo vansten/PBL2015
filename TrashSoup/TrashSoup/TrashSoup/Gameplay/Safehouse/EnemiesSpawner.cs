@@ -82,6 +82,7 @@ namespace TrashSoup.Gameplay.Safehouse
             {
                 int randomSpawnPoint = SingleRandom.Instance.rnd.Next(spawnPoints.Count);
                 spawnPoints[randomSpawnPoint].SpawnEnemies();
+                SafehouseController.Instance.EnemiesLeft += 1;
             }
         }
 
