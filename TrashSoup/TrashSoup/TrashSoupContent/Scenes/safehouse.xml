@@ -47,12 +47,12 @@
       <Color>
         <R>1</R>
         <G>0.8</G>
-        <B>0.8</B>
+        <B>0.55</B>
       </Color>
       <SpecularColor>
         <R>1</R>
         <G>0.8</G>
-        <B>0.8</B>
+        <B>0.55</B>
       </SpecularColor>
       <Attenuation>30.0000019</Attenuation>
       <UniqueID>110</UniqueID>
@@ -80,6 +80,79 @@
           <Z>0</Z>
         </Forward>
         <Scale>200</Scale>
+      </MyTransform>
+      <MyPhysicalObject>
+        <MyObjectID>110</MyObjectID>
+        <Acceleration>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Acceleration>
+        <Mass>0</Mass>
+        <DragFactor>0</DragFactor>
+        <IsUsingGravity>false</IsUsingGravity>
+        <Velocity>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Velocity>
+        <RotationConstraints>None</RotationConstraints>
+        <PositionConstraints>None</PositionConstraints>
+      </MyPhysicalObject>
+      <MyCollider>
+        <Type>TrashSoup.Engine.SphereCollider</Type>
+        <MyObjectID>110</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </PointLight>
+    <PointLight>
+      <CastShadows>true</CastShadows>
+      <Color>
+        <R>1</R>
+        <G>0.8</G>
+        <B>0.3</B>
+      </Color>
+      <SpecularColor>
+        <R>1</R>
+        <G>0.8</G>
+        <B>0.3</B>
+      </SpecularColor>
+      <Attenuation>14.0000019</Attenuation>
+      <UniqueID>111</UniqueID>
+      <Name>LightPoint2</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>110</MyObjectID>
+        <Position>
+          <X>14.5</X>
+          <Y>3</Y>
+          <Z>10.5</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>1</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>50</Scale>
       </MyTransform>
       <MyPhysicalObject>
         <MyObjectID>110</MyObjectID>
