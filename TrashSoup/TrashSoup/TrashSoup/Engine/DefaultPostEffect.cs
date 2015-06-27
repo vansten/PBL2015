@@ -34,7 +34,7 @@ namespace TrashSoup.Engine
             ColorAddition = Vector3.Zero;
             ColorMultiplication = Vector3.One;
             VignetteColor = Vector3.One;
-            VignetteRadius = new Vector2(0.6f, 0.2f);
+            VignetteRadius = new Vector2(0.6f, 0.1f);
         }
 
         public override void UpdateEffect()

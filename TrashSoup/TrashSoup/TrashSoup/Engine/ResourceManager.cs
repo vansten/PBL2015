@@ -829,7 +829,7 @@ namespace TrashSoup.Engine
             LoadEffect(path);
 
             DefaultPostEffect dpe = new DefaultPostEffect("Default");
-
+            dpe.ColorMultiplication = new Vector3(1.1f, 1.1f, 1.1f);
             PostEffects.Add("Default", dpe);
         }
 

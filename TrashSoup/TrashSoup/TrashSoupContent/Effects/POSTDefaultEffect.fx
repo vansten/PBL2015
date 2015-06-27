@@ -49,10 +49,15 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 
 float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 {
+	float dist = distance(input.TexCoord, float2(0.5f, 0.5f)) * 0.7f;
+	dist = smoothstep(VignetteRadius.x, VignetteRadius.y, dist);
+
+	float3 vCol = 1.0f / max(dist, 0.0000000000001f) * VignetteColor;
+
 	float4 color = tex2D(ScreenSampler, input.TexCoord);
-	color.r = color.r * ColorMultiplication.r + ColorAddition.r;
-	color.g = color.g * ColorMultiplication.g + ColorAddition.g;
-	color.b = color.b * ColorMultiplication.b + ColorAddition.b;
+	color.r = (color.r * ColorMultiplication.r + ColorAddition.r) * dist + vCol.r;
+	color.g = (color.g * ColorMultiplication.g + ColorAddition.g) * dist + vCol.g;
+	color.b = (color.b * ColorMultiplication.b + ColorAddition.b) * dist + vCol.b;
 
     return color;
 }
