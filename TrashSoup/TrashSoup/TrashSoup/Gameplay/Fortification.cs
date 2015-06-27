@@ -417,17 +417,17 @@ namespace TrashSoup.Gameplay
 
             // teting
 
-            if(InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.OemPlus))
-            {
-                CurrentHealth += 10;
-                Debug.Log("Fortification: New Health " + CurrentHealth.ToString());
-            }
+            //if(InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.OemPlus))
+            //{
+            //    CurrentHealth += 10;
+            //    Debug.Log("Fortification: New Health " + CurrentHealth.ToString());
+            //}
 
-            if (InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.OemMinus))
-            {
-                CurrentHealth -= 10;
-                Debug.Log("Fortification: New Health " + CurrentHealth.ToString());
-            }
+            //if (InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.OemMinus))
+            //{
+            //    CurrentHealth -= 10;
+            //    Debug.Log("Fortification: New Health " + CurrentHealth.ToString());
+            //}
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, GameTime gameTime)

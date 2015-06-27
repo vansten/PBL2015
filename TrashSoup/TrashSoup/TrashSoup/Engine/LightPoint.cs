@@ -94,6 +94,7 @@ namespace TrashSoup.Engine
         public LightPoint(uint uniqueID, string name, Vector3 lightColor, Vector3 lightSpecularColor, float attenuation, bool castShadows)
             : this(uniqueID, name)
         {
+            this.AffectedObjects = new List<GameObject>();
             this.LightColor = lightColor;
             this.LightSpecularColor = lightSpecularColor;
             this.Attenuation = attenuation;
@@ -145,7 +146,7 @@ namespace TrashSoup.Engine
         {
             this.Cameras = new Camera[6];
 
-            Vector3 pos = this.MyTransform.Position;
+            Vector3 pos = this.MyTransform.PositionGlobal;
 
             this.Cameras[0] = new Camera(0, "", Vector3.Zero, pos, Vector3.Right, Vector3.Up,
                 MathHelper.PiOver2, 1.0f, POINT_CAM_NEAR_PLANE, POINT_CAM_FAR_PLANE);
@@ -177,7 +178,7 @@ namespace TrashSoup.Engine
         {
             foreach(Camera cam in Cameras)
             {
-                cam.Translation = ((Transform)sender).Position;
+                cam.Translation = ((Transform)sender).PositionGlobal;
                 cam.Update(null);
             }
         }

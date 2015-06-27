@@ -36,6 +36,7 @@ namespace TrashSoup.Engine
         public Dictionary<string, Effect> Effects = new Dictionary<string, Effect>();
         public Dictionary<string, Material> Materials = new Dictionary<string,Material>();
         public List<Cue> Sounds = new List<Cue>();
+        public Dictionary<string, PostEffect> PostEffects = new Dictionary<string, PostEffect>();
 
         public bool ImmediateStop = false;
         #endregion
@@ -302,15 +303,17 @@ namespace TrashSoup.Engine
             rat.MyCollider = new SphereCollider(rat);
             rat.MyPhysicalObject = new PhysicalObject(rat);
 
+            rat.Components.Add(new Food(rat));
+
             GameObject testTer = new GameObject(2, "Terrain");
             testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
             CustomModel terModel = new CustomModel(testTer, new Model[] { Models["Models/Test/TestTerrain"], null, null }, testTerMats);
             terModel.LodControlled = false;
             testTer.Components.Add(terModel);
 
-            GameObject testBox2 = new GameObject(3, "testBox2");
-            testBox2.MyTransform = new Transform(testBox2, new Vector3(5.0f, -10.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
-            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Enviro/Ground/street_cross"], null, null }, deSign));
+            GameObject testBox2 = new GameObject(3, "StreettestBox2");
+            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, -0.1f, 112.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
+            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { LoadModel("Models/Enviro/Ground/street_straight"), null, null }, testPlayerMats));
             //Billboard billboard = new Billboard(testBox2);
             //Material bbmat = new Material("billboard", Effects[@"Effects\BillboardEffect"], LoadTexture(@"Textures\Enviro\Nature\Sun"));
             //billboard.Mat = bbmat;
@@ -414,11 +417,12 @@ namespace TrashSoup.Engine
             LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.1f, 0.1f, 0.1f));
             LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(1.0f, 0.9f, 0.8f), new Vector3(1.0f, 0.8f, 0.8f), new Vector3(-1.0f, -1.0f, -1.0f), true);
             LightDirectional ldrn = new LightDirectional(102, "LightDirectional2", new Vector3(0.1f, 0.1f, 0.15f), new Vector3(0.0f, 0.1f, 0.2f), new Vector3(1.0f, 1.0f, 1.0f), true);
-            LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, true);
-            lp1.MyTransform = new Transform(lp1, new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
-            lp1.MyCollider = new SphereCollider(lp1, true);
-            lp1.MyPhysicalObject = new PhysicalObject(lp1, 0.0f, 0.0f, false);
-            lp1.SetupShadowRender();
+            //LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, false);
+            //lp1.MyTransform = new Transform(lp1, new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
+            //lp1.MyCollider = new SphereCollider(lp1, true);
+            //lp1.MyPhysicalObject = new PhysicalObject(lp1, 0.0f, 0.0f, false);
+            //lp1.SetupShadowRender();
+
 
             // loading scene
             CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), new DateTime(2015, 5, 28, 12, 0, 0, 0, new System.Globalization.GregorianCalendar(), DateTimeKind.Unspecified),
@@ -440,7 +444,7 @@ namespace TrashSoup.Engine
 
             CurrentScene.Cam = cam;
 
-            testTer.LightsAffecting.Add(lp1);
+            //testTer.LightsAffecting.Add(lp1);
 
             // adding items to scene
             //testBox.AddChild(testBox3);
@@ -462,7 +466,7 @@ namespace TrashSoup.Engine
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;
             CurrentScene.DirectionalLights[1] = ldrn;
-            CurrentScene.PointLights.Add(lp1);
+            //CurrentScene.PointLights.Add(lp1);
 
             foreach(GameObject go in this.CurrentScene.ObjectsDictionary.Values)
             {
@@ -500,6 +504,7 @@ namespace TrashSoup.Engine
             Effects.Clear();
             Sounds.Clear();
             Materials.Clear();
+            PostEffects.Clear();
         }
 
         /// <summary>
@@ -823,6 +828,12 @@ namespace TrashSoup.Engine
             LoadEffect(path);
             path = @"Effects\BillboardEffect";
             LoadEffect(path);
+            path = @"Effects\POSTDefaultEffect";
+            LoadEffect(path);
+
+            DefaultPostEffect dpe = new DefaultPostEffect("Default");
+            dpe.ColorMultiplication = new Vector3(1.1f, 1.1f, 1.1f);
+            PostEffects.Add("Default", dpe);
         }
 
         /// <summary>

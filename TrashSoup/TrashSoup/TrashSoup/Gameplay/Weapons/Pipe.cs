@@ -27,5 +27,20 @@ namespace TrashSoup.Gameplay.Weapons
             };
             DestroyCueName = "metalHit";
         }
+
+        public Pipe(GameObject obj, Pipe p) : base(obj, p)
+        {
+            Durability = p.Durability;
+            Damage = p.Damage;
+            OffsetPosition = p.OffsetPosition;
+            OffsetRotation = p.OffsetRotation;
+            Type = WeaponType.MEDIUM;
+            IsCraftable = true;
+            CraftingCost = 40;
+            Name = "Pipe";
+
+            ParticleTexturePaths = p.ParticleTexturePaths;
+            DestroyCueName = "metalHit";
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ namespace TrashSoup.Gameplay.Weapons
         {
             Durability = 40;
             Damage = 35;
+            OffsetPosition = new Vector3(0.05f, 0.2f, 0);
+            OffsetRotation = new Vector3(-1.2f, 0, -1.0f);
             Type = WeaponType.HEAVY;
             IsCraftable = true;
             CraftingCost = 150;

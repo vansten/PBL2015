@@ -247,6 +247,11 @@ namespace TrashSoup.Engine
             this.Sphere = this.initialSphere.Transform(this.worldMatrix);
             this.Radius = this.initialSphere.Radius * MyObject.MyTransform.Scale;
             this.Sphere.Radius = this.Radius * CustomScale.X;
+
+            if(MyObject.GetType() == typeof(LightPoint))
+            {
+                this.Sphere.Center.Z = -this.Sphere.Center.Z;
+            }
         }
 
         public override bool Intersects(Collider col)

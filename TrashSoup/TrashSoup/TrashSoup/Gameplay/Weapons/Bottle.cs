@@ -25,5 +25,19 @@ namespace TrashSoup.Gameplay.Weapons
             };
             DestroyCueName = "glassHit";
         }
+
+        public Bottle(GameObject obj, Bottle b) : base(obj, b)
+        {
+            Durability = b.Durability;
+            Damage = b.Damage;
+            OffsetPosition = b.OffsetPosition;
+            OffsetRotation = b.OffsetRotation;
+            Type = WeaponType.LIGHT;
+            IsCraftable = false;
+            Name = "Bottle";
+
+            ParticleTexturePaths = b.ParticleTexturePaths;
+            DestroyCueName = "glassHit";
+        }
     }
 }

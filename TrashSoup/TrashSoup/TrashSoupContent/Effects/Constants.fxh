@@ -27,6 +27,6 @@
 #define BLUR_OFFSET_2 0.0005f
 #define BLUR_OFFSET_POINT 0.001f
 
-//#define RELEASE
+#define RELEASE
 
 #endif

@@ -36,6 +36,7 @@ float3 PointLightPositions[POINT_MAX_LIGHTS_PER_OBJECT];
 float3 PointLightSpecularColors[POINT_MAX_LIGHTS_PER_OBJECT];
 float PointLightAttenuations[POINT_MAX_LIGHTS_PER_OBJECT];
 uint PointLightCount;
+float ShadowSampleAddition;
 
 float4x3 Bones[SKINNED_EFFECT_MAX_BONES];
 
@@ -326,7 +327,7 @@ inline ColorPair ComputeLightShadows(float3 posWS, float3 E, float3 N, float4 di
 		float3(PointLightSpecularColors[0].x * SpecularColor.x, PointLightSpecularColors[0].y * SpecularColor.y, PointLightSpecularColors[0].z * SpecularColor.z),
 		E, N, temp);
 
-	float shadowP = ShadowContributionPoint(Llength, L, att, theta);
+	float shadowP = ShadowContributionPoint(Llength, L, att, theta) + ShadowSampleAddition;
 
 	temp.Diffuse = temp.Diffuse * att;
 	temp.Diffuse = lerp(0.0f, temp.Diffuse, saturate(shadowP));
