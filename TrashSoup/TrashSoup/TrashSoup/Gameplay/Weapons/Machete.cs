@@ -30,5 +30,20 @@ namespace TrashSoup.Gameplay.Weapons
             };
             DestroyCueName = "metalHit";
         }
+
+        public Machete(GameObject obj, Machete m) : base(obj, m)
+        {
+            Durability = m.Durability;
+            Damage = m.Damage;
+            OffsetPosition = m.OffsetPosition;
+            OffsetRotation = m.OffsetRotation;
+            Type = WeaponType.MEDIUM;
+            IsCraftable = true;
+            CraftingCost = 100;
+            Name = "Machete";
+
+            ParticleTexturePaths = m.ParticleTexturePaths;
+            DestroyCueName = "metalHit";
+        }
     }
 }
