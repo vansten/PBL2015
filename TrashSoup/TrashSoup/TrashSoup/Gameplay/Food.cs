@@ -29,6 +29,12 @@ namespace TrashSoup.Gameplay
 
         public override void Initialize()
         {
+            uint random = (uint)SingleRandom.Instance.rnd.Next();
+            LightPoint lp1 = new LightPoint(random, "FoodPointLight", Color.Orange.ToVector3(), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, false);
+            lp1.MyTransform = new Transform(lp1, this.MyObject.MyTransform.Position + Vector3.Up, new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
+            lp1.MyCollider = new SphereCollider(lp1, true);
+            lp1.MyPhysicalObject = new PhysicalObject(lp1, 0.0f, 0.0f, false);
+            ResourceManager.Instance.CurrentScene.PointLights.Add(lp1);
             base.Initialize();
         }
 

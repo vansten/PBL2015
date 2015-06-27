@@ -179,6 +179,7 @@ namespace TrashSoup.Gameplay
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
+            if (TrashSoupGame.Instance.EditorMode) return;
             if (IsAttacking)
             {
                 ((PlayerController)player.GetComponent<PlayerController>()).Walk.Stop(true);   

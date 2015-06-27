@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 using TrashSoup.Engine;
+using System.IO;
 
 namespace TrashSoup.Gameplay
 {
@@ -508,6 +509,40 @@ namespace TrashSoup.Gameplay
             this.myAttackTrigger.MyCollider = new BoxCollider(this.myAttackTrigger, true);
             this.MyObject.AddChild(this.myAttackTrigger);
             ResourceManager.Instance.CurrentScene.AddObjectRuntime(this.myAttackTrigger);
+            if (!TrashSoupGame.Instance.EditorMode)
+            {
+                if (SaveManager.Instance.XmlPath.Contains("save2"))
+                {
+                    SaveManager.Instance.OnLevelBeginLoad += LevelLoad;
+                }
+                else if (SaveManager.Instance.XmlPath.Contains("safehouse"))
+                {
+                    Type t = typeof(Weapon);
+                    using (StreamReader reader = new StreamReader("weapon.txt"))
+                    {
+                        string s = reader.ReadToEnd();
+                        t = Type.GetType(s);
+                    }
+                    List<ObjectComponent> weaponsOfThisType = ResourceManager.Instance.CurrentScene.GetComponentsOfType(t);
+                    if (weaponsOfThisType != null && weaponsOfThisType.Count > 0)
+                    {
+                        int ind = 0;
+                        float maxDistance = 0.0f;
+                        float currDistance = 0.0f;
+                        foreach (ObjectComponent go in weaponsOfThisType)
+                        {
+                            currDistance = Vector3.Distance(this.MyObject.MyTransform.Position, go.MyObject.MyTransform.Position);
+                            if (currDistance > maxDistance)
+                            {
+                                ind = weaponsOfThisType.IndexOf(go);
+                                maxDistance = currDistance;
+                            }
+                        }
+                        this.Equipment.PickUpWeapon(weaponsOfThisType[ind].MyObject);
+                        this.Equipment.CurrentWeapon = (Weapon)weaponsOfThisType[ind];
+                    }
+                }
+            }
             base.Initialize();
         }
 
@@ -809,6 +844,18 @@ namespace TrashSoup.Gameplay
             }
 
             MyObject.MyAnimator.CurrentState = MyObject.MyAnimator.AvailableStates[currentIdleAnimID];
+        }
+
+        public void LevelLoad()
+        {
+            Debug.Log("SAVING");
+            using (FileStream fs = new FileStream("weapon.txt", FileMode.Create))
+            {
+                using (StreamWriter writer = new StreamWriter(fs))
+                {
+                    writer.Write(this.equipment.CurrentWeapon.GetType());
+                }
+            }
         }
 
         public override System.Xml.Schema.XmlSchema GetSchema()
