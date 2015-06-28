@@ -68,7 +68,10 @@ namespace TrashSoup.Engine
 
         public MirrorMaterial() : base()
         {
-
+            myCamera = new Camera((uint)SingleRandom.Instance.rnd.Next(), "OwnCamera", new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f),
+                new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f), MathHelper.PiOver2, 1.0f,
+                0.1f,
+                2000.0f);
         }
 
         public MirrorMaterial(string name, Effect effect)

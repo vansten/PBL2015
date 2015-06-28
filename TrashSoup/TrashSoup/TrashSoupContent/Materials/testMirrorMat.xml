@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
 <MirrorMaterial>
-  <Name>testMirrorMat</Name>
+  <Name>mirrorGlassMat</Name>
   <EffectPath>Effects\MirrorEffect</EffectPath>
-  <DiffusePath>DefaultDiffuse</DiffusePath>
-  <NormalPath>DefaultNormal</NormalPath>
+  <DiffusePath>Textures\Home\Furnitures\mirror_glass</DiffusePath>
   <DiffuseColor>
     <X>1</X>
     <Y>1</Y>
@@ -14,7 +13,7 @@
     <Y>1</Y>
     <Z>1</Z>
   </SpecularColor>
-  <Glossiness>100</Glossiness>
+  <Glossiness>150</Glossiness>
   <ReflectivityColor>
     <X>1</X>
     <Y>1</Y>
@@ -23,5 +22,5 @@
   <ReflectivityBias>1</ReflectivityBias>
   <Transparency>1</Transparency>
   <PerPixelLighting>false</PerPixelLighting>
-  <ReceiveShadows>false</ReceiveShadows>
+  <ReceiveShadows>true</ReceiveShadows>
 </MirrorMaterial>
