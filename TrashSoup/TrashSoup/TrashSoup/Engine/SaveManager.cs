@@ -54,6 +54,13 @@ namespace TrashSoup.Engine
             if(TrashSoupGame.Instance.EditorMode)
             {
                 this.scene = ResourceManager.Instance.CurrentScene;
+                if (this.scene != null)
+                {
+                    foreach (GameObject obj in this.scene.ObjectsDictionary.Values)
+                    {
+                        obj.Destroy();
+                    }
+                }
             }
             if(scene != null)
             {

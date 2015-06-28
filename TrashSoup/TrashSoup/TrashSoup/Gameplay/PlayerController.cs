@@ -214,7 +214,6 @@ namespace TrashSoup.Gameplay
                     movementVector = -ResourceManager.Instance.CurrentScene.Cam.Right;
 
                 movementVector.Z = -movementVector.Z;
-                Console.Out.WriteLine(movementVector.ToString());
                 this.MyObject.MyTransform.Position += movementVector * (float)gameTime.ElapsedGameTime.TotalMilliseconds * 0.01f;
                 this.MyObject.MyTransform.Version = Transform.GameVersionEnum.PBL;
             }
@@ -426,7 +425,9 @@ namespace TrashSoup.Gameplay
                         if(!dodged && InputHandler.Instance.Dodge())
                         {
                             this.MyObject.MyAnimator.ChangeState("Dodge");
-                            //this.MyObject.MyPhysicalObject.AddForce(-this.MyObject.MyTransform.Forward * 30.0f * this.MyObject.MyPhysicalObject.Mass);
+                            MyObject.MyPhysicalObject.ZeroForce();
+                            MyObject.MyPhysicalObject.Velocity = Vector3.Zero;
+                            this.MyObject.MyPhysicalObject.AddForce(-this.MyObject.MyTransform.Forward * 30.0f * this.MyObject.MyPhysicalObject.Mass);
                             dodged = true;
                         }
                         else if(dodged)

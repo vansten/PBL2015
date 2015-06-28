@@ -3,6 +3,7 @@
   <Name>lightFlareMat</Name>
   <EffectPath>Effects\BillboardEffect</EffectPath>
   <DiffusePath>Textures\Enviro\Nature\Sun</DiffusePath>
+  <NormalPath>DefaultNormal</NormalPath>
   <DiffuseColor>
     <X>1</X>
     <Y>1</Y>
