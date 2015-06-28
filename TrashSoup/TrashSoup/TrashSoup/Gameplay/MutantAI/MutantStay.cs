@@ -15,6 +15,13 @@ namespace TrashSoup.Gameplay.MutantAI
 
         public override Engine.AI.BehaviorTree.TickStatus Tick(Microsoft.Xna.Framework.GameTime gameTime, out Engine.AI.BehaviorTree.INode node)
         {
+            if (this.blackboard.GetBool("Dead"))
+            {
+                node = null;
+                firstTime = true;
+                return TickStatus.FAILURE;
+            }
+
             if (this.blackboard.GetBool("TargetSeen"))
             {
                 firstTime = true;

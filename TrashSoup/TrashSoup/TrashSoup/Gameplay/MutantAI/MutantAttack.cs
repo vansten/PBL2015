@@ -41,6 +41,13 @@ namespace TrashSoup.Gameplay.MutantAI
 
         public override TickStatus Tick(GameTime gameTime, out INode node)
         {
+            if (this.blackboard.GetBool("Dead"))
+            {
+                node = null;
+                firstTime = true;
+                return TickStatus.FAILURE;
+            }
+
             if (!this.blackboard.GetBool("TargetSeen"))
             {
                 firstTime = true;

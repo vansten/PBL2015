@@ -125,6 +125,7 @@ namespace TrashSoup.Gameplay
                 }
                 Debug.Log("Running!");
                 myBehavior.Run();
+                this.MyBlackBoard.SetBool("Dead", false);
             }
             catch
             {
@@ -140,6 +141,7 @@ namespace TrashSoup.Gameplay
         void OnDead()
         {
             this.myBehavior.Stop();
+            this.MyBlackBoard.SetBool("Dead", true);
             this.MyObject.MyAnimator.ChangeState("Die");
             dieCooldown = (float)this.MyObject.MyAnimator.AvailableStates["Die"].Animation.GetDuration().TotalSeconds;
             nextBlinkTime = dieCooldown + 1.0f;
