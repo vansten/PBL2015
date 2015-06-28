@@ -164,7 +164,7 @@ namespace TrashSoup
                 GUIManager.Instance.Update(gameTime);
                 AudioManager.Instance.Update(gameTime);
 
-                PhysicsManager.Instance.CheckForTriggers();
+                //PhysicsManager.Instance.CheckForTriggers();
                 ResourceManager.Instance.CurrentScene.UpdateAll(gameTime);
 
                 //TESTING PARTICLES

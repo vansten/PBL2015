@@ -153,11 +153,22 @@ namespace TrashSoup.Engine
                     {
                         continue;
                     }
-                    else if(col.Intersects(go.MyCollider))
+                    if(col.Intersects(go.MyCollider))
                     {
                         if(col.IsTrigger || go.MyCollider.IsTrigger)
                         {
-                            //Do nothing
+                            if (!go.MyCollider.TriggerReasons.Contains(col))
+                            {
+                                go.MyCollider.TriggerReasons.Add(col);
+                                go.OnTriggerEnter(col.MyObject);
+                                col.TriggerReasons.Add(go.MyCollider);
+                                col.MyObject.OnTriggerEnter(go);
+                            }
+                            else
+                            {
+                                go.OnTrigger(col.MyObject);
+                                col.MyObject.OnTrigger(go);
+                            }
                         }
                         else
                         {
@@ -175,6 +186,20 @@ namespace TrashSoup.Engine
                             col.MyObject.OnCollision(go);
                             go.OnCollision(col.MyObject);
                             return false;
+                        }
+                    }
+                    else
+                    {
+                        if(col.IsTrigger || go.MyCollider.IsTrigger)
+                        {
+                            if (go.MyCollider.TriggerReasons.Contains(col))
+                            {
+                                go.MyCollider.TriggerReasons.Remove(col);
+                                go.OnTriggerExit(col.MyObject);
+
+                                col.TriggerReasons.Remove(go.MyCollider);
+                                col.MyObject.OnTriggerExit(go);
+                            }
                         }
                     }
                 }
