@@ -24,6 +24,8 @@ namespace TrashSoup.Gameplay
         private bool collisionWithPlayer = false;
         private bool journalGathered = false;
 
+        LightPoint myPoint;
+
         public Journal(GameObject go) : base(go)
         {
             
@@ -48,6 +50,7 @@ namespace TrashSoup.Gameplay
                 JournalView jv = new JournalView(go);
                 go.Components.Add(jv);
                 ResourceManager.Instance.CurrentScene.AddObjectRuntime(go);
+                RemoveMyPointLight();
                 this.MyObject.Enabled = false;
             }
         }
@@ -66,7 +69,34 @@ namespace TrashSoup.Gameplay
             this.interactionTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/x_button");
             this.noteTexture = ResourceManager.Instance.LoadTexture(@"Textures/Storyline/note");
 
+            myPoint = new LightPoint(110, "LightPoint1", Color.Blue.ToVector3(), Color.Blue.ToVector3(), 6.0f, false);
+            MyObject.AddChild(myPoint);
+            myPoint.MyTransform = new Transform(myPoint, new Vector3(0.0f, 0.25f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
+            myPoint.MyCollider = new SphereCollider(myPoint, true);
+            myPoint.MyCollider.CustomScale = new Vector3(5.0f, 0.0f, 0.0f);
+            myPoint.MyPhysicalObject = new PhysicalObject(myPoint, 0.0f, 0.0f, false);
+
+            ResourceManager.Instance.CurrentScene.PointLights.Add(myPoint);
+
+            foreach (GameObject obj in ResourceManager.Instance.CurrentScene.ObjectsDictionary.Values)
+            {
+                if (obj.Name.Contains("Street") && !obj.LightsAffecting.Contains(myPoint)
+                    && Vector3.Distance(MyObject.MyTransform.PositionGlobal, obj.MyTransform.PositionGlobal) <= 20.0f)
+                {
+                    myPoint.AffectedObjects.Add(obj);
+                    obj.LightsAffecting.Add(myPoint);
+                }
+            }
+
             base.Initialize();
+        }
+
+        public void RemoveMyPointLight()
+        {
+            if (myPoint == null)
+                return;
+            ResourceManager.Instance.CurrentScene.RemovePointLight(myPoint);
+            myPoint = null;
         }
 
         public override void OnTriggerEnter(GameObject other)

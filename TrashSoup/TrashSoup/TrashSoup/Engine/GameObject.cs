@@ -204,8 +204,6 @@ namespace TrashSoup.Engine
             {
                 this.MyTransform.Initialize();
             }
-
-            //this.drawCollider = this.UniqueID == 1300;
         }
 
         public virtual void Update(GameTime gameTime)

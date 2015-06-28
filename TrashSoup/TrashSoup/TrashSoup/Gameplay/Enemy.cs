@@ -118,6 +118,7 @@ namespace TrashSoup.Gameplay
                     this.hpBarOutline.Enabled = false;
                     deathAnimPlayed = true;
                     OnDead();
+                    Safehouse.SafehouseController.Instance.EnemiesLeft -= 1;
                 }
                 return;
             }

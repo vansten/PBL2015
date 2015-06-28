@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace TrashSoup.Gameplay.Safehouse
             }
             set
             {
-                enemiesLeft = value;
+                enemiesLeft = (int)MathHelper.Clamp(value, 0, int.MaxValue);
                 if(enemiesLeft == 0 && canToMapSelection)
                 {
                     LoadMapSelectMenu();

@@ -152,11 +152,22 @@ namespace TrashSoup.Engine
             }
 
             List<Material> testMirrorMats = new List<Material>();
+            Material testMirrorMat2 = new MirrorMaterial("testMirrorMat2", this.Effects[@"Effects\NormalEffect"]);
+            testMirrorMats.Add(testMirrorMat2);
+            testMirrorMat2.DiffuseMap = LoadTexture(@"Textures\Home\Furnitures\mirror_D");
+            testMirrorMat2.NormalMap = LoadTexture(@"Textures\Home\Furnitures\mirror_N");
+            testMirrorMat2.Glossiness = 100.0f;
+            testMirrorMat2.ReflectivityBias = 0.0f;
+            if (!this.Materials.ContainsKey(testMirrorMat2.Name))
+            {
+                this.Materials.Add(testMirrorMat2.Name, testMirrorMat2);
+            }
             Material testMirrorMat = new MirrorMaterial("testMirrorMat", this.Effects[@"Effects\MirrorEffect"]);
             testMirrorMats.Add(testMirrorMat);
+            testMirrorMat.DiffuseMap = LoadTexture(@"Textures\Home\Furnitures\mirror_glass");
             testMirrorMat.Glossiness = 100.0f;
-            testMirrorMat.ReflectivityBias = 1.0f;
-            if(!this.Materials.ContainsKey(testMirrorMat.Name))
+            testMirrorMat.ReflectivityBias = 0.0f;
+            if (!this.Materials.ContainsKey(testMirrorMat.Name))
             {
                 this.Materials.Add(testMirrorMat.Name, testMirrorMat);
             }
@@ -303,15 +314,17 @@ namespace TrashSoup.Engine
             rat.MyCollider = new SphereCollider(rat);
             rat.MyPhysicalObject = new PhysicalObject(rat);
 
+            rat.Components.Add(new Food(rat));
+
             GameObject testTer = new GameObject(2, "Terrain");
             testTer.MyTransform = new Transform(testTer, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
             CustomModel terModel = new CustomModel(testTer, new Model[] { Models["Models/Test/TestTerrain"], null, null }, testTerMats);
             terModel.LodControlled = false;
             testTer.Components.Add(terModel);
 
-            GameObject testBox2 = new GameObject(3, "testBox2");
-            testBox2.MyTransform = new Transform(testBox2, new Vector3(5.0f, -10.0f, 0.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
-            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { Models["Models/Enviro/Ground/street_cross"], null, null }, deSign));
+            GameObject testBox2 = new GameObject(3, "StreettestBox2");
+            testBox2.MyTransform = new Transform(testBox2, new Vector3(0.0f, -0.1f, 112.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
+            testBox2.Components.Add(new CustomModel(testBox2, new Model[] { LoadModel("Models/Enviro/Ground/street_straight"), null, null }, testPlayerMats));
             //Billboard billboard = new Billboard(testBox2);
             //Material bbmat = new Material("billboard", Effects[@"Effects\BillboardEffect"], LoadTexture(@"Textures\Enviro\Nature\Sun"));
             //billboard.Mat = bbmat;
@@ -355,8 +368,8 @@ namespace TrashSoup.Engine
             //testBox3.Components.Add(ps);
 
             GameObject testMirror = new GameObject(6, "testMirror");
-            testMirror.MyTransform = new Transform(testMirror, new Vector3(-10.0f, 2.0f, -10.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, -MathHelper.PiOver2, 0.0f), 1.0f);
-            testMirror.Components.Add(new CustomModel(testMirror, new Model[] { Models["Models/Test/TestMirror"], null, null }, testMirrorMats));
+            testMirror.MyTransform = new Transform(testMirror, new Vector3(-10.0f, 2.0f, -10.0f), new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, -MathHelper.PiOver2, 0.0f), 0.5f);
+            testMirror.Components.Add(new CustomModel(testMirror, new Model[] { LoadModel("Models/Home/Furnitures/mirror"), null, null }, testMirrorMats));
             testMirror.MyCollider = new BoxCollider(testMirror, false);
 
             GameObject testWater = new GameObject(7, "tesWtater");
@@ -415,11 +428,12 @@ namespace TrashSoup.Engine
             LightAmbient amb = new LightAmbient(100, "LightAmbient", new Vector3(0.1f, 0.1f, 0.1f));
             LightDirectional ldr = new LightDirectional(101, "LightDirectional1", new Vector3(1.0f, 0.9f, 0.8f), new Vector3(1.0f, 0.8f, 0.8f), new Vector3(-1.0f, -1.0f, -1.0f), true);
             LightDirectional ldrn = new LightDirectional(102, "LightDirectional2", new Vector3(0.1f, 0.1f, 0.15f), new Vector3(0.0f, 0.1f, 0.2f), new Vector3(1.0f, 1.0f, 1.0f), true);
-            LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, true);
-            lp1.MyTransform = new Transform(lp1, new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
-            lp1.MyCollider = new SphereCollider(lp1, true);
-            lp1.MyPhysicalObject = new PhysicalObject(lp1, 0.0f, 0.0f, false);
-            lp1.SetupShadowRender();
+            //LightPoint lp1 = new LightPoint(110, "LightPoint1", new Vector3(0.0f, 1.0f, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), 1.0f, false);
+            //lp1.MyTransform = new Transform(lp1, new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), 10.0f);
+            //lp1.MyCollider = new SphereCollider(lp1, true);
+            //lp1.MyPhysicalObject = new PhysicalObject(lp1, 0.0f, 0.0f, false);
+            //lp1.SetupShadowRender();
+
 
             // loading scene
             CurrentScene = new Scene(new SceneParams(0, "test", new Vector2(0.0f, 0.1f), new DateTime(2015, 5, 28, 12, 0, 0, 0, new System.Globalization.GregorianCalendar(), DateTimeKind.Unspecified),
@@ -441,7 +455,7 @@ namespace TrashSoup.Engine
 
             CurrentScene.Cam = cam;
 
-            testTer.LightsAffecting.Add(lp1);
+            //testTer.LightsAffecting.Add(lp1);
 
             // adding items to scene
             //testBox.AddChild(testBox3);
@@ -463,7 +477,7 @@ namespace TrashSoup.Engine
             CurrentScene.AmbientLight = amb;
             CurrentScene.DirectionalLights[0] = ldr;
             CurrentScene.DirectionalLights[1] = ldrn;
-            CurrentScene.PointLights.Add(lp1);
+            //CurrentScene.PointLights.Add(lp1);
 
             foreach(GameObject go in this.CurrentScene.ObjectsDictionary.Values)
             {

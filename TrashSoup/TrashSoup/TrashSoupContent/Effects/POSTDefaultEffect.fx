@@ -59,9 +59,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
 	color.rgb = ((color.rgb - 0.5f) * max(Contrast, 0.0f)) + 0.5f;
 
-	color.r = color.r * dist + vCol.r;
-	color.g = color.g * dist + vCol.g;
-	color.b = color.b * dist + vCol.b;
+	color.rgb = lerp(VignetteColor, color.rgb, dist);
 
     return color;
 }

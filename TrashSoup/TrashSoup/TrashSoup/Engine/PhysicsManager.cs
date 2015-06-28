@@ -136,6 +136,11 @@ namespace TrashSoup.Engine
             {
                 if(col != go.MyCollider && col.MyObject.Enabled && col.Enabled && go.Enabled)
                 {
+                    if(col.Layer == LayerEnum.ENEMY && go.MyCollider.Layer == LayerEnum.ENEMY)
+                    {
+                        Debug.Log("Enemy");
+                        continue;
+                    }
                     if(go.MyCollider.IgnoredColliders.Count > 0 && go.MyCollider.IgnoredColliders.Contains(col))
                     {
                         continue;

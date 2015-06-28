@@ -133,6 +133,7 @@ namespace TrashSoup.Gameplay
             this.myEnemyScript = (Enemy)this.MyObject.GetComponent<Enemy>();
             this.myEnemyScript.OnDead += this.OnDead;
             this.myEnemyScript.ArmorPoints = 5;
+            this.MyObject.MyCollider.Layer = LayerEnum.ENEMY;
             base.Initialize();
         }
 

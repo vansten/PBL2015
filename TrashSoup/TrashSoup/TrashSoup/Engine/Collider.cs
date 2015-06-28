@@ -8,6 +8,12 @@ using System.Xml.Serialization;
 
 namespace TrashSoup.Engine
 {
+    public enum LayerEnum
+    {
+        DEFAULT,
+        ENEMY
+    }
+
     /// <summary>
     /// 
     /// Base class for every colliders we will have
@@ -49,6 +55,8 @@ namespace TrashSoup.Engine
             set;
         }
 
+        public LayerEnum Layer;
+
         public Vector3 CustomScale { get; set; }
         public Vector3 CustomOffset { get; set; }
 
@@ -57,7 +65,7 @@ namespace TrashSoup.Engine
         #region Methods
         public Collider() 
         {
-            
+            Layer = LayerEnum.DEFAULT;
         }
 
         public Collider(GameObject go) : base(go)
@@ -67,6 +75,7 @@ namespace TrashSoup.Engine
             this.IgnoredColliders = new List<Collider>();
             CustomScale = new Vector3(1.0f, 1.0f, 1.0f);
             CustomOffset = Vector3.Zero;
+            Layer = LayerEnum.DEFAULT;
             this.CreateCollider();
         }
 
@@ -78,6 +87,7 @@ namespace TrashSoup.Engine
             this.IgnoredColliders = new List<Collider>();
             CustomScale = new Vector3(1.0f, 1.0f, 1.0f);
             CustomOffset = Vector3.Zero;
+            Layer = LayerEnum.DEFAULT;
             this.CreateCollider();
         }
 
@@ -89,6 +99,7 @@ namespace TrashSoup.Engine
             this.IgnoredColliders = new List<Collider>();
             CustomScale = c.CustomScale;
             CustomOffset = c.CustomOffset;
+            Layer = LayerEnum.DEFAULT;
             this.CreateCollider();
         }
 

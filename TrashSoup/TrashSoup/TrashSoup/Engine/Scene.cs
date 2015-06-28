@@ -302,23 +302,23 @@ namespace TrashSoup.Engine
                 while(objStack.Count > 0)
                 {
                     temp = objStack.Pop();
-                    if (temp.MyAnimator.GetType() == type)
+                    if (temp.MyAnimator != null && temp.MyAnimator.GetType() == type)
                     {
                         ret.Add(temp.MyAnimator);
                     }
-                    if (temp.MyCarrierSocket.GetType() == type)
+                    if (temp.MyCarrierSocket != null && temp.MyCarrierSocket.GetType() == type)
                     {
                         ret.Add(temp.MyCarrierSocket);
                     }
-                    if (temp.MyCollider.GetType() == type)
+                    if (temp.MyCollider != null && temp.MyCollider.GetType() == type)
                     {
                         ret.Add(temp.MyCollider);
                     }
-                    if (temp.MyPhysicalObject.GetType() == type)
+                    if (temp.MyPhysicalObject != null && temp.MyPhysicalObject.GetType() == type)
                     {
                         ret.Add(temp.MyPhysicalObject);
                     }
-                    if (temp.MyTransform.GetType() == type)
+                    if (temp.MyTransform != null && temp.MyTransform.GetType() == type)
                     {
                         ret.Add(temp.MyTransform);
                     }
@@ -449,6 +449,23 @@ namespace TrashSoup.Engine
                 }
             }
             return null;
+        }
+
+        public void RemovePointLight(LightPoint lp)
+        {
+            if(!PointLights.Contains(lp))
+            {
+                return;
+            }
+
+            foreach(GameObject obj in lp.AffectedObjects)
+            {
+                obj.LightsAffecting.Remove(lp);
+            }
+
+            PointLights.Remove(lp);
+            PhysicsManager.Instance.RemoveCollider(lp.MyCollider);
+            PhysicsManager.Instance.RemovePhysicalObject(lp);
         }
 
         private void SolveRuntimeAdditions()

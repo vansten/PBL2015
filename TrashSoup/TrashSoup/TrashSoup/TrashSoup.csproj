@@ -143,6 +143,7 @@
     <Compile Include="Gameplay\MutantTrigger.cs" />
     <Compile Include="Gameplay\MutantTurningTrigger.cs" />
     <Compile Include="Gameplay\PlayerAttackTrigger.cs" />
+    <Compile Include="Gameplay\PostEffectController.cs" />
     <Compile Include="Gameplay\Safehouse\EnemiesSpawner.cs" />
     <Compile Include="Gameplay\Safehouse\MapSelectionController.cs" />
     <Compile Include="Gameplay\Safehouse\SafehouseController.cs" />
