@@ -19,8 +19,8 @@ namespace TrashSoup.Gameplay
         private static Vector2 woundedStateVignetteSize = new Vector2(0.55f, 0.05f);
         private static float woundedStateContrast = 2.0f;
 
-        private static Vector3 boostStateVignetteColor = new Vector3(0.75f, 0.5f, 0.0f);
-        private static Vector2 boostStateVignetteSize = new Vector2(0.5f, 0.05f);
+        private static Vector3 boostStateVignetteColor = new Vector3(0.55f, 0.25f, 0.0f);
+        private static Vector2 boostStateVignetteSize = new Vector2(0.6f, 0.1f);
         private static float boostStateContrast = 1.35f;
 
         private static float woundedBorder = 0.35f;

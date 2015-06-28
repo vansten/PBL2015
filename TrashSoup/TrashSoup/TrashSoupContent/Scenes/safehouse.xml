@@ -4680,7 +4680,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
@@ -6030,7 +6032,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
@@ -6208,7 +6212,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
@@ -6882,7 +6888,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
@@ -7060,7 +7068,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
@@ -7892,7 +7902,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>

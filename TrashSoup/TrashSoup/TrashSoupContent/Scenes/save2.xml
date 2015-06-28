@@ -12845,9 +12845,9 @@
           <LoopMode>NONE</LoopMode>
           <BlendMode>ALPHA</BlendMode>
           <Offset>
-            <X>0.17453292</X>
-            <Y>0.17453292</Y>
-            <Z>0.17453292</Z>
+            <X>0.37453292</X>
+            <Y>0.37453292</Y>
+            <Z>0.37453292</Z>
           </Offset>
           <RandAngle>
             <X>0.143719688</X>
@@ -12903,21 +12903,23 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
-          <FadeInTime>0.5</FadeInTime>
+          <FadeInTime>0.1</FadeInTime>
           <FadeInTimeVariation>0</FadeInTimeVariation>
           <FadeOutTime>0.5</FadeOutTime>
-          <FadeOutTimeVariation>0.5</FadeOutTimeVariation>
-          <Speed>5</Speed>
+          <FadeOutTimeVariation>0.0</FadeOutTimeVariation>
+          <Speed>10</Speed>
           <SpeedVariation>0</SpeedVariation>
           <DelayMs>0</DelayMs>
           <DelayMsVariation>0</DelayMsVariation>
           <Mass>1</Mass>
           <MassVariation>0</MassVariation>
-          <ParticleCount>5</ParticleCount>
+          <ParticleCount>7</ParticleCount>
           <IgnoreScale>true</IgnoreScale>
           <Stopped>true</Stopped>
           <UseGravity>false</UseGravity>
@@ -63529,7 +63531,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
@@ -63862,19 +63866,19 @@
           <MyObjectID>1565</MyObjectID>
         </TrashSoup.Gameplay.Rat>
         <TrashSoup.Engine.ParticleSystem>
-          <MyObjectID>1565</MyObjectID>
+          <MyObjectID>359</MyObjectID>
           <RotationMode>PLAIN</RotationMode>
           <LoopMode>NONE</LoopMode>
           <BlendMode>ALPHA</BlendMode>
           <Offset>
-            <X>0.17453292</X>
-            <Y>0.17453292</Y>
-            <Z>0.17453292</Z>
+            <X>0.37453292</X>
+            <Y>0.37453292</Y>
+            <Z>0.37453292</Z>
           </Offset>
           <RandAngle>
-            <X>0.1711352</X>
-            <Y>0.8638618</Y>
-            <Z>-0.03803615</Z>
+            <X>0.143719688</X>
+            <Y>1.125642</Y>
+            <Z>-0.170230061</Z>
           </RandAngle>
           <Wind>
             <X>0</X>
@@ -63925,21 +63929,23 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
-          <FadeInTime>0.5</FadeInTime>
+          <FadeInTime>0.1</FadeInTime>
           <FadeInTimeVariation>0</FadeInTimeVariation>
           <FadeOutTime>0.5</FadeOutTime>
-          <FadeOutTimeVariation>0.5</FadeOutTimeVariation>
-          <Speed>5</Speed>
+          <FadeOutTimeVariation>0.0</FadeOutTimeVariation>
+          <Speed>10</Speed>
           <SpeedVariation>0</SpeedVariation>
           <DelayMs>0</DelayMs>
           <DelayMsVariation>0</DelayMsVariation>
-          <Mass>0</Mass>
+          <Mass>1</Mass>
           <MassVariation>0</MassVariation>
-          <ParticleCount>5</ParticleCount>
+          <ParticleCount>7</ParticleCount>
           <IgnoreScale>true</IgnoreScale>
           <Stopped>true</Stopped>
           <UseGravity>false</UseGravity>
@@ -64280,7 +64286,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
@@ -64635,7 +64643,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
@@ -65345,7 +65355,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
@@ -65700,7 +65712,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
@@ -66055,7 +66069,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
@@ -67556,7 +67572,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
@@ -68620,7 +68638,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
@@ -69016,7 +69036,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
@@ -69412,7 +69434,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
@@ -69808,7 +69832,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
@@ -70204,7 +70230,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
@@ -70600,7 +70628,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
@@ -70996,7 +71026,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
@@ -71392,7 +71424,9 @@
             <Y>0</Y>
           </ParticleSizeVariation>
           <Textures>
-            <TexturePath>Textures/Particles/Particle_blood01</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood02</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood03</TexturePath>
+            <TexturePath>Textures/Particles/Particle_blood04</TexturePath>
           </Textures>
           <LifeSpanSec>0.5</LifeSpanSec>
           <LifeSpanSecVariation>0</LifeSpanSecVariation>
