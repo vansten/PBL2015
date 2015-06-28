@@ -11,7 +11,7 @@ namespace TrashSoup.Gameplay.Weapons
     {
         public Hammer(GameObject obj) : base(obj)
         {
-            Durability = 2;
+            Durability = 35;
             Damage = 18;
             OffsetPosition = new Vector3(0.1f, 0, 0.05f);
             OffsetRotation = new Vector3(0, 0, -30);

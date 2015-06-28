@@ -213,6 +213,7 @@ namespace TrashSoup.Gameplay
             {
                 this.MyObject.MyTransform.Version = Transform.GameVersionEnum.STENGERT_PAGI;
                 Vector3 movementVector = ResourceManager.Instance.CurrentScene.Cam.Direction;
+                movementVector.Y = 0.0f;
                 
                 if (noclip.Y == -1.0f && noclip.X == 0.0f)
                     movementVector = -movementVector;
@@ -538,6 +539,10 @@ namespace TrashSoup.Gameplay
                 this.damageMultiplier = 1;
             }
 
+            if(InputHandler.Instance.ResetPlayer())
+            {
+                StopOtherState();
+            }
             pec.Update(gameTime);
         }
 

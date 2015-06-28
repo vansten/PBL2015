@@ -86,6 +86,11 @@ namespace TrashSoup.Gameplay
                     }
                 }
             }
+            else if(playerAnim)
+            {
+                playerAnim = false;
+                player.StopOtherState();
+            }
         }
 
         public override void Draw(Camera cam, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.GameTime gameTime)

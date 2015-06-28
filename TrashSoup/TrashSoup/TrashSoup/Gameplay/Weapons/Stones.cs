@@ -11,7 +11,7 @@ namespace TrashSoup.Gameplay.Weapons
     {
         public Stones(GameObject obj):base(obj)
         {
-            Durability = 10;
+            Durability = 5;
             Damage = 10;
             OffsetPosition = new Vector3(0.04f, 0, 0.03f);
             OffsetRotation = new Vector3(0, -60, 0);
