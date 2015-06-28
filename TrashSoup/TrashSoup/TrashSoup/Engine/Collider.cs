@@ -35,6 +35,12 @@ namespace TrashSoup.Engine
             set;
         }
 
+        public bool DoNothing
+        {
+            get;
+            set;
+        }
+
         public Vector3 IntersectionVector
         {
             get;
@@ -66,6 +72,7 @@ namespace TrashSoup.Engine
         public Collider() 
         {
             Layer = LayerEnum.DEFAULT;
+            this.CreateCollider();
         }
 
         public Collider(GameObject go) : base(go)
@@ -130,6 +137,7 @@ namespace TrashSoup.Engine
         /// </summary>
         protected virtual void CreateCollider()
         {
+            DoNothing = false;
             PhysicsManager.Instance.AddCollider(this);
         }
 
@@ -168,6 +176,7 @@ namespace TrashSoup.Engine
             worldMatrix = this.MyObject.MyTransform.GetWorldMatrix();
 
             IsTrigger = reader.ReadElementContentAsBoolean("IsTrigger", "");
+            DoNothing = reader.ReadElementContentAsBoolean("DoNothing", "");
             if (reader.Name == "CustomScale")
             {
                 reader.ReadStartElement();
@@ -195,6 +204,9 @@ namespace TrashSoup.Engine
         {
             base.WriteXml(writer);
             writer.WriteElementString("IsTrigger", XmlConvert.ToString(IsTrigger));
+            writer.WriteStartElement("DoNothing");
+            writer.WriteValue(DoNothing);
+            writer.WriteEndElement();
             writer.WriteStartElement("CustomScale");
             writer.WriteElementString("X", XmlConvert.ToString(CustomScale.X));
             writer.WriteElementString("Y", XmlConvert.ToString(CustomScale.Y));

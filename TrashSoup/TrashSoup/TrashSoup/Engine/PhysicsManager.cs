@@ -89,7 +89,11 @@ namespace TrashSoup.Engine
                 {
                     foreach (Collider col in this.AllColliders)
                     {
-                        if(col.MyObject.Enabled && col.Enabled)
+                        if(col.DoNothing || po.MyCollider.DoNothing)
+                        {
+                            continue;
+                        }
+                        else if(col.MyObject.Enabled && col.Enabled)
                         {
                             if (po.MyCollider.IsTrigger || col.IsTrigger)
                             {

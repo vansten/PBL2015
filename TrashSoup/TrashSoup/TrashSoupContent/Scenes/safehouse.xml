@@ -103,6 +103,7 @@
         <Type>TrashSoup.Engine.SphereCollider</Type>
         <MyObjectID>110</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -176,6 +177,7 @@
         <Type>TrashSoup.Engine.SphereCollider</Type>
         <MyObjectID>111</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -247,7 +249,7 @@
         <MyObjectID>1</MyObjectID>
         <Position>
           <X>12</X>
-          <Y>3</Y>
+          <Y>11</Y>
           <Z>0</Z>
         </Position>
         <Rotation>
@@ -336,6 +338,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -451,6 +454,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1152</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -510,6 +514,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1153</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -613,6 +618,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1155</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -672,6 +678,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1156</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -731,6 +738,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1157</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -790,6 +798,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1158</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -849,6 +858,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1159</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -908,6 +918,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1160</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -967,6 +978,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1161</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -1026,6 +1038,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1163</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -1085,6 +1098,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1165</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -1144,6 +1158,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1166</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -1203,6 +1218,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1167</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -1262,6 +1278,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1168</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -1321,6 +1338,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1169</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -1424,6 +1442,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1172</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -1483,6 +1502,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1173</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -1586,6 +1606,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1175</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -1645,6 +1666,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1176</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -1704,6 +1726,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1177</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -1763,6 +1786,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1179</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -1822,6 +1846,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1180</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -1881,6 +1906,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1181</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -1940,6 +1966,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1182</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>0.001</X>
           <Y>0.005</Y>
@@ -1999,6 +2026,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1183</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -2058,6 +2086,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1184</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -2117,6 +2146,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1185</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -2176,6 +2206,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1186</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -2235,6 +2266,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1187</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>0.001</X>
           <Y>0.005</Y>
@@ -2294,6 +2326,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1188</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -2353,6 +2386,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1189</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -2412,6 +2446,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1190</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -2471,6 +2506,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1191</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -2530,6 +2566,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1192</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -2589,6 +2626,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1193</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -2648,6 +2686,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1194</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -2707,6 +2746,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1195</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>2</X>
           <Y>0.2</Y>
@@ -2766,6 +2806,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1198</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -2825,6 +2866,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1199</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -2884,6 +2926,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1200</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -2943,6 +2986,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1206</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -3003,6 +3047,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1207</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -3064,6 +3109,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1208</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -3123,6 +3169,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1209</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -3306,6 +3353,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1214</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -3365,6 +3413,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1215</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -3468,6 +3517,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1217</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -3529,6 +3579,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1218</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -3588,6 +3639,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1222</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -3647,6 +3699,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1223</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -3706,6 +3759,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1224</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -3765,6 +3819,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1225</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -3824,6 +3879,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1226</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -3883,6 +3939,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1227</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -3942,6 +3999,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1228</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -4001,6 +4059,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1229</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -4060,6 +4119,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1230</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -4119,6 +4179,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1619</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -4178,6 +4239,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1620</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -4237,6 +4299,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1621</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -4296,6 +4359,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1622</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -4526,6 +4590,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1628</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>150</Y>
@@ -4556,7 +4621,7 @@
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-3.14159322</Y>
+          <Y>-4.71238947</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -4706,6 +4771,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1629</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -4856,6 +4922,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1632</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -4924,6 +4991,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1633</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>2</X>
           <Y>1</Y>
@@ -4989,6 +5057,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1390</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -5041,6 +5110,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1144</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -5106,6 +5176,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1137</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -5171,6 +5242,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1136</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -5236,6 +5308,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1634</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -5301,6 +5374,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1635</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -5366,6 +5440,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1636</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -5433,6 +5508,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1693</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -5498,6 +5574,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1694</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -5563,6 +5640,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1697</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -5628,6 +5706,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1699</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -5678,6 +5757,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1700</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1000</Y>
@@ -5728,6 +5808,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1701</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1000</Y>
@@ -5778,6 +5859,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1702</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1000</Y>
@@ -5828,6 +5910,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1703</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1000</Y>
@@ -5878,6 +5961,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1704</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1000</Y>
@@ -5908,7 +5992,7 @@
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-3.14159322</Y>
+          <Y>-4.71238947</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -6058,6 +6142,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1705</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -6088,7 +6173,7 @@
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-3.14159322</Y>
+          <Y>-4.71238947</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -6238,6 +6323,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1706</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -6429,6 +6515,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1711</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -6497,6 +6584,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1712</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -6565,6 +6653,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1713</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -6633,6 +6722,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1714</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -6734,6 +6824,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1716</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>2</X>
           <Y>2</Y>
@@ -6764,7 +6855,7 @@
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-3.14159322</Y>
+          <Y>-4.71238947</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -6914,6 +7005,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1717</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -6944,7 +7036,7 @@
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-3.14159322</Y>
+          <Y>-4.71238947</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -7094,6 +7186,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1718</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -7285,6 +7378,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1722</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -7353,6 +7447,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1723</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -7421,6 +7516,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1724</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -7489,6 +7585,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1725</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -7557,6 +7654,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1726</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -7625,6 +7723,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1727</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -7778,7 +7877,7 @@
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-3.14159322</Y>
+          <Y>-4.71238947</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -7928,6 +8027,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1731</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -7971,7 +8071,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1732</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Lamp/Lamp</ModelPath>
             <ModelPath />
@@ -7987,6 +8087,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1732</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -8043,6 +8144,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1733</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -8086,7 +8188,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1734</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Lamp/Lamp</ModelPath>
             <ModelPath />
@@ -8102,6 +8204,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1734</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -8158,6 +8261,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1735</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -8217,6 +8321,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1736</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -8276,6 +8381,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1737</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -8335,6 +8441,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1738</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -8394,6 +8501,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1739</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -8437,7 +8545,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1740</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/chair</ModelPath>
             <ModelPath />
@@ -8454,6 +8562,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1740</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>3</X>
           <Y>1</Y>
@@ -8514,6 +8623,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1741</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -8573,6 +8683,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1742</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -8633,6 +8744,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1743</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -8693,6 +8805,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1744</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -8753,6 +8866,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1745</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -8813,6 +8927,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1746</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -8872,6 +8987,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1747</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -8931,6 +9047,7 @@
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1748</MyObjectID>
         <IsTrigger>false</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
@@ -8974,7 +9091,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1749</MyObjectID>
-          <LODState>HI</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Home/CorkBoard/CorkBoard</ModelPath>
             <ModelPath />
@@ -8989,8 +9106,9 @@
       </Components>
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
-        <MyObjectID>1748</MyObjectID>
+        <MyObjectID>1749</MyObjectID>
         <IsTrigger>true</IsTrigger>
+        <DoNothing>false</DoNothing>
         <CustomScale>
           <X>1</X>
           <Y>1</Y>
