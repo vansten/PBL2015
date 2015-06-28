@@ -29,8 +29,6 @@ namespace TrashSoup.Gameplay
 
         private int stairsTouching;
 
-        private Cue attackSound;
-
         public GameObject target;
         #endregion
 
@@ -157,7 +155,6 @@ namespace TrashSoup.Gameplay
                 hpBarYOffset = 3.0f * Vector3.Up;
             }
             this.hpBarOutline = ResourceManager.Instance.CurrentScene.GetObject(this.MyHPBarOutlineID);
-            //attackSound = AudioManager.Instance.SoundBank.GetCue("metalHit01");
             base.Initialize();
         }
 
@@ -171,7 +168,7 @@ namespace TrashSoup.Gameplay
             PlayerController pc = (PlayerController)target.GetComponent<PlayerController>();
             if(pc != null)
             {
-                //AudioManager.Instance.PlayCue(attackSound);
+                AudioManager.Instance.SoundBank.PlayCue("metalHit");
                 pc.DecreaseHealth(damage);
             }
             else
