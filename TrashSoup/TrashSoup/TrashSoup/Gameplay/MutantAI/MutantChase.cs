@@ -17,10 +17,15 @@ namespace TrashSoup.Gameplay.MutantAI
         private float prevRotY;
         private float rotY;
         private bool firstTime = true;
+        private float chaseDistance = 3.0f;
 
         public override void Initialize()
         {
             this.prevRotY = this.blackboard.Owner.MyTransform.Rotation.Y;
+            if(this.blackboard.Owner.MyTransform.Scale == 0.01f)
+            {
+                chaseDistance = 1.8f;
+            }
             base.Initialize();
         }
 
@@ -38,7 +43,7 @@ namespace TrashSoup.Gameplay.MutantAI
             this.myPos = this.blackboard.Owner.MyTransform.Position;
             float distance = Vector3.Distance(this.myPos, this.targetPos);
 
-            if (distance < 3.0f)
+            if (distance < this.chaseDistance)
             {
                 node = null;
                 if (!firstTime)

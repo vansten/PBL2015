@@ -21,6 +21,7 @@ namespace TrashSoup.Gameplay.MutantAI
         private float rotY;
         private bool firstTime = true;
         private Enemy myEnemy;
+        private float attackDistance = 3.5f;
 
         public override void Initialize()
         {
@@ -31,6 +32,10 @@ namespace TrashSoup.Gameplay.MutantAI
                 target = (PlayerController)go.GetComponent<PlayerController>();
             }
             this.myEnemy = (Enemy)blackboard.Owner.GetComponent<Enemy>();
+            if(this.blackboard.Owner.MyTransform.Scale == 0.01f)
+            {
+                this.attackDistance = 2.5f;
+            }
             base.Initialize();
         }
 
@@ -47,7 +52,7 @@ namespace TrashSoup.Gameplay.MutantAI
             this.myPos = this.blackboard.Owner.MyTransform.Position;
             float distance = Vector3.Distance(this.targetPos, this.myPos);
 
-            if (distance > 3.5f)
+            if (distance > this.attackDistance)
             {
                 firstTime = true;
                 node = null;
