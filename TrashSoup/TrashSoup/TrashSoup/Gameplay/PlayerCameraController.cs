@@ -14,8 +14,8 @@ namespace TrashSoup.Gameplay
     {
         #region constants
 
-        protected const float CAM_YAW_SENSITIVITY = MathHelper.PiOver4 / 10.0f;
-        protected const float CAM_PITCH_SENSITIVITY = MathHelper.PiOver4 / 15.0f;
+        protected const float CAM_YAW_SENSITIVITY = MathHelper.PiOver4 / 80.0f;
+        protected const float CAM_PITCH_SENSITIVITY = MathHelper.PiOver4 / 120.0f;
         protected const float CAM_TOTAL_PITCH = MathHelper.PiOver2 - MathHelper.PiOver4;
         protected const float CAM_PROBE_VALUE = 0.01f;
 
@@ -66,8 +66,8 @@ namespace TrashSoup.Gameplay
             if (GameManager.Instance.MovementEnabled)
             {
                 Vector2 camVector = InputHandler.Instance.GetCameraVector();
-                tempYaw = -CAM_YAW_SENSITIVITY * (camVector.X);
-                tempPitch = CAM_PITCH_SENSITIVITY * (camVector.Y);
+                tempYaw = -CAM_YAW_SENSITIVITY * (float)gameTime.ElapsedGameTime.TotalMilliseconds * (camVector.X);
+                tempPitch = CAM_PITCH_SENSITIVITY * (float)gameTime.ElapsedGameTime.TotalMilliseconds * (camVector.Y);
 
                 tempPos = cam.Position;
                 tempPos = tempPos / Math.Max(tempPos.Length(), 0.000001f);
