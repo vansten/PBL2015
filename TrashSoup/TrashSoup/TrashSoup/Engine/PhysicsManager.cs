@@ -153,7 +153,7 @@ namespace TrashSoup.Engine
                     {
                         continue;
                     }
-                    else if(col.Intersects(go.MyCollider))
+                    if(col.Intersects(go.MyCollider))
                     {
                         if(col.IsTrigger || go.MyCollider.IsTrigger)
                         {
