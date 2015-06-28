@@ -108,6 +108,11 @@ namespace TrashSoup.Gameplay
             return InputManager.Instance.GetKeyboardButtonDown(Keys.G) || InputManager.Instance.GetGamePadButtonDown(Buttons.RightShoulder);
         }
 
+        public bool ResetPlayer()
+        {
+            return InputManager.Instance.GetKeyboardButtonDown(Keys.H) || InputManager.Instance.GetGamePadButtonDown(Buttons.Start);
+        }
+
         public Vector2 NoClipVector()
         {
             float y = 0.0f;

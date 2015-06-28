@@ -6,8 +6,8 @@
     <MaxSize>5000</MaxSize>
     <Lod1Distance>40</Lod1Distance>
     <Lod2Distance>80</Lod2Distance>
-    <Shadows>false</Shadows>
-    <SoftShadows>true</SoftShadows>
+    <Shadows>true</Shadows>
+    <SoftShadows>false</SoftShadows>
     <Bloom>true</Bloom>
     <UseGraph>true</UseGraph>
     <UseLods>true</UseLods>

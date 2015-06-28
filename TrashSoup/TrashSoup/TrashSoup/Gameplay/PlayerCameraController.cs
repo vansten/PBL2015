@@ -86,16 +86,19 @@ namespace TrashSoup.Gameplay
                 cam.Position = Vector3.Transform(cam.Position,
                         Matrix.CreateFromAxisAngle(cam.Up, tempYaw));
 
-                Vector3 tgt = Vector3.Normalize((cam.Position - cam.Target));
-
-                Raycast ray = new Raycast(cam.Target + cam.Translation + tgt,
-                    tgt,
-                    1.5f, 0.01f);
-                if (ray.Cast())
+                if(InputHandler.Instance.NoClipVector() == Vector2.Zero)
                 {
-                    if (ray.ColliderHit.MyObject.UniqueID != this.MyObject.UniqueID)
+                    Vector3 tgt = Vector3.Normalize((cam.Position - cam.Target));
+
+                    Raycast ray = new Raycast(cam.Target + cam.Translation + tgt,
+                        tgt,
+                        1.5f, 0.01f);
+                    if (ray.Cast())
                     {
-                        cam.Position = ray.PositionHit - cam.Translation;
+                        if (ray.ColliderHit.MyObject.UniqueID != this.MyObject.UniqueID)
+                        {
+                            cam.Position = ray.PositionHit - cam.Translation;
+                        }
                     }
                 }
 
