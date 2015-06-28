@@ -20,7 +20,7 @@ namespace TrashSoup.Gameplay
         protected const float SPRINT_MULTIPLIER = 5.0f;
         protected const float SPRINT_ACCELERATION = 3.0f;
         protected const float SPRINT_DECELERATION = 2.5f*SPRINT_ACCELERATION;
-        protected const float ROTATION_SPEED = 0.4f;
+        protected const float ROTATION_SPEED = 0.6f;
         public const float MAX_HEALTH = 50.0f;
         public const float MAX_POPULARITY = 100.0f;
         public const float DAMAGE_INCREASE_POPULARITY_AMOUNT = 0.8f * MAX_POPULARITY;
@@ -204,8 +204,18 @@ namespace TrashSoup.Gameplay
             if(noclip.X != 0.0f || noclip.Y != 0.0f)
             {
                 this.MyObject.MyTransform.Version = Transform.GameVersionEnum.STENGERT_PAGI;
-                Vector3 movementVector = new Vector3(noclip.X, 0.0f, noclip.Y);
-                this.MyObject.MyTransform.Position += movementVector * (float)gameTime.ElapsedGameTime.Milliseconds * 0.01f;
+                Vector3 movementVector = ResourceManager.Instance.CurrentScene.Cam.Direction;
+                
+                if (noclip.Y == -1.0f && noclip.X == 0.0f)
+                    movementVector = -movementVector;
+                else if (noclip.Y == 0.0f && noclip.X == 1.0f)
+                    movementVector = ResourceManager.Instance.CurrentScene.Cam.Right;
+                else if (noclip.Y == 0.0f && noclip.X == -1.0f)
+                    movementVector = -ResourceManager.Instance.CurrentScene.Cam.Right;
+
+                movementVector.Z = -movementVector.Z;
+                Console.Out.WriteLine(movementVector.ToString());
+                this.MyObject.MyTransform.Position += movementVector * (float)gameTime.ElapsedGameTime.TotalMilliseconds * 0.01f;
                 this.MyObject.MyTransform.Version = Transform.GameVersionEnum.PBL;
             }
 
