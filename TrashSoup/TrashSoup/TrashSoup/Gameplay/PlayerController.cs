@@ -20,7 +20,7 @@ namespace TrashSoup.Gameplay
         protected const float SPRINT_MULTIPLIER = 5.0f;
         protected const float SPRINT_ACCELERATION = 3.0f;
         protected const float SPRINT_DECELERATION = 2.5f*SPRINT_ACCELERATION;
-        protected const float ROTATION_SPEED = 0.6f;
+        protected const float ROTATION_SPEED = 0.55f;
         public const float MAX_HEALTH = 50.0f;
         public const float MAX_POPULARITY = 100.0f;
         public const float DAMAGE_INCREASE_POPULARITY_AMOUNT = 0.8f * MAX_POPULARITY;
