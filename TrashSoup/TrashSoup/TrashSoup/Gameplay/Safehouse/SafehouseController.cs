@@ -14,6 +14,7 @@ namespace TrashSoup.Gameplay.Safehouse
         private int minutes;
         private int enemiesLeft;
         private bool canToMapSelection;
+        private float trashStashed = 0;
 
         public int EnemiesLeft
         {
@@ -59,6 +60,12 @@ namespace TrashSoup.Gameplay.Safehouse
             time[0] = this.hours;
             time[1] = this.minutes;
             return time;
+        }
+
+        public float TrashStashed
+        {
+            get { return this.trashStashed; }
+            set { this.trashStashed = value; }
         }
 
         public void LoadMapSelectMenu()

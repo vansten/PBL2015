@@ -296,7 +296,7 @@ namespace TrashSoup.Gameplay
                         // fixing current one
                         if (InRange(CurrentID) && Parts[CurrentID].Health < Parts[CurrentID].MaxHealth)
                         {
-                            if(stashComponent.CurrentTrash >= (int)Parts[CurrentID].PricePerMs)
+                            if(Safehouse.SafehouseController.Instance.TrashStashed >= (int)Parts[CurrentID].PricePerMs)
                             {
                                 if (!soundHelper)
                                 {
@@ -344,7 +344,7 @@ namespace TrashSoup.Gameplay
                             }
                             else
                             {
-                                if (stashComponent.CurrentTrash >= (int)Parts[NextID].PricePerMs)
+                                if (Safehouse.SafehouseController.Instance.TrashStashed >= (int)Parts[NextID].PricePerMs)
                                 {
                                     if (!soundHelper)
                                     {
@@ -369,7 +369,7 @@ namespace TrashSoup.Gameplay
                         else
                         {
                             // check if we can even build
-                            if (stashComponent.CurrentTrashFloat >= Parts[NextID].Price)
+                            if (Safehouse.SafehouseController.Instance.TrashStashed >= Parts[NextID].Price)
                             {
                                 Parts[NextID].State = FortificationPart.PartState.BUILDING;
                             }

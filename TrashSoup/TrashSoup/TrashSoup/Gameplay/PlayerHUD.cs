@@ -103,6 +103,8 @@ namespace TrashSoup.Gameplay
         private float foodTextSize = 1.0f;
         private float biggerTextSize = 1.5f;
 
+        private bool safehouse = false;
+
         public Cue ExplorationCue;
 
         public PlayerHUD(GameObject go) : base(go)
@@ -139,7 +141,14 @@ namespace TrashSoup.Gameplay
             //Equipment
             GUIManager.Instance.DrawTexture(this.bgTexture, bgPosition, 0.23f, 0.045f);
             this.currentFoodCount = this.myEq.FoodCount;
-            this.currentJunkCount = this.myEq.JunkCount;
+            if(safehouse)
+            {
+                this.currentJunkCount = (int)Safehouse.SafehouseController.Instance.TrashStashed;
+            }
+            else
+            {
+                this.currentJunkCount = this.myEq.JunkCount;
+            }
             if(!showFoodGain && this.currentFoodCount > this.prevFoodCount)
             {
                 showFoodGain = true;
@@ -214,11 +223,18 @@ namespace TrashSoup.Gameplay
                 this.junkTextSize = this.biggerTextSize;
             }
 
-
             GUIManager.Instance.DrawTexture(this.backpackTexture, this.backpackPos, 0.03f, 0.03f);
-            GUIManager.Instance.DrawText(this.equipmentFont, this.currentJunkCount + "/" + this.maxJunkCount, this.eqTextPos, this.junkColor, this.junkTextSize);
+            if(safehouse)
+            {
+                GUIManager.Instance.DrawText(this.equipmentFont, this.currentJunkCount.ToString(), this.eqTextPos, this.junkColor, this.junkTextSize);
+            }
+            else
+            {
+                GUIManager.Instance.DrawText(this.equipmentFont, this.currentJunkCount + "/" + this.maxJunkCount, this.eqTextPos, this.junkColor, this.junkTextSize);
+            }
             GUIManager.Instance.DrawTexture(this.burgerTexture, this.burgerPos, 0.035f, 0.045f);
             GUIManager.Instance.DrawText(this.equipmentFont, this.currentFoodCount + "/" + this.maxFoodCount, this.foodTextPos, this.foodColor, this.foodTextSize);
+
             GUIManager.Instance.DrawText(this.equipmentFont, "DAY 1", this.dayInfoPos, Color.Red);
 
             //Live messages drawing
@@ -296,6 +312,8 @@ namespace TrashSoup.Gameplay
 
         public override void Initialize()
         {
+            this.safehouse = SaveManager.Instance.XmlPath.Contains("safehouse");
+
             myPlayerController = (PlayerController)this.MyObject.GetComponent<PlayerController>();
             if(myPlayerController == null)
             {

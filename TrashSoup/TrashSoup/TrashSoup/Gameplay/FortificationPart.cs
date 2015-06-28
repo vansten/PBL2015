@@ -203,7 +203,7 @@ namespace TrashSoup.Gameplay
         public void BuildUp(GameTime gameTime)
         {
             health += HpPerMs * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            hs.CurrentTrashFloat -= PricePerMs * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            Safehouse.SafehouseController.Instance.TrashStashed -= PricePerMs * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
             float lerpFactor = health / (float)MaxHealth;
 

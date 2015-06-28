@@ -249,6 +249,7 @@ namespace TrashSoup.Gameplay
         private void LoadToNextLevel()
         {
             stash.CurrentTrash += equipment.JunkCount;
+            Safehouse.SafehouseController.Instance.TrashStashed = stash.CurrentTrash;
             SaveManager.Instance.SaveState(stash.CurrentTrash);
             // fade in
 
