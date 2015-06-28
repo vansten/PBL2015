@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Material>
+  <Name>corkBoardMat</Name>
+  <EffectPath>Effects\NormalEffect</EffectPath>
+  <DiffusePath>Textures\Home\CorkBoard\CorkBoard_D</DiffusePath>
+  <NormalPath>Textures\Home\CorkBoard\CorkBoard_N</NormalPath>
+  <DiffuseColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </DiffuseColor>
+  <SpecularColor>
+    <X>0.7</X>
+    <Y>0.7</Y>
+    <Z>0.7</Z>
+  </SpecularColor>
+  <Glossiness>100</Glossiness>
+  <ReflectivityColor>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
+  </ReflectivityColor>
+  <ReflectivityBias>1</ReflectivityBias>
+  <Transparency>1</Transparency>
+  <PerPixelLighting>false</PerPixelLighting>
+  <ReceiveShadows>true</ReceiveShadows>
+  <Unlit>false</Unlit>
+</Material>

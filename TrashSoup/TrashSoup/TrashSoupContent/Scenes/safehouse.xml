@@ -4340,7 +4340,7 @@
         <TrashSoup.Gameplay.Fortification>
           <MyObjectID>1623</MyObjectID>
           <CurrentID>-1</CurrentID>
-          <MyType>METAL_WIRE_SNARES</MyType>
+          <MyType>WOOD1_WIRE_SNARES</MyType>
         </TrashSoup.Gameplay.Fortification>
       </Components>
     </GameObject>
@@ -4376,7 +4376,7 @@
         <TrashSoup.Gameplay.Fortification>
           <MyObjectID>1624</MyObjectID>
           <CurrentID>-1</CurrentID>
-          <MyType>METAL_WIRE_SNARES</MyType>
+          <MyType>WOOD2_TRAPWIRE_SNARES</MyType>
         </TrashSoup.Gameplay.Fortification>
       </Components>
     </GameObject>
@@ -4448,7 +4448,7 @@
         <TrashSoup.Gameplay.Fortification>
           <MyObjectID>1626</MyObjectID>
           <CurrentID>-1</CurrentID>
-          <MyType>METAL_WIRE_SNARES</MyType>
+          <MyType>WOOD2_TRAPWIRE_SNARES</MyType>
         </TrashSoup.Gameplay.Fortification>
       </Components>
     </GameObject>
@@ -4484,7 +4484,7 @@
         <TrashSoup.Gameplay.Fortification>
           <MyObjectID>1627</MyObjectID>
           <CurrentID>-1</CurrentID>
-          <MyType>METAL_WIRE_SNARES</MyType>
+          <MyType>WOOD1_WIRE_SNARES</MyType>
         </TrashSoup.Gameplay.Fortification>
       </Components>
     </GameObject>
@@ -8943,12 +8943,12 @@
       <MyTransform>
         <MyObjectID>1749</MyObjectID>
         <Position>
-          <X>-8</X>
+          <X>-8.6</X>
           <Y>3</Y>
           <Z>-19</Z>
         </Position>
         <Rotation>
-          <X>1.565</X>
+          <X>-1.565</X>
           <Y>-1.565</Y>
           <Z>0</Z>
         </Rotation>
@@ -8969,7 +8969,8 @@
             <ModelPath />
           </LODs>
           <Materials>
-            <Name>cobbleMat</Name>
+            <Name>corkBoardPapersMat</Name>
+            <Name>corkBoardMat</Name>
           </Materials>
           <LodControlled>true</LodControlled>
         </TrashSoup.Engine.CustomModel>

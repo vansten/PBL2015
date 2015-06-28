@@ -110,16 +110,16 @@ namespace TrashSoup.Gameplay
         {
             // type0
             new Vector3(0.0f, 2.5f, 0.0f),
-            new Vector3(0.0f, 0.55f, -2.2f),
-            new Vector3(-1.4f, 0.0f, -2.7f),
+            new Vector3(0.0f, 2.5f, -2.2f),
+            new Vector3(-1.4f, 2.5f, -2.7f),
             // type1
             new Vector3(0.0f, 2.5f, 0.0f),
-            new Vector3(-0.3f, 0.55f, -0.75f),
-            new Vector3(0.6f, 0.0f, -1.7f),
+            new Vector3(-0.3f, 2.55f, -0.75f),
+            new Vector3(0.6f, 2.5f, -1.7f),
             // type2
             new Vector3(0.0f, 2.7f, 0.0f),
-            new Vector3(0.0f, 1.5f, -0.1f),
-            new Vector3(1.5f, 0.0f, -0.7f)
+            new Vector3(0.0f, 2.9f, -0.1f),
+            new Vector3(1.5f, 2.7f, -0.7f)
         };
 
         private static Vector3[] PartRotations = 
