@@ -543,7 +543,6 @@ namespace TrashSoup.Gameplay
             if(InputHandler.Instance.ResetPlayer())
             {
                 StopOtherState();
-                DecreaseHealth(1);
             }
 
             pec.Update(gameTime);
