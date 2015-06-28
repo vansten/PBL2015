@@ -68,6 +68,7 @@ namespace TrashSoup.Gameplay
         private Equipment equipment;
 
         private PostEffectController pec;
+        private ParticleSystem mBloodParticle;
 
         private float hitPoints = MAX_HEALTH;
         private float popularity = 0.0f;
@@ -542,7 +543,9 @@ namespace TrashSoup.Gameplay
             if(InputHandler.Instance.ResetPlayer())
             {
                 StopOtherState();
+                DecreaseHealth(1);
             }
+
             pec.Update(gameTime);
         }
 
@@ -601,6 +604,40 @@ namespace TrashSoup.Gameplay
                     }
                 }
             }
+
+            mBloodParticle = new ParticleSystem(this.MyObject);
+            mBloodParticle.Textures.Add(ResourceManager.Instance.LoadTexture("Textures/Particles/Particle_blood01"));
+            mBloodParticle.Textures.Add(ResourceManager.Instance.LoadTexture("Textures/Particles/Particle_blood02"));
+            mBloodParticle.Textures.Add(ResourceManager.Instance.LoadTexture("Textures/Particles/Particle_blood03"));
+            mBloodParticle.Textures.Add(ResourceManager.Instance.LoadTexture("Textures/Particles/Particle_blood04"));
+            mBloodParticle.Offset = new Vector3(0.07453292f, 0.07453292f, 0.07453292f);
+            mBloodParticle.PositionOffset = new Vector3(0.0f, 0.65f, 0.0f);
+            mBloodParticle.Wind = new Vector3(0.0f, 1.0f, 0.0f);
+            mBloodParticle.ParticleCount = 7;
+            mBloodParticle.ParticleSize = new Vector2(1.05f, 1.05f);
+            mBloodParticle.ParticleSizeVariation = new Vector2(0.1f, 0.1f);
+            mBloodParticle.LifespanSec = 0.15f;
+            mBloodParticle.Wind = new Vector3(0.0f, 0.0f, 0.0f);
+            mBloodParticle.Offset = new Vector3(MathHelper.PiOver2);
+            mBloodParticle.Speed = 1.5f;
+            mBloodParticle.RotationMode = ParticleSystem.ParticleRotationMode.PLAIN;
+            mBloodParticle.ParticleRotation = new Vector3(0.0f, 0.0f, 0.0f);
+            mBloodParticle.FadeInTime = 0.0f;
+            mBloodParticle.FadeOutTime = 0.1f;
+            mBloodParticle.IgnoreScale = true;
+            //ps.PositionOffset = new Vector3(0.0f, -1.0f, 0.0f) * MyObject.MyTransform.Scale;
+            mBloodParticle.BlendMode = BlendState.AlphaBlend;
+            mBloodParticle.UseGravity = false;
+            mBloodParticle.Initialize();
+
+            mBloodParticle.Stop();
+
+            GameObject particleCarrier = new GameObject(100000214, "ParticleCarrier");
+            particleCarrier.DrawLast = true;
+            ResourceManager.Instance.CurrentScene.AddObjectRuntime(particleCarrier);
+            particleCarrier.Components.Add(mBloodParticle);
+            particleCarrier.MyTransform = MyObject.MyTransform;
+
             base.Initialize();
         }
 
@@ -834,6 +871,12 @@ namespace TrashSoup.Gameplay
                 AudioManager.Instance.SoundBank.PlayCue("death");
                 isDead = true;
             }
+
+            if(mBloodParticle.Stopped)
+            {
+                mBloodParticle.Play();
+            }
+
             this.Popularity -= 5.0f;
         }
 
