@@ -25,12 +25,12 @@ namespace TrashSoup.Gameplay
         public const float MAX_POPULARITY = 100.0f;
         public const float DAMAGE_INCREASE_POPULARITY_AMOUNT = 0.8f * MAX_POPULARITY;
         protected const float POPULARITY_STOP_COOLDOWN = 1.0f;
-        protected const bool GOD_MODE = true;
 
         #endregion
 
         #region variables
 
+        protected bool GOD_MODE = true;
         private int stairsTouching = 0;
 
         private SpriteFont font;
@@ -195,6 +195,11 @@ namespace TrashSoup.Gameplay
             GUIManager.Instance.DrawText(this.font,
                     "Weapon: " + equipment.CurrentWeapon.Name, this.weaponInfoPos, Color.Red);
 #endif
+            if(InputHandler.Instance.GodMode())
+            {
+                this.GOD_MODE = !this.GOD_MODE;
+            }
+
             Vector2 noclip = InputHandler.Instance.NoClipVector();
             if(noclip.X != 0.0f || noclip.Y != 0.0f)
             {

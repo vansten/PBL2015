@@ -128,24 +128,6 @@ namespace TrashSoup.Engine
 
         public override void Update(GameTime gameTime)
         {
-            //TODO:
-            //Add constraints
-            //Improve velocity changing function (maybe oblique throw equation ?)
-            //Find a better way to slowing down (decreasing acceleration)
-
-#if DEBUG
-            if(InputManager.Instance.GetGamePadButtonDown(Microsoft.Xna.Framework.Input.Buttons.DPadDown) || InputManager.Instance.GetKeyboardButtonDown(Microsoft.Xna.Framework.Input.Keys.G))
-            {
-                this.IsUsingGravity = !this.IsUsingGravity;
-                if(!this.IsUsingGravity)
-                {
-                    Vector3 tmp = this.Velocity; ;
-                    tmp.Y = MathHelper.Clamp(tmp.Y, 0.0f, float.MaxValue);
-                    this.Velocity = tmp;
-                }
-            }
-#endif
-
             //If is not sleeping
             if(!this.Sleeping)
             {

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,8 @@ namespace TrashSoup.Gameplay
         private Vector3 hpBarYOffset = 2.0f * Vector3.Up;
 
         private int stairsTouching;
+
+        private Cue attackSound;
 
         public GameObject target;
         #endregion
@@ -154,6 +157,7 @@ namespace TrashSoup.Gameplay
                 hpBarYOffset = 3.0f * Vector3.Up;
             }
             this.hpBarOutline = ResourceManager.Instance.CurrentScene.GetObject(this.MyHPBarOutlineID);
+            //attackSound = AudioManager.Instance.SoundBank.GetCue("metalHit01");
             base.Initialize();
         }
 
@@ -167,6 +171,7 @@ namespace TrashSoup.Gameplay
             PlayerController pc = (PlayerController)target.GetComponent<PlayerController>();
             if(pc != null)
             {
+                //AudioManager.Instance.PlayCue(attackSound);
                 pc.DecreaseHealth(damage);
             }
             else
@@ -178,6 +183,7 @@ namespace TrashSoup.Gameplay
                 Fortification f = (Fortification)target.GetComponent<Fortification>();
                 if(f != null)
                 {
+                    //AudioManager.Instance.PlayCue(attackSound);
                     f.CurrentHealth -= (uint)damage;
                 }
                 else
@@ -185,6 +191,7 @@ namespace TrashSoup.Gameplay
                     f = (Fortification)target.GetParent().GetComponent<Fortification>();
                     if(f != null)
                     {
+                        //AudioManager.Instance.PlayCue(attackSound);
                         f.CurrentHealth -= (uint)damage;
                     }
                 }
