@@ -138,7 +138,11 @@ namespace TrashSoup.Engine
 
             foreach(Collider col in this.AllColliders)
             {
-                if(col != go.MyCollider && col.MyObject.Enabled && col.Enabled && go.Enabled)
+                if(col.DoNothing)
+                {
+                    continue;
+                }
+                else if(col != go.MyCollider && col.MyObject.Enabled && col.Enabled && go.Enabled)
                 {
                     if(col.Layer == LayerEnum.ENEMY && go.MyCollider.Layer == LayerEnum.ENEMY)
                     {
