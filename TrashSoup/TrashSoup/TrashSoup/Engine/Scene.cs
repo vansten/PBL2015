@@ -123,6 +123,7 @@ namespace TrashSoup.Engine
         private Matrix deferredOrthoMatrix;
         private List<GameObject> runtimeAdded;
         private List<GameObject> runtimeRemoved;
+        private List<GameObject> drawLasts = new List<GameObject>();
 
         #endregion
 
@@ -393,9 +394,23 @@ namespace TrashSoup.Engine
             }
             else
             {
+                drawLasts.Clear();
                 foreach (GameObject obj in ObjectsDictionary.Values)
                 {
-                    obj.Draw(cam, effect, gameTime);
+                    if(obj.DrawLast)
+                    {
+                        drawLasts.Add(obj);
+                    }
+                    else
+                    {
+                        obj.Draw(cam, effect, gameTime);
+                    }
+                }
+
+                int lCount = drawLasts.Count;
+                for(int i = 0; i < lCount; ++i)
+                {
+                    drawLasts[i].Draw(cam, effect, gameTime);
                 }
             }
 

@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 <Material>
-  <Name>noFreePlaceSignPoleMat</Name>
-  <EffectPath>Effects\NormalEffect</EffectPath>
-  <DiffusePath>Textures\Weapons\NoFreePlaceSign\slupek_D</DiffusePath>
-  <NormalPath>Textures\Weapons\NoFreePlaceSign\slupek_N</NormalPath>
+  <Name>lampMat</Name>
+  <EffectPath>Effects\CubeNormalEffect</EffectPath>
+  <DiffusePath>Textures\Home\Lamp\Lamp_D</DiffusePath>
+  <NormalPath>Textures\Home\Lamp\Lamp_N</NormalPath>
+  <CubePath>Textures\Skyboxes\Daylight</CubePath>
   <DiffuseColor>
     <X>1</X>
     <Y>1</Y>
@@ -11,18 +12,18 @@
   </DiffuseColor>
   <SpecularColor>
     <X>1</X>
-    <Y>0.8</Y>
-    <Z>0.7</Z>
+    <Y>1</Y>
+    <Z>1</Z>
   </SpecularColor>
-  <Glossiness>70</Glossiness>
+  <Glossiness>100</Glossiness>
   <ReflectivityColor>
     <X>1</X>
     <Y>1</Y>
     <Z>1</Z>
   </ReflectivityColor>
-  <ReflectivityBias>1</ReflectivityBias>
+  <ReflectivityBias>0.7</ReflectivityBias>
   <Transparency>1</Transparency>
   <PerPixelLighting>false</PerPixelLighting>
   <ReceiveShadows>true</ReceiveShadows>
-  <Unlit>false</Unlit>
+  <Unlit>true</Unlit>
 </Material>

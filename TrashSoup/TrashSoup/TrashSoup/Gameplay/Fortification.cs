@@ -443,6 +443,7 @@ namespace TrashSoup.Gameplay
 
         public override void Initialize()
         {
+            MyObject.DrawLast = true;
             int typeNumber = (int)MyType;
 
             this.interactionTexture = ResourceManager.Instance.LoadTexture(@"Textures/HUD/x_button");

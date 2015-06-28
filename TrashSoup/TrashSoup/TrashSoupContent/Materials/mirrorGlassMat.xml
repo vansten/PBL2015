@@ -1,28 +1,27 @@
 <?xml version="1.0"?>
-<Material>
-  <Name>car1Mat</Name>
-  <EffectPath>Effects\NormalEffect</EffectPath>
-  <DiffusePath>Textures\Enviro\Cars\car1_D</DiffusePath>
-  <NormalPath>Textures\Enviro\Cars\car1_N</NormalPath>
+<MirrorMaterial>
+  <Name>mirrorGlassMat</Name>
+  <EffectPath>Effects\MirrorEffect</EffectPath>
+  <DiffusePath>Textures\Home\Furnitures\mirror_glass</DiffusePath>
   <DiffuseColor>
     <X>1</X>
     <Y>1</Y>
     <Z>1</Z>
   </DiffuseColor>
   <SpecularColor>
-    <X>0.6</X>
-    <Y>0.6</Y>
-    <Z>0.6</Z>
+    <X>1</X>
+    <Y>1</Y>
+    <Z>1</Z>
   </SpecularColor>
-  <Glossiness>120</Glossiness>
+  <Glossiness>150</Glossiness>
   <ReflectivityColor>
     <X>1</X>
     <Y>1</Y>
     <Z>1</Z>
   </ReflectivityColor>
-  <ReflectivityBias>0.2</ReflectivityBias>
+  <ReflectivityBias>1</ReflectivityBias>
   <Transparency>1</Transparency>
   <PerPixelLighting>false</PerPixelLighting>
   <ReceiveShadows>true</ReceiveShadows>
   <Unlit>false</Unlit>
-</Material>
+</MirrorMaterial>

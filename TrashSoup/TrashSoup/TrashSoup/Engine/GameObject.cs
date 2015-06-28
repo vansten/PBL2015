@@ -206,6 +206,14 @@ namespace TrashSoup.Engine
             }
         }
 
+        public virtual void Destroy()
+        {
+            foreach(ObjectComponent comp in Components)
+            {
+                comp.Destroy();
+            }
+        }
+
         public virtual void Update(GameTime gameTime)
         {
             if(this.Enabled && !ResourceManager.Instance.ImmediateStop)

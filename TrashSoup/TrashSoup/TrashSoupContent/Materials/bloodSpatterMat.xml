@@ -24,4 +24,5 @@
   <Transparency>0.7</Transparency>
   <PerPixelLighting>false</PerPixelLighting>
   <ReceiveShadows>true</ReceiveShadows>
+  <Unlit>false</Unlit>
 </Material>

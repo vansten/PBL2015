@@ -25,6 +25,7 @@
   <Transparency>1</Transparency>
   <PerPixelLighting>false</PerPixelLighting>
   <ReceiveShadows>false</ReceiveShadows>
+  <Unlit>false</Unlit>
   <CubeMaps>
     <CubeMap>Textures\Skyboxes\Dawn</CubeMap>
     <CubeMap1>Textures\Skyboxes\Daylight</CubeMap1>

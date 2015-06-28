@@ -207,6 +207,12 @@ namespace TrashSoup.Gameplay
             base.Initialize();
         }
 
+        public override void Destroy()
+        {
+            RemoveMyPointLight();
+            base.Destroy();
+        }
+
         public void TurnMyPointLight(bool val)
         {
             if(myPoint != null)

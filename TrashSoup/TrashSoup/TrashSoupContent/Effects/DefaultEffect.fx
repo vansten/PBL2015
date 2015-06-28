@@ -523,6 +523,25 @@ float4 PixelShaderFunctionShadows(VertexShaderOutputShadows input) : COLOR0
 	return color;
 }
 
+float4 PixelShaderFunctionUnlit(VertexShaderOutput input) : COLOR0
+{
+	// clippin
+
+	clip(input.ClipPlanes.x);
+	clip(input.ClipPlanes.y);
+	clip(input.ClipPlanes.z);
+	clip(input.ClipPlanes.w);
+	clip(input.CustomClipPlane);
+
+	//////
+
+	float4 color = tex2D(DiffuseSampler, input.TexCoord);
+	color.a = 1.0f;
+
+	color *= Transparency;
+
+	return color;
+}
 
 technique Main
 {
@@ -559,3 +578,12 @@ technique SkinnedShadows
 		PixelShader = compile ps_3_0 PixelShaderFunctionShadows();
 	}
 }
+
+technique Unlit
+{
+	pass Pass1
+	{
+		VertexShader = compile vs_3_0 VertexShaderFunction();
+		PixelShader = compile ps_3_0 PixelShaderFunctionUnlit();
+	}
+};

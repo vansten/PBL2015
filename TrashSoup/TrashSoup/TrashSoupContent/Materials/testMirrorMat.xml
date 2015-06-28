@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <MirrorMaterial>
-  <Name>mirrorGlassMat</Name>
+  <Name>testMirrorMat</Name>
   <EffectPath>Effects\MirrorEffect</EffectPath>
   <DiffusePath>Textures\Home\Furnitures\mirror_glass</DiffusePath>
+  <NormalPath>DefaultNormal</NormalPath>
   <DiffuseColor>
     <X>1</X>
     <Y>1</Y>
@@ -23,4 +24,5 @@
   <Transparency>1</Transparency>
   <PerPixelLighting>false</PerPixelLighting>
   <ReceiveShadows>true</ReceiveShadows>
+  <Unlit>false</Unlit>
 </MirrorMaterial>

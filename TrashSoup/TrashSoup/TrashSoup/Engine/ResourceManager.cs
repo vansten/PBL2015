@@ -211,6 +211,7 @@ namespace TrashSoup.Engine
             testTerMat.SpecularColor = new Vector3(0.1f, 0.1f, 0.0f);
             testTerMat.Glossiness = 10.0f;
             testTerMat.RecieveShadows = true;
+            testTerMat.Unlit = true;
             if(!this.Materials.ContainsKey(testTerMat.Name))
             {
                 this.Materials.Add(testTerMat.Name, testTerMat);
@@ -504,6 +505,10 @@ namespace TrashSoup.Engine
 
         public void UnloadContentFinal()
         {
+            foreach(GameObject obj in CurrentScene.ObjectsDictionary.Values)
+            {
+                obj.Destroy();
+            }
             TrashSoupGame.Instance.Content.Unload();
 
             CurrentScene = null;

@@ -602,6 +602,48 @@ float4 PixelShaderFunctionShadows(VertexShaderOutputShadows input) : COLOR0
 	return color;
 }
 
+float4 PixelShaderFunctionUnlit(VertexShaderOutput input) : COLOR0
+{
+	// clippin
+
+	clip(input.ClipPlanes.x);
+	clip(input.ClipPlanes.y);
+	clip(input.ClipPlanes.z);
+	clip(input.ClipPlanes.w);
+	clip(input.CustomClipPlane);
+
+	//////
+
+	float4 color = tex2D(DiffuseSampler, input.TexCoord);
+		float alpha = color.a;
+	color.a = 1.0f;
+
+	// computin normals
+
+	float4 nAdj = (tex2D(NormalSampler, input.TexCoord));
+		input.Normal = normalize(input.Normal);
+
+	nAdj.x = (nAdj.x * 2) - 1;
+	nAdj.y = (nAdj.y * 2) - 1;
+	nAdj.z = (nAdj.z) - 1;
+
+	input.Normal = input.Normal + nAdj.xyz;
+	input.Normal = normalize(input.Normal);
+
+	////////
+
+	// computin cube
+
+	float3 reflection = (texCUBE(CubeSampler, normalize(input.Reflection))).xyz;
+		reflection = reflection * ReflectivityColor;
+
+	////////
+
+	color *= Transparency * nAdj.a + ReflectivityBias * (alpha * float4(reflection, 1.0f));
+
+	return color;
+}
+
 technique Main
 {
 	pass Pass1
@@ -637,3 +679,12 @@ technique SkinnedShadows
 		PixelShader = compile ps_3_0 PixelShaderFunctionShadows();
 	}
 }
+
+technique Unlit
+{
+	pass Pass1
+	{
+		VertexShader = compile vs_3_0 VertexShaderFunction();
+		PixelShader = compile ps_3_0 PixelShaderFunctionUnlit();
+	}
+};

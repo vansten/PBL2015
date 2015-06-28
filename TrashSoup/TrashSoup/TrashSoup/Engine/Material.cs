@@ -18,6 +18,7 @@ namespace TrashSoup.Engine
 
         #region effectTechniques
 
+        EffectTechnique etUnlit;
         EffectTechnique etMain;
         EffectTechnique etMainShadows;
         EffectTechnique etSkinned;
@@ -112,6 +113,8 @@ namespace TrashSoup.Engine
         #region properties
 
         public string Name { get; set; }
+
+        public bool Unlit { get; set; }
 
         public Texture2D DiffuseMap
         {
@@ -265,6 +268,7 @@ namespace TrashSoup.Engine
             this.perPixelLighting = false;
             this.RecieveShadows = false;
             this.tempFrustumArray = new Vector4[4];
+            Unlit = false;
 
         }
 
@@ -295,6 +299,7 @@ namespace TrashSoup.Engine
             this.perPixelLighting = false;
             this.RecieveShadows = false;
             this.tempFrustumArray = new Vector4[4];
+            Unlit = false;
 
             AssignParamsInitialize();
         }
@@ -551,7 +556,11 @@ namespace TrashSoup.Engine
             {
                 bool forShadows = ((dirs != null && dirs[0] != null && dirs[0].CastShadows) || (point0SM != null)) && RecieveShadows && shadows;
 
-                if (bones != null && forShadows && etSkinnedBlurredShadows != null && softShadows)
+                if(Unlit && etUnlit != null)
+                {
+                    MyEffect.CurrentTechnique = etUnlit;
+                }
+                else if (bones != null && forShadows && etSkinnedBlurredShadows != null && softShadows)
                 {
                     MyEffect.CurrentTechnique = etSkinnedBlurredShadows;
                 }
@@ -697,6 +706,7 @@ namespace TrashSoup.Engine
             int bs = ("BoundingFrustum").GetHashCode();
             int cCP = ("CustomClippingPlane").GetHashCode();
 
+            etUnlit = MyEffect.Techniques["Unlit"];
             etMain = MyEffect.Techniques["Main"];
             etSkinned = MyEffect.Techniques["Skinned"];
             etMainShadows = MyEffect.Techniques["MainShadows"];
@@ -977,6 +987,7 @@ namespace TrashSoup.Engine
             Transparency = reader.ReadElementContentAsFloat("Transparency", "");
             PerPixelLighting = reader.ReadElementContentAsBoolean("PerPixelLighting", "");
             RecieveShadows = reader.ReadElementContentAsBoolean("ReceiveShadows", "");
+            Unlit = reader.ReadElementContentAsBoolean("Unlit", "");
 
             AssignParamsInitialize();
 
@@ -1020,6 +1031,7 @@ namespace TrashSoup.Engine
             writer.WriteElementString("Transparency", XmlConvert.ToString(Transparency));
             writer.WriteElementString("PerPixelLighting", XmlConvert.ToString(PerPixelLighting));
             writer.WriteElementString("ReceiveShadows", XmlConvert.ToString(RecieveShadows));
+            writer.WriteElementString("Unlit", XmlConvert.ToString(Unlit));
         }
         #endregion
     }

@@ -57,6 +57,11 @@ namespace TrashSoup.Engine
 
         }
 
+        public virtual void Destroy()
+        {
+
+        }
+
         public virtual void OnCollision(GameObject other)
         {
 

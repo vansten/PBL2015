@@ -24,4 +24,5 @@
   <Transparency>1</Transparency>
   <PerPixelLighting>false</PerPixelLighting>
   <ReceiveShadows>false</ReceiveShadows>
+  <Unlit>false</Unlit>
 </WaterMaterial>
