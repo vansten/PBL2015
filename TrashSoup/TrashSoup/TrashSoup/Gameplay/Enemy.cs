@@ -168,7 +168,10 @@ namespace TrashSoup.Gameplay
             PlayerController pc = (PlayerController)target.GetComponent<PlayerController>();
             if(pc != null)
             {
-                AudioManager.Instance.SoundBank.PlayCue("metalHit");
+                if(!pc.Dodged)
+                {
+                    AudioManager.Instance.SoundBank.PlayCue("metalHit");
+                }
                 pc.DecreaseHealth(damage);
             }
             else
@@ -180,7 +183,7 @@ namespace TrashSoup.Gameplay
                 Fortification f = (Fortification)target.GetComponent<Fortification>();
                 if(f != null)
                 {
-                    //AudioManager.Instance.PlayCue(attackSound);
+                    AudioManager.Instance.SoundBank.PlayCue("fortificationHit");
                     f.CurrentHealth -= (uint)damage;
                 }
                 else
@@ -188,7 +191,7 @@ namespace TrashSoup.Gameplay
                     f = (Fortification)target.GetParent().GetComponent<Fortification>();
                     if(f != null)
                     {
-                        //AudioManager.Instance.PlayCue(attackSound);
+                        AudioManager.Instance.SoundBank.PlayCue("fortificationHit");
                         f.CurrentHealth -= (uint)damage;
                     }
                 }

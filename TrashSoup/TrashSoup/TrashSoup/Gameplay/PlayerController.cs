@@ -172,6 +172,14 @@ namespace TrashSoup.Gameplay
             set;
         }
 
+        public bool Dodged
+        {
+            get
+            {
+                return this.dodged;
+            }
+        }
+
         #endregion
 
         #region methods
