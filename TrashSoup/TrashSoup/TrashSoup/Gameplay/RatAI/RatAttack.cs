@@ -47,7 +47,7 @@ namespace TrashSoup.Gameplay.RatAI
             this.myPos = this.blackboard.Owner.MyTransform.Position;
             float distance = Vector3.Distance(this.targetPos, this.myPos);
 
-            if(distance > 4.0f)
+            if(distance > 3.5f)
             {
                 firstTime = true;
                 node = null;

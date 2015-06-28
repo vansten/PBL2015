@@ -25,6 +25,7 @@ namespace TrashSoup.Gameplay
         public const float MAX_POPULARITY = 100.0f;
         public const float DAMAGE_INCREASE_POPULARITY_AMOUNT = 0.8f * MAX_POPULARITY;
         protected const float POPULARITY_STOP_COOLDOWN = 1.0f;
+        protected const bool GOD_MODE = true;
 
         #endregion
 
@@ -131,7 +132,15 @@ namespace TrashSoup.Gameplay
         public float HitPoints 
         { 
             get { return hitPoints; }
-            set { hitPoints = value; }
+            set
+            {
+                float val = value;
+                if(GOD_MODE)
+                {
+                    val = MathHelper.Clamp(val, 1.0f, float.MaxValue);
+                }
+                hitPoints = val;
+            }
         }
 
         public float Popularity
@@ -186,6 +195,15 @@ namespace TrashSoup.Gameplay
             GUIManager.Instance.DrawText(this.font,
                     "Weapon: " + equipment.CurrentWeapon.Name, this.weaponInfoPos, Color.Red);
 #endif
+            Vector2 noclip = InputHandler.Instance.NoClipVector();
+            if(noclip.X != 0.0f || noclip.Y != 0.0f)
+            {
+                this.MyObject.MyTransform.Version = Transform.GameVersionEnum.STENGERT_PAGI;
+                Vector3 movementVector = new Vector3(noclip.X, 0.0f, noclip.Y);
+                this.MyObject.MyTransform.Position += movementVector * (float)gameTime.ElapsedGameTime.Milliseconds * 0.01f;
+                this.MyObject.MyTransform.Version = Transform.GameVersionEnum.PBL;
+            }
+
             if (isDead)
             {
                 GUIManager.Instance.DrawText(this.font, "YOU'RE DEAD!", this.deadPos, Color.Red, 4.0f);
@@ -233,7 +251,7 @@ namespace TrashSoup.Gameplay
                 }
             }
 
-            if (InputManager.Instance.GetKeyboardButtonDown(Keys.U))
+            if (InputHandler.Instance.DropWeapon())
             {
                 if(equipment.CurrentWeapon.Name != "Fists")
                 {

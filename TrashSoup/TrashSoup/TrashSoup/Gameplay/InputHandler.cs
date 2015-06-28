@@ -98,6 +98,37 @@ namespace TrashSoup.Gameplay
             return InputManager.Instance.GetKeyboardButtonDown(Keys.Q) || InputManager.Instance.GetGamePadButtonDown(Buttons.B);
         }
 
+        public bool DropWeapon()
+        {
+            return InputManager.Instance.GetKeyboardButtonDown(Keys.U) || InputManager.Instance.GetGamePadButtonDown(Buttons.LeftShoulder);
+        }
+
+        public Vector2 NoClipVector()
+        {
+            float y = 0.0f;
+            float x = 0.0f;
+            if(InputManager.Instance.GetGamePadButton(Buttons.DPadUp) || InputManager.Instance.GetKeyboardButton(Keys.Up))
+            {
+                y += 1.0f;
+            }
+            if (InputManager.Instance.GetGamePadButton(Buttons.DPadDown) || InputManager.Instance.GetKeyboardButton(Keys.Down))
+            {
+                y -= 1.0f;
+            }
+
+            if (InputManager.Instance.GetGamePadButton(Buttons.DPadLeft) || InputManager.Instance.GetKeyboardButton(Keys.Left))
+            {
+                x -= 1.0f;
+            }
+
+            if (InputManager.Instance.GetGamePadButton(Buttons.DPadRight) || InputManager.Instance.GetKeyboardButton(Keys.Right))
+            {
+                x += 1.0f;
+            }
+
+            return new Vector2(x, y);
+        }
+
         /// <summary>
         /// 
         /// Returns movement vector of the player, works on gamepad as well as on keyboard
