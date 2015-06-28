@@ -1710,6 +1710,736 @@
         <MyObjectID>110</MyObjectID>
         <IsTrigger>true</IsTrigger>
         <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </PointLight>
+    <PointLight>
+      <CastShadows>false</CastShadows>
+      <Color>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </Color>
+      <SpecularColor>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </SpecularColor>
+      <Attenuation>0.15</Attenuation>
+      <UniqueID>110</UniqueID>
+      <Name>LightPoint1</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>true</Dynamic>
+      <MyTransform>
+        <MyObjectID>110</MyObjectID>
+        <Position>
+          <X>0</X>
+          <Y>0.25</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>1</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <MyPhysicalObject>
+        <MyObjectID>110</MyObjectID>
+        <Acceleration>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Acceleration>
+        <Mass>0</Mass>
+        <DragFactor>0</DragFactor>
+        <IsUsingGravity>false</IsUsingGravity>
+        <Velocity>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Velocity>
+        <RotationConstraints>None</RotationConstraints>
+        <PositionConstraints>None</PositionConstraints>
+      </MyPhysicalObject>
+      <MyCollider>
+        <Type>TrashSoup.Engine.SphereCollider</Type>
+        <MyObjectID>110</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </PointLight>
+    <PointLight>
+      <CastShadows>false</CastShadows>
+      <Color>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </Color>
+      <SpecularColor>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </SpecularColor>
+      <Attenuation>0.15</Attenuation>
+      <UniqueID>110</UniqueID>
+      <Name>LightPoint1</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>true</Dynamic>
+      <MyTransform>
+        <MyObjectID>110</MyObjectID>
+        <Position>
+          <X>0</X>
+          <Y>0.25</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>1</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <MyPhysicalObject>
+        <MyObjectID>110</MyObjectID>
+        <Acceleration>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Acceleration>
+        <Mass>0</Mass>
+        <DragFactor>0</DragFactor>
+        <IsUsingGravity>false</IsUsingGravity>
+        <Velocity>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Velocity>
+        <RotationConstraints>None</RotationConstraints>
+        <PositionConstraints>None</PositionConstraints>
+      </MyPhysicalObject>
+      <MyCollider>
+        <Type>TrashSoup.Engine.SphereCollider</Type>
+        <MyObjectID>110</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </PointLight>
+    <PointLight>
+      <CastShadows>false</CastShadows>
+      <Color>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </Color>
+      <SpecularColor>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </SpecularColor>
+      <Attenuation>0.15</Attenuation>
+      <UniqueID>110</UniqueID>
+      <Name>LightPoint1</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>true</Dynamic>
+      <MyTransform>
+        <MyObjectID>110</MyObjectID>
+        <Position>
+          <X>0</X>
+          <Y>0.25</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>1</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <MyPhysicalObject>
+        <MyObjectID>110</MyObjectID>
+        <Acceleration>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Acceleration>
+        <Mass>0</Mass>
+        <DragFactor>0</DragFactor>
+        <IsUsingGravity>false</IsUsingGravity>
+        <Velocity>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Velocity>
+        <RotationConstraints>None</RotationConstraints>
+        <PositionConstraints>None</PositionConstraints>
+      </MyPhysicalObject>
+      <MyCollider>
+        <Type>TrashSoup.Engine.SphereCollider</Type>
+        <MyObjectID>110</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </PointLight>
+    <PointLight>
+      <CastShadows>false</CastShadows>
+      <Color>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </Color>
+      <SpecularColor>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </SpecularColor>
+      <Attenuation>0.15</Attenuation>
+      <UniqueID>110</UniqueID>
+      <Name>LightPoint1</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>true</Dynamic>
+      <MyTransform>
+        <MyObjectID>110</MyObjectID>
+        <Position>
+          <X>0</X>
+          <Y>0.25</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>1</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <MyPhysicalObject>
+        <MyObjectID>110</MyObjectID>
+        <Acceleration>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Acceleration>
+        <Mass>0</Mass>
+        <DragFactor>0</DragFactor>
+        <IsUsingGravity>false</IsUsingGravity>
+        <Velocity>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Velocity>
+        <RotationConstraints>None</RotationConstraints>
+        <PositionConstraints>None</PositionConstraints>
+      </MyPhysicalObject>
+      <MyCollider>
+        <Type>TrashSoup.Engine.SphereCollider</Type>
+        <MyObjectID>110</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </PointLight>
+    <PointLight>
+      <CastShadows>false</CastShadows>
+      <Color>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </Color>
+      <SpecularColor>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </SpecularColor>
+      <Attenuation>0.15</Attenuation>
+      <UniqueID>110</UniqueID>
+      <Name>LightPoint1</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>110</MyObjectID>
+        <Position>
+          <X>0</X>
+          <Y>0.25</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>1</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <MyPhysicalObject>
+        <MyObjectID>110</MyObjectID>
+        <Acceleration>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Acceleration>
+        <Mass>0</Mass>
+        <DragFactor>0</DragFactor>
+        <IsUsingGravity>false</IsUsingGravity>
+        <Velocity>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Velocity>
+        <RotationConstraints>None</RotationConstraints>
+        <PositionConstraints>None</PositionConstraints>
+      </MyPhysicalObject>
+      <MyCollider>
+        <Type>TrashSoup.Engine.SphereCollider</Type>
+        <MyObjectID>110</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </PointLight>
+    <PointLight>
+      <CastShadows>false</CastShadows>
+      <Color>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </Color>
+      <SpecularColor>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </SpecularColor>
+      <Attenuation>0.15</Attenuation>
+      <UniqueID>110</UniqueID>
+      <Name>LightPoint1</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>110</MyObjectID>
+        <Position>
+          <X>0</X>
+          <Y>0.25</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>1</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <MyPhysicalObject>
+        <MyObjectID>110</MyObjectID>
+        <Acceleration>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Acceleration>
+        <Mass>0</Mass>
+        <DragFactor>0</DragFactor>
+        <IsUsingGravity>false</IsUsingGravity>
+        <Velocity>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Velocity>
+        <RotationConstraints>None</RotationConstraints>
+        <PositionConstraints>None</PositionConstraints>
+      </MyPhysicalObject>
+      <MyCollider>
+        <Type>TrashSoup.Engine.SphereCollider</Type>
+        <MyObjectID>110</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </PointLight>
+    <PointLight>
+      <CastShadows>false</CastShadows>
+      <Color>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </Color>
+      <SpecularColor>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </SpecularColor>
+      <Attenuation>0.15</Attenuation>
+      <UniqueID>110</UniqueID>
+      <Name>LightPoint1</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>110</MyObjectID>
+        <Position>
+          <X>0</X>
+          <Y>0.25</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>1</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <MyPhysicalObject>
+        <MyObjectID>110</MyObjectID>
+        <Acceleration>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Acceleration>
+        <Mass>0</Mass>
+        <DragFactor>0</DragFactor>
+        <IsUsingGravity>false</IsUsingGravity>
+        <Velocity>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Velocity>
+        <RotationConstraints>None</RotationConstraints>
+        <PositionConstraints>None</PositionConstraints>
+      </MyPhysicalObject>
+      <MyCollider>
+        <Type>TrashSoup.Engine.SphereCollider</Type>
+        <MyObjectID>110</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </PointLight>
+    <PointLight>
+      <CastShadows>false</CastShadows>
+      <Color>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </Color>
+      <SpecularColor>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </SpecularColor>
+      <Attenuation>0.15</Attenuation>
+      <UniqueID>110</UniqueID>
+      <Name>LightPoint1</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>110</MyObjectID>
+        <Position>
+          <X>0</X>
+          <Y>0.25</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>1</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <MyPhysicalObject>
+        <MyObjectID>110</MyObjectID>
+        <Acceleration>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Acceleration>
+        <Mass>0</Mass>
+        <DragFactor>0</DragFactor>
+        <IsUsingGravity>false</IsUsingGravity>
+        <Velocity>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Velocity>
+        <RotationConstraints>None</RotationConstraints>
+        <PositionConstraints>None</PositionConstraints>
+      </MyPhysicalObject>
+      <MyCollider>
+        <Type>TrashSoup.Engine.SphereCollider</Type>
+        <MyObjectID>110</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </PointLight>
+    <PointLight>
+      <CastShadows>false</CastShadows>
+      <Color>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </Color>
+      <SpecularColor>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </SpecularColor>
+      <Attenuation>0.15</Attenuation>
+      <UniqueID>110</UniqueID>
+      <Name>LightPoint1</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>110</MyObjectID>
+        <Position>
+          <X>0</X>
+          <Y>0.25</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>1</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <MyPhysicalObject>
+        <MyObjectID>110</MyObjectID>
+        <Acceleration>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Acceleration>
+        <Mass>0</Mass>
+        <DragFactor>0</DragFactor>
+        <IsUsingGravity>false</IsUsingGravity>
+        <Velocity>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Velocity>
+        <RotationConstraints>None</RotationConstraints>
+        <PositionConstraints>None</PositionConstraints>
+      </MyPhysicalObject>
+      <MyCollider>
+        <Type>TrashSoup.Engine.SphereCollider</Type>
+        <MyObjectID>110</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </PointLight>
+    <PointLight>
+      <CastShadows>false</CastShadows>
+      <Color>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </Color>
+      <SpecularColor>
+        <R>1</R>
+        <G>0.647058845</G>
+        <B>0</B>
+      </SpecularColor>
+      <Attenuation>0.15</Attenuation>
+      <UniqueID>110</UniqueID>
+      <Name>LightPoint1</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>110</MyObjectID>
+        <Position>
+          <X>0</X>
+          <Y>0.25</Y>
+          <Z>0</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>1</Y>
+          <Z>0</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <MyPhysicalObject>
+        <MyObjectID>110</MyObjectID>
+        <Acceleration>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Acceleration>
+        <Mass>0</Mass>
+        <DragFactor>0</DragFactor>
+        <IsUsingGravity>false</IsUsingGravity>
+        <Velocity>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Velocity>
+        <RotationConstraints>None</RotationConstraints>
+        <PositionConstraints>None</PositionConstraints>
+      </MyPhysicalObject>
+      <MyCollider>
+        <Type>TrashSoup.Engine.SphereCollider</Type>
+        <MyObjectID>110</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
           <X>5</X>
           <Y>0</Y>
           <Z>0</Z>
@@ -2499,7 +3229,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/MainCharacter/MainCharacter</ModelPath>
             <ModelPath />
@@ -2625,7 +3355,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1152</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Test/box</ModelPath>
             <ModelPath />
@@ -2684,7 +3414,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1153</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/wall</ModelPath>
             <ModelPath />
@@ -2743,7 +3473,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1154</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/DoorFrame</ModelPath>
             <ModelPath />
@@ -4645,7 +5375,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1191</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/Flor</ModelPath>
             <ModelPath />
@@ -4940,7 +5670,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1198</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/TV</ModelPath>
             <ModelPath />
@@ -4999,7 +5729,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1199</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/fridge</ModelPath>
             <ModelPath />
@@ -5117,7 +5847,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1206</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/couch</ModelPath>
             <ModelPath />
@@ -5176,7 +5906,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1207</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/TV_table</ModelPath>
             <ModelPath />
@@ -5236,7 +5966,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1208</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/desk</ModelPath>
             <ModelPath />
@@ -5297,7 +6027,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1209</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/carpet</ModelPath>
             <ModelPath />
@@ -5480,7 +6210,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1214</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/window</ModelPath>
             <ModelPath />
@@ -5539,7 +6269,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1215</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/WindowsDoors/Window_Dirt</ModelPath>
             <ModelPath />
@@ -5640,7 +6370,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1217</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/Stairs/stairs_lower</ModelPath>
             <ModelPath />
@@ -6741,12 +7471,12 @@
         <MyObjectID>1629</MyObjectID>
         <Position>
           <X>-6</X>
-          <Y>1.2</Y>
-          <Z>15</Z>
+          <Y>1.30000007</Y>
+          <Z>11</Z>
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-4.71238947</Y>
+          <Y>-4.76837158E-07</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -7078,7 +7808,7 @@
         </TrashSoup.Gameplay.Weapons.Bottle>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1390</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Weapons/Bottle/bottle</ModelPath>
             <ModelPath />
@@ -7195,7 +7925,7 @@
         </TrashSoup.Gameplay.Weapons.Pipe>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1137</MyObjectID>
-          <LODState>LO</LODState>
+          <LODState>MED</LODState>
           <LODs>
             <ModelPath>Models/Weapons/Pipe/pipe</ModelPath>
             <ModelPath>Models/Weapons/Pipe/pipe</ModelPath>
@@ -8008,12 +8738,12 @@
         <MyObjectID>1705</MyObjectID>
         <Position>
           <X>-3</X>
-          <Y>1.2</Y>
-          <Z>15</Z>
+          <Y>1.30000007</Y>
+          <Z>12</Z>
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-4.71238947</Y>
+          <Y>-4.76837158E-07</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -8103,12 +8833,12 @@
         <MyObjectID>1706</MyObjectID>
         <Position>
           <X>-4</X>
-          <Y>1.2</Y>
-          <Z>15</Z>
+          <Y>1.30000007</Y>
+          <Z>13</Z>
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-4.71238947</Y>
+          <Y>-4.76837158E-07</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -8620,6 +9350,65 @@
           </Size>
         </TrashSoup.Engine.Billboard>
       </Components>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1716</GameObjectKey>
+      <UniqueID>1716</UniqueID>
+      <Name>Mirror</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1716</MyObjectID>
+        <Position>
+          <X>4.5</X>
+          <Y>3.6</Y>
+          <Z>2.6</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>3.14</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>0.5</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1716</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/Furnitures/mirror</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>mirrorFrameMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1716</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>2</X>
+          <Y>2</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>-2.5</X>
+          <Y>1.8</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
     </GameObject>
   </ObjectsDictionary>
   <Camera>
