@@ -2708,14 +2708,14 @@
         <MyObjectID>1195</MyObjectID>
         <IsTrigger>false</IsTrigger>
         <CustomScale>
-          <X>1</X>
-          <Y>1</Y>
-          <Z>1</Z>
+          <X>2</X>
+          <Y>0.2</Y>
+          <Z>5</Z>
         </CustomScale>
         <CustomOffset>
-          <X>0</X>
+          <X>-0.5</X>
           <Y>0</Y>
-          <Z>0</Z>
+          <Z>-0.2</Z>
         </CustomOffset>
       </MyCollider>
     </GameObject>
@@ -3102,7 +3102,7 @@
           <Y>0</Y>
           <Z>-1</Z>
         </Forward>
-        <Scale>15</Scale>
+        <Scale>25</Scale>
       </MyTransform>
       <Components>
         <TrashSoup.Engine.CustomModel>
@@ -4556,7 +4556,7 @@
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-1.57079685</Y>
+          <Y>-3.14159322</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -4863,9 +4863,9 @@
       <MyTransform>
         <MyObjectID>1390</MyObjectID>
         <Position>
-          <X>1</X>
+          <X>15</X>
           <Y>2</Y>
-          <Z>-18</Z>
+          <Z>-15</Z>
         </Position>
         <Rotation>
           <X>0</X>
@@ -4980,9 +4980,9 @@
       <MyTransform>
         <MyObjectID>1137</MyObjectID>
         <Position>
-          <X>3</X>
+          <X>15</X>
           <Y>1</Y>
-          <Z>-1</Z>
+          <Z>1</Z>
         </Position>
         <Rotation>
           <X>0</X>
@@ -5045,13 +5045,13 @@
       <MyTransform>
         <MyObjectID>1136</MyObjectID>
         <Position>
-          <X>0</X>
+          <X>-7</X>
           <Y>1.5</Y>
-          <Z>-5</Z>
+          <Z>-14</Z>
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>0</Y>
+          <Y>2</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -5823,7 +5823,7 @@
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-1.57079685</Y>
+          <Y>-3.14159322</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -5918,7 +5918,7 @@
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-1.57079685</Y>
+          <Y>-3.14159322</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -6509,7 +6509,7 @@
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-1.57079685</Y>
+          <Y>-3.14159322</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -6604,7 +6604,7 @@
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-1.57079685</Y>
+          <Y>-3.14159322</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -7353,7 +7353,7 @@
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-1.57079685</Y>
+          <Y>-3.14159322</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -7647,6 +7647,838 @@
       <MyCollider>
         <Type>TrashSoup.Engine.BoxCollider</Type>
         <MyObjectID>1735</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1736</GameObjectKey>
+      <UniqueID>1736</UniqueID>
+      <Name>Carpet2</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1736</MyObjectID>
+        <Position>
+          <X>16</X>
+          <Y>1.02</Y>
+          <Z>-20</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>1.565</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>25</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1736</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/Furnitures/carpet</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseCarpetMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1736</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1737</GameObjectKey>
+      <UniqueID>1737</UniqueID>
+      <Name>Carpet3</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1737</MyObjectID>
+        <Position>
+          <X>12</X>
+          <Y>1.02</Y>
+          <Z>-20</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>1.565</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>25</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1737</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/Furnitures/carpet</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseCarpetMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1737</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1738</GameObjectKey>
+      <UniqueID>1738</UniqueID>
+      <Name>Carpet4</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1738</MyObjectID>
+        <Position>
+          <X>12</X>
+          <Y>1.02</Y>
+          <Z>-13.1</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>1.565</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>25</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1738</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/Furnitures/carpet</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseCarpetMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1738</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1739</GameObjectKey>
+      <UniqueID>1739</UniqueID>
+      <Name>Carpet5</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1739</MyObjectID>
+        <Position>
+          <X>16</X>
+          <Y>1.02</Y>
+          <Z>-13.1</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>1.565</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>25</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1739</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/Furnitures/carpet</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseCarpetMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1739</MyObjectID>
+        <IsTrigger>true</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1740</GameObjectKey>
+      <UniqueID>1740</UniqueID>
+      <Name>Mebelwefer</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1740</MyObjectID>
+        <Position>
+          <X>-6</X>
+          <Y>1.5</Y>
+          <Z>-18</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>1.2</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1.6</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1740</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/Furnitures/chair</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseChairMat</Name>
+            <Name>safehouseChairMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1740</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+        <CustomScale>
+          <X>3</X>
+          <Y>1</Y>
+          <Z>3</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1741</GameObjectKey>
+      <UniqueID>1741</UniqueID>
+      <Name>Mebelwefer2</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1741</MyObjectID>
+        <Position>
+          <X>9</X>
+          <Y>1.5</Y>
+          <Z>-14</Z>
+        </Position>
+        <Rotation>
+          <X>1.5</X>
+          <Y>3.2</Y>
+          <Z>4</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1.6</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1741</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/Furnitures/chair</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseChairMat</Name>
+            <Name>safehouseChairMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1741</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1742</GameObjectKey>
+      <UniqueID>1742</UniqueID>
+      <Name>Couch2</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1742</MyObjectID>
+        <Position>
+          <X>1</X>
+          <Y>1.7</Y>
+          <Z>2</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>1.565</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1742</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/Furnitures/couch</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseCouchMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1742</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1743</GameObjectKey>
+      <UniqueID>1743</UniqueID>
+      <Name>Mebelwefer3</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1743</MyObjectID>
+        <Position>
+          <X>3</X>
+          <Y>1.4</Y>
+          <Z>-22</Z>
+        </Position>
+        <Rotation>
+          <X>0.5</X>
+          <Y>5.2</Y>
+          <Z>6</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1.8</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1743</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/Furnitures/chair</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseChairMat</Name>
+            <Name>safehouseChairMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1743</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1744</GameObjectKey>
+      <UniqueID>1744</UniqueID>
+      <Name>TV Desk2</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1744</MyObjectID>
+        <Position>
+          <X>0</X>
+          <Y>1.4000001</Y>
+          <Z>-22</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1744</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/Furnitures/TV_table</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsWoodMat</Name>
+            <Name>safehouseStairsOldWoodMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1744</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1745</GameObjectKey>
+      <UniqueID>1745</UniqueID>
+      <Name>TV Desk3</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1745</MyObjectID>
+        <Position>
+          <X>16.5</X>
+          <Y>1.4000001</Y>
+          <Z>11</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>1.565</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1745</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/Furnitures/TV_table</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsWoodMat</Name>
+            <Name>safehouseStairsOldWoodMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1745</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1746</GameObjectKey>
+      <UniqueID>1746</UniqueID>
+      <Name>TV Desk4</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1746</MyObjectID>
+        <Position>
+          <X>8</X>
+          <Y>2</Y>
+          <Z>13.5</Z>
+        </Position>
+        <Rotation>
+          <X>1.4</X>
+          <Y>0.6</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1746</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/Furnitures/TV_table</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseStairsWoodMat</Name>
+            <Name>safehouseStairsOldWoodMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1746</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1747</GameObjectKey>
+      <UniqueID>1747</UniqueID>
+      <Name>Couch3</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1747</MyObjectID>
+        <Position>
+          <X>1</X>
+          <Y>1.7</Y>
+          <Z>10</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>2.9</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1747</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/Furnitures/couch</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseCouchMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1747</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1748</GameObjectKey>
+      <UniqueID>1748</UniqueID>
+      <Name>Bed2</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1748</MyObjectID>
+        <Position>
+          <X>2</X>
+          <Y>1.05</Y>
+          <Z>7</Z>
+        </Position>
+        <Rotation>
+          <X>0</X>
+          <Y>2</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1748</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/Bedroom/bed</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>safehouseBedMat</Name>
+          </Materials>
+          <LodControlled>false</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1748</MyObjectID>
+        <IsTrigger>false</IsTrigger>
+        <CustomScale>
+          <X>1</X>
+          <Y>1</Y>
+          <Z>1</Z>
+        </CustomScale>
+        <CustomOffset>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+        </CustomOffset>
+      </MyCollider>
+    </GameObject>
+    <GameObject>
+      <GameObjectKey>1749</GameObjectKey>
+      <UniqueID>1749</UniqueID>
+      <Name>CorkBoard</Name>
+      <DrawLast>false</DrawLast>
+      <Tags>
+        <Tag>null</Tag>
+      </Tags>
+      <Dynamic>false</Dynamic>
+      <MyTransform>
+        <MyObjectID>1749</MyObjectID>
+        <Position>
+          <X>-8</X>
+          <Y>3</Y>
+          <Z>-19</Z>
+        </Position>
+        <Rotation>
+          <X>1.565</X>
+          <Y>-1.565</Y>
+          <Z>0</Z>
+        </Rotation>
+        <Forward>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>-1</Z>
+        </Forward>
+        <Scale>1</Scale>
+      </MyTransform>
+      <Components>
+        <TrashSoup.Engine.CustomModel>
+          <MyObjectID>1749</MyObjectID>
+          <LODState>HI</LODState>
+          <LODs>
+            <ModelPath>Models/Home/CorkBoard/CorkBoard</ModelPath>
+            <ModelPath />
+            <ModelPath />
+          </LODs>
+          <Materials>
+            <Name>cobbleMat</Name>
+          </Materials>
+          <LodControlled>true</LodControlled>
+        </TrashSoup.Engine.CustomModel>
+      </Components>
+      <MyCollider>
+        <Type>TrashSoup.Engine.BoxCollider</Type>
+        <MyObjectID>1748</MyObjectID>
         <IsTrigger>true</IsTrigger>
         <CustomScale>
           <X>1</X>

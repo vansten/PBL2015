@@ -108,12 +108,12 @@ namespace TrashSoup
         protected override void LoadContent()
         {
             AudioManager.Instance.LoadContent();
-            //ResourceManager.Instance.LoadTextures();
-            //ResourceManager.Instance.LoadEffects();
+            ResourceManager.Instance.LoadTextures();
+            ResourceManager.Instance.LoadEffects();
             TrashSoupGame.Instance.ReloadSpriteBatch();
             SaveManager.Instance.XmlPath = "../../../../TrashSoupContent/Scenes/controls.xml";
-            //SaveManager.Instance.LoadFileAction();
-            ResourceManager.Instance.LoadContent(this);
+            SaveManager.Instance.LoadFileAction();
+            //ResourceManager.Instance.LoadContent(this);
         }
 
         protected override void UnloadContent()

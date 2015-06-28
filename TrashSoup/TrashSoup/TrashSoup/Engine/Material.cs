@@ -556,7 +556,7 @@ namespace TrashSoup.Engine
             {
                 bool forShadows = ((dirs != null && dirs[0] != null && dirs[0].CastShadows) || (point0SM != null)) && RecieveShadows && shadows;
 
-                if(Unlit && etUnlit != null)
+                if((Unlit || TrashSoupGame.Instance.EditorMode) && etUnlit != null)
                 {
                     MyEffect.CurrentTechnique = etUnlit;
                 }

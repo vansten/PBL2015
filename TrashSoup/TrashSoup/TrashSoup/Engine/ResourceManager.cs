@@ -505,9 +505,12 @@ namespace TrashSoup.Engine
 
         public void UnloadContentFinal()
         {
-            foreach(GameObject obj in CurrentScene.ObjectsDictionary.Values)
+            if(CurrentScene != null)
             {
-                obj.Destroy();
+                foreach (GameObject obj in CurrentScene.ObjectsDictionary.Values)
+                {
+                    obj.Destroy();
+                }
             }
             TrashSoupGame.Instance.Content.Unload();
 
