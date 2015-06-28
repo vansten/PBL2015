@@ -61,17 +61,17 @@ namespace TrashSoup.Gameplay
         private static uint[] PartTimes = 
         {
             // type0
+            3,
+            4,
             8,
-            10,
-            15,
             // type1
             2,
-            2,  //25
-            2,  //40
+            4,  //25
+            8,  //40
             // type2
-            4,
-            12,
-            15
+            2,
+            6,
+            10
         };
 
         private static uint[] PartHealths = 
@@ -110,16 +110,16 @@ namespace TrashSoup.Gameplay
         {
             // type0
             new Vector3(0.0f, 2.5f, 0.0f),
-            new Vector3(0.0f, 2.5f, -2.2f),
-            new Vector3(-1.4f, 2.5f, -2.7f),
+            new Vector3(0.0f, 1.0f, -1.2f),
+            new Vector3(-1.4f, 0.5f, -1.1f),
             // type1
             new Vector3(0.0f, 2.5f, 0.0f),
-            new Vector3(-0.3f, 2.55f, -0.75f),
-            new Vector3(0.6f, 2.5f, -1.7f),
+            new Vector3(-0.3f, 1.0f, -0.75f),
+            new Vector3(0.6f, 0.5f, -1.1f),
             // type2
             new Vector3(0.0f, 2.7f, 0.0f),
             new Vector3(0.0f, 2.9f, -0.1f),
-            new Vector3(1.5f, 2.7f, -0.7f)
+            new Vector3(1.5f, 0.7f, -0.7f)
         };
 
         private static Vector3[] PartRotations = 
@@ -143,15 +143,15 @@ namespace TrashSoup.Gameplay
             // type0
             3.5f,
             2.7f,
-            2.0f,
+            1.5f,
              // type1
             3.0f,
             2.7f,
-            2.0f,
+            1.5f,
              // type2
             4.0f,
             7.5f,
-            2.0f
+            1.5f
         };
 
         private static float[] PartGlosses = 
@@ -530,8 +530,8 @@ namespace TrashSoup.Gameplay
             MyObject.AddChild(triggerPlayerObj);
 
             triggerPlayerObj.MyTransform = new Transform(triggerPlayerObj);
-            triggerPlayerObj.MyTransform.Position = new Vector3(0.0f, 0.0f, -2.0f);
-            triggerPlayerObj.MyTransform.Scale = 3.0f;
+            triggerPlayerObj.MyTransform.Position = new Vector3(0.0f, 0.0f, 0.0f);
+            triggerPlayerObj.MyTransform.Scale = 5.0f;
             triggerPlayerObj.MyCollider = new SphereCollider(triggerPlayerObj, true);
 
             triggerPlayerObj.OnTriggerEnterEvent += new GameObject.OnTriggerEnterEventHandler(OnTriggerEnterPlayerHandler);
