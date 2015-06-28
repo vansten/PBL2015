@@ -170,7 +170,7 @@ namespace TrashSoup.Gameplay
             {
                 if(!pc.Dodged)
                 {
-                    AudioManager.Instance.SoundBank.PlayCue("metalHit");
+                    AudioManager.Instance.SoundBank.PlayCue("hit");
                 }
                 pc.DecreaseHealth(damage);
             }

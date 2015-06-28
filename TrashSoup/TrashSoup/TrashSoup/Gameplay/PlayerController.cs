@@ -826,10 +826,12 @@ namespace TrashSoup.Gameplay
             {
                 return;
             }
+            AudioManager.Instance.SoundBank.PlayCue("obrazenia");
             HitPoints -= value;
             if (HitPoints <= 0)
             {
                 Debug.Log("YOU'RE DEAD");
+                AudioManager.Instance.SoundBank.PlayCue("death");
                 isDead = true;
             }
             this.Popularity -= 5.0f;
