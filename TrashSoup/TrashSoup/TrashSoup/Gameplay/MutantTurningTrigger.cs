@@ -48,6 +48,7 @@ namespace TrashSoup.Gameplay
 
         public override void OnTrigger(GameObject other)
         {
+            if (this.myMutant.MyBlackBoard == null) return;
             if(other.Tags.Contains("NoRatAllowed"))
             {
                 this.myMutant.MyBlackBoard.SetBool("ShouldTurn", true);
