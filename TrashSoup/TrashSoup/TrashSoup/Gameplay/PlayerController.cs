@@ -600,6 +600,7 @@ namespace TrashSoup.Gameplay
                         }
                         this.Equipment.PickUpWeapon(weaponsOfThisType[ind].MyObject);
                         this.Equipment.CurrentWeapon = (Weapon)weaponsOfThisType[ind];
+                        equipment.CurrentWeapon.TurnMyPointLight(false);
                     }
                 }
             }
