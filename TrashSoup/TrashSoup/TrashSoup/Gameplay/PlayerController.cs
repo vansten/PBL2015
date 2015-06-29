@@ -577,6 +577,10 @@ namespace TrashSoup.Gameplay
                 }
                 else if (SaveManager.Instance.XmlPath.Contains("safehouse"))
                 {
+                    for(int i = 0 ; i < 5; ++i)
+                    {
+                        this.equipment.AddFood();
+                    }
                     Type t = typeof(Weapon);
                     using (StreamReader reader = new StreamReader("weapon.txt"))
                     {
@@ -600,6 +604,7 @@ namespace TrashSoup.Gameplay
                         }
                         this.Equipment.PickUpWeapon(weaponsOfThisType[ind].MyObject);
                         this.Equipment.CurrentWeapon = (Weapon)weaponsOfThisType[ind];
+                        this.anotherWeapon = this.Equipment.CurrentWeapon.MyObject;
                         equipment.CurrentWeapon.TurnMyPointLight(false);
                     }
                 }

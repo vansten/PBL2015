@@ -73328,7 +73328,7 @@
         </TrashSoup.Engine.CustomModel>
         <TrashSoup.Gameplay.Weapons.Hammer>
           <MyObjectID>1697</MyObjectID>
-          <Durability>2</Durability>
+          <Durability>35</Durability>
           <Damage>18</Damage>
           <Type>HEAVY</Type>
         </TrashSoup.Gameplay.Weapons.Hammer>

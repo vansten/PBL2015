@@ -17,14 +17,14 @@ namespace TrashSoup.Gameplay.MutantAI
         private float prevRotY;
         private float rotY;
         private bool firstTime = true;
-        private float chaseDistance = 3.0f;
+        private float chaseDistance = 3.5f;
 
         public override void Initialize()
         {
             this.prevRotY = this.blackboard.Owner.MyTransform.Rotation.Y;
             if(this.blackboard.Owner.MyTransform.Scale == 0.01f)
             {
-                chaseDistance = 1.8f;
+                chaseDistance = 2.3f;
             }
             base.Initialize();
         }
