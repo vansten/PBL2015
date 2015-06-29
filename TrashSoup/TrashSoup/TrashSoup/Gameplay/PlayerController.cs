@@ -437,7 +437,7 @@ namespace TrashSoup.Gameplay
                             this.MyObject.MyAnimator.ChangeState("Dodge");
                             MyObject.MyPhysicalObject.ZeroForce();
                             MyObject.MyPhysicalObject.Velocity = Vector3.Zero;
-                            this.MyObject.MyPhysicalObject.AddForce(-this.MyObject.MyTransform.Forward * 30.0f * this.MyObject.MyPhysicalObject.Mass);
+                            this.MyObject.MyPhysicalObject.AddForce(-this.MyObject.MyTransform.Forward * 45.0f * this.MyObject.MyPhysicalObject.Mass);
                             dodged = true;
                         }
                         else if(dodged)
@@ -478,7 +478,7 @@ namespace TrashSoup.Gameplay
                 }
             }
 
-            if (!this.collectedWeapon && this.collisionWithWeapon && InputHandler.Instance.Action())
+            if (!this.collectedWeapon && this.collisionWithWeapon && InputHandler.Instance.GetWeapon())
             {
                 //this.collectedWeapon = true;
                 this.CollectedFakeTime = gameTime.TotalGameTime.TotalSeconds;

@@ -75,7 +75,7 @@ namespace TrashSoup.Gameplay
                 }
                 else
                 {
-                    this.MyObject.MyPhysicalObject.IsUsingGravity = false;
+                    this.MyObject.MyPhysicalObject.IsUsingGravity = true;
                 }
             }
         }

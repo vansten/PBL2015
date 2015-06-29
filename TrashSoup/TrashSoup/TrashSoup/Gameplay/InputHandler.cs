@@ -65,6 +65,12 @@ namespace TrashSoup.Gameplay
                 InputManager.Instance.GetKeyboardButton(Keys.E);
         }
 
+        public bool GetWeapon()
+        {
+            return InputManager.Instance.GetGamePadButtonDown(Buttons.X) ||
+                InputManager.Instance.GetKeyboardButtonDown(Keys.E);
+        }
+
         public bool Eat()
         {
             return InputManager.Instance.GetGamePadButtonDown(Buttons.Y) || InputManager.Instance.GetKeyboardButtonDown(Keys.R);
