@@ -56,7 +56,7 @@ namespace TrashSoup
             GraphicsManager = new GraphicsDeviceManager(this);
             GraphicsManager.PreferredBackBufferHeight = 720;
             GraphicsManager.PreferredBackBufferWidth = 1280;
-            GraphicsManager.IsFullScreen = false;
+            GraphicsManager.IsFullScreen = true;
             GraphicsManager.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(SetToPreserve);
 //#if DEBUG
             //Turning of lock to 60 fps :)

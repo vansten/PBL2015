@@ -24,11 +24,12 @@ namespace TrashSoup.Gameplay
 
         private const float SUN_DISTANCE = 100.0f;
 
-        private Vector3 SUNRISE_COLOR = new Vector3(0.7f, 0.5f, 0.2f);
-        private Vector3 RED_COLOR = new Vector3(1.0f, 0.0f, 0.0f);
+        private Vector3 SUNRISE_COLOR = new Vector3(1.0f, 0.8f, 0.0f);
+        private Vector3 RED_COLOR = new Vector3(1.0f, 0.3f, 0.0f);
         private Vector3 DARK_COLOR = new Vector3(0.0f, 0.0f, 0.0f);
 
         private Vector3 DEFAULT_SUN_DIRECTION = new Vector3(-0.1f, -0.7f, -0.4f);
+        private const long SUN_TIME_OFFSET_MS = 60 * 60 * 1000;
         #endregion
 
         #region variables
@@ -353,7 +354,7 @@ namespace TrashSoup.Gameplay
         {
             direction = DEFAULT_SUN_DIRECTION;   // dla minutes = 720
             //direction = Vector3.Transform(direction, Matrix.CreateRotationY(-MathHelper.PiOver4 / 1.5f));
-
+            
             double rotation = ((double)((ms - MS_MAX / 2) % MS_MAX) / (double)MS_MAX) * MathHelper.TwoPi;
             
             direction = Vector3.Transform(direction, Matrix.CreateFromAxisAngle(rotationAxe, -(float)rotation));
@@ -366,6 +367,7 @@ namespace TrashSoup.Gameplay
 
         private void ConvertTimeToDaylightColor(long ms, out Vector3 color, out Vector3 specular, out Vector3 nColor, out Vector3 nSpecular, out Vector3 ambientColor, out Vector3 sunDiff)
         {
+            ms = ms - SUN_TIME_OFFSET_MS % MS_MAX;
             float lerpValue;
             Vector3 smallAmbient = startAmbientColor * 0.25f;
             int de = 30;

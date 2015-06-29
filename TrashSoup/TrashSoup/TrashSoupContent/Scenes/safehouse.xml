@@ -249,7 +249,7 @@
         <MyObjectID>1</MyObjectID>
         <Position>
           <X>12</X>
-          <Y>11</Y>
+          <Y>3</Y>
           <Z>0</Z>
         </Position>
         <Rotation>
@@ -4621,7 +4621,7 @@
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-4.71238947</Y>
+          <Y>-4.76837158E-07</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -5992,7 +5992,7 @@
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-4.71238947</Y>
+          <Y>-4.76837158E-07</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -6173,7 +6173,7 @@
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-4.71238947</Y>
+          <Y>-4.76837158E-07</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -6855,7 +6855,7 @@
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-4.71238947</Y>
+          <Y>-4.76837158E-07</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -7036,7 +7036,7 @@
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-4.71238947</Y>
+          <Y>-4.76837158E-07</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -7877,7 +7877,7 @@
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>-4.71238947</Y>
+          <Y>-4.76837158E-07</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -8071,7 +8071,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1732</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/Lamp/Lamp</ModelPath>
             <ModelPath />
@@ -8188,7 +8188,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1734</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/Lamp/Lamp</ModelPath>
             <ModelPath />
@@ -8545,7 +8545,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1740</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/Furnitures/chair</ModelPath>
             <ModelPath />
@@ -8952,13 +8952,13 @@
       <MyTransform>
         <MyObjectID>1747</MyObjectID>
         <Position>
-          <X>1</X>
+          <X>11</X>
           <Y>1.7</Y>
-          <Z>10</Z>
+          <Z>13.5</Z>
         </Position>
         <Rotation>
           <X>0</X>
-          <Y>2.9</Y>
+          <Y>1.57</Y>
           <Z>0</Z>
         </Rotation>
         <Forward>
@@ -9091,7 +9091,7 @@
       <Components>
         <TrashSoup.Engine.CustomModel>
           <MyObjectID>1749</MyObjectID>
-          <LODState>MED</LODState>
+          <LODState>HI</LODState>
           <LODs>
             <ModelPath>Models/Home/CorkBoard/CorkBoard</ModelPath>
             <ModelPath />
@@ -9170,7 +9170,7 @@
         <TargetID>1</TargetID>
         <TargetPosition>
           <X>12</X>
-          <Y>11</Y>
+          <Y>3</Y>
           <Z>0</Z>
         </TargetPosition>
       </TrashSoup.Gameplay.CameraBehaviourComponent>
